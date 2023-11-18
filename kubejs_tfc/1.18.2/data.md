@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Custom Data
 permalink: /kubejs_tfc/1.18.2/data/
 ---

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: KubeJS TFC
 permalink: /kubejs_tfc/
 ---
