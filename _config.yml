@@ -27,14 +27,6 @@ repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
 github_repo: "notenoughmail.github.io"
 
-feedback: false
-
-color: "#30638e"
-tag_color: primary # danger, success, warning, primary, info, secondary
-accentColor: red # purple, green, etc.
-themeColor: red # purple, green, blue, orange, purple, grey
-fixedNav: 'true' # true or false
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

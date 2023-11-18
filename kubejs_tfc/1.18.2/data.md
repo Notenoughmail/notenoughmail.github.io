@@ -4,6 +4,8 @@ title: Custom Data
 permalink: /kubejs_tfc/1.18.2/data/
 ---
 
+# Data
+
 KubeJS TFC allows users to easily write some of TFC's [custom data](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/) types without having to directly write json files
 
 In the `tfc.data` event there are methods for:
