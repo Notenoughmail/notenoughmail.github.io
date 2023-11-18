@@ -16,7 +16,7 @@
 title: NotEnoughMail's Wiki Collection
 description: >- # this means to ignore newlines until "baseurl:"
   The central place for all NotEnoughMail's projects' wikis (hopefully) (maybe)
-baseurl: "/Documentation" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://notenoughmail.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
