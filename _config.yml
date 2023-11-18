@@ -21,7 +21,7 @@ url: "https://notenoughmail.github.io" # the base hostname & protocol for your s
 
 # Build settings
 markdown: kramdown
-# theme: just-the-docs
+remote_theme: just-the-docs
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"

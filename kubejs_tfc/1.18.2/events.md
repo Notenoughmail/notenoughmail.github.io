@@ -14,7 +14,7 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Select Climate model](#select-climate-model)
 - [Start Fire](#start-fire)
 - [Prospect](#prospect)
-- [Logging](#logging)]
+- [Logging](#logging)
 - [Animal product](#animal-product)
 - [Collapse](#collapse)
 
@@ -304,7 +304,7 @@ Returns the LevelJS of the event
 ### getRadiusSquared()
 Returns the squared radius of the collapse, will be 0 if the collapse is fake
 ### getSecondaryPositions()
-Returns a list<BlockPos> containing the positions of blocks also effected by the collapse
+Returns a `List<BlockPos>` containing the positions of blocks also effected by the collapse
 ### isFake()
 Returns true if the collapse is fake
 
@@ -315,3 +315,4 @@ onEvent('tfc.collapse', event -> {
          event.level.minecraftLevel.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0)
     })
 })
+```
