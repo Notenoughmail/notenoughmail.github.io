@@ -15,13 +15,13 @@
 # in the templates via {{ site.myvariable }}.
 title: NotEnoughMail's Project Documentation
 description: >- # this means to ignore newlines until "baseurl:"
-  The central place for all NotEnoughMail's projects' wikis (hopefully) (maybe)
+  Documentation for NotEnoughMail's projects
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://notenoughmail.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-tactile
+theme: just-the-docs
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
