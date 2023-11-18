@@ -459,13 +459,13 @@ onEvent('tfc.data', event => {
 
 # Attached TFC Data
 
-In order to add nutrition, the chisel mode, and a few other TFC attaches some data onto the player, this can be access through a `PlayerJS` object through the `.getData()` method which returns a map 0f strings to objects. Use `tfc:player_data' to access a wrapper for all of TFC's attached data.
+In order to add nutrition, the chisel mode, and a few other things TFC attaches some data onto the player, this can be accessed through a `PlayerJS` object through the `.getData()` method which returns a map of strings to objects. Use `tfc:player_data` to access a wrapper for all of TFC's attached data.
 
 This wrapper has several methods to read and modify the state of TFC's additional data
 
 ## getChiselMode()
 Returns the player's chisel mode
-## setChiselMode(string)
+## setChiselMode(ChiselMode)
 Sets the player's chisel mode, accepts `smooth`, `stair`, and `slab`
 ## getIntoxicatedTicks()
 Returns the number of remaining ticks the player is intoxicated for
