@@ -21,14 +21,11 @@ url: "https://notenoughmail.github.io" # the base hostname & protocol for your s
 
 # Build settings
 markdown: kramdown
-remote_theme: just-the-docs
+theme: jekyll-theme-tactile
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
 github_repo: "notenoughmail.github.io"
-
-aux_links:
-  GitHub Site: https://github.com/Notenoughmail/notenoughmail.github.io
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
