@@ -4,7 +4,9 @@ title: "NotEnoughMail's Project Documentation"
 permalink: /
 ---
 
-Welcome to the wiki, I'm still trying to figure this out, give me a moment, I don't really know what I'm doing
+# NotEnoughMail's Project Documentation
+
+Welcome to the wiki, barebones for now
 
 ## [KubeJS TFC](kubejs_tfc/)
 
