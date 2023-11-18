@@ -4,8 +4,6 @@ title: "NotEnoughMail's Project Documentation"
 permalink: /
 ---
 
-# NotEnoughMail's Project Documentation
-
 Welcome to the wiki, I'm still trying to figure this out, give me a moment, I don't really know what I'm doing
 
 ## [KubeJS TFC](kubejs_tfc/)
