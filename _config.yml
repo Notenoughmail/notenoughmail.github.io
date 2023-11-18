@@ -21,9 +21,7 @@ url: "https://notenoughmail.github.io" # the base hostname & protocol for your s
 
 # Build settings
 markdown: kramdown
-remote_theme: pages-themes/tactile@v0.2.0
-plugins:
-- jekyll-remote-theme
+theme: jekyll-theme-tactile
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
