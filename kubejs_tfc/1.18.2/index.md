@@ -1,11 +1,25 @@
 ---
-layout: default
+layout: page
 title: 1.18.2
 permalink: /kubejs_tfc/1.18.2/
 ---
 
 # 1.18.2
 
+TODO: write small descriptions about each page, ensure all links work
+
 ## [Data](data/)
 
 ## [Events](events/)
+
+## [Ingredients](ingredients/)
+
+## [Recipes](recipes/)
+
+## [Custom Items and Blocks](items-and-blocks/)
+
+## [World Generation](worldgen/)
+
+## [Wrappers](wrappers/)
+
+## [Misc. Features](misc/)

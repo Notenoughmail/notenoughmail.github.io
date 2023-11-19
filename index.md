@@ -14,4 +14,4 @@ KubeJS integration for TFC, featuring support for recipes, custom data, and more
 
 ---
 
-This site was built with [Docsy Jekyll](https://vsoch.github.io/docsy-jekyll) and is hosted with [Github Pages](https://pages.github.com/).
+This site is hosted with [Github Pages](https://pages.github.com/).

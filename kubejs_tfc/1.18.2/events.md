@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Events
 permalink: /kubejs_tfc/1.18.2/events/
 ---

@@ -29,6 +29,12 @@ repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
 github_repo: "notenoughmail.github.io"
 
+# https://just-the-docs.com/docs/customization/
+color_scheme: default
+
+aux_links:
+  GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: 1.20.1
 permalink: /kubejs_tfc/1.20.1/
 ---
