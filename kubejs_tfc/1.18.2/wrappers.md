@@ -172,4 +172,4 @@ The optional third consumer will accept any item stack provider modifiers, these
 ##### setFoodData(consumer)
 Adds a `tfcchannelcasting:set_food_data` modifier
 
-Accepts a consumer with methods of the [food item data](data/#food-items) consumer
+Accepts a consumer with methods of the [food item data](../data/#food-items) consumer

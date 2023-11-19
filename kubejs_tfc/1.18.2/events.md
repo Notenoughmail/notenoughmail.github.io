@@ -170,11 +170,11 @@ Returns the block face that was clicked
 ### getItem()
 Returns the ItemStackJS representing the item used
 ### getFireResult()
-Returns the [FireResult](<Miscellaneous-Features#fireresult>) of the event. Defaults to FireResult.IF_FAILED.
+Returns the [FireResult](../misc/#fireresult) of the event. Defaults to FireResult.IF_FAILED.
 ### setFireResult(FireResult)
 Sets the event's FireResult
 ### isStrong()
-Returns a boolean indicating if the event's [FireStrength](<Miscellaneous-Features#firestrength>) is strong
+Returns a boolean indicating if the event's [FireStrength](../misc/#firestrength) is strong
 ### getEntity()
 Returns the EntityJS of the player that performed the fire start, may be null
 ### getServer()

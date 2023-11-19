@@ -94,7 +94,7 @@ Ingredient.tfcNot(Ingredient.notRotten()) // Accepts any rotten food
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/ingredients/#fluid-item)!
 
 This specifies an item which is expected to contain a fluid
-- 1st argument: A [fluid stack ingredient](<wrappers#fluid-stack-ingredient>), which specified the fluid(s) required
+- 1st argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), which specified the fluid(s) required
 - *optional 2nd argument*: An ingredient, if omitted this will accept any item
 
 ### Extra Method

@@ -8,11 +8,11 @@ permalink: /kubejs_tfc/1.18.2/items-and-blocks/
 
 KubeJS TFC provides the ability to make your own version of some of TFC's items and blocks
 
-[Jump to items](#custom-items
+[Jump to items](#custom-items)
 
-[Jump to blocks](#custom-blocks
+[Jump to blocks](#custom-blocks)
 
-[Jump to tool/armor tiers](#added-tiers
+[Jump to tool/armor tiers](#added-tiers)
 
 [Jump to fluids](#fluids)
 
