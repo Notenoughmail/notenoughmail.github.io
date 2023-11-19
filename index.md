@@ -1,12 +1,14 @@
 ---
 layout: default
-title: "NotEnoughMail's Project Documentation"
+title: Home
 permalink: /
 ---
 
 # NotEnoughMail's Project Documentation
 
-Welcome to the wiki, barebones for now
+Welcome! Barebones for now
+
+TODO: write small descriptions about each page, ensure all links work, make font bigger, fix the title being cut off in the header/sidebar thing, somehow organize the left sidebar into a tiered structure, possibly widen main portion of page
 
 ## [KubeJS TFC](kubejs_tfc/)
 

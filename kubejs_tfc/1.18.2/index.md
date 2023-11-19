@@ -6,8 +6,6 @@ permalink: /kubejs_tfc/1.18.2/
 
 # 1.18.2
 
-TODO: write small descriptions about each page, ensure all links work
-
 ## [Data](data/)
 
 ## [Events](events/)

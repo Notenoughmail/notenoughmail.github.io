@@ -6,4 +6,4 @@ permalink: /kubejs_tfc/1.20.1/
 
 # 1.20.1
 
-Test
+Both the wiki and the mod for this version are heavily WIP, come back soon!
