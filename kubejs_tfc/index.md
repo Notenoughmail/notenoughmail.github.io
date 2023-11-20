@@ -2,6 +2,8 @@
 layout: page
 title: KubeJS TFC
 permalink: /kubejs_tfc/
+nav_order: 2
+has_children: true
 ---
 
 # KubeJS TFC

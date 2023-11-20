@@ -2,6 +2,8 @@
 layout: page
 title: Events
 permalink: /kubejs_tfc/1.18.2/events/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Events

@@ -2,6 +2,8 @@
 layout: page
 title: Custom Data
 permalink: /kubejs_tfc/1.18.2/data/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Data

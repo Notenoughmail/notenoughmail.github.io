@@ -2,6 +2,8 @@
 layout: page
 title: Misc. Features
 permalink: /kubejs_tfc/1.18.2/misc/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Misc. Features

@@ -2,6 +2,8 @@
 layout: page
 title: Custom Items and Blocks
 permalink: /kubejs_tfc/1.18.2/items-and-blocks/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Custom Items and Blocks

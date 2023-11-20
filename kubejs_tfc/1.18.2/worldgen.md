@@ -1,7 +1,9 @@
 ---
 layout: page
 title: World Generation
-permalink: /kubejs/1.18.2/worldgen/
+permalink: /kubejs_tfc/1.18.2/worldgen/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # World Generation

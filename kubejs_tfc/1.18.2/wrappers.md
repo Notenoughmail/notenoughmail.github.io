@@ -2,6 +2,8 @@
 layout: page
 title: Wrappers
 permalink: /kubejs_tfc/1.18.2/wrappers/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Wrappers

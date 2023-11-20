@@ -2,6 +2,9 @@
 layout: page
 title: 1.18.2
 permalink: /kubejs_tfc/1.18.2/
+nav_order: 1
+parent: KubeJS TFC
+has_children: true
 ---
 
 # 1.18.2

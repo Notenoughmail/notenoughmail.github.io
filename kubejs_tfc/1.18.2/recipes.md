@@ -2,6 +2,8 @@
 layout: page
 title: Recipes
 permalink: /kubejs_tfc/1.18.2/recipes/
+parent: 1.18.2
+grand_parent: KubeJS TFC
 ---
 
 # Recipes
