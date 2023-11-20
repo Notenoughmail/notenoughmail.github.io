@@ -9,7 +9,7 @@ nav_order: 1
 
 Welcome! Barebones for now
 
-TODO: write small descriptions about each page, ensure all links work, make font bigger, fix the title being cut off in the header/sidebar thing, somehow organize the left sidebar into a tiered structure, possibly widen main portion of page
+TODO: write small descriptions about each page, ensure all links work, make font bigger, fix the title being cut off in the header/sidebar thing
 
 ## [KubeJS TFC](kubejs_tfc/)
 
