@@ -38,10 +38,11 @@ aux_links:
 callouts:
   notice:
     title: Notice
-    color: blue
+    color: yellow
   deprecated:
     title: Deprecated
     color: green
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
