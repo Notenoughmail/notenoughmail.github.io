@@ -10,4 +10,5 @@ has_toc: false
 
 # 1.20.1
 
+{: .notice}
 Both the wiki and the mod for this version are heavily WIP, come back soon!

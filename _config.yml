@@ -35,6 +35,13 @@ color_scheme: default
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
 
+callouts:
+  notice:
+    title: Notice
+    color: grey-dk
+  deprecated:
+    title: Deprecated
+    color: green
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
