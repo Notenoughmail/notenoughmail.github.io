@@ -38,7 +38,7 @@ aux_links:
 callouts:
   notice:
     title: Notice
-    color: grey-dk
+    color: blue
   deprecated:
     title: Deprecated
     color: green
