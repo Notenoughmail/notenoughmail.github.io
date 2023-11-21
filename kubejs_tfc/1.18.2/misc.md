@@ -23,12 +23,53 @@ Looking for how to limit containers? It's been moved to the [Events](../1.18.2/e
 
 In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla itemstacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
 
-<details><summary>Replace Method Table</summary>
-
 {: .notice }
 > This currently doesn't work well with the new wiki, for now go to the [old wiki](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Miscellaneous-Features#editing-existing-recipes) to view it
 >
-> One moment while I test things
+> Give me some time to rewrite it using html (possibly)
+
+<details><summary>Replace Method Table</summary>
+
+<table>
+    <thead>
+        <col0>
+            <th></th>
+        </col0>
+        <col1>
+            <th>`replaceInput`</th>
+        </col1>
+        <col2>
+            <th>`replaceOutput`</th>
+        </col2>
+        <col3>
+            <th>`tfcReplaceFluidInput`</th>
+        </col3>
+        <col4>
+            <th>`tfcReplaceFluidOuput`</th>
+        </col4>
+        <col5> 
+            <th>`tfcReplaceBlockInput`</th>
+        </col5>
+        <col6>
+            <th>`tfcReplaceItemStackProvider`</th>
+        </col6>
+        <col7>
+            <th>`tfcReplaceExtraItem`</th>
+        </col7>
+    </thead>
+    <tbody>
+        <alloy>
+            <td>Alloying</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </alloy>
+    </tbody>
+</table>
 
 |  | replaceInput | replaceOutput | tfcReplaceFluidInput | tfcReplaceFluidOutput | tfcReplaceBlockInput | tfcReplaceItemStackProvider | tfcReplaceExtraItem |
 |:---|:---|:---|:---|:---|:---|:---|:---|
