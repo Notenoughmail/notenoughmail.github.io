@@ -23,38 +23,34 @@ Looking for how to limit containers? It's been moved to the [Events](../1.18.2/e
 
 In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla itemstacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
 
-{: .notice }
-> This currently doesn't work well with the new wiki, for now go to the [old wiki](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Miscellaneous-Features#editing-existing-recipes) to view it
->
-> Give me some time to rewrite it using html (possibly)
-
 <details><summary>Replace Method Table</summary>
 
 <table>
+    // Agony, required because markdown cannot be used inside html blocks unlike in GitHub wikis
     <thead>
         <col0>
             <th></th>
         </col0>
         <col1>
-            <th>`replaceInput`</th>
+            <th>replaceInput</th>
         </col1>
         <col2>
-            <th>`replaceOutput`</th>
+            <th>replaceOutput</th>
         </col2>
         <col3>
-            <th>`tfcReplaceFluidInput`</th>
+            <th>tfcReplaceFluidInput</th>
         </col3>
         <col4>
-            <th>`tfcReplaceFluidOuput`</th>
+            <th>tfcReplaceFluidOuput</th>
         </col4>
         <col5> 
-            <th>`tfcReplaceBlockInput`</th>
+            <th>tfcReplaceBlockInput</th>
         </col5>
         <col6>
-            <th>`tfcReplaceItemStackProvider`</th>
+            <th>tfcReplaceItemStackProvider</th>
         </col6>
         <col7>
-            <th>`tfcReplaceExtraItem`</th>
+            <th>tfcReplaceExtraItem</th>
         </col7>
     </thead>
     <tbody>
@@ -68,41 +64,298 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </alloy>
+        <weld>
+            <td>Anvil Welding</td>
+            <td>inputs</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output</td>
+            <td>❌</td>
+        </weld>
+        <work>
+            <td>Anvil Working</td>
+            <td>input</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output</td>
+            <td>❌</td>
+        </work>
+        <fluidinst>
+            <td>Barrel Instant Fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>input fluids</td>
+            <td>output fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </fluidinst>
+        <inst>
+            <td>Barrel Instant</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>input fluid</td>
+            <td>output fluid (if present)</td>
+            <td>❌</td>
+            <td>output item (if present)</td>
+            <td>❌</td>
+        </inst>
+        <sealed>
+            <td>Barrel Sealed</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>input fluid</td>
+            <td>output fluid (if present)</td>
+            <td>❌</td>
+            <td>output item (if present)</td>
+            <td>❌</td>
+        </sealed>
+        <blast>
+            <td>Blast Furnace</td>
+            <td>input catalyst</td>
+            <td>❌</td>
+            <td>input fluid</td>
+            <td>output fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </blast>
+        <bloom>
+            <td>Bloomery</td>
+            <td>item catalyst</td>
+            <td>❌</td>
+            <td>input fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </bloom>
+        <cast>
+            <td>Casting</td>
+            <td>mold item</td>
+            <td>❌</td>
+            <td>input fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </cast>
+        <chisel>
+            <td>Chiseling</td>
+            <td>chisel items (if present)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>block input</td>
+            <td>extra drops (if present)</td>
+            <td>❌</td>
+        </chisel>
+        <colslid>
+            <td>Collapse/Landslide</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>block input</td>
+            <td>❌</td>
+            <td>❌</td>
+        </colslid>
+        <heat>
+            <td>Heating</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output fluid (if present)</td>
+            <td>❌</td>
+            <td>output item (if present)</td>
+            <td>❌</td>
+        </heat>
+        <knap>
+            <td>Knapping</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </knap>
+        <loom>
+            <td>Loom</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </loom>
+        <pot>
+            <td>Simple Pot</td>
+            <td>input item</td>
+            <td>output items</td>
+            <td>input fluid</td>
+            <td>output fluid</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </pot>
+        <quern>
+            <td>Quern</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </quern>
+        <rknap>
+            <td>Rock Knapping</td>
+            <td>input item</td>
+            <td>output item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </rknap>
+        <scrape>
+            <td>Scraping</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </scrape>
+        <advcra>
+            <td>Adv. Crafting</td>
+            <td>input item(s)</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </advcra>
+        <dmgincra>
+            <td>Damage Inputs Crafting</td>
+            <td>unknown</td>
+            <td>unknown</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>unknown</td>
+            <td>❌</td>
+        </dmgincra>
+        <xtracra>
+            <td>Extra Products Crafting</td>
+            <td>unknown</td>
+            <td>unknown</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>unknown</td>
+            <td>extra output items</td>
+        </xtracra>
+        <dry>
+            <td>Drying</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </dry>
+        <smoke>
+            <td>Smoking</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </smoke>
+        <mix>
+            <td>Mixing Bowl</td>
+            <td>input items (if present)</td>
+            <td>❌</td>
+            <td>input fluid (if present)</td>
+            <td>output fluid (if present)</td>
+            <td>❌</td>
+            <td>output item (if present)</td>
+            <td>❌</td>
+        </mix>
+        <pknap>
+            <td>Pumpkin Knapping</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </pknap>
+        <oven>
+            <td>Oven</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </oven>
+        <vat>
+            <td>Vat</td>
+            <td>input item (if present)</td>
+            <td>❌</td>
+            <td>input fluid (if present)</td>
+            <td>output fluid (if present)</td>
+            <td>❌</td>
+            <td>output item (if present)</td>
+            <td>❌</td>
+        </vat>
+        <aquern>
+            <td>Auto-Quern</td>
+            <td>input item</td>
+            <td>output item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+        </aquern>
+        <extrmac>
+            <td>Extruding Machine</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </extrmac>
+        <rollmac>
+            <td>Rolling Machine</td>
+            <td>input item</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>output item</td>
+            <td>❌</td>
+        </rollmac>
     </tbody>
 </table>
-
-|  | replaceInput | replaceOutput | tfcReplaceFluidInput | tfcReplaceFluidOutput | tfcReplaceBlockInput | tfcReplaceItemStackProvider | tfcReplaceExtraItem |
-|:---|:---|:---|:---|:---|:---|:---|:---|
-| Alloying | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Anvil Welding | inputs | ❌ | ❌ | ❌ | ❌ | output | ❌ |
-| Anvil Working | input | ❌ | ❌ | ❌ | ❌ | output | ❌ |
-| Barrel Instant Fluid | ❌ | ❌ | input fluids | output fluid | ❌ | ❌ | ❌ |
-| Barrel Instant | input item | ❌ | input fluid | output fluid (if present) | ❌ | output item (if present) | ❌ |
-| Barrel Sealed | input item | ❌ | input fluid | output fluid (if present) | ❌ | output item (if present) | ❌ |
-| Blast Furnace | input catalyst | ❌ | input fluid | output fluid | ❌ | ❌ | ❌ |
-| Bloomery | item catalyst | ❌ | input fluid | ❌ | ❌ | output item | ❌ |
-| Casting | mold item | ❌ | input fluid | ❌ | ❌ | output item | ❌ |
-| Chiseling | chisel items (if present) | ❌ | ❌ | ❌ | block input | extra drop (if present) | ❌ |
-| Collapse/Landslide | ❌ | ❌ | ❌ | ❌ | block input | ❌ | ❌ |
-| Heating | input item | ❌ | ❌ | output fluid ( if present) | ❌ | output item (if present) | ❌ |
-| Knapping | ❌ | output item | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Loom | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Simple Pot | input item | output items | input fluid | output fluid | ❌ | ❌ | ❌ |
-| Quern | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Rock Knapping | input item | output item | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Scraping | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Adv. Crafting | input item(s) | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Damage Inputs Crafting | unknown | unknown | ❌ | ❌ | ❌ | unknown | ❌ |
-| Extra Products Crafting | unkown | unknown | ❌ | ❌ | ❌ | unknown | extra output items |
-| Drying | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Smoking | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Mixing Bowl | input items (if present) | output item (if present) | input fluid (if present) | output fluid (if present) | ❌ | ❌ | ❌ |
-| Pumpkin Knapping | ❌ | output item | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Oven | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Vat | input item (if present) | ❌ | input fluid (if present) | output fluid (if present) | ❌ | output item (if present) | ❌ |
-| Auto Quern | input item | output item | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Extruding Machine | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
-| Rolling Machine | input item | ❌ | ❌ | ❌ | ❌ | output item | ❌ |
 
 </details>
 
