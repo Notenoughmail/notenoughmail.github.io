@@ -25,8 +25,9 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
 
 <details><summary>Replace Method Table</summary>
 
+<comment>Agony, required because markdown cannot be used inside html blocks unlike in GitHub wikis</comment>
+
 <table>
-    // Agony, required because markdown cannot be used inside html blocks unlike in GitHub wikis
     <thead>
         <col0>
             <th></th>
@@ -64,6 +65,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </alloy>
+    </tbody>
+    <tbody>
         <weld>
             <td>Anvil Welding</td>
             <td>inputs</td>
@@ -74,6 +77,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output</td>
             <td>❌</td>
         </weld>
+    </tbody>
+    <tbody>
         <work>
             <td>Anvil Working</td>
             <td>input</td>
@@ -84,6 +89,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output</td>
             <td>❌</td>
         </work>
+    </tbody>
+    <tbody>
         <fluidinst>
             <td>Barrel Instant Fluid</td>
             <td>❌</td>
@@ -94,6 +101,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </fluidinst>
+    </tbody>
+    <tbody>
         <inst>
             <td>Barrel Instant</td>
             <td>input item</td>
@@ -104,6 +113,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item (if present)</td>
             <td>❌</td>
         </inst>
+    </tbody>
+    <tbody>
         <sealed>
             <td>Barrel Sealed</td>
             <td>input item</td>
@@ -114,6 +125,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item (if present)</td>
             <td>❌</td>
         </sealed>
+    </tbody>
+    <tbody>
         <blast>
             <td>Blast Furnace</td>
             <td>input catalyst</td>
@@ -124,6 +137,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </blast>
+    </tbody>
+    <tbody>
         <bloom>
             <td>Bloomery</td>
             <td>item catalyst</td>
@@ -134,6 +149,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </bloom>
+    </tbody>
+    <tbody>
         <cast>
             <td>Casting</td>
             <td>mold item</td>
@@ -144,6 +161,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </cast>
+    </tbody>
+    <tbody>
         <chisel>
             <td>Chiseling</td>
             <td>chisel items (if present)</td>
@@ -154,6 +173,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>extra drops (if present)</td>
             <td>❌</td>
         </chisel>
+    </tbody>
+    <tbody>
         <colslid>
             <td>Collapse/Landslide</td>
             <td>❌</td>
@@ -164,6 +185,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </colslid>
+    </tbody>
+    <tbody>
         <heat>
             <td>Heating</td>
             <td>input item</td>
@@ -174,6 +197,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item (if present)</td>
             <td>❌</td>
         </heat>
+    </tbody>
+    <tbody>
         <knap>
             <td>Knapping</td>
             <td>❌</td>
@@ -184,6 +209,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </knap>
+    </tbody>
+    <tbody>
         <loom>
             <td>Loom</td>
             <td>input item</td>
@@ -194,6 +221,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </loom>
+    </tbody>
+    <tbody>
         <pot>
             <td>Simple Pot</td>
             <td>input item</td>
@@ -204,6 +233,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </pot>
+    </tbody>
+    <tbody>
         <quern>
             <td>Quern</td>
             <td>input item</td>
@@ -214,6 +245,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </quern>
+    </tbody>
+    <tbody>
         <rknap>
             <td>Rock Knapping</td>
             <td>input item</td>
@@ -224,6 +257,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </rknap>
+    </tbody>
+    <tbody>
         <scrape>
             <td>Scraping</td>
             <td>input item</td>
@@ -234,6 +269,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </scrape>
+    </tbody>
+    <tbody>
         <advcra>
             <td>Adv. Crafting</td>
             <td>input item(s)</td>
@@ -244,6 +281,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </advcra>
+    </tbody>
+    <tbody>
         <dmgincra>
             <td>Damage Inputs Crafting</td>
             <td>unknown</td>
@@ -254,6 +293,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>unknown</td>
             <td>❌</td>
         </dmgincra>
+    </tbody>
+    <tbody>
         <xtracra>
             <td>Extra Products Crafting</td>
             <td>unknown</td>
@@ -264,6 +305,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>unknown</td>
             <td>extra output items</td>
         </xtracra>
+    </tbody>
+    <tbody>
         <dry>
             <td>Drying</td>
             <td>input item</td>
@@ -274,6 +317,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </dry>
+    </tbody>
+    <tbody>
         <smoke>
             <td>Smoking</td>
             <td>input item</td>
@@ -284,6 +329,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </smoke>
+    </tbody>
+    <tbody>
         <mix>
             <td>Mixing Bowl</td>
             <td>input items (if present)</td>
@@ -294,6 +341,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item (if present)</td>
             <td>❌</td>
         </mix>
+    </tbody>
+    <tbody>
         <pknap>
             <td>Pumpkin Knapping</td>
             <td>❌</td>
@@ -304,6 +353,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </pknap>
+    </tbody>
+    <tbody>
         <oven>
             <td>Oven</td>
             <td>input item</td>
@@ -314,6 +365,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </oven>
+    </tbody>
+    <tbody>
         <vat>
             <td>Vat</td>
             <td>input item (if present)</td>
@@ -324,6 +377,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item (if present)</td>
             <td>❌</td>
         </vat>
+    </tbody>
+    <tbody>
         <aquern>
             <td>Auto-Quern</td>
             <td>input item</td>
@@ -334,6 +389,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>❌</td>
             <td>❌</td>
         </aquern>
+    </tbody>
+    <tbody>
         <extrmac>
             <td>Extruding Machine</td>
             <td>input item</td>
@@ -344,6 +401,8 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <td>output item</td>
             <td>❌</td>
         </extrmac>
+    </tbody>
+    <tbody>
         <rollmac>
             <td>Rolling Machine</td>
             <td>input item</td>
