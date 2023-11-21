@@ -10,7 +10,7 @@ grand_parent: KubeJS TFC
 
 KubeJS TFC adds several JS events for use in your scripts
 
-- [Rock Settings](worldgen#rock-layers)
+- [Rock Settings](../worldgen/#rock-layers)
 - [limiting Containers](#limiting-containers)
 - [Register Climate Model](#register-climate-model)
 - [Select Climate model](#select-climate-model)

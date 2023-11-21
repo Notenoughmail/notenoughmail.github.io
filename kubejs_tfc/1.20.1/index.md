@@ -11,4 +11,12 @@ has_toc: false
 # 1.20.1
 
 {: .notice }
-Both the wiki and the mod for this version are heavily WIP, come back soon!
+> Both the wiki and the mod for this version are heavily WIP
+>
+> Some things may be incomplete, wrong, or just missing, this should improve closer to release
+
+## [Bindings](bindings/)
+
+## [Events](events/)
+
+## [Recipes](recipes/)
