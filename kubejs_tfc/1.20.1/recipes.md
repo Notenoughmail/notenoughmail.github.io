@@ -13,7 +13,7 @@ Work In Progress!
 
 The following recipes (currently) are supported by KubeJS TFC:
 - [Alloy](#alloy)
-- [Landslide/Collapse](#collapse-landslide)
+- [Landslide/Collapse](#collapselandslide)
 
 ## Alloy
 
@@ -21,7 +21,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 
 ### Method Signature
 
-```js
+```ts
 event.recipes.tfc.alloy(result: string, contents: AlloyPart[])
 ```
 
@@ -46,7 +46,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/data/r
 
 ### Method Signature
 
-```js
+```ts
 event.recipes.tfc.collaspe(result?: BlockState, ingredient: BlockIngredient)
 event.recipes.tfc.landslide(result?: BlockState, ingredient: BlockIngredient)
 ```

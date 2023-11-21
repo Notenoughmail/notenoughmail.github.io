@@ -26,7 +26,7 @@ These are methods which can be accessed directly from the `TFC` object
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#block-ingredients)!
 
 Method signature:
-```js
+```ts
 TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | List<(string | Block | BlockState | tagKey<Block>)> | BlockIngredient)])
 ```
 
@@ -59,7 +59,7 @@ In JSON:
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#fluid-ingredients)!
 
 Method signature:
-```js
+```ts
 TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | List<(string | Fluid | TagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
 ```
 
