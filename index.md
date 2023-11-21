@@ -9,11 +9,13 @@ nav_order: 1
 
 Welcome! Barebones for now
 
-TODO: write small descriptions about each page, ensure all links work, make font bigger, fix the title being cut off in the header/sidebar thing
-
 ## [KubeJS TFC](kubejs_tfc/)
 
 KubeJS integration for TFC, featuring support for recipes, custom data, and more
+
+## [Precision Prospecting](precpros/)
+
+An Addon for TFC:TNG which adds new prospecting tools with different ranges
 
 ---
 

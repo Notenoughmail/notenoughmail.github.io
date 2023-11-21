@@ -20,12 +20,18 @@ Looking for how to limit containers? It's been moved to the [Events](../1.18.2/e
 ---
 
 ## Editing Existing Recipes
+
 In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla itemstacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
 
 <details><summary>Replace Method Table</summary>
 
+{: .notice }
+> This currently doesn't work well with the new wiki, for now go to the [old wiki](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Miscellaneous-Features#editing-existing-recipes) to view it
+>
+> One moment while I test things
+
 |  | replaceInput | replaceOutput | tfcReplaceFluidInput | tfcReplaceFluidOutput | tfcReplaceBlockInput | tfcReplaceItemStackProvider | tfcReplaceExtraItem |
-|---|---|---|---|---|---|---|---|
+|:---|:---|:---|:---|:---|:---|:---|:---|
 | Alloying | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Anvil Welding | inputs | ❌ | ❌ | ❌ | ❌ | output | ❌ |
 | Anvil Working | input | ❌ | ❌ | ❌ | ❌ | output | ❌ |
@@ -60,12 +66,14 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
 </details>
 
 ### Replacing Fluid Inputs
+
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
 - 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), the fluid ingredient to be replaced
 - 3rd argument: A fluid stack ingredient, the fluid ingredient to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
 #### Example
+
 ```js
 onEvent('recipes', event => {
     event.tfcReplaceFluidInput('minecraft:water', 'minecraft:lava')
@@ -73,12 +81,14 @@ onEvent('recipes', event => {
 ```
 
 ### Replacing Fluid Outputs
+
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
 - 2nd argument: A fluid stack, the fluid output to be replaced
 - 3rd argument: A fluid stack, the fluid stack to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
 #### Example
+
 ```js
 onEvent('recipes', event => {
     event.tfcReplaceFluidOutput('tfc:blue_dye', 'minecraft:water')
@@ -86,12 +96,14 @@ onEvent('recipes', event => {
 ```
 
 ### Replacing Block Inputs
+
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
 - 2nd argument: A [block ingredient](../wrappers/#block-ingredient), the block ingredient to be replaced
 - 3rd argument: A block ingredient, the block ingredient to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
 #### Example
+
 ```js
 onEvent('recipes', event => {
     event.tfcReplaceBlockInput(/tfc:rock\/cobble\/.+/, 'minecraft:cobblestone')
@@ -99,6 +111,7 @@ onEvent('recipes', event => {
 ```
 
 ### Replacing Item Stack Providers
+
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
 - 2nd argument: An [item stack provider](../wrappers/#item-stack-provider), the item provider to be replaced
 - 3rd argument: A item stack provider, the item provider to replace with
@@ -107,6 +120,7 @@ onEvent('recipes', event => {
 Keep in mind it is unlikely this method will be able to replace items tack providers which use the `copy_input` modifier
 
 #### Example
+
 ```js
 onEvent('recipes', event => {
     event.tfcReplaceItemStackProvider('tfc:raw_iron_bloom', 'minecraft:iron_ingot')
@@ -114,6 +128,7 @@ onEvent('recipes', event => {
 ```
 
 ### Replacing Extra Outputs
+
 Used for the extra outputs of extra products shaped/shapeless crafting
 
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
@@ -122,6 +137,7 @@ Used for the extra outputs of extra products shaped/shapeless crafting
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
 #### Example
+
 ```js
 onEvent('recipes', event => {
     event.tfcReplaceExtraItem('tfc:straw', 'minecraft:music_disc_stal')
@@ -131,9 +147,11 @@ onEvent('recipes', event => {
 ---
 
 ## New Recipe Filters
+
 Recipe filters filter recipes based on certain properties they have, the tfc specific ones are built through the `TFCRecipeFilter` object
 
 ### Block Ingredient Filter
+
 - 1st argument: A block ingredient, the block ingredient input to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
@@ -142,6 +160,7 @@ TFCRecipeFilter.blockIngredient('tfc:rock/cobblestone/andesite')
 ```
 
 ### Fluid Output Filter
+
 - 1st argument: A fluid stack, the fluid output to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
@@ -150,6 +169,7 @@ TFCRecipeFilter.fluidOutput('tfc:salt_water')
 ```
 
 ### Fluid Input Filter
+
 - 1st argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), the fluid ingredient to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
@@ -158,6 +178,7 @@ TFCRecipeFilter.fluidInput('#tfc:milks')
 ```
 
 ### Item Provider Filter
+
 - 1st argument: A [item stack provider](../wrappers/#item-stack-provider), the item stack provider to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
@@ -166,6 +187,7 @@ TFCRecipeFilter.itemProvider('tfc:metal/chain/bismuth_bronze',)
 ```
 
 ### Extra Item Filter
+
 - 1st argument: An item , the item to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
@@ -174,9 +196,11 @@ TFCRecipeFilter.extraItem('tfc:straw')
 ```
 
 ## Bindings
+
 Bindings are objects which represent internal Java classes which can be used in scripts without having to directly load the class in your scripts. The three major bindings can be found in the [Wrappers](../wrappers/) page. Another is also described above.
 
 ### FireResult
+
 Represents the fire result of a [StartFireEvent](../events/#start-fire), it has three values:
 - `IF_FAILED`: Places a fire block if the event isn't cancelled
 - `ALWAYS`: Guarantees a fire block will be placed
@@ -187,6 +211,7 @@ FireResult.ALWAYS
 ```
 
 ### FireStrength
+
 Represents the strength of a StartFireEvent, it currently has two valuse:
 - `STRONG`: Representing a fire starting where
   - The fire starting is the primary functionality, or
@@ -202,6 +227,7 @@ FireStrength.WEAK
 Currently this only useful for posting a new StartFireEvent
 
 ### AnimalAge
+
 Represents the age of an animal, it has three values:
 - `CHILD`
 - `ADULT`
@@ -212,6 +238,7 @@ AnimalAge.OLD
 ```
 
 ### AnimalGender
+
 Represents the gender of an animal, it has two values:
 - `MALE`
 - `FEMALE`
@@ -221,6 +248,7 @@ AnimalGender.MALE
 ```
 
 ### Climate
+
 A collection of helpful methods when dealing with climate models
 - `getModel(Object)`: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
 - `getName(ClimateModel)`: Will retrieve the name of the provided climate model
@@ -237,6 +265,7 @@ Climate.getModel('kubejs:my_advanced_model')
 ```
 
 ### Month
+
 Represents the months of the year
 - `JANUARY`
 - `FEBRUARY`
@@ -260,7 +289,9 @@ Each month also has a few methods:
 ```js
 Month.JULY.next()
 ```
+
 ### Season
+
 Represents the seasons of the year
 - `SPRING`
 - `SUMMER`
@@ -276,6 +307,7 @@ Season.FALL.next()
 ```
 
 ### Calendar
+
 A collection of methods for getting information about the calendar. Methods with 'calendar' in their name are synced with the daylight cycle and should not be used to save time stamps as they may go backwards
 
 - `getCalendarTicksInMonth(Integer)`: Returns how many ticks are in a month based upon the provided number of days in a month
@@ -330,15 +362,19 @@ Calendar.getCalendar().getTotalYears()
 ```
 
 ## Custom Food Traits
+
 Food traits are applied to food items while in a container or after completion of a recipe (i.e. `Burnt to a Crisp!`, `Preserved`, and `In Vinegar`) and are used to affect how fast an item rots. New food traits can be made through the `tfc.food_trait.register` event which has two methods for doing so.
 
 ### registerTrait(number,ResourceLocation)
+
 This registers a new food trait with a decay modifier given by the number, in the namespace of the provided `ResourceLocation`
 
 ### registerTraitWithName(number,ResourceLocation,String)
+
 This registers a new food trait with s decay modifier given by the number, in the namespace of the provided `ResourceLocation` which provides a tooltip to an item with this modifier matching the given string.
 
 ### Examples
+
 ```js
 onEvent('tfc.food_trait.register', event => {
     // registers a trait which increases the rate of decay

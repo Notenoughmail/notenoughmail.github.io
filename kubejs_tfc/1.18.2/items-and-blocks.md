@@ -80,7 +80,7 @@ Creates a new propick item
 
 The propick is a tiered item, so all the properties which apply to swords, axes, etc. apply
 
-*Want a little more customization in your propick? Allow me to shill my other mod, [Precision Prospecting](https://www.curseforge.com/minecraft/mc-mods/precision-prospecting), and its [KubeJS integration](https://github.com/Notenoughmail/precision-prospecting/wiki/KubeJS-Integration)*
+*Want a little more customization in your propick? Allow me to shill my other mod, [Precision Prospecting](https://www.curseforge.com/minecraft/mc-mods/precision-prospecting), and its [KubeJS integration](https://notenoughmail.github.io/precpros/1.18.2/kube/)
 
 #### Example
 ```js

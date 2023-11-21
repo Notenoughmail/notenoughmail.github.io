@@ -127,7 +127,7 @@ These are bindings which provide access to more methods in a grouped manner
 
 ### Ingredient
 
-The cental place fore creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) for your scripts
+The cental place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) in your scripts
 
 #### Heatable
 
