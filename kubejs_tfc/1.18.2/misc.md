@@ -15,7 +15,7 @@ This page is for features which don't fit into/warrant another page
 - [Bindings](#bindings)
 - [Custom Food Traits](#custom-food-traits)
 
-Looking for how to limit containers? It's been moved to the [Events](../1.18.2/events/) page.
+Looking for how to limit containers? It's been moved to the [Events](../events/) page.
 
 ---
 
@@ -24,8 +24,6 @@ Looking for how to limit containers? It's been moved to the [Events](../1.18.2/e
 In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla itemstacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
 
 <details><summary>Replace Method Table</summary>
-
-<comment>Agony, required because markdown cannot be used inside html blocks unlike in GitHub wikis</comment>
 
 <table>
     <thead>
