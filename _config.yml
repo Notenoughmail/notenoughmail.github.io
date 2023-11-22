@@ -42,6 +42,9 @@ callouts:
   deprecated:
     title: Deprecated
     color: green
+  unstavle:
+    title: Unstable
+    color: red
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
