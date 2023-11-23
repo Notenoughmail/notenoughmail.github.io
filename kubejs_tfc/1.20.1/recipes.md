@@ -15,6 +15,9 @@ The following recipes (currently) are supported by KubeJS TFC:
 - [Alloy](#alloy)
 - [Anvil Welding](#welding)
 - [Anivl Working](#working)
+- [Barrel Instant Fluid](#barrel-instant-fluid)
+- [Barrel Instant](#barrel-instant)
+- [Barrel Sealed](#barrel-sealed)
 - [Landslide/Collapse](#collapselandslide)
 
 ## Alloy
@@ -80,7 +83,7 @@ event.recipes.tfc.anvil(result: ItemStackProviderJS, input: Ingredient, rules: F
 
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
-- 3rd argument: A list of up to 3 `ForgeRule`s, see the main page for a full list
+- 3rd argument: An array of up to 3 `ForgeRule`s, see the main page for a full list
 
 - Tier: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`
 - Bonus: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`
@@ -90,6 +93,111 @@ event.recipes.tfc.anvil(result: ItemStackProviderJS, input: Ingredient, rules: F
 ```js
 ServerEvents.recipes(event => {
     event.recipes.tfc.anvil('kubejs:my_cool_shears', 'kubejs:unworked_shears', ['hit_not_last', 'upset_any']).bonus(true)
+})
+```
+
+## Barrel Instant Fluid
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-instant-fluid)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.barrelInstantFluid(outputFluid: FluidStack, primayFluid: FluidStackIngredient, addedFluid: FluidStackIngredient, sound?: string)
+```
+
+- 1st argument: A `FluidStack`, the resutl of the recipe
+- 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid in the barrel
+- 3rd argument: A [FluidStackIngredinet](../bindings/#fluid-stack-ingredoent), the input fluid added via a fluid container
+- *optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.barrelinstantFluid(Fluid.of('minecraft:water', 50), TFC.fluidStackIngredient('#forge:milk', 30), TFC.fluidStackIngredient('minecraft:lava', 20))
+})
+```
+
+## Barrel Instant
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-instant)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.barrelInstant()
+    // Additional methods
+    .outputItem(outputItem: ItemStackProviderJS)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(ouputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: Ingredient)
+    .inputFluid(inputFluid: FluidStackIngredient)
+    .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
+    .sound(sound: string)
+```
+
+- OutputItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the recipe's output item, defautls to empty
+- OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- Outputs: A convienence method for setting both outputs, identical to `.outputItem().outputFluid()`
+- InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- Inputs: A convience method for setting both inputs, identical to `.inputItem().inputFluid()`
+- Sound: Accepts a string, representing the registry name of a sound event whihc is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+
+**Note**: A recipe must have at least one input item or fluid
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.barrelinstant()
+        .outputs(TFC.itemStackProvider.of('minecraft:cooked_porkchop').copyFood(), TFC.fluidStackIngredient('kubejs:grease', 50))
+        .inputItem('4x minecraft:cooked_beef')
+})
+```
+
+## Barrel Sealed
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-sealed)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.barrelSealed(duration: number)
+    // Additional methods
+    .outputItem(outputItem: ItemStackProviderJS)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProviderJS, outputFluid: FluidStack)
+    .inputItem(inputItem: Ingredient)
+    .inputFluid(inputFluid: FluidStackIngredient)
+    .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
+    .sound(sound: string)
+    .onSeal(onSeal: ItemStackProviderJS)
+    .onUnseal(onUnseal: ItemStackProviderJS)
+    .seal(onSeal: ItemStackProviderJS, onUnseal: ItemStackProviderJS)
+```
+
+- 1st argument: A number, sets the duration in ticks the barrel must be sealed for, a duration of `-1` will make the recipe **infinite**, one or both of the seal types should be defined
+
+- OutputItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the recipe's output item, defaults to empty
+- OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- Outputs: A convience method for setting both outputs, identical to `.outputItem().outputFluid()`
+- InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) amd sets the recipe's input fluid, defautls to empty
+- Inputs: A convience method for setting both inputs, identical to `.inputItem().inputFluid()`
+- Sound: Accepts a string, representing the registry name of a sound event whihc is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- OnSeal: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied when the barrel is sealed
+- OnUnsel: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied whe nthe barrel is unsealed
+- Seal: A convience method for setting both seals, identica lto `.onSeal().onUnseal()`
+
+### Example
+
+```js
+SeverEvents.recipes(event => {
+    event.recipes.tfc.barrelSealed(5000)
+        .outputItem('8x minecraft:mud')
+        .inputs('8x #tfc:dirt', TFC.fluidStackIngredient('#minecraft:water', 1000))
 })
 ```
 
