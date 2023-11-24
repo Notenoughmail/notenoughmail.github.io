@@ -19,12 +19,18 @@ The following recipes (currently) are supported by KubeJS TFC:
 - [Barrel Instant](#barrel-instant)
 - [Barrel Sealed](#barrel-sealed)
 - [Blast Furnace](#blast-furnace)
+- [Bloomry](#bloomery)
 - [Casting](#casting)
+- [Chisel](#chisel)
 - [Collapse/Landslide](#collapselandslide)
 - [Glassworking](#glassworking)
 - [Heating](#heating)
 - [Knapping](#knapping)
 - [Loom](#loom)
+- [Jam Pot](#jam-pot)
+- [Simple Pot](#simple-pot)
+- [Soup Pot](#simple-pot)
+- [Quern](#quern)
 
 ## Alloy
 
@@ -152,7 +158,7 @@ event.recipes.tfc.barrel_instant()
 - Sound: Accepts a string, representing the registry name of a sound event whihc is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 {: .notice }
-A recipe must have an input item, input fluid, or both
+An instant barrel recipe must have an input item, input fluid, or both
 
 ### Example
 
@@ -193,13 +199,13 @@ event.recipes.tfc.barrel_sealed(duration: number)
 - InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
 - InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) amd sets the recipe's input fluid, defaults to empty
 - Inputs: A convience method for setting both inputs, identical to `.inputItem().inputFluid()`
-- Sound: Accepts a string, representing the registry name of a sound event whihc is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 - OnSeal: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied when the barrel is sealed
 - OnUnsel: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied whe nthe barrel is unsealed
-- Seal: A convience method for setting both seals, identica lto `.onSeal().onUnseal()`
+- Seal: A convience method for setting both seals, identical to `.onSeal().onUnseal()`
 
 {: .notice }
-A recipe must have an input item, input fluid, or both
+A sealed barrel recipe must have an input item, input fluid, or both
 
 ### Example
 
@@ -246,7 +252,7 @@ event.recipes.tfc.bloomery(result: ItemStack, catalyst: Ingredient, fluid: Fluid
 - 1st argument: An item stack, the result of the recipe
 - 2nd arguemnt: An item ingredient, the ingredient which catalysts match
 - 3rd arguemnt: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
-- 4th argument: A number, the number of ticks until the bloomery is complete
+- 4th argument: A number, the number of ticks until the recipe is complete
 
 ### Example
 
@@ -269,7 +275,7 @@ event.recipes.tfc.casting(result: ItemStack, mold: Ingredient, fluid: FluidStack
 - 1st argument: An item stack, the output of the recipe
 - 2nd argument: An item ingredient, used to match the mold item
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
-- 4th argument: A number i nthe range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number emans a higher chance
+- 4th argument: A number in the range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
 
 ### Example
 
@@ -372,6 +378,7 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 
 - ResultItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the result item of the recipe, defaults to empty
 - ResultFluid: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
+- Results: A convience method for setting both resutls, identical to `.resultItem().resultFluid()`
 
 {: .notice }
 > The ingredient needs to have an [item heat](../data/#heat) added to it
@@ -436,5 +443,106 @@ event.recipes.tfc.loom(result: ItemStackProviderJS, ingredient: Ingredient, requ
 ```js
 ServerEvent.recipes(event => {
     event.recipes.tfc.loom('4x minecraft:red_wool', '4x minecraft:blue_wool', 4, 'minecraft:block/purple_wool')
+})
+```
+
+## Jam Pot
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#jam-pot)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.pot_jam(result: ItemStack, ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number, texture: string)
+```
+
+- 1st argument: The item given to the the player when the pot is clicked with an empty jar
+- 2nd argument: An array of item ingredients that the recipe consumes
+- 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the fluid needed in the pot
+- 4th argument: A number, the number of ticks the pot must boil for
+- 5th argument: A number, the temperature °C that the pot must be above to start boiling
+- 6th argument: A string, the texture location that is rendered in the pot when it is complete and still has output
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.pot_jam('3x tfc:jar/banana', ['minecraft:stick', TFC.ingredient.notRotten('minecraft:cooked_porkchop')], Fluid.of('kubejs:sweet_water', 500), 50, 400, 'tfc:block/jar/banana')
+})
+```
+
+## Simple Pot
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#simple-pot)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+    // Additional methods
+    .itemOutput(itemOutput: ItemStack[])
+    .fluidOutput(fluidOutput: FluidStack)
+    .outputs(itemOutput: ItemStack[], fluidOutput: FluidStack)
+```
+
+- 1st argument: An array of item ingredients that the recipe consumes
+- 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
+- 3rd argument: A number, the number of ticks the pot must boil for
+- 4th argument: A number, the temperature °C that the pot must be above to start boiling
+
+- ItemOutput: An array of `ItemStack`s indicating what items should be left in the pot
+- FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
+- Outputs: A convience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.pot(['minecraft:grass', 'minecraft:stone'], Fluid.of('minecraft:lava', 750), 100, 750)
+        .outputs(['minecraft:dirt', 'minecraft:red_stained_glass'], Fluid.of('minecraft:water', 50))
+})
+```
+
+## Soup Pot
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#soup-pot)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.pot_soup(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+```
+
+- 1st argument: An array of item ingredients that the recipe consumes
+- 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient) that the recipe requires
+- 3rd argument: A number, the number of ticks that the pot must boil for
+- 4th argument: A number, the temperature °C that the pot must be above to start boiling
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.pot_soup(['minecraft:red_stained_glass', '#minecraft:flowers'], TFC.fluidStackIngredient('#kubejs:soupy', 750), 845, 300)
+})
+```
+
+## Quern
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#quern)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.quern(result: ItemStackProviderJS, ingredient: Ingredient)
+```
+
+- 1st argument: An [ItemStackproviderJS](..bindings/#item-stack-provider), the output of the recipe
+- 2nd argument: An item ingredient, the input for the recipe
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.quern('minecraft:gravel', 'minecraft:cobblestone')
 })
 ```
