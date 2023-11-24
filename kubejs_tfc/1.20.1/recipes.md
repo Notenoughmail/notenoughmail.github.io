@@ -11,7 +11,7 @@ grand_parent: KubeJS TFC
 {: .notice }
 Work In Progress!
 
-The following recipes (currently) are supported by KubeJS TFC:
+The following recipes are supported by KubeJS TFC:
 - [Alloy](#alloy)
 - [Anvil Welding](#welding)
 - [Anivl Working](#working)
@@ -31,6 +31,12 @@ The following recipes (currently) are supported by KubeJS TFC:
 - [Simple Pot](#simple-pot)
 - [Soup Pot](#simple-pot)
 - [Quern](#quern)
+- [Scraping](#scraping)
+- [Advacned Shaped Crafting](#advanced-shaped-crafting)
+- [Advacned Shapeless Crafting](#advacned-shapeless-crafting)
+- [Damage Inputs Crafting](#damage-inputs-crafting)
+- [Extra Products Crafting](#extra-products-crafting)
+- [No Remainder Crafting](#no-remainder-crafting)
 
 ## Alloy
 
@@ -544,5 +550,165 @@ event.recipes.tfc.quern(result: ItemStackProviderJS, ingredient: Ingredient)
 ```js
 ServerEvents.recipes(event => {
     event.recipes.tfc.quern('minecraft:gravel', 'minecraft:cobblestone')
+})
+```
+
+## Scraping
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#scraping)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.scraping(result: ItemStack, ingredient: Ingredient, outputTexture: string, inputTexture: string)
+```
+
+- 1st argument: An `ItemStack`, the result of the recipe
+- 2nd argument: an item ingredient, the input of the recipe
+- 3rd arguemnt: A string, the texture of the scraped item
+- 4th argument: A string, the texture of the unscraped item
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.scraping('4x minecraft:paper', '#minecraft:flowers', 'minecraft:block/dirt', 'minecraft:block/red_stained_glass')
+})
+```
+
+## Advanced Shaped Crafting
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#advanced-shaped-crafting)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.advanced_shaped_crafting(result: ItemStackProviderJS, pattern: string[], key: Map<Character, Ingredient>, row: number, column: number)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe
+- 2nd argument: The pattern for the crafting grid, spaces can be used to indicate an empty slot
+- 3rd argument: A `Character` to ingredient map, associates the pattern to ingredients
+- 4th argument: A number, the row of the input ingredient the output uses if it is dependent on its inputs
+- 5th argument: A number, the column of the input ingredient the output uses if it is dependent on its inputs
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.advanced_shaped_crafting(TFC.itemStackProvider.of('tfc:food/red_apple').addTrait('kubejs:fruity'), [
+        'FLK',
+        'KLF'
+    ], {
+        F: '#minecraft:flowers',
+        L: 'minecraft:dirt',
+        K: 'tfc:food/red_apple'
+    }, 0, 0)
+})
+```
+
+## Advacned Shapeless Crafting
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#advanced-shapeless-crafting)!
+
+### Method Signature
+
+```ts
+event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingredients: Ingredient[], primaryIngredient: Ingredient)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe
+- 2nd argument: An array of item ingredients, the inputs of the recipe
+- *optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent
+
+### Examples
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.advanced_shapeless_crafting('minecraft:dirt', ['minecraft:stone', 'minecraft:cobblestone'])
+    event.recipes.tfc.advacned_shapeless_crafting(TFC.itemStackProvider.copyInput().addTrait('kubejs:with_added_stones'), ['tfc:food/red_apple', 'tfc:rock/loose/dacite'], 'tfc:food/red_apple')
+})
+```
+
+## Damage Inputs Crafting
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#damage-inputs)!
+
+### Method Signatures
+
+```ts
+event.recipes.tfc.damage_inputs_shaped_crafting(recipe: ShapedCraftingRecipe)
+event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingRecipe)
+```
+
+- 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the damage inputs recipe
+
+### Examples
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.damage_inputs_shaped_crafting(event.recipes.minecraft.crafting_shaped('minecraft:dirt', [
+        'MMN'
+    ], {
+        M: 'minecraft:stone',
+        N: '#tfc:knives'
+    }))
+    event.recipes.tfc.damage_inputs_shapeless_crafting(event.recipes.minecraft.crafting_shapeless('minecraft:stone', ['#minecraft:flowers', '#minecraft:axes']))
+})
+```
+
+## Extra products Crafting
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#extra-products)!
+
+### Method Signatures
+
+```ts
+event.recipes.tfc.extra_products_shaped_crafting(extraProducts: ItemStack[], recipe: ShapedCraftingRecipe)
+event.recipes.tfc.extra_products_shapeless_crafting(extraProducts: ItemStack[], recipe: ShapelessCraftingRecipe)
+```
+
+- 1st argument: An array of `ItemStack`s, the extra products of the recipe
+- 2nd argument: A crafting recipe, must be the same shaped/shapless type as the type of the extra products recipe
+
+### Example
+
+```js
+ServerEvente.recipes(event => {
+    event.recipes.tfc.extra_products_shaped_crafting('3x minecraft:red_stained_glass', event.recipes.minecraft.crafting_shaped('minecraft:dirt', [
+        'GHJ'
+    ], {
+        G: '#minecraft:flowers',
+        H: 'minecraft:stone',
+        J: 'tfc:rock/raw/diorite'
+    }))
+    event.recipes.tfc.extra_products_shapeless_crafting('4x minecraft:green_stained_glass_pane', event.recipes.minecraft.crafting_shapeless('minecraft:red_stained_glass', ['minecraft:dirt', '#minecraft:flowers']))
+})
+```
+
+## No Remainder Crafting
+
+This is a crafting recipe type that prevents any remainders from being left after crafting
+
+### Method Signatures
+
+```ts
+event.recipes.tfc.no_remainder_shaped_crafting(recipe: ShapedCraftingRecipe)
+event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecipe)
+```
+
+- 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the no remainder recipe
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.no_remainder_shaped_crafting(event.recipes.minecraft.crafting_shaped('minecraft:ice', [
+        'SAS'
+    ], {
+        S: 'kubejs:super_cooler',
+        A: 'minecraft:water_bucket'
+    }))
+    event.recipes.tfc.no_remainder_shapeless_crafting(event.recipes.minecraft.crafting_shapeless('minecraft:obsidian', ['minecraft:water_bucket', 'minecraft:lava_bucket']))
 })
 ```
