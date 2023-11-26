@@ -3,7 +3,7 @@ layout: page
 title: 1.18.2
 permalink: /precpros/1.18.2/
 nav_order: 1
-parent: Precision Prosepcting
+parent: Precision Prospecting
 has_children: true
 has_toc: false
 ---

@@ -76,7 +76,7 @@ event.recipes.tfc.welding(result: ItemstackProviderJS, firstInput: Ingredient, s
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An item ingredient
-- *optional 4th arguemnt*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`
+- *Optional 4th arguemnt*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`
 
 ### Example
 
@@ -127,7 +127,7 @@ event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primayFluid: Flu
 - 1st argument: A `FluidStack`, the resutl of the recipe
 - 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid in the barrel
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid added via a fluid container
-- *optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`
+- *Optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Example
 
@@ -331,7 +331,7 @@ event.recipes.tfc.collaspe(result?: BlockState, ingredient: BlockIngredient)
 event.recipes.tfc.landslide(result?: BlockState, ingredient: BlockIngredient)
 ```
 
-- *optional 1st argument*: A `BlockState`, the result of the recipe, if not provided, the `copy_input` property of the recipe will be implicitly set to `true`
+- *Optional 1st argument*: A `BlockState`, the result of the recipe, if not provided, the `copy_input` property of the recipe will be implicitly set to `true`
 - 2nd argument: A [BlockIngredient](../bindings/#block-ingredient), the ingredient of the recipe
 
 ### Example
@@ -619,7 +619,7 @@ event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingre
 
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe
 - 2nd argument: An array of item ingredients, the inputs of the recipe
-- *optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent
+- *Optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent
 
 ### Examples
 

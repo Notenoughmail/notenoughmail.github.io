@@ -4,6 +4,7 @@ title: Bindings
 permalink: /kubejs_tfc/1.20.1/bindings/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+has_toc: false
 ---
 
 # Bindings
@@ -15,6 +16,17 @@ In 1.20, there was a major restructuring to how bindings/wrappers are handled in
 
 This provides access to various objects and methods that can be used throughout your scripts
 
+- [Methods](#methods)
+    - [Alloy Part](#alloy-part)
+    - [Block Ingredient](#block-ingredient)
+    - [Fuid Ingredient](#fluid-ingredient)
+    - [Fluid Stack Ingredient](#fluid-stack-ingredient)
+- [Sub-Bindings](#sub-bindings)
+    - [Calendar](#calendar)
+    - [Climate](#climate)
+    - [Ingredient](#ingredient)
+    - [Item Stack Provider](#item-stack-provider)
+
 ## Methods
 
 These are methods which can be accessed directly from the `TFC` object 
@@ -24,6 +36,7 @@ These are methods which can be accessed directly from the `TFC` object
 This defines an object which defines the values used in an [alloy recipe](../recipes/#alloy)'s input contents
 
 Method signature:
+
 ```ts
 TFC.alloyPart(metal: string, min: number, max: number)
 ```
@@ -31,10 +44,13 @@ TFC.alloyPart(metal: string, min: number, max: number)
 Creates an `AlloyPart` which can be converted to and from json easily. Only values in the range [0, 1] are valid for the `min` and `max` arguments
 
 Example:
+
 ```js
 TFC.alloyPart('tfc:steel', 0.1, 0.5)
 ```
-in json:
+
+In json:
+
 ```json
 {
     "metal": "tfc:steel",
@@ -48,6 +64,7 @@ in json:
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#block-ingredients)!
 
 Method signature:
+
 ```ts
 TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | List<(string | Block | BlockState | tagKey<Block>)> | BlockIngredient))
 ```
@@ -55,16 +72,20 @@ TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block
 Creates a `BlockIngredient` representing the blocks/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
 
 Examples:
+
 ```js
 TFC.blockIngredient('minecraft:dirt')
 TFC.blockIngredient(['tfc:rock/cobble/dacite', '#forge:stones'])
 ```
+
 In json:
+
 ```json
 {
     "block": "minecraft:dirt"
 }
 ```
+
 ```json
 [
     {
@@ -88,16 +109,20 @@ TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStac
 Creates a `FluidIngredient` representing the fluids/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
 
 Examples:
+
 ```js
 TFC.fluidIngredient('minecraft:water')
 TFC.fluidIngredient(['minecraft:lava', '#tfc:usable_in_ingot_mold'])
 ```
-in json:
+
+In json:
+
 ```json
 {
     "fluid": "minecraft:water"
 }
 ```
+
 ```json
 [
     {
@@ -121,46 +146,18 @@ TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> |
 
 These are bindings which provide access to more methods in a grouped manner
 
-### Calendar
+### [Calendar](../bindings/calendar/)
 
-### Climate
+The central palce for dealing with TFC's calendar system in your scripts
 
-### Ingredient
+### [Climate](../bindings/climate/)
 
-The cental place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) in your scripts
+The central place for interacting with TFC's climate system in your scripts
 
-#### Heatable
+### [Ingredient](../bindings/ingredient/)
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#heatable)!
+The central place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) in your scripts
 
-Method signature:
-```js
-TFC.ingredient.heatable(delegate?: Ingredient, min: @Nullable number, max: @Nullable number)
-```
+### [Item Stack Provider](../bindings/isp/)
 
-Creates an ingredient of type `tfc:heatable` with the minimum and maximum temperatures defined by the `min` and `max` arguments, and the ingredient defined by the `delegate` argument
-
-Examples:
-```js
-TFC.ingredient.heatable('minecraft:iron_ingot', null, 673)
-TFC.ingredient.heatable(750, 895)
-```
-In json:
-```json
-{
-    "type": "tfc:heatable",
-    "ingredient": {
-        "item": "minecraft:iron_ingot"
-    },
-    "max_temp": 673
-}
-```
-```json
-{
-    "type": "tfc:heatable",
-    "min_temp": 750,
-    "max_temp": 865
-}
-```
-
-### Item Stack Provider
+The central place for dealing with TFC's [item stack provider](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers)s in your scripts
