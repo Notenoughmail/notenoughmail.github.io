@@ -12,14 +12,15 @@ grand_parent: KubeJS TFC
 Work In Progress!
 
 The following recipes are supported by KubeJS TFC:
+
 - [Alloy](#alloy)
 - [Anvil Welding](#welding)
-- [Anivl Working](#working)
+- [Anvil Working](#working)
 - [Barrel Instant Fluid](#barrel-instant-fluid)
 - [Barrel Instant](#barrel-instant)
 - [Barrel Sealed](#barrel-sealed)
 - [Blast Furnace](#blast-furnace)
-- [Bloomry](#bloomery)
+- [Bloomery](#bloomery)
 - [Casting](#casting)
 - [Chisel](#chisel)
 - [Collapse/Landslide](#collapselandslide)
@@ -32,8 +33,8 @@ The following recipes are supported by KubeJS TFC:
 - [Soup Pot](#simple-pot)
 - [Quern](#quern)
 - [Scraping](#scraping)
-- [Advacned Shaped Crafting](#advanced-shaped-crafting)
-- [Advacned Shapeless Crafting](#advacned-shapeless-crafting)
+- [Advanced Shaped Crafting](#advanced-shaped-crafting)
+- [Advanced Shapeless Crafting](#advanced-shapeless-crafting)
 - [Damage Inputs Crafting](#damage-inputs-crafting)
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
@@ -70,13 +71,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method signature
 
 ```ts
-event.recipes.tfc.welding(result: ItemstackProviderJS, firstInput: Ingredient, secondInput: Ingredient, tier?: number)
+event.recipes.tfc.welding(result: ItemStackProviderJS, firstInput: Ingredient, secondInput: Ingredient, tier?: number)
 ```
 
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An item ingredient
-- *Optional 4th arguemnt*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`
+- *Optional 4th argument*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`
 
 ### Example
 
@@ -121,13 +122,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primayFluid: FluidStackIngredient, addedFluid: FluidStackIngredient, sound?: string)
+event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primaryFluid: FluidStackIngredient, addedFluid: FluidStackIngredient, sound?: string)
 ```
 
-- 1st argument: A `FluidStack`, the resutl of the recipe
+- 1st argument: A `FluidStack`, the result of the recipe
 - 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid in the barrel
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid added via a fluid container
-- *Optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`
+- *Optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 ### Example
 
@@ -148,7 +149,7 @@ event.recipes.tfc.barrel_instant()
     // Additional methods
     .outputItem(outputItem: ItemStackProviderJS)
     .outputFluid(outputFluid: FluidStack)
-    .outputs(ouputItem: ItemStackProvider, outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
     .inputItem(inputItem: Ingredient)
     .inputFluid(inputFluid: FluidStackIngredient)
     .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
@@ -157,11 +158,11 @@ event.recipes.tfc.barrel_instant()
 
 - OutputItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the recipe's output item, defaults to empty
 - OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- Outputs: A convienence method for setting both outputs, identical to `.outputItem().outputFluid()`
+- Outputs: A convenience method for setting both outputs, identical to `.outputItem().outputFluid()`
 - InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
 - InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
-- Inputs: A convience method for setting both inputs, identical to `.inputItem().inputFluid()`
-- Sound: Accepts a string, representing the registry name of a sound event whihc is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- Inputs: A convenience method for setting both inputs, identical to `.inputItem().inputFluid()`
+- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 {: .notice }
 An instant barrel recipe must have an input item, input fluid, or both
@@ -201,17 +202,19 @@ event.recipes.tfc.barrel_sealed(duration: number)
 
 - OutputItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the recipe's output item, defaults to empty
 - OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- Outputs: A convience method for setting both outputs, identical to `.outputItem().outputFluid()`
+- Outputs: A convenience method for setting both outputs, identical to `.outputItem().outputFluid()`
 - InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
 - InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) amd sets the recipe's input fluid, defaults to empty
-- Inputs: A convience method for setting both inputs, identical to `.inputItem().inputFluid()`
-- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- Inputs: A convenience method for setting both inputs, identical to `.inputItem().inputFluid()`
+- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 - OnSeal: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied when the barrel is sealed
-- OnUnsel: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied whe nthe barrel is unsealed
-- Seal: A convience method for setting both seals, identical to `.onSeal().onUnseal()`
+- OnUnseal: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied when the barrel is unsealed
+- Seal: A convenience method for setting both seals, identical to `.onSeal().onUnseal()`
 
 {: .notice }
 A sealed barrel recipe must have an input item, input fluid, or both
+
+[^1]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
 
 ### Example
 
@@ -233,8 +236,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 event.recipes.tfc.blast_furnace(result: FluidStack, catalyst: Ingredient, fluid: FluidStackIngredient)
 ```
 
-- 1st arguemnt: A `FluidStack`, the output fluid of the recipe
-- 2nd arguemnt: An item ingredient specifying the catalyst item
+- 1st argument: A `FluidStack`, the output fluid of the recipe
+- 2nd argument: An item ingredient specifying the catalyst item
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 
 ### Example
@@ -256,8 +259,8 @@ event.recipes.tfc.bloomery(result: ItemStack, catalyst: Ingredient, fluid: Fluid
 ```
 
 - 1st argument: An item stack, the result of the recipe
-- 2nd arguemnt: An item ingredient, the ingredient which catalysts match
-- 3rd arguemnt: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
+- 2nd argument: An item ingredient, the ingredient which catalysts match
+- 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 4th argument: A number, the number of ticks until the recipe is complete
 
 ### Example
@@ -306,7 +309,7 @@ event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: 
 
 - 1st argument: A `BlockState`, the result of the recipe
 - 2nd argument: A [BlockIngredient](../blindings/#block-ingredient), the block to be chiseled for the recipe
-- 3rd arguemnt: A `Chiselmode`, the chisel mode for the recipe, either `smooth`, `stair`, or `slab`
+- 3rd argument: A `ChiselMode`, the chisel mode for the recipe, either `smooth`, `stair`, or `slab`
 
 - ItemIngredient: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
 - ExtraDrop: An [ItemStackProviderJS](../bindings/#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
@@ -327,7 +330,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/data/r
 ### Method Signature
 
 ```ts
-event.recipes.tfc.collaspe(result?: BlockState, ingredient: BlockIngredient)
+event.recipes.tfc.collapse(result?: BlockState, ingredient: BlockIngredient)
 event.recipes.tfc.landslide(result?: BlockState, ingredient: BlockIngredient)
 ```
 
@@ -384,7 +387,7 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 
 - ResultItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the result item of the recipe, defaults to empty
 - ResultFluid: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
-- Results: A convience method for setting both resutls, identical to `.resultItem().resultFluid()`
+- Results: A convenience method for setting both results, identical to `.resultItem().resultFluid()`
 
 {: .notice }
 > The ingredient needs to have an [item heat](../data/#heat) added to it
@@ -415,16 +418,16 @@ event.recipes.tfc.knapping(result: ItemStack, knappingType: string, pattern: str
 
 - 1st argument: An item stack, the result of the recipe
 - 2nd argument: A string, the id of the [knapping type](../data/#knapping-type) of the recipe
-- 3rd argument: An array of strings representing the knapping grid, may be up to 5 x 5. Spaces are empty spots while any other character are a fileld spot
+- 3rd argument: An array of strings representing the knapping grid, may be up to 5 x 5. Spaces are empty spots while any other character are a filled spot
 
 - Ingredient: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
-- OutsideSlotRequried: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`
+- OutsideSlotRequired: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`
 
 ### Example
 
 ```js
 ServerEvents.recipes(event => {
-    event.recieps.tfc.knapping('minecraft:clay', 'tfc:clay_knapping', ['XXX', 'X X', 'XXX'])
+    event.recipes.tfc.knapping('minecraft:clay', 'tfc:clay_knapping', ['XXX', 'X X', 'XXX'])
         .outsideSlotRequired(false)
 })
 ```
@@ -439,7 +442,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 event.recipes.tfc.loom(result: ItemStackProviderJS, ingredient: Ingredient, requiredSteps: number, inProgressTexture: string)
 ```
 
-- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the resutl produced by this recipe
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result produced by this recipe
 - 2nd argument: An item ingredient, will accepts counts greater than 1
 - 3rd argument: A number, the number of times the loom must be interacted with to complete the recipe
 - 4th argument: A string, the texture the loom uses to render the recipe while in progress
@@ -498,7 +501,7 @@ event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngr
 
 - ItemOutput: An array of `ItemStack`s indicating what items should be left in the pot
 - FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
-- Outputs: A convience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
+- Outputs: A convenience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
 
 ### Example
 
@@ -542,7 +545,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 event.recipes.tfc.quern(result: ItemStackProviderJS, ingredient: Ingredient)
 ```
 
-- 1st argument: An [ItemStackproviderJS](..bindings/#item-stack-provider), the output of the recipe
+- 1st argument: An [ItemStackProviderJS](..bindings/#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, the input for the recipe
 
 ### Example
@@ -565,7 +568,7 @@ event.recipes.tfc.scraping(result: ItemStack, ingredient: Ingredient, outputText
 
 - 1st argument: An `ItemStack`, the result of the recipe
 - 2nd argument: an item ingredient, the input of the recipe
-- 3rd arguemnt: A string, the texture of the scraped item
+- 3rd argument: A string, the texture of the scraped item
 - 4th argument: A string, the texture of the unscraped item
 
 ### Example
@@ -607,7 +610,7 @@ ServerEvents.recipes(event => {
 })
 ```
 
-## Advacned Shapeless Crafting
+## Advanced Shapeless Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#advanced-shapeless-crafting)!
 
@@ -626,7 +629,7 @@ event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingre
 ```js
 ServerEvents.recipes(event => {
     event.recipes.tfc.advanced_shapeless_crafting('minecraft:dirt', ['minecraft:stone', 'minecraft:cobblestone'])
-    event.recipes.tfc.advacned_shapeless_crafting(TFC.itemStackProvider.copyInput().addTrait('kubejs:with_added_stones'), ['tfc:food/red_apple', 'tfc:rock/loose/dacite'], 'tfc:food/red_apple')
+    event.recipes.tfc.advanced_shapeless_crafting(TFC.itemStackProvider.copyInput().addTrait('kubejs:with_added_stones'), ['tfc:food/red_apple', 'tfc:rock/loose/dacite'], 'tfc:food/red_apple')
 })
 ```
 
@@ -669,12 +672,12 @@ event.recipes.tfc.extra_products_shapeless_crafting(extraProducts: ItemStack[], 
 ```
 
 - 1st argument: An array of `ItemStack`s, the extra products of the recipe
-- 2nd argument: A crafting recipe, must be the same shaped/shapless type as the type of the extra products recipe
+- 2nd argument: A crafting recipe, must be the same shaped/shapeless type as the type of the extra products recipe
 
 ### Example
 
 ```js
-ServerEvente.recipes(event => {
+ServerEvents.recipes(event => {
     event.recipes.tfc.extra_products_shaped_crafting('3x minecraft:red_stained_glass', event.recipes.minecraft.crafting_shaped('minecraft:dirt', [
         'GHJ'
     ], {

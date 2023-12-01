@@ -4,6 +4,7 @@ title: Bindings
 permalink: /kubejs_tfc/1.20.1/bindings/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+has_children: true
 has_toc: false
 ---
 
@@ -19,7 +20,7 @@ This provides access to various objects and methods that can be used throughout 
 - [Methods](#methods)
     - [Alloy Part](#alloy-part)
     - [Block Ingredient](#block-ingredient)
-    - [Fuid Ingredient](#fluid-ingredient)
+    - [Fluid Ingredient](#fluid-ingredient)
     - [Fluid Stack Ingredient](#fluid-stack-ingredient)
 - [Sub-Bindings](#sub-bindings)
     - [Calendar](#calendar)
@@ -102,6 +103,7 @@ In json:
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#fluid-ingredients)!
 
 Method signature:
+
 ```ts
 TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | List<(string | Fluid | TagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
 ```
@@ -137,9 +139,10 @@ In json:
 ### Fluid Stack Ingredient
 
 Method signatures:
+
 ```ts
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number)
-TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | List<(string | Fluid | tagKey<Fluid> | FluidstackJS)> | FluidIngredient | FluidStackIngredient))
+TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | List<(string | Fluid | tagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
 ```
 
 ## Sub-Bindings
@@ -148,7 +151,7 @@ These are bindings which provide access to more methods in a grouped manner
 
 ### [Calendar](../bindings/calendar/)
 
-The central palce for dealing with TFC's calendar system in your scripts
+The central place for dealing with TFC's calendar system in your scripts
 
 ### [Climate](../bindings/climate/)
 

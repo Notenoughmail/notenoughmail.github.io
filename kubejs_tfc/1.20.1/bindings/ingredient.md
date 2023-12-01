@@ -4,12 +4,11 @@ title: Ingredient Bindings
 permalink: /kubejs_tfc/1.20.1/bindings/ingredient/
 parent: Bindings
 grand_parent: 1.20.1
-nav_exclude: true
 ---
 
 # Ingredient Bindings
 
-TFC has several [ingredient types]((https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) that it uses in its recipes
+TFC has several [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) that it uses in its recipes
 
 - [Fluid Item](#fluid-item)
 - [Has Trait](#has-trait)
@@ -31,7 +30,7 @@ TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient)
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
 - 2nd argument: A [fluid stack ingredient](../bindings/#fluid-stack-ingredient), the fluid(s) this ingredient matches
 
-Creates an ingredient of type `tfc:fluid_item` with the fluid ingredient defined by the `fluid` argument and the item ingredient defined by the `delegate` ingredient
+Creates an ingredient of type `tfc:fluid_item` with the fluid ingredient defined by the `fluid` argument and the item ingredient defined by the `delegate` argument
 
 ### Examples
 

@@ -13,8 +13,8 @@ KubeJS TFC allows users to easily write some of TFC's [custom data](https://terr
 In the `tfc.data` event there are methods for:
 
 - [Damage Resistances](#damage-resistances)
-  - [Item](#item-resistances)
-  - [Entity](#entity-resistances)
+  - [Item](#item-damage-resistance)
+  - [Entity](#entity-damage-resistance)
 - [Drinkables](#drinkables)
 - [Fertilizers](#fertilizers)
 - [Food Items](#food-items)
@@ -35,7 +35,7 @@ There is also support for [FirmaLife](https://modrinth.com/mod/firmalife) and [B
 - [FirmaLife Plantables](#plantables)
 - [Beneath Nether Fertilizers](#nether-fertilizers)
 
-Additionally, the ability to to access and manipulate some of the non-datapack accessable TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
+Additionally, the ability to access and manipulate some of the non-datapack accessable data TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
 
 # Damage Resistances
 
@@ -198,7 +198,7 @@ onEvent('tfc.data', event => {
 })
 ```
 
-# Item Sizes
+# Item Size
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#item-sizes)! **Note: per the main page, this will not override blocks/items which specify their own weight/size**
 
