@@ -17,6 +17,10 @@ has_toc: false
 
 ## [Bindings](bindings/)
 
+## [Data](data/)
+
 ## [Events](events/)
 
 ## [Recipes](recipes/)
+
+## [Worldgen](worldgen/)

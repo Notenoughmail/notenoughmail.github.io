@@ -29,7 +29,11 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessable data TFC adds to the player is accessable form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
 {: .notice }
-> Most of these methods have an optional final argument which specifies the 'name' of the definition. This refers to the directory location of the virtual json file, for instance if for a entity resistance you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided. If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, path matching a base 16 hash of the (usually) 1st argument's `toString()` value
+> Most of these methods have an optional final argument which specifies the 'name' of the definition
+>
+> This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
+>
+> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `toString()` value
 
 ## Climate Ranges
 
@@ -108,7 +112,7 @@ event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildD
     - `.consumeChance(f: number)`: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to 0
     - `.thirst(i: number)`: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to 0
     - `.intoxication(i: number)`: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to 0
-    - `.effect(effect: string, effectData?: Consumer<BuildEffectData>)`: Accepts a string, the name of the effect[^1] to be applied and a consumer with several additional methods:
+    - `.effect(effect: string, effectData?: Consumer<BuildEffectData>)`: Accepts a string, the name of the effect[^1] to be applied and an optional consumer with several additional methods:
         - `.duration(i: number)`: Accepts a number specifying the number of ticks the effect is applied for, defaults to 20
         - `.amplifier(i: number)`: Accepts a number specifying the level of the potion effect applied, defaults to 0
         - `.chance(f: number)`: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to 1
@@ -307,7 +311,17 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.knappingType(ingredient: Ingredient, ingredientCount: number, amountToConsume: number, clickSound: string, consumeAfterComplete: boolean, useDisabledTexture: boolean, spawnsParticles: boolean, jeiIconItem: ItemStack, name: string)
+event.knappingType(
+    ingredient: Ingredient,
+    ingredientCount: number,
+    amountToConsume: number,
+    clickSound: string,
+    consumeAfterComplete: boolean,
+    useDisabledTexture: boolean,
+    spawnsParticles: boolean,
+    jeiIconItem: ItemStack,
+    name: string
+)
 ```
 
 - 1st argument: An item ingredient, the ingredient for what item has to be knapped, must be part of the `tfc:any_knapping` tag to work
@@ -360,7 +374,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.metal(fluid: string, meltTemperature: number, heatCapacity: number, ingot: @Nullable Ingredient, doubleIngot: @Nullable Ingredient, sheet: @Nullable Ingredient, tier: number, name?: string)
+event.metal(
+    fluid: string,
+    meltTemperature: number,
+    heatCapacity: number,
+    ingot: @Nullable Ingredient,
+    doubleIngot: @Nullable Ingredient,
+    sheet: @Nullable Ingredient,
+    tier: number,
+    name?: string)
 ```
 
 - 1st argument: A string, the registry name of a fluid which corresponds to this metal
@@ -462,3 +484,72 @@ TFCEvents.data(event => {
 ```
 
 ## Attached TFC data
+
+In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `getData()` method which returns a `Map<String, Object>`. TFC's data can be accessed through `tfc:player_data`
+
+There are several methods to access and modify the state of TFC's additional data
+
+### Method Signatures
+
+```ts
+declare class TFCPlayerDataJS {
+    constructor(player: Player)
+    getChiselMode(): ChiselMode
+    setChiselMode(mode: ChiselMode): void
+    getIntoxicatedTicks(): number
+    addIntoxicatedTicks(ticks: number): void
+    getLastDrinkTick(): number
+    setLastDrinkTick(tick: number): void
+    playerEat(item: ItemStack): void
+    getFoodLevel(): number
+    setFoodLevel(i: number): void
+    needsFood(): boolean
+    addExhaustion(f: number): void
+    getSaturationLevel(): number
+    setSaturationLevel(f: number): void
+    getThirstModifier(): number
+    getThirstContributionFromTemperature(): number
+    getThirst(): number
+    setThirst(f: number): void
+    addThirst(f: number): void
+    getAverageNutrition(): number
+    getNutrient(nutrient: Nutrient): number
+    getNutrients(): number[]
+}
+```
+
+- `.getChiselMode()`: Returns the player's current `ChiselMode`, will be either `smooth`, `stair`, or `slab`
+- `.setChiselMode(mode: ChiselMode)`: Sets the player's current chisel mode, will accept `smooth`, `stair`, or `slab`
+- `.getIntoxicatedTicks()`: Returns the number of ticks the player is intoxicated for
+- `.addIntoxicatedTicks(ticks: number)`: Adds to the player's intoxicated ticks
+- `.getLastDrinkTick()`: Returns the last tick the player drank something
+- `.setLastDrinkTick(tick: number)`: Sets the last tick the player drank something
+- `.playerEat(item: ItemStack)`: Makes the player eat the provided `ItemStack`
+- `.getFoodLevel()`: Returns the player's current food level
+- `.setFoodLevel(i: number)`: Sets the player's current food level
+- `.needsFood()`: Returns true if the player needs food
+- `.addExhaustion(f: number)`: Adds the given exhaustion to the player
+- `.getSaturationLevel()`: Returns the player's saturation level
+- `.setSaturationLevel(f: number)`: Sets the player's saturation level
+- `.getThirstModifier()`: Returns the player's total thirst loss per tick, on a scale of [0, 100]
+- `.getThirstContributionFromTemperature()`: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
+- `.getThirst()`: Returns the player's thirst
+- `.setThirst(f: number)`: Sets the player's thirst
+- `.addThirst(f: number)`: Adds the provided thirst the the player's thirst
+- `.getAverageNutrition()`: Returns the average nutrition level of the player
+- `.getNutrient(nutrient: Nutrient)`: Returns the player's nutrition level for the given nutrient, accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
+- `.getNutrients()`: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`, `fruit`, `vegetables`, `protein`, `dairy`
+
+### Example
+
+```js
+/*
+ * @ param {Internal.Player} player
+ */
+function doThing(player) {
+    let tfcData = player.data['tfc:player_data']
+    if (tfcData.thirst < 20 && tfcData.averageNutrition < 0.3) {
+        tfcData.addExhaustion(12)
+    }
+}
+```

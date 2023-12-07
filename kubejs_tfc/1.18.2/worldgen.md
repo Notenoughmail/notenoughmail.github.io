@@ -11,6 +11,7 @@ grand_parent: KubeJS TFC
 KubeJS TFC allows users to easily build some of TFC's world generation [features](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/)
 
 In the `tfc.worldgen.data` event there are methods for:
+
 - [Adding Features to TFC's World](#adding-features)
 - [Geodes](#geodes)
 - [Boulders](#boulders)
@@ -23,11 +24,13 @@ Have a look through some [examples](#examples) at the bottom of the page
 Additionally, there is a new startup event `tfc.rock_settings.register` which is used to add, remove, and modify rock layers in TFC's default world generation, the methods can be found [here](#rock-layers)
 
 ## Adding Features
-Much of TFC's world generation configuration is done through tags. in the `tags.worldgen.placed_feature` server event features will have to be added to their respective tags, in each example this will be done with the appropriate tag for the feature
+
+Much of TFC's world generation configuration is done through tags. In the `tags.worldgen.placed_feature` server event features will have to be added to their respective tags, in each example this will be done with the appropriate tag for the feature
 
 A full list of available tags is also available [here](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/tags/#placed-feature-tags)
 
 ## Geodes
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/#geode)!
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
@@ -38,6 +41,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
+
 ```js
 // Builds a geode with an outer state of logs in the z direction, middle state of hardened basalt, and inner state of raw quartzite with 6 weight
 // and cut copper with 1 weight. The placement is identical to TFC's default geode placement
@@ -69,7 +73,8 @@ onEvent('tags.worldgen.placed_feature', event => {
 })
 ```
 
-## Buolders
+## Boulders
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/#boulder)!
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
@@ -80,6 +85,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
+
 ```js
 // Builds a boulder which is made of the gravel and cobble corresponding to the type the boulder is in for limestone and shale
 // The placement is identical to TFC's default boulder placement
@@ -102,6 +108,7 @@ onEvent('tags.worldgen.placed_feature', event => {
 ```
 
 ## Thin Spikes
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/#thin-spike)!
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
@@ -113,6 +120,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
+
 ```js
 // Builds a thin spike feature using a custom block 'lava_spike'. The placement is identical to TFC's default for calcite
 onEvent('tfc.worldgen.data', event => {
@@ -147,6 +155,7 @@ onEvent('tags.worldgen.placed_feature', event => {
 ```
 
 ## Veins
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/veins/)!
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
@@ -179,6 +188,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
     - `sign(number)`: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
 
 ### Example
+
 ```js
 // Builds a vein that places
 //      copper blocks in dacite,
@@ -209,9 +219,11 @@ onEvent('tags.worldgen.placed_feature', event => {
     event.add('tfc:in_biome/veins', 'kubejs_tfc:vein_test')
 })
 ```
+
 [3]: see [custom loose rocks](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#loose-rock)
 
 ## If-Then
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/features/#if-then)!
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
@@ -220,15 +232,19 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 - 4th argument: A [feature placement consumer](#placing-features)
 
 ## Placing Features
+
 World generation features are made up of two parts, their configuration and their placement, typically in separate files, but due to not being restricted to using raw json files, KubeJS TFC allows you to define a feature's placement with its configuration through a feature placement consumer. Several of the methods can be seen in the above examples, but a full list will be provided here:
 
 ### .tfcBiome()
+
 Adds TFC's [biome](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#biome) placement modifier
 
 ### .climate(consumer)
+
 Adds TFC's [climate](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#climate) placement modifier
 
 Accepts a consumer with several methods:
+
 - `minTemp(number)`: Accepts a number and sets the minimum allowed average yearly temperature
 - `maxTemp(number)`: Accepts a number and sets the maximum allowed average yearly temperature
 - `minRain(number)`: Accepts a number and sets the minimum allowed rainfall
@@ -238,52 +254,64 @@ Accepts a consumer with several methods:
 - `fuzzy(boolean)`: Accepts a boolean (default false). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges
 
 ### .flatEnough(consumer)
-Adds TFC's [flat enought](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#flat-enough) placement modifier
+
+Adds TFC's [flat enough](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#flat-enough) placement modifier
 
 Accepts a consumer with several methods:
+
 - `flatness(number)`: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
 - `radius(integer)`: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
 - `maxDepth(integer)`: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
 
 ### .nearWater(integer)
+
 Adds TFC's [near water](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#near-water) placement modiifer
 
 Accepts an integer representing the distance to search for water
 
 ### .shallowWater(*optional integer*)
+
 Adds TFC's [shallow water](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#shallow-water) placement modifier
 
 Accepts an optional integer specifying the max depth of the water, defaults to 3
 
 ### .underground()
+
 Adds TFC's [underground](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#underground) placement modifier
 
 ### .volcano(*optional boolean*, number)
+
 Adds TFC's [volcano](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#volcano) placement modifier
 
-Accepts
+Accepts:
+
 - An optional boolean which if true will place the feature at the exact center of any volcanoes, defaults to false
 - A number, in the range [0, 1], representing the distance from the center of a volcano that this position must be in order to generate. 1 is the maximum radius of the volcano
 
 ### .inSquare()
+
 Adds Vanilla's `in_square` placement modifier
 
 ### .rarityFilter(integer)
+
 Adds Vanilla's `rarity_filter` placement modifier
 
 Accepts an integer and sets the `chance` parameter
 
 ### .heightMap(string)
+
 Adds Vanilla's `heightmap` placement modifier
 
 Accepts a string and sets the `height_map` parameter
 
 ### .placement(object)
+
 Adds any arbitrary placement modifier
 
 Accepts either a json object, which will be treated as a placement modifier; a string, which will be treated as a placement modifier with the type specified by the given string; or a list containing json objects or strings, which will be individually processed
 
 ## Examples
+
 Please note these features are added to to the world using an outdated method of tagging, for how it should actually be done please refer to [Adding Features](#adding-features) above
 
 The test boulder:
@@ -300,11 +328,13 @@ A test vein in gabbro:
 ![vein_example_vein_2](https://github.com/Notenoughmail/KubeJS-TFC/assets/78008321/48991af2-e062-4118-8f3f-573a3a26f489)
 
 ## Rock Layers
+
 TFC's world is built around rock layers which can be modified through the modification of the `rock_layer_settings` property of TFC's [dimension source](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/), KubeJS TFC allows you to add to, remove, or modify these values through the `tfc.rock_settings.register` startup event.
 
 **Note**: These will only apply to worlds which do not have a `data/minecraft/dimension/overworld.json` file in their applied datapacks, however their names can be referenced in the file just like TFC's defaults
 
 ### Adding a Layer
+
 - 1st argument: The resource location of the rock layer you will be adding. Generally advised to use `kubejs` as the namespace as to not overwrite or be overwritten by another mod
 - 2nd argument: A consumer with several methods:
   - `raw(string)`: Accepts a string representing the registry name of a block, sets the 'raw' block type for the rock layer
@@ -323,6 +353,7 @@ TFC's world is built around rock layers which can be modified through the modifi
   - `noWarnings()`: A utility method which will disable non-critical warnings about the rock layer
 
 #### Example
+
 ```js
 // Adds a default rock layer consisting of vanilla blocks and spawning only in the top rock layer of the world
 onEvent('tfc.rock_settings.register', event => {
@@ -339,10 +370,12 @@ onEvent('tfc.rock_settings.register', event => {
 ```
 
 ### Removing a Layer
+
 - 1st argument: The resource location of the rock layer you will be removing
   - TFC's layers are `tfc:` + the name of the rock ('chert', 'conglomerate', etc.)
 
 #### Example
+
 ```js
 // Removes the chert rock type from the list of available rock layers
 onEvent('tfc.rock_settings.register', event => {
@@ -351,6 +384,7 @@ onEvent('tfc.rock_settings.register', event => {
 ```
 
 ### Modifying a Layer
+
 - 1st argument: The resource location of the rock layer you will be modifying
   - TFC's layer are `tfc:` + the name of the rock ('andesite', 'basalt', etc.)
 - 2nd argument: A consumer with the same methods as adding a layer and some additional methods:
@@ -359,6 +393,7 @@ onEvent('tfc.rock_settings.register', event => {
   - `bottom(boolean)`: Accepts a boolean, determines if the layer is allowed to generate in the bottom rock layer of the world or not
 
 #### Example
+
 ```js
 // Modifies the dacite rock layer to have no spike blocks and pink sand as its sand block
 onEvent('tfc.rock_settings.register', event => {

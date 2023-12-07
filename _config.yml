@@ -44,7 +44,7 @@ callouts:
   deprecated:
     title: Deprecated
     color: green
-  unstavle:
+  unstable:
     title: Unstable
     color: red
 

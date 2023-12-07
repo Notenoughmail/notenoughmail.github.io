@@ -255,10 +255,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.recipes.tfc.bloomery(result: ItemStack, catalyst: Ingredient, fluid: FluidStackIngredient, duration: number)
+event.recipes.tfc.bloomery(result: ItemStackProviderJS, catalyst: Ingredient, fluid: FluidStackIngredient, duration: number)
 ```
 
-- 1st argument: An item stack, the result of the recipe
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient, the ingredient which catalysts match
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 4th argument: A number, the number of ticks until the recipe is complete
@@ -278,10 +278,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.recipes.tfc.casting(result: ItemStack, mold: Ingredient, fluid: FluidStackIngredient, breakChance: number)
+event.recipes.tfc.casting(result: ItemStackProviderJS, mold: Ingredient, fluid: FluidStackIngredient, breakChance: number)
 ```
 
-- 1st argument: An item stack, the output of the recipe
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, used to match the mold item
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 4th argument: A number in the range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
@@ -563,13 +563,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.recipes.tfc.scraping(result: ItemStack, ingredient: Ingredient, outputTexture: string, inputTexture: string)
+event.recipes.tfc.scraping(result: ItemStackProviderJS, ingredient: Ingredient, outputTexture: string, inputTexture: string, extraDrop?: ItemStackProviderJS)
 ```
 
-- 1st argument: An `ItemStack`, the result of the recipe
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: an item ingredient, the input of the recipe
 - 3rd argument: A string, the texture of the scraped item
 - 4th argument: A string, the texture of the unscraped item
+- *Optional 5th argument*: An [ItemStackProviderJS](../bindings/#item-stack-provider), an optional extra drop, only applicable to TFC 3.1.3-beta and above
 
 ### Example
 
