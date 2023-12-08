@@ -647,6 +647,9 @@ event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingReci
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the damage inputs recipe
 
+{: .notice }
+These recipe types error if you do not explicitly set an id for the recipe, this will be fixed in 1.0.2
+
 ### Examples
 
 ```js
@@ -702,6 +705,9 @@ event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecip
 ```
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the no remainder recipe
+
+{: .notice }
+These recipe types error if you do not explicitly set an id for the recipe, this will be fixed in 1.0.2
 
 ### Example
 

@@ -14,6 +14,7 @@ In the `TFCEvents.worldgenData` event there are methods for:
 
 - [Geodes](#geodes)
 - [Boulders](#boulders)
+- [Baby Boulders](#baby-boulders)
 - [Thin Spikes](#thin-spikes)
 - [Cluster Veins](#cluster-veins)
 - [Pipe Veins](#pipe-veins)
