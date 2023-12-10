@@ -447,9 +447,6 @@ TFCEvents.douseFire(event => {
 
 ## Custom Food Traits
 
-{: .notice }
-This describes how this event works in a *future* version, 1.0.3
-
 Food traits are applied to food items while in a container or after completion of a recipe and are used to effect how fast an item rots
 
 This event fires in the `startup_events` folder

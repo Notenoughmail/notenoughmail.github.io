@@ -380,6 +380,8 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
     .resultItem(resultItem: ItemStackProviderJS)
     .resultFluid(resultFluid: FluidStack)
     .results(resultItem: ItemStackProviderJS, resultFluid: FluidStack)
+    .useDurability(useDurability: boolean)
+    .chance(chance: number)
 ```
 
 - 1st argument: An item ingredient, the input of the recipe
@@ -388,6 +390,8 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 - ResultItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the result item of the recipe, defaults to empty
 - ResultFluid: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
 - Results: A convenience method for setting both results, identical to `.resultItem().resultFluid()`
+- useDurability: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
+- Chance: Accepts a number, in the range [0, 1], sets the chance of the item output
 
 {: .notice }
 > The ingredient needs to have an [item heat](../data/#heat) added to it

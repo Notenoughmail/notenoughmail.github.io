@@ -180,12 +180,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorous: @Nullable number, potassium: @Nullable number, name?: string)
+event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorus: @Nullable number, potassium: @Nullable number, name?: string)
 ```
 
 - 1st argument: An item ingredient, the items the fertilizer applies to
 - 2nd argument: A number, sets the nitrogen value of the fertilizer, may be null to not set a value, defaults to 0
-- 3rd argument: A number, sets the phosphorous value of the fertilizer, may be null to not set a value, defaults to 0
+- 3rd argument: A number, sets the phosphorus value of the fertilizer, may be null to not set a value, defaults to 0
 - 4th argument: A number, sets the potassium value of the fertilizer, may be null to not set a value, defaults to 0
 - *Optional 5th argument*: A string, sets the name of the fertilizer
 
