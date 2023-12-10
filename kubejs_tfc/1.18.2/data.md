@@ -454,6 +454,7 @@ onEvent('tfc.data', event => {
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the fertilizer, if not provided a name will be automatically generated based on the ingredient
 
 ## Example
+
 ```js
 // Makes crimson fungus apply 70% flame and 20% death
 onEvent('tfc.data', event => {
@@ -468,49 +469,92 @@ In order to add nutrition, the chisel mode, and a few other things TFC attaches 
 This wrapper has several methods to read and modify the state of TFC's additional data
 
 ## getChiselMode()
+
 Returns the player's chisel mode
+
 ## setChiselMode(ChiselMode)
+
 Sets the player's chisel mode, accepts `smooth`, `stair`, and `slab`
+
 ## getIntoxicatedTicks()
+
 Returns the number of remaining ticks the player is intoxicated for
+
 ## addIntoxicationTicks(number)
+
 Increases the player's intoxicated ticks by the amount provided
+
 ## getLastDrinkTick()
+
 Returns the tick the player last drank
+
 ## setLastDrinkTick(number)
+
 Sets the tick the player last drank
+
 ## playerEat(ItemStackJS)
+
 Makes the player eat the provided stack
+
 ## getFoodLevel()
+
 Returns the player's food level
+
+
 ## needsFood()
+
 Returns true if the player is less than full hunger
+
 ## addExhaustion(number)
+
 Adds the exhaustion provided
+
 ## getSaturationLevel()
+
 Returns the player's saturation level
+
 ## setFoodLevel(integer)
+
 Sets the player's food level
-## setSaturationlevel(number)
-Sets the player's saturation elvel
+
+## setSaturationLevel(number)
+
+Sets the player's saturation level
+
 ## getThirstModifier()
+
 Returns the total thirst lost per tick for the player on a scale 0f [0, 100], with 100 being a full bar
+
 ## getThirstContributionFromTemperature()
+
 Returns the thirst the player loses from ambient temperature on top of regular loss
+
 ## getThirst()
+
 Returns the player's thirst level
+
 ## setThirst(number)
+
 Sets the player's thirst level
+
 ## addThirst(number)
+
 Adds the specified amount of thirst to the player
+
 ## getAverageNutrition()
+
 Returns the average nutrition of the player
+
 ## getNutrient(Nutrient)
+
 Returns the nutrient value in the range [0, 1]. accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
+
 ## getNutrients()
+
 Returns a number array representing the nutrient values, in the order `grain`, `fruit`, `vegetables`, `protein`, `dairy`
 
 ## Example
+
 ```js
 /*
  * @param {Internal.PlayerJS} player

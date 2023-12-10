@@ -264,7 +264,7 @@ Returns the ProspectResult of the event
 
 ```js
 onEvent('tfc.prospect', event => {
-    event.getPlayer().addItemCooldown(event.getPlayer().getInventory().get(event.getPlayer().getSelectedSlot()).getitem(), 2000)
+    event.getPlayer().addItemCooldown(event.getPlayer().getInventory().get(event.getPlayer().getSelectedSlot()).getItem(), 2000)
 })
 ```
 
@@ -324,7 +324,7 @@ Returns the LevelJS of the event
 
 Returns the BlockContainerJS at the position of the animal
 
-### getAnimalproperties()
+### getAnimalProperties()
 
 Returns the TFCAnimalProperties of the animal
 
@@ -410,7 +410,7 @@ Returns true if the collapse is fake
 
 ```js
 onEvent('tfc.collapse', event -> {
-    event.secondaryPositions.forEach(pos -> {
+    event.secondaryPositions.forEach(pos => {
          event.level.minecraftLevel.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0)
     })
 })

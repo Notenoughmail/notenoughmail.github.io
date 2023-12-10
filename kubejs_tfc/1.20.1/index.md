@@ -17,6 +17,8 @@ has_toc: false
 
 ## [Bindings](bindings/)
 
+## [Custom Blocks, Items, and Fluids](custom/)
+
 ## [Data](data/)
 
 ## [Events](events/)

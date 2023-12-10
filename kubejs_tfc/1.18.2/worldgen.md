@@ -265,7 +265,7 @@ Accepts a consumer with several methods:
 
 ### .nearWater(integer)
 
-Adds TFC's [near water](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#near-water) placement modiifer
+Adds TFC's [near water](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/decorators/#near-water) placement modifier
 
 Accepts an integer representing the distance to search for water
 

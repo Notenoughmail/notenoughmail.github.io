@@ -21,7 +21,7 @@ Looking for how to limit containers? It's been moved to the [Events](../events/)
 
 ## Editing Existing Recipes
 
-In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla itemstacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
+In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods which allow the user to edit the inputs and outputs of existing recipes, unfortunately these do not apply to many of TFC's recipes due to the methods only applying to vanilla item stacks. Thus KubeJS TFC provides several methods to modify the fluid and block inputs and fluid, item stack provider, and extra item outputs. A table for compatibility between recipe types and replace method is available in the collapsible below
 
 <details><summary>Replace Method Table</summary>
 
@@ -40,7 +40,7 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
             <th>tfcReplaceFluidInput</th>
         </col3>
         <col4>
-            <th>tfcReplaceFluidOuput</th>
+            <th>tfcReplaceFluidOutput</th>
         </col4>
         <col5> 
             <th>tfcReplaceBlockInput</th>
@@ -553,6 +553,7 @@ Bindings are objects which represent internal Java classes which can be used in 
 ### FireResult
 
 Represents the fire result of a [StartFireEvent](../events/#start-fire), it has three values:
+
 - `IF_FAILED`: Places a fire block if the event isn't cancelled
 - `ALWAYS`: Guarantees a fire block will be placed
 - `NEVER`: Forbids a fire block from being placed
@@ -563,12 +564,13 @@ FireResult.ALWAYS
 
 ### FireStrength
 
-Represents the strength of a StartFireEvent, it currently has two valuse:
+Represents the strength of a StartFireEvent, it currently has two values:
+
 - `STRONG`: Representing a fire starting where
   - The fire starting is the primary functionality, or
   - Destructive fire starting behavior is desired (creating fire blocks, lighting log piles)
 - `WEAK`: Representing a fire starting where
-  - The fire starting may have been secondary behavior or a side effect (misclicks)
+  - The fire starting may have been secondary behavior or a side effect (mis-clicks)
   - Destructive fire starting behaviors should not be attempted
 
 ```js
@@ -580,6 +582,7 @@ Currently this only useful for posting a new StartFireEvent
 ### AnimalAge
 
 Represents the age of an animal, it has three values:
+
 - `CHILD`
 - `ADULT`
 - `OLD`
@@ -591,6 +594,7 @@ AnimalAge.OLD
 ### AnimalGender
 
 Represents the gender of an animal, it has two values:
+
 - `MALE`
 - `FEMALE`
 
@@ -601,11 +605,12 @@ AnimalGender.MALE
 ### Climate
 
 A collection of helpful methods when dealing with climate models
+
 - `getModel(Object)`: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
 - `getName(ClimateModel)`: Will retrieve the name of the provided climate model
 - `getCurrentTemperature(BlockContainerJS)`: Returns the temperature at the specified block at that moment
-- `getTemperture(BlcokContainerJS, Long)`: Returns the temperature at the specified block at he provided calendar tick
-- `getAverageTemperture(BlockContainerJS)`: Returns the average temperature at the specified block
+- `getTemperature(BlockContainerJS, Long)`: Returns the temperature at the specified block at he provided calendar tick
+- `getAverageTemperature(BlockContainerJS)`: Returns the average temperature at the specified block
 - `getAverageRainfall(BlockContainerJS)`: Returns the average rainfall at the specified block
 - `getFogginess(BlockContainerJS)`: Returns the fogginess at the specified block
 - `getWaterFogginess(BlockContainerJS)`: Returns the water fogginess at the specified block
@@ -618,6 +623,7 @@ Climate.getModel('kubejs:my_advanced_model')
 ### Month
 
 Represents the months of the year
+
 - `JANUARY`
 - `FEBRUARY`
 - `MARCH`
@@ -632,6 +638,7 @@ Represents the months of the year
 - `DECEMBER`
 
 Each month also has a few methods:
+
 - `getTemperatureModifier()`: Returns a number that TFC uses to adjust the temperature during a month
 - `next()`: Returns the next month
 - `isWithin(Month, Month)`: Returns true if the month is between the two provided months
@@ -644,12 +651,14 @@ Month.JULY.next()
 ### Season
 
 Represents the seasons of the year
+
 - `SPRING`
 - `SUMMER`
 - `FALL`
 - `WINTER`
 
 Each season also has a few methods:
+
 - `next()`: Returns the next season
 - `previous()`: Returns the previous season
 
@@ -679,19 +688,21 @@ A collection of methods for getting information about the calendar. Methods with
 - `getTimeDelta(number, Integer)`: Returns a text component displaying the amount of time in hour/day/month/year format for the provided number of ticks and number of days in a month
 
 The following methods return a Calendar object
+
 - `getCalendar()`: Returns a Calendar, may be the server or client side calendar depending on if the calling location appears to be server or client side
 - `getCalendar(boolean)`: Returns a Calendar. If true returns the client calendar, else the server calendar
 - `getCalendar(LevelReader)`: Returns the provided level's calendar
 - `getCalendar(LevelJS)`: Returns the provided LevelJS's calendar
 
 The calendars have the following methods available
+
 - `getTicks()`: Returns the amount of ticks since the world was created
 - `getCalendarTicks()`: Returns the amount of ticks since Jan 1, 1000
 - `getCalendarDaysInMonth()`: Returns the amount of days in a month
 - `ticksToCalendarTicks(number)`: Returns the calendar tick corresponding to the given tick
 - `getTotalHours()`: Returns the total amount of hours passed
 - `getTotalCalendarHours()`: Returns the total number of hours passed since Jan 1, 1000
-- `getTotaldays()`: Returns the total amount of days passed
+- `getTotalDays()`: Returns the total amount of days passed
 - `getTotalCalendarDays()`: Returns the total amount of days passed since Jan 1, 1000
 - `getTotalMonths()`: Returns the total amount of months passed
 - `getTotalCalendarMonths()`: Returns the total amount of months passed since Jan 1, 1000
@@ -728,7 +739,7 @@ This registers a new food trait with s decay modifier given by the number, in th
 
 ```js
 onEvent('tfc.food_trait.register', event => {
-    // registers a trait which increases the rate of decay
+    // Registers a trait which increases the rate of decay
     event.registerTrait(1.4, 'kubejs:trash')
     // Registers a trait which slows the rate of decay and adds a tooltip of 'Saran Wrapped!'
     event.registerTraitWithName(0.3, 'kubejs:saran_wrapped', 'Saran Wrapped!')
