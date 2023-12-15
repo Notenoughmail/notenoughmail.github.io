@@ -138,11 +138,72 @@ In json:
 
 ### Fluid Stack Ingredient
 
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#fluid-stack-ingredients)!
+
 Method signatures:
 
 ```ts
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number)
 TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | List<(string | Fluid | tagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
+```
+
+Creates a `FluidStackIngredient` representing the fluids/tags given with the provided amount or with a default amount of 1000 if no amount can be assumed from the given object.
+
+Examples:
+
+```js
+TFC.fluidStackIngredient('minecraft:water', 10)
+TFC.fluidStackIngredient(Fluid.of('minecraft:lava', 30))
+TFC.fluidStackIngredient(['minecraft:water', '#minecraft:lava'], 3)
+TFC.fluidStackIngredient(['tfc:lye','#tfc:metal'])
+```
+
+In json:
+
+```json
+{
+    "ingredient": {
+        "fluid": "minecraft:water"
+    },
+    "amount": 10
+}
+```
+
+```json
+{
+    "ingredient": {
+        "fluid": "minecraft:lava"
+    },
+    "amount": 30
+}
+```
+
+```json
+{
+    "ingredient": [
+        {
+            "fluid": "minecraft:water"
+        },
+        {
+            "tag": "minecraft:lava"
+        }
+    ],
+    "amount": 3
+}
+```
+
+```json
+{
+    "ingredient": [
+        {
+            "fluid": "tfc:lye"
+        },
+        {
+            "tag": "tfc:metal"
+        }
+    ],
+    "amount": 1000
+}
 ```
 
 ## Sub-Bindings
