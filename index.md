@@ -7,7 +7,7 @@ nav_order: 1
 
 # NotEnoughMail's Project Documentation
 
-Welcome! Barebones for now
+Welcome!
 
 ## [KubeJS TFC](kubejs_tfc/)
 

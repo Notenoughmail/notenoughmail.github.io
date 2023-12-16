@@ -10,9 +10,6 @@ has_toc: false
 
 # Bindings
 
-{: .notice }
-Work In Progress!
-
 In 1.20, there was a major restructuring to how bindings/wrappers are handled in KubeJS TFC, now everything is centered under a singular `TFC` object accessible in any script at any time
 
 This provides access to various objects and methods that can be used throughout your scripts
