@@ -279,7 +279,7 @@ This creates a new ground cover block
   - 'stick',
   - 'tetrahedrite',
   - 'twig', and
-  - anything added to [kubejs_tfc/models/block/groundcover](https://github.com/Notenoughmail/KubeJS-TFC/tree/main/src/main/resources/assets/kubejs_tfc/models/block/groundcover)
+  - anything added to [kubejs_tfc/models/block/groundcover](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.18.2/src/main/resources/assets/kubejs_tfc/models/block/groundcover)
 - `.notAxisAligned()`: Rotates all the placed models by 45 degrees
 - `.collision()`: Enables collision for the block
 
@@ -369,6 +369,7 @@ There are four type of moss spreading blocks: full block, stair, slab, and wall
 #### Full block
 
 This has two methods
+
 - `.mossyBlock(string)`: Accepts a string, sets the block this block will convert to when 'mossed'
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
   - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
@@ -397,6 +398,7 @@ event.create('my_moss_growing_stair', 'tfc:moss_growing_stair').mossyStair('kube
 #### Slab
 
 This has four methods
+
 - `.mossySlab(string)`: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to oak slabs
   - **Note**: The provided block *must* be a slab block
 - `.mossyConversionFull(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'double' state

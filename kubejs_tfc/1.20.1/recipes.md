@@ -8,9 +8,6 @@ grand_parent: KubeJS TFC
 
 # Recipes
 
-{: .notice }
-Work In Progress!
-
 The following recipes are supported by KubeJS TFC:
 
 - [Alloy](#alloy)
@@ -103,6 +100,8 @@ event.recipes.tfc.anvil(result: ItemStackProviderJS, input: Ingredient, rules: F
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An array of up to 3 `ForgeRule`s, see the main page for a full list
+
+<br>
 
 - Tier: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`
 - Bonus: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`
@@ -311,6 +310,8 @@ event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: 
 - 2nd argument: A [BlockIngredient](../blindings/#block-ingredient), the block to be chiseled for the recipe
 - 3rd argument: A `ChiselMode`, the chisel mode for the recipe, either `smooth`, `stair`, or `slab`
 
+<br>
+
 - ItemIngredient: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
 - ExtraDrop: An [ItemStackProviderJS](../bindings/#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
 
@@ -386,6 +387,8 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 
 - 1st argument: An item ingredient, the input of the recipe
 - 2nd argument: A number, the temperature at which the inputs will convert to the outputs (if any)
+
+<br>
 
 - ResultItem: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) and sets the result item of the recipe, defaults to empty
 - ResultFluid: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
@@ -502,6 +505,8 @@ event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngr
 - 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 3rd argument: A number, the number of ticks the pot must boil for
 - 4th argument: A number, the temperature °C that the pot must be above to start boiling
+
+<br>
 
 - ItemOutput: An array of `ItemStack`s indicating what items should be left in the pot
 - FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
@@ -651,9 +656,6 @@ event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingReci
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the damage inputs recipe
 
-{: .notice }
-These recipe types error if you do not explicitly set an id for the recipe, this will be fixed in 1.0.2
-
 ### Examples
 
 ```js
@@ -709,9 +711,6 @@ event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecip
 ```
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the no remainder recipe
-
-{: .notice }
-These recipe types error if you do not explicitly set an id for the recipe, this will be fixed in 1.0.2
 
 ### Example
 
