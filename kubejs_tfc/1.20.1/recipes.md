@@ -427,6 +427,8 @@ event.recipes.tfc.knapping(result: ItemStack, knappingType: string, pattern: str
 - 2nd argument: A string, the id of the [knapping type](../data/#knapping-types) of the recipe
 - 3rd argument: An array of strings representing the knapping grid, may be up to 5 x 5. Spaces are empty spots while any other character are a filled spot
 
+<br>
+
 - Ingredient: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
 - OutsideSlotRequired: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`
 

@@ -280,7 +280,7 @@ You are given a `BlockContainerJS` and a boolean, known as `needsWater`, which, 
 
 The following types are available:
 
-- [chisel](#chisel)
+- [Chisel](#chisel)
 - [Fluid Container](#fluid-container)
 - [Hammer](#hammer)
 - [Javelin](#javelin)
@@ -295,27 +295,225 @@ Additionally, TFC's [tool](#tool-tiers) and [armor](#armor-tiers) tiers are adde
 
 ### Chisel
 
+Creates a new chisel item
+
+Inherits the methods of other tool builders
+
+**Type**: `tfc:chisel`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_chisel', 'tfc:chisel')
+})
+```
+
 ### Fluid Container
+
+Creates a new fluid container item
+
+Inherits the methods of the basic item builder
+
+**Type**: `tfc:fluid_container`
+
+#### Extra Methods
+
+- `.canPlaceLiquid(b: boolean)`: Determines if the item can place liquids in world, defaults to `false`
+- `.canPlaceLiquidSource(b: boolean)`: Determines if the the item can place source blocks in world, defaults to `false`
+- `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
+- `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+- `.filledDisplayName(c: COmponent)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_fluid_container', 'tfc:fluid_container').fluidTagAccept('kubejs:special_water').capacity(1000)
+})
+```
 
 ### Hammer
 
+Creates a new fluid hammer item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:hammer`
+
+#### Extra Method
+
+- `.metalTexture(texture: string)`: Sets the texture of the hammer when in a trip hammer, this is required if you want the hammer to be usable in a trip hammer
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_electrum_hammer', 'tfc:hammer').metalTexture('kubejs:block/trip_hammers/electrum')
+})
+```
+
 ### Javelin
+
+Creates a new javelin item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:javelin`
+
+#### Extra Methods
+
+- `.thrownDamage(f: number)`: Sets the thrown damage of the javelin, defaults to `0.3`
+- `.skeletonWeapon()`: Adds the item to the `tfc:skeleton_weapons` item tag
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => [
+    event.register('my_javelin', 'tfc:javelin').thrownDamage(5).skeletonWeapon()
+])
+```
 
 ### Mace
 
+Creates a new mace item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:mace`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_mace', 'tfc:mace')
+})
+```
+
 ### Mold
+
+Creates a new mold item
+
+Inherits the methods of the basic item builder
+
+**Type**: `tfc:mold`
+
+#### Extra Methods
+
+- `.capacity(i: number)`: Sets the capacity of the mold, defaults to `100`
+- `.fluidTagAccept(fluidTag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_mold', 'tfc:mold').capacity(750)
+})
+```
 
 ### Propick
 
+Creates a new propick item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:propick`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_propick', 'tfc:propick')
+})
+```
+
 ### Scythe
+
+Creates a new scythe item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:scythe`
+
+#### Extra Method
+
+- `.mineableBlocksTag(blockTag: string)`: Sets the block tag that the scythe can properly dig at full speed, defaults to `tfc:mineable_with_scythe`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_scythe', 'tfc:scythe')
+})
+```
 
 ### Hoe
 
+Creates a new TFC hoe item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:hoe`
+
+#### Example
+
+```js
+startupEvents.registry('item', event => {
+    event.register('my_hoe', 'tfc:hoe')
+})
+```
+
 ### Tool
+
+Creates a new 'tool' item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:tool`
+
+#### Extra method
+
+- `.mineableBlocksTag(blockTag: string)`: Sets the block tag that the 'tool' can properly dig at full speed, defaults to `tfc:mineable_with_knife`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.register('my_tool', 'tfc:tool')
+})
+```
 
 ### Tool Tiers
 
+KubeJS TFC adds TFC's tool tiers to KubeJS' predefined tier list
+
+- `igneous_intrusive`
+- `igneous_extrusive`
+- `sedimentary`
+- `metamorphic`
+- `copper`
+- `bronze`
+- `bismuth_bronze`
+- `black_bronze`
+- `wrought_iron`
+- `steel`
+- `black_steel`
+- `blue_steel`
+- `red_steel`
+
 ### Armor Tiers
+
+KubeJS TFC adds TFC's armor tiers to KubeJS' predefined tier list
+
+- `copper`
+- `bismuth_bronze`
+- `black_bronze`
+- `bronze`
+- `wrought_iron`
+- `steel`
+- `black_steel`
+- `blue_steel`
+- `red_steel`
 
 ## Fluids
 
@@ -324,3 +522,28 @@ The following types are available:
 - [Spring](#spring)
 
 ### Spring
+
+Creates a new spring-like fluid
+
+Inherits the methods of the basic fluid builder
+
+**Type**: `tfc:spring`
+
+#### Extra Methods
+
+- `.bubbleParticle(particle: string)`: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]
+- `.steamParticle(particle: string)`: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]
+- `.healingAmount(f: number)`: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`
+- `.hasBubbles(b: boolean)`: Determines if the liquid emits bubble particles, defaults to `true`
+- `.hasSteam(b: boolean)`: Determines if the liquid emits steam particles, defaults to `true`
+
+[^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type` in-game
+
+#### Example
+
+```js
+StartupEvents.registry('fluid', event => {
+    event.register('my_cool_fluid', 'tfc:spring').steamParticle('minecraft:lava_drip_particle')
+})
+```
+
