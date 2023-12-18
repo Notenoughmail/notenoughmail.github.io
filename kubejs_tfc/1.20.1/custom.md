@@ -546,4 +546,3 @@ StartupEvents.registry('fluid', event => {
     event.register('my_cool_fluid', 'tfc:spring').steamParticle('minecraft:lava_drip_particle')
 })
 ```
-

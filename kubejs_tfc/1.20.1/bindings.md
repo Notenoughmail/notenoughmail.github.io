@@ -222,3 +222,5 @@ The central place for creating TFC's different [ingredient types](https://terraf
 ### [Item Stack Provider](../bindings/isp/)
 
 The central place for dealing with TFC's [item stack provider](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers)s in your scripts
+
+<br>
