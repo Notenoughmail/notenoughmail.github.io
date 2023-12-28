@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 1.20
+title: 1.20.1
 permalink: /configjs/1.20.1/
 has_children: false
 parent: ConfigJS
@@ -35,12 +35,12 @@ declare class ConfigEventJS {
     setName(name: string): void
     pop(i?: number): void
     push(path: string): void
-    comment(comments...: string[])
+    comment(comments...: string[]): void
     intValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$IntValue
     longValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$LongValue
     doubleValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$DoubleValue
     booleanValue(name: string, defaultValue: boolean): ForgeConfigSpec$BooleanValue
-    enumValue(name: string, defaultValue: string, enumValues: List<string>): ForgeConfigSpec$EnumValue<? extends Enum>
+    enumValue(name: string, defaultValue: string, enumValues: List<string>): ForgeConfigSpec$EnumValue<? extends Enum<?>>
     enumValue(name: string, defaultValue: T extends Enum<T>): ForgeConfigSpec$EnumValue<T>
 }
 ```
