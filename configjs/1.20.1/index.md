@@ -3,6 +3,7 @@ layout: page
 title: 1.20
 permalink: /configjs/1.20.1/
 has_children: false
+parent: ConfigJS
 ---
 
 # 1.20.1
