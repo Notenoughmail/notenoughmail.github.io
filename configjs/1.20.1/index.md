@@ -28,7 +28,7 @@ ConfigJS.getOtherValueFromEnumConfig(global.selector, 'supreme')
 
 ## Events
 
-ConfigJS adds three startup events, `ConfigsEvent.common`, `ConfigsEvent.server`, and `ConfigsEvent.client` they define a config of the associated type and the same methods
+ConfigJS adds three startup events, `ConfigsEvent.common`, `ConfigsEvent.server`, and `ConfigsEvent.client` they define a config of the associated type and have the same methods as each other
 
 ```ts
 declare class ConfigEventJS {
