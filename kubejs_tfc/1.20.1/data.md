@@ -76,8 +76,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signatures
 
 ```ts
-event.itemResistance(ingredient: Ingredient, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
-event.entityResistance(entityTag: string, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
+event.itemDamageResistance(ingredient: Ingredient, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
+event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
 ```
 
 - 1st argument:
@@ -92,8 +92,8 @@ event.entityResistance(entityTag: string, piercing: @Nullable number, slashing: 
 
 ```js
 TFCEvents.data(event => {
-    event.itemResistance('minecraft:iron_helmet', 300, 2, null)
-    event.entityResistance('minecraft:fish', -500, null, 3, 'kubejs:fish_get_pierced')
+    event.itemDamageResistance('minecraft:iron_helmet', 300, 2, null)
+    event.entityDamageResistance('minecraft:fish', -500, null, 3, 'kubejs:fish_get_pierced')
 })
 ```
 
