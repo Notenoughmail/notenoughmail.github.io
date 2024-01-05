@@ -407,7 +407,7 @@ Creates a new cheese wheel block
 
 Inherits the methods of the default block builder
 
-**Type**: 1firmalife:cheese_wheel
+**Type**: `firmalife:cheese_wheel`
 
 #### Extra Method
 
@@ -801,7 +801,8 @@ Inherits the methods of other tool items
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_clay_prospector', 'kubejs:clay')
+    event.create('my_clay_prospector', 'precpros:custom')
+        .prospectTag('kubejs:clay')
 })
 ```
 
