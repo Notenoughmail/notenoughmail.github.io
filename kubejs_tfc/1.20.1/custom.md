@@ -25,6 +25,14 @@ The following types are available:
 - [Thin Spike](#thin-spike)
 - [Moss Spreading](#moss-spreading)
 - [Moss Growing](#moss-growing)
+- [Lamp](#lamp)
+- [Stationary Berry Bush](#stationary-berry-bush)
+- [Spreading Berry Bush](#spreading-berry-bush)
+- [Dirt](#dirt)
+
+If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+
+- [Cheese Wheel](#firmalife-cheese-wheel)
 
 ### Aqueduct
 
@@ -38,7 +46,7 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_aqueduct', 'tfc:aqueduct')
+    event.create('my_aqueduct', 'tfc:aqueduct')
 })
 ```
 
@@ -63,13 +71,13 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_placed_ore', 'tfc:ground_cover').ore()
+    event.create('my_placed_ore', 'tfc:ground_cover').ore()
 })
 ```
 
 ### Loose Rock
 
-This creates a new loose rock block
+Creates a new loose rock block
 
 Inherits the methods of the default block builder
 
@@ -87,13 +95,13 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_loose_rock', 'tfc:loose_rock')
+    event.create('my_loose_rock', 'tfc:loose_rock')
 })
 ```
 
 ### Raw Rock
 
-This creates a new raw rock block
+Creates a new raw rock block
 
 Inherits the methods of the default block builder
 
@@ -108,7 +116,7 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_raw_block', 'tfc:raw_rock').rockTypeTooltip(Text.translatable('tooltip.kubejs.space_rock'))
+    event.create('my_raw_block', 'tfc:raw_rock').rockTypeTooltip(Text.translatable('tooltip.kubejs.space_rock'))
 })
 ```
 
@@ -124,7 +132,7 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_rock_spike', 'tfc:rock_spike')
+    event.create('my_rock_spike', 'tfc:rock_spike')
 })
 ```
 
@@ -152,7 +160,7 @@ Inherits the methods of tje default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_lava_spike', 'tfc:thin_spike').meltFluid('minecraft:lava').meltTemp(50)
+    event.create('my_lava_spike', 'tfc:thin_spike').meltFluid('minecraft:lava').meltTemp(50)
 })
 ```
 
@@ -170,10 +178,10 @@ These are effected by TFC's mossy spreading config
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_moss_spreading_block', 'tfc:moss_spreading_block')
-    event.register('my_moss_spreading_stair', 'tfc:moss_spreading_stair')
-    event.register('my_moss_spreading_slab', 'tfc:moss_spreading_slab')
-    event.register('my_moss_spreading_wall', 'tfc:moss_spreading_wall')
+    event.create('my_moss_spreading_block', 'tfc:moss_spreading_block')
+    event.create('my_moss_spreading_stair', 'tfc:moss_spreading_stair')
+    event.create('my_moss_spreading_slab', 'tfc:moss_spreading_slab')
+    event.create('my_moss_spreading_wall', 'tfc:moss_spreading_wall')
 })
 ```
 
@@ -196,7 +204,7 @@ Example:
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_moss_growing_block', 'tfc:moss_growing_block').mossyBlock('kubejs:my_moss_spreading_block')
+    event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossyBlock('kubejs:my_moss_spreading_block')
 })
 ```
 
@@ -213,7 +221,7 @@ Example:
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_moss_growing_block', 'tfc:moss_growing_block').mossyStair('kubejs:my_moss_spreading_stair')
+    event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossyStair('kubejs:my_moss_spreading_stair')
 })
 ```
 
@@ -232,7 +240,7 @@ Example
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:my_moss_spreading_slab')
+    event.create('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:my_moss_spreading_slab')
 })
 ```
 
@@ -249,7 +257,7 @@ Example
 
 ```js
 StartupEvents.registry('block', event => {
-    event.register('my_moss_growing_wall', 'tfc:moss_growing_wall').mossyWall('kubejs:my_moss_spreading_wall')
+    event.create('my_moss_growing_wall', 'tfc:moss_growing_wall').mossyWall('kubejs:my_moss_spreading_wall')
 })
 ```
 
@@ -276,6 +284,152 @@ You are given a `BlockContainerJS` and a boolean, known as `needsWater`, which, 
 }
 ```
 
+### Lamp
+
+Creates a new lamp block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:lamp`
+
+#### Extra Methods
+
+- `.lightLevel(i: number)`: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_lamp', 'tfc:lamp').lightLevel(4)
+})
+```
+
+### Stationary Berry Bush
+
+Creates a new stationary bush block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:stationary_berry_bush`
+
+#### Extra Methods
+
+- `.lifecycle(i: number, lifecycle: Lifecycle)`: Sets the bush's lifecycle for a particular month, defaults to `dormant` for ever month, accepts an integer in the range [0, 11] for the first parameter, and either `healthy`, `dormant`, `fruiting`, or `flowering` for the second
+- `.productItem(item: Consumer<ItemBuilder>)`: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_stationary_bush', 'tfc:stationary_berry_bush')
+        .lifecycle(2, 'healthy')
+        .lifecycle(3, 'healthy')
+        .lifecycle(4, 'flowering')
+        .lifecycle(5, 'fruiting')
+        .lifecycle(6, 'healthy')
+})
+```
+
+### Spreading Berry Bush
+
+Creates a new spreading bush block
+
+Inherits the methods of the stationary bush builder
+
+**Type**: `tfc:spreading_berry_bush`
+
+#### Extra Methods
+
+- `.maxHeight(i: number)`: Sets the maximum number of blocks the bush may climb, defaults to `3`
+
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_spreading_bush', 'tfc:spreading_berry_bush')
+        .lifecycle(0, 'fruiting')
+        .lifecycle(1, 'fruiting')
+        .lifecycle(2, 'healthy')
+        .lifecycle(3, 'flowering')
+        .maxHeight(14)
+})
+```
+
+### Dirt
+
+Creates a new dirt block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:dirt`
+
+#### Extra Methods
+
+- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
+- `.path(path: Consumer<TFCPathBlockBuilder>)`: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
+- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
+    - Those of the default block builder
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_dirt', 'tfc:dirt')
+        .grass(grass => {
+            grass.hardness(1)
+        })
+        .path(path => {
+            path.hardness(1)
+        })
+        .farmland(farmland => {
+            farmland.hardness(1)
+            farmland.extendedProperties(props => {
+                props.flammable(3, 6)
+            })
+        })
+        .rooted(rooted => {
+            rooted.hardness(1)
+        })
+})
+```
+
+### FirmaLife Cheese Wheel
+
+Creates a new cheese wheel block
+
+Inherits the methods of the default block builder
+
+**Type**: 1firmalife:cheese_wheel
+
+#### Extra Method
+
+- `.sliceItem(slice: Consumer<ItemBuilder>)`: Sets the properties of the cheese wheel's slice item
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_cheese_wheel', 'firmalife:cheese_wheel')
+})
+```
+
+### Extended Properties
+
+Some of TFC's blocks have extended properties which allow the block properties object passed into them to define more of their behavior, builders for these types of blocks have a method with a consumer that allows you to modify some of those properties
+
+- `.flammable(flammability: number, fireSpreadSpeed: number)`: Sets the flammability and fire spread speed of the block
+- `.pathType(pathType: BlockPathTypes)`: Sets the block's pathing type, used by mobs to determine if they may walk over it or not
+- `.enchantPower(f: number)`: Sets the block's enchant power
+- `.enchantPowerFunction(function: Function<BlockState, Double>)`: Sets the function the block uses to determine its enchant power based on its block state
+
 ## Items
 
 The following types are available:
@@ -290,6 +444,20 @@ The following types are available:
 - [Scythe](#scythe)
 - [Hoe](#hoe)
 - [Tool](#tool)
+- [Fishing Rod](#fishing-rod)
+- [Jar](#jar)
+- [Glassworking](#glassworking)
+
+If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+
+- [Watering Can](#firmalife-watering-can)
+
+If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
+
+- [Prospector's Hammer](#precision-prospecting-prospector-hammer)
+- [Prospector's Drill](#precision-prospecting-prospector-drill)
+- [Mineral Prospector](#precision-prospecting-mineral-prospector)
+- [Custom Prospector](#precision-prospecting-custom-prospector)
 
 Additionally, TFC's [tool](#tool-tiers) and [armor](#armor-tiers) tiers are added to KubeJS' tool and armor tier values
 
@@ -305,7 +473,7 @@ Inherits the methods of other tool builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_chisel', 'tfc:chisel')
+    event.create('my_chisel', 'tfc:chisel')
 })
 ```
 
@@ -329,7 +497,7 @@ Inherits the methods of the basic item builder
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_fluid_container', 'tfc:fluid_container').fluidTagAccept('kubejs:special_water').capacity(1000)
+    event.create('my_fluid_container', 'tfc:fluid_container').fluidTagAccept('kubejs:special_water').capacity(1000)
 })
 ```
 
@@ -349,7 +517,7 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_electrum_hammer', 'tfc:hammer').metalTexture('kubejs:block/trip_hammers/electrum')
+    event.create('my_electrum_hammer', 'tfc:hammer').metalTexture('kubejs:block/trip_hammers/electrum')
 })
 ```
 
@@ -370,7 +538,7 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => [
-    event.register('my_javelin', 'tfc:javelin').thrownDamage(5).skeletonWeapon()
+    event.create('my_javelin', 'tfc:javelin').thrownDamage(5).skeletonWeapon()
 ])
 ```
 
@@ -386,7 +554,7 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_mace', 'tfc:mace')
+    event.create('my_mace', 'tfc:mace')
 })
 ```
 
@@ -407,7 +575,7 @@ Inherits the methods of the basic item builder
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_mold', 'tfc:mold').capacity(750)
+    event.create('my_mold', 'tfc:mold').capacity(750)
 })
 ```
 
@@ -423,7 +591,7 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_propick', 'tfc:propick')
+    event.create('my_propick', 'tfc:propick')
 })
 ```
 
@@ -443,7 +611,7 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_scythe', 'tfc:scythe')
+    event.create('my_scythe', 'tfc:scythe')
 })
 ```
 
@@ -459,7 +627,7 @@ Inherits the methods of other tool item builders
 
 ```js
 startupEvents.registry('item', event => {
-    event.register('my_hoe', 'tfc:hoe')
+    event.create('my_hoe', 'tfc:hoe')
 })
 ```
 
@@ -479,7 +647,161 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.register('my_tool', 'tfc:tool')
+    event.create('my_tool', 'tfc:tool')
+})
+```
+
+### Fishing Rod
+
+Creates a new fishing rod item
+
+Inherits the methods of other tool item builders
+
+**Type**: `tfc:fishing_rod`
+
+#### Extra Methods
+
+- `.fishingStrength(f: number)`: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
+- `.castModel(model: string)`: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end
+- `.smallBait()`: Adds the rod to the correct tag to allow it to hold small bait
+- `.largeBait()`: Adds the rod to the correct tag to allow it to hold large bait
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_fishing_rod', 'tfc:fishing_rod').fishingStrength(4).largeBait()
+})
+```
+
+### Jar
+
+Creates a new jar item
+
+Inherits the methods of the default item builder
+
+**Type**: `tfc:jar`
+
+#### Extra Method
+
+- `.placedModel(model: string)`: Sets the model of the jar when placed, defaults to the item's id
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_jar', 'tfc:jar').placedModel('kubejs:block/placed_jar')
+})
+```
+
+### Glassworking
+
+Creates a new glassworking item
+
+Inherits the methods of the default item builder
+
+**Type**: `tfc:glassworking`
+
+#### Extra Method
+
+- `.operation(operation: GlassOperation)`: Sets the `GlassOperation` the item is capable of performing, defaults to `saw`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_glass_cutter', 'tfc:glassworking').operation('pinch')
+})
+```
+
+### FirmaLife Watering Can
+
+Creates a new watering can item
+
+Inherits the methods of the default item builder
+
+**Type**: `firmalife:watering_can`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_watering_can', 'firmalife:watering_can')
+})
+```
+
+### Precision Prospecting Prospector Hammer
+
+Creates a new prospector's hammer item
+
+Inherits the methods of other tool item builders
+
+**Type**: `precpros:hammer`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_prospector_hammer', 'precpros:hammer')
+})
+```
+
+### Precision Prospecting Prospector Drill
+
+Creates a new prospector's drill item
+
+Inherits the methods of other tool item builders
+
+**Type**: `precpros:drill`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_prospector_drill', 'precpros:drill')
+})
+```
+
+### Precision Prospecting Mineral Prospector
+
+Creates a new mineral prospector item
+
+Inherits the methods of other tool item builders
+
+**Type**: `precpros:mineral`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_mineral_prospector', 'precpros:mineral')
+})
+```
+
+### Precision Prospecting Custom Prospector
+
+Creates a new custom prospector item
+
+Inherits the methods of other tool items
+
+**Type**: `precpros:custom`
+
+#### Extra Methods
+
+- `.cooldown(i: number)`: Sets the cooldown, in ticks, the item gets when it prospects, defaults to `20`
+- `.primaryRadius(i: number)`: Sets the primary radius of the prospector, defaults to `10`
+- `.primaryRadius(supplier: Supplier<Integer>)`: Sets the integer supplier that defines the item's primary radius, defaults to `() => 10`
+- `.secondaryRadius(i: number)`: Sets the secondary radius of the prospector, defaults to `10`
+- `.secondaryRadius(supplier: Supplier<Integer>)`: Sets the integer supplier that defines the item's secondary radius, defaults to `() => 10`
+- `.displacement(i: number)`: Sets the displacement of the prospector, defaults to `0`
+- `.displacement(supplier: Supplier<Integer>)`: Sets the integer supplier that defines the item's displacement, defaults to `() => 0`
+- `.prospectTag(blockTag: string)`: Sets the block tag that the item can prospect, defaults to `tfc:prospectable`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_clay_prospector', 'kubejs:clay')
 })
 ```
 
@@ -543,6 +865,6 @@ Inherits the methods of the basic fluid builder
 
 ```js
 StartupEvents.registry('fluid', event => {
-    event.register('my_cool_fluid', 'tfc:spring').steamParticle('minecraft:lava_drip_particle')
+    event.create('my_cool_fluid', 'tfc:spring').steamParticle('minecraft:lava_drip_particle')
 })
 ```
