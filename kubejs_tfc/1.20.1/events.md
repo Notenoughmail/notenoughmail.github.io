@@ -21,6 +21,9 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Collapse](#collapse)
 - [Douse Fire](#douse-fire)
 - [Custom Food Traits](#custom-food-traits)
+- [Custom Item Stack Modifiers](#custom-item-stack-modifiers)
+- [Representative Blocks](#register-representative-blocks)
+- [Birthdays](#modify-birthdays)
 
 ## Rock Settings
 
@@ -77,26 +80,37 @@ TFC has an item size feature which it uses to limit which items can go into its 
 
 The basic functionality and idea is based off of a 1.12 [addon](https://github.com/DoubleDoorDevelopment/OversizedItemInStorageArea) that did much the same. It is licensed under the [BSD License](https://www.curseforge.com/minecraft/mc-mods/oversized-item-in-storage-area/comments#license)
 
-Upon a player closing a container limited through this event, any items that are 1) in the limited slots and 2) greater than the provided size will be removed from the container and spawned in world around the player
+Upon a player closing a container limited through this event, any items that are 1) in the limited slots and are not within the size limits will be removed from the container and spawned in world around the player
 
-This event is fired in the `startup_scripts` folder
+This event is fired in the `server_scripts` folder
 
-### Method Signature
+### Method Signatures
 
 ```ts
-event.limitContainerSize(containerName: string, size: Size, range?: Integer[])
+declare class ContainerLimiterEventJS {
+    limit(size: Size, allowsEqual?: boolean): void
+    limit(size: Size, min: number, max: number, allowsEqual?: boolean): void
+    lowerLimit(size: Size, allowsEqual?: boolean): void
+    lowerLimit(size: SIze, min: number, max: number, allowsEqual?: boolean): void
+}
 ```
 
-- 1st argument: A string, the registry name of a menu to be limited[^1]
-- 2nd argument: A `Size`, the maximum size of items allowed in the declared slots, accepts `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, and `huge`
-- *Optional 3rd argument*: An integer array, representing the specific range of slot indexes of the container which should be limited, defaults to all slots of the container. Only accepts integers in multiples of 2, i.e. `0, 2` or `1, 5, 7, 16`
+- `.limit(size: Size, allowsEqual?: boolean)`: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
+- `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
+- `.lowerLimit(size: Size, allowsEqual?: boolean)`: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
+- `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
+
+Allows size values: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`
+
+Additionally, every event listener requires the name of a menu type[^1] in its declaration
 
 ### Examples
 
 ```js
-TFCEvents.limitContainerSize(event => {
-    event.limitContainerSize('minecraft:hopper', 'small')
-    event.limitContainerSize('minecraft:shulker_box', 'very_small', 0, 8, 18, 26) // Does not limit the middle row
+TFCEvents.limitContainerSize('minecraft:generic_3x3', event => {
+    event.limit('large', 0, 4)
+    event.limit('small')
+    event.lowerLimit('normal', 0, 2)
 })
 ```
 
@@ -471,5 +485,94 @@ declare class RegisterFoodTraitEventJS {
 TFCEvents.registerFoodTrait(event => {
     event.registerTrait(2.0, 'kubejs:trash')
     event.registerTraitWithTooltip(1.2, 'kubejs:stinky')
+})
+```
+
+## Custom Item Stack Modifiers
+
+TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to well, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
+
+This event fires in the `startup_scripts` folder
+
+### Method Signature
+
+```ts
+event.register(id: string, applicator: ModifierApplicator, dependsOnInput: boolean): void
+```
+
+- 1st argument: A string, the registry name of the modifier being registered
+- 2nd argument: A [ModifierApplicator](#modifier-applicator), performs the modifications to the item stack
+- 3rd argument: A boolean, should be true if the `input` of the applicator is used
+
+### Example
+
+```js
+TFCEvents.registerItemStackModifier(event => {
+    event.register('kubejs:merge_nbt', (stack, input) => {
+        stack.getOrCreateTag().merge(input.getOrCreateTag())
+        return stack
+    }, true)
+})
+```
+
+### Modifier Applicator
+
+A modifier applicator is what actually performs the modifications on a stack when constructed for a recipe, it has the following method signature:
+
+```ts
+apply(stack: ItemStack, input: ItemStack): ItemStack
+```
+
+- `stack`: This is the stack being built, you are free to modify it in any way
+- `input`: This is the input stack, it should not be modified in any way, if it is used, the modifier you register should have `true` for the `dependsOnInput` argument
+
+## Register Representative Blocks
+
+In 1.20, TFC added a representative blocks system for prospecting, essentially allowing ores of the same type but different grades to be viewed as the same when the prospector's pick counts the blocks nearby, this event allows you to register new representatives
+
+This event fires in the `startup_scripts` folder
+
+### Method Signature
+
+```ts
+event.register(representative: string, blocks: List<string>): void
+```
+
+- 1st argument: The registry name of the block to be representative of the others
+- 2nd argument: A list of strings, the registry names of blocks to be represented by the representative
+
+### Example
+
+```js
+TFCEvents.prospectRepresentative(event => {
+    event.register('minecraft:clay', ['tfc:clay/loam', 'tfc:clay/silt', 'tfc:clay/sandy_loam', 'tfc:clay/silty_loam'])
+})
+```
+
+## Modify Birthdays
+
+TFC has an easter egg in its calendar screen where on certain dates it will show someone's birthday, this event allows you to add and remove names from the list of birthdays
+
+This event fires in the `startup_scripts` folder
+
+### Method Signatures
+
+```ts
+declare class BirthdayEventsJS {
+    add(month: Month, day: number, name: string): void
+    remove(month: Month, day: number): void
+    removeAll(): void
+}
+```
+
+- `.add(month: Month, day: number, name: string)`: Adds a birthday to the given month and day
+- `.remove(month: Month, day: number)`: Removes the birthday on the given month and day if there is one
+- `.removeAll()`: Removes all birthdays
+
+### Example
+
+```js
+TFCEvents.birthdays(event => {
+    event.add('august', 4, 'Barack Obama')
 })
 ```

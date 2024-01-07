@@ -8,6 +8,9 @@ parent: ConfigJS
 
 # 1.20.1
 
+- [Bindings](#bindings)
+- [Events](#events)
+
 ## Bindings
 
 ConfigJS adds a single binding to scripts, the `ConfigJS` object which has only one method:

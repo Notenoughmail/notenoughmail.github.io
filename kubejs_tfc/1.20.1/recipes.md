@@ -36,6 +36,15 @@ The following recipes are supported by KubeJS TFC:
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
 
+If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following recipes are supported:
+
+- [Drying](#firmalife-drying)
+- [Smoking](#firmalife-smoking)
+- [Mixing Bowl](#firmalife-mixing-bowl)
+- [Oven](#firmalife-oven)
+- [Stinky Soup](#firmalife-stinky-soup)
+- [Vat](#firmalife-vat)
+
 ## Alloy
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#alloy)!
@@ -386,7 +395,7 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 ```
 
 - 1st argument: An item ingredient, the input of the recipe
-- 2nd argument: A number, the temperature at which the inputs will convert to the outputs (if any)
+- 2nd argument: A number, the temperature °C at which the inputs will convert to the outputs (if any)
 
 <br>
 
@@ -629,7 +638,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingredients: Ingredient[], primaryIngredient: Ingredient)
+event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingredients: Ingredient[], primaryIngredient?: Ingredient)
 ```
 
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe
@@ -727,3 +736,155 @@ ServerEvents.recipes(event => {
     event.recipes.tfc.no_remainder_shapeless_crafting(event.recipes.minecraft.crafting_shapeless('minecraft:obsidian', ['minecraft:water_bucket', 'minecraft:lava_bucket']))
 })
 ```
+
+## FirmaLife Drying
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.drying(result: ItemStackProviderJS, ingredient: Ingredient)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
+- 2nd argument: An item ingredient
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.drying('kubejs:jerky', TFC.ingredient.notRotten('#tfc:meat'))
+})
+```
+
+## FirmaLife Smoking
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.smoking(result: ItemStackIngredientJS, ingredient: Ingredient)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
+- 2nd argument: An item ingredient
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.smoking(TFC.itemStackProvider.copyInput().addTrait('kubejs:smoked'), TFC.ingredient.notRotten('#tfc:meats'))
+})
+```
+
+## FirmaLife Mixing Bowl
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.mixing_bowl()
+    // Additional Methods
+    .outputItem(outputItem: ItemStack)
+    .outputFluid(outputFluid: FluidStackJS)
+    .outputs(outputItem: ItemStack, outputFluid: FluidStackJS)
+    .itemIngredients(ingredients: Ingredient[])
+    .fluidIngredient(fluidIngredient: FluidStackIngredient)
+    .ingredients(ingredients: Ingredient[], fluidIngredient: FLuidStackIngredient)
+```
+
+- OutputItem: An `ItemStack`, the item output
+- OutputFluid: A `FluidStackJS`, the fluid output
+- Outputs: A convenience method for setting both outputs, the same as calling `.outputItem().outputFluid()`
+- ItemIngredients: An array of item ingredients, the item inputs
+- FluidIngredient: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
+- Ingredients: A convenience method for setting both inputs, the same as calling `.itemIngredients().fluidIngredient()`
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.mixing_bowl()
+        .outputs('minecraft:dirt', Fluid.of('minecraft:milk', 50))
+        .itemIngredients('minecraft:stone', 'minecraft:deepslate')
+})
+```
+
+## FirmaLife Oven
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.oven(ingredient: Ingredient, temperature: number, duration: number, resultItem?: ItemStackProviderJS)
+```
+
+- 1st argument: An item ingredient, the input of the recipe
+- 2nd argument: A number, the minimum temperature °C of the top oven for the recipe to operate
+- 3rd argument: A number, the number of ticks required for the recipe to finish
+- *Optional 4th argument*: An [ItemStackProviderJS](../bindings/#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.oven('minecraft:spruce_log', 500, 100, 'minecraft:oak_log')
+})
+```
+
+## FirmaLife Stinky Soup
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.stinky_soup(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+```
+
+- 1st argument: An array of item ingredients, the item inputs of the recipe
+- 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the fluid input of the recipe
+- 3rd argument: A number, the number of ticks required for the recipe to finish
+- 4th argument: A number, the minimum temperature °C required for the recipe to operate
+
+### Example
+
+```js
+ServerEVents.recipes(event => {
+    event.recipes.firmalife.stinky_soup(['minecraft:dirt', TFC.ingredient.not(TFC.ingredient.notRotten())], TFC.fluidStackIngredient('#minecraft:water', 1000), 500, 460)
+})
+```
+
+## FirmaLife Vat
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.vat()
+    // Additional methods
+    .outputItem(outputProvider: ItemStackProviderJS)
+    .outputFluid(outputFluid: FluidStackJS)
+    .outputs(itemOutput: ItemStackProviderJS, outputFluid: FluidStackJS)
+    .inputItem(inputItem: Ingredient)
+    .inputFluid(inputFluid: FluidStackIngredient)
+    .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
+    .length(length: number)
+    .temperature(temp: number)
+    .jar(jar: ItemStack)
+```
+
+- OutputItem: An [ItemStackProviderJS](../bindings/#item-stack-provider), the item output
+- OutputFluid: A `FluidStackJS`, the fluid output
+- Outputs: A convenience method for setting both outputs, the same as calling `.outputItem().outputFluid()`
+- InputItem: An item ingredient, the item input
+- InputFluid: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the fluid input
+- Inputs: A convenience method for setting both inputs, the same as calling `.inputItem().inputFluid()`
+- Length: A number, the number of ticks the vat must process for, defaults to `600`
+- Temperature: A number, the minimum temperature °C of the vat in order to process, defaults to `300`
+- Jar: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
