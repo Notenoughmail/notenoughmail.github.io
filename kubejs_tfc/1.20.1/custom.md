@@ -492,6 +492,7 @@ Inherits the methods of the basic item builder
 - `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
 - `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 - `.filledDisplayName(c: COmponent)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
 
 #### Example
 
@@ -568,8 +569,9 @@ Inherits the methods of the basic item builder
 
 #### Extra Methods
 
-- `.capacity(i: number)`: Sets the capacity of the mold, defaults to `100`
+- `.capacity(i: number)`: Sets the mB capacity of the mold, defaults to `100`
 - `.fluidTagAccept(fluidTag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
+- `.capacity(capacity: Supplier<Integer>)`: Sets the mB capacity supplier of the mold, defaults to `() => 100`
 
 #### Example
 
@@ -639,9 +641,10 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:tool`
 
-#### Extra method
+#### Extra methods
 
 - `.mineableBlocksTag(blockTag: string)`: Sets the block tag that the 'tool' can properly dig at full speed, defaults to `tfc:mineable_with_knife`
+- `.knife()`: Adds the item to the `tfc:knives` tag and sets its mineable blocks tag to `tfc:mineable_with_knife`
 
 #### Example
 

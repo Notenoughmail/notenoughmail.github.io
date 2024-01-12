@@ -18,6 +18,7 @@ These are available under the `TFC.calendar` field
 TFC.calendar.getCalendar()
 TFC.calendar.getCalendar(isClientSide: boolean)
 TFC.calendar.getCalendar(level: LevelReader)
+TFC.calendar.getCalendar(Entity: entity)
 TFC.calendar.getCalendarTicksInMonth(daysInMonth: number)
 TFC.calendar.getCalendarTicksInYear(daysInMonth: number)
 TFC.calendar.getTotalMinutes(time: number)
@@ -37,8 +38,9 @@ TFC.calendar.getTimeDelta(ticks: number, daysInMonth: number)
 ```
 
 - `.getCalendar()`: Returns either the server or client [ICalendar](#icalendar) object, a best guess attempt is made to determine which is returned
-- `.getCalendar(isClientSide: boolean)`: Returns either the server, if false, or client, if true, [ICalendar](#icalendar) object
-- `.getCalendar(level: LevelReader)`: Returns the level's [ICalendar](#icalendar) object
+- `.getCalendar(isClientSide: boolean)`: Returns either the server, if false, or client, if true, [ICalendar](#icalendar)
+- `.getCalendar(level: LevelReader)`: Returns the level's [ICalendar](#icalendar)
+- `.getCalendar(Entity: entity)`: Returns the entity's level's [ICalendar](#icalendar)
 - `.getCalendarTicksInMonth(daysInMonth: number)`: Returns the number of calendar ticks in a month for the provided number of days in a month
 - `.getCalendarTicksInYear(daysInMonth: number)`: Returns the number of calendar ticks in a year for the provided number of days in a month
 - `.getTotalMinutes(time: number)`: Returns the number of minutes in the provided number of ticks

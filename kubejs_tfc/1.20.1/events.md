@@ -504,6 +504,8 @@ event.register(id: string, applicator: ModifierApplicator, dependsOnInput: boole
 - 2nd argument: A [ModifierApplicator](#modifier-applicator), performs the modifications to the item stack
 - 3rd argument: A boolean, should be true if the `input` of the applicator is used
 
+Additionally, there is another method in the event `.getCraftingContainer()`, which returns a `Supplier<@Nullable CraftingContainer>`, the crafting container is only non-null during advanced shaped and shapeless crafting recipes
+
 ### Example
 
 ```js
