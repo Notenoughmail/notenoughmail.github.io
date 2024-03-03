@@ -11,3 +11,5 @@ has_toc: false
 # 1.20.1
 
 ## [Changelog](changelog/)
+
+## [Config](config/)
