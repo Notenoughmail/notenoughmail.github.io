@@ -8,9 +8,6 @@ grand_parent: KubeJS TFC
 
 # Custom Blocks, Items, and Fluids
 
-{: .notice }
-Work in progress!
-
 KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), and [fluid](#fluids) types
 
 ## Blocks
@@ -29,6 +26,12 @@ The following types are available:
 - [Stationary Berry Bush](#stationary-berry-bush)
 - [Spreading Berry Bush](#spreading-berry-bush)
 - [Dirt](#dirt)
+- [Wild Crops](#wild-crops)
+- [Default Crops](#default-crops)
+- [Double Crops](#double-crops)
+- [Spreading Crops](#spreading-crops)
+- [Flooded Crops](#flooded-crops)
+- [Pickable Crops](#pickable-crops)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -90,12 +93,14 @@ Inherits the methods of the default block builder
 - `.itemTexture(texture: string)`: Sets the item's `layer0` texture
 - `.itemTexture(key: string, texture: string)`: Sets the item's texture for the given key
 - `.itemTextureJson(json: JsonObject)`: Sets the json for the item model
+- `.rockTypeModel(type: string)`Sets the rock type models that should automatically be used, accepts `igneous_extrusive`, `igneous_intrusive`, `metamorphic`, or `sedimentary`, defaults to `metamorphic`
 
 #### Example
 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_loose_rock', 'tfc:loose_rock')
+        .rockTypeModel('sedimentary')
 })
 ```
 
@@ -111,12 +116,21 @@ Inherits the methods of the default block builder
 
 - `.naturallySupported(supported: boolean)`: Determines if the block is considered to be naturally supported for the purposes of spawning particles indicating unsupported regions
 - `.rockTypeTooltip(component: Component)`: Sets the tooltip component indicating the block's rock type
+- `.felsicIgneousExtrusive()`: Sets the item's rock type tooltip to be that of felsic igneous extrusive rocks
+- `.intermediateIgneousExtrusive()`: Sets the item's rock type tooltip to be that of intermediate igneous extrusive rocks
+- `.maficIgneousExtrusive()`: Sets the item's rock type tooltip to be that of intermediate mafic extrusive rocks
+- `.maficIgneousIntrusive()`: Sets the item's rock type tooltip to be that of mafic igneous intrusive rocks
+- `.felsicIgneousIntrusive()`: Sets the item's rock type tooltip to be that of felsic igneous intrusive rocks
+- `.intermediateIgneousIntrusive()`: Sets the item's rock type tooltip to be that of intermediate igneous intrusive rocks
+- `.metamorphic()`: Sets the item's rock type tooltip to be that of metamorphic rocks
+- `.sedimentary()`: Sets the item's rock type tooltip to be that of sedimentary rocks
 
 #### Example
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_raw_block', 'tfc:raw_rock').rockTypeTooltip(Text.translatable('tooltip.kubejs.space_rock'))
+    event.create('my_raw_block', 'tfc:raw_rock')
+        .rockTypeTooltip(Text.translatable('tooltip.kubejs.space_rock'))
 })
 ```
 
@@ -160,7 +174,9 @@ Inherits the methods of tje default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_lava_spike', 'tfc:thin_spike').meltFluid('minecraft:lava').meltTemp(50)
+    event.create('my_lava_spike', 'tfc:thin_spike')
+        .meltFluid('minecraft:lava')
+        .meltTemp(50)
 })
 ```
 
@@ -204,7 +220,8 @@ Example:
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossyBlock('kubejs:my_moss_spreading_block')
+    event.create('my_moss_growing_block', 'tfc:moss_growing_block')
+        .mossyBlock('kubejs:my_moss_spreading_block')
 })
 ```
 
@@ -221,7 +238,8 @@ Example:
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossyStair('kubejs:my_moss_spreading_stair')
+    event.create('my_moss_growing_block', 'tfc:moss_growing_block')
+        .mossyStair('kubejs:my_moss_spreading_stair')
 })
 ```
 
@@ -240,7 +258,8 @@ Example
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:my_moss_spreading_slab')
+    event.create('my_moss_growing_slab', 'tfc:moss_growing_slab')
+        .mossySlab('kubejs:my_moss_spreading_slab')
 })
 ```
 
@@ -257,7 +276,8 @@ Example
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_moss_growing_wall', 'tfc:moss_growing_wall').mossyWall('kubejs:my_moss_spreading_wall')
+    event.create('my_moss_growing_wall', 'tfc:moss_growing_wall')
+        .mossyWall('kubejs:my_moss_spreading_wall')
 })
 ```
 
@@ -301,7 +321,8 @@ Inherits the methods of the default block builder
 
 ```js
 StartupEvents.registry('block', event => {
-    event.create('my_lamp', 'tfc:lamp').lightLevel(4)
+    event.create('my_lamp', 'tfc:lamp')
+        .lightLevel(4)
 })
 ```
 
@@ -318,6 +339,7 @@ Inherits the methods of the default block builder
 - `.lifecycle(i: number, lifecycle: Lifecycle)`: Sets the bush's lifecycle for a particular month, defaults to `dormant` for ever month, accepts an integer in the range [0, 11] for the first parameter, and either `healthy`, `dormant`, `fruiting`, or `flowering` for the second
 - `.productItem(item: Consumer<ItemBuilder>)`: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.productItem(item: ResourceLocation)`: Sets the bush's product item to be an existing item, will prevent the other product item from being created
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
 
@@ -346,7 +368,7 @@ Inherits the methods of the stationary bush builder
 
 - `.maxHeight(i: number)`: Sets the maximum number of blocks the bush may climb, defaults to `3`
 
-Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
 
 #### Example
 
@@ -398,6 +420,149 @@ StartupEvents.registry('block', event => {
         .rooted(rooted => {
             rooted.hardness(1)
         })
+})
+```
+
+### Wild Crops
+
+Creates a new wild crop block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:wild_crop`
+
+#### Extra Methods
+
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.type(type: Type)`: Sets the type of wild crop block to be used, available options are `default`, `double`, `flooded`, and `spreading`, defaults to `default`
+- `.spreadingFruitBlock(fruitBlock: ResourceLocation)`: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
+- `.seeds(seedItem: ResourceLocation)`: Sets the 'seed' item to be used in the auto-generated loot table
+- `.food(foodItem: ResourceLocation)`: Sets the 'food' item to be used in the auto-generated loot table
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_wild_spreading_crop', 'tfc:wild_crop')
+        .type('spreading')
+        .spreadingFruitBlock('minecraft:stone')
+})
+```
+
+### Default Crops
+
+Creates a new crop block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:crop`
+
+#### Extra Methods
+
+- `.stages(i: number)`: Sets the number of growth stages the block has, should be a number between 1 and 12, defaults to `8`
+- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`: A consumer for editing the properties of the crop's dead block
+    - The consumer has the same methods as the default block builder and one additional one:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.seedItem(seedItem: Consumer<SeedItemBuilder>)`: A consumer for setting the properties of the block's seed item
+- `.productItem(productItem: Consumer<ItemBuilder>)`: A consumer for setting the properties of the block's product item
+- `.productItem(productItem: ResourceLocation)`: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
+- `.nutrient(nutrient: NutrientType)`: Sets the nutrient hte crop consumes, available options are `nitrogen`, `phosphorous` , and `potassium`, defaults to `nitrogen`
+
+Additionally this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_crop', 'tfc:crop')
+        .nutrient('phosphorous')
+        .productItem(product => {
+            product.unstackable()
+            product.burnTime(500)
+        })
+})
+```
+
+### Double Crops
+
+Creates a new double tall crop block
+
+Inherits the methods of the [TFC crop builder](#default-crops)
+
+**Type**: `tfc:double_crop`
+
+#### Extra Methods
+
+- `.stages(i: number)`: Sets the number of growth stages the block has, should be a number between 1 and 6, defaults to `4`
+- `.doubleStages(i: number)`: Sets the number of stages the crop has in its top state, should be a number between 1 and 6, defaults to `4`
+- `.requiresStick(required: boolean)`: Determines if the crop needs a stick to grow
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_double_crop', 'tfc:double_crop')
+        .requiresStick(true)
+})
+```
+
+### Spreading Crops
+
+Creates a new spreading crop block
+
+Inherits the methods of the [TFC crop builder](#default-crops)
+
+**Type**: `tfc:spreading_crop`
+
+#### Extra Method
+
+- `.fruitBlock(fruitBlock: ResourceLocation)`: Sets the block that will be used as the block's fruit block, defaults to `minecraft:honey_block`
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_spreading_crop', 'tfc:spreading_crop')
+        .fruitBlock('minecraft:melon')
+})
+```
+
+### Flooded Crops
+
+Creates a new flooded crop block
+
+Inherits the methods of [TFC's crop builder](#default-crops)
+
+**Type**: `tfc:flooded_crop`
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_flooded_crop', 'tfc:flooded_crop')
+})
+```
+
+### Pickable Crops
+
+Creates a new spreading crop block
+
+Inherits the methods of [TFC's crop builder](#default-crops)
+
+**Type**: `tfc:pickable_crop`
+
+#### Extra Methods
+
+- `.fruit(fruit: ResourceLocation)`: Sets the item the player will be given when they pick the block
+- `.matureFruit(fruit: ResourceLocation)`: Sets the item the player will be given when they pick the block and the crop is mature, defaults to `minecraft:apple`
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_pickable_crop', 'tfc:pickable_crop')
+        .matureFruit('minecraft:stone')
+        .fruit('minecraft:cobblestone')
 })
 ```
 
@@ -498,7 +663,9 @@ Inherits the methods of the basic item builder
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_fluid_container', 'tfc:fluid_container').fluidTagAccept('kubejs:special_water').capacity(1000)
+    event.create('my_fluid_container', 'tfc:fluid_container')
+        .fluidTagAccept('kubejs:special_water')
+        .capacity(1000)
 })
 ```
 
@@ -518,7 +685,8 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_electrum_hammer', 'tfc:hammer').metalTexture('kubejs:block/trip_hammers/electrum')
+    event.create('my_electrum_hammer', 'tfc:hammer')
+        .metalTexture('kubejs:block/trip_hammers/electrum')
 })
 ```
 
@@ -539,7 +707,9 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => [
-    event.create('my_javelin', 'tfc:javelin').thrownDamage(5).skeletonWeapon()
+    event.create('my_javelin', 'tfc:javelin')
+        .thrownDamage(5)
+        .skeletonWeapon()
 ])
 ```
 
@@ -573,11 +743,17 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(fluidTag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
 - `.capacity(capacity: Supplier<Integer>)`: Sets the mB capacity supplier of the mold, defaults to `() => 100`
 
+If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, teh following method is available
+
+- `.tfcccAllowedInMoldTable(model?: List<string>)`: Allows the mold to be placed in a mold table
+    - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
+
 #### Example
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_mold', 'tfc:mold').capacity(750)
+    event.create('my_mold', 'tfc:mold')
+        .capacity(750)
 })
 ```
 
@@ -673,7 +849,9 @@ Inherits the methods of other tool item builders
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_fishing_rod', 'tfc:fishing_rod').fishingStrength(4).largeBait()
+    event.create('my_fishing_rod', 'tfc:fishing_rod')
+        .fishingStrength(4)
+        .largeBait()
 })
 ```
 
@@ -693,7 +871,8 @@ Inherits the methods of the default item builder
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_jar', 'tfc:jar').placedModel('kubejs:block/placed_jar')
+    event.create('my_jar', 'tfc:jar')
+        .placedModel('kubejs:block/placed_jar')
 })
 ```
 
@@ -713,7 +892,8 @@ Inherits the methods of the default item builder
 
 ```js
 StartupEvents.registry('item', event => {
-    event.create('my_glass_cutter', 'tfc:glassworking').operation('pinch')
+    event.create('my_glass_cutter', 'tfc:glassworking')
+        .operation('pinch')
 })
 ```
 
@@ -869,6 +1049,7 @@ Inherits the methods of the basic fluid builder
 
 ```js
 StartupEvents.registry('fluid', event => {
-    event.create('my_cool_fluid', 'tfc:spring').steamParticle('minecraft:lava_drip_particle')
+    event.create('my_cool_fluid', 'tfc:spring')
+        .steamParticle('minecraft:lava_drip_particle')
 })
 ```

@@ -45,6 +45,10 @@ If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following r
 - [Stinky Soup](#firmalife-stinky-soup)
 - [Vat](#firmalife-vat)
 
+If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installed, the following recipes are supported:
+
+- [Tree Tap](#afc-tree-tap)
+
 ## Alloy
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#alloy)!
@@ -854,7 +858,7 @@ event.recipes.firmalife.stinky_soup(ingredients: Ingredient[], fluidIngredient: 
 ### Example
 
 ```js
-ServerEVents.recipes(event => {
+ServerEvents.recipes(event => {
     event.recipes.firmalife.stinky_soup(['minecraft:dirt', TFC.ingredient.not(TFC.ingredient.notRotten())], TFC.fluidStackIngredient('#minecraft:water', 1000), 500, 460)
 })
 ```
@@ -888,3 +892,30 @@ event.recipes.firmalife.vat()
 - Length: A number, the number of ticks the vat must process for, defaults to `600`
 - Temperature: A number, the minimum temperature °C of the vat in order to process, defaults to `300`
 - Jar: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
+
+## AFC Tree Tap
+
+AFC's tree tapping recipe type
+
+### Method Signature
+
+```ts
+event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
+    .resultFluid(fluid: FluidStackJS)
+    .minTemp(f: number)
+    .maxTemp(f: number)
+    .temps(min: number, max: number)
+    .requiresNaturalLog(required: boolean)
+    .springOnly(springOnly: boolean)
+```
+
+- 1st argument: A [block ingredient](../bindings/#block-ingredient)
+
+<br>
+
+- ResultFluid: Sets the fluid result of the recipe
+- MinTemp: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`
+- MaxTemp: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`
+- temps: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
+- RequiresNaturalLog: Determines if the recipe needs the log block to have the `natural=true` property to work, defaults to `true`
+- SpringOnly: Determines if the recipe only works during the spring time, defaults to `false`

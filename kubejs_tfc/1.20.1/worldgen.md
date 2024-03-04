@@ -547,7 +547,7 @@ event.spreadingCrop(name: string, block: string, placement: Consumer<PlacedFeatu
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock](../custom/#wild-crop)
+- 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock](../custom/#wild-crops)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Spreading Bush
@@ -561,7 +561,7 @@ event.spreadingBush(name: string, block: string, placement: Consumer<PlacedFeatu
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock](../custom/#spreading-bush)
+- 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock](../custom/#spreading-berry-bush)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Generic

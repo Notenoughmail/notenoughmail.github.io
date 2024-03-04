@@ -13,6 +13,8 @@ This is the documentation for KubeJS TFC
 
 Available of [Modrinth](https://modrinth.com/mod/kubejs-tfc) and [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/kubejs-tfc)
 
+Source available on [GitHub](https://github.com/Notenoughmail/KubeJS-TFC)
+
 ## [1.18.2](1.18.2/)
 
 Version 0.x.x available for 1.18.2 and TFC:TNG 2.x.x
