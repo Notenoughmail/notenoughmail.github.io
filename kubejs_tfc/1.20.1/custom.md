@@ -336,7 +336,7 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.lifecycle(i: number, lifecycle: Lifecycle)`: Sets the bush's lifecycle for a particular month, defaults to `dormant` for ever month, accepts an integer in the range [0, 11] for the first parameter, and either `healthy`, `dormant`, `fruiting`, or `flowering` for the second
+- `.lifecycle(month: Month, lifecycle: Lifecycle)`: Sets the bush's lifecycle for a particular month, defaults to `dormant` for ever month, accepts a month for the first parameter, and either `healthy`, `dormant`, `fruiting`, or `flowering` for the second
 - `.productItem(item: Consumer<ItemBuilder>)`: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`: Sets the bush's product item to be an existing item, will prevent the other product item from being created
@@ -348,11 +348,11 @@ Additionally, this will register a climate range with the same id as the block, 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_stationary_bush', 'tfc:stationary_berry_bush')
-        .lifecycle(2, 'healthy')
-        .lifecycle(3, 'healthy')
-        .lifecycle(4, 'flowering')
-        .lifecycle(5, 'fruiting')
-        .lifecycle(6, 'healthy')
+        .lifecycle('march', 'healthy')
+        .lifecycle('april', 'healthy')
+        .lifecycle('may', 'flowering')
+        .lifecycle('june', 'fruiting')
+        .lifecycle('july', 'healthy')
 })
 ```
 
@@ -375,10 +375,10 @@ Additionally, this will register a climate range with the same id as the block, 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_spreading_bush', 'tfc:spreading_berry_bush')
-        .lifecycle(0, 'fruiting')
-        .lifecycle(1, 'fruiting')
-        .lifecycle(2, 'healthy')
-        .lifecycle(3, 'flowering')
+        .lifecycle('january', 'fruiting')
+        .lifecycle('february', 'fruiting')
+        .lifecycle('march', 'healthy')
+        .lifecycle('april', 'flowering')
         .maxHeight(14)
 })
 ```
@@ -394,11 +394,11 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
-- `.path(path: Consumer<TFCPathBlockBuilder>)`: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
-- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
+- `.path(path: Consumer<TFCPathBlockBuilder>)`: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
+- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
     - Those of the default block builder
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
+- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
 
 #### Example
 

@@ -26,6 +26,11 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Sluicing](#sluicing)
 - [Panning](#panning)
 
+If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following are also available
+
+- [Greenhouse Type](#firmalife-greenhouse-type)
+- [Planter](#firmalife-planter)
+
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessable data TFC adds to the player is accessable form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
 {: .notice }
@@ -480,6 +485,94 @@ event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<
 ```js
 TFCEvents.data(event => {
     event.panning('minecraft:gravel', 'kubejs:gravel_panning', ['tfc:item/pan/native_gold/quartzite_full', 'tfc:item/pan/native_gold/result'])
+})
+```
+
+## Firmalife Greenhouse Type
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: string)
+```
+
+- 1st argument: A [BlockIngredient](../bindings/#block-ingredient), the blocks that will be accepted by the greenhouse type
+- 2nd argument: A number, the tier of the greenhouse, values for the default types are as follows:
+    - Wood: 5
+    - Copper: 10
+    - Iron: 15
+    - Stainless Steel: 20
+- *Optional 3rd argument*: A string, the name of the greenhouse type
+
+### Example
+
+```js
+TFCEvents.data(event => {
+    event.firmalifeGreenhouseType('#kubejs:greenhouse_glass', 7)
+})
+```
+
+## Firmalife Planter
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.firmalifePlantable(
+    ingredient: Ingredient,
+    planterType: @Nullable PlanterType,
+    tier: @Nullable number,
+    stages: @Nullable number,
+    extraSeedChance: @Nullable number,
+    seed: @Nullable ItemStack,
+    crop: ItemStack,
+    nutrient: @Nullable Nutrient,
+    textures: string[],
+    special: @Nullable string,
+    name?: string
+)
+```
+
+- 1st argument: An item ingredient, the seed items to be used for the plantable definition
+- 2nd argument: The planter type to use, may be `quad`, `large`, `hanging`, `trellis`, `bonsai`, or `hydroponic`, may be null to default to `quad`
+- 3rd argument: The minimum greenhouse tier needed for the plant to grow, defaults to `0`
+- 4th argument: How many stages the planter has, one less than the number of textures the planter must cycle through, may be null for `trellis`, and `bonsai` planter types
+- 5th argument: A number, in the range [0, 1], determines the chance of getting an extra seed stack back when harvesting, may be null to default to `0.5`
+- 6th argument: An item stack, the seed item returned when harvested, may be null to not drop a seed item
+- 7th argument: An item stack, the product of the crop
+- 8th argument: A `Nutrient`, the nutrient the crop consumes, may be `nitrogen`, `phosphorous`, or `potassium`, may be null to default to `nitrogen`
+- 9th argument: An array of strings, the path of textures to use. Has different rules for different planter types
+    - For `large`, `quad`, `hydroponic`, and `hanging` planter types: Order the textures in the same order as the growth order
+    - For the `trellis` planter type: Order the textures in the order growing, dry, flowering, fruiting
+    - For the `bonsai` planter type: Order the textures in the order fruiting, dry, flowering, branch, leaves
+- 10th argument: A string, the extra texture used by `hanging` planter types. Pass in the fruit texture if the planter type is `hanging` else pass in null
+- *Optional 11th argument*: A string, the name of the planter definition
+
+### Example
+
+```js
+TFCEvents.data(event => {
+    event.firmalifePLantable(
+        'minecraft:beetroot_seeds',
+        'bonsai',
+        15,
+        null,
+        0.1,
+        'minecraft:beetroot_seeds',
+        'minecraft:beetroots',
+        'potassium',
+        [
+            'kubejs:block/planter/beet_fruiting',
+            'kubejs:block/planter/beet_dry',
+            'kubejs:block/planter/beet_flowering',
+            'kubejs:block/planter/beet_branch',
+            'kubejs:block/planter/beet_leaves'
+        ],
+        null
+    )
 })
 ```
 

@@ -69,9 +69,6 @@ TFCEvents.rockSettings(event => {
 
 ## Limiting Containers
 
-{: .deprecated }
-> In its current state, this event is, not bad, but suboptimal and my be reworked in the future to be more flexible 
-
 TFC has an item size feature which it uses to limit which items can go into its containers. KubeJS TFC allows you to somewhat replicate this behavior with other mods' containers, with some limitations
 
 - It will only be able to apply to a container which registers a `MenuType`
@@ -490,7 +487,7 @@ TFCEvents.registerFoodTrait(event => {
 
 ## Custom Item Stack Modifiers
 
-TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to well, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
+TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to, as one might imagine, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
 
 This event fires in the `startup_scripts` folder
 
