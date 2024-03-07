@@ -126,7 +126,7 @@ declare class RegisterClimateModelEventJS {
     registerClimateModel(name: string, model: Consumer<KubeJSClimateModel>): void
     registerAdvancedClimateModel(name: string, model: Consumer<AdvancedKubeJSClimateModel>): void
     newVec2(x: number, y: number): Vec2
-    getDefaultCurrentTemperatureCallback(): (BevelReader, BlockPos, long, int) => number
+    getDefaultCurrentTemperatureCallback(): (LevelReader, BlockPos, long, int) => number
     getDefaultAverageTemperatureCallback(): (LevelReader, BlockPos) => number
     getDefaultAverageRainfallCallback(): (LevelReader, BlockPos) => number
     getDefaultAirFogCallback(): (LevelReader, BlockPos, long) => number
@@ -257,7 +257,7 @@ declare class StartFireEventJS {
 - `getTargetedFace()`: Returns the direction of the clicked face
 - `.getEntity()`: Returns the player of the event, may be null
 - `.getItem()`: Returns the item stack used to start the fire
-- `.isString()`: Returns true if the event is strong
+- `.isStrong()`: Returns true if the event is strong
 
 ### Example
 
@@ -267,7 +267,7 @@ const CharcoalForgeBlock = Java.loadClass("net.dries007.tfc.common.blocks.device
 const CharcoalForge = Java.loadClass("net.dries007.tfc.common.blockentities.CharcoalForgeBlockEntity")
 
 TFCEvents.startFire(event =>{
-    if (event.block.id == 'create:fluid_tank' && CharcoalForgeBlock.isValid(event.level, event.block.down.pos,) && event.isStrong()) {
+    if (event.block.id == 'create:fluid_tank' && CharcoalForgeBlock.isValid(event.level, event.block.down.pos) && event.isStrong()) {
         let be = event.block.down.entity
         if (be instanceof CharcoalForge && be.light(event.block.down.blockState)) {
             event.cancel()
@@ -360,7 +360,7 @@ declare class AnimalProductEventJS {
     setItemProduct(item: ItemStack): void
     setFluidProduct(fluid: FluidStackJS): void
     getUses(): number
-    setUses(uses: number): number
+    setUses(uses: number): void
 }
 ```
 
@@ -441,7 +441,7 @@ declare class DouseFireEventJS {
 
 - `.getLevel()`: Returns the event's level
 - `.getBlock()`: Returns the event's `BlockContainerJS`
-- `.getBounds()`: Returns an `AABB` representing the effected area
+- `.getBounds()`: Returns an `AABB` representing the total effected area
 - `.getPlayer()`: Returns the player that doused the fire, may be null
 
 ### Example
@@ -516,14 +516,14 @@ TFCEvents.registerItemStackModifier(event => {
 
 ### Modifier Applicator
 
-A modifier applicator is what actually performs the modifications on a stack when constructed for a recipe, it has the following method signature:
+A modifier applicator is what actually performs the modifications on a stack when constructed for a recipe, it is a functional interface with the following method signature:
 
 ```ts
 apply(stack: ItemStack, input: ItemStack): ItemStack
 ```
 
-- `stack`: This is the stack being built, you are free to modify it in any way
-- `input`: This is the input stack, it should not be modified in any way, if it is used, the modifier you register should have `true` for the `dependsOnInput` argument
+- `stack`: The stack being built, you are free to modify it in any way
+- `input`: The input stack, it should not be modified in any way, if it is used, the modifier you register should have `true` for the `dependsOnInput` argument
 
 ## Register Representative Blocks
 

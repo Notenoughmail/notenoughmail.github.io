@@ -26,6 +26,10 @@ Documentation on creating TFC's [data types](https://terrafirmacraft.github.io/D
 
 Documentation on KubeJS TFC's js events
 
+## [Miscellaneous Features](misc/)
+
+Documentation on KubeJS TFC's features which don't fir into another page
+
 ## [Recipes](recipes/)
 
 Documentation on how to create TFC's recipe types
