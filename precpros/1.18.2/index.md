@@ -10,6 +10,6 @@ has_toc: false
 
 # 1.18.2
 
-## [Changelong](changelog/)
+## [Changelog](changelog/)
 
 ## [KubeJS Integration](kube/)

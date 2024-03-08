@@ -1,0 +1,31 @@
+---
+layout: page
+title: Miscellaneous Features
+permalink: /kubejs_tfc/1.20.1/misc/
+parent: 1.20.1
+grand_parent: KubeJS TFC
+---
+
+# Miscellaneous Features
+
+This page is for features which don't deserve their own page and/or don't fit into another page
+
+- [Recipe Components](#recipe-components)
+
+## Recipe Components
+
+KubeJS handles recipes through *recipe schemas*, which are made up of *recipe components*, essentially a mirror to a recipe type's json (de)serialization process. For the most part recipe schemas are made through addons, but KubeJS does have a startup event for registering custom recipe schemas in your scripts.
+
+{: .notice }
+This is *not* a tutorial on how to use that event, merely it is an acknowledgement of the recipe components KubeJS TFC adds to the event
+
+### Provided Components
+
+KubeJS TFC adds 6 recipe component types
+
+- `tfc:outputItemStackProvider`: An output [ItemProviderComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/ItemProviderComponent.java), used by recipes which support [ISP](../bindings/isp/) outputs
+- `tfc:otherItemStackProvider`: An [ItemProviderComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/ItemProviderComponent.java), used by recipes which support [ISP](../bindings/isp/) intermediates
+- `tfc:fluidIngredient`: A [FluidIngredientComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/FluidIngredientComponent.java), used by recipes which support [fluid ingredients](../bindings/#fluid-ingredient)
+- `tfc:fluidStackIngredient`: A [FluidStackIngredientComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/FluidIngredientComponent.java), used by recipes which support [fluid stack ingredients](../bindings/#fluid-stack-ingredient)
+- `tfc:alloyPart`: An [AlloyPartComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/AlloyPartComponent.java), used by alloy recipes for their [alloy parts](../bindings/#alloy-part)
+- `tfc:blockIngredient`: A [BlockIngredientComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/BlockIngredientComponent.java), used by recipes which support [block ingredients](..bindings/#block-ingredient)

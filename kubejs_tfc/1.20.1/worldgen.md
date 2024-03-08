@@ -194,7 +194,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```ts
 event.clusterVein(
     name: string,
-    replacementMap: List<VeinReplacementEntry>,
+    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
     density: number,
     minY: number,
@@ -206,7 +206,7 @@ event.clusterVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [VeinReplacementEntries](#vein-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [VeinReplacementEntries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -242,7 +242,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```ts
 event.pipeVein(
     name: string,
-    replacementMap: List<VeinReplacementEntry>,
+    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
     density: number,
     minY: number,
@@ -260,7 +260,7 @@ event.pipeVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [vein replacement entries](#vein-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [vein replacement entries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -303,7 +303,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```ts
 event.discVein(
     name :string,
-    replacementMap: List<VeinReplacementEntry>,
+    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
     density: number,
     minY: number,
@@ -316,7 +316,7 @@ event.discVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [vein replacement entries](#vein-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [vein replacement entries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -358,6 +358,227 @@ event.ifThen(name: string, if_: string, then: string, placement: Consumer<Placed
 - 3rd argument: A string, the id of a placed feature that will only place if the first feature places
 - 4th argument: A [feature placement consumer](#feature-placement)
 
+## Soil Disc
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#soil-disc)!
+
+### Method Signature
+
+```ts
+event.soilDisc(
+    name: string,
+    replacementMap: List<BlockToBlockStateMapEntry>,
+    minRadius: number,
+    maxRadius: number,
+    height: number,
+    integrity: @Nullable number,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A list of [block to block state entries](#block-to-block-state-replacement-entry), defines the replacement map of the soil disc
+- 3rd argument: A number, the minimum radius of the disc
+- 4th argument: A number, the maximum radius of the disc
+- 5th argument: A number, the height of the disc
+- 6th argument: A number, in the range [0, 1], specifies the probability that any given block in the disc will place, may be null to specify the default value of `1`
+- 7th argument: A [feature placement consumer](#feature-placement)
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.soilDisc('example_soil_disc', [
+        event.blockToBlockState('tfc:dirt/loam', 'kubejs:dirt')
+        event.blockToBlockState('tfc:grass/loam', 'kubejs:dirt_grass')
+    ], 3, 16, 5, 0.8, placement => {
+        placement.climate(climate => {
+            climate.minTemp(-3)
+            climate.maxTemp(7)
+        })
+    })
+})
+ServerEvents.tags('worldgen/placed_features', event => {
+    event.add('tfc:in_biome/soil_discs/hills', 'kubejs_tfc:example_soil_disc')
+})
+```
+
+## Hot Spring
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#hot-spring)!
+
+### Method Signature
+
+```ts
+event.hotSpring(
+    name: string,
+    wallState: @Nullable string,
+    fluidState: string,
+    radius: number,
+    allowUnderwater: boolean,
+    replacesFluidOnContact: @Nullable List<BlockToWeightedBlockStateMapEntry>,
+    decoration: @Nullable FissureDecoration,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the block state to use for the hot spring, may be null to use the lowest rock layer
+- 3rd argument: A string, the fluid to fill the spring with, may be air
+- 4th argument: A number, in the range [1, 16], the approximate radius of the spring
+- 5th argument: A boolean, if the hot spring should be allowed to generate underwater
+- 6th argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the blocks to place if placed underwater, may be null
+- 7th argument: A [fissure decoration](#fissure-decoration) object, may be null
+- 8th argument: A [feature placement consumer](#feature-placement)
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.hotSpring('example_hot_Spring', 'minecraft:deepslate', 'minecraft:lava', 8, true, [
+        event.blockToBlockState('tfc:rock/raw/dacite', 'tfc:rock/hardened/phyllite')
+    ], event.fissureDecoration([
+        event.blockToWeightedBlockState(['tfc:dirt/loam', 'tfc:grass/loam'], ['8 minecraft:stone', 'minecraft:cobblestone']),
+        event.blockToWeightedBlockState(['tfc:dirt/sandy_loam', 'tfc:grass/sandy_loam'], ['minecraft:gold_block'])
+    ], 5, 23, 40), placement => {}
+    )
+})
+ServerEvents.tags('worldgen/placed_features', event => {
+    event.add('tfc:in_biome/large_features/old_mountains', 'kubejs_tfc:example_hot_spring')
+})
+```
+
+## Simple Block State
+
+Creates a `minecraft:simple_block` configured feature using a simple state provider
+
+### Method Signature
+
+```ts
+event.simpleBlockState(name: string, blockState: string, placement: Consumer<PlacedFeatureProperties>)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string representation of a blockstate, the state to be placed
+- 3rd argument: A [feature placement consumer](#feature-placement)
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.simpleBlockState('example_crop_placement', 'kubejs:example_crop', placement => {
+        placement.heightMap('world_surface_wg')
+        placement.jsonPlacement({
+            type: 'block_predicate_filter',
+            predicate: {
+                type: 'tfc:replaceable'
+            }
+        })
+        placement.jsonPlacement({
+            type: 'block_predicate_filter',
+            predicate: {
+                type: 'would_survive',
+                state: {
+                    Name: 'kubejs:example_crop',
+                    Properties: {}
+                }
+            }
+        })
+    })
+})
+ServerEvents.tags('worldgen/placed_features', event => {
+    event.add('tfc:feature/crops', 'kubejs_tfc:example_crop_placement')
+})
+```
+
+## Random Patch
+
+Creates a `minecraft:random_patch` configured feature
+
+### Method Signature
+
+```ts
+event.randomPatch(
+    name: string,
+    tries: @Nullable number,
+    xzSpread: @Nullable number,
+    ySpread: @nullable number,
+    feature: string,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A number, how many times the feature should attempt to place, may be null to default to 128
+- 3rd argument: A number, the horizontal spread of the patch, may be null to default to 7
+- 4th argument: A number, the vertical spread of the patch, may be null to default to 3
+- 5th argument: A string, the name of the feature to attempt to place
+- 6th argument: A [feature placement consumer](#feature-placement)
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.randomPatch('example_crop_patch', 30, 15, 10, 'kubejs_tfc:example_crop_placement', placement => {})
+})
+ServerEvents.tags('worldgen/placed_features', event => {
+    event.add('tfc:feature/crops', 'kubejs_tfc:example_crop_patch')
+})
+```
+
+## Tall Wild Crop
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#tall-wild-crop)!
+
+### Method Signature
+
+```ts
+event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the block to place, must be an instance of [WildDoubleCropBlock](../custom/#wild_crop)
+- 3rd argument: A [feature placement consumer](#feature-placement)
+
+## Spreading Crop
+
+```ts
+event.spreadingCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock](../custom/#wild-crops)
+- 3rd argument: A [feature placement consumer](#feature-placement)
+
+## Spreading Bush
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#spreading-bush)!
+
+### Method Signature
+
+```ts
+event.spreadingBush(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock](../custom/#spreading-berry-bush)
+- 3rd argument: A [feature placement consumer](#feature-placement)
+
+## Generic
+
+Creates a configured feature of the given type using the given config
+
+### Method Signature
+
+```ts
+event.generic(name: string, type: string, featureConfig: JsonObject, placement: COnsumer<PlacedFeatureProperties>)
+```
+
+- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the type of configured feature to be created
+- 3rd argument: A json object, the `config` object of a normal configured feature
+- 4th argument: A [feature placement consumer](#feature-placement)
+
 ## Boulder State
 
 This defines an entry to a boulder feature's `state` value
@@ -373,20 +594,53 @@ event.boulderState(rock: string, blockStates: List<string>)
 
 See the [boulder](#boulders) example for an example of usage
 
-## Vein Replacement Entry
+## Blocks to Block States Replacement Entry
 
-This defines an entry to a vein's block replacement map
+This defines an entry to a blocks to weighted blockstates map
 
 ### Method Signature
 
 ```ts
-event.veinReplacement(replace: List<string>, with: List<string>)
+event.blockToWeightedBlockState(replace: List<string>, with: List<string>)
 ```
 
 - 1st argument: A list of strings, the registry name of blocks to be replaced
 - 2nd argument: A list of strings, string representations of a weighted block state, i.e. `8 minecraft:oak_log[axis=z]`, the blocks to be placed as part of the vein
 
-See the [cluster](#cluster-veins), [pipe](#pipe-veins), and [disc](#disc-veins) examples for an example of usage
+See the [cluster](#cluster-veins), [pipe](#pipe-veins), and [disc](#disc-veins) vein examples for usage
+
+## Block to Block State Replacement Entry
+
+This defines an entry to a block to blockstate map
+
+### Method Signature
+
+```ts
+event.blockToBlockState(block: string, state: string)
+```
+
+- 1st argument: A string, the bloc kto be replaced
+- 2nd argument: A string representation of a block state, the state to be placed
+
+## Fissure Decoration
+
+Hot springs and fissures may have additional decorations around them, this is used to define them
+
+### Method Signature
+
+```ts
+event.fissureDecoration(
+    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
+    rarity: number,
+    radius: number,
+    count: number
+)
+```
+
+- 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the additional ores that should spawn around the fissure
+- 2nd argument: A number, the rarity of block s being replaced
+- 3rd argument: A number, the radius around the fissure that blocks should be replaced
+- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`
 
 ## Vein Properties
 
@@ -445,7 +699,7 @@ vein.biomes(biomeTag: string)
 
 ### Near Lava
 
-Determines the `near_lava` values of the vein
+Determines the `near_lava` value of the vein
 
 Method signature:
 
@@ -510,7 +764,7 @@ placement.climate(climate: Consumer<ClimateModifier>)
     - `.maxTemp(f: number)`: Accepts a number, sets the maximum temperature
     - `.minForest(forest: string)`: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
     - `.maxForest(forest: string)`: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
-    -`.fuzzy(b: boolean)`: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
+    - `.fuzzy(b: boolean)`: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
 

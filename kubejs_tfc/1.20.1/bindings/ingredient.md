@@ -28,7 +28,7 @@ TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient)
 ```
 
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
-- 2nd argument: A [fluid stack ingredient](../bindings/#fluid-stack-ingredient), the fluid(s) this ingredient matches
+- 2nd argument: A [fluid stack ingredient](https://notenoughmail.github.io/kubejs_tfc/1.20.1/bindings/#fluid-stack-ingredient), the fluid(s) this ingredient matches
 
 Creates an ingredient of type `tfc:fluid_item` with the fluid ingredient defined by the `fluid` argument and the item ingredient defined by the `delegate` argument
 
@@ -86,7 +86,7 @@ TFC.ingredient.hasTrait(delegate?: Ingredient, trait: string)
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
 - 2nd argument: The name of the food trait which must be present
 
-Creates an ingredient of type `tfc:has_trait` with the trait defined by the `trait` argument and the ite mingredient defined by the `delegate` ingredient
+Creates an ingredient of type `tfc:has_trait` with the trait defined by the `trait` argument and the item ingredient defined by the `delegate` ingredient
 
 ### Examples
 

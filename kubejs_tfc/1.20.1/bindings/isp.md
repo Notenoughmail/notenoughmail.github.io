@@ -10,13 +10,13 @@ grand_parent: 1.20.1
 
 [Item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers) are an item stack with attached data, known as item stack modifiers. There are several methods for creating them
 
-These are available from the `TFC.itemStackProvider` field
+These are available from the `TFC.itemStackProvider` and `TFC.isp` fields
 
 ## Method Signatures
 
 ```ts
 TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
-TFC.itemStackProvider.empty(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
+TFC.isp.empty(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
 TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
 ```
 
@@ -35,9 +35,9 @@ These methods return an `ItemStackProviderJS` object which has several helper me
 
 ```js
 TFC.itemStackProvider.of('3x minecraft:dirt', ['tfc:add_glass', {type: 'tfc:add_trait', trait: 'kubejs:my_cool_trait'}])
-TFC.itemStackProvider.of('5x minecraft:stone')
+TFC.isp.of('5x minecraft:stone')
 TFC.itemStackProvider.empty('tfc:add_powder')
-TFC.itemStackProvider.copyInput()
+TFC.isp.copyInput()
 TFC.itemStackProvider.copyInput('tfc:copy_heat')
 ```
 
@@ -141,6 +141,10 @@ declare class ItemStackProviderJS {
     copyOldestFood(): ItemStackProviderJS
     addBait(): ItemStackProviderJS
     meal(food: Consumer<BuildFoodItemData>, portions?: List<Consumer<BuildPortionData>>): ItemStackProviderJS
+    // The following are available if FirmaLife is installed
+    firmaLifeAddPiePan(): ItemStackProviderJS
+    firmaLifeCopyDynamicFood(): ItemStackProviderJS
+    firmaLifeEmptyPan(): ItemStackProviderJS
 }
 ```
 
@@ -181,6 +185,12 @@ declare class ItemStackProviderJS {
         - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1
         - `.waterModifier(modifier: number)`: Multiplies the water from the ingredient, defaults to 1
         - `.saturationModifier(modifier: number)`: Multiplies the saturation from the ingredient, defaults to 1
+
+If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
+
+- `.firmaLifeAddPiePan()`: Adds a `firmalife:add_pie_pan` modifier
+- `.firmaLifeCopyDynamicFood()`: Adds a `firmalife:copy_dynamic_food` modifier
+- `.firmaLifeEmptyPan()`: Adds a `firmalife:empty_pan` modifier
 
 ## Examples
 
