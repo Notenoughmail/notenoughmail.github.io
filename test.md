@@ -30,8 +30,8 @@ Just a place to see how various things look/interact and if certain things work
 >
 > What a load of rubbish, eh?
 
-{: .warning }
-> A multiline warning callout
+{: .unstable }
+> A multiline unstable callout
 >
 > Eat any good books lately?
 
