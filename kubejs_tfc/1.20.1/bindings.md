@@ -24,6 +24,7 @@ This provides access to various objects and methods that can be used throughout 
     - [Climate](#climate)
     - [Ingredient](#ingredient)
     - [Item Stack Provider](#item-stack-provider)
+    - [Misc. Bindings](#miscellaneous)
 
 ## Methods
 
