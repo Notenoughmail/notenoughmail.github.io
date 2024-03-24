@@ -20,6 +20,14 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Pipe Veins](#pipe-veins)
 - [Disc Veins](#disc-veins)
 - [If-Then](#if-then)
+- [Soil Disc](#soil-disc)
+- [Hot Spring](#hot-spring)
+- [Simple Block State](#simple-block-state)
+- [Random Patch](#random-patch)
+- [Tall Wild Crop](#tall-wild-crop)
+- [Spreading Crop](#spreading-crop)
+- [Spreading Bush](#spreading-bush)
+- [Generic Features](#generic)
 
 {: .notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)

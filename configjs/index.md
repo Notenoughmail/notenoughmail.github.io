@@ -13,7 +13,7 @@ This is the documentation for ConfigJS, a KubeJS addon that allows you to create
 
 Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/configjs)
 
-Source available on [GutHub](https://github.com/Notenoughmail/ConfigJS)
+Source available on [GitHub](https://github.com/Notenoughmail/ConfigJS)
 
 ## [1.20.1](1.20.1/)
 

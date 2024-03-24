@@ -39,13 +39,13 @@ aux_links:
 
 callouts:
   notice:
-    title: Notice
+    title: ⚠️ Notice
     color: yellow
   deprecated:
-    title: Deprecated
+    title: 🗑️ Deprecated
     color: green
   unstable:
-    title: Unstable
+    title: ❗ Unstable
     color: red
 
 # Exclude from processing.

@@ -28,7 +28,7 @@ Documentation on KubeJS TFC's js events
 
 ## [Miscellaneous Features](misc/)
 
-Documentation on KubeJS TFC's features which don't fir into another page
+Documentation on KubeJS TFC's features which don't fit into another page
 
 ## [Recipes](recipes/)
 

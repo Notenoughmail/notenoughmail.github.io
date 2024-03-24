@@ -37,7 +37,7 @@ This event is fired in the `startup_scripts` folder
 event.defineLayer(
     id: string,
     raw: string,
-    hardened: sting,
+    hardened: string,
     gravel: string,
     cobble: string,
     sand: string,
@@ -162,7 +162,7 @@ The two register methods have the following arguments:
         - `BlockContainerJS`: The level and position
         - `long`: The calendar tick
     - `.setOnWorldLoad(Consumer<ServerLevel>)`: Sets the model's actions when the world loads. Only available for advanced models
-    - `.setOnChunkLoad(callback)`: Sets the model's actions when a chunk loads. The callback provides a `WorldGenLevel`, `ChunkAccess`, and `ChunkData`. TFC uses this to update blocks on load with climate specific modifications
+    - `.setOnChunkLoad(callback)`: Sets the model's actions when a chunk loads. The callback provides a `WorldGenLevel`, `ChunkAccess`, and `ChunkData`. TFC uses this to update blocks on load with climate specific modifications. Only available for advanced models
 
 The `newVec2` method creates a `Vec2` for use in the wind vector callback and has the following arguments:
 

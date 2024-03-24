@@ -17,7 +17,7 @@ This page is for features which don't deserve their own page and/or don't fit in
 KubeJS handles recipes through *recipe schemas*, which are made up of *recipe components*, essentially a mirror to a recipe type's json (de)serialization process. For the most part recipe schemas are made through addons, but KubeJS does have a startup event for registering custom recipe schemas in your scripts.
 
 {: .notice }
-This is *not* a tutorial on how to use that event, merely it is an acknowledgement of the recipe components KubeJS TFC adds to the event
+This is *not* meant to be a tutorial on how to use that event, merely an acknowledgement of the recipe components KubeJS TFC adds to the event
 
 ### Provided Components
 

@@ -11,7 +11,7 @@ grand_parent: 1.20.1
 - [Rock Map](#rock-map)
 - [Wood Map](#wood-map)
 - [Heat utilities](#heat-utilities)
-- [Foo utilities](#food-utilities)
+- [Food utilities](#food-utilities)
 - [Size Utilities](#size-utilities)
 - [Collapse Utilities](#collapse-utilities)
 - [Chunk Data Utilities](#chunk-data-utilities)
