@@ -8,7 +8,7 @@ grand_parent: KubeJS TFC
 
 # Custom Blocks, Items, and Fluids
 
-KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), and [fluid](#fluids) types
+KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), [fluid](#fluids), and [BE attachment](#attachments) types
 
 ## Blocks
 
@@ -1051,5 +1051,41 @@ Inherits the methods of the basic fluid builder
 StartupEvents.registry('fluid', event => {
     event.create('my_cool_fluid', 'tfc:spring')
         .steamParticle('minecraft:lava_drip_particle')
+})
+```
+
+## Attachments
+
+In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds an attachemnt that can be used in scripts
+
+- [Inventory](#inventory)
+
+### Inventory
+
+Adds a new inventory attachment that can have its contents restricted based on TFC's size and weight values
+
+**Type**: `tfc:inventory`
+
+#### Definition
+
+- `width`: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
+- `height`: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
+- `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS' default inventory inputFilter. Optional
+- `size`: A `Predicate<Size>`, a filter for what size of items are allowed into the container. Optional
+- `weight`: A `Predicate<Weight>`, a fitler for what weight of items are allowed into the container. Optional
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.register('inventory_example')
+        .blockEntity(be => {
+            be.attach('tfc:inventory', {
+                width: 9,
+                height: 1,
+                size: size => size.isSmallerThan('large') // Limits the inventory to sizes smaller than large
+            })
+            be.rightClickOpensInventory() // Required if you wish to have the inventory open on right click
+        })
 })
 ```
