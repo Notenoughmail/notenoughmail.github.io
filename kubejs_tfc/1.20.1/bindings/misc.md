@@ -16,6 +16,7 @@ grand_parent: 1.20.1
 - [Collapse Utilities](#collapse-utilities)
 - [Chunk Data Utilities](#chunk-data-utilities)
 - [Noise Utils](#noise-utils)
+- [Metal Utils](#metal-utils)
 
 ## Rock Map
 
@@ -29,7 +30,7 @@ TFC.misc.rock.get('dacite')
 
 ## Wood Map
 
-A string to `RegistryWood` map of all of TFC's wood types
+A string to [NamedRegistryWood](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/NamedRegistryWood.java) map of all of TFC's wood types
 
 ### Example
 
@@ -69,6 +70,14 @@ Example:
 
 ```js
 TFC.misc.hasHeat('tfc:powder/sulfur')
+```
+
+### Get Heat Level
+
+Gets the `Heat` of the given temperature (°C), will be null for temperatures less than 1°C
+
+```js
+TFC.misc.getHeatLevel(96)
 ```
 
 ### Heat Levels
@@ -278,6 +287,17 @@ TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 - `level`: The level to get the forest type from
 - `pos`: The position to get the forest type from
 
+### Get Hydration
+
+Returns a number, in the range [0, 100], an expression of how hydrated soil at the position would be
+
+```ts
+TFC.misc.getHydration(level: LevelAccessor, posL BlockPos): number
+```
+
+- `level`: The level to get the hydration level from
+- `pos`: The position to get the hydration level from
+
 ## Noise Utils
 
 ### Open Simplex
@@ -310,3 +330,29 @@ TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number
 - `minSize`: The minimum size of the metaballs
 - `maxSize`: The maximum size of the metaballs
 - `radius`: The maximum radius of an individual ball
+
+## Metal Utils
+
+### Metal from Fluid
+
+Returns the `Metal` asscoiated with the given fluid, may be null
+
+```ts
+TFC.misc.getMetal(fluid: Fluid): Metal
+```
+
+### Metal from Ingot
+
+Returns the first `Metal` whose ingots match the given stack
+
+```ts
+TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
+```
+
+### Metal from Plate
+
+Returns the first `Metal` whose sheets match the given stack
+
+```ts
+TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
+```
