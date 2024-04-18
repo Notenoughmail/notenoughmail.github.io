@@ -8,7 +8,7 @@ grand_parent: KubeJS TFC
 
 # Custom Blocks, Items, and Fluids
 
-KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), and [fluid](#fluids) types
+KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), [fluid](#fluids), and [BE attachment](#attachments) types
 
 ## Blocks
 
@@ -32,6 +32,7 @@ The following types are available:
 - [Spreading Crops](#spreading-crops)
 - [Flooded Crops](#flooded-crops)
 - [Pickable Crops](#pickable-crops)
+- [Supports](#supports)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -44,6 +45,11 @@ Creates a new aqueduct block
 Inherits the methods of the default block builder
 
 **Type**: `tfc:aqueduct`
+
+#### Extra Method
+
+- `.allowedFluids(fluids: string[])`: Sets the fluids that the aqueduct may hold
+    - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
 
 #### Example
 
@@ -566,6 +572,31 @@ StartupEvents.registry('block', event => {
 })
 ```
 
+### Supports
+
+Creates a new support block
+
+Inherits the methods of the default block builder
+
+Will not automatically support blocks, use the [support method](../data/#supports) in the data event for that
+
+**Type**: `tfc:support`
+
+#### Extra methods
+
+- `.horizontal(horizontalSUpport: Consumer<HorizontalSupportBlockBuilder>)`: Allows for editing of the properties of the horizontal block
+    - The consumer has the same methods as the default block builder and one additional one:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_support', 'tfc:support')
+})
+```
+
 ### FirmaLife Cheese Wheel
 
 Creates a new cheese wheel block
@@ -612,6 +643,7 @@ The following types are available:
 - [Fishing Rod](#fishing-rod)
 - [Jar](#jar)
 - [Glassworking](#glassworking)
+- [Windmill Blade](#windmill-blade)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -897,6 +929,27 @@ StartupEvents.registry('item', event => {
 })
 ```
 
+### Windmill Blade
+
+Creates a new windmill blade item
+
+Inherits the methods of the default item builder
+
+***Type**: `tfc:windmill_blade`
+
+#### Extra Method
+
+- `.bladeColor(color: Color)`: Sets the color of the blade
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_windmill_blade', 'tfc:windmill_blade')
+        .bladeColor(0x545f97)
+})
+```
+
 ### FirmaLife Watering Can
 
 Creates a new watering can item
@@ -1051,5 +1104,41 @@ Inherits the methods of the basic fluid builder
 StartupEvents.registry('fluid', event => {
     event.create('my_cool_fluid', 'tfc:spring')
         .steamParticle('minecraft:lava_drip_particle')
+})
+```
+
+## Attachments
+
+In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds an attachemnt that can be used in scripts
+
+- [Inventory](#inventory)
+
+### Inventory
+
+Adds a new inventory attachment that can have its contents restricted based on TFC's size and weight values
+
+**Type**: `tfc:inventory`
+
+#### Definition
+
+- `width`: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
+- `height`: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
+- `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS' default inventory inputFilter. Optional
+- `size`: A `Predicate<Size>`, a filter for what size of items are allowed into the container. Optional
+- `weight`: A `Predicate<Weight>`, a fitler for what weight of items are allowed into the container. Optional
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.register('inventory_example')
+        .blockEntity(be => {
+            be.attach('tfc:inventory', {
+                width: 9,
+                height: 1,
+                size: size => size.isSmallerThan('large') // Limits the inventory to sizes smaller than large
+            })
+            be.rightClickOpensInventory() // Required if you wish to have the inventory open on right click
+        })
 })
 ```

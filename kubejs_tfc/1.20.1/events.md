@@ -36,28 +36,28 @@ This event is fired in the `startup_scripts` folder
 ```ts
 event.defineLayer(
     id: string,
-    raw: string,
-    hardened: string,
-    gravel: string,
-    cobble: string,
-    sand: string,
-    sandstone: string,
-    spike: @Nullable string,
-    loose: @Nullable string,
-    mossyLoose: @Nullable string
+    raw: Block,
+    hardened: Block,
+    gravel: Block,
+    cobble: Block,
+    sand: Block,
+    sandstone: Block,
+    spike: @Nullable Block,
+    loose: @Nullable Block,
+    mossyLoose: @Nullable Block
 )
 ```
 
-- 1st argument: A string, the registry name of the rock layer
-- 2nd argument: A string, the registry name of a block to be used as the raw stone block of the layer
-- 3rd argument: A string, the registry name of a block to be used as the hardened stone block of the layer
-- 4th argument: A string, the registry name of a block to be used as the gravel block of the layer
-- 5th argument: A string, the registry name of a block to be used as the cobble block of the layer
-- 6th argument: A string, the registry name of a block to be used as the sand block of the layer
-- 7th argument: A string, the registry name of a block to be used as the sandstone block of the layer
-- 8th argument: A string, the registry name of a block to be used as the spike block of the layer, may be null
-- 9th argument: A string, the registry name of a block to be used as the loose rock block of the layer, may be null
-- 10th argument: A string, the registry name of a block to be used as the mossy loose rock block of the layer, may be null
+- 1st argument: A block, the registry name of the rock layer
+- 2nd argument: A block, to be used as the raw stone block of the layer
+- 3rd argument: A block, to be used as the hardened stone block of the layer
+- 4th argument: A block, to be used as the gravel block of the layer
+- 5th argument: A block, to be used as the cobble block of the layer
+- 6th argument: A block, to be used as the sand block of the layer
+- 7th argument: A block, to be used as the sandstone block of the layer
+- 8th argument: A block, to be used as the spike block of the layer, may be null
+- 9th argument: A block, to be used as the loose rock block of the layer, may be null
+- 10th argument: A block, to be used as the mossy loose rock block of the layer, may be null
 
 ### Example
 
@@ -534,11 +534,11 @@ This event fires in the `startup_scripts` folder
 ### Method Signature
 
 ```ts
-event.register(representative: string, blocks: List<string>): void
+event.register(representative: Block, blocks: Block[]): void
 ```
 
-- 1st argument: The registry name of the block to be representative of the others
-- 2nd argument: A list of strings, the registry names of blocks to be represented by the representative
+- 1st argument: The block to represent the other blocks
+- 22nd argument: An array of blocks, to be represented by the first argument when prospecting
 
 ### Example
 
