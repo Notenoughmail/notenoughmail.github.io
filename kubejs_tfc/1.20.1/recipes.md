@@ -30,6 +30,7 @@ The following recipes are supported by KubeJS TFC:
 - [Soup Pot](#simple-pot)
 - [Quern](#quern)
 - [Scraping](#scraping)
+- [Sewing](#sewing)
 - [Advanced Shaped Crafting](#advanced-shaped-crafting)
 - [Advanced Shapeless Crafting](#advanced-shapeless-crafting)
 - [Damage Inputs Crafting](#damage-inputs-crafting)
@@ -271,7 +272,7 @@ event.recipes.tfc.bloomery(result: ItemStackProviderJS, catalyst: Ingredient, fl
 ```
 
 - 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result of the recipe
-- 2nd argument: An item ingredient, the ingredient which catalysts match
+- 2nd argument: An item ingredient, the ingredient which catalysts match, will accept amounts greater than 1
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 4th argument: A number, the number of ticks until the recipe is complete
 
@@ -601,6 +602,39 @@ event.recipes.tfc.scraping(result: ItemStackProviderJS, ingredient: Ingredient, 
 ```js
 ServerEvents.recipes(event => {
     event.recipes.tfc.scraping('4x minecraft:paper', '#minecraft:flowers', 'minecraft:block/dirt', 'minecraft:block/red_stained_glass')
+})
+```
+
+## Sewing
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#sewing)! (may not yet exist)
+
+### Method Signature
+
+```ts
+event.recipes.tfc.sewing(result: ItemStack, stitches: number[45], squares: number[32])
+```
+
+- 1st argument: An `ItemStack`, the result of the recipe
+- 2nd argument: An array of *45* numbers, a value of `0` indicates the position does not have a stitch, a value of `1` indicates the position does have a stitch
+- 3rd argument: An array of *32* numbers, a value of `-1` indicates the position does not have a cloth, a value of `0` indicates the position has a dark cloth, a value of `1` indicates the position has a light cloth
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.tfc.sewing('6x minecraft:dirt', [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 
+        1, 0, 0, 0, 1, 0, 0, 0, 1,
+        0, 1, 1, 1, 0, 1, 1, 1, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1,
+        0, 0, 0, 0, 0, 0, 0, 0, 0
+    ], [
+        -1, -1, 0, -1, -1, 0, -1, -1,
+        0, 0, 1, 0, 0, 1, 0, 0,
+        0, 0, 1, 0, 0, 1, 0, 0,
+        -1, -1, 0, -1, -1, 0, -1, -1
+    ])
 })
 ```
 

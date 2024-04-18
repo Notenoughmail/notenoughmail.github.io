@@ -65,7 +65,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 Method signature:
 
 ```ts
-TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | List<(string | Block | BlockState | tagKey<Block>)> | BlockIngredient))
+TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | Regex | List<(string | Block | BlockState | tagKey<Block> | Regex)> | BlockIngredient))
 ```
 
 Creates a `BlockIngredient` representing the blocks/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
@@ -103,7 +103,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 Method signature:
 
 ```ts
-TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | List<(string | Fluid | TagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
+TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | Regex | List<(string | Fluid | TagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
 
 Creates a `FluidIngredient` representing the fluids/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
@@ -142,7 +142,7 @@ Method signatures:
 
 ```ts
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number)
-TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | List<(string | Fluid | tagKey<Fluid> | FluidStackJS)> | FluidIngredient | FluidStackIngredient))
+TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | Regex | List<(string | Fluid | tagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
 
 Creates a `FluidStackIngredient` representing the fluids/tags given with the provided amount or with a default amount of 1000 if no amount can be assumed from the given object.
