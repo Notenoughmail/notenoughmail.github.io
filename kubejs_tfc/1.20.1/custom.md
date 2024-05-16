@@ -935,7 +935,7 @@ Creates a new windmill blade item
 
 Inherits the methods of the default item builder
 
-***Type**: `tfc:windmill_blade`
+**Type**: `tfc:windmill_blade`
 
 #### Extra Method
 

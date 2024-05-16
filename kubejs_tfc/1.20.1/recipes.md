@@ -299,6 +299,9 @@ event.recipes.tfc.casting(result: ItemStackProviderJS, mold: Ingredient, fluid: 
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient)
 - 4th argument: A number in the range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
 
+{: .notice }
+> All input fluids for the recipe must have the appropriate fluid tag in order for the mold item to accept them, typically this is either `tfc:usable_in_ingot_mold` or `tfc:usable_in_tool_head_mold`
+
 ### Example
 
 ```js
@@ -411,9 +414,11 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 - Chance: Accepts a number, in the range [0, 1], sets the chance of the item output
 
 {: .notice }
-> The ingredient needs to have an [item heat](../data/#heat) added to it
+> The ingredient needs to have an [item heat](../data/#item-heats) added to it
 >
 > The recipe may define an item result, a fluid result, both, or neither
+>
+> If the recipe has a fluid result, the fluid *must* have a matching [metal](../data/#metals) definition to work with crucibles
 
 ### Example
 
