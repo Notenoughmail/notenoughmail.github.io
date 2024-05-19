@@ -517,9 +517,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ```ts
 event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
     // Additional methods
-    .itemOutput(itemOutput: ItemStack[])
+    .itemOutput(itemOutput: ItemStackProviderJS[])
     .fluidOutput(fluidOutput: FluidStack)
-    .outputs(itemOutput: ItemStack[], fluidOutput: FluidStack)
+    .outputs(itemOutput: ItemStackProviderJS[], fluidOutput: FluidStack)
 ```
 
 - 1st argument: An array of item ingredients that the recipe consumes
@@ -529,7 +529,7 @@ event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngr
 
 <br>
 
-- ItemOutput: An array of `ItemStack`s indicating what items should be left in the pot
+- ItemOutput: An array of [ItemStackProviderJS](../bindings/#item-stack-provider)s indicating what items should be left in the pot
 - FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
 - Outputs: A convenience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
 

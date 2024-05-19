@@ -24,6 +24,7 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Custom Item Stack Modifiers](#custom-item-stack-modifiers)
 - [Representative Blocks](#register-representative-blocks)
 - [Birthdays](#modify-birthdays)
+- [Register Interactions](#register-interactions)
 
 ## Rock Settings
 
@@ -575,3 +576,27 @@ TFCEvents.birthdays(event => {
     event.add('august', 4, 'Barack Obama')
 })
 ```
+
+## Register interactions
+
+TFC has a custom system for performing certain interactions with items, most notably knapping, this event exposes the ability to create your own interactions
+
+### Method Signatures
+
+```ts
+declare class RegisterInteractionsEventJS {
+    interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction): void
+    interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction): void
+    interaction(ingredient: Ingredient, action: OnItemUseAction): void
+    blockItemPlacement(item: Item, block: Block): void
+}
+```
+
+- `.interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction)`: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean params determine if blocks and air should be valid targets
+- `.interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction)`: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean param determines if air is a valid target, blocks default to being a valid target
+- `.interaction(ingredient: Ingredient, action: OnItemUseAction)`: Registers the given ingredient for the provided [action](#onitemuseaction), defaulting to blocks being valid targets and air not
+- `.blockItemPlacement(item: Item, block: Block)`: Registers a block placement for the given item, placing the given block
+
+#### OnItemUseAction
+
+The basis of an interaction, a callback that takes a `ItemStack`, the item in the hand, and a `UseOnContext`, the context of the event, and returns an `InteractionResult`
