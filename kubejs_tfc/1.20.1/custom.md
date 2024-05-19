@@ -33,6 +33,7 @@ The following types are available:
 - [Flooded Crops](#flooded-crops)
 - [Pickable Crops](#pickable-crops)
 - [Supports](#supports)
+- [Anvils](#anvils)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -75,6 +76,7 @@ Inherits the methods of the default block builder
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
 - `.notAxisAligned()`: Rotates placed models by 45 degrees
 - `.collision()`: Enables collision for the block
+- `.withPreexistingItem(item: ResourceLocation)`: Sets the 'block item' of the block to be an existing item
 
 ### Example
 
@@ -405,6 +407,7 @@ Inherits the methods of the default block builder
     - Those of the default block builder
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
+- `.mud(mud: Consumer<BlockBuilder>)`: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
 
 #### Example
 
@@ -597,6 +600,30 @@ StartupEvents.registry('block', event => {
 })
 ```
 
+### Anvils
+
+Creates a new anvil block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:anvil`
+
+#### Extra Methods
+
+- `.tier(i: number)`: Sets the tier of the anvil, defaults to 0
+- `.defaultName(name: Component)`: Sets the default name of the anvil screen, defaults to `Text.translatable('tfc.block_entity.anvil')`
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_anvil', 'tfc:anvil')
+        .tier(8)
+        .defaultName(Text.translatable('kubejs.title.super_anvil'))
+})
+```
+
 ### FirmaLife Cheese Wheel
 
 Creates a new cheese wheel block
@@ -644,6 +671,7 @@ The following types are available:
 - [Jar](#jar)
 - [Glassworking](#glassworking)
 - [Windmill Blade](#windmill-blade)
+- [Glassworking Tool](#glassworking-tool)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -947,6 +975,28 @@ Inherits the methods of the default item builder
 StartupEvents.registry('item', event => {
     event.create('my_windmill_blade', 'tfc:windmill_blade')
         .bladeColor(0x545f97)
+})
+```
+
+### Glassworking Tool
+
+Creates a new glassworking tool
+
+Inherits the methods of the [tool item builder](#tool)
+
+**Type**: `tfc:glassworking_tool`
+
+#### Extra method
+
+- `.operation(operation: GlassOperation)`: Sets the `GlassOperation` the item is capable of performing, defaults to `saw`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_glass_working_tool', 'tfc:glassworking_tool')
+        .operation('pinch')
+        .mineableBlocksTag('kubejs:mineable/default')
 })
 ```
 

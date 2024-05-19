@@ -380,7 +380,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 
 ```ts
 event.metal(
-    fluid: string,
+    fluid: Fluid,
     meltTemperature: number,
     heatCapacity: number,
     ingot: @Nullable Ingredient,
@@ -390,7 +390,7 @@ event.metal(
     name?: string)
 ```
 
-- 1st argument: A string, the registry name of a fluid which corresponds to this metal
+- 1st argument: A `Fluid`, the fluid this metal is built upon
 - 2nd argument: A number, the melting temperature of the metal
 - 3rd argument: A number, specifies how fast the metal heats up relative to others, measured in Energy / (mB * °C)
 - 4th argument: An item ingredient, defines the ingots of the metal, may be null to indicate the metal does not have any ingots

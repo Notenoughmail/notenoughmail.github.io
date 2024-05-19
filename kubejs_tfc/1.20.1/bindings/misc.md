@@ -170,6 +170,26 @@ Method Signature
 TFC.misc.getFoodTraitId(trait: FoodTrait): string
 ```
 
+### Apply Trait
+
+Applies the given trait to the stack, modifying it
+
+Method Signature:
+
+```ts
+TFC.misc.applyFoodTrait(stack: ItemStack, trait: ResourceLocation): void
+```
+
+### Remove Trait
+
+Removes the given trait to the stack, modifying it
+
+Method Signature:
+
+```ts
+TFC.misc.removeFoodTrait(stack: ItemStack, trait: ResourceLocation): void
+```
+
 ## Size Utilities
 
 ### Get Size
@@ -233,6 +253,73 @@ TFC.misc.forceCollapse(level: Level, pos: BlockPos)
 - `level`: The level where the collapse will occur
 - `pos`: The center of the collapse
 
+### Find Unsupported Positions
+
+Finds all positions in the given area that are unsupported
+
+Methods Signatures:
+
+```ts
+TFC.misc.findUnsupportedPositions(level: BlockGetter, from: BlockPos, to: BlockPos): Set<BlockPos>
+```
+
+- `level`: The level to check in
+- `from`: The minimum corner to check
+- `to`: The maximum corner to check
+
+```ts
+TFC.misc.findUnsupportedPositions(level: BlockGetter, center: BlockPos, horizontal: number, up: number, down: number): Set<BlockPos>
+```
+
+- `level`: The level to check in
+- `center`: The center position to check
+- `horizontal`: The number of blocks around the center to check horizontally
+- `up`: The number of blocks to check above the center
+- `down`: The number of blocks to check below the center
+
+### Is Supported
+
+Returns true if the position is supported
+
+Method Signature:
+
+```ts
+TFC.misc.isSupported(level: BlockGetter, pos: BlockPos): boolean
+```
+
+### Supported Area
+
+#### Maximum Supported Area Around
+
+Returns an iterable of all positions that could possibly be supported around the min and max positions
+
+Method Signature:
+
+```ts
+TFC.misc.getMaximumSupportedAreaAround(minPoint: BlockPos, maxPoint: BlockPos): Iterable<BlockPos>
+```
+
+#### Get Support Check Range
+
+Returns the `SupportRange` that is used as a maximum for checking if an area is supported
+
+Method Signature:
+
+```ts
+TFC.misc.getSupportCheckRange(): SupportRange
+```
+
+#### Get Support
+
+Gets the support from the block, or null if it is not a supporting block
+
+Method Signatures:
+
+```ts
+TFC.misc.getSupport(state: BlockState): @Nullable Support
+TFC.misc.getSupport(level: BlockGetter, pos:BlockPos): @Nullable Support
+```
+
 ## Chunk Data Utilities
 
 ### Chunk Data
@@ -265,7 +352,7 @@ TFC.misc.getRockData(level: LevelReader, pos: BlockPos): @Nullable RockData
 
 Gets TFC's `RockSettings`, a collection of blocks that define a rock layer, see [custom rock settings](https://notenoughmail.github.io/kubejs_tfc/1.20.1/events/#rock-settings), may be null
 
-Method Signature:
+Method Signatures:
 
 ```ts
 TFC.misc.getRockSettings(level: LevelReader, pos: BlockPos): @Nullable RockSettings
@@ -273,6 +360,13 @@ TFC.misc.getRockSettings(level: LevelReader, pos: BlockPos): @Nullable RockSetti
 
 - `level`: The level to get the settings from
 - `pos`: The position to get the settings from
+
+```ts
+TFC.misc.getRockSettings(level: LevelAccessor, block: Block): @Nullable RockSettings
+```
+
+- `level`: The level to check in
+- `block`: The block to check
 
 ### Forest Type
 

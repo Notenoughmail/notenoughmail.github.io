@@ -126,7 +126,7 @@ declare class ItemStackProviderJS {
     mergeTag(tag: CompoundTag): ItemStackProviderJS
     simpleModifier(type: string): ItemStackProviderJS
     jsonModifier(modifier: JsonObject): ItemStackProviderJS
-    dyeLeather(color: string): ItemStackProviderJS
+    dyeLeather(color: DyeColor): ItemStackProviderJS
     addHeat(temperature: number): ItemStackProviderJS
     addPowder(): ItemStackProviderJS
     addTrait(trait: string): ItemStackProviderJS
@@ -164,7 +164,7 @@ declare class ItemStackProviderJS {
 - `.mergeTag(tag: CompoundTag)`: Merges the provided `CompoundTag` into the item stack's
 - `.simpleModifier(type: string)`: Adds a modifier of the provided type
 - `.jsonModifier(modifier: JsonObject)`: Adds the provided json modifier
-- `.dyeLeather(color: string)`: Adds a `tfc:dye_leather` modifier with the provided color
+- `.dyeLeather(color: DyeColor)`: Adds a `tfc:dye_leather` modifier with the provided color
 - `.addHeat(temperature: number)`: Adds a `tfc:add_heat` with the provided temperature, allows negative values
 - `.addPowder()`: Adds a `tfc:add_powder` modifier
 - `.addTrait(trait: string)`: Adds a `tfc:add_trait` modifier with the provided trait value
