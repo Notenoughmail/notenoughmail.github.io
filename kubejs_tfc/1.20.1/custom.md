@@ -710,6 +710,14 @@ Inherits the methods of the basic item builder
 
 **Type**: `tfc:fluid_container`
 
+{: .notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+>
+> For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png` and `kubejs/textures/item/my_fluid_container_overlay.png`
+
 #### Extra Methods
 
 - `.canPlaceLiquid(b: boolean)`: Determines if the item can place liquids in world, defaults to `false`
@@ -796,6 +804,14 @@ Creates a new mold item
 Inherits the methods of the basic item builder
 
 **Type**: `tfc:mold`
+
+{: .notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+>
+> For the example below, the textures would be in `kubejs/textures/item/my_mold.png` and `kubejs/textures/item/my_mold_overlay.png`
 
 #### Extra Methods
 
