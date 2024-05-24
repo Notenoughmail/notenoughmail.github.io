@@ -47,7 +47,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: string)
+event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: ResourceLocation)
 ```
 
 - 1st argument: A consumer with several additional methods:
@@ -57,7 +57,7 @@ event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: string)
     - `.minTemperature(f: number)`: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to -100
     - `.maxTemperature(f: number)`: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to 100
     - `.temperatureWiggle(f: number)`: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
-- 2nd argument: A string, the name of the climate range
+- 2nd argument: A `ResourceLocation`, the name of the climate range
 
 {: .notice }
 Climate ranges cannot be added through this, only existing, registered ones can be modified
@@ -81,8 +81,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signatures
 
 ```ts
-event.itemDamageResistance(ingredient: Ingredient, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
-event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: string)
+event.itemDamageResistance(ingredient: Ingredient, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: ResourceLocation)
+event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: ResourceLocation)
 ```
 
 - 1st argument:
@@ -91,7 +91,7 @@ event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slas
 - 2nd argument: A number, the piercing resistance, may be null to not specify a resistance
 - 3rd argument: A number, the slashing resistance, may be null to not specify a resistance
 - 4th argument: A number, the crushing resistance, may be null to not specify a resistance
-- *Optional 5th argument*: A string, the name of the resistance
+- *Optional 5th argument*: A `ResourceLocation`, the name of the resistance
 
 ### Examples
 
@@ -109,7 +109,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildDrinkableData>, name?: string)
+event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildDrinkableData>, name?: ResourceLocation)
 ```
 
 - 1st argument: A [fluid ingredient](../bindings/#fluid-ingredient) which defines which fluids the drinkable applies to
@@ -122,7 +122,7 @@ event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildD
         - `.amplifier(i: number)`: Accepts a number specifying the level of the potion effect applied, defaults to 0
         - `.chance(f: number)`: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to 1
     - `.food(foodData: Consumer<BuildFoodItemData>)`: Accepts a consumer with the same methods as the one in [food items](#food-items)
-- *Optional 3rd argument*: A string, the name of the drinkable
+- *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
 
@@ -151,7 +151,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: Consumer<BuildFaunaData>, name: string)
+event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: Consumer<BuildFaunaData>, name: ResourceLocation)
 ```
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator](../worldgen/#climate)
@@ -160,7 +160,7 @@ event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: C
     - `.distanceBelowSeaLevel(i: number)`: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
     - `.solidGround(b: boolean)`: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`
     - `.maxBrightness(i: number)`: Accepts a number, sets the maximum light level the mob may spawn in
-- 3rd argument: A string, the name of the fauna
+- 3rd argument: A `ResourceLocation`, the name of the fauna
 
 {: .notice }
 Faunas cannot be added through this, only existing, registered ones can be modified
@@ -185,14 +185,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorus: @Nullable number, potassium: @Nullable number, name?: string)
+event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorus: @Nullable number, potassium: @Nullable number, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the fertilizer applies to
 - 2nd argument: A number, sets the nitrogen value of the fertilizer, may be null to not set a value, defaults to 0
 - 3rd argument: A number, sets the phosphorus value of the fertilizer, may be null to not set a value, defaults to 0
 - 4th argument: A number, sets the potassium value of the fertilizer, may be null to not set a value, defaults to 0
-- *Optional 5th argument*: A string, sets the name of the fertilizer
+- *Optional 5th argument*: A `ResourceLocation`, the name of the fertilizer
 
 ### Example
 
@@ -209,7 +209,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.foodItem(ingredient: Ingredient, foodItemData: Consumer<BuildFoodItemData>, name?: string)
+event.foodItem(ingredient: Ingredient, foodItemData: Consumer<BuildFoodItemData>, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the to which the food item definition applies to
@@ -224,7 +224,7 @@ event.foodItem(ingredient: Ingredient, foodItemData: Consumer<BuildFoodItemData>
     - `.vegetables(f: number)`: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to 0
     - `.protein(f: number)`: Accepts a number, sets the amount of protein nutrient the food restores, defaults to 0
     - `.dairy(f: number)`: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to 0
-- *Optional 3rd argument*: A string, sets the name of the food definition
+- *Optional 3rd argument*: A `ResourceLocation`, the name of the food definition
 
 ### Example
 
@@ -245,14 +245,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.fuel(ingredient: Ingredient, temperature: number, duration: number, purity: @Nullable number, name?: string)
+event.fuel(ingredient: Ingredient, temperature: number, duration: number, purity: @Nullable number, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the fuel applies to
 - 2nd argument: A number, the temperature °C that the fuel burns at
 - 3rd argument: A number, the number of ticks the fuel burns for
 - 4th argument: A number, the purity of the fuel, may be null to not specify a value
-- *Optional 5th argument*: A string, the name of the fuel
+- *Optional 5th argument*: A `ResourceLocation`, the name of the fuel
 
 ### Example
 
@@ -269,14 +269,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.itemHeat(ingredient: Ingredient, heatCapacity: number, forgingTemperature: @Nullable number, weldingTemperature: @Nullable number, name?: string)
+event.itemHeat(ingredient: Ingredient, heatCapacity: number, forgingTemperature: @Nullable number, weldingTemperature: @Nullable number, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the heat definition applies to
 - 2nd argument: A number, specifies how fast the the item heats up relative to others, measured in Energy / °C
 - 3rd argument: A number, specifies the temperature at which the item can be worked, may be null to allow working at any temperature
 - 4th argument: A number, specifies the temperature at which the item can be welded, may be null to allow welding at any temperature
-- *Optional 5th argument*: A string, the name of the heat definition
+- *Optional 5th argument*: A `ResourceLocation`, the name of the heat definition
 
 ### Example
 
@@ -293,13 +293,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.itemSize(ingredient: Ingredient, size: @Nullable Size, weight: @Nullable Weight, name?: string)
+event.itemSize(ingredient: Ingredient, size: @Nullable Size, weight: @Nullable Weight, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the size applies to
 - 2nd argument: A `Size`, sets the size of the item, may be `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`, or null to not specify a size
 - 3rd argument: A `Weight`, sets the weight of the item, may be `very_light`, `light`, `medium`, `heavy`, `very_heavy`, or null to not specify a weight
-- *Optional 4th argument*: A string, the name of the size definition
+- *Optional 4th argument*: A `ResourceLocation`, the name of the size definition
 
 ### Example
 
@@ -325,11 +325,11 @@ event.knappingType(
     useDisabledTexture: boolean,
     spawnsParticles: boolean,
     jeiIconItem: ItemStack,
-    name: string
+    name: ResourceLocation
 )
 ```
 
-- 1st argument: An item ingredient, the ingredient for what item has to be knapped, must be part of the `tfc:any_knapping` tag to work
+- 1st argument: An item ingredient, the ingredient for what item has to be knapped, must be part of the `tfc:any_knapping` tag to work. You may also need to restart the MC instance for th game to recognize the item has been added to the tag
 - 2nd argument: A number, the minimum number of items matching the ingredient that must be held in order open the knapping menu
 - 3rd argument: A number, the number of items that gets used by a recipe
 - 4th argument: A string, the registry name of a sound event that plays when knapping occurs[^2]
@@ -337,7 +337,7 @@ event.knappingType(
 - 6th argument: A boolean, if true, a clicked spot will show a different texture rather than nothing
 - 7th argument: A boolean, determines if the screen should spawn small particles when clicking buttons
 - 8th argument: An `ItemStack`, the icon item for the JEI recipe category
-- 9th argument: A string, the name of the knapping type
+- 9th argument: A `ResourceLocation`, the name of the knapping type
 
 [^2]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
 
@@ -356,13 +356,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.lampFuel(fluidIngredient: FluidIngredient, blockIngredient: BlockIngredient, burnRate: number, name?: string)
+event.lampFuel(fluidIngredient: FluidIngredient, blockIngredient: BlockIngredient, burnRate: number, name?: ResourceLocation)
 ```
 
 - 1st argument: A [FluidIngredient](../bindings/#fluid-ingredient), determines which fluids the lamp fuel applies to
 - 2nd argument: A [BlockIngredient](../bindings/#block-ingredinet), determines what (lamp) blocks are valid for this fuel to be added to
 - 3rd argument: A number, represents how fast the fuel is consumed, in ticks per mB
-- *Optional 4th argument*: A string, the name of the lamp fuel
+- *Optional 4th argument*: A `ResourceLocation`, the name of the lamp fuel
 
 ### Example
 
@@ -387,7 +387,7 @@ event.metal(
     doubleIngot: @Nullable Ingredient,
     sheet: @Nullable Ingredient,
     tier: number,
-    name?: string)
+    name?: ResourceLocation)
 ```
 
 - 1st argument: A `Fluid`, the fluid this metal is built upon
@@ -397,7 +397,7 @@ event.metal(
 - 5th argument: An item ingredient, defines the double ingots of the metal, may be null to indicate the metal does not have any double ingots
 - 6th argument: An item ingredient, defines the sheets of the metal, may be null to indicate the metal does not have any sheets
 - 7th argument: A number, the tier of the metal
-- *Optional 8th argument*: A string, the name of the metal
+- *Optional 8th argument*: A `ResourceLocation`, the name of the metal
 
 {: .notice }
 > If no name is provided, one will be automatically generated from the fluid
@@ -426,14 +426,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.support(blockIngredient: BlockIngredient, up: number, down: number, horizontal: number, name?: string)
+event.support(blockIngredient: BlockIngredient, up: number, down: number, horizontal: number, name?: ResourceLocation)
 ```
 
 - 1st argument: A [BlockIngredient](../bindings/#block-ingredient), determines what blocks the support applies to
 - 2nd argument: A number, the number of blocks up the block supports
 - 3rd argument: A number, the number of blocks down the block supports
 - 4th argument: A number, the number of blocks horizontally the block supports
-- *Optional 5th argument*: A string, the name of the support
+- *Optional 5th argument*: A `ResourceLocation`, the name of the support
 
 ### Example
 
@@ -450,12 +450,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.sluicing(ingredient: Ingredient, lootTable: string, name?: string)
+event.sluicing(ingredient: Ingredient, lootTable: string, name?: ResourceLocation)
 ```
 
 - 1st argument: An item ingredient, the items the sluicing definition applies to
 - 2nd argument: A string, the location of a loot table to be dropped for this item
-- *Optional 3rd argument*: A string, the name of the sluicing definition
+- *Optional 3rd argument*: A `ResourceLocation`, the name of the sluicing definition
 
 ### Example
 
@@ -472,13 +472,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 ### Method Signature
 
 ```ts
-event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<string>, name?: string)
+event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<string>, name?: ResourceLocation)
 ```
 
 - 1st argument: A [BlockIngredient](../bindings/#block-ingredient), the blocks that will go into the pan
 - 2nd argument: A string, the location of a loot table to be dropped for the ingredient
 - 3rd argument: A list of strings which are model locations to be iterated through as panning progresses
-- *Optional 4th argument*: A string, the name of the panning definition
+- *Optional 4th argument*: A `ResourceLocation`, the name of the panning definition
 
 ### Example
 
@@ -495,7 +495,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: string)
+event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: ResourceLocation)
 ```
 
 - 1st argument: A [BlockIngredient](../bindings/#block-ingredient), the blocks that will be accepted by the greenhouse type
@@ -504,7 +504,7 @@ event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: 
     - Copper: 10
     - Iron: 15
     - Stainless Steel: 20
-- *Optional 3rd argument*: A string, the name of the greenhouse type
+- *Optional 3rd argument*: A `ResourceLocation`, the name of the greenhouse type
 
 ### Example
 
@@ -532,7 +532,7 @@ event.firmalifePlantable(
     nutrient: @Nullable Nutrient,
     textures: string[],
     special: @Nullable string,
-    name?: string
+    name?: ResourceLocation
 )
 ```
 
@@ -549,7 +549,7 @@ event.firmalifePlantable(
     - For the `trellis` planter type: Order the textures in the order growing, dry, flowering, fruiting
     - For the `bonsai` planter type: Order the textures in the order fruiting, dry, flowering, branch, leaves
 - 10th argument: A string, the extra texture used by `hanging` planter types. Pass in the fruit texture if the planter type is `hanging` else pass in null
-- *Optional 11th argument*: A string, the name of the planter definition
+- *Optional 11th argument*: A `ResourceLocation`, the name of the planter definition
 
 ### Example
 
