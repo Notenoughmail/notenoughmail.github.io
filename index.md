@@ -23,4 +23,4 @@ A KubeJS addon which allows user to make their own toml config files through scr
 
 ---
 
-This site is hosted with [Github Pages](https://pages.github.com/)
+![This site is hosted on Github Pages](https://bernsteinbear.com/assets/img/banner.png)

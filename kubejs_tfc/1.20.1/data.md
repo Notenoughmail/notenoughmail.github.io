@@ -387,7 +387,8 @@ event.metal(
     doubleIngot: @Nullable Ingredient,
     sheet: @Nullable Ingredient,
     tier: number,
-    name?: ResourceLocation)
+    name?: ResourceLocation
+    )
 ```
 
 - 1st argument: A `Fluid`, the fluid this metal is built upon

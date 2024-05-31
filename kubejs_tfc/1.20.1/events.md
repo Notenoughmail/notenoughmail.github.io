@@ -105,7 +105,7 @@ Additionally, every event listener requires the name of a menu type[^1] in its d
 ### Examples
 
 ```js
-TFCEvents.limitContainerSize('minecraft:generic_3x3', event => {
+TFCEvents.limitContainer('minecraft:generic_3x3', event => {
     event.limit('large', 0, 4)
     event.limit('small')
     event.lowerLimit('normal', 0, 2)
