@@ -46,3 +46,16 @@ Embedded images:
 ![Black Helicopters](https://www.theregister.com/design_picker/fa16d26efb42e6ba1052f1d387470f643c5aa18d/graphics/icons/comment/black_helicopters_48.png)
 
 ![The Register logo](https://www.theregister.com/design_picker/fa16d26efb42e6ba1052f1d387470f643c5aa18d/graphics/std/reg_logo_no_strapline.svg)
+
+htmz:
+
+<base target="htmz" />
+
+<div rolf="tablist">
+    <a class="tab" href="/dog.html#tab">Dog</a>
+    <a class="tab" href="/horse.html#tab">Horse</a>
+</div>
+
+<div id="tab" role="tabpanel"></div>
+
+<iframe hidden name=htmz onload="setTimeout(()=>document.querySelector(contentWindow.location.hash||null)?.replaceWith(...contentDocument.body.childNodes))"></iframe>
