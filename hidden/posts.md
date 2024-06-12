@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: none
 title: Every Post
 nav_exclude: true
 search_exclude: true

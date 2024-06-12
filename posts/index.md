@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Post
+title: Posts
 permalink: /posts/
 nav_order: 99
-has_children: true
+has_children: false
 has_toc: false
 ---
 
