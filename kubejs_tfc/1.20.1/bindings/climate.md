@@ -8,7 +8,7 @@ grand_parent: 1.20.1
 
 # Climate Bindings
 
-TFC uses climate models to determine the the temperature, rainfall, and several other things, these can be [created](https://notenoughmail.github.io/kubejs_tfc/1.20.1/events/#register-climate-model) and [added](https://notenoughmail.github.io/kubejs_tfc/1.20.1/events/#select-climate-model) to the world to be used
+TFC uses climate models to determine the the temperature, rainfall, and several other things, these can be [created](/kubejs_tfc/1.20.1/events/#register-climate-model) and [added](/kubejs_tfc/1.20.1/events/#select-climate-model) to the world to be used
 
 These methods provide a convenient way of accessing the information about a world's climate
 

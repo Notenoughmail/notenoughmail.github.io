@@ -77,7 +77,7 @@ This specifies an ingredient which only accepts items if they are heatable and o
 - *optional 1st argument*: An ingredient, if omitted, this will accept all items with the provided heat
 - *optional 2nd and 3rd argument*: Integers which represent the minimum and maximum temperature of the ingredient
 
-## #Extra Methods
+### Extra Methods
 
 - `minTemp(integer)`: Sets the minimum temperature of the ingredient
 - `maxTemp(integer)`: Sets the maximum temperature of the ingredient

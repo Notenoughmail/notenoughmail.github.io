@@ -1,2 +1,6 @@
 # VSC decided to suck even more than usual
 .vscode
+Gemfile
+Gemfile.lock
+_site/
+_layouts/

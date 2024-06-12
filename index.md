@@ -5,9 +5,11 @@ permalink: /
 nav_order: 1
 ---
 
-# NotEnoughMail's Project Documentation
+# NotEnoughMail's Projects
 
 Welcome!
+
+This sites hosts documentation for my projects, see the [contact page](/contact/) for getting in touch and/or support
 
 ## [KubeJS TFC](kubejs_tfc/)
 
@@ -20,6 +22,10 @@ An Addon for TFC:TNG which adds new prospecting tools with different ranges
 ## [ConfigJS](configjs/)
 
 A KubeJS addon which allows user to make their own toml config files through scripts
+
+## [Posts](posts/)
+
+An archive for posts made to this site
 
 ---
 

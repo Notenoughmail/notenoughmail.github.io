@@ -35,6 +35,13 @@ Just a place to see how various things look/interact and if certain things work
 >
 > Eat any good books lately?
 
+{: .question }
+> A multiline question callout
+>
+> > This is a synergistic expression of art and engineering challenges
+>
+> ~ Joe Hills, 2020-10-24
+
 Embedded html tag stuff:
 
 A value exceeding 2<span style="vertical-align: baseline; position: relative; top: -0.5em;">90</span>
@@ -52,10 +59,14 @@ htmz:
 <base target="htmz" />
 
 <div rolf="tablist">
-    <a class="tab" href="/dog.html#tab">Dog</a>
-    <a class="tab" href="/horse.html#tab">Horse</a>
+    <a class="tab" href="/hidden/dog.html#tab">Dog</a>
+    <a class="tab" href="/hidden/horse.html#tab">Horse</a>
+    <a class="tab" href="/hidden/empty.html#tab">Empty</a>
 </div>
 
 <div id="tab" role="tabpanel"></div>
 
 <iframe hidden name=htmz onload="setTimeout(()=>document.querySelector(contentWindow.location.hash||null)?.replaceWith(...contentDocument.body.childNodes))"></iframe>
+
+{: .notice }
+This page can be safely ignored :)

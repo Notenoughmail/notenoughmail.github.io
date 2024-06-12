@@ -179,7 +179,7 @@ declare class ItemStackProviderJS {
 - `.copyOldestFood()`: Adds a `tfc:copy_oldest_food` modifier
 - `.addBait()`: Adds a `tfc:add_bait_to_rod` modifier
 - `.meal(food: Consumer<BuildFoodItemData>, portions?: List<Consumer<BuildPortionData>>)`: Adds a `tfc:meal` modifier
-    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition](https://notenoughmail.github.io/kubejs_tfc/1.20.1/data/#food-items)
+    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition](/kubejs_tfc/1.20.1/data/#food-items)
     - *Optional 2nd argument*: A list of consumers specifying the portions of a meal
         - `.ingredient(ingredient: Ingredient)`: Sets the portion's ingredient
         - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1

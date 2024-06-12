@@ -350,7 +350,7 @@ TFC.misc.getRockData(level: LevelReader, pos: BlockPos): @Nullable RockData
 
 ### Rock Settings
 
-Gets TFC's `RockSettings`, a collection of blocks that define a rock layer, see [custom rock settings](https://notenoughmail.github.io/kubejs_tfc/1.20.1/events/#rock-settings), may be null
+Gets TFC's `RockSettings`, a collection of blocks that define a rock layer, see [custom rock settings](/kubejs_tfc/1.20.1/events/#rock-settings), may be null
 
 Method Signatures:
 
