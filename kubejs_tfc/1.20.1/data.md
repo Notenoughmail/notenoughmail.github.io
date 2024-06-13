@@ -407,10 +407,10 @@ event.metal(
 >
 > - The name space becomes `kubejs_tfc`
 > - the path becomes the name of the fluid with the following applied:
->   - All non `a-z0-9` characters are replaced with `_`
->   - All repeating `_`s are shortened to just one `_`
->   - Any preceding or trailing `_`s are removed
->   - The string is limited to its first 65 characters if applicable
+>     - All non `a-z0-9` characters are replaced with `_`
+>     - All repeating `_`s are shortened to just one `_`
+>     - Any preceding or trailing `_`s are removed
+>     - The string is limited to its first 65 characters if applicable
 
 ### Example
 

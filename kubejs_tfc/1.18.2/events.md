@@ -43,18 +43,18 @@ Upon a player closing a limited container any items that are (1) in the limited 
 This is available through a new startup event, `tfc.limit_container_size`, with a single method, `limitContainerSize`, available
 
 - 1st argument: A string, the registry name of a menu
-  - A full list of available menus can be found by running the command `/kubejs dump_registry minecraft:menu` in-game
+    - A full list of available menus can be found by running the command `/kubejs dump_registry minecraft:menu` in-game
 - 2nd argument: A string, the maximum size of items allowed in the declared slots
-  - Valid values: 
-    - tiny
-    - very_small
-    - small
-    - normal
-    - large
-    - very_large
-    - huge
+    - Valid values:
+        - tiny
+        - very_small
+        - small
+        - normal
+        - large
+        - very_large
+        - huge
 - *optional 3rd argument*: An integer array, representing the specific range of indexes of the container's slots which should be limited, defaults to all slots in the container
-  - This will accept any multiple of 2 number of integers (i.e. {0, 2} or {1, 3, 5, 7})
+    - This will accept any multiple of 2 number of integers (i.e. {0, 2} or {1, 3, 5, 7})
 
 ## Examples
 
@@ -76,29 +76,29 @@ TFC implements local temperature and rainfall, this is done through the use of c
 ## Consumer
 
 - `setCurrentTemperatureCalculation(callback)`: Sets the calculation for current temperature at a position. The callback provides:
-  - A `LevelReader`, the level
-  - A `BlockPos`, the position
-  - A `Long`, the calendar ticks
-  - An `Integer`, the number of days in a month
-  - And expects a number
-- `setAverageTemperatureCalculation(callback)`: Sets the calculation for the average temperature at a position. The callback provides: 
-  - A `LevelReader`, the level
-  - A `BlockPos`, the position
-  - And expects a number
+    - A `LevelReader`, the level
+    - A `BlockPos`, the position
+    - A `Long`, the calendar ticks
+    - An `Integer`, the number of days in a month
+    - And expects a number
+- `setAverageTemperatureCalculation(callback)`: Sets the calculation for the average temperature at a position. The callback provides:
+    - A `LevelReader`, the level
+    - A `BlockPos`, the position
+    - And expects a number
 - `setAverageRainfallCalculation(callback)`: Sets the calculation for the average rainfall at a position. The callback provides:
-  - A `LevelReader`, the level
-  - A `BlockPos`, the position
-  - And expects a number between 0 and 500
+    - A `LevelReader`, the level
+    - A `BlockPos`, the position
+    - And expects a number between 0 and 500
 - `setAirFog(callback)`: Sets the fogginess at a position and time. The callback provides:
-  - A `LevelReader`, the level
-  - A `BlockPos`, the position
-  - A `Long`, the calendar ticks
-  - And expects a number between 0 and 1
+    - A `LevelReader`, the level
+    - A `BlockPos`, the position
+    - A `Long`, the calendar ticks
+    - And expects a number between 0 and 1
 - `setWaterFog(callback)`: Sets the water fogginess at a position and time. The callback provides:
-  - A `LevelReader`, the level
-  - A `BlockPos`, the position
-  - A`Long`, the calendar ticks
-  - And expects a number between 0 and 1
+    - A `LevelReader`, the level
+    - A `BlockPos`, the position
+    - A`Long`, the calendar ticks
+    - And expects a number between 0 and 1
 - `getClimateSeed()`: Returns the climate seed, a number based on the level's seed
 - `getNewNoise()`: Returns an OpenSimplex2D noise generator.
 - `getTemperatureSettings()`: Returns the level's temperature [climate settings](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/#climate-settings), or the default if none
@@ -112,11 +112,11 @@ TFC implements local temperature and rainfall, this is done through the use of c
 If registering an advanced model the following are also available
 
 - `setOnWorldLoad(callback)`: Sets what should be done upon the world loading. The callback provides:
-  - A `ServerLevel`, the level
+    - A `ServerLevel`, the level
 - `setOnChunkLoad(callback)`: Sets what should be done upon a chunk loading, by default this is only called during world generation and TFC's update climate command. The callback provides:
-  - A `WorldGenLevel`, the level
-  - A `ChunkAccess`, the chunk
-  - A `ChunkData`, the chunk's TFC data
+    - A `WorldGenLevel`, the level
+    - A `ChunkAccess`, the chunk
+    - A `ChunkData`, the chunk's TFC data
 
 ## Examples
 

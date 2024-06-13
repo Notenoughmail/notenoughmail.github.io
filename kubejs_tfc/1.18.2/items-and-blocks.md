@@ -179,7 +179,7 @@ event.create('my_container', 'tfc:fluid_container')
 - `.canPlaceLiquidSource(boolean)`: Accepts a boolean, determines if the item can place liquid source blocks in the world. Defaults to false
 - `.fluidTagAccept(string)`: Accepts a string, determines which fluids are allowed in the item. Defaults to `tfc:usable_in_jug`
 - `.filledDisplayName(string)`: Accepts a string, sets the display name of the item's filled state. Defaults to `%s ` + the default filled name
-  - **Note**: the `%s` represents where in the name the contained fluid should appear. In the above example the default would give 'Whiskey My Container', but putting `My %s Container` in this method would give 'My Whiskey Container'
+    - **Note**: the `%s` represents where in the name the contained fluid should appear. In the above example the default would give 'Whiskey My Container', but putting `My %s Container` in this method would give 'My Whiskey Container'
 
 ### Tool
 
@@ -250,36 +250,36 @@ This creates a new ground cover block
 - `.ore()`: Sets the collision shape to that of TFC's ores
 - `.twig()`: Sets the collision shape to that of TFC's twigs and makes the block flammable
 - `.groundCoverModel(string)`: Sets the default model shape, defaults to 'boulder'. A list of available options:
-  - 'bismuthinite',
-  - 'bone',
-  - 'boulder',
-  - 'cassiterite',
-  - 'clam',
-  - 'dead_grass',
-  - 'driftwood',
-  - 'feather',
-  - 'flat',
-  - 'flint',
-  - 'ganerite',
-  - 'hematite',
-  - 'limonite',
-  - 'magnetite',
-  - 'malachite', 
-  - 'mollusk',
-  - 'mussel',
-  - 'native_copper',
-  - 'native_gold',
-  - 'native_silver',
-  - 'pebble',
-  - 'pinecone',
-  - 'rotten_flesh',
-  - 'rubble',
-  - 'seaweed',
-  - 'sphalerite',
-  - 'stick',
-  - 'tetrahedrite',
-  - 'twig', and
-  - anything added to [kubejs_tfc/models/block/groundcover](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.18.2/src/main/resources/assets/kubejs_tfc/models/block/groundcover)
+    - 'bismuthinite',
+    - 'bone',
+    - 'boulder',
+    - 'cassiterite',
+    - 'clam',
+    - 'dead_grass',
+    - 'driftwood',
+    - 'feather',
+    - 'flat',
+    - 'flint',
+    - 'ganerite',
+    - 'hematite',
+    - 'limonite',
+    - 'magnetite',
+    - 'malachite',
+    - 'mollusk',
+    - 'mussel',
+    - 'native_copper',
+    - 'native_gold',
+    - 'native_silver',
+    - 'pebble',
+    - 'pinecone',
+    - 'rotten_flesh',
+    - 'rubble',
+    - 'seaweed',
+    - 'sphalerite',
+    - 'stick',
+    - 'tetrahedrite',
+    - 'twig', and
+    - anything added to [kubejs_tfc/models/block/groundcover](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.18.2/src/main/resources/assets/kubejs_tfc/models/block/groundcover)
 - `.notAxisAligned()`: Rotates all the placed models by 45 degrees
 - `.collision()`: Enables collision for the block
 
@@ -301,7 +301,7 @@ This creates a new rock spike block builder
 - `.cycleItem(string)`: Allows the player to toggle the state of the block with the specified item in hand
 - `.cycleTag(string)`: Allows the player to toggle the state of the block with the specified item tag in hand
 - `.dontUpdateWhenCycling()`: Makes it so block updates aren't emitted when the player changes the state.
-  - **Note: There may be unexpected issues regarding blocks randomly updating if this is used. This is available as cycling a rock spike to a smaller size would case the one above it to pop off. Observers still detect the player changing the state.**
+    - **Note: There may be unexpected issues regarding blocks randomly updating if this is used. This is available as cycling a rock spike to a smaller size would case the one above it to pop off. Observers still detect the player changing the state.**
 - `.middleBox(number, number, number, number, number, number, boolean)`: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the middle state
 - `.middleBox(number, number, number, number, number, number)`: The same as the default `.box(number, number, number, number, number, number)` but applies to the middle state
 - `.tipBox(number, number, number, number, number, number, boolean)`: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the tip state
@@ -372,7 +372,7 @@ This has two methods
 
 - `.mossyBlock(string)`: Accepts a string, sets the block this block will convert to when 'mossed'
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
-  - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
+    - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
 
 ##### Example
 
@@ -385,9 +385,9 @@ event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossBlock('kubej
 This has two methods
 
 - `.mossyStair(string)`: Accetps a string, sets the block this block will convert to when 'mossed'. Defaults to oak stairs
-  - **Note**: The provided block *must* be a stair block
+    - **Note**: The provided block *must* be a stair block
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
-  - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
+    - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
 
 ##### Example
 
@@ -400,11 +400,11 @@ event.create('my_moss_growing_stair', 'tfc:moss_growing_stair').mossyStair('kube
 This has four methods
 
 - `.mossySlab(string)`: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to oak slabs
-  - **Note**: The provided block *must* be a slab block
+    - **Note**: The provided block *must* be a slab block
 - `.mossyConversionFull(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'double' state
-  - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
+    - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
 - `.mossyConversionHalf(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top' or 'bottom' state
-  - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
+    - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top', 'bottom', or 'double' state
 
 ##### Example
@@ -418,9 +418,9 @@ event.create('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:
 This has two methods
 
 - `.mossyWall(string)`: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to cobblestone walls
-  - **Note**: The provided block *must* be a wall block
+    - **Note**: The provided block *must* be a wall block
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
-  - Defaults to `(container, needsWater) -> (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
+    - Defaults to `(container, needsWater) -> (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
 
 ##### Example
 

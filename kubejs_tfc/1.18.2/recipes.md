@@ -71,9 +71,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A string representing the registry name of a metal
 - 2nd argument: A list of contents, each containing three variables:
-  - A string representing the registry name of the required metal
-  - A number, in the range [0, 1], representing the minimum portion needed in the mixture
-  - A number, in the range [0, 1], representing the maximum portion needed in the mixture
+    - A string representing the registry name of the required metal
+    - A number, in the range [0, 1], representing the minimum portion needed in the mixture
+    - A number, in the range [0, 1], representing the maximum portion needed in the mixture
 
 #### Example
 
@@ -265,8 +265,8 @@ event.recipes.tfc.chisel('minecraft:diamond_block', '#minecraft:saplings', 'slab
 See the [collapse](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#collapse) and [landslide](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#landslide) main pages! **Note:** The syntax is exactly the same for collapse and landsliding recipes, thus they are shown together
 
 - 1st argument: One of two options:
-  - A boolean representing the `copy_input` property, defaults to false. *Only use this with the value **true***
-  - A string representing the block state result
+    - A boolean representing the `copy_input` property, defaults to false. *Only use this with the value **true***
+    - A string representing the block state result
 - 2nd argument: A [block ingredient](../wrappers/#block-ingredient)
 
 #### Examples
@@ -351,11 +351,11 @@ event.recipes.tfc.loom('minecraft:oak_log', 'minecraft:oak_planks', 50)
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes-pot/#simple-pot)!
 
 - 1st argument: A list of results containing:
-  - Up to one fluid stack
-  - Up to five item stacks
+    - Up to one fluid stack
+    - Up to five item stacks
 - 2nd argument: A list of ingredients containing:
-  - A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
-  - Up to five item ingredients
+    - A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - Up to five item ingredients
 - 3rd argument: An integer, representing the number of ticks the pot must boil for
 - 4th argument: A number, representing the temperature the pot must reach to begin boiling
 
@@ -612,11 +612,11 @@ event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
 ### Mixing Bowl
 
 - 1st argument: A list of results containing:
-  - Up to one fluid stack
-  - Up to five item stacks
+    - Up to one fluid stack
+    - Up to five item stacks
 - 2nd argument: A list of ingredients containing:
-  - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
-  - Up to five item ingredients
+    - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - Up to five item ingredients
 
 #### Example
 
@@ -658,11 +658,11 @@ event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/ande
 ### Vat
 
 - 1st argument: A list of results containing:
-  - Up to one fluid stack
-  - Up to one [item stack provider](../wrappers/#item-stack-provider)
+    - Up to one fluid stack
+    - Up to one [item stack provider](../wrappers/#item-stack-provider)
 - 2nd argument: A list of ingredients containing:
-  - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
-  - Up to one item stack ingredient
+    - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - Up to one item stack ingredient
 - *optional 3rd argument*: An integer, representing how long the recipe takes to process. Defaults to 600 ticks
 - *optional 4th argument*: A number, representing the temperature requires for the recipe to process. Defaults to 300℃
 

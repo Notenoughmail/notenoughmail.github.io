@@ -28,7 +28,7 @@ This provides access to various objects and methods that can be used throughout 
 
 ## Methods
 
-These are methods which can be accessed directly from the `TFC` object 
+These are methods which can be accessed directly from the `TFC` object
 
 ### Alloy Part
 

@@ -42,7 +42,7 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
         <col4>
             <th>tfcReplaceFluidOutput</th>
         </col4>
-        <col5> 
+        <col5>
             <th>tfcReplaceBlockInput</th>
         </col5>
         <col6>
@@ -567,11 +567,11 @@ FireResult.ALWAYS
 Represents the strength of a StartFireEvent, it currently has two values:
 
 - `STRONG`: Representing a fire starting where
-  - The fire starting is the primary functionality, or
-  - Destructive fire starting behavior is desired (creating fire blocks, lighting log piles)
+    - The fire starting is the primary functionality, or
+    - Destructive fire starting behavior is desired (creating fire blocks, lighting log piles)
 - `WEAK`: Representing a fire starting where
-  - The fire starting may have been secondary behavior or a side effect (mis-clicks)
-  - Destructive fire starting behaviors should not be attempted
+    - The fire starting may have been secondary behavior or a side effect (mis-clicks)
+    - Destructive fire starting behaviors should not be attempted
 
 ```js
 FireStrength.WEAK

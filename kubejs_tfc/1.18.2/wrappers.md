@@ -18,7 +18,7 @@ KubeJS TFC has three wrappers present to help with writing TFC recipes
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/common-types/#block-ingredients)!
 
-A block ingredient is made up of a list of strings representing a block, or if prepended with #, a block tag. 
+A block ingredient is made up of a list of strings representing a block, or if prepended with #, a block tag.
 
 `BlockIngredient` and `BlockIng` are interchangeable when declaring a block ingredient.
 
@@ -147,12 +147,12 @@ Adds a [meal](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-s
 The first argument is a consumer and is the same as the one used to define a [food item](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Data#food-items), however the available methods are here for convenience
 
 - `hunger(integer)`: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
-  - The player's full hunger bar is equal to 20
+    - The player's full hunger bar is equal to 20
 - `saturation(number)`: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
 - `water(number)`: Accepts a number and defines how much water the ingredient restores, defaults to 0
-  - The player's full water bar is equal to 100
+    - The player's full water bar is equal to 100
 - `decayModifier(number)`: Accepts a number and defines how quickly the ingredient decays, defaults to 1
-  - A higher value means a faster decay and shorter expiration time
+    - A higher value means a faster decay and shorter expiration time
 - `grain(number)`: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
 - `fruit(number)`: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
 - `vegetables(number)`: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
@@ -195,7 +195,7 @@ Adds a modifier with the type defined by the provided string
 ##### jsonModifier(json element)
 
 Adds a modifier defined by the provided json element
- 
+
 If [FirmaLife](https://www.curseforge.com/minecraft/mc-mods/firmalife) is installed the following are also available
 
 ##### burrito()
