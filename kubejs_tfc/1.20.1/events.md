@@ -28,9 +28,9 @@ KubeJS TFC adds several JS events for use in your scripts
 
 ## Rock Settings
 
-Defines a new layer or overrides an existing layer which can be referenced from a [world preset json](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/data/tfc/worldgen/world_preset/overworld.json)
+- **Type**: `startup_scripts`
 
-This event is fired in the `startup_scripts` folder
+Defines a new layer or overrides an existing layer which can be referenced from a [world preset json](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/data/tfc/worldgen/world_preset/overworld.json)
 
 ### Method Signature
 
@@ -70,6 +70,8 @@ TFCEvents.rockSettings(event => {
 
 ## Limiting Containers
 
+- **Type**: `server_scripts`
+
 TFC has an item size feature which it uses to limit which items can go into its containers. KubeJS TFC allows you to somewhat replicate this behavior with other mods' containers, with some limitations
 
 - It will only be able to apply to a container which registers a `MenuType`
@@ -79,8 +81,6 @@ TFC has an item size feature which it uses to limit which items can go into its 
 The basic functionality and idea is based off of a 1.12 [addon](https://github.com/DoubleDoorDevelopment/OversizedItemInStorageArea) that did much the same. It is licensed under the [BSD License](https://www.curseforge.com/minecraft/mc-mods/oversized-item-in-storage-area/comments#license)
 
 Upon a player closing a container limited through this event, any items that are 1) in the limited slots and are not within the size limits will be removed from the container and spawned in world around the player
-
-This event is fired in the `server_scripts` folder
 
 ### Method Signatures
 
@@ -116,9 +116,9 @@ TFCEvents.limitContainer('minecraft:generic_3x3', event => {
 
 ## Register Climate Model
 
-TFC implements a system for local temperature, rainfall, fog, wind, and more. This is done through a `ClimateModel`
+- **Type**: `startup_scripts`
 
-This event is fired in the `startup_scripts` folder
+TFC implements a system for local temperature, rainfall, fog, wind, and more. This is done through a `ClimateModel`
 
 ### Method Signatures
 
@@ -204,9 +204,9 @@ TFCEvents.registerClimateModel(event => {
 
 ## Select Climate Model
 
-This event is fired when a world is loading and selecting the climate model to use
+- **Type**: `server_scripts`
 
-This event is fired in the `server_scripts` folder
+This event is fired when a world is loading and selecting the climate model to use
 
 ### Method Signatures
 
@@ -236,9 +236,9 @@ TFCEvents.selectClimateModel(event => {
 
 ## Start Fire
 
-TFC uses this event for lighting fires or optionally light-able blocks. This event *should* be cancelled if it was handled here. If you want your items to act like Flint and Steel or Torches, add them to either the `tfc:starts_fires_with_items` tag or the `tfc:starts_fires_with_durability` tags.
+- **Type**: `server_scripts`
 
-This event is fired in the `server_scripts` folder
+TFC uses this event for lighting fires or optionally light-able blocks. This event *should* be cancelled if it was handled here. If you want your items to act like Flint and Steel or Torches, add them to either the `tfc:starts_fires_with_items` tag or the `tfc:starts_fires_with_durability` tags.
 
 ### Method Signatures
 
@@ -279,9 +279,9 @@ TFCEvents.startFire(event =>{
 
 ## Prospect
 
-Whenever a prospector's pick is used, this event is fired. It is purely informational and cannot change anything
+- **Type**: `server_scripts`
 
-This event is fired in the `server_scripts` folder
+Whenever a prospector's pick is used, this event is fired. It is purely informational and cannot change anything
 
 ### Method Signature
 
@@ -309,9 +309,9 @@ TFCEvents.prospect(event => {
 
 ## Logging
 
-This event is fired when a tree is about to be felled by an axe. Cancelling it will cause the block to be broken normally
+- **Type**: `server_scripts`
 
-This event is fired in the `server_scripts` folder
+This event is fired when a tree is about to be felled by an axe. Cancelling it will cause the block to be broken normally
 
 ### Method Signature
 
@@ -339,11 +339,11 @@ TFCEvents.log(event => {
 
 ## Animal Product
 
+- **Type**: `server_scripts`
+
 This event is fired whenever a sheep is sheared, a cow is milked, or similar action happens. Cancelling it will prevent the default behavior, which is controlled by each entity's implementation. This event does not control if an entity can give products, it is for the sole purpose of modifying/blocking what happens when products are made
 
 This event has a product, it may wither be an `ItemStack` or a `FluidStackJS`, not both. Only the non-empty type will retain modifications, attempting to change the type will void the original product
-
-This event is fired in the `server_scripts` folder
 
 ### Method Signature
 
@@ -391,9 +391,9 @@ TFCEvents.animalProduct(event => {
 
 ## Collapse
 
-This event is fired whenever a collapse happens, including fake collapses
+- **Type**: `server_scripts`
 
-This event is fired in the `server_scripts` folder
+This event is fired whenever a collapse happens, including fake collapses
 
 ### Method Signature
 
@@ -425,9 +425,9 @@ TFCEvents.collapse(event => {
 
 ## Douse Fire
 
-This event fires when a fire-dousing item is used on a block or a water potion lands
+- **Type**: `server_scripts`
 
-This event fires in the `server_scripts` folder
+This event fires when a fire-dousing item is used on a block or a water potion lands
 
 ### Method Signature
 
@@ -459,9 +459,9 @@ TFCEvents.douseFire(event => {
 
 ## Custom Food Traits
 
-Food traits are applied to food items while in a container or after completion of a recipe and are used to effect how fast an item rots
+- **Type**: `startup_scripts`
 
-This event fires in the `startup_events` folder
+Food traits are applied to food items while in a container or after completion of a recipe and are used to effect how fast an item rots
 
 ### Method Signature
 
@@ -488,9 +488,9 @@ TFCEvents.registerFoodTrait(event => {
 
 ## Custom Item Stack Modifiers
 
-TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to, as one might imagine, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
+- **Type**: `startup_scripts`
 
-This event fires in the `startup_scripts` folder
+TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to, as one might imagine, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
 
 ### Method Signature
 
@@ -528,9 +528,9 @@ apply(stack: ItemStack, input: ItemStack): ItemStack
 
 ## Register Representative Blocks
 
-In 1.20, TFC added a representative blocks system for prospecting, essentially allowing ores of the same type but different grades to be viewed as the same when the prospector's pick counts the blocks nearby, this event allows you to register new representatives
+- **Type**: `startup_scripts`
 
-This event fires in the `startup_scripts` folder
+In 1.20, TFC added a representative blocks system for prospecting, essentially allowing ores of the same type but different grades to be viewed as the same when the prospector's pick counts the blocks nearby, this event allows you to register new representatives
 
 ### Method Signature
 
@@ -551,9 +551,9 @@ TFCEvents.prospectRepresentative(event => {
 
 ## Modify Birthdays
 
-TFC has an easter egg in its calendar screen where on certain dates it will show someone's birthday, this event allows you to add and remove names from the list of birthdays
+- **Type**: `startup_scripts`
 
-This event fires in the `startup_scripts` folder
+TFC has an easter egg in its calendar screen where on certain dates it will show someone's birthday, this event allows you to add and remove names from the list of birthdays
 
 ### Method Signatures
 
@@ -579,6 +579,8 @@ TFCEvents.birthdays(event => {
 
 ## Register interactions
 
+- **Type**: `startup_scripts`
+
 TFC has a custom system for performing certain interactions with items, most notably knapping, this event exposes the ability to create your own interactions
 
 ### Method Signatures
@@ -597,6 +599,21 @@ declare class RegisterInteractionsEventJS {
 - `.interaction(ingredient: Ingredient, action: OnItemUseAction)`: Registers the given ingredient for the provided [action](#onitemuseaction), defaulting to blocks being valid targets and air not
 - `.blockItemPlacement(item: Item, block: Block)`: Registers a block placement for the given item, placing the given block
 
-#### OnItemUseAction
+### Example
 
-The basis of an interaction, a callback that takes a `ItemStack`, the item in the hand, and a `UseOnContext`, the context of the event, and returns an `InteractionResult`
+```js
+TFCEvents.registerInteractions(event => {
+    event.interaction('minecraft:diamond', (stack, ctx) => {
+        // Do what ever you want when a diamond is right clicked
+        return 'pass'
+    })
+})
+```
+
+### OnItemUseAction
+
+The basis of an interaction, a callback that takes a `ItemStack`, the item in the hand, and a `UseOnContext`, the context of the event, and returns an `InteractionResult`. It has the following method signature:
+
+```js
+apply(stack: ItemStack, context: UseOnContext): InteractionResult
+```
