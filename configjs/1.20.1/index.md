@@ -49,6 +49,7 @@ declare class ConfigEventJS {
     stringValue(name: string, defaultValue: string): ForgeConfigSpec$ConfigValue<string>
     stringValueWithPredicate(name: string, defaultValue: string, validator: Predicate<string>): ForgeConfigSpec$ConfigValue<string>
     stringValue(name: string, defaultValue: string, allowedValues: string[]): ForgeConfigSpec$ConfigValue<string>
+    stringListValue(name: string, defaultValues: string[], validator: Predicate<string>): ForgeConfigSpec$ConfigValue<List<? extends string>>
 }
 ```
 
@@ -96,6 +97,10 @@ The following options actually define a config value, and return an instance of 
     - Name: The name of the config option
     - DefaultValue: The default value for the config option
     - AllowedValues: The values that are valid for this config option. should include the default value
+- `stringListValue(name: string, defaultValues: string[], validator: Predicate<string>)`: Defines a new string list config option
+    - Name: The name of the config option
+    - DefaultValues: The default values of the config option
+    - Validator: The validator of the elements of the config's elements, should permit the default values
 
 ### Example
 
