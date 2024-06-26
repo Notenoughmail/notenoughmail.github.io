@@ -11,7 +11,7 @@ has_toc: false
 
 This is the documentation for KubeJS TFC
 
-Available of [Modrinth](https://modrinth.com/mod/kubejs-tfc) and [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/kubejs-tfc)
+Available of [Modrinth](https://modrinth.com/mod/kubejs-tfc) and [CurseForge](https://curseforge.com/minecraft/mc-mods/kubejs-tfc)
 
 Source available on [GitHub](https://github.com/Notenoughmail/KubeJS-TFC)
 

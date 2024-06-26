@@ -11,7 +11,7 @@ has_toc: false
 
 Documentation for Precision Prospecting
 
-Available on [Modrinth](https://modrinth.com/mod/precision-prospecting) and [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/precision-prospecting)
+Available on [Modrinth](https://modrinth.com/mod/precision-prospecting) and [CurseForge](https://curseforge.com/minecraft/mc-mods/precision-prospecting)
 
 Source available on [GitHub](https://github.com/Notenoughmail/precision-prospecting)
 

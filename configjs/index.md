@@ -11,7 +11,7 @@ has_toc: false
 
 This is the documentation for ConfigJS, a KubeJS addon that allows you to create configs for your modpack using Forge's toml format
 
-Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](https://legacy.curseforge.com/minecraft/mc-mods/configjs)
+Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](https://curseforge.com/minecraft/mc-mods/configjs)
 
 Source available on [GitHub](https://github.com/Notenoughmail/ConfigJS)
 
