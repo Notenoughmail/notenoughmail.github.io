@@ -70,7 +70,7 @@ Click <a href="/hidden/posts.html#full" target=htmz>here</a> to display the full
 
 - [1.0.0](../2023/12/27/configjs-1-0-0)
 - [1.0.1](../2023/12/30/configjs-1-0-1)
-- [1.0.2](../2024/06/18/configjs-1-0-2)
+- [1.0.2](../2024/06/19/configjs-1-0-2)
 - [1.0.3](../2024/06/26/configjs-1-0-3)
 
 ## Questions
