@@ -25,6 +25,8 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Representative Blocks](#register-representative-blocks)
 - [Birthdays](#modify-birthdays)
 - [Register Interactions](#register-interactions)
+- [Modifying Worldgen Defaults](#modifying-worldgen-defaults)
+- [Register Fauna Definitions](#register-fauna-definitions)
 
 ## Rock Settings
 
@@ -35,7 +37,7 @@ Defines a new layer or overrides an existing layer which can be referenced from 
 ### Method Signature
 
 ```ts
-event.defineLayer(
+event.defineRock(
     id: string,
     raw: Block,
     hardened: Block,
@@ -49,22 +51,22 @@ event.defineLayer(
 )
 ```
 
-- 1st argument: A block, the registry name of the rock layer
-- 2nd argument: A block, to be used as the raw stone block of the layer
-- 3rd argument: A block, to be used as the hardened stone block of the layer
-- 4th argument: A block, to be used as the gravel block of the layer
-- 5th argument: A block, to be used as the cobble block of the layer
-- 6th argument: A block, to be used as the sand block of the layer
-- 7th argument: A block, to be used as the sandstone block of the layer
-- 8th argument: A block, to be used as the spike block of the layer, may be null
-- 9th argument: A block, to be used as the loose rock block of the layer, may be null
-- 10th argument: A block, to be used as the mossy loose rock block of the layer, may be null
+- 1st argument: A block, the registry name of the rock
+- 2nd argument: A block, to be used as the raw stone block of the rock
+- 3rd argument: A block, to be used as the hardened stone block of the rock
+- 4th argument: A block, to be used as the gravel block of the rock
+- 5th argument: A block, to be used as the cobble block of the rock
+- 6th argument: A block, to be used as the sand block of the rock
+- 7th argument: A block, to be used as the sandstone block of the rock
+- 8th argument: A block, to be used as the spike block of the rock, may be null
+- 9th argument: A block, to be used as the loose rock block of the rock, may be null
+- 10th argument: A block, to be used as the mossy loose rock block of the rock, may be null
 
 ### Example
 
 ```js
 TFCEvents.rockSettings(event => {
-    event.defineLayer('kubejs:vanilla_layer', 'minecraft:stone', 'minecraft:deepslate', 'minecraft:gravel', 'minecraft:cobblestone', 'minecraft:sand', 'minecraft:sandstone', null, null, null)
+    event.defineRock('kubejs:vanilla_layer', 'minecraft:stone', 'minecraft:deepslate', 'minecraft:gravel', 'minecraft:cobblestone', 'minecraft:sand', 'minecraft:sandstone', null, null, null)
 })
 ```
 
@@ -617,3 +619,106 @@ The basis of an interaction, a callback that takes a `ItemStack`, the item in th
 ```js
 apply(stack: ItemStack, context: UseOnContext): InteractionResult
 ```
+
+## Modifying Worldgen defaults
+
+**Type**: `startup_scripts`
+
+Allows for the default settings of TFC chunk generator at world creation, including the editing the rock layers
+
+### Method Signatures
+
+```ts
+declare class ModifyDefaultWorldgenSettingsEventJS {
+    flatBedrock(flat?: boolean): void
+    setSpawnDistance(i: number): void
+    setSpawnCenterX(i: number): void
+    setSpawnCenterZ(i: number): void
+    setTemperatureScale(i: number): void
+    setTemperatureConstant(f: number): void
+    setRainfallScale(i: number): void
+    setRainfallConstant(f: number): void
+    setContinentalness(f: number): void
+    setGrassDensity(f: number): void
+    addRock(rock: RockSettings, name: string, bottom: boolean): void
+    addRockFromId(id: string, name: string, bottom: boolean): void
+    getRock(name: string): RockSettings
+    getRockNames(): Set<string>
+    removeRock(name: string): void
+    addToBottom(name: string): void
+    removeFromBottom(name: string): void
+    defineLayer(id: string, rockMap: Map<string, string>): void
+    removeLayer(layerId: string): void
+    getLayerIds(): List<string>
+    cleanSlate(): void
+    addOceanFloorLayer(name: string): void
+    removeOceanFloorLayer(name: string): void
+    getOceanFloorLayers(): List<string>
+    addLandLayer(name: string): void
+    removeLandLayer(name: string): void
+    getLandLayers(): List<string>
+    addVolcanicLayer(name: string): void
+    removeVolcanicLayer(name: string): void
+    getVolcanicLayers(): List<string>
+    addUpliftLayer(name: string): void
+    removeUpliftLayer(name: string): void
+    getUpliftLayers(): List<string>
+}
+```
+
+#### Climate Modifiers
+
+- `flatBedrock(flat?: boolean)`: Sets if the world should have flat bedrock, defaults to `false`, calling without any arguments sets it to `true`
+- `setSpawnDistance(i: number)`: Sets the distance from the spawn center that players may spawn, defaults to 4000
+- `setSpawnCenterX(i: number)`: Sets the spawn center on the x-coordinate, defaults to 0
+- `setSpawnCenterZ(i: number)`: Sets the spawn center on the z-coordinate, defaults to 0
+- `setTemperatureScale(i: number)`: Sets the temperature scale of the world, the distance from pole-to-pole, defaults to 20000
+- `setTemperatureConstant(f: number)`: Sets the relative constant temperature of the world, defaults to 0
+- `setRainfallScale(i: number)`: Sets the rainfall scale of the world, the distance from peak to peak, defaults to 20000
+- `setRainfallConstant(f: number)`: Sets the relative constant temperature of the world, defaults to 0
+- `setContinentalness(f: number)`: Sets the proportion of the world that is land instead of water, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
+- `setGrassDensity(f: number)`: Sets the grass density of the world, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
+
+#### Rock Layer Settings Modifiers
+
+TODO: Review this
+
+TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^2]. There are 5 layer types, `bottom`, `ocean_floor`, `land`, `volcanic`, and `uplift`, the `bottom` layer type is unique in that it only possesses *rocks*, the rest only possess *layers*. Layer types determine which geologic environment a rock/layer will generate. Every layer type must have at least one entry. *Layers* and *rocks* are user defined and are referenced by name. Rocks define which blocks are placed where, see [registering them](#rock-settings) for more about that. Layers are a list of *rock*-*layer* pairs, associating a *rock* with the *layer* that should generate underneath it
+
+[^2]: These terms are unofficial and exist to better help explain TFC's worldgen
+
+- `addRock(rock: RockSettings, name: string, bottom: boolean)`: Adds the given rock to the generator's pool of available rocks
+    - Rock: the `RockSettings` to add
+    - Name: The name which the rock can be referenced by
+    - Bottom: If the rock should be added to the 'bottom' layer of the world
+- `addRockFromId(id: string, name: string, bottom: boolean)`: Adds the given rock to the generator's pool of available rocks
+    - Id: the [registered](#rock-settings) id of the `RockSettings` to add
+    - Name: The name which the rock can be referenced by
+    - Bottom: If the rock should be added the the 'bottom' layer of the world
+- `getRock(name: string)`: Returns the `RockSettings` with the given name
+- `getRockNames()`: Returns a set of the names of all the rocks currently in the generator's pool of rocks
+- `removeRock(name: string)`: Removes the provided rock from the generator's pool of available rocks and any references to it
+- `addToBottom(name: string)`: Adds the given rock to the 'bottom' layer
+- `removeFromBottom(name: string)`: Removes the given rock from the 'bottom' layer
+- `defineLayer(id: string, rockMap: Map<string, string>)`: Defines a new layer
+    - Id: the name of the layer to add
+    - RockMap: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
+- `removeLayer(layerId: string)`: removes the given layer from the generator
+- `getLayerIds()`: returns a list of the names of all layers currently in the generator's pool of layers
+- `cleanSlate()`: Removes all rocks and layers from the generator
+- `addOceanFloorLayer(name: string)`: Adds the given layer to the 'ocean_floor' layer type
+- `removeOceanFloorLayer(name: string)`: removes the given layer from the 'ocean_floor' layer type
+- `getOceanFloorLayers()`: Gets the layers currently in the 'ocean_floor' layer type
+- `addLandLayer(name: string)`: Adds the given layer to the 'land' layer type
+- `removeLandLayer(name: string)`: removes the given layer from the 'land' layer type
+- `getLandLayers()`: Gets the layers currently in the 'land' layer type
+- `addVolcanicLayer(name: string)`: Adds the given layer to the 'volcanic' layer type
+- `removeVolcanicLayer(name: string)`: Removes the given layer from the 'volcanic' layer type
+- `getVolcanicLayers()`: Gets the layers currently in the 'volcanic' layer type
+- `addUpliftLayer(name: string)`: Adds the given layer to the 'uplift' layer type
+- `removeUpliftLayer(name: string)`: Removes the given layer from the 'uplift' layer type
+- `getUpliftLayers()`: Gets the layers that are currently in the 'uplift' layer type
+
+## Register Fauna Definitions
+
+**Type**: `startup_scripts`
