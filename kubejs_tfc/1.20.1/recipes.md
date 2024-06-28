@@ -143,6 +143,9 @@ event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primaryFluid: Fl
 - 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the input fluid added via a fluid container
 - *Optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
+{: .notice }
+Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that both the output fluid and the input fluid(s) are tagged as such
+
 ### Example
 
 ```js
@@ -178,7 +181,9 @@ event.recipes.tfc.barrel_instant()
 - Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 {: .notice }
-An instant barrel recipe must have an input item, input fluid, or both
+> An instant barrel recipe must have an input item, input fluid, or both
+>
+> Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that the input/output fluid(s) are tagged as such
 
 ### Example
 
@@ -225,7 +230,9 @@ event.recipes.tfc.barrel_sealed(duration: number)
 - Seal: A convenience method for setting both seals, identical to `.onSeal().onUnseal()`
 
 {: .notice }
-A sealed barrel recipe must have an input item, input fluid, or both
+> A sealed barrel recipe must have an input item, input fluid, or both
+>
+> Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that the input/output fluid(s) are tagged as such
 
 [^1]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
 
@@ -500,6 +507,9 @@ event.recipes.tfc.pot_jam(result: ItemStack, ingredients: Ingredient[], fluidIng
 - 5th argument: A number, the temperature °C that the pot must be above to start boiling
 - 6th argument: A string, the texture location that is rendered in the pot when it is complete and still has output
 
+{: .notice }
+Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+
 ### Example
 
 ```js
@@ -533,6 +543,9 @@ event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngr
 - FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
 - Outputs: A convenience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
 
+{: .notice }
+Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
+
 ### Example
 
 ```js
@@ -556,6 +569,9 @@ event.recipes.tfc.pot_soup(ingredients: Ingredient[], fluidIngredient: FluidStac
 - 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient) that the recipe requires
 - 3rd argument: A number, the number of ticks that the pot must boil for
 - 4th argument: A number, the temperature °C that the pot must be above to start boiling
+
+{: .notice }
+Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
 ### Example
 
@@ -893,6 +909,9 @@ event.recipes.firmalife.stinky_soup(ingredients: Ingredient[], fluidIngredient: 
 - 2nd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the fluid input of the recipe
 - 3rd argument: A number, the number of ticks required for the recipe to finish
 - 4th argument: A number, the minimum temperature °C required for the recipe to operate
+
+{: .notice }
+Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
 ### Example
 
