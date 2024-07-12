@@ -23,6 +23,10 @@ An Addon for TFC:TNG which adds new prospecting tools with different ranges
 
 A KubeJS addon which allows user to make their own toml config files through scripts
 
+## [TFCGenViewer](tfcgv/)
+
+A Client side TFC addon for displaying the generation before creating the world
+
 ## [Posts](posts/)
 
 An archive for posts made to this site
