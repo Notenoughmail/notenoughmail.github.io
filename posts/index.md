@@ -73,6 +73,11 @@ Click <a href="/hidden/posts.html#full" target=htmz>here</a> to display the full
 - [1.0.2](../2024/06/19/configjs-1-0-2)
 - [1.0.3](../2024/06/26/configjs-1-0-3)
 
+## TFCGenViewer Updates
+
+- [1.0.0](../2024/07/12/tfcgv-release)
+- [1.1.0](../2024/07/16/tfcgv-1-1-0)
+
 ## Questions
 
 None yet!
