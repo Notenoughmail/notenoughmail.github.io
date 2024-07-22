@@ -70,3 +70,5 @@ htmz:
 
 {: .notice }
 This page can be safely ignored :)
+
+<code style="color:25FF25;">Haggard</code>
