@@ -1,6 +1,6 @@
 ---
 layout: page
-title: customization
+title: Customization
 permalink: /tfcgv/1.20.1/customization/
 parent: 1.20.1
 grand_parent: TFCGenViewer
