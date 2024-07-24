@@ -54,7 +54,7 @@ callouts:
     title: ❓ Question
     color: pink
   comment:
-    color: gray-dk
+    color: grey-dk
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
