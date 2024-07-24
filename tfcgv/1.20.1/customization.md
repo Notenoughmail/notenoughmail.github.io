@@ -33,8 +33,10 @@ The colors for the *Rivers and Mountains* visualizer are defined in `assets/tfcg
 - `rivers_and_mountains/oceanic_volcanic_mountain.json`: A [color definition](#color-definition), the color used by oceanic and volcanic mountains
 - `rivers_and_mountains/inland_mountain.json`: A [color definition](#color-definition), the color used by inland mountains
 
+{: .comment }
+tfcgenviewer/tfcgenviewer/rivers_and_mountains/lake.json default
+
 ```json
-// tfcgenviewer/tfcgenviewer/rivers_and_mountains/lake.json default
 {
     "color": {
         "r": 150,
@@ -51,8 +53,10 @@ The colors of the rock types are defined by a [color gradient definition](#color
 
 An example from the mod:
 
+{: .comment }
+tfcgenviewer/tfcgenviewer/rock_types/uplift.json default
+
 ```json
-// tfcgenviewer/tfcgenviewer/rock_types/uplift.json default
 {
     "reference": "uplift",
     "key": "tfcgenviewer.rock_type.uplift"
@@ -65,8 +69,10 @@ The color of a rock is defined by a [color definition](#color-definition) in a r
 
 An example from the mod:
 
+{: .comment }
+tfc/tfcgenviewer/rocks/rock/raw/andesite.json default
+
 ```json
-// Reference: tfc/tfcgenviewer/rocks/rock/raw/andesite.json
 {
     "color": {
         "r": 96,
@@ -86,8 +92,10 @@ The color of a biome is defined by a [color definition](#color-definition) in a 
 
 An example from the mod:
 
+{: .comment }
+tfc/tfcgenviewer/biomes/plains.json default
+
 ```json
-// Reference: tfc/tfcgenviewer/biomes/plains.json
 {
     "color": {
         "r": 100,
@@ -105,8 +113,10 @@ Additionally, the color definition for unknown biomes is located at `assets/tfcg
 
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/rainfall.json` that defines the gradient used for land in the *Rainfall* visualizer
 
+{: .comment }
+Default
+
 ```json
-// Default
 {
     "reference": "climate",
     "key": "tfcgenviewer.climate.rainfall"
@@ -117,8 +127,10 @@ A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewe
 
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/temperature.json` that defines the gradient used for land in the *Temperature* visualizer
 
+{: .comment }
+Default
+
 ```json
-// Default
 {
     "reference": "climate",
     "key": "tfcgenviewer.climate.temperature"
@@ -134,8 +146,10 @@ The colors for land in the *Biome Altitude* visualizer are defined in  `assets/t
 - `biome_altitude/high.json`: A [color definition](#color-definition), the color for high altitude land
 - `biome_altitude/mountain.json`: A [color definition](#color-definition), the color for mountain land
 
+{: .comment }
+tfcgenviewer/tfcgenviewer/biome_altitude/medium.json default
+
 ```json
-// tfcgenviewer/tfcgenviewer/biome_altitude/medium.json default
 {
     "color": {
         "r": 26,
@@ -155,8 +169,10 @@ The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewe
 - `inland_height/deep_water.json`: A [color definition](#color-definition), the color used for deep water
 - `inland_height/very_deep_water.json`: A [color definition](#color-definition), the color used for very deep water
 
+{: .comment }
+tfcgenviewer/tfcgenviewer/inland_height/shallow_water.json default
+
 ```json
-// tfcgenviewer/tfcgenviewer/inland_height/shallow_water.json default
 {
     
     "color": {
@@ -172,8 +188,10 @@ The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewe
 
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/fill_ocean.json` that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Biome Altitude*, and *Rivers and Mountains* visualizers
 
+{: .comment }
+Default
+
 ```json
-// Default
 {
     "reference": "blue",
     "key": "biome.tfc.ocean"
@@ -201,8 +219,10 @@ A Color may be:
 
 Examples:
 
+{: .comment }
+rgb object
+
 ```json
-// rgb object
 {
     "r": 65,
     "g": 41,
@@ -210,8 +230,10 @@ Examples:
 }
 ```
 
+{: .comment }
+hsv object
+
 ```json
-// hsv object
 {
     "h": 0.234,
     "s": 0.812,
@@ -219,13 +241,17 @@ Examples:
 }
 ```
 
+{: .comment }
+String
+
 ```json
-// String
 "F24DE9"
 ```
 
+{: .comment }
+Number
+
 ```json
-// Number
 15879657
 ```
 
@@ -241,17 +267,19 @@ A color gradient definition is an object with 2 fields:
         - A [color](#color), a constant gradient
         - An array whose members are [colors](#color), the first element is the 'low' end of the gradient and the last element is the 'high' end
     - `reference`: Any of:
-        - `blue`, `ocean`: A gradient from <span style="color:323296;">323296</span> to <span style="color:648cff;">648CFF</span>
-        - `green`, `land`: A gradient from <span style="color:006400;">006400</span>  to <span style="color:50c850;">50C850</span>
-        - `climate`, `temp`, `temperature`, `rain`, `rainfall`: A gradient through <span style="color:b414f0;">B414F0</span>, <span style="color:00b4f0;">00B4F0</span>, <span style="color:b4b4dc;">B4B4DC</span>, <span style="color:d2d200;">D2D200</span>, <span style="color:c8783c;">C8783C</span>, and <span style="color:c82828;">C82828</span>
-        - `volcanic`, `volcanic_rock`: A gradient from <span style="color:c80064;">C80064</span>  to <span style="color:c86464;">C86464</span>
-        - `uplift`, `uplift_rock`: A gradient from <span style="color:b400c8;">B400C8</span>  to <span style="color:b4b4c8;">B4B4C8</span>
+        - `blue`, `ocean`: A gradient from <span style="color:#323296;">323296</span> to <span style="color:#648cff;">648CFF</span>
+        - `green`, `land`: A gradient from <span style="color:#006400;">006400</span>  to <span style="color:#50c850;">50C850</span>
+        - `climate`, `temp`, `temperature`, `rain`, `rainfall`: A gradient through <span style="color:#b414f0;">B414F0</span>, <span style="color:#00b4f0;">00B4F0</span>, <span style="color:#b4b4dc;">B4B4DC</span>, <span style="color:#d2d200;">D2D200</span>, <span style="color:#c8783c;">C8783C</span>, and <span style="color:#c82828;">C82828</span>
+        - `volcanic`, `volcanic_rock`: A gradient from <span style="color:#c80064;">C80064</span>  to <span style="color:#c86464;">C86464</span>
+        - `uplift`, `uplift_rock`: A gradient from <span style="color:#b400c8;">B400C8</span>  to <span style="color:#b4b4c8;">B4B4C8</span>
 - `key`: Optional. Defines the lang key used, defaults to an autogenerated value based on the context used
 
 Examples:
 
+{: .comment }
+Reference: tfcgenviewer/tfcgenviewer/rock_types/oceanic.json
+
 ```json
-// Reference: tfcgenviewer/tfcgenviewer/rock_types/oceanic.json
 {
     "reference": "blue",
     "key": "tfcgenviewer.rock_type.oceanic"
