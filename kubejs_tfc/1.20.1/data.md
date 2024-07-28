@@ -212,7 +212,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 event.foodItem(ingredient: Ingredient, foodItemData: Consumer<BuildFoodItemData>, name?: ResourceLocation)
 ```
 
-- 1st argument: An item ingredient, the items the to which the food item definition applies to
+- 1st argument: An item ingredient, the items to which the food item definition applies to
 - 2nd argument: A consumer with several additional methods:
     - `.type(type: string)`: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
     - `.hunger(i: number)`: Accepts a number, sets how much hunger the food restores, defaults to 4. A full hunger bar is 20

@@ -1029,7 +1029,6 @@ ServerEvents.recipes(event => {
 })
 ```
 
-
 ## AFC Tree Tap
 
 AFC's tree tapping recipe type
