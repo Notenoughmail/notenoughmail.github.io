@@ -34,6 +34,8 @@ The following types are available:
 - [Pickable Crops](#pickable-crops)
 - [Supports](#supports)
 - [Anvils](#anvils)
+- [Axles](#axles)
+- [Encased Axles](#encased-axles)
 
 If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -624,6 +626,14 @@ StartupEvents.registry('block', event => {
 })
 ```
 
+### Axles
+
+Creates a new axles block
+
+### Encased Axles
+
+Creates a new encased axles block
+
 ### FirmaLife Cheese Wheel
 
 Creates a new cheese wheel block
@@ -684,7 +694,7 @@ If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is in
 - [Mineral Prospector](#precision-prospecting-mineral-prospector)
 - [Custom Prospector](#precision-prospecting-custom-prospector)
 
-Additionally, TFC's [tool](#tool-tiers) and [armor](#armor-tiers) tiers are added to KubeJS' tool and armor tier values
+Additionally, TFC's [tool](#tool-tiers) and [armor](#armor-tiers) tiers are added to KubeJS's tool and armor tier values
 
 ### Chisel
 
@@ -1110,7 +1120,7 @@ StartupEvents.registry('item', event => {
 
 ### Tool Tiers
 
-KubeJS TFC adds TFC's tool tiers to KubeJS' predefined tier list
+KubeJS TFC adds TFC's tool tiers to KubeJS's predefined tier list
 
 - `igneous_intrusive`
 - `igneous_extrusive`
@@ -1128,7 +1138,7 @@ KubeJS TFC adds TFC's tool tiers to KubeJS' predefined tier list
 
 ### Armor Tiers
 
-KubeJS TFC adds TFC's armor tiers to KubeJS' predefined tier list
+KubeJS TFC adds TFC's armor tiers to KubeJS's predefined tier list
 
 - `copper`
 - `bismuth_bronze`
@@ -1189,7 +1199,7 @@ Adds a new inventory attachment that can have its contents restricted based on T
 
 - `width`: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
 - `height`: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
-- `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS' default inventory inputFilter. Optional
+- `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory inputFilter. Optional
 - `size`: A `Predicate<Size>`, a filter for what size of items are allowed into the container. Optional
 - `weight`: A `Predicate<Weight>`, a fitler for what weight of items are allowed into the container. Optional
 
