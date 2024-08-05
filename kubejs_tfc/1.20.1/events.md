@@ -624,7 +624,7 @@ apply(stack: ItemStack, context: UseOnContext): InteractionResult
 
 **Type**: `startup_scripts`
 
-Allows for the default settings of TFC chunk generator at world creation, including the editing the rock layers
+Allows for editing the default settings of TFC chunk generator at world creation, including editing the rock layers
 
 ### Method Signatures
 
@@ -681,8 +681,6 @@ declare class ModifyDefaultWorldgenSettingsEventJS {
 
 #### Rock Layer Settings Modifiers
 
-TODO: Review this
-
 TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^2]. There are 5 layer types, `bottom`, `ocean_floor`, `land`, `volcanic`, and `uplift`, the `bottom` layer type is unique in that it only possesses *rocks*, the rest only possess *layers*. Layer types determine which geologic environment a rock/layer will generate. Every layer type must have at least one entry. *Layers* and *rocks* are user defined and are referenced by name. Rocks define which blocks are placed where, see [registering them](#rock-settings) for more about that. Layers are a list of *rock*-*layer* pairs, associating a *rock* with the *layer* that should generate underneath it
 
 [^2]: These terms are unofficial and exist to better help explain TFC's worldgen
@@ -719,6 +717,40 @@ TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^2
 - `removeUpliftLayer(name: string)`: Removes the given layer from the 'uplift' layer type
 - `getUpliftLayers()`: Gets the layers that are currently in the 'uplift' layer type
 
+### Example
+
+```js
+TFCEvents.defaultWorldSettings(event => {
+    event.rainfallScale = 4000
+    event.continentalness = -3.5
+
+    event.defineLayer('my_cool_layer', {
+        granite: 'my_cool_layer',
+        dolomite: 'my_cool_layer',
+        diorite: 'felsic'
+    })
+    event.addLandLayer('my_cool_layer')
+})
+```
+
 ## Register Fauna Definitions
 
 **Type**: `startup_scripts`
+
+Allows for registering a [fauna definition](../data#fauna) for any entity type
+
+### Method Signature
+
+```js
+event.register(entityType: EntityType<?>, placementType: SpawnPlacements$Type, heightmap: Heightmap.Types): void
+```
+
+This registers a fauna for the provided entity type with the given placement type and heightmap
+
+### Example
+
+```js
+TFCEvents.registerFaunas(event => {
+    event.register('minecraft:pig', 'on_ground', 'world_surface_wg')
+})
+```

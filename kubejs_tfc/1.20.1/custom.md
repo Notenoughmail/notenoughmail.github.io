@@ -403,7 +403,8 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder
+- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder and:
+    - `.uniqueDirtTexture()`: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
 - `.path(path: Consumer<TFCPathBlockBuilder>)`: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
 - `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
     - Those of the default block builder
@@ -478,6 +479,16 @@ Inherits the methods of the default block builder
 - `.productItem(productItem: Consumer<ItemBuilder>)`: A consumer for setting the properties of the block's product item
 - `.productItem(productItem: ResourceLocation)`: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
 - `.nutrient(nutrient: NutrientType)`: Sets the nutrient hte crop consumes, available options are `nitrogen`, `phosphorous` , and `potassium`, defaults to `nitrogen`
+- `.texture(texture: string)`: Sets the crop's `crop` texture for all growth stages
+- `.textureAll(id: string, texture: string)`: Sets the crop's texture for the id for all growth stages
+- `.model(model: string)`: Sets the crop's model for all growth stages
+- `.model(gen: Consumer<ModelGenerator>)`: Sets the crop's model for all growth stages
+- `.model(i: number, gen: Consumer<ModelGenerator>)`: Sets the crop's model for a specific growth stage
+- `.model(i: number, model: string)`: Sets the crop's model for a specific growth stage
+- `.texture(i: number, id: string, texture: string)`: Textures a specific key for the given stage
+- `.texture(i: number, texture: string)`: Sets the crop's `crop` texture for the given growth stage
+- `.textures(textures: JsonObject)`: Sets the crop's textures for all growth stages
+- `.textures(i: number, textures: JsonObject)`: Sets the crop's textures for the given growth stage
 
 Additionally this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
 
@@ -628,11 +639,60 @@ StartupEvents.registry('block', event => {
 
 ### Axles
 
-Creates a new axles block
+Creates a new axle block, in addition to blocks derived from it
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:axle`
+
+#### Extra Methods
+
+- `.axleTexture(texture: string)`: Sets the texture the axle will be rendered with
+- `.windmill(windmill: Consumer<WindmillBlockBuilder>)`: Sets the properties of the axle's windmill block
+    - The consumer has the same methods as the default block builder and one additional one:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`: Creates and sets the properties of the axle's water wheel block
+    - The consumer has the same methods as the default block builder plus:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+    - `.texture(texture: string)`: Sets the texture the water wheel will use, the path is relative to `/textures/entity/waterwheel/`
+- `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`: Creates and sets the properties of the axle's gear box block
+    - The consumer has the same methods as the default block builder plus:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.clutch(clutch: Consumer<ClutchBlockBuilder>)`: Creates and sets the properties of the axle's clutch block
+    - The consumer has the same methods as the default block builder plus:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.bladedAxle(bladed: Consumer<BladedAxleBlockBuilder>)`: Creates and sets the properties of the axle's bladed axle block
+    - The consumer has the same methods as the default block builder plus:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_axle', 'tfc:axle')
+        .axleTexture('tfc:block/metal/smooth/wrought_iron')
+        .waterWheel(wheel => {
+            wheel.texture('tfc:block/metal/smooth/rose_gold')
+        })
+})
+```
 
 ### Encased Axles
 
 Creates a new encased axles block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:encased_axle`
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_encased_axle', 'tfc:encased_axle')
+})
+```
 
 ### FirmaLife Cheese Wheel
 
@@ -659,9 +719,41 @@ StartupEvents.registry('block', event => {
 Some of TFC's blocks have extended properties which allow the block properties object passed into them to define more of their behavior, builders for these types of blocks have a method with a consumer that allows you to modify some of those properties
 
 - `.flammable(flammability: number, fireSpreadSpeed: number)`: Sets the flammability and fire spread speed of the block
-- `.pathType(pathType: BlockPathTypes)`: Sets the block's pathing type, used by mobs to determine if they may walk over it or not
+- `.pathType(pathType: BlockPathTypes)`: Sets the block's path type, used by mobs to determine if they may walk over it or not
 - `.enchantPower(f: number)`: Sets the block's enchant power
 - `.enchantPowerFunction(function: Function<BlockState, Double>)`: Sets the function the block uses to determine its enchant power based on its block state
+- `.noCollision()`: Removes the block's collision
+- `.noOcclusion()`: Makes the block not occlude blocks behind it
+- `.friction(f: number)`: Sets the friction of the block
+- `.speedFactor(f: number)`: Sets the speed factor of the block
+- `.jumpFactor(f: number)`: Sets the jump factor of the block
+- `.sound(sound: SoundType)`: Sets the sound type the block uses
+- `.lightLevel(lightLevel: Function<BlockState, number>)`: Sets the light level, in the range [0, 15], of teh block, as a function of its state
+- `.strength(destroyTime: number, explosionResistance: number)`: Sets the destroy time and explosion resistance of the block
+- `.instabreak()`: Makes the block instabreak
+- `.strength(f: number)`: Sets the destroy time and explosion resistance of the block
+- `.randomTicks()`: Sets the block to random tick
+- `.dynamicShape()`: Marks the block as having a dynamic shape
+- `.noLootTable()`: Marks the block as having no loot table
+- `.dropsLike(block: Supplier<Block>)`: makes the block drop like the supplied block
+- `.air()`: Marks the block as being air-like
+- `.isValidSpawn(isValidSpawn: BlockBehaviour$StateArgumentPredicate<EntityType<?>>)`: Determines if an entity may spawn on the block
+- `.isSuffocating(isSuffocating: BlockBehaviour$StatePredicate)`: Determines if the block is suffocating
+- `.isViewBlocking(isBlocking: BlockBehaviour$StatePredicate)`: Determines if the block is view blocking
+- `.requiresCorrectToolForDrops()`: Sets the block to require a 'correct' tool (as determined by a tag) for it to drops its loot table
+- `.mapColor(color: MapColor)`: Sets the map color of the block
+- `.mapColor(color: Function<BlockState, MapColor>)`: Sets the map color of the block per state
+- `.destroyTime(f: number)`: Sets the destroy time of the block
+- `.explosionResistance(f: number)`: Sets the explosion resistance of the block
+- `.ignitedByLava()`: Sets the block to be ignited bt lava
+- `.forceSolidOn()`: Forces the block to be solid
+- `.forceSolidOff()`: Forces the block to be non-solid (?)
+- `.pushReaction(reaction: PushReaction)`: Sets the block's reaction to being pushed by pistons
+- `.offsetType(type: OffsetType)`: Sets the block's hitbox offset type
+- `.noParticlesOnBreak()`: Sets the block to not create any particles when broken
+- `.instrument(instrument: NoteBlockInstrument)`: Sets the note block instrument the block has
+- `.defaultInstrument()`: Sets the block's not block instrument to be the harp
+- `.replaceable()`: Marks the block as being replaceable
 
 ## Items
 

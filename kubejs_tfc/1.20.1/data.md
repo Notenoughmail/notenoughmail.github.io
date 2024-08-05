@@ -163,7 +163,9 @@ event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: C
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
 {: .notice }
-Faunas cannot be added through this, only existing, registered ones can be modified
+> Faunas cannot be added through this, only existing, registered ones can be modified
+>
+> To register a fauna definition see the [event](../events#register-fauna-definitions) for registering them
 
 ### Example
 
