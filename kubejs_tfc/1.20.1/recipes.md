@@ -1007,9 +1007,7 @@ ServerEvents.recipes(event => {
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
 
 {: .unstable }
-> TODO: Check the below with recent versions if any
->
-> This recipe type is currently unused by FirmaLife and may be changed in the future without warning, adding a recipe of this type actually adds it as a stomping recipe in game
+This recipe type is currently unused by FirmaLife and actually adds itself to the stomping recipe type in JEI
 
 ## Method Signature
 
