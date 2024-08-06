@@ -1083,9 +1083,10 @@ Inherits the methods of the default item builder
 
 **Type**: `tfc:windmill_blade`
 
-#### Extra Method
+#### Extra Methods
 
-- `.bladeColor(color: Color)`: Sets the color of the blade
+- `.bladeColor(color: Color)`: Sets the color of the blade, defaults to `0x000000`
+- `.bladeTexture(texture: string)`: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`
 
 #### Example
 

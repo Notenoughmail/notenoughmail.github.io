@@ -494,39 +494,57 @@ TFCEvents.registerFoodTrait(event => {
 
 TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to, as one might imagine, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
 
-### Method Signature
+### Method Signatures
 
 ```ts
-event.register(id: string, applicator: ModifierApplicator, dependsOnInput: boolean): void
+declare class RegisterItemStackModifierEventJS {
+    simple(id: string, applicator: Function<ItemStack, ItemStack>): void
+    withInput(id: string, applicator: BiFunction<ItemStack, ItemStack, ItemStack>): void
+    withInventory(id: string, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>): void
+}
 ```
 
-- 1st argument: A string, the registry name of the modifier being registered
-- 2nd argument: A [ModifierApplicator](#modifier-applicator), performs the modifications to the item stack
-- 3rd argument: A boolean, should be true if the `input` of the applicator is used
+- `simple(id: string, applicator: Function<ItemStack, ItemStack>)`: Registers a modifier that is not input dependent
+    - Id: A string, the registry id to register the modifier as
+    - Applicator: A function that receives and returns an `ItemStack`, the output stack. Performs the modifications to the output stack
+- `withInput(id: string, applicator: BiFunction<ItemStack, ItemStack, ItemStack>)`: Registers a modifier that is input dependent
+    - Id: A string, the registry id to register the modifier as
+    - Applicator: A bi-function that receives two `ItemStack`s, the output stack and the input stack[^2], and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
+- `withInventory(id: string, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>)`: Registers a modifier that is input dependent and has access to an iterable view of the input inventory
+    - Id: A string, the registry id to register the modifier as
+    - Applicator: A tri-function that receives two `ItemStack`s, the output stack and the input stack[^2], and an `Iterable<ItemStack>`, an iterable view of the input inventory, and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
 
-Additionally, there is another method in the event `.getCraftingContainer()`, which returns a `Supplier<@Nullable CraftingContainer>`, the crafting container is only non-null during advanced shaped and shapeless crafting recipes
+[^2]: This stack should *not* be modified at all
 
-### Example
+### Examples
 
 ```js
 TFCEvents.registerItemStackModifier(event => {
-    event.register('kubejs:merge_nbt', (stack, input) => {
-        stack.getOrCreateTag().merge(input.getOrCreateTag())
-        return stack
-    }, true)
+    // Doubles the stack size of the output
+    event.simple('kubejs:double', stack => {
+        stack.grow(stack.count);
+        return stack;
+    })
+    // Copies the input stack's nbt data to the output if present
+    event.withInput('kubejs:copy_nbt', (output, input) => {
+        let { nbt } = input
+        if (nbt) {
+            output.orCreateTag.merge(nbt)
+        }
+        return output
+    })
+    // Copies all of the input stacks' nbt into the output stack
+    event.withInventory('kubejs_copy_all_nbt', (output, input, inventory) => {
+        inventory.forEach(stack => {
+            let { nbt } = stack;
+            if (nbt) {
+                output.orCreateTag.merge(nbt)
+            }
+        })
+        return nbt
+    })
 })
 ```
-
-### Modifier Applicator
-
-A modifier applicator is what actually performs the modifications on a stack when constructed for a recipe, it is a functional interface with the following method signature:
-
-```ts
-apply(stack: ItemStack, input: ItemStack): ItemStack
-```
-
-- `stack`: The stack being built, you are free to modify it in any way
-- `input`: The input stack, it should not be modified in any way, if it is used, the modifier you register should have `true` for the `dependsOnInput` argument
 
 ## Register Representative Blocks
 
@@ -681,9 +699,9 @@ declare class ModifyDefaultWorldgenSettingsEventJS {
 
 #### Rock Layer Settings Modifiers
 
-TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^2]. There are 5 layer types, `bottom`, `ocean_floor`, `land`, `volcanic`, and `uplift`, the `bottom` layer type is unique in that it only possesses *rocks*, the rest only possess *layers*. Layer types determine which geologic environment a rock/layer will generate. Every layer type must have at least one entry. *Layers* and *rocks* are user defined and are referenced by name. Rocks define which blocks are placed where, see [registering them](#rock-settings) for more about that. Layers are a list of *rock*-*layer* pairs, associating a *rock* with the *layer* that should generate underneath it
+TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^3]. There are 5 layer types, `bottom`, `ocean_floor`, `land`, `volcanic`, and `uplift`, the `bottom` layer type is unique in that it only possesses *rocks*, the rest only possess *layers*. Layer types determine which geologic environment a rock/layer will generate. Every layer type must have at least one entry. *Layers* and *rocks* are user defined and are referenced by name. Rocks define which blocks are placed where, see [registering them](#rock-settings) for more about that. Layers are a list of *rock*-*layer* pairs, associating a *rock* with the *layer* that should generate underneath it
 
-[^2]: These terms are unofficial and exist to better help explain TFC's worldgen
+[^3]: These terms are unofficial and exist to better help explain TFC's worldgen
 
 - `addRock(rock: RockSettings, name: string, bottom: boolean)`: Adds the given rock to the generator's pool of available rocks
     - Rock: the `RockSettings` to add
