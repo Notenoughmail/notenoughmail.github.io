@@ -423,8 +423,8 @@ event.recipes.tfc.scraping('5x minecraft:oak_log', 'tfc:metal/double_sheet/rose_
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#advanced-shaped-crafting)!
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
-- 2nd argument: A pattern, the same as KubeJS' native crafting recipe
-- 3rd argument: A pattern key, the same as KubeJS' native crafting recipe
+- 2nd argument: A pattern, the same as KubeJS's native crafting recipe
+- 3rd argument: A pattern key, the same as KubeJS's native crafting recipe
 - 4th argument: An integer, representing the row (0 indexed) of the pattern. Used to determine the input item of the item stack provider
 - 5th argument: An integer, representing the column (0 indexed) of the pattern. Used to determine the input item of the item stack provider
 
@@ -486,9 +486,9 @@ This recipe has two possible syntaxes.
 
 The first:
 
-- 1st argument: A KubeJS shaped crafting recipe, including [advanced shaped crafting](#advanced-shaped-crafting), [extra products shaped crafting](#extra-products-shaped-crafting), and KubeJS' default shaped crafting
+- 1st argument: A KubeJS shaped crafting recipe, including [advanced shaped crafting](#advanced-shaped-crafting), [extra products shaped crafting](#extra-products-shaped-crafting), and KubeJS's default shaped crafting
 
-The second matches the syntax of KubeJS' default shaped crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
+The second matches the syntax of KubeJS's default shaped crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
 
 #### Extra Methods
 
@@ -528,9 +528,9 @@ This recipe has two possible syntaxes
 
 The first:
 
-- 1st argument: A KubeJS Shapeless crafting recipe, including [advanced shapeless crafting](#advanced-shapeless-crafting), [extra products shapeless crafting](#extra-products-shapeless-crafting), and KubeJS' default shapeless crafting
+- 1st argument: A KubeJS Shapeless crafting recipe, including [advanced shapeless crafting](#advanced-shapeless-crafting), [extra products shapeless crafting](#extra-products-shapeless-crafting), and KubeJS's default shapeless crafting
 
-The second matches the syntax of KubeJS' default shapeless crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
+The second matches the syntax of KubeJS's default shapeless crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
 
 #### Examples
 
@@ -555,7 +555,7 @@ event.recipes.tfc.damage_inputs_shapeless_crafting('5x minecraft:bone_meal', [
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#extra-products)!
 
 - 1st argument: A list of item stacks representing the extra products of the recipe
-- 2nd argument: A KubeJS shaped crafting recipe, including [advanced shaped crafting](#advanced-shaped-crafting), [damage inputs shaped crafting](#damage-inputs-shaped-crafting), and KubeJS' default shaped crafting
+- 2nd argument: A KubeJS shaped crafting recipe, including [advanced shaped crafting](#advanced-shaped-crafting), [damage inputs shaped crafting](#damage-inputs-shaped-crafting), and KubeJS's default shaped crafting
 
 #### Example
 
@@ -574,7 +574,7 @@ event.recipes.tfc.extra_products_shaped_crafting('minecraft:oak_log', event.shap
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#extra-products)!
 
 - 1st argument: A list of item stacks representing the extra products of the recipe
-- 2nd argument: A KubeJS shapeless crafting recipe, including [advanced shapeless crafting](#advanced-shapeless-crafting), [damage inputs shapeless crafting](#damage-inputs-shapeless-crafting), and KubeJS' default shapeless crafting
+- 2nd argument: A KubeJS shapeless crafting recipe, including [advanced shapeless crafting](#advanced-shapeless-crafting), [damage inputs shapeless crafting](#damage-inputs-shapeless-crafting), and KubeJS's default shapeless crafting
 
 #### Example
 

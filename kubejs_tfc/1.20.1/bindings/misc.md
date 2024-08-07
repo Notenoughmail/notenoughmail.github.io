@@ -17,6 +17,7 @@ grand_parent: 1.20.1
 - [Chunk Data Utilities](#chunk-data-utilities)
 - [Noise Utils](#noise-utils)
 - [Metal Utils](#metal-utils)
+- [Other Data Utils](#other-data-utils)
 
 ## Rock Map
 
@@ -437,7 +438,7 @@ TFC.misc.getMetal(fluid: Fluid): Metal
 
 ### Metal from Ingot
 
-Returns the first `Metal` whose ingots match the given stack
+Returns the first `Metal` whose ingots match the given stack, may be null
 
 ```ts
 TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
@@ -445,8 +446,58 @@ TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
 
 ### Metal from Plate
 
-Returns the first `Metal` whose sheets match the given stack
+Returns the first `Metal` whose sheets match the given stack, may be null
 
 ```ts
 TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
+```
+
+## Other Data Utils
+
+### Lamp Fuel
+
+Gets the first `LampFuel` that matches the given fluid and blockstate, may be null
+
+```ts
+TFC.misc.getLampFuel(fluid: Fluid, state: BlockState): LampFuel
+```
+
+### Drinkable
+
+Gets the first `Drinkable` that matches the given fluid, may be null
+
+```ts
+TFC.misc.getDrinkable(fluid: Fluid): Drinkable
+```
+
+### Fertilizer
+
+Gets the first `Fertilizer` that matches the given stack, may be null
+
+```ts
+TFC.misc.getFertilizer(stack ItemStack): Fertilizer
+```
+
+### Fuel
+
+Gets the first `Fuel` that matches the given stack, may be null
+
+```ts
+TFC.misc.getFuel(stack: ItemStack): Fuel
+```
+
+### Pannable
+
+Gets the first `Pannable` that matches the given block state, may be null
+
+```ts
+TFC.misc.getPannable(state: BlockState): Pannable
+```
+
+### Sluiceable
+
+Gets the first `Sluiceable` that matches the given item, may be null
+
+```ts
+TFC.misc.getSluiceable(stack: ItemStack): Sluiceable
 ```

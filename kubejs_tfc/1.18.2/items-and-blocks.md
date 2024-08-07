@@ -364,7 +364,7 @@ TFC has blocks which can have moss spread onto them from moss [spreading](#moss-
 
 There are four type of moss spreading blocks: full block, stair, slab, and wall
 
-**Note**: The ☕ Emoji indicate a reference to a Java class, see [KubeJS' Java Reflection](https://wiki.latvian.dev/books/kubejs-legacy/page/reflection-java-access) page
+**Note**: The ☕ Emoji indicate a reference to a Java class, see [KubeJS's Java Reflection](https://wiki.latvian.dev/books/kubejs-legacy/page/reflection-java-access) page
 
 #### Full block
 

@@ -45,6 +45,9 @@ If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following r
 - [Oven](#firmalife-oven)
 - [Stinky Soup](#firmalife-stinky-soup)
 - [Vat](#firmalife-vat)
+- [Stomping](#firmalife-stomping)
+- [Bowl Pot](#firmalife-bowl-pot)
+- [Press](#firmalife-press)
 
 If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installed, the following recipes are supported:
 
@@ -950,6 +953,100 @@ event.recipes.firmalife.vat()
 - Length: A number, the number of ticks the vat must process for, defaults to `600`
 - Temperature: A number, the minimum temperature °C of the vat in order to process, defaults to `300`
 - Jar: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
+
+## FirmaLife Stomping
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.stomping(result: ItemStackProviderJS, ingredient, Ingredient, inputTexture: string, outputTexture: string, sound: string)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result
+- 2nd argument: An item ingredient, the input
+- 3rd argument: A string, the texture to use in the stomping barrel with the input item
+- 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
+- 5th argument: A string, the registry name of a sound event[^1], the sound to play when the barrel is stomped
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.stomping('minecraft:dirt', 'minecraft:stone', 'tfc:block/charcoal_pile', 'tfc:block/powder/charcoal', 'tfc:block.charcoal.fall')
+})
+```
+
+## FirmaLife Bowl Pot
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+### Method Signature
+
+```ts
+event.recipes.firmalife.bowl_pot(itemOutput: ItemStack, ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number, food: (Consumer<FoodData> | {water?: number, hunger?: number, saturation?: number, grain?: number, fruit?: number, vegetables?: number, protein?: number, dairy?: number, decay_modifier?: number}))
+```
+
+- 1st argument: An item stack, the output of the recipe
+- 2nd argument: An array of item ingredients, the item inputs of the recipe
+- 3rd argument: A [FluidStackIngredient](../bindings/#fluid-stack-ingredient), the fluid ingredient of the recipe
+- 4th argument: A number, the number of ticks the pot will process for
+- 5th argument: A number, the temperature °C that the pot needs to get to for the recipe to begin
+- 6th argument: Either a [FoodData](../bindings/#fluid-stack-ingredient) consumer or a string to number map containing any of `water`, `saturation`, `grain`, `fruit`, `vegetables`, `protein`, `dairy`, `hunger`, and `decay_modifier` values
+
+{: .notice }
+Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+
+### Examples
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.bowl_pot('minecraft:cooked_beef', [
+        'minecraft:dirt',
+        'minecraft:stone'
+    ], 'minecraft:water', 20, 100, food => {
+        food.hunger(50)
+        food.protein(10.6)
+        food.saturation(2)
+    })
+    event.recipes.firmalife.bowl_pot('tfc:food/red_apple', [
+        'minecraft:poppy',
+        'minecraft:oak_log'
+    ], 'minecraft:lava', 20, 100, {
+        hunger: 3,
+        fruit: 12,
+        decay_modifier: 0.9
+    })
+})
+```
+
+## FirmaLife Press
+
+See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: .unstable }
+This recipe type is currently unused by FirmaLife and actually adds itself to the stomping recipe type in JEI
+
+## Method Signature
+
+```ts
+event.recipes.firmalife.press(result: ItemStackProviderJS, ingredient, Ingredient, inputTexture: string, outputTexture: string, sound: string)
+```
+
+- 1st argument: An [ItemStackProviderJS](../bindings/#item-stack-provider), the result
+- 2nd argument: An item ingredient, the input
+- 3rd argument: A string, the texture to use in the stomping barrel with the input item
+- 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
+- 5th argument: A string, the registry name of a sound event[^1], the sound to play when the barrel is stomped
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.press('minecraft:smooth_stone', 'minecraft:cobblestone', 'minecraft:block/cobblestone', 'minecraft:block/smooth_stone', 'tfc:block.charcoal.fall')
+})
+```
 
 ## AFC Tree Tap
 

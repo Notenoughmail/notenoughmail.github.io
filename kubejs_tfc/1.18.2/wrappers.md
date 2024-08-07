@@ -41,7 +41,7 @@ BlockIngredient.of(['minecraft:oak_log', 'minecraft:dark_oak_sapling'])
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/common-types/#fluid-stack-ingredients)!
 
-A fluid stack ingredient is a list of strings representing a fluid, or if prepended with a #, a fluid tag and an integer representing the amount of fluid in mB. In most cases, KubeJS' native `Fluid` wrapper will be accepted where ever a fluid stack ingredient is required.
+A fluid stack ingredient is a list of strings representing a fluid, or if prepended with a #, a fluid tag and an integer representing the amount of fluid in mB. In most cases, KubeJS's native `Fluid` wrapper will be accepted where ever a fluid stack ingredient is required.
 
 `FluidStackIngredient` and `FluidIngredient` are interchangeable when declaring a fluid stack ingredient.
 

@@ -37,3 +37,7 @@ Documentation on how to create TFC's recipe types
 ## [Worldgen](worldgen/)
 
 Documentation on how to create some of TFC's [configured features](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/) through scripts
+
+## [Entities](entities/)
+
+Documentation of KubeJS TFC's [EntityJS](https://modrinth.com/mod/entityjs) compat
