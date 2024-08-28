@@ -9,7 +9,7 @@ has_toc: false
 
 # ConfigJS
 
-This is the documentation for ConfigJS, a KubeJS addon that allows you to create configs for your modpack using Forge's toml format
+This is the documentation for ConfigJS, a KubeJS addon that allows you to create custom forge toml configs for your modpack
 
 Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](https://curseforge.com/minecraft/mc-mods/configjs)
 

@@ -104,7 +104,7 @@ In addition there are options to set the x and z offset of the preview (centered
 - Preview Export: Exports the currently displayed preview to a file in `screenshots/tfcgenviewer`
 - Seed: Sets the seed to use in the preview
 
-Underneath those options is a button labeled "Apply", this recreates the preview with the current options
+Underneath those options is a button labeled *Apply*, this recreates the preview with the current options
 
 ### Buttons
 
@@ -119,7 +119,8 @@ At the bottom of the screen there are 3 buttons, "Save", "Cancel", and "Current 
 To the right of the preview there is some info about the preview
 
 - The number of regions generated in the preview
-- The dimensions of the area preview
+- How long it took to generate the preview
+- The dimensions of the preview
 - The x/z coordinates the preview is centered on
 - The visualizer used in the preview
 - A color key for the preview
@@ -135,7 +136,7 @@ TFCGenViewer has three client config options
 
 ### defaultPreviewSize
 
-An int int in the range [0, 6], defaulting to 3. It determines which preview size the *Preview Scale* slider defaults to. This value can be converted to km via the equation:
+An int in the range [0, 6], defaulting to 3. It determines which preview size the *Preview Scale* slider defaults to. This value can be converted to km via the equation:
 
 2<span style="vertical-align: baseline; position: relative; top: -0.6em;">(defaultPreviewSize + 5)</span> * 128 / 1000
 
@@ -145,7 +146,7 @@ A boolean, defaulting to true. It determines if the preview screen should displa
 
 ### dingWhenGenerated
 
-A boolean, defaulting to true. It determines if the a sound should play when a preview finished generating
+A boolean, defaulting to true. It determines if the a sound should play when a preview finishes generating
 
 ## Customization
 

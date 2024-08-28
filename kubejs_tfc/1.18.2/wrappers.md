@@ -204,7 +204,7 @@ Adds a `firmalife:burrito` modifier
 
 ##### pie()
 
-Adds a `firmalige:pie` modifier
+Adds a `firmalife:pie` modifier
 
 ##### pizza()
 

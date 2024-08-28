@@ -1278,7 +1278,7 @@ StartupEvents.registry('fluid', event => {
 
 ## Attachments
 
-In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds an attachemnt that can be used in scripts
+In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds an attachment that can be used in scripts
 
 - [Inventory](#inventory)
 
@@ -1294,7 +1294,7 @@ Adds a new inventory attachment that can have its contents restricted based on T
 - `height`: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
 - `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory inputFilter. Optional
 - `size`: A `Predicate<Size>`, a filter for what size of items are allowed into the container. Optional
-- `weight`: A `Predicate<Weight>`, a fitler for what weight of items are allowed into the container. Optional
+- `weight`: A `Predicate<Weight>`, a filter for what weight of items are allowed into the container. Optional
 
 #### Example
 

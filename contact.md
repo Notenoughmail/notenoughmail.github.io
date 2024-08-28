@@ -17,23 +17,23 @@ Discord is where I'm primarily active because that's sorta just how it works
 
 I'm `toomuchmail` on Discord and can be found hiding in the background of the [TFC](https://discord.gg/PRuAKvY) and [KubeJS](https://discord.gg/fKjDAetj) servers, coming forth when I'm needed or feel like it
 
-These are the primary places where I provide support[^1] for KubeJS TFC, Precision Prospecting, and ConfigJS
+These are the primary places where I provide support[^1] for KubeJS TFC, Precision Prospecting, ConfigJS, and TFCGenViewer (as applicable), but I will *always* take bug reports and feature suggestions in a mod's repo
 
-And if I ever make a mod that's not tied to those mods I might talk about it in the #showcase channel in the [NeoForge](https://discord.gg/neoforged) server
+And if I ever make a mod that's not tied to TFC/KubeJS I might talk about it in the *#showcase* channel of the [NeoForge](https://discord.gg/neoforged) server
 
 ## Cohost
 
-Calling cohost a "social media" feels wrong, but I don't know the right words
+Calling cohost a "social media" feels wrong, but I don't know what would be the right thing to call it
 
-I'm [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail?page=0) on cohost and occasionally I'll be salient enough to post something there
+I'm [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail) on cohost and occasionally I'll be salient enough to post something there
 
-You can alos send me an [ask]() there if for some reason you've something to ask of me in public
+You can also send me an [ask](https://cohost.org/Roughly-Enough-Mail/ask) there if for some reason you've something to ask of me in public
 
 ## GitHub
 
 Wow! The place that hosts this site, no way
 
-Maybe GitHub will fully pivot into being a social media with direct messaging capabilities. When that happens I can be found at [Notenoughmail](https://github.com/Notenoughmail) doing who-knows-what, probably making kube-scritps-that-*really*-oughta-be-mods
+Maybe GitHub will fully pivot into being a social media with direct messaging capabilities. When that happens I can be found at [Notenoughmail](https://github.com/Notenoughmail) doing who-knows-what, probably making kube-scripts-that-*really*-oughta-be-mods
 
 ## Modrinth & CurseForge
 

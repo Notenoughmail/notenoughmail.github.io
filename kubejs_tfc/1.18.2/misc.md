@@ -673,7 +673,7 @@ A collection of methods for getting information about the calendar. Methods with
 - `getCalendarTicksInMonth(Integer)`: Returns how many ticks are in a month based upon the provided number of days in a month
 - `getCalendarTicksInYear(Integer)`: Returns how many ticks are in a year based upon the provided number of days in a month
 - `getTotalMinutes(number)`: Returns how many in-game minutes are in the number of provided time
-- `getTotalhours(number)`: Returns how many in-game hours are in the number of provided time
+- `getTotalHours(number)`: Returns how many in-game hours are in the number of provided time
 - `getTotalDays(number)`: Returns how many in-game days are in the number of provided time
 - `getTotalMonths(number, Integer)`: Returns how many in-game months are in the number of provided time for the provided number of days in a month
 - `getTotalYears(number, Integer)`: Returns how many in-game years are in the number of provided time for the provided number of days in a month

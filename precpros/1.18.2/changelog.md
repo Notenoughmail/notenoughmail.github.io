@@ -79,7 +79,7 @@ grand_parent: Precision Prospecting
 
 (Jan. 18, 2023)
 
-- Add proper KubeJS integration; see [KubeJS Interation](https://github.com/Notenoughmail/precision-prospecting/wiki/KubeJS-Integration)
+- Add proper KubeJS integration; see [KubeJS Integration](https://github.com/Notenoughmail/precision-prospecting/wiki/KubeJS-Integration)
 - Commits
     - [Proper Kube Integration](https://github.com/Notenoughmail/precision-prospecting/commit/4e4845776f26dc8e3bff62ecbdefc4918d24b187)
     - [Gradle Fixes](https://github.com/Notenoughmail/precision-prospecting/commit/33e6f4ac6ab3a883c7ab7c41fb7fff7bd6309718)

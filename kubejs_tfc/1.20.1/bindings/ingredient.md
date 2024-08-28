@@ -246,9 +246,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/
 TFC.ingredient.notRotten(delegate?: Ingredient)
 ```
 
-- *Optional 1st argument*: An item ingreident to which the ingredient is applied to
+- *Optional 1st argument*: An item ingredient to which the ingredient is applied to
 
-Creates an ingredient of type `tfc:not_rotten` with the ingredietn defined by the `delegate` argument
+Creates an ingredient of type `tfc:not_rotten` with the ingredient defined by the `delegate` argument
 
 ### Examples
 

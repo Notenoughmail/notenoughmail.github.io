@@ -77,7 +77,7 @@ onEvent('tfc.data', event => {
 ```js
 // Makes land prey slightly strong against crushing damage and weak towards piercing damage
 onEvent('tfc.data', event => {
-    event.addTFCEnttiyDamageResistance('tfc:land_prey', 'c=20, p=-3000')
+    event.addTFCEntityDamageResistance('tfc:land_prey', 'c=20, p=-3000')
 })
 ```
 
@@ -93,7 +93,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
     - `effect`
         - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
         - *optional 2nd argument*: A consumer with several methods:
-            - `duration(integer)`: Accepts an integer and sets the number of ticks the effects will be apllied for, defaults to 20
+            - `duration(integer)`: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
             - `amplifier(integer)`: Accepts an integer and sets the level of the effect applied, defaults to 0
             - `chance(number)`: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the drinkable, if not provided a name will be automatically generated based on the fluid ingredient
@@ -210,7 +210,7 @@ onEvent('tfc.data', event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#item-sizes)! **Note: per the main page, this will not override blocks/items which specify their own weight/size**
 
 - 1st argument: An item ingredient which the size and weight values will apply to
-- 2nd arguemnt: A string which describes the weight and size values
+- 2nd argument: A string which describes the weight and size values
     - The format is `s=small, w=light`; the types *must* be separated by commas and types the may be shorted to their first letter:
         - size/s
             - Allowed values: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`

@@ -29,7 +29,9 @@ This setting can also be set via the `/tfcgenviewer set view_permission <permiss
 
 ### Categories
 
-These options are only relevant if `viewPermission` is set to `BY_CATEGORY` and all have the same options
+These options are only relevant if `viewPermission` is set to `BY_CATEGORY`
+
+All of these options have the same possible values and behavior
 
 - `SEED_COMMAND`: If the player has /seed permission (level 2) they can access that feature, default
 - `ALLOW_LIST`: If the player is part of that filter, they may access that feature
@@ -41,7 +43,7 @@ These options are only relevant if `viewPermission` is set to `BY_CATEGORY` and 
 
 If the player has access to this, they may export the preview
 
-This setting can be slo be set via the `/tfcgenviewer set export <permission_type>` command and gotten via `/tfcgenviewer get export`
+This setting can be set via the `/tfcgenviewer set export <permission_type>` command and gotten via `/tfcgenviewer get export`
 
 #### seedPermission
 

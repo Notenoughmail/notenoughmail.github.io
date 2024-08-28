@@ -430,7 +430,7 @@ TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number
 
 ### Metal from Fluid
 
-Returns the `Metal` asscoiated with the given fluid, may be null
+Returns the `Metal` associated with the given fluid, may be null
 
 ```ts
 TFC.misc.getMetal(fluid: Fluid): Metal

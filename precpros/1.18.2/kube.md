@@ -45,18 +45,18 @@ The custom prospector defaults to `15` cool down, `12` primary radius, `12` seco
 // In kubejs\startup_scripts
 
 onEvent('item.registry', event => {
-	// Registers a new prospector hammer item with the wood tier
-	event.create('my_prospector_hammer', 'prospector_hammer').tier('wood')
-	// Registers a new prospector item with 100 ticks of cool down between uses and a primary radius of 3 blocks (7 wide total)
-	event.create('my_custom_prospector', 'custom_prospector').coolDownBaseline(100).primaryRadiusBaseline(3)
-	// These two are equivalent!
-	// Registers a new prospector item with radii of 3 and displacement of 5
-	event.create('my_custom_surface_sampler', 'custom_prospector').primaryRadiusBaseline(3).secondaryRadiusBaseline(3).displacementBaseline(5)
-	event.create('my_custom_surface_sampler_simplified', 'custom_prospector').dimensionsBaseline(3, 3, 5)
-	// Registers a new prospector item that scans for any block with the #tfc:clay tag (Silt/Loam/etc. Clay Dirt/Grass)
-	event.create('my_clay_finder', 'custom_prospector').prospectBlockTag('tfc:clay')
-	// This does not work, as #minecraft:water is a fluid tag, however add #minecraft:water as a block tag and it will work
-	event.create('my_dowsing_rod', 'custom_prospector').prospectBlockTag('minecraft:water')
+    // Registers a new prospector hammer item with the wood tier
+    event.create('my_prospector_hammer', 'prospector_hammer').tier('wood')
+    // Registers a new prospector item with 100 ticks of cool down between uses and a primary radius of 3 blocks (7 wide total)
+    event.create('my_custom_prospector', 'custom_prospector').coolDownBaseline(100).primaryRadiusBaseline(3)
+    // These two are equivalent!
+    // Registers a new prospector item with radii of 3 and displacement of 5
+    event.create('my_custom_surface_sampler', 'custom_prospector').primaryRadiusBaseline(3).secondaryRadiusBaseline(3).displacementBaseline(5)
+    event.create('my_custom_surface_sampler_simplified', 'custom_prospector').dimensionsBaseline(3, 3, 5)
+    // Registers a new prospector item that scans for any block with the #tfc:clay tag (Silt/Loam/etc. Clay Dirt/Grass)
+    event.create('my_clay_finder', 'custom_prospector').prospectBlockTag('tfc:clay')
+    // This does not work, as #minecraft:water is a fluid tag, however add #minecraft:water as a block tag and it will work
+    event.create('my_dowsing_rod', 'custom_prospector').prospectBlockTag('minecraft:water')
 })
 ```
 

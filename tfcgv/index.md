@@ -9,7 +9,7 @@ has_toc: false
 
 # TFCGenViewer
 
-Docs for TFCGenViewer
+Preview the generation of your TFC worlds before creating them
 
 Available on [Modrinth](https://modrinth.com/mod/tfcgenviewer) and [CurseForge](https://curseforge.com/minecraft/mc-mods/tfcgenviewer)
 

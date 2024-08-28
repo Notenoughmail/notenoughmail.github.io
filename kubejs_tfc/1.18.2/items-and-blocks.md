@@ -384,7 +384,7 @@ event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossBlock('kubej
 
 This has two methods
 
-- `.mossyStair(string)`: Accetps a string, sets the block this block will convert to when 'mossed'. Defaults to oak stairs
+- `.mossyStair(string)`: Accepts a string, sets the block this block will convert to when 'mossed'. Defaults to oak stairs
     - **Note**: The provided block *must* be a stair block
 - `.mossyConversion(callback)`: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
     - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`

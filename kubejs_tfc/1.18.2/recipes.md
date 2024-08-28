@@ -58,14 +58,14 @@ if you have [ArborFirmaCraft](https://www.curseforge.com/minecraft/mc-mods/arbor
 
 KubeJS TFC also adds three type [wrappers](../wrappers/) for easier building of recipes, they will be linked in each recipe just like TFC's [Official Docs](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating) do. In addition the appropriate recipe page will be linked from each recipe.
 
-##### Some Helpful Notes
-
-- Have a look over TFC's [tags](https://terrafirmacraft.github.io/Documentation/1.18.x/data/tags/), in many places they are used to determine if an ingredient is allowed to perform the recipe or even go in the recipe's container. If you find you've made a recipe and it isn't working, check the linked list for any related tags.
-- In several places TFC will take ingredients of tool items. Normally when writing json recipes, this would be no problem, however due to the way KubeJS processes ingredient items, items with durability automatically have nbt attached to them specifying that their damage be 0. This can be stopped by using `Item.of()` and the `.ignoreNBT()` method. However this does not apply to tags, so this would not be needed for an ingredient of `#tfc:saws`
+{: .notice }
+>
+> - Have a look over TFC's [tags](https://terrafirmacraft.github.io/Documentation/1.18.x/data/tags/), in many places they are used to determine if an ingredient is allowed to perform the recipe or even go in the recipe's container. If you find you've made a recipe and it isn't working, check the linked list for any related tags.
+> - In several places TFC will take ingredients of tool items. Normally when writing json recipes, this would be no problem, however due to the way KubeJS processes ingredient items, items with durability automatically have nbt attached to them specifying that their damage be 0. This can be stopped by using `Item.of()` and the `.ignoreNBT()` method. However this does not apply to tags, so this would not be needed for an ingredient of `#tfc:saws`
 
 ---
 
-### Alloy
+## Alloy
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#alloy)!
 
@@ -75,7 +75,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
     - A number, in the range [0, 1], representing the minimum portion needed in the mixture
     - A number, in the range [0, 1], representing the maximum portion needed in the mixture
 
-#### Example
+### Example
 
 ```js
 // copper, rose gold, and black steel mix to become steel
@@ -88,19 +88,19 @@ event.recipes.tfc.alloy('tfc:steel', [
 
 In order to use a custom metal as an output, a metal needs to be defined, see [here](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Data#metals) for how to do so.
 
-### Anvil Welding
+## Anvil Welding
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#anvil-welding)
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider)) representing the result of the recipe
 - 2nd argument: A list of two item ingredients
 
-#### Extra Methods
+### Extra Methods
 
 - `.tier(int)`: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
 - `.combineForgingBonus()`: Sets the `combine_forging_bonus` property to `true`
 
-#### Example
+### Example
 
 ```js
 
@@ -108,7 +108,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 event.recipes.tfc.welding('2x tfc:metal/ingot/bronze', ['tfc:metal/ingot/black_bronze', 'tfc:metal/ingot/bismuth_bronze']).tier(2)
 ```
 
-### Anvil Working
+## Anvil Working
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#anvil-working)!
 
@@ -116,19 +116,19 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: An item ingredient
 - 3rd argument: An array of up to three forge rules, see the main page for a full list
 
-#### Extra Methods
+### Extra Methods
 
 - `.tier(int)`: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
 - `.applyBonus()`: Sets the `apply_forging_bonus` property to `true`
 
-#### Example
+### Example
 
 ```js
 // work a bismuth bronze rod into a bronze ingot with an added modifier of 4000 heat and applying a bonus
 event.recipes.tfc.anvil(ItemStackProvider.of('tfc:metal/ingot/bronze', {type:'tfc:add_heat', temperature:4000}), 'tfc:metal/rod/bismuth_bronze', ['draw_not_last', 'shrink_any']).applyBonus()
 ```
 
-### Barrel Instant Fluid
+## Barrel Instant Fluid
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-instant-fluid)!
 
@@ -136,18 +136,18 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
 - 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
 
-#### Extra Method
+### Extra Method
 
 - `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
-#### Example
+### Example
 
 ```js
 // combine 50mB of water and 5mB of zinc to make 50mB of milk
 event.recipes.tfc.barrel_instant_fluid(Fluid.of('minecraft:milk', 50), FluidStackIngredient.water(50), Fluid.of('tfc:metal/zinc', 5))
 ```
 
-### Barrel Instant
+## Barrel Instant
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-instant)!
 
@@ -155,11 +155,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: An ingredient item
 - 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
 
-#### Extra Method
+### Extra Method
 
 - `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
-#### Examples
+### Examples
 
 ```js
 // get 5 oak logs for every 2 diamond blocks and 200mB of anything in the tfc:sterling_silver fluid tag
@@ -168,7 +168,7 @@ event.recipes.tfc.barrel_instant('5x minecraft:oak_log', '2x minecraft:diamond_b
 event.recipes.tfc.barrel_instant(['3x minecraft:diamond_block', Fluid.of('tfc:corn_whiskey', 20)], '3x minecraft:dark_oak_log', Fluid.water())
 ```
 
-### Barrel Sealed
+## Barrel Sealed
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-sealed)!
 
@@ -176,24 +176,24 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: An ingredient list containing a [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), an item ingredient, or both
 - 3rd argument: An integer, representing the number of ticks that the barrel must be sealed for. A duration of -1 will be considered infinite, doing so should be accompanied either an onSeal or onUnseal, or both method(s)
 
-#### Extra Methods
+### Extra Methods
 
 - `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 - `.onSeal(item stack provider)`: An object representing an [item stack provider](../wrappers/#item-stack-provider), sets the `on_seal` property to an equal item stack provider
 - `.onUnseal(item stack provider)`: An object representing an [item stack provider](../wrappers/#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
 
-#### Example
+### Example
 
 ```js
 // get 20mB of milk and 3 oak logs when 3 oak logs and 200mB of water are sealed together for 200 ticks
 event.recipes.tfc.barrel_sealed([Fluid.of('minecraft:milk', 20), '3x minecraft:oak_log'], [Fluid.of('minecraft:water', 200), '3x minecraft:oak_log'], 200)
 ```
 
-#### Further Necessities
+### Further Necessities
 
 When sealed, a translatable component describing the recipe will appear in the UI. The structure of the lang key is `'tfc.recipe.barrel.' + <recipe_id namespace> + '.' + <recipe_id path>` with all backslashes (/) replaced with periods. Alternatively, just try the recipe in-game and translate the lang key seen.
 
-### Blast Furnace
+## Blast Furnace
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#blast-furnace)!
 
@@ -201,14 +201,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
 - 3rd argument: The catalyst, an item ingredient
 
-#### Example
+### Example
 
 ```js
 // 1mB of zinc for 1mB of bismuth bronze catalyzed by a bucket
 event.recipes.tfc.blast_furnace(Fluid.of('tfc:metal/bismuth_bronze', 1), Fluid.of('tfc:metal/zinc', 1), 'minecraft:bucket')
 ```
 
-### Bloomery
+## Bloomery
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#bloomery)!
 
@@ -217,14 +217,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 3rd argument: The catalyst, an item ingredient
 - 4th argument: An integer, representing the duration in ticks until the bloomery is complete
 
-#### Example
+### Example
 
 ```js
 // 2mB of bismuth bronze becomes an oak log when catalyzed by a bucket for 20 ticks
 event.recipes.tfc.bloomery('minecraft:oak_log', Fluid.of('tfc:metal/bismuth_bronze', 2), 'minecraft:bucket', 20)
 ```
 
-### Casting
+## Casting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#casting)!
 
@@ -233,14 +233,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
 - *optional 4th argument*: A number, in the range [0, 1], representing the chance that the mold will break upon completion of this recipe
 
-#### Example
+### Example
 
 ```js
 // 100mB of sterling silver in a saw head mold produces an oak log; the mold has a 50% chance of breaking
 event.recipes.tfc.casting('minecraft:oak_log', 'tfc:ceramic/saw_head_mold', FluidStackIngredient.of('#tfc:sterling_silver', 100), 0.5)
 ```
 
-### Chiseling
+## Chiseling
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#chiseling)!
 
@@ -248,19 +248,19 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: A [block ingredient](../wrappers/#block-ingredient)
 - *optional 3rd argument*: A string representing the chiseling mode, 'smooth', 'slab', or 'stair' are accepted, defaults to 'smooth'
 
-#### Extra Methods
+### Extra Methods
 
 - `.extraDrop(item stack provider)`: An [item stack provider](../wrappers/#item-stack-provider) specifying an item to be dropped upon chiseling
 - `.itemIngredients(ingredients...)`: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
 
-#### Example
+### Example
 
 ```js
 // get five brass rods and a diamond block when chiseling a sapling in slab mode using either a copper or blue steel chisel
 event.recipes.tfc.chisel('minecraft:diamond_block', '#minecraft:saplings', 'slab').extraDrop('5x tfc:metal/rod/brass').itemIngredients('tfc:metal/chisel/copper', 'tfc:metal/chisel/blue_steel')
 ```
 
-### Collapse/Landslide
+## Collapse/Landslide
 
 See the [collapse](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#collapse) and [landslide](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#landslide) main pages! **Note:** The syntax is exactly the same for collapse and landsliding recipes, thus they are shown together
 
@@ -269,7 +269,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.18.x/data/r
     - A string representing the block state result
 - 2nd argument: A [block ingredient](../wrappers/#block-ingredient)
 
-#### Examples
+### Examples
 
 ```js
 // a gold block collapse into a diamond block
@@ -280,7 +280,7 @@ event.recipes.tfc.collapse(true, '#minecraft:logs')
 event.recipes.tfc.landslide('minecraft:dark_oak_log[axis=y]', 'minecraft:oak_log')
 ```
 
-### Heating
+## Heating
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating)!
 
@@ -292,11 +292,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 [^2]: If the argument list is only two long (for instance when there is no result) this is the second argument
 
-#### Extra Method
+### Extra Method
 
 - `.useDurability()`: sets the `use_durability` property to true
 
-#### Examples
+### Examples
 
 ```js
 // get 50mB of water when a clay block is raised to 50℃
@@ -305,18 +305,18 @@ event.recipes.tfc.heating(Fluid.of('minecraft:water', 50), 'minecraft:clay', 50)
 event.recipes.tfc.heating('tfc:fire_clay', 50)
 ```
 
-### Knapping
+## Knapping
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#knapping)! **Note:** The syntax is exactly the same for clay, fire clay, and leather knapping recipes, thus they are shown together
 
 - 1st argument: An item stack, the result
 - 2nd argument: A pattern
 
-#### Extra Method
+### Extra Method
 
 - `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
 
-#### Examples
+### Examples
 
 ```js
 // get a large prepared hide for removing a single square
@@ -327,7 +327,7 @@ event.recipes.tfc.fire_clay_knapping('tfc:large_prepared_hide', ['XXX', ' X ', '
 event.recipes.tfc.leather_knapping('tfc:large_prepared_hide', ['X   X', ' X X ', '  X  ', ' X X ', 'X   X'])
 ```
 
-### Loom
+## Loom
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#loom)!
 
@@ -335,18 +335,18 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: An item stack ingredient
 - *optional 3rd argument*: An integer which determines how many steps of the loom's working animation need to be completed to produce the result, defaults to the stack size of the item stack ingredient
 
-#### Extra Method
+### Extra Method
 
 - `.inProgressTexture(string)`: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
 
-#### Example
+### Example
 
 ```js
 // get one oak log from one oak plank after working the loom fifty times
 event.recipes.tfc.loom('minecraft:oak_log', 'minecraft:oak_planks', 50)
 ```
 
-### Simple Pot
+## Simple Pot
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes-pot/#simple-pot)!
 
@@ -359,28 +359,28 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 3rd argument: An integer, representing the number of ticks the pot must boil for
 - 4th argument: A number, representing the temperature the pot must reach to begin boiling
 
-#### Example
+### Example
 
 ```js
 // boil 60mB of water and a cornflower at 50℃ for 20 ticks and get 50mB of light blue dye
 event.recipes.tfc.pot(Fluid.of('tfc:light_blue_dye', 50), [Fluid.of('minecraft:water', 60), 'minecraft:cornflower'], 20, 50)
 ```
 
-### Quern
+## Quern
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#quern)!
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // grind one bone meal into 3 bones
 event.recipes.tfc.quern('3x minecraft:bone', 'minecraft:bone_meal')
 ```
 
-### Rock Knapping
+## Rock Knapping
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#rock-knapping)!
 
@@ -388,37 +388,37 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 2nd argument: A pattern
 - 3rd argument: An item ingredient
 
-#### Extra Method
+### Extra Method
 
 - `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
 
-#### Example
+### Example
 
 ```js
 // knap sedimentary rocks into large prepared hide
 event.recipes.tfc.rock_knapping('tfc:large_prepared_hide', ['XX', 'XX', 'XX'], '#tfc:sedimentary_rock')
 ```
 
-### Scraping
+## Scraping
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#scraping)!
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
-#### Extra Methods
+### Extra Methods
 
 - `.inputTexture(string)`: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
 - `.outputTexture(string)`: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
 
-#### Example
+### Example
 
 ```js
 // scrape a rose gold double sheet into 5 oak logs
 event.recipes.tfc.scraping('5x minecraft:oak_log', 'tfc:metal/double_sheet/rose_gold')
 ```
 
-### Advanced Shaped Crafting
+## Advanced Shaped Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#advanced-shaped-crafting)!
 
@@ -428,11 +428,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 4th argument: An integer, representing the row (0 indexed) of the pattern. Used to determine the input item of the item stack provider
 - 5th argument: An integer, representing the column (0 indexed) of the pattern. Used to determine the input item of the item stack provider
 
-#### Extra Methods
+### Extra Methods
 
 Advanced Shaped Crafting inherits any extra methods which vanilla/KubeJS shaped crafting has, including `.noMirror()` and `.noShrink()`
 
-#### Example
+### Example
 
 ```js
 // Craft a hammer and a copper ingot together to get two copper rods with the same heat as the copper ingot
@@ -445,14 +445,14 @@ event.recipes.tfc.advanced_shaped_crafting(ItemProvider.of('2x tfc:metal/rod/cop
 }, 1, 0)
 ```
 
-### Advanced Shapeless Crafting
+## Advanced Shapeless Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#advanced-shapeless-crafting)!
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
 - 2nd argument: A list of item ingredients, the first ingredient will be treated as the input item for the item stack provider
 
-#### Example
+### Example
 
 ```js
 // Craft a knife, two fruits, and three breads together to get a vanilla porkchop
@@ -478,7 +478,7 @@ event.recipes.tfc.advanced_shapeless_crafting(ItemProvider.of('minecraft:porkcho
 ])
 ```
 
-### Damage Inputs Shaped Crafting
+## Damage Inputs Shaped Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#damage-inputs)!
 
@@ -490,11 +490,11 @@ The first:
 
 The second matches the syntax of KubeJS's default shaped crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
 
-#### Extra Methods
+### Extra Methods
 
 Damage inputs shaped crafting inherits any extra methods which vanilla/KubeJS shaped crafting has, including `.noMirror()` and `.noShrink()`
 
-#### Examples
+### Examples
 
 ```js
 // The crafting recipe of a chest but a saw in the center
@@ -520,7 +520,7 @@ event.recipes.tfc.damage_inputs_shaped_crafting('minecraft:chest', [
 })
 ```
 
-### Damage Inputs Shapeless Crafting
+## Damage Inputs Shapeless Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#damage-inputs)!
 
@@ -532,7 +532,7 @@ The first:
 
 The second matches the syntax of KubeJS's default shapeless crafting recipes, see their [wiki](https://wiki.latvian.dev/books/kubejs-legacy/page/recipeeventjs) for specifics
 
-#### Examples
+### Examples
 
 ```js
 // Craft a hammer and a bone to get 5 bone meal
@@ -550,14 +550,14 @@ event.recipes.tfc.damage_inputs_shapeless_crafting('5x minecraft:bone_meal', [
 ])
 ```
 
-### Extra Products Shaped Crafting
+## Extra Products Shaped Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#extra-products)!
 
 - 1st argument: A list of item stacks representing the extra products of the recipe
 - 2nd argument: A KubeJS shaped crafting recipe, including [advanced shaped crafting](#advanced-shaped-crafting), [damage inputs shaped crafting](#damage-inputs-shaped-crafting), and KubeJS's default shaped crafting
 
-#### Example
+### Example
 
 ```js
 // Get an oak log as an extra product of crafting two bones together to get a piece of coal
@@ -569,14 +569,14 @@ event.recipes.tfc.extra_products_shaped_crafting('minecraft:oak_log', event.shap
 }))
 ```
 
-### Extra Products Shapeless Crafting
+## Extra Products Shapeless Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#extra-products)!
 
 - 1st argument: A list of item stacks representing the extra products of the recipe
 - 2nd argument: A KubeJS shapeless crafting recipe, including [advanced shapeless crafting](#advanced-shapeless-crafting), [damage inputs shapeless crafting](#damage-inputs-shapeless-crafting), and KubeJS's default shapeless crafting
 
-#### Example
+### Example
 
 ```js
 // Get an oak log as an extra product of crafting three sticks together to get a diamond block
@@ -585,31 +585,31 @@ event.recipes.tfc.extra_products_shapeless_crafting('minecraft:oak_log', event.s
 ]))
 ```
 
-### Drying
+## Drying
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // Dry a log into sticks
 event.recipes.firmalife.drying('4x minecraft:stick', '#minecraft:logs')
 ```
 
-### Smoking
+## Smoking
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // Smoke raw beef into cooked beef
 event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
 ```
 
-### Mixing Bowl
+## Mixing Bowl
 
 - 1st argument: A list of results containing:
     - Up to one fluid stack
@@ -618,44 +618,44 @@ event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
     - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
     - Up to five item ingredients
 
-#### Example
+### Example
 
 ```js
 // Mix 1000mB of water and 3 bone meal to get 1 glue and 50mB of limewater
 event.recipes.firmalife.mixing_bowl(['tfc:glue', Fluid.of('tfc:limewater', 50)], ['3x minecraft:bone_meal', Fluid.water()])
 ```
 
-### Pumpkin Knapping
+## Pumpkin Knapping
 
 - 1st argument: An item stack, the result
 - 2nd argument: A pattern
 
-#### Extra Method
+### Extra Method
 
 - `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
 
-#### Examples
+### Examples
 
 ```js
 // get a pumpkin seed by removing a two by one area
 event.recipes.firmalife.pumpkin_knapping('minecraft:pumpkin_seed', ['X X', 'X X'])
 ```
 
-### Oven
+## Oven
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
 - 2nd argument: An ingredient
 - 3rd argument: An integer, representing the duration of the recipe in ticks
 - 4th argument: A number, representing the temperature the recipes requires to complete
 
-#### Example
+### Example
 
 ```js
 // Bake hardened andesite for 2000 ticks at 15℃ into andesite cobble 
 event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/andesite', 2000, 15);
 ```
 
-### Vat
+## Vat
 
 - 1st argument: A list of results containing:
     - Up to one fluid stack
@@ -666,54 +666,54 @@ event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/ande
 - *optional 3rd argument*: An integer, representing how long the recipe takes to process. Defaults to 600 ticks
 - *optional 4th argument*: A number, representing the temperature requires for the recipe to process. Defaults to 300℃
 
-#### Extra Methods
+### Extra Methods
 
 - `.jar(object)`: An item stack. Only used for operations that produce `firmalife:fruity_fluid` in conjunction with the jarring station.
 
-#### Example
+### Example
 
 ```js
 // Boil an oak log for 8000 ticks and get 30mB of water
 event.recipes.firmalife.vat(Fluid.water(30), 'minecraft:oak_log', 8000)
 ```
 
-### Auto Quern
+## Auto Quern
 
 - 1st argument: An item stack, the result of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // Grind one bone meal into 3 bones
 event.recipes.rosia.auto_quern('3x minecraft:bone', 'minecraft:bone_meal')
 ```
 
-### Extruding Machine
+## Extruding Machine
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // Extrude a bismuth ingot into a dirt block
 event.recipes.rosia.extruding_machine('minecraft:dirt', 'tfc:metal/ingot/bismuth')
 ```
 
-### Rolling Machine
+## Rolling Machine
 
 - 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result of the recipe
 - 2nd argument: An item ingredient
 
-#### Example
+### Example
 
 ```js
 // Roll a dirt block into 5 oak logs
 event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 ```
 
-### Tree Tapping
+## Tree Tapping
 
 - 1st argument: A fluid stack, the result of the recipe
 - 2nd argument: A [block ingredient](../wrappers/#block-ingredient), the block the tree tap needs to be attached to
@@ -721,7 +721,7 @@ event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 
 *Note*: The block(s) that are tapped need the `afc:tappable_logs` block tag
 
-#### Extra Methods
+### Extra Methods
 
 - `.minTemp(number)`: Sets the minimum ambient temperature the recipe can be completed at, defaults to -50°C
 - `.maxTemp(number)`: Sets the maximum ambient temperature the recipe can be completed at, defaults to 50°C
@@ -729,7 +729,7 @@ event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 - `.onlyInSpring(boolean)`: Determines if the recipe can only be completed during spring, defaults to false
 - `.onlyInSpring()`: equivalent to `.onlyInSpring(true)`
 
-#### Example
+### Example
 
 ```js
 event.recipes.afc.tree_tapping(Fluid.of('minecraft:milk', 5), 'minecraft;stone', false).minTemp(3).maxTemp(18)
