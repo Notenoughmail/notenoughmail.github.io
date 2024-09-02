@@ -15,7 +15,7 @@ If [EntityJS](https://modrinth.com/mod/entityjs) is installed, some TFC entity t
 - [Wooly](#wooly)
 - [Diary](#dairy)
 
-In addition, there is a new method, `withFaunaDefinition` for all living entity builders that registers a [fauna](../data#fauna) definition for the entity. This method takes a `SpawnPlacements$Type` and a `Heightmap.Types` and returns the builder
+In addition, there is a new method, `withFaunaDefinition` for all living entity builders that registers a [fauna](../data#fauna) definition for the entity. This method takes a `SpawnPlacements$Type` and a `Heightmap$Types` and returns the builder
 
 ```js
 StartupEvents.register('entity_type', event => {

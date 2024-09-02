@@ -760,7 +760,7 @@ Allows for registering a [fauna definition](../data#fauna) for any entity type
 ### Method Signature
 
 ```js
-event.register(entityType: EntityType<?>, placementType: SpawnPlacements$Type, heightmap: Heightmap.Types): void
+event.register(entityType: EntityType<?>, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
 ```
 
 This registers a fauna for the provided entity type with the given placement type and heightmap
