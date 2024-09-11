@@ -5,6 +5,7 @@ date: 2024-07-12 22:15:00
 ref: tfcgv-1-0-0
 version: 1.0.0
 tfcgv: true
+category: update
 ---
 
 # New Mod: TFCGenViewer

@@ -11,6 +11,10 @@ has_toc: false
 
 Depending on how well you know me, it might not be that surprising that I don't post on social media all that much, but there are a few places I'm 'active' in
 
+{% comment %}
+TODO: email? cohost... :(
+{% endcomment %}
+
 ## Discord
 
 Discord is where I'm primarily active because that's sorta just how it works
@@ -26,8 +30,6 @@ And if I ever make a mod that's not tied to TFC/KubeJS I might talk about it in 
 Calling cohost a "social media" feels wrong, but I don't know what would be the right thing to call it
 
 I'm [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail) on cohost and occasionally I'll be salient enough to post something there
-
-You can also send me an [ask](https://cohost.org/Roughly-Enough-Mail/ask) there if for some reason you've something to ask of me in public
 
 ## GitHub
 

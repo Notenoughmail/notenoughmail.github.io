@@ -27,9 +27,13 @@ A KubeJS addon which allows user to make their own toml config files through scr
 
 A TFC addon for displaying world generation before and after creating a world
 
-## [Posts](posts/)
+## [Project Updates](updates/)
 
-An archive for posts made to this site
+An archive for project updates
+
+## [Writing](writing/)
+
+Occassionally, I might write something, this is an archive for all of that
 
 ---
 

@@ -18,9 +18,10 @@ document
     .querySelector(contentWindow.location.hash || null)
     ?.replaceWith(...getChildren(contentDocument.body));
 })"></iframe>
-<h2>Posts</h2>
+<h2>Updates</h2>
 <ul class="posts" id="full">
-    {% for post in site.posts %}
+    {% assign posts = site.posts | where:"category","update" %}
+    {% for post in posts %}
         <li class="posts">
             <a href="{{ post.url }}#inline-{{ post.ref }}" target=htmz_inner>{{ post.title }}</a>
             <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time>
