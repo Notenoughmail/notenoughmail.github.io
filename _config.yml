@@ -23,8 +23,6 @@ author: NotEnoughMail
 # Build settings
 markdown: kramdown
 remote_theme: just-the-docs/just-the-docs
-plugins:
-  - jekyll-feed
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"

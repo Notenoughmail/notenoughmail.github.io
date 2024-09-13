@@ -3,10 +3,10 @@ title: Enter Hoss
 layout: post
 date: 2024-09-11 05:19:00
 permalink: writing/enter-hoss
-category:
-    - writing
-    - fiction
-    - olwicks-2
+cat: writing
+tags:
+    - Fiction
+    - Port-in-Orbit Olwicks-2
 ---
 
 # Enter Hoss
@@ -29,5 +29,7 @@ Driscoll inspected them, still unsure of the day’s events. There was something
 They chuckled a little, "Hoss, ey? Don’t think I’ve ever been called that. I like it." They nodded a little as if to reaffirm so.
 
 And ever so slightly, Driscoll felt that things just might turn out alright.
+
+---
 
 *originally appeared on [cohost!](https://cohost.org/Roughly-Enough-Mail/post/7654403-it-ain-t-right-you)*

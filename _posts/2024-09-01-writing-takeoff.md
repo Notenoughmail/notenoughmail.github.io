@@ -3,10 +3,10 @@ title: Takeoff
 layout: post
 date: 2024-09-01 03:40:00
 permalink: writing/takeoff
-category:
-    - writing
-    - fiction
-    - olwicks-2
+cat: writing
+tags:
+    - Fiction
+    - Port-in-Orbit Olwicks-2
 ---
 
 # Takeoff
@@ -32,5 +32,7 @@ Outside of procedure, command spoke again, "You've a band with you, Driscoll?" i
 "Apologies command. Reactor U at 84%, fifty clicks from port and burning, will burrow at 100%."
 
 "Understood, we await your return."
+
+---
 
 *originally appeared on [cohost!](https://cohost.org/Roughly-Enough-Mail/post/7507259-driscoll-was-running)*

@@ -3,10 +3,10 @@ title: Cloud Watching
 layout: post
 date: 2024-06-20 12:03:00
 permalink: writing/cloud_watching
-category:
-    - writing
-    - fiction
-    - olwicks-2
+cat: writing
+tags:
+    - Fiction
+    - Port-in-Orbit Olwicks-2
 ---
 
 # Cloud Watching
@@ -25,5 +25,7 @@ In the distance lightning flashed in the clouds as he began, "I've missed this, 
 "You were born planetside, eh? Alright, stay a while, you've got more vacation stored up than's reasonable anyway. I'm heading up, you know how to reach me if you need anything. Enjoy your cloud watching."
 
 "I will, Hoss, I will."
+
+---
 
 *originally appeared on [cohost!](https://cohost.org/Roughly-Enough-Mail/post/6955528-well-driscoll-you)*

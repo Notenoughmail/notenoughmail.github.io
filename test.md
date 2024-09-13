@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Test Page
 permalink: /test/
 nav_exclude: true
@@ -45,12 +45,17 @@ And text underneath
 >
 > Eat any good books lately?
 
-{: .question }
-> A multiline question callout
+{: .prompt }
+> A multiline prompt callout
 >
 > > This is a synergistic expression of art and engineering challenges
 >
 > ~ Joe Hills, 2020-10-24
+
+{: .comment }
+> A multiline comment callout
+>
+> There ain't ever been a man who can destroy a drought
 
 Embedded html tag stuff:
 
