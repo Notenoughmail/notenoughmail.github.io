@@ -8,7 +8,7 @@ search_exclude: true
 <div id="full">
 <h2>Updates</h2>
 <ul class="posts">
-    {% assign posts = site.posts | where:"category","update" %}
+    {% assign posts = site.posts | where:"cat","update" %}
     {% for post in posts %}
         <li class="posts">
             <a href="{{ post.url }}">{{ post.title }}</a>

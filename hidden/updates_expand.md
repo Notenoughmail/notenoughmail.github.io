@@ -20,7 +20,7 @@ document
 })"></iframe>
 <h2>Updates</h2>
 <ul class="posts" id="full">
-    {% assign posts = site.posts | where:"category","update" %}
+    {% assign posts = site.posts | where:"cat","update" %}
     {% for post in posts %}
         <li class="posts">
             <a href="{{ post.url }}#inline-{{ post.ref }}" target=htmz_inner>{{ post.title }}</a>
