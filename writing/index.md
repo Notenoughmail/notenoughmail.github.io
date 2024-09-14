@@ -12,6 +12,8 @@ One of my pastimes is writing, so I might put something up whenever I've the tim
 - [Fiction](#fiction)
     - [Port-in-Orbit Olwicks-2](#port-in-orbit-olwicks-2)
     - [All](#all)
+- [Water](#water)
+- [politics](#politics)
 
 ## Fiction
 
@@ -32,7 +34,29 @@ One of my pastimes is writing, so I might put something up whenever I've the tim
 <ul>
 {% assign posts = site.posts | where:"tags","Fiction" %}
 {% for post in posts %}
-<li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publichs-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
+<li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
+{% endfor %}
+</ul>
+</div>
+
+## Water
+
+<div id="water">
+<ul>
+{% assign posts = site.posts | where:"tags","water" %}
+{% for post in posts %}
+<li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
+{% endfor %}
+</ul>
+</div>
+
+## Politics
+
+<div id="politics">
+<ul>
+{$ assign posts = site.posts | where:"tags","politics" %}
+{% for post in posts %}
+<li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
 </ul>
 </div>
