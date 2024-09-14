@@ -1,7 +1,7 @@
 ---
 title: Upper Basin Foolishness
 layout: post
-date: 2024-04-26 23:34:00 -0700
+date: 2024-04-26 23:34:00 MST
 permalink: /writing/upba-fools
 cat: writing
 tags:

@@ -13,7 +13,14 @@ permalink: /writing/feed.xml
         {% for post in posts limit:10 %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
-            <description>{{ post.content | xml_escape }}</description>
+            {% capture desc %}
+                Tags:
+                {% for tag in post.tags %}
+                    <a href="/writing/#{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</a>
+                {% endfor %}
+                {{ post.content }}
+            {% endcapture %}
+            <description>{{ desc | xml_escape }}</description>
             <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
             <link>{{ site.url }}{{ post.url }}?utm_source=rss</link>
             <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>

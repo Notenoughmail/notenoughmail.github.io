@@ -12,7 +12,7 @@ has_toc: false
 Depending on how well you know me, it might not be that surprising that I don't post on social media all that much, but there are a few places I'm 'active' in
 
 {% comment %}
-TODO: email? cohost... :(
+TODO: email
 {% endcomment %}
 
 ## Discord
@@ -25,11 +25,11 @@ These are the primary places where I provide support[^1] for KubeJS TFC, Precisi
 
 And if I ever make a mod that's not tied to TFC/KubeJS I might talk about it in the *#showcase* channel of the [NeoForge](https://discord.gg/neoforged) server
 
-## Cohost
+## cohost
 
-Calling cohost a "social media" feels wrong, but I don't know what would be the right thing to call it
+I loved cohost, it was something different and better. And yet, I never did use it to its fullest extent, so I'll leave this here as a keepsake
 
-I'm [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail) on cohost and occasionally I'll be salient enough to post something there
+I was [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail) on cohost and occasionally I'd be salient enough to post something there. Those were good days
 
 ## GitHub
 

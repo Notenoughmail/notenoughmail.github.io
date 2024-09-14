@@ -1,7 +1,7 @@
 ---
 title: Takeoff
 layout: post
-date: 2024-09-01 03:40:00
+date: 2024-08-31 20:40:00 MST
 permalink: writing/takeoff
 cat: writing
 tags:

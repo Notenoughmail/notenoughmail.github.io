@@ -1,7 +1,7 @@
 ---
 title: Cloud Watching
 layout: post
-date: 2024-06-20 12:03:00
+date: 2024-06-19 19:08:00 MST
 permalink: writing/cloud_watching
 cat: writing
 tags:

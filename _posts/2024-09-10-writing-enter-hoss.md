@@ -1,7 +1,7 @@
 ---
 title: Enter Hoss
 layout: post
-date: 2024-09-11 05:19:00
+date: 2024-09-10 22:19:00 MST
 permalink: writing/enter-hoss
 cat: writing
 tags:
