@@ -22,7 +22,7 @@ author: NotEnoughMail
 
 # Build settings
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.10.0
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
