@@ -2,7 +2,6 @@
 layout: page
 title: Updates
 permalink: /updates/
-nav_order: 99
 has_children: false
 has_toc: false
 ---
@@ -11,7 +10,7 @@ has_toc: false
 
 <iframe hidden name=htmz onload="setTimeout(()=>document.querySelector(contentWindow.location.hash||null)?.replaceWith(...contentDocument.body.childNodes))"></iframe>
 
-An archive of project updates, everything else will be on [another page](writing/)
+An archive of project updates, everything else will be on [another page](/writing/)
 
 - [KubeJS TFC Updates](#kubejs-tfc-updates)
 - [Precision Prospecting Updates](#precision-prospecting-updates)

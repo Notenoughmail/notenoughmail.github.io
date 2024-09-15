@@ -73,7 +73,7 @@ htmz:
 
 <base target="htmz" />
 
-<div rolf="tablist">
+<div role="tablist">
     <a class="tab" href="/hidden/dog.html#tab">Dog</a>
     <a class="tab" href="/hidden/horse.html#tab">Horse</a>
     <a class="tab" href="/hidden/empty.html#tab">Empty</a>

@@ -8,12 +8,14 @@ permalink: /writing/
 
 One of my pastimes is writing, so I might put something up whenever I've the time and feel ✨inspired✨
 
+Also, if you've a prompt, questions about something I've written, or otherwise want to talk to me about something here, see the [email section](/contact/#email) of the Links & Contact page. If you'd like to be credited for a prompt, let me know so and how you'd like to be credited in the email
+
 - [All Writing](#all-writing)
 - [Fiction](#fiction)
     - [Port-in-Orbit Olwicks-2](#port-in-orbit-olwicks-2)
     - [All](#all)
 - [Water](#water)
-- [politics](#politics)
+- [Politics](#politics)
 
 ## Fiction
 

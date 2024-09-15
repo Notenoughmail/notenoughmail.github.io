@@ -23,6 +23,6 @@ An archive for project updates
 
 Occasionally, I might write something, this is an archive for all of that
 
-## [Contact](contact/)
+## [Links & Contact](contact/)
 
-If for some reason you want to get in touch, this page should hopefully be helpful with that
+If for some reason you want to get in touch or otherwise find me elsewhere on the internet, this page should hopefully be helpful with that

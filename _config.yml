@@ -31,7 +31,7 @@ github_repo: "notenoughmail.github.io"
 # https://just-the-docs.com/docs/customization/
 color_scheme: default
 
-favicon_ico: "/assets/images/favicon.ico"
+favicon_ico: "/assets/favicon.ico"
 
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
