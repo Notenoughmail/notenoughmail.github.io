@@ -763,6 +763,9 @@ Allows for registering a [fauna definition](../data#fauna) for any entity type
 event.register(entityType: EntityType<?>, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
 ```
 
+- `placementType` may be any of `'on_ground'`, `'in_water'`, `'no_restrictions'`, or `'in_lava`'
+- `heightmap` may be any of `'world_surface_wg'`, `'world_surface'`, `'ocean_floor_wg'`, `'ocean_floor'`, `'motion_blocking'`, or `'motion_blocking_no_leaves'`. See the [Minecraft Wiki](https://minecraft.wiki/w/Heightmap) for an explanation for what each of these mean
+
 This registers a fauna for the provided entity type with the given placement type and heightmap
 
 ### Example
