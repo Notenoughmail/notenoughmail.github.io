@@ -1,0 +1,113 @@
+---
+layout: page
+title: TFCGenViewer Rock Graph
+permalink: /mc/tools/tfcgv_rock_graph/
+parent: Minecraft Tools
+has_children: false
+has_toc: false
+---
+
+# TFCGenViewer Rock Graph
+
+<script>
+function parse() {
+    query = document.location.href.split("?")[1];
+    if (query == undefined) {
+        window.open(document.location.href + "?ocean_type=[missing];land_type=[missing];uplift_type=[missing];volcanic_type=[missing];layers=[missing];bottom_type=[This_page_only_supports_direct,_external_links_currently];missing=[missing~bottom]", "_self");
+    } else {
+        try {
+        properties = query.split(";");
+        ocean = decompose(findStartingInArray(properties, "ocean_type="));
+        land = decompose(findStartingInArray(properties, "land_type="));
+        uplift = decompose(findStartingInArray(properties, "uplift_type="));
+        volcanic = decompose(findStartingInArray(properties, "volcanic_type="));
+        layers = decompose(findStartingInArray(properties, "layers="));
+        bottom = decompose(findStartingInArray(properties, "bottom_type="));
+        let definition = "flowchart TD\nsubgraph types [ ];\nOcean[Ocean Floor]\nLand\nUplift\nVolcanic\nend\n";
+        for (let i in ocean) {
+            definition = definition + "Ocean --> " + ocean[i] + "\n";
+        }
+        for (let i in land) {
+            definition = definition + "Land --> " + land[i] + "\n";
+        }
+        for (let i in uplift) {
+            definition = definition + "Uplift --> " + uplift[i] + "\n";
+        }
+        for (let i in volcanic) {
+            definition = definition + "Volcanic --> " + volcanic[i] + "\n";
+        }
+        definition = definition + "subgraph bottoms [ ];\nbottom[" + title(bottom.join(", ")) + "]\nend\n";
+        let layerMap = {};
+        for (let i in layers) {
+            let layer = layers[i];
+            definition = definition + layer + "@{ shape: start }" + "\n";
+            map = reverseConsolidate(decompose(findStartingInArray(properties, layer + "=")));
+            for (let toLayer in map) {
+                let rocks = map[toLayer];
+                definition = definition + layer + " -->|" + title(rocks.join(", ")) + "| " + toLayer + "\n";
+            }
+        }
+        let graph = document.createElement("pre");
+        graph.className = "mermaid";
+        graph.id = "mermaid_graph";
+        graph.textContent = definition;
+        document.querySelector("#mermaid_graph").replaceWith(graph);
+        } catch (exception) {
+            window.alert("Invalid query!\n" + exception);
+        }
+    }
+}
+function findStartingInArray(array, start) {
+    for (let i in array) {
+        if (array[i].startsWith(start)) {
+            return array[i];
+        }
+    }
+    return undefined;
+}
+function decompose(property) {
+    values = property.split("=")[1];
+    values = values.substring(1, values.length - 1);
+    return values.split("|");
+}
+function title(text) {
+    let split = text.split(/[\s.:_-]/);
+    let out = "";
+    for (let i in split) {
+        if (split[i].length != 0) {
+            let str = toTitleCase(split[i]);
+            if (out.length == 0) {
+                out = str;
+            } else {
+                out = out + " " + str;
+            }
+        }
+    }
+    return out;
+}
+function toTitleCase(str) {
+    return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+}
+function reverseConsolidate(mapLikeArray) {
+    const out = {};
+    for (let i in mapLikeArray) {
+        let kv = mapLikeArray[i].split("~");
+        if (out[kv[1]] == undefined) {
+            out[kv[1]] = [];
+        }
+        out[kv[1]].push(kv[0]);
+    }
+    return out;
+}
+//TFC default 1.21: ocean_type=[igneous_extrusive];land_type=[igneous_extrusive|sedimentary];uplift_type=[sedimentary|uplift];volcanic_type=[igneous_extrusive|igneous_extrusive_x2];bottom_type=[gneiss|schist|diorite|granite|gabbro];layers=[felsic|intermediate|mafic|igneous_extrusive|igneous_extrusive_x2|phyllite|slate|marble|quartzite|sedimentary|uplift];felsic=[granite~bottom];intermediate=[diorite~bottom];mafic=[gabbro~bottom];igneous_extrusive=[andesite~intermediate|basalt~mafic|dacite~intermediate|rhyolite~felsic];igneous_extrusive_x2=[andesite~igneous_extrusive|basalt~igneous_extrusive|dacite~igneous_extrusive|rhyolite~igneous_extrusive];phyllite=[gneiss~bottom|phyllite~bottom|schist~bottom];slate=[phyllite~phyllite|slate~bottom];marble=[marble~bottom];quartzite=[quartzite~bottom];sedimentary=[chalk~marble|chert~quartzite|claystone~slate|conglomerate~slate|dolomite~marble|shale~slate];uplift=[diorite~sedimentary|gabbro~sedimentary|granite~sedimentary|marble~bottom|quartzite~bottom|slate~phyllite]
+// TODO: Find out why mermaid graphs will not have linear lines
+</script>
+
+<iframe hidden="" name="graph" onload="window.parse()"></iframe>
+
+<pre class="mermaid" id="mermaid_graph">
+flowchart TD
+A((It seems as if the query was malformed, uh oh))
+</pre>
+
+<a href="?ocean_type=[igneous_extrusive];land_type=[igneous_extrusive|sedimentary];uplift_type=[sedimentary|uplift];volcanic_type=[igneous_extrusive|igneous_extrusive_x2];bottom_type=[gneiss|schist|diorite|granite|gabbro];layers=[felsic|intermediate|mafic|igneous_extrusive|igneous_extrusive_x2|phyllite|slate|marble|quartzite|sedimentary|uplift];felsic=[granite~bottom];intermediate=[diorite~bottom];mafic=[gabbro~bottom];igneous_extrusive=[andesite~intermediate|basalt~mafic|dacite~intermediate|rhyolite~felsic];igneous_extrusive_x2=[andesite~igneous_extrusive|basalt~igneous_extrusive|dacite~igneous_extrusive|rhyolite~igneous_extrusive];phyllite=[gneiss~bottom|phyllite~bottom|schist~bottom];slate=[phyllite~phyllite|slate~bottom];marble=[marble~bottom];quartzite=[quartzite~bottom];sedimentary=[chalk~marble|chert~quartzite|claystone~slate|conglomerate~slate|dolomite~marble|shale~slate];uplift=[diorite~sedimentary|gabbro~sedimentary|granite~sedimentary|marble~bottom|quartzite~bottom|slate~phyllite]">View TFC's default generation for 1.21</a>

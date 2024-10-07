@@ -5,7 +5,7 @@ permalink: /
 nav_order: 1
 ---
 
-# NotEnoughMail's Projects
+# NotEnoughMail's Stuff
 
 Welcome!
 
