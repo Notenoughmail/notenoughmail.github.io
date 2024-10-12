@@ -140,7 +140,7 @@ declare class ItemStackProviderJS {
     resetFood(): ItemStackProviderJS
     copyOldestFood(): ItemStackProviderJS
     addBait(): ItemStackProviderJS
-    meal(food: Consumer<BuildFoodItemData>, portions?: List<Consumer<BuildPortionData>>): ItemStackProviderJS
+    meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[]): ItemStackProviderJS
     // The following are available if FirmaLife is installed
     firmaLifeAddPiePan(): ItemStackProviderJS
     firmaLifeCopyDynamicFood(): ItemStackProviderJS
@@ -178,9 +178,9 @@ declare class ItemStackProviderJS {
 - `.resetFood()`: Adds a `tfc:reset_food` modifier
 - `.copyOldestFood()`: Adds a `tfc:copy_oldest_food` modifier
 - `.addBait()`: Adds a `tfc:add_bait_to_rod` modifier
-- `.meal(food: Consumer<BuildFoodItemData>, portions?: List<Consumer<BuildPortionData>>)`: Adds a `tfc:meal` modifier
+- `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`: Adds a `tfc:meal` modifier
     - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition](/kubejs_tfc/1.20.1/data/#food-items)
-    - *Optional 2nd argument*: A list of consumers specifying the portions of a meal
+    - *Optional 2nd argument*: An array of consumers specifying the portions of a meal
         - `.ingredient(ingredient: Ingredient)`: Sets the portion's ingredient
         - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1
         - `.waterModifier(modifier: number)`: Multiplies the water from the ingredient, defaults to 1

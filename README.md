@@ -1,5 +1,5 @@
-# Documentation
+# My Website
 
-This is the central repository/site for all of NotEnoughMail's projects and their associated wikis/guides
+Where the bits of me outside of Discord reside
 
-[Link](https://notenoughmail.github.io/)
+[Have a link](https://notenoughmail.github.io/)
