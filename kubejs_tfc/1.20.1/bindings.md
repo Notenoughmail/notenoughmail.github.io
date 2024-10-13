@@ -60,7 +60,7 @@ In json:
 
 ### Block Ingredient
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#block-ingredients)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#block-ingredients)!
 
 Method signature:
 
@@ -98,7 +98,7 @@ In json:
 
 ### Fluid Ingredient
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#fluid-ingredients)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-ingredients)!
 
 Method signature:
 
@@ -136,7 +136,7 @@ In json:
 
 ### Fluid Stack Ingredient
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#fluid-stack-ingredients)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-stack-ingredients)!
 
 Method signatures:
 
@@ -218,11 +218,11 @@ The central place for interacting with TFC's climate system in your scripts
 
 ### [Ingredient](../bindings/ingredient/)
 
-The central place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) in your scripts
+The central place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/) in your scripts
 
 ### [Item Stack Provider](../bindings/isp/)
 
-The central place for dealing with TFC's [item stack provider](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers)s in your scripts
+The central place for dealing with TFC's [item stack provider](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#item-stack-providers)s in your scripts
 
 ### [Miscellaneous](../bindings/misc/)
 

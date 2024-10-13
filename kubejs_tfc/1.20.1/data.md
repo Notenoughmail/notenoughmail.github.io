@@ -8,7 +8,7 @@ grand_parent: KubeJS TFC
 
 # Data
 
-KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/) types in the `TFCEvents.data` event
+KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/) types in the `TFCEvents.data` event
 
 - [Climate Ranges](#climate-ranges)
 - [Damage Resistances](#damage-resistances)
@@ -42,7 +42,7 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 
 ## Climate Ranges
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#climate-ranges)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#climate-ranges)!
 
 ### Method Signature
 
@@ -76,7 +76,7 @@ TFCEvents.data(event => {
 
 ## Damage Resistances
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#damage-resistances)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#damage-resistances)!
 
 ### Method Signatures
 
@@ -104,7 +104,7 @@ TFCEvents.data(event => {
 
 ## Drinkables
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#drinkables)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#drinkables)!
 
 ### Method Signature
 
@@ -146,7 +146,7 @@ TFCEvents.data(event => {
 
 ## Fauna
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#fauna)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#fauna)!
 
 ### Method Signature
 
@@ -182,7 +182,7 @@ TFCEvents.data(event => {
 
 ## Fertilizers
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#fertilizers)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#fertilizers)!
 
 ### Method Signature
 
@@ -206,7 +206,7 @@ TFCEvents.data(event => {
 
 ## Food Items
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#food-items)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#food-items)!
 
 ### Method Signature
 
@@ -242,7 +242,7 @@ TFCEvents.data(event => {
 
 ## Fuels
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#fuels)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#fuels)!
 
 ### Method Signature
 
@@ -266,7 +266,7 @@ TFCEvents.data(event => {
 
 ## Item Heats
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#item-heats)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#item-heats)!
 
 ### Method Signature
 
@@ -290,7 +290,7 @@ TFCEvents.data(event => {
 
 ## Item Size
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#item-sizes)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#item-sizes)!
 
 ### Method Signature
 
@@ -313,7 +313,7 @@ TFCEvents.data(event => {
 
 ## Knapping Types
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#knapping-types)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#knapping-types)!
 
 ### Method Signature
 
@@ -353,7 +353,7 @@ TFCEvents.data(event => {
 
 ## Lamp Fuels
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#lamp-fuels)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#lamp-fuels)!
 
 ### Method Signature
 
@@ -376,7 +376,7 @@ TFCEvents.data(event => {
 
 ## Metals
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#metals)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#metals)!
 
 ### Method Signature
 
@@ -424,7 +424,7 @@ TFCEvents.data(event => {
 
 ## Supports
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#supports)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#supports)!
 
 ### Method Signature
 
@@ -448,7 +448,7 @@ TFCEvents.data(event => {
 
 ## Sluicing
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#sluicing)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#sluicing)!
 
 ### Method Signature
 
@@ -470,7 +470,7 @@ TFCEvents.data(event => {
 
 ## Panning
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/#panning)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#panning)!
 
 ### Method Signature
 

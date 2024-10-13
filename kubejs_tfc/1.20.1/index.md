@@ -20,7 +20,7 @@ Documentation on the custom block, item, and fluid types added
 
 ## [Data](data/)
 
-Documentation on creating TFC's [data types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/custom/) through scripts
+Documentation on creating TFC's [data types](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/) through scripts
 
 ## [Events](events/)
 

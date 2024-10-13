@@ -8,7 +8,7 @@ grand_parent: 1.20.1
 
 # Item Stack Provider Bindings
 
-[Item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers) are an item stack with attached data, known as item stack modifiers. There are several methods for creating them
+[Item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#item-stack-providers) are an item stack with attached data, known as item stack modifiers. There are several methods for creating them
 
 These are available from the `TFC.itemStackProvider` and `TFC.isp` fields
 

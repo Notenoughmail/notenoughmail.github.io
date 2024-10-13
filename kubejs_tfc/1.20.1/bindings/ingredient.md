@@ -8,7 +8,7 @@ grand_parent: 1.20.1
 
 # Ingredient Bindings
 
-TFC has several [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/) that it uses in its recipes
+TFC has several [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/) that it uses in its recipes
 
 - [Fluid Item](#fluid-item)
 - [Has Trait](#has-trait)
@@ -19,7 +19,7 @@ TFC has several [ingredient types](https://terrafirmacraft.github.io/Documentati
 
 ## Fluid Item
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#fluid-item)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#fluid-item)!
 
 ### Method Signature
 
@@ -75,7 +75,7 @@ In json:
 
 ## Has Trait
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#has-trait)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#has-trait)!
 
 ### Method Signature
 
@@ -116,7 +116,7 @@ In json:
 
 ## Heatable
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#heatable)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#heatable)!
 
 ### Method Signature
 
@@ -159,7 +159,7 @@ In json:
 
 ## Lacks Trait
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#lacks-trait)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#lacks-trait)!
 
 ### Method Signature
 
@@ -200,7 +200,7 @@ In json:
 
 ## Not
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#not)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#not)!
 
 ### Method Signature
 
@@ -238,7 +238,7 @@ In json:
 
 ## Not Rotten
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/ingredients/#not-rotten)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/#not-rotten)!
 
 ### Method Signature
 

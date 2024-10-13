@@ -55,7 +55,7 @@ If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installe
 
 ## Alloy
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#alloy)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#alloy)!
 
 ### Method Signature
 
@@ -80,7 +80,7 @@ ServerEvents.recipes(event => {
 
 ## Welding
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#anvil-welding)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#anvil-welding)!
 
 ### Method signature
 
@@ -103,7 +103,7 @@ ServerEvents.recipes(event => {
 
 ## Working
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#anvil-working)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#anvil-working)!
 
 ### Method Signature
 
@@ -133,7 +133,7 @@ ServerEvents.recipes(event => {
 
 ## Barrel Instant Fluid
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-instant-fluid)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-instant-fluid)!
 
 ### Method Signature
 
@@ -159,7 +159,7 @@ ServerEvents.recipes(event => {
 
 ## Barrel Instant
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-instant)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-instant)!
 
 ### Method Signature
 
@@ -200,7 +200,7 @@ ServerEvents.recipes(event => {
 
 ## Barrel Sealed
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#barrel-sealed)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-sealed)!
 
 ### Method Signature
 
@@ -251,7 +251,7 @@ SeverEvents.recipes(event => {
 
 ## Blast Furnace
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#blast-furnace)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#blast-furnace)!
 
 ### Method Signature
 
@@ -273,7 +273,7 @@ ServerEvents.recipes(event => {
 
 ## Bloomery
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#bloomery)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#bloomery)!
 
 ### Method Signature
 
@@ -296,7 +296,7 @@ ServerEvents.recipes(event => {
 
 ## Casting
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#casting)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#casting)!
 
 ### Method Signature
 
@@ -322,7 +322,7 @@ ServerEvents.recipes(event => {
 
 ## Chisel
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#chiseling)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#chiseling)!
 
 ### Method Signature
 
@@ -353,7 +353,7 @@ ServerEvents.recipes(event => {
 
 ## Collapse/Landslide
 
-See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#collapse) and [landslide](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#landslide) main pages! **Note**: The syntax is exactly the same for both of these recipes, thus they shown together
+See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#collapse) and [landslide](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#landslide) main pages! **Note**: The syntax is exactly the same for both of these recipes, thus they shown together
 
 ### Method Signature
 
@@ -376,7 +376,7 @@ ServerEvents.recipes(event => {
 
 ## Glassworking
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#glassworking)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#glassworking)!
 
 ### Method Signature
 
@@ -398,7 +398,7 @@ ServerEvents.recipes(event => {
 
 ## Heating
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#heating)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#heating)!
 
 ### Method Signature
 
@@ -441,7 +441,7 @@ ServerEvents.recipes(event => {
 
 ## Knapping
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#knapping)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#knapping)!
 
 ### Method Signature
 
@@ -472,7 +472,7 @@ ServerEvents.recipes(event => {
 
 ## Loom
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#loom)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#loom)!
 
 ### Method Signature
 
@@ -495,7 +495,7 @@ ServerEvent.recipes(event => {
 
 ## Jam Pot
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#jam-pot)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#jam-pot)!
 
 ### Method Signature
 
@@ -523,7 +523,7 @@ ServerEvents.recipes(event => {
 
 ## Simple Pot
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#simple-pot)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#simple-pot)!
 
 ### Method Signature
 
@@ -560,7 +560,7 @@ ServerEvents.recipes(event => {
 
 ## Soup Pot
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes-pot/#soup-pot)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#soup-pot)!
 
 ### Method Signature
 
@@ -586,7 +586,7 @@ ServerEvents.recipes(event => {
 
 ## Quern
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#quern)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#quern)!
 
 ### Method Signature
 
@@ -607,7 +607,7 @@ ServerEvents.recipes(event => {
 
 ## Scraping
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#scraping)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#scraping)!
 
 ### Method Signature
 
@@ -631,7 +631,7 @@ ServerEvents.recipes(event => {
 
 ## Sewing
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/recipes/#sewing)! (may not yet exist)
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#sewing)! (may not yet exist)
 
 ### Method Signature
 
@@ -664,7 +664,7 @@ ServerEvents.recipes(event => {
 
 ## Advanced Shaped Crafting
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#advanced-shaped-crafting)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#advanced-shaped-crafting)!
 
 ### Method Signature
 
@@ -695,7 +695,7 @@ ServerEvents.recipes(event => {
 
 ## Advanced Shapeless Crafting
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#advanced-shapeless-crafting)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#advanced-shapeless-crafting)!
 
 ### Method Signature
 
@@ -718,7 +718,7 @@ ServerEvents.recipes(event => {
 
 ## Damage Inputs Crafting
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#damage-inputs)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#damage-inputs)!
 
 ### Method Signatures
 
@@ -745,7 +745,7 @@ ServerEvents.recipes(event => {
 
 ## Extra products Crafting
 
-See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/data/crafting/#extra-products)!
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#extra-products)!
 
 ### Method Signatures
 
@@ -871,7 +871,7 @@ event.recipes.firmalife.mixing_bowl()
 ServerEvents.recipes(event => {
     event.recipes.firmalife.mixing_bowl()
         .outputs('minecraft:dirt', Fluid.of('minecraft:milk', 50))
-        .itemIngredients('minecraft:stone', 'minecraft:deepslate')
+        .itemIngredients(['minecraft:stone', 'minecraft:deepslate'])
 })
 ```
 
