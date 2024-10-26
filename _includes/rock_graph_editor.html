@@ -1,0 +1,155 @@
+{% include rock_graph_utils.html %}
+
+<script>
+    function addLayer() {
+        let layerList = document.querySelector("#layers");
+        if (layerList == null) {
+            window.alert("Layer list could not be found for some reason");
+        } else {
+            let layer = document.querySelector("#add_layer");
+            if (layer == null) {
+                window.alert("Could not find layer definition");
+            } else {
+                layer = layer.value.toLowerCase();
+                if (layer == "bottom_type" || layer == "ocean_type" || layer == "land_type" || layer == "uplift_type" || layer == "volcanic_type" || layer == "layers" || layer == "" || layer == "bottom") {
+                    window.alert("Layer uses reserved name");
+                } else {
+                    if (document.querySelector(`#${layer}.layer`) != null) {
+                        window.alert("Layer already exists!");
+                    } else {
+                        let layerNode = document.createElement("li");
+                        layerNode.id = layer;
+                        layerNode.setAttribute("class", "layer");
+                        layerNode.textContent = toTitleCase(layer);
+
+                        let remove = document.createElement("button");
+                        remove.type = "button";
+                        remove.setAttribute("onClick", `document.querySelector("#${layer}.layer").remove()`);
+                        remove.textContent = "Remove";
+
+                        let connectionList = document.createElement("ul");
+                        connectionList.id = `connection_list_${layer}`;
+
+                        let rockLabel = document.createElement("label");
+                        rockLabel.setAttribute("for", `rock_add_${layer}`);
+                        rockLabel.textContent = "Rock:";
+
+                        let rockInput = document.createElement("input");
+                        rockInput.id = rockInput.name = `rock_add_${layer}`;
+                        rockInput.type = "text";
+
+                        let layerLabel = document.createElement("label");
+                        layerLabel.setAttribute("for", `layer_add_${layer}`);
+                        layerLabel.textContent = "To layer:";
+
+                        let layerInput = document.createElement("input");
+                        layerInput.id = layerInput.name = `layer_add_${layer}`;
+                        layerInput.type = "text";
+
+                        let connect = document.createElement("button");
+                        connect.type = "button";
+                        connect.setAttribute("onClick", `addConnection("${layer}")`);
+                        connect.textContent = "Add connection";
+
+                        layerNode.append(
+                            remove,
+                            document.createElement("br"),
+                            connectionList,
+                            document.createElement("br"),
+                            rockLabel,
+                            rockInput,
+                            document.createElement("br"),
+                            layerLabel,
+                            layerInput,
+                            document.createElement("br"),
+                            connect
+                        );
+                        layerList.appendChild(layerNode);
+                    }
+                }
+            }
+        }
+    }
+    function addConnection(layer) {
+        let connections = document.querySelector(`#connection_list_${layer}`);
+        let rock = document.querySelector(`#rock_add_${layer}`);
+        let toLayer = document.querySelector(`#layer_add_${layer}`);
+        if (connections == null || rock == null || toLayer == null) {
+            window.alert("Could not find required parts of the page to fulfill request");
+        } else {
+            if (rock.value == "" || toLayer.value == "") {
+                window.alert("Cannot have empty values!");
+            } else {
+                let id = `${layer}_${rock.value.toLowerCase()}_${toLayer.value.toLowerCase()}`;
+                if (document.querySelector(id) != null) {
+                    window.alert("Duplicate connections not allowed");
+                } else {
+                    let elm = document.createElement("li");
+                    elm.id = id;
+                    elm.setAttribute("rock", rock.value.toLowerCase());
+                    elm.setAttribute("layer", toLayer.value.toLowerCase());
+                    elm.textContent = `${toTitleCase(rock.value)} to ${toTitleCase(toLayer.value)}`;
+
+                    let remove = document.createElement("button");
+                    remove.type = "button";
+                    remove.setAttribute("onClick", `document.querySelector("#${id}").remove()`);
+                    remove.textContent = "X";
+
+                    elm.appendChild(remove);
+                    connections.appendChild(elm);
+                }
+            }
+        }
+    }
+    function createGraph() {
+        let oceanEntry = document.querySelector("#ocean.visualize");
+        let landEntry = document.querySelector("#land.visualize");
+        let upliftEntry = document.querySelector("#uplift.visualize");
+        let volcanicEntry = document.querySelector("#volcanic.visualize");
+        let bottomEntry = document.querySelector("#bottom.visualize");
+        let layerList = document.querySelector("#layers.visualize");
+        if (oceanEntry == null || landEntry == null || upliftEntry == null || volcanicEntry == null || layerList == null || bottomEntry == null) {
+            window.alert("Something very wrong has happened, try reloading the page, your progress will be lost, sorry about that");
+        } else {
+            let layerNames = [];
+            let layers = [];
+            layerList.childNodes.forEach((node, key, parent) => {
+                let id = node.id;
+                layerNames.push(id);
+
+                let connections = [];
+                document.querySelector(`#connection_list_${id}`).childNodes.forEach((node, key, parent) => {
+                    connections.push(`${node.getAttribute("rock")}~${node.getAttribute("layer")}`);
+                });
+                layers.push(`${id}=[${connections.join("|")}]`);
+            });
+
+            window.open(
+                "https://notenoughmail.github.io/mc/tools/tfcgv_rock_graph/?ocean_type=["
+                + oceanEntry.value.toLowerCase().split(/[\s\n]/).join("|")
+                + "]&land_type=["
+                + landEntry.value.toLowerCase().split(/[\s\n]/).join("|")
+                + "]&uplift_type=["
+                + upliftEntry.value.toLowerCase().split(/[\s\n]/).join("|")
+                + "]&volcanic_type=["
+                + volcanicEntry.value.toLowerCase().split(/[\s\n]/).join("|")
+                + "]&bottom_type=["
+                + bottomEntry.value.toLowerCase().split(/[\s\n]/).join("|")
+                + "]&layers=["
+                + layerNames.join("|")
+                + "]&"
+                + layers.join(":")
+            );
+        }
+    }
+    function populateFromQuery() {
+        query = document.location.href.split("?")[1];
+        if (query != undefined) {
+            try {
+                
+            } catch (exception) {
+                window.alert(`Failed to populate options from query!\nQuery:\n${query}\nException:\n${exception}`);
+            }
+        }
+    }
+</script>

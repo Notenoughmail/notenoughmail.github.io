@@ -1,0 +1,28 @@
+<script>
+    function toTitleCase(str) {
+        let split = str.split(/[\s.:_-]/);
+        let out = "";
+        for (let i in split) {
+            if (split[i].length != 0) {
+                let text = capitalizeFirst(split[i]);
+                if (out.length == 0) {
+                    out = text;
+                } else {
+                    out = out + " " + text;
+                }
+            }
+        }
+        return out;
+    }
+    function capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
+    }
+    function findStartingInArray(array, start) {
+        for (let i in array) {
+            if (array[i].startsWith(start)) {
+                return array[i];
+            }
+        }
+        return undefined;
+    }
+</script>
