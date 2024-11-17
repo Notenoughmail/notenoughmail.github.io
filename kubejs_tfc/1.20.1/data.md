@@ -31,6 +31,11 @@ If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following a
 - [Greenhouse Type](#firmalife-greenhouse-type)
 - [Planter](#firmalife-planter)
 
+If [Beneath](https://modrinth.com/mod/beneath) is installed, the following are also available
+
+- [Nether Fertilizer](#beneath-nether-fertilizer)
+- [Lost Page](#beneath-lost-page)
+
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessable data TFC adds to the player is accessable form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
 {: .notice }
@@ -558,7 +563,7 @@ event.firmalifePlantable(
 
 ```js
 TFCEvents.data(event => {
-    event.firmalifePLantable(
+    event.firmalifePlantable(
         'minecraft:beetroot_seeds',
         'bonsai',
         15,
@@ -575,6 +580,110 @@ TFCEvents.data(event => {
             'kubejs:block/planter/beet_leaves'
         ],
         null
+    )
+})
+```
+
+## Beneath Nether Fertilizer
+
+Defines a new nether fertilizer
+
+### Method Signature
+
+```ts
+event.beneathNetherFertilizer(
+    ingredient: Ingredient,
+    death: @Nullable number,
+    destruction: @Nullable number,
+    decay: @Nullable number,
+    sorrow: @Nullable number,
+    flame: @Nullable number,
+    name?: ResourceLocation
+)
+```
+
+- 1st argument: An item ingredient, the items this definition applies to
+- 2nd argument: A number, in the range [0, 1], sets the 'death' value of the fertilizer, may be null to omit specifying a value
+- 3rd argument: A number, in the range [0, 1], sets the 'destruction' value of the fertilizer, may be null to omit specifying a value
+- 4th argument: A number, in the range [0, 1], sets the 'decay' value of the fertilizer, may be null to omit specifying a value
+- 5th argument: A number, in the range [0, 1], sets the 'sorrow' value of the fertilizer, may be null to omit specifying a value
+- 6th argument: A number, in the range [0, 1], sets the 'flame' value of the fertilizer, may be null to omit specifying the value
+- *optional 7th argument*: A `ResourceLocation`, the name of the nether fertilizer definition
+
+### Example
+
+```js
+TFCEvents.data(event => {
+    event.beneathNetherFertilizer(
+        'minecraft:nether_wart',
+        0.1,
+        null,
+        null,
+        0.25,
+        null,
+        'kubejs:sorrow_wart'
+    )
+})
+```
+
+## Beneath Lost Page
+
+Defines a new lost page ritual, added to the pool of possible rituals that may be aquired when a lost page is 'activated'
+
+### Method Definition
+
+```ts
+event.beneathLostPage(
+    ingredient: Ingredient,
+    reward: Item,
+    costs: number[],
+    rewards: number[],
+    punishments: Punishment[],
+    langKey: @Nullable string,
+    name?: ResourceLocation
+)
+```
+
+- 1st argument: An item ingredient, the ingredient required to perform the ritual
+- 2nd argument: A item, the reward for completing the ritual
+- 3rd argument: A number array, must contain at least one value. When a lost page is 'activated', one of these numbers will be chosen and used as the number of ingredients required
+- 4th argument: A number array, must contain at least one value. When a lost page is 'activated', one of these numbers will be chosen and used as the number of reward items the ritual gives
+- 5th argument: A `Punishment` array, must contain at least one value. When a lost page is 'activated', one of these punishments will be chosen and for application on ritual completion. The available punishments are as follows
+    - `none`: Does nothing
+    - `levitation`: Makes nearby living entities levitation briefly
+    - `drunkenness`: Makes the player drunk and nauseous
+    - `blaze_inferno`: Spawns a handful of blazes nearby and alights the ground
+    - `infestation`: Spawns a handful of silverfish nearby
+    - `withering`: Spawns a handful of wither skeletons nearby and gives the player withering
+    - `slime`: Spawns a handful of slimes nearby, drops some slimeballs on the ground, and replaces certain blocks nearby with slimed netherrack
+    - `unknown`: Randomly selects one of the other punishments to enact
+- 6th argument: A string, the lang key to use instead of the ingredients when a 'activated' lost page's info screen is present. Useful for ingredients that are not single items. May be null to default to the ingredient's first valid item
+- *optional 7th argument*: A `ResourceLocation`, the name of the lost page definition
+
+### Example
+
+```js
+TFCEvents.data(event => {
+    event.beneathLostPage(
+        '#forge:cobblestone',
+        'minecraft:blackstone',
+        [
+            50,
+            89,
+            32,
+            78,
+            65,
+            120
+        ],
+        [
+            20,
+            45,
+            8
+        ],
+        [
+            'withering'
+        ],
+        'block.minecraft.cobblestone'
     )
 })
 ```
