@@ -829,7 +829,7 @@ Inherits the methods of the basic item builder
 - `.canPlaceLiquidSource(b: boolean)`: Determines if the the item can place source blocks in world, defaults to `false`
 - `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
 - `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
-- `.filledDisplayName(c: COmponent)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacity(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
 
 #### Example

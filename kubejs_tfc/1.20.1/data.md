@@ -44,6 +44,8 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 > This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
 >
 > If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `toString()` value
+>
+> Additionally, for definitions that use ingredients, if there are multiple definitions that have the same valid item/block/fluid, then there is no guarantee your custom definition will take precedence. This can be fixed by overriding the existing definition or modifying the tag that is used for it
 
 ## Climate Ranges
 
