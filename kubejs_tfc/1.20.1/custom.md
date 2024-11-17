@@ -450,13 +450,16 @@ Inherits the methods of the default block builder
 - `.spreadingFruitBlock(fruitBlock: ResourceLocation)`: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
 - `.seeds(seedItem: ResourceLocation)`: Sets the 'seed' item to be used in the auto-generated loot table
 - `.food(foodItem: ResourceLocation)`: Sets the 'food' item to be used in the auto-generated loot table
+- `.deadModel(model: string)`: Sets the model to use when the crop is dead/immature and its type is `default` or `flooded`
+- `.doubleDeadModels(topModel: string, bottomModel: string)`: Sets the models to use when the crop is dead/immature and sets the crop's type to `double`
+- `.spreadingDeadModels(coreModel: string, sideModel: string)`: Sets the models to use when the crop is dead/immature and sets the crop's type to `spreading`
 
 #### Example
 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_wild_spreading_crop', 'tfc:wild_crop')
-        .type('spreading')
+        .spreadingDeadModels('minecraft:block/cobblestone', 'minecraft:block/deepslate')
         .spreadingFruitBlock('minecraft:stone')
 })
 ```
@@ -826,7 +829,7 @@ Inherits the methods of the basic item builder
 - `.canPlaceLiquidSource(b: boolean)`: Determines if the the item can place source blocks in world, defaults to `false`
 - `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
 - `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
-- `.filledDisplayName(c: COmponent)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacity(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
 
 #### Example
