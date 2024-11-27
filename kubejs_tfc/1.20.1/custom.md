@@ -37,7 +37,7 @@ The following types are available:
 - [Axles](#axles)
 - [Encased Axles](#encased-axles)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
 - [Cheese Wheel](#firmalife-cheese-wheel)
 
@@ -778,11 +778,11 @@ The following types are available:
 - [Windmill Blade](#windmill-blade)
 - [Glassworking Tool](#glassworking-tool)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-items"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
 - [Watering Can](#firmalife-watering-can)
 
-If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
+<a id="precision-prospecting-items"></a>If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
 
 - [Prospector's Hammer](#precision-prospecting-prospector-hammer)
 - [Prospector's Drill](#precision-prospecting-prospector-drill)
@@ -924,7 +924,7 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(fluidTag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
 - `.capacity(capacity: Supplier<Integer>)`: Sets the mB capacity supplier of the mold, defaults to `() => 100`
 
-If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
+<a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
 
 - `.tfcccAllowedInMoldTable(model?: List<string>)`: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look

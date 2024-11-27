@@ -37,7 +37,7 @@ The following recipes are supported by KubeJS TFC:
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following recipes are supported:
+<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following recipes are supported:
 
 - [Drying](#firmalife-drying)
 - [Smoking](#firmalife-smoking)
@@ -49,7 +49,7 @@ If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following r
 - [Bowl Pot](#firmalife-bowl-pot)
 - [Press](#firmalife-press)
 
-If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installed, the following recipes are supported:
+<a id="arborfirmacraft"></a>If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installed, the following recipes are supported:
 
 - [Tree Tap](#afc-tree-tap)
 

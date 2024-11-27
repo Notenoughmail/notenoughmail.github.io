@@ -26,17 +26,17 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Sluicing](#sluicing)
 - [Panning](#panning)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following are also available
+<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following are also available
 
 - [Greenhouse Type](#firmalife-greenhouse-type)
 - [Planter](#firmalife-planter)
 
-If [Beneath](https://modrinth.com/mod/beneath) is installed, the following are also available
+<a id="beneath"></a>If [Beneath](https://modrinth.com/mod/beneath) is installed, the following are also available
 
 - [Nether Fertilizer](#beneath-nether-fertilizer)
 - [Lost Page](#beneath-lost-page)
 
-Additionally, the ability to access and manipulate some of TFC's non-datapack accessable data TFC adds to the player is accessable form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
+Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
 {: .notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition
@@ -338,7 +338,7 @@ event.knappingType(
 )
 ```
 
-- 1st argument: An item ingredient, the ingredient for what item has to be knapped, must be part of the `tfc:any_knapping` tag to work. You may also need to restart the MC instance for th game to recognize the item has been added to the tag
+- 1st argument: An item ingredient, the ingredient for what item has to be knapped, must be part of the `tfc:any_knapping` tag to work. You may also need to restart the MC instance for the game to recognize the item has been added to the tag
 - 2nd argument: A number, the minimum number of items matching the ingredient that must be held in order open the knapping menu
 - 3rd argument: A number, the number of items that gets used by a recipe
 - 4th argument: A string, the registry name of a sound event that plays when knapping occurs[^2]
@@ -630,7 +630,7 @@ TFCEvents.data(event => {
 
 ## Beneath Lost Page
 
-Defines a new lost page ritual, added to the pool of possible rituals that may be aquired when a lost page is 'activated'
+Defines a new lost page ritual, added to the pool of possible rituals that may be acquired when a lost page is 'activated'
 
 ### Method Definition
 

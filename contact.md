@@ -12,7 +12,7 @@ Depending on how well you know me, it might not be that surprising that I don't 
 
 ## <span style="font-size:0em;">Discord</span><a href="#discord"><img src="/assets/images/discord.png" alt="Discord"></a>
 
-Discord is where I'm primarily active because that's sorta just how it works
+Discord is where I'm primarily active as that's sorta just how it works
 
 I'm `toomuchmail` on Discord and can be found hiding in the background of the [TFC](https://discord.gg/PRuAKvY) and [KubeJS](https://discord.gg/fKjDAetj) servers, coming forth when I'm needed or feel like it
 
