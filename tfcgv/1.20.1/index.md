@@ -99,8 +99,8 @@ In addition there are options to set the x and z offset of the preview (centered
     - 16.4 km
     - 32.8 km *Default, unless changed by config*
     - 65.5 km
-    - 131.1 km *Extreme delay in preview generation when testing*
-    - 262.1 km *Have never seen this size complete in testing*
+    - 131.1 km
+    - 262.1 km
 - Preview Export: Exports the currently displayed preview to a file in `screenshots/tfcgenviewer`
 - Seed: Sets the seed to use in the preview
 
@@ -136,17 +136,25 @@ TFCGenViewer has three client config options
 
 ### defaultPreviewSize
 
-An int in the range [0, 6], defaulting to 3. It determines which preview size the *Preview Scale* slider defaults to. This value can be converted to km via the equation:
+An int in the range [0, 6], defaulting to 3. Determines which preview size the *Preview Scale* slider defaults to. This value can be converted to km via the equation:
 
 2<span style="vertical-align: baseline; position: relative; top: -0.6em;">(defaultPreviewSize + 5)</span> * 128 / 1000
 
 ### loadingIcon
 
-A boolean, defaulting to true. It determines if the preview screen should display a loading icon while generating a new preview. If disabled, the previous preview will remain until the new one is completed
+A boolean, defaulting to true. Determines if the preview screen should display a loading icon while generating a new preview. If disabled, the previous preview will remain until the new one is completed
 
 ### dingWhenGenerated
 
-A boolean, defaulting to true. It determines if the a sound should play when a preview finishes generating
+A boolean, defaulting to true. Determines if the a sound should play when a preview finishes generating
+
+### generationProgress
+
+A boolean, defaulting to true. Determines if a progress bar should show along the bottom of the preview space while generating
+
+### cancelPreviewOnError
+
+A boolean, defaulting to true. Determines if progress should be canceled if an error is encountered during preview generation. If disabled, generation will continue, using empty data at the point of failure and the error only printed to the log
 
 ## Customization
 
