@@ -640,8 +640,8 @@ event.recipes.tfc.sewing(result: ItemStack, stitches: number[45], squares: numbe
 ```
 
 - 1st argument: An `ItemStack`, the result of the recipe
-- 2nd argument: An array of *45* numbers, a value of `0` indicates the position does not have a stitch, a value of `1` indicates the position does have a stitch
-- 3rd argument: An array of *32* numbers, a value of `-1` indicates the position does not have a cloth, a value of `0` indicates the position has a dark cloth, a value of `1` indicates the position has a light cloth
+- 2nd argument: An array of 45 numbers (9 wide by 5 tall, as mapped to the corners of the sewing table's grid spaces), a value of `0` indicates the position does not have a stitch, a value of `1` indicates the position does have a stitch
+- 3rd argument: An array of 32 numbers (8 wide by 4 tall, as mapped to the squares of the sewing table's grid spaces), a value of `-1` indicates the position does not have a cloth, a value of `0` indicates the position has a dark cloth, a value of `1` indicates the position has a light cloth
 
 ### Example
 
@@ -655,8 +655,8 @@ ServerEvents.recipes(event => {
         0, 0, 0, 0, 0, 0, 0, 0, 0
     ], [
         -1, -1, 0, -1, -1, 0, -1, -1,
-        0, 0, 1, 0, 0, 1, 0, 0,
-        0, 0, 1, 0, 0, 1, 0, 0,
+         0,  0, 1,  0,  0, 1,  0,  0,
+         0,  0, 1,  0,  0, 1,  0,  0,
         -1, -1, 0, -1, -1, 0, -1, -1
     ])
 })
