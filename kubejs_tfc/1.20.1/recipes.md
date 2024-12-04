@@ -225,7 +225,7 @@ event.recipes.tfc.barrel_sealed(duration: number)
 - OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
 - Outputs: A convenience method for setting both outputs, identical to `.outputItem().outputFluid()`
 - InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
-- InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) amd sets the recipe's input fluid, defaults to empty
+- InputFluid: Accepts a [FluidStackIngredient](../bindings/#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
 - Inputs: A convenience method for setting both inputs, identical to `.inputItem().inputFluid()`
 - Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 - OnSeal: Accepts an [ItemStackProviderJS](../bindings/#item-stack-provider) which will be applied when the barrel is sealed

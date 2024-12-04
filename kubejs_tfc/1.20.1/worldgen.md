@@ -627,7 +627,7 @@ This defines an entry to a block to blockstate map
 event.blockToBlockState(block: string, state: string)
 ```
 
-- 1st argument: A string, the bloc kto be replaced
+- 1st argument: A string, the block to be replaced
 - 2nd argument: A string representation of a block state, the state to be placed
 
 ## Fissure Decoration

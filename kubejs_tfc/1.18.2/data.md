@@ -35,7 +35,7 @@ There is also support for [FirmaLife](https://modrinth.com/mod/firmalife) and [B
 - [FirmaLife Plantables](#plantables)
 - [Beneath Nether Fertilizers](#nether-fertilizers)
 
-Additionally, the ability to access and manipulate some of the non-datapack accessable data TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
+Additionally, the ability to access and manipulate some of the non-datapack accessible data TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
 
 # Damage Resistances
 

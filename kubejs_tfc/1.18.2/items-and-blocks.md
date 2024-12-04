@@ -260,7 +260,7 @@ This creates a new ground cover block
     - 'feather',
     - 'flat',
     - 'flint',
-    - 'ganerite',
+    - 'garnierite',
     - 'hematite',
     - 'limonite',
     - 'magnetite',
