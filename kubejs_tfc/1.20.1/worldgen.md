@@ -661,13 +661,14 @@ Defines the vein's indicator
 Method signature:
 
 ```ts
-vein.indicator(depth: number, rarity: number, undergroundCount: number, indicators: List<string>)
+vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: List<string>)
 ```
 
 - 1st argument: A number, the number of blocks above the top of the vein the indicators may spawn
 - 2nd argument: A number, how rare the indicator blocks should be
-- 3rd argument: A number, the number of indicators should spawn underground
-- 4th argument: A list of strings, string representations of a weighted block state
+- 3rd argument: A number, how rare underground indicators should be
+- 4th argument: A number, the number of indicators should spawn underground (i.e. in caves)
+- 5th argument: A list of strings, string representations of a weighted block state
 
 ### Project
 
