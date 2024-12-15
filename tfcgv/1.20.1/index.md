@@ -114,6 +114,12 @@ At the bottom of the screen there are 3 buttons, "Save", "Cancel", and "Current 
 - Cancel: Discards all changes to options and exits to the world creation screen
 - Current seed: Displays the seed being displayed and copies it to the clipboard when clicked
 
+Additionally, clicking on the preview itself will toggle between three display modes
+
+- None: Nothing is shown
+- Coordinates: Shows the coordinates which the mouse is currently over, will be skipped if the server has disabled viewing coordinates
+- Color Description: Shows a description of the pixel that the mouse is currently over
+
 ### Side Info
 
 To the right of the preview there is some info about the preview

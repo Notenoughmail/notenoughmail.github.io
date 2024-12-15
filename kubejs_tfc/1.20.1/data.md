@@ -38,6 +38,7 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
+<a id="general-notice"></a>
 {: .notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition
 >
@@ -66,6 +67,7 @@ event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: Resource
     - `.temperatureWiggle(f: number)`: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
+<a id="climate-range-notice"></a>
 {: .notice }
 Climate ranges cannot be added through this, only existing, registered ones can be modified
 
@@ -169,6 +171,7 @@ event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: C
     - `.maxBrightness(i: number)`: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
+<a id="fauna-notice"></a>
 {: .notice }
 > Faunas cannot be added through this, only existing, registered ones can be modified
 >
@@ -409,6 +412,7 @@ event.metal(
 - 7th argument: A number, the tier of the metal
 - *Optional 8th argument*: A `ResourceLocation`, the name of the metal
 
+<a id="metal-notice"></a>
 {: .notice }
 > If no name is provided, one will be automatically generated from the fluid
 >
