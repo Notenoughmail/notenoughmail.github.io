@@ -30,6 +30,7 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Generic Features](#generic)
 
 <a id="general-notice"></a>
+
 {: .notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >

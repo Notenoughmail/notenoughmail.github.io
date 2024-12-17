@@ -29,6 +29,7 @@ TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | L
     - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, only the copy input modifier will be applied to the ISP
 
 <a id="method-notice"></a>
+
 {: .notice }
 These methods return an `ItemStackProviderJS` object which has several helper methods and is described [below](#itemstackproviderjs)
 

@@ -147,6 +147,7 @@ event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primaryFluid: Fl
 - *Optional 4th argument*: A string, the registry name of a sound event, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 <a id="instant-barrel-fluid-notice"></a>
+
 {: .notice }
 Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that both the output fluid and the input fluid(s) are tagged as such
 
@@ -185,6 +186,7 @@ event.recipes.tfc.barrel_instant()
 - Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 <a id="instant-barrel-notice"><a>
+
 {: .notice }
 > An instant barrel recipe must have an input item, input fluid, or both
 >
@@ -235,6 +237,7 @@ event.recipes.tfc.barrel_sealed(duration: number)
 - Seal: A convenience method for setting both seals, identical to `.onSeal().onUnseal()`
 
 <a id="sealed-barrel-notice"></a>
+
 {: .notice }
 > A sealed barrel recipe must have an input item, input fluid, or both
 >
@@ -313,6 +316,7 @@ event.recipes.tfc.casting(result: ItemStackProviderJS, mold: Ingredient, fluid: 
 - 4th argument: A number in the range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
 
 <a id="casting-notice"></a>
+
 {: .notice }
 > All input fluids for the recipe must have the appropriate fluid tag in order for the mold item to accept them, typically this is either `tfc:usable_in_ingot_mold` or `tfc:usable_in_tool_head_mold`
 
@@ -428,6 +432,7 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 - Chance: Accepts a number, in the range [0, 1], sets the chance of the item output
 
 <a id="heating-notice"></a>
+
 {: .notice }
 > The ingredient needs to have an [item heat](../data/#item-heats) added to it
 >
@@ -516,6 +521,7 @@ event.recipes.tfc.pot_jam(result: ItemStack, ingredients: Ingredient[], fluidIng
 - 6th argument: A string, the texture location that is rendered in the pot when it is complete and still has output
 
 <a id="jam-pot-notice"><a>
+
 {: .notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
@@ -553,6 +559,7 @@ event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngr
 - Outputs: A convenience method for setting both outputs, identical to `.itemOutput().fluidOutput()`
 
 <a id="simple-pot-notice"></a>
+
 {: .notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
 
@@ -581,6 +588,7 @@ event.recipes.tfc.pot_soup(ingredients: Ingredient[], fluidIngredient: FluidStac
 - 4th argument: A number, the temperature °C that the pot must be above to start boiling
 
 <a id="soup-pot-notice"></a>
+
 {: .notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
@@ -922,6 +930,7 @@ event.recipes.firmalife.stinky_soup(ingredients: Ingredient[], fluidIngredient: 
 - 4th argument: A number, the minimum temperature °C required for the recipe to operate
 
 <a id="firmalife-stinky-soup-notice"></a>
+
 {: .notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
@@ -1005,6 +1014,7 @@ event.recipes.firmalife.bowl_pot(itemOutput: ItemStack, ingredients: Ingredient[
 - 6th argument: Either a [FoodData](../bindings/#fluid-stack-ingredient) consumer or a string to number map containing any of `water`, `saturation`, `grain`, `fruit`, `vegetables`, `protein`, `dairy`, `hunger`, and `decay_modifier` values
 
 <a id="firmalife-bowl-pot-notice"></a>
+
 {: .notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
@@ -1036,6 +1046,7 @@ ServerEvents.recipes(event => {
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
 
 <A id="firmalife-press-unstable"></a>
+
 {: .unstable }
 This recipe type is currently unused by FirmaLife and actually adds itself to the stomping recipe type in JEI
 

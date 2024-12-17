@@ -816,6 +816,7 @@ Inherits the methods of the basic item builder
 **Type**: `tfc:fluid_container`
 
 <a id="fluid-container-texture-notice"></a>
+
 {: .notice }
 > This item requires two textures to function properly
 >
@@ -912,6 +913,7 @@ Inherits the methods of the basic item builder
 **Type**: `tfc:mold`
 
 <a id="mold-texture-notice"></a>
+
 {: .notice }
 > This item requires two textures to function properly
 >

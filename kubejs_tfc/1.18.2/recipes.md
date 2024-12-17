@@ -59,6 +59,7 @@ if you have [ArborFirmaCraft](https://www.curseforge.com/minecraft/mc-mods/arbor
 KubeJS TFC also adds three type [wrappers](../wrappers/) for easier building of recipes, they will be linked in each recipe just like TFC's [Official Docs](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating) do. In addition the appropriate recipe page will be linked from each recipe.
 
 <a id="general-notice"></a>
+
 {: .notice }
 >
 > - Have a look over TFC's [tags](https://terrafirmacraft.github.io/Documentation/1.18.x/data/tags/), in many places they are used to determine if an ingredient is allowed to perform the recipe or even go in the recipe's container. If you find you've made a recipe and it isn't working, check the linked list for any related tags.
