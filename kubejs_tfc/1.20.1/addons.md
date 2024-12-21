@@ -36,7 +36,7 @@ A Nether rebuild based on TFC's themes, read more about it [on its page](https:/
 
 KubeJS TFC supports its
 
-- [Data types]({% link kubejs_tfc/1.2.1/data.md %}#beneath)
+- [Data types]({% link kubejs_tfc/1.20.1/data.md %}#beneath)
 
 ## ArborFirmaCraft
 
