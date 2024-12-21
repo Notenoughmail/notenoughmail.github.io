@@ -351,7 +351,7 @@ Inherits the methods of the default block builder
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`: Sets the bush's product item to be an existing item, will prevent the other product item from being created
 
-Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -378,7 +378,7 @@ Inherits the methods of the stationary bush builder
 
 - `.maxHeight(i: number)`: Sets the maximum number of blocks the bush may climb, defaults to `3`
 
-Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -493,7 +493,7 @@ Inherits the methods of the default block builder
 - `.textures(textures: JsonObject)`: Sets the crop's textures for all growth stages
 - `.textures(i: number, textures: JsonObject)`: Sets the crop's textures for the given growth stage
 
-Additionally this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
+Additionally this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -597,7 +597,7 @@ Creates a new support block
 
 Inherits the methods of the default block builder
 
-Will not automatically support blocks, use the [support method](../data/#supports) in the data event for that
+Will not automatically support blocks, use the [support method]({% link kubejs_tfc/1.20.1/data.md %}#supports) in the data event for that
 
 **Type**: `tfc:support`
 
@@ -815,9 +815,7 @@ Inherits the methods of the basic item builder
 
 **Type**: `tfc:fluid_container`
 
-<a id="fluid-container-texture-notice"></a>
-
-{: .notice }
+{: .notice #fluid-container-texture-notice }
 > This item requires two textures to function properly
 >
 > - item/\<name>: The base texture
@@ -912,9 +910,7 @@ Inherits the methods of the basic item builder
 
 **Type**: `tfc:mold`
 
-<a id="mold-texture-notice"></a>
-
-{: .notice }
+{: .notice #mold-texture-notice }
 > This item requires two textures to function properly
 >
 > - item/\<name>: The base texture

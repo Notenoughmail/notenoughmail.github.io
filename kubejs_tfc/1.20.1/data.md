@@ -38,9 +38,7 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
 
-<a id="general-notice"></a>
-
-{: .notice }
+{: .notice #general-notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition
 >
 > This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
@@ -68,9 +66,7 @@ event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: Resource
     - `.temperatureWiggle(f: number)`: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
-<a id="climate-range-notice"></a>
-
-{: .notice }
+{: .notice #climate-range-notice }
 Climate ranges cannot be added through this, only existing, registered ones can be modified
 
 ### Example
@@ -123,7 +119,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildDrinkableData>, name?: ResourceLocation)
 ```
 
-- 1st argument: A [fluid ingredient](../bindings/#fluid-ingredient) which defines which fluids the drinkable applies to
+- 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
     - `.consumeChance(f: number)`: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to 0
     - `.thirst(i: number)`: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to 0
@@ -165,7 +161,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: Consumer<BuildFaunaData>, name: ResourceLocation)
 ```
 
-- 1st argument: A consumer with methods matching those of the placed feature [climate decorator](../worldgen/#climate)
+- 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
 - 2nd argument: A consumer with several additional methods:
     - `.chance(i: number)`: Accepts a number, sets the chance in 1/N chunks that something will spawn, defaults to 1
     - `.distanceBelowSeaLevel(i: number)`: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
@@ -173,12 +169,10 @@ event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: C
     - `.maxBrightness(i: number)`: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
-<a id="fauna-notice"></a>
-
-{: .notice }
+{: .notice #fauna-notice }
 > Faunas cannot be added through this, only existing, registered ones can be modified
 >
-> To register a fauna definition see the [event](../events#register-fauna-definitions) for registering them
+> To register a fauna definition see the [event]({% link kubejs_tfc/1.20.1/events.md %}#register-fauna-definitions) for registering them
 
 ### Example
 
@@ -374,8 +368,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.lampFuel(fluidIngredient: FluidIngredient, blockIngredient: BlockIngredient, burnRate: number, name?: ResourceLocation)
 ```
 
-- 1st argument: A [FluidIngredient](../bindings/#fluid-ingredient), determines which fluids the lamp fuel applies to
-- 2nd argument: A [BlockIngredient](../bindings/#block-ingredinet), determines what (lamp) blocks are valid for this fuel to be added to
+- 1st argument: A [FluidIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient), determines which fluids the lamp fuel applies to
+- 2nd argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredinet), determines what (lamp) blocks are valid for this fuel to be added to
 - 3rd argument: A number, represents how fast the fuel is consumed, in ticks per mB
 - *Optional 4th argument*: A `ResourceLocation`, the name of the lamp fuel
 
@@ -415,9 +409,7 @@ event.metal(
 - 7th argument: A number, the tier of the metal
 - *Optional 8th argument*: A `ResourceLocation`, the name of the metal
 
-<a id="metal-notice"></a>
-
-{: .notice }
+{: .notice #metal-notice }
 > If no name is provided, one will be automatically generated from the fluid
 >
 > The name is generated like so:
@@ -447,7 +439,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.support(blockIngredient: BlockIngredient, up: number, down: number, horizontal: number, name?: ResourceLocation)
 ```
 
-- 1st argument: A [BlockIngredient](../bindings/#block-ingredient), determines what blocks the support applies to
+- 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), determines what blocks the support applies to
 - 2nd argument: A number, the number of blocks up the block supports
 - 3rd argument: A number, the number of blocks down the block supports
 - 4th argument: A number, the number of blocks horizontally the block supports
@@ -493,7 +485,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<string>, name?: ResourceLocation)
 ```
 
-- 1st argument: A [BlockIngredient](../bindings/#block-ingredient), the blocks that will go into the pan
+- 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the blocks that will go into the pan
 - 2nd argument: A string, the location of a loot table to be dropped for the ingredient
 - 3rd argument: A list of strings which are model locations to be iterated through as panning progresses
 - *Optional 4th argument*: A `ResourceLocation`, the name of the panning definition
@@ -516,7 +508,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: ResourceLocation)
 ```
 
-- 1st argument: A [BlockIngredient](../bindings/#block-ingredient), the blocks that will be accepted by the greenhouse type
+- 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the blocks that will be accepted by the greenhouse type
 - 2nd argument: A number, the tier of the greenhouse, values for the default types are as follows:
     - Wood: 5
     - Copper: 10

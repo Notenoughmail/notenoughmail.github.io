@@ -28,9 +28,7 @@ TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | L
 - CopyInput: Returns an empty ISP with the `tfc:copy_input` modifier and the provided modifiers
     - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, only the copy input modifier will be applied to the ISP
 
-<a id="method-notice"></a>
-
-{: .notice }
+{: .notice #method-notice }
 These methods return an `ItemStackProviderJS` object which has several helper methods and is described [below](#itemstackproviderjs)
 
 ## Examples
@@ -181,7 +179,7 @@ declare class ItemStackProviderJS {
 - `.copyOldestFood()`: Adds a `tfc:copy_oldest_food` modifier
 - `.addBait()`: Adds a `tfc:add_bait_to_rod` modifier
 - `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`: Adds a `tfc:meal` modifier
-    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition](/kubejs_tfc/1.20.1/data/#food-items)
+    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition]({% kubejs_tfc/1.20.1/data.md %}#food-items)
     - *Optional 2nd argument*: An array of consumers specifying the portions of a meal
         - `.ingredient(ingredient: Ingredient)`: Sets the portion's ingredient
         - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1

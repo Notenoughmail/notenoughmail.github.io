@@ -29,9 +29,7 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Spreading Bush](#spreading-bush)
 - [Generic Features](#generic)
 
-<a id="general-notice"></a>
-
-{: .notice }
+{: .notice #general-notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >
 > Use the `ServerEvent.tag('worldgen/placed_feature', event => {})` event to add to/remove entries from the correct tag
@@ -547,7 +545,7 @@ event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatur
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A string, the block to place, must be an instance of [WildDoubleCropBlock](../custom/#wild_crop)
+- 2nd argument: A string, the block to place, must be an instance of [WildDoubleCropBlock]({% link kubejs_tfc/1.20.1/custom.md %}#wild_crop)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Spreading Crop
@@ -557,7 +555,7 @@ event.spreadingCrop(name: string, block: string, placement: Consumer<PlacedFeatu
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock](../custom/#wild-crops)
+- 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock]({% link kubejs_tfc/1.20.1/custom.md %}#wild-crops)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Spreading Bush
@@ -571,7 +569,7 @@ event.spreadingBush(name: string, block: string, placement: Consumer<PlacedFeatu
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock](../custom/#spreading-berry-bush)
+- 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock]({% link kubejs_tfc/1.20.1/custom.md %}#spreading-berry-bush)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Generic

@@ -28,7 +28,7 @@ TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient)
 ```
 
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
-- 2nd argument: A [fluid stack ingredient](/kubejs_tfc/1.20.1/bindings/#fluid-stack-ingredient), the fluid(s) this ingredient matches
+- 2nd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid(s) this ingredient matches
 
 Creates an ingredient of type `tfc:fluid_item` with the fluid ingredient defined by the `fluid` argument and the item ingredient defined by the `delegate` argument
 

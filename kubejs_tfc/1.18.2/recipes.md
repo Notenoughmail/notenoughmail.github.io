@@ -56,11 +56,9 @@ if you have [ArborFirmaCraft](https://www.curseforge.com/minecraft/mc-mods/arbor
 
 - [Tree Tapping](#tree-tapping)
 
-KubeJS TFC also adds three type [wrappers](../wrappers/) for easier building of recipes, they will be linked in each recipe just like TFC's [Official Docs](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating) do. In addition the appropriate recipe page will be linked from each recipe.
+KubeJS TFC also adds three type [wrappers]({% link kubejs_tfc/1.18.2/wrappers.md %}) for easier building of recipes, they will be linked in each recipe just like TFC's [Official Docs](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating) do. In addition the appropriate recipe page will be linked from each recipe.
 
-<a id="general-notice"></a>
-
-{: .notice }
+{: .notice #general-notice }
 >
 > - Have a look over TFC's [tags](https://terrafirmacraft.github.io/Documentation/1.18.x/data/tags/), in many places they are used to determine if an ingredient is allowed to perform the recipe or even go in the recipe's container. If you find you've made a recipe and it isn't working, check the linked list for any related tags.
 > - In several places TFC will take ingredients of tool items. Normally when writing json recipes, this would be no problem, however due to the way KubeJS processes ingredient items, items with durability automatically have nbt attached to them specifying that their damage be 0. This can be stopped by using `Item.of()` and the `.ignoreNBT()` method. However this does not apply to tags, so this would not be needed for an ingredient of `#tfc:saws`
@@ -94,7 +92,7 @@ In order to use a custom metal as an output, a metal needs to be defined, see [h
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#anvil-welding)
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider)) representing the result of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider)) representing the result of the recipe
 - 2nd argument: A list of two item ingredients
 
 ### Extra Methods
@@ -114,7 +112,7 @@ event.recipes.tfc.welding('2x tfc:metal/ingot/bronze', ['tfc:metal/ingot/black_b
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#anvil-working)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An array of up to three forge rules, see the main page for a full list
 
@@ -135,8 +133,8 @@ event.recipes.tfc.anvil(ItemStackProvider.of('tfc:metal/ingot/bronze', {type:'tf
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-instant-fluid)!
 
 - 1st argument: The result fluid
-- 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
-- 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+- 2nd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
+- 3rd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
 
 ### Extra Method
 
@@ -153,9 +151,9 @@ event.recipes.tfc.barrel_instant_fluid(Fluid.of('minecraft:milk', 50), FluidStac
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-instant)!
 
-- 1st argument: A result list containing either a fluid, an [item stack provider](../wrappers/#item-stack-provider), or both
+- 1st argument: A result list containing either a fluid, an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), or both
 - 2nd argument: An ingredient item
-- 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+- 3rd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
 
 ### Extra Method
 
@@ -174,15 +172,15 @@ event.recipes.tfc.barrel_instant(['3x minecraft:diamond_block', Fluid.of('tfc:co
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#barrel-sealed)!
 
-- 1st argument: A result list containing either a fluid, an [item stack provider](../wrappers/#item-stack-provider), or both
-- 2nd argument: An ingredient list containing a [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), an item ingredient, or both
+- 1st argument: A result list containing either a fluid, an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), or both
+- 2nd argument: An ingredient list containing a [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), an item ingredient, or both
 - 3rd argument: An integer, representing the number of ticks that the barrel must be sealed for. A duration of -1 will be considered infinite, doing so should be accompanied either an onSeal or onUnseal, or both method(s)
 
 ### Extra Methods
 
 - `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
-- `.onSeal(item stack provider)`: An object representing an [item stack provider](../wrappers/#item-stack-provider), sets the `on_seal` property to an equal item stack provider
-- `.onUnseal(item stack provider)`: An object representing an [item stack provider](../wrappers/#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
+- `.onSeal(item stack provider)`: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
+- `.onUnseal(item stack provider)`: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
 
 ### Example
 
@@ -200,7 +198,7 @@ When sealed, a translatable component describing the recipe will appear in the U
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#blast-furnace)!
 
 - 1st argument: A result fluid
-- 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+- 2nd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
 - 3rd argument: The catalyst, an item ingredient
 
 ### Example
@@ -214,8 +212,8 @@ event.recipes.tfc.blast_furnace(Fluid.of('tfc:metal/bismuth_bronze', 1), Fluid.o
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#bloomery)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result
-- 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient) representing the input fluid
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the result
+- 2nd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient) representing the input fluid
 - 3rd argument: The catalyst, an item ingredient
 - 4th argument: An integer, representing the duration in ticks until the bloomery is complete
 
@@ -230,9 +228,9 @@ event.recipes.tfc.bloomery('minecraft:oak_log', Fluid.of('tfc:metal/bismuth_bron
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#casting)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider), the result of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient, this only matches the mold item itself
-- 3rd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+- 3rd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
 - *optional 4th argument*: A number, in the range [0, 1], representing the chance that the mold will break upon completion of this recipe
 
 ### Example
@@ -247,12 +245,12 @@ event.recipes.tfc.casting('minecraft:oak_log', 'tfc:ceramic/saw_head_mold', Flui
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#chiseling)!
 
 - 1st argument: A string representing the block state result
-- 2nd argument: A [block ingredient](../wrappers/#block-ingredient)
+- 2nd argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient)
 - *optional 3rd argument*: A string representing the chiseling mode, 'smooth', 'slab', or 'stair' are accepted, defaults to 'smooth'
 
 ### Extra Methods
 
-- `.extraDrop(item stack provider)`: An [item stack provider](../wrappers/#item-stack-provider) specifying an item to be dropped upon chiseling
+- `.extraDrop(item stack provider)`: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) specifying an item to be dropped upon chiseling
 - `.itemIngredients(ingredients...)`: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
 
 ### Example
@@ -269,7 +267,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.18.x/data/r
 - 1st argument: One of two options:
     - A boolean representing the `copy_input` property, defaults to false. *Only use this with the value **true***
     - A string representing the block state result
-- 2nd argument: A [block ingredient](../wrappers/#block-ingredient)
+- 2nd argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient)
 
 ### Examples
 
@@ -286,8 +284,8 @@ event.recipes.tfc.landslide('minecraft:dark_oak_log[axis=y]', 'minecraft:oak_log
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#heating)!
 
-- *optional 1st argument*: A list of either, a fluid result, an [item stack provider](../wrappers/#item-stack-provider), both, or neither
-- 2nd[^1] argument: An ingredient item. **Note: an [item heat](../data/#heats) must be defined in order for the provided ingredient to be usable in recipes**
+- *optional 1st argument*: A list of either, a fluid result, an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), both, or neither
+- 2nd[^1] argument: An ingredient item. **Note: an [item heat]({% link kubejs_tfc/1.18.2/data.md %}#heats) must be defined in order for the provided ingredient to be usable in recipes**
 - 3rd[^2] argument: A number, representing the temperature above which this item will convert to its outputs
 
 [^1]: If the argument list is only two long (for instance when there is no result) this is the first argument
@@ -333,7 +331,7 @@ event.recipes.tfc.leather_knapping('tfc:large_prepared_hide', ['X   X', ' X X ',
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#loom)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider), representing the result item
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), representing the result item
 - 2nd argument: An item stack ingredient
 - *optional 3rd argument*: An integer which determines how many steps of the loom's working animation need to be completed to produce the result, defaults to the stack size of the item stack ingredient
 
@@ -356,7 +354,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
     - Up to one fluid stack
     - Up to five item stacks
 - 2nd argument: A list of ingredients containing:
-    - A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
     - Up to five item ingredients
 - 3rd argument: An integer, representing the number of ticks the pot must boil for
 - 4th argument: A number, representing the temperature the pot must reach to begin boiling
@@ -372,7 +370,7 @@ event.recipes.tfc.pot(Fluid.of('tfc:light_blue_dye', 50), [Fluid.of('minecraft:w
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#quern)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -405,7 +403,7 @@ event.recipes.tfc.rock_knapping('tfc:large_prepared_hide', ['XX', 'XX', 'XX'], '
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/recipes/#scraping)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
 ### Extra Methods
@@ -424,7 +422,7 @@ event.recipes.tfc.scraping('5x minecraft:oak_log', 'tfc:metal/double_sheet/rose_
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#advanced-shaped-crafting)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider)
 - 2nd argument: A pattern, the same as KubeJS's native crafting recipe
 - 3rd argument: A pattern key, the same as KubeJS's native crafting recipe
 - 4th argument: An integer, representing the row (0 indexed) of the pattern. Used to determine the input item of the item stack provider
@@ -451,7 +449,7 @@ event.recipes.tfc.advanced_shaped_crafting(ItemProvider.of('2x tfc:metal/rod/cop
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/crafting/#advanced-shapeless-crafting)!
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider)
 - 2nd argument: A list of item ingredients, the first ingredient will be treated as the input item for the item stack provider
 
 ### Example
@@ -589,7 +587,7 @@ event.recipes.tfc.extra_products_shapeless_crafting('minecraft:oak_log', event.s
 
 ## Drying
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -601,7 +599,7 @@ event.recipes.firmalife.drying('4x minecraft:stick', '#minecraft:logs')
 
 ## Smoking
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the output of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the output of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -617,7 +615,7 @@ event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
     - Up to one fluid stack
     - Up to five item stacks
 - 2nd argument: A list of ingredients containing:
-    - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - Up to one [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
     - Up to five item ingredients
 
 ### Example
@@ -645,7 +643,7 @@ event.recipes.firmalife.pumpkin_knapping('minecraft:pumpkin_seed', ['X X', 'X X'
 
 ## Oven
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider)
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider)
 - 2nd argument: An ingredient
 - 3rd argument: An integer, representing the duration of the recipe in ticks
 - 4th argument: A number, representing the temperature the recipes requires to complete
@@ -661,9 +659,9 @@ event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/ande
 
 - 1st argument: A list of results containing:
     - Up to one fluid stack
-    - Up to one [item stack provider](../wrappers/#item-stack-provider)
+    - Up to one [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider)
 - 2nd argument: A list of ingredients containing:
-    - Up to one [fluid stack ingredient](../wrappers/#fluid-stack-ingredient)
+    - Up to one [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
     - Up to one item stack ingredient
 - *optional 3rd argument*: An integer, representing how long the recipe takes to process. Defaults to 600 ticks
 - *optional 4th argument*: A number, representing the temperature requires for the recipe to process. Defaults to 300℃
@@ -693,7 +691,7 @@ event.recipes.rosia.auto_quern('3x minecraft:bone', 'minecraft:bone_meal')
 
 ## Extruding Machine
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the result of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -705,7 +703,7 @@ event.recipes.rosia.extruding_machine('minecraft:dirt', 'tfc:metal/ingot/bismuth
 
 ## Rolling Machine
 
-- 1st argument: An [item stack provider](../wrappers/#item-stack-provider) representing the result of the recipe
+- 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) representing the result of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -718,7 +716,7 @@ event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 ## Tree Tapping
 
 - 1st argument: A fluid stack, the result of the recipe
-- 2nd argument: A [block ingredient](../wrappers/#block-ingredient), the block the tree tap needs to be attached to
+- 2nd argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient), the block the tree tap needs to be attached to
 - *optional 3rd argument*: A boolean, determines if the recipe will only work if the block has the `natural=true` blockstate, defaults to true
 
 *Note*: The block(s) that are tapped need the `afc:tappable_logs` block tag

@@ -10,7 +10,7 @@ grand_parent: KubeJS TFC
 
 KubeJS TFC adds several JS events for use in your scripts
 
-- [Rock Settings](../worldgen/#rock-layers)
+- [Rock Settings]({% link kubejs_tfc/1.18.2/worldgen.md %}#rock-layers)
 - [Limiting Containers](#limiting-containers)
 - [Register Climate Model](#register-climate-model)
 - [Select Climate model](#select-climate-model)
@@ -198,7 +198,7 @@ Returns the ItemStackJS representing the item used
 
 ### getFireResult()
 
-Returns the [FireResult](../misc/#fireresult) of the event. Defaults to FireResult.IF_FAILED.
+Returns the [FireResult]({% link kubejs_tfc/1.18.2/misc.md %}#fireresult) of the event. Defaults to FireResult.IF_FAILED.
 
 ### setFireResult(FireResult)
 
@@ -206,7 +206,7 @@ Sets the event's FireResult
 
 ### isStrong()
 
-Returns a boolean indicating if the event's [FireStrength](../misc/#firestrength) is strong
+Returns a boolean indicating if the event's [FireStrength]({% link kubejs_tfc/1.18.2/misc.md %}#firestrength) is strong
 
 ### getEntity()
 

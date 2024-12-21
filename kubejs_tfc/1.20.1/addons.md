@@ -24,11 +24,11 @@ A cooking and farming addon for TFC, read more about it [on its page](https://mo
 
 KubeJS TFC supports its
 
-- [Recipes](../recipes#firmalife)
-- [Data types](../data#firmalife)
-- [Blocks](../custom#firmalife-blocks)
-- [Items](../custom#firmalife-items)
-- [ItemStackProvider Additions](../bindings/isp#firmalife)
+- [Recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#firmalife)
+- [Data types]({% link kubejs_tfc/1.20.1/data.md %}#firmalife)
+- [Blocks]({% link kubejs_tfc/1.20.1/custom.md %}#firmalife-blocks)
+- [Items]({% link kubejs_tfc/1.20.1/custom.md %}#firmalife-items)
+- [ItemStackProvider Additions]({% link kubejs_tfc/1.20.1/bindings/isp.md %}#firmalife)
 
 ## Beneath
 
@@ -36,7 +36,7 @@ A Nether rebuild based on TFC's themes, read more about it [on its page](https:/
 
 KubeJS TFC supports its
 
-- [Data types](../data#beneath)
+- [Data types]({% link kubejs_tfc/1.2.1/data.md %}#beneath)
 
 ## ArborFirmaCraft
 
@@ -44,7 +44,7 @@ An expansion upon TFC's tree variety, read more about it [on its page](https://m
 
 KubeJS TFC supports its
 
-- [Recipes](../recipes#arborfirmacraft)
+- [Recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#arborfirmacraft)
 
 ## Precision Prospecting
 
@@ -52,10 +52,10 @@ A fairly self-evident mod from the name, read more about it [on its page](https:
 
 KubeJS TFC supports its
 
-- [Items](../custom#precision-prospecting-items)
+- [Items]({% link kubejs_tfc/1.20.1/custom.md %}#precision-prospecting-items)
 
 # TFC Casting with Channels
 
 An addon that allows for faster casting of metals with the titular channels, read more about it [on its page](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels)
 
-- [Custom Mold Item Additions](../custom#tfccc)
+- [Custom Mold Item Additions]({% link kubejs_tfc/1.20.1/custom.md %}#tfccc)
