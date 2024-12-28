@@ -708,6 +708,9 @@ Inherits the methods of the default block builder
 #### Extra Method
 
 - `.sliceItem(slice: Consumer<ItemBuilder>)`: Sets the properties of the cheese wheel's slice item
+- `.freshInsideTexture(tex: string)`: Sets the inside texture when the cheese is fresh
+- `.agedInsideTexture(tex: string)`: Sets the inside texture when the cheese is aged
+- `.vintageInsideTexture(tex: string)`: Sets the inside texture when the cheese is vintage
 
 #### Example
 
@@ -777,6 +780,8 @@ The following types are available:
 - [Glassworking](#glassworking)
 - [Windmill Blade](#windmill-blade)
 - [Glassworking Tool](#glassworking-tool)
+- [Glass Bottle](#glass-bottle)
+- [Jug](#jug)
 
 <a id="firmalife-items"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -822,6 +827,8 @@ Inherits the methods of the basic item builder
 > - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png` and `kubejs/textures/item/my_fluid_container_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
 
 #### Extra Methods
 
@@ -830,7 +837,7 @@ Inherits the methods of the basic item builder
 - `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
 - `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 - `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
-- `.capacity(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
 
 #### Example
 
@@ -875,6 +882,9 @@ Inherits the methods of other tool item builders
 
 - `.thrownDamage(f: number)`: Sets the thrown damage of the javelin, defaults to `0.3`
 - `.skeletonWeapon()`: Adds the item to the `tfc:skeleton_weapons` item tag
+- `.throwingModel(m: string)`: Sets the model to use when throwing the javelin, before release
+- `.modelAtPerspective(perspective: ItemDisplayContext, model: string)`: Sets the model to use at the specified display context
+- `.guiModel(m: string)`: Sets the model to use for the `none`, `fixed`, `ground`, and `gui` display contexts
 
 #### Example
 
@@ -917,6 +927,8 @@ Inherits the methods of the basic item builder
 > - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_mold.png` and `kubejs/textures/item/my_mold_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
 
 #### Extra Methods
 
@@ -1022,9 +1034,10 @@ Inherits the methods of other tool item builders
 #### Extra Methods
 
 - `.fishingStrength(f: number)`: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
-- `.castModel(model: string)`: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end
+- `.castModel(model: string)`: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end or the one provided via the `.castTexture` method
 - `.smallBait()`: Adds the rod to the correct tag to allow it to hold small bait
 - `.largeBait()`: Adds the rod to the correct tag to allow it to hold large bait
+- `.castTexture(t: string)`: Sets the texture used when the rod is cast out
 
 #### Example
 
@@ -1108,7 +1121,7 @@ Inherits the methods of the [tool item builder](#tool)
 
 **Type**: `tfc:glassworking_tool`
 
-#### Extra method
+#### Extra Method
 
 - `.operation(operation: GlassOperation)`: Sets the `GlassOperation` the item is capable of performing, defaults to `saw`
 
@@ -1119,6 +1132,77 @@ StartupEvents.registry('item', event => {
     event.create('my_glass_working_tool', 'tfc:glassworking_tool')
         .operation('pinch')
         .mineableBlocksTag('kubejs:mineable/default')
+})
+```
+
+### Glass Bottle
+
+Creates a new glass bottle item
+
+Inherits the methods of the basic item builder
+
+**Type**: `tfc:glass_bottle`
+
+{: .notice #glass-bottle-texture-notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+>
+> For the example below, the textures would be in `kubejs/textures/item/my_glass_bottle.png` and `kubejs/textures/item/my_glass_bottle_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
+
+#### Extra Methods
+
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.breakChance(chance: number)`: Sets the break chance, in the range [0, 1], of the bottle
+- `.breakChanceSupplier(chance: Supplier<Double>)`: Sets the break chance, in the range [0, 1], supplier of the bottle
+- `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_glass_bottle', 'tfc:glass_bottle')
+        .capacity(500)
+        .filledDisplayName('Bottle of %s')
+})
+```
+
+### Jug
+
+Creates a new jug item
+
+Inherits the methods of the default item builder
+
+**Type**: `tfc:jug`
+
+{: .notice #jug-texture-notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method as seen in the example
+
+#### Extra Methods
+
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_jug', 'tfc:jug')
+        .texture('base', 'tfc:item/ceramic/jug_empty')
+        .texture('fluid', 'tfc:item/ceramic/jug_overlay')
+        .fluidTagAccept('kubejs:juices')
 })
 ```
 

@@ -12,6 +12,7 @@ This page is for features which don't deserve their own page and/or don't fit in
 
 - [Recipe Components](#recipe-components)
 - [Configuration](#configuration)
+- [Commands](#commands)
 
 ## Recipe Components
 
@@ -36,3 +37,23 @@ KubeJS TFC adds 6 recipe component types
 In KubeJS's `dev.properties` file there is an option for `debugInfo`, if set to `true`, KubeJS TFC will print various debug info to the log
 
 Additionally in the `dev.properties` file there is a new property, `tfc/insertSelfTestsIntoConsole`, which will insert TFC's self test warnings into the KubeJS console if enabled, allowing for warnings about certain recipe ingredients not being tagged properly to be visible
+
+## Commands
+
+KubeJS TFC adds a pair of commands used for investigating TFC's (and addons') data types, they require permission level 3 or higher to use
+
+## List IDs
+
+The `/kubejs_tfc list_ids` command has a single argument, a data type, all available options will be suggested
+
+Using this command will print a list the ids of data files handled by that data type to the chat
+
+Example: `/kubejs_tfc list_ids tfc.fuels`
+
+## Describe
+
+The `/kubejs_tfc describe` command has two arguments: a data type and a resource location, the id of the data value to describe
+
+Using this command will print a formatted description of the requested data value to the chat
+
+Example `/kubejs_tfc describe tfc.fuels tfc:coal`
