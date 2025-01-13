@@ -66,6 +66,9 @@ event.recipes.tfc.alloy(result: string, contents: AlloyPart[])
 - 1st argument: A string representing the name of a metal
 - 2nd argument: An array of [AlloyPart]({% link kubejs_tfc/1.20.1/bindings.md %}#alloy-part)s defining the components and their percentage ranges for the recipe
 
+{: .related #alloy-metal-info }
+See [here]({% link kubejs_tfc/1.20.1/data.md %}#metals) for defining custom metals
+
 ### Example
 
 ```js
