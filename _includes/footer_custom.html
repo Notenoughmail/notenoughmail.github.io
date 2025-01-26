@@ -1,0 +1,41 @@
+<!--An absolutely terrible way to do this, but it works-->
+<script>
+    const calloutTypes = [];
+    {% for c in site.callouts %}
+        calloutTypes.push("{{ c[0] }}");
+    {% endfor %}
+    calloutTypes.forEach(type => {
+        var elements = document.getElementsByClassName(type);
+        for (let i = 0 ; i < elements.length ; i++) {
+            var item = elements.item(i);
+            if (item != null) {
+                var id = "";
+                heading = document.createElement('h3');
+                if (item.id != null && item.id.length > 0) {
+                    id = item.id;
+                    heading.appendChild(createAnchor(id));
+                }
+                heading.id = id;
+                item.parentElement.insertBefore(heading, item);
+                item.parentElement.removeChild(item);
+                heading.appendChild(item);
+            }
+        }
+    });
+
+    function createAnchor(id) {
+        var anchor = document.createElement('a');
+        anchor.className = 'anchor-heading';
+        anchor.href = '#' + id;
+        anchor.setAttribute('aria-labelledby', id);
+        var svg = document.createElement('svg');
+        svg.setAttribute('viewBox', '0 0 16 16');
+        svg.ariaHidden = 'true';
+        var use = document.createElement('use');
+        use.setAttribute('xlink:href', '#svg-link');
+        use.innerHTML = '{% include icons/link.html %}';
+        svg.appendChild(use);
+        anchor.appendChild(svg);
+        return anchor;
+    }
+</script>

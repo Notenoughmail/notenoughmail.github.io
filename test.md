@@ -71,19 +71,17 @@ Embedded images:
 
 htmz:
 
-<base target="htmz" />
-
 <div role="tablist">
-    <a class="tab" href="/hidden/dog.html#tab">Dog</a>
-    <a class="tab" href="/hidden/horse.html#tab">Horse</a>
-    <a class="tab" href="/hidden/empty.html#tab">Empty</a>
+    <a class="tab" href="/hidden/dog.html#tab" target=htmz>Dog</a>
+    <a class="tab" href="/hidden/horse.html#tab" target=htmz>Horse</a>
+    <a class="tab" href="/hidden/empty.html#tab" target=htmz>Empty</a>
 </div>
 
 <div id="tab" role="tabpanel"></div>
 
 <iframe hidden name=htmz onload="setTimeout(()=>document.querySelector(contentWindow.location.hash||null)?.replaceWith(...contentDocument.body.childNodes))"></iframe>
 
-{: .notice }
+{: .notice #ignore }
 This page can be safely ignored :)
 
 <code style="color:25FF25;">Haggard</code>
