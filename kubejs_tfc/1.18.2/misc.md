@@ -15,7 +15,7 @@ This page is for features which don't fit into/warrant another page
 - [Bindings](#bindings)
 - [Custom Food Traits](#custom-food-traits)
 
-Looking for how to limit containers? It's been moved to the [Events](../events/) page.
+Looking for how to limit containers? It's been moved to the [Events]({% link kubejs_tfc/1.18.2/events.md %}) page.
 
 ---
 
@@ -419,7 +419,7 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
 ### Replacing Fluid Inputs
 
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
-- 2nd argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), the fluid ingredient to be replaced
+- 2nd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid ingredient to be replaced
 - 3rd argument: A fluid stack ingredient, the fluid ingredient to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
@@ -449,7 +449,7 @@ onEvent('recipes', event => {
 ### Replacing Block Inputs
 
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
-- 2nd argument: A [block ingredient](../wrappers/#block-ingredient), the block ingredient to be replaced
+- 2nd argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient), the block ingredient to be replaced
 - 3rd argument: A block ingredient, the block ingredient to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
@@ -464,7 +464,7 @@ onEvent('recipes', event => {
 ### Replacing Item Stack Providers
 
 - *optional 1st argument*: A recipe filter, defaults to ALWAYS_TRUE
-- 2nd argument: An [item stack provider](../wrappers/#item-stack-provider), the item provider to be replaced
+- 2nd argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), the item provider to be replaced
 - 3rd argument: A item stack provider, the item provider to replace with
 - *optional 4th argument*: A boolean, determines if the match should be exact, defaults to false
 
@@ -521,7 +521,7 @@ TFCRecipeFilter.fluidOutput('tfc:salt_water')
 
 ### Fluid Input Filter
 
-- 1st argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient), the fluid ingredient to look for in recipes
+- 1st argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid ingredient to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
 ```js
@@ -530,7 +530,7 @@ TFCRecipeFilter.fluidInput('#tfc:milks')
 
 ### Item Provider Filter
 
-- 1st argument: A [item stack provider](../wrappers/#item-stack-provider), the item stack provider to look for in recipes
+- 1st argument: A [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), the item stack provider to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
 ```js
@@ -548,11 +548,11 @@ TFCRecipeFilter.extraItem('tfc:straw')
 
 ## Bindings
 
-Bindings are objects which represent internal Java classes which can be used in scripts without having to directly load the class in your scripts. The three major bindings can be found in the [Wrappers](../wrappers/) page. Another is also described above.
+Bindings are objects which represent internal Java classes which can be used in scripts without having to directly load the class in your scripts. The three major bindings can be found in the [Wrappers]({% link kubejs_tfc/1.18.2/wrappers.md %}) page. Another is also described above.
 
 ### FireResult
 
-Represents the fire result of a [StartFireEvent](../events/#start-fire), it has three values:
+Represents the fire result of a [StartFireEvent]({% link kubejs_tfc/1.18.2/events.md %}#start-fire), it has three values:
 
 - `IF_FAILED`: Places a fire block if the event isn't cancelled
 - `ALWAYS`: Guarantees a fire block will be placed

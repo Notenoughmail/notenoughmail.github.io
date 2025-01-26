@@ -37,7 +37,7 @@ The following types are available:
 - [Axles](#axles)
 - [Encased Axles](#encased-axles)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
 - [Cheese Wheel](#firmalife-cheese-wheel)
 
@@ -164,7 +164,7 @@ StartupEvents.registry('block', event => {
 
 Creates a thin spike block
 
-Inherits the methods of tje default block builder
+Inherits the methods of the default block builder
 
 **Type**: `tfc:thin_spike`
 
@@ -351,7 +351,7 @@ Inherits the methods of the default block builder
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`: Sets the bush's product item to be an existing item, will prevent the other product item from being created
 
-Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](/data/#climate-ranges)
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -378,7 +378,7 @@ Inherits the methods of the stationary bush builder
 
 - `.maxHeight(i: number)`: Sets the maximum number of blocks the bush may climb, defaults to `3`
 
-Additionally, this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
+Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -450,13 +450,16 @@ Inherits the methods of the default block builder
 - `.spreadingFruitBlock(fruitBlock: ResourceLocation)`: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
 - `.seeds(seedItem: ResourceLocation)`: Sets the 'seed' item to be used in the auto-generated loot table
 - `.food(foodItem: ResourceLocation)`: Sets the 'food' item to be used in the auto-generated loot table
+- `.deadModel(model: string)`: Sets the model to use when the crop is dead/immature and its type is `default` or `flooded`
+- `.doubleDeadModels(topModel: string, bottomModel: string)`: Sets the models to use when the crop is dead/immature and sets the crop's type to `double`
+- `.spreadingDeadModels(coreModel: string, sideModel: string)`: Sets the models to use when the crop is dead/immature and sets the crop's type to `spreading`
 
 #### Example
 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_wild_spreading_crop', 'tfc:wild_crop')
-        .type('spreading')
+        .spreadingDeadModels('minecraft:block/cobblestone', 'minecraft:block/deepslate')
         .spreadingFruitBlock('minecraft:stone')
 })
 ```
@@ -478,7 +481,7 @@ Inherits the methods of the default block builder
 - `.seedItem(seedItem: Consumer<SeedItemBuilder>)`: A consumer for setting the properties of the block's seed item
 - `.productItem(productItem: Consumer<ItemBuilder>)`: A consumer for setting the properties of the block's product item
 - `.productItem(productItem: ResourceLocation)`: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
-- `.nutrient(nutrient: NutrientType)`: Sets the nutrient hte crop consumes, available options are `nitrogen`, `phosphorous` , and `potassium`, defaults to `nitrogen`
+- `.nutrient(nutrient: NutrientType)`: Sets the nutrient the crop consumes, available options are `nitrogen`, `phosphorous` , and `potassium`, defaults to `nitrogen`
 - `.texture(texture: string)`: Sets the crop's `crop` texture for all growth stages
 - `.textureAll(id: string, texture: string)`: Sets the crop's texture for the id for all growth stages
 - `.model(model: string)`: Sets the crop's model for all growth stages
@@ -490,7 +493,7 @@ Inherits the methods of the default block builder
 - `.textures(textures: JsonObject)`: Sets the crop's textures for all growth stages
 - `.textures(i: number, textures: JsonObject)`: Sets the crop's textures for the given growth stage
 
-Additionally this will register a climate range with the same id as the block, it can be set through the [data event](../data/#climate-ranges)
+Additionally this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
 #### Example
 
@@ -594,7 +597,7 @@ Creates a new support block
 
 Inherits the methods of the default block builder
 
-Will not automatically support blocks, use the [support method](../data/#supports) in the data event for that
+Will not automatically support blocks, use the [support method]({% link kubejs_tfc/1.20.1/data.md %}#supports) in the data event for that
 
 **Type**: `tfc:support`
 
@@ -705,6 +708,9 @@ Inherits the methods of the default block builder
 #### Extra Method
 
 - `.sliceItem(slice: Consumer<ItemBuilder>)`: Sets the properties of the cheese wheel's slice item
+- `.freshInsideTexture(tex: string)`: Sets the inside texture when the cheese is fresh
+- `.agedInsideTexture(tex: string)`: Sets the inside texture when the cheese is aged
+- `.vintageInsideTexture(tex: string)`: Sets the inside texture when the cheese is vintage
 
 #### Example
 
@@ -728,7 +734,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 - `.speedFactor(f: number)`: Sets the speed factor of the block
 - `.jumpFactor(f: number)`: Sets the jump factor of the block
 - `.sound(sound: SoundType)`: Sets the sound type the block uses
-- `.lightLevel(lightLevel: Function<BlockState, number>)`: Sets the light level, in the range [0, 15], of teh block, as a function of its state
+- `.lightLevel(lightLevel: Function<BlockState, number>)`: Sets the light level, in the range [0, 15], of the block, as a function of its state
 - `.strength(destroyTime: number, explosionResistance: number)`: Sets the destroy time and explosion resistance of the block
 - `.instabreak()`: Makes the block instabreak
 - `.strength(f: number)`: Sets the destroy time and explosion resistance of the block
@@ -745,7 +751,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 - `.mapColor(color: Function<BlockState, MapColor>)`: Sets the map color of the block per state
 - `.destroyTime(f: number)`: Sets the destroy time of the block
 - `.explosionResistance(f: number)`: Sets the explosion resistance of the block
-- `.ignitedByLava()`: Sets the block to be ignited bt lava
+- `.ignitedByLava()`: Sets the block to be ignited by lava
 - `.forceSolidOn()`: Forces the block to be solid
 - `.forceSolidOff()`: Forces the block to be non-solid (?)
 - `.pushReaction(reaction: PushReaction)`: Sets the block's reaction to being pushed by pistons
@@ -774,12 +780,14 @@ The following types are available:
 - [Glassworking](#glassworking)
 - [Windmill Blade](#windmill-blade)
 - [Glassworking Tool](#glassworking-tool)
+- [Glass Bottle](#glass-bottle)
+- [Jug](#jug)
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-items"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
 - [Watering Can](#firmalife-watering-can)
 
-If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
+<a id="precision-prospecting-items"></a>If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
 
 - [Prospector's Hammer](#precision-prospecting-prospector-hammer)
 - [Prospector's Drill](#precision-prospecting-prospector-drill)
@@ -812,13 +820,15 @@ Inherits the methods of the basic item builder
 
 **Type**: `tfc:fluid_container`
 
-{: .notice }
+{: .notice #fluid-container-texture-notice }
 > This item requires two textures to function properly
 >
 > - item/\<name>: The base texture
 > - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png` and `kubejs/textures/item/my_fluid_container_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
 
 #### Extra Methods
 
@@ -826,8 +836,8 @@ Inherits the methods of the basic item builder
 - `.canPlaceLiquidSource(b: boolean)`: Determines if the the item can place source blocks in world, defaults to `false`
 - `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
 - `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
-- `.filledDisplayName(c: COmponent)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
-- `.capacity(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
 
 #### Example
 
@@ -872,6 +882,9 @@ Inherits the methods of other tool item builders
 
 - `.thrownDamage(f: number)`: Sets the thrown damage of the javelin, defaults to `0.3`
 - `.skeletonWeapon()`: Adds the item to the `tfc:skeleton_weapons` item tag
+- `.throwingModel(m: string)`: Sets the model to use when throwing the javelin, before release
+- `.modelAtPerspective(perspective: ItemDisplayContext, model: string)`: Sets the model to use at the specified display context
+- `.guiModel(m: string)`: Sets the model to use for the `none`, `fixed`, `ground`, and `gui` display contexts
 
 #### Example
 
@@ -907,13 +920,15 @@ Inherits the methods of the basic item builder
 
 **Type**: `tfc:mold`
 
-{: .notice }
+{: .notice #mold-texture-notice }
 > This item requires two textures to function properly
 >
 > - item/\<name>: The base texture
 > - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_mold.png` and `kubejs/textures/item/my_mold_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
 
 #### Extra Methods
 
@@ -921,7 +936,7 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(fluidTag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
 - `.capacity(capacity: Supplier<Integer>)`: Sets the mB capacity supplier of the mold, defaults to `() => 100`
 
-If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
+<a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
 
 - `.tfcccAllowedInMoldTable(model?: List<string>)`: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
@@ -1019,9 +1034,10 @@ Inherits the methods of other tool item builders
 #### Extra Methods
 
 - `.fishingStrength(f: number)`: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
-- `.castModel(model: string)`: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end
+- `.castModel(model: string)`: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end or the one provided via the `.castTexture` method
 - `.smallBait()`: Adds the rod to the correct tag to allow it to hold small bait
 - `.largeBait()`: Adds the rod to the correct tag to allow it to hold large bait
+- `.castTexture(t: string)`: Sets the texture used when the rod is cast out
 
 #### Example
 
@@ -1105,7 +1121,7 @@ Inherits the methods of the [tool item builder](#tool)
 
 **Type**: `tfc:glassworking_tool`
 
-#### Extra method
+#### Extra Method
 
 - `.operation(operation: GlassOperation)`: Sets the `GlassOperation` the item is capable of performing, defaults to `saw`
 
@@ -1116,6 +1132,77 @@ StartupEvents.registry('item', event => {
     event.create('my_glass_working_tool', 'tfc:glassworking_tool')
         .operation('pinch')
         .mineableBlocksTag('kubejs:mineable/default')
+})
+```
+
+### Glass Bottle
+
+Creates a new glass bottle item
+
+Inherits the methods of the basic item builder
+
+**Type**: `tfc:glass_bottle`
+
+{: .notice #glass-bottle-texture-notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+>
+> For the example below, the textures would be in `kubejs/textures/item/my_glass_bottle.png` and `kubejs/textures/item/my_glass_bottle_overlay.png`
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method
+
+#### Extra Methods
+
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.breakChance(chance: number)`: Sets the break chance, in the range [0, 1], of the bottle
+- `.breakChanceSupplier(chance: Supplier<Double>)`: Sets the break chance, in the range [0, 1], supplier of the bottle
+- `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_glass_bottle', 'tfc:glass_bottle')
+        .capacity(500)
+        .filledDisplayName('Bottle of %s')
+})
+```
+
+### Jug
+
+Creates a new jug item
+
+Inherits the methods of the default item builder
+
+**Type**: `tfc:jug`
+
+{: .notice #jug-texture-notice }
+> This item requires two textures to function properly
+>
+> - item/\<name>: The base texture
+> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+>
+> These locations can be changed by setting the `base` and `fluid` textures using the `.texture` method as seen in the example
+
+#### Extra Methods
+
+- `.filledDisplayName(c: Component)`: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`: Sets the mB capacity of the item, defaults to `100`
+- `.capacitySupplier(capacity: Supplier<Integer>)`: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.fluidTagAccept(tag: string)`: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+#### Example
+
+```js
+StartupEvents.registry('item', event => {
+    event.create('my_jug', 'tfc:jug')
+        .texture('base', 'tfc:item/ceramic/jug_empty')
+        .texture('fluid', 'tfc:item/ceramic/jug_overlay')
+        .fluidTagAccept('kubejs:juices')
 })
 ```
 

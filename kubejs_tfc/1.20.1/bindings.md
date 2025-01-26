@@ -32,7 +32,7 @@ These are methods which can be accessed directly from the `TFC` object
 
 ### Alloy Part
 
-This defines an object which defines the values used in an [alloy recipe](../recipes/#alloy)'s input contents
+This defines an object which defines the values used in an [alloy recipe]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)'s input contents
 
 Method signature:
 
@@ -208,22 +208,22 @@ In json:
 
 These are bindings which provide access to more methods in a grouped manner
 
-### [Calendar](../bindings/calendar/)
+### [Calendar]({% link kubejs_tfc/1.20.1/bindings/calendar.md %})
 
 The central place for dealing with TFC's calendar system in your scripts
 
-### [Climate](../bindings/climate/)
+### [Climate]({% link kubejs_tfc/1.20.1/bindings/climate.md %})
 
 The central place for interacting with TFC's climate system in your scripts
 
-### [Ingredient](../bindings/ingredient/)
+### [Ingredient]({% link kubejs_tfc/1.20.1/bindings/ingredient.md %})
 
 The central place for creating TFC's different [ingredient types](https://terrafirmacraft.github.io/Documentation/1.20.x/ingredients/) in your scripts
 
-### [Item Stack Provider](../bindings/isp/)
+### [Item Stack Provider]({% link kubejs_tfc/1.20.1/bindings/isp.md %})
 
 The central place for dealing with TFC's [item stack provider](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#item-stack-providers)s in your scripts
 
-### [Miscellaneous](../bindings/misc/)
+### [Miscellaneous]({% link kubejs_tfc/1.20.1/bindings/misc.md %})
 
 A collection of various miscellaneous things that may be used in scripts

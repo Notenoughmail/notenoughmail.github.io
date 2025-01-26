@@ -104,7 +104,7 @@ declare class IClander {
 - `.getTotalMonths()`: Returns the total number of months passed
 - `.getTotalCalendarMonths()`: Returns the total number of months passed since Jan 1, 1000
 - `.getTotalYears()`: Returns the total number of years passed
-- `.getTotalCalendarYears()`: Returns the total number of years passed since jan 1, 1000
+- `.getTotalCalendarYears()`: Returns the total number of years passed since Jan 1, 1000
 - `.getCalendarDayTime()`: Returns the time of day, in the range [0, 24000), should match `Level#getDayTime()`
 - `.getCalendarDayOfMonth()`: Returns the day of the month from the calendar time
 - `.getCalendarFractionOfMonth()`: Returns the progress, in the range [0, 1] through the month from the calendar time

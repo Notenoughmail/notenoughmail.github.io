@@ -35,7 +35,7 @@ Additionally, the radii and displacement can be defined together with one method
 
 ## Defaults and Derived Values
 
-All tools default to the iron tier, just like other tools in KubeJS. The accuracy of the tool is derived from the tier the tool is made of, wood being the worst, stone being better, iron better still, etc. The attack damage, speed, etc are also defined by the tier but can be overridden using kubejs's native methods like any other tool.
+All tools default to the iron tier, just like other tools in KubeJS. The accuracy of the tool is derived from the tier the tool is made of, wood being the worst, stone being better, iron better still, etc. The attack damage, speed, etc. are also defined by the tier but can be overridden using kubejs's native methods like any other tool.
 
 The custom prospector defaults to `15` cool down, `12` primary radius, `12` secondary radius, `0` displacement, and `tfc:prospectable` as the prospectable block tag; or the stats of a base TFC Prospector Pick with 1.5x the cool down time.
 

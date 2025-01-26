@@ -10,6 +10,10 @@ has_toc: false
 
 # 1.20.1
 
+## [Addons](addons/)
+
+A directory-like page about the integration provided with several of TFC's addons
+
 ## [Bindings](bindings/)
 
 Documentation on the methods available under from `TFC` object in scripts
@@ -24,7 +28,7 @@ Documentation on creating TFC's [data types](https://terrafirmacraft.github.io/D
 
 ## [Events](events/)
 
-Documentation on KubeJS TFC's js events
+Documentation on KubeJS TFC's JS events
 
 ## [Miscellaneous Features](misc/)
 

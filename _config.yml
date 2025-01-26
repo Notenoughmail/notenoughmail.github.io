@@ -54,6 +54,9 @@ callouts:
     color: pink
   comment:
     color: grey-dk
+  related:
+    title: ℹ️ Related Info
+    color: blue-custom
 
 mermaid:
   version: "11.3.0"

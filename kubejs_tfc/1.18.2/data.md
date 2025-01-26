@@ -35,7 +35,7 @@ There is also support for [FirmaLife](https://modrinth.com/mod/firmalife) and [B
 - [FirmaLife Plantables](#plantables)
 - [Beneath Nether Fertilizers](#nether-fertilizers)
 
-Additionally, the ability to access and manipulate some of the non-datapack accessable data TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
+Additionally, the ability to access and manipulate some of the non-datapack accessible data TFC adds to the player can be accessed from a `PlayerJS` object in scripts. See [here](#attached-tfc-data) for specifics
 
 # Damage Resistances
 
@@ -85,7 +85,7 @@ onEvent('tfc.data', event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#drinkables)!
 
-- 1st argument: A [fluid ingredient](../wrappers/#fluid-stack-ingredient), the fluid(s) which this drinkable data will apply to
+- 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid(s) which this drinkable data will apply to
 - 2nd argument: A consumer with several methods:
     - `consumeChance(number)`: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
     - `thirst(integer)`: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
@@ -231,8 +231,8 @@ onEvent('tfc.data', event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#lamp-fuels)!
 
-- 1st argument: A [fluid stack ingredient](../wrappers/#fluid-stack-ingredient) which determines the fluids this lamp fuel applies to, the amount will be ignored
-- 2nd argument: A [block ingredient](../wrappers/#block-ingredient) which determines which lamp blocks the fuel may be added to
+- 1st argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient) which determines the fluids this lamp fuel applies to, the amount will be ignored
+- 2nd argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient) which determines which lamp blocks the fuel may be added to
 - 3rd argument: An integer representing how fast the lamp burns fuel, in ticks per mB
 - *optional 4th argument*: A `ResourceLocation` which determines the name/file of the lamp fuel, if not provided a name will be automatically generated based on the fluid ingredient
 
@@ -282,7 +282,7 @@ onEvent('recipes', event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#supports)!
 
-- 1st argument: A [block ingredient](../wrappers/#block-ingredient) which defines which blocks this support applies to
+- 1st argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient) which defines which blocks this support applies to
 - 2nd argument: An integer representing the number of blocks up this support supports
 - 3rd argument: An integer representing the number of blocks down this support supports
 - 4th argument: An integer representing the number of blocks horizontally the support supports
@@ -319,7 +319,7 @@ onEvent('tfc.data', event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#panning)!
 
-- 1st argument: A [block ingredient](../wrappers/#block-ingredient), matching the blocks that will go into the pan
+- 1st argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient), matching the blocks that will go into the pan
 - 2nd argument: A String, representing the location of the loot table to be used
     - See the main page and its links for making loot tables, or take a look at [LootJS](https://www.curseforge.com/minecraft/mc-mods/lootjs)
 - 3rd argument: A string list, representing an list of model locations which will be iterated through and rendered as panning progresses. Must have at least one model, but may have as many as you wish
@@ -401,7 +401,7 @@ onEvent('tfc.data', event => {
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation#data)!
 
-- 1st argument: A [block ingredient](../wrappers/#block-ingredient) which determines which blocks are part of this greenhouse
+- 1st argument: A [block ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#block-ingredient) which determines which blocks are part of this greenhouse
 - 2nd argument: An integer representing the tier of the blocks defined
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the greenhouse definition, if not provided a name will be automatically generated based on the block ingredient
 

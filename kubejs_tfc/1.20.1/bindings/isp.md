@@ -22,13 +22,13 @@ TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | L
 
 - Of: Returns an item stack provider with the given item and modifiers
     - 1st argument: An item stack, the item stack of the ISP
-    - *Optional 2nd argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the isp
+    - *Optional 2nd argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the ISP
 - Empty: Returns an item stack modifier with an empty item stack and the provided modifiers
-    - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the isp
-- CopyInput: Returns an empty isp with the `tfc:copy_input` modifier and the provided modifiers
-    - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, only the copy input modifier will be applied to the isp
+    - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the ISP
+- CopyInput: Returns an empty ISP with the `tfc:copy_input` modifier and the provided modifiers
+    - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, only the copy input modifier will be applied to the ISP
 
-{: .notice }
+{: .notice #method-notice }
 These methods return an `ItemStackProviderJS` object which has several helper methods and is described [below](#itemstackproviderjs)
 
 ## Examples
@@ -103,7 +103,7 @@ In json:
 
 # ItemStackProviderJS
 
-An `ItemStackProviderJS` is an object which is meant to mirror an actual `ItemStackProvider` but be friendly to modify from js and can be serialized into json.
+An `ItemStackProviderJS` is an object which is meant to mirror an actual `ItemStackProvider` but be friendly to modify from JS and can be serialized into json.
 
 ## Method Signatures
 
@@ -179,14 +179,14 @@ declare class ItemStackProviderJS {
 - `.copyOldestFood()`: Adds a `tfc:copy_oldest_food` modifier
 - `.addBait()`: Adds a `tfc:add_bait_to_rod` modifier
 - `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`: Adds a `tfc:meal` modifier
-    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition](/kubejs_tfc/1.20.1/data/#food-items)
+    - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition]({% link kubejs_tfc/1.20.1/data.md %}#food-items)
     - *Optional 2nd argument*: An array of consumers specifying the portions of a meal
         - `.ingredient(ingredient: Ingredient)`: Sets the portion's ingredient
         - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1
         - `.waterModifier(modifier: number)`: Multiplies the water from the ingredient, defaults to 1
         - `.saturationModifier(modifier: number)`: Multiplies the saturation from the ingredient, defaults to 1
 
-If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
+<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
 
 - `.firmaLifeAddPiePan()`: Adds a `firmalife:add_pie_pan` modifier
 - `.firmaLifeCopyDynamicFood()`: Adds a `firmalife:copy_dynamic_food` modifier
