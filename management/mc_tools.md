@@ -11,6 +11,6 @@ has_toc: false
 
 Some tools relating to Minecraft and my mods
 
-## [TFCGenViewer Rock Graph](tfcgv_rock_graph/edit/)
+## [TFCGenViewer Rock Graph](tfcgv_rock_graph/)
 
-An editor that creates a rock graph, similar to the one [pinned in the TFC Discord](https://discord.com/channels/432522930610765835/432527966266851339/1258857977725845505). A mirror to the one that will be in TFCGenViewer eventually
+A graph of TFC's rock layers, similar to the one [pinned in the TFC Discord](https://discord.com/channels/432522930610765835/432527966266851339/1258857977725845505). Created in-game through [TFCGenViewer]({% link tfcgv/index.md %}) or by manually editing the URL

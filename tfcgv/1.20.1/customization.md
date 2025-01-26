@@ -35,18 +35,18 @@ The colors for the *Rivers and Mountains* visualizer are defined in `assets/tfcg
 - `rivers_and_mountains/inland_mountain.json`: A [color definition](#color-definition), the color used by inland mountains
 
 {: .comment }
-tfcgenviewer/tfcgenviewer/rivers_and_mountains/lake.json default
-
-```json
-{
-    "color": {
-        "r": 150,
-        "g": 160,
-        "b": 255
-    },
-    "key": "biome.tfc.lake"
-}
-```
+> tfcgenviewer/tfcgenviewer/rivers_and_mountains/lake.json default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 150,
+>         "g": 160,
+>         "b": 255
+>     },
+>     "key": "biome.tfc.lake"
+> }
+> ```
 
 ## Rock Types
 
@@ -55,14 +55,14 @@ The colors of the rock types are defined by a [color gradient definition](#color
 An example from the mod:
 
 {: .comment }
-tfcgenviewer/tfcgenviewer/rock_types/uplift.json default
-
-```json
-{
-    "reference": "uplift",
-    "key": "tfcgenviewer.rock_type.uplift"
-}
-```
+> tfcgenviewer/tfcgenviewer/rock_types/uplift.json default
+>
+> ```json
+> {
+>     "reference": "uplift",
+>     "key": "tfcgenviewer.rock_type.uplift"
+> }
+> ```
 
 ## Rocks
 
@@ -71,19 +71,19 @@ The color of a rock is defined by a [color definition](#color-definition) in a r
 An example from the mod:
 
 {: .comment }
-tfc/tfcgenviewer/rocks/rock/raw/andesite.json default
-
-```json
-{
-    "color": {
-        "r": 96,
-        "g": 96,
-        "b": 96
-    },
-    "key": "rock.tfc.andesite",
-    "sort": 12
-}
-```
+> tfc/tfcgenviewer/rocks/rock/raw/andesite.json default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 96,
+>         "g": 96,
+>         "b": 96
+>     },
+>     "key": "rock.tfc.andesite",
+>     "sort": 12
+> }
+> ```
 
 Additionally, the color definition for unknown rocks is located at `assets/tfcgenviewer/tfcgenviewer/rocks/unknown.json`
 
@@ -94,19 +94,19 @@ The color of a biome is defined by a [color definition](#color-definition) in a 
 An example from the mod:
 
 {: .comment }
-tfc/tfcgenviewer/biomes/plains.json default
-
-```json
-{
-    "color": {
-        "r": 100,
-        "g": 200,
-        "b": 100
-    },
-    "key": "biome.tfc.plains",
-    "sort": 21
-}
-```
+> tfc/tfcgenviewer/biomes/plains.json default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 100,
+>         "g": 200,
+>         "b": 100
+>     },
+>     "key": "biome.tfc.plains",
+>     "sort": 21
+> }
+> ```
 
 Additionally, the color definition for unknown biomes is located at `assets/tfcgenviewer/tfcgenviewer/biomes/unknown.json`
 
@@ -115,28 +115,28 @@ Additionally, the color definition for unknown biomes is located at `assets/tfcg
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/rainfall.json` that defines the gradient used for land in the *Rainfall* visualizer
 
 {: .comment }
-Default
-
-```json
-{
-    "reference": "climate",
-    "key": "tfcgenviewer.climate.rainfall"
-}
-```
+> Default
+>
+> ```json
+> {
+>     "reference": "climate",
+>     "key": "tfcgenviewer.climate.rainfall"
+> }
+> ```
 
 ## Temperature
 
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/temperature.json` that defines the gradient used for land in the *Temperature* visualizer
 
 {: .comment }
-Default
-
-```json
-{
-    "reference": "climate",
-    "key": "tfcgenviewer.climate.temperature"
-}
-```
+> Default
+>
+> ```json
+> {
+>     "reference": "climate",
+>     "key": "tfcgenviewer.climate.temperature"
+> }
+> ```
 
 ## Biome Altitude
 
@@ -148,18 +148,18 @@ The colors for land in the *Biome Altitude* visualizer are defined in  `assets/t
 - `biome_altitude/mountain.json`: A [color definition](#color-definition), the color for mountain land
 
 {: .comment }
-tfcgenviewer/tfcgenviewer/biome_altitude/medium.json default
-
-```json
-{
-    "color": {
-        "r": 26,
-        "g": 133,
-        "b": 26
-    },
-    "key": "tfcgenviewer.biome_altitude.medium"
-}
-```
+> tfcgenviewer/tfcgenviewer/biome_altitude/medium.json default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 26,
+>         "g": 133,
+>         "b": 26
+>     },
+>     "key": "tfcgenviewer.biome_altitude.medium"
+> }
+> ```
 
 ## Inland Height
 
@@ -171,33 +171,33 @@ The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewe
 - `inland_height/very_deep_water.json`: A [color definition](#color-definition), the color used for very deep water
 
 {: .comment }
-tfcgenviewer/tfcgenviewer/inland_height/shallow_water.json default
-
-```json
-{
-    
-    "color": {
-        "r": 150,
-        "g": 160,
-        "b": 255
-    },
-    "key": "tfcgenviewer.inland_height.shallow_water"
-}
-```
+> tfcgenviewer/tfcgenviewer/inland_height/shallow_water.json default
+>
+> ```json
+> {
+>     
+>     "color": {
+>         "r": 150,
+>         "g": 160,
+>         "b": 255
+>     },
+>     "key": "tfcgenviewer.inland_height.shallow_water"
+> }
+> ```
 
 ## Fill Ocean
 
 A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/colors/fill_ocean.json` that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Biome Altitude*, and *Rivers and Mountains* visualizers
 
 {: .comment }
-Default
-
-```json
-{
-    "reference": "blue",
-    "key": "biome.tfc.ocean"
-}
-```
+> Default
+>
+> ```json
+> {
+>     "reference": "blue",
+>     "key": "biome.tfc.ocean"
+> }
+> ```
 
 ## Spawn Overlay
 
@@ -207,17 +207,17 @@ The colors for the spawn overlay are defined in `assets/tfcgenviewer/tfcgenviewe
 - `spawn/reticule.json`: A [Color Definition](#color-definition), the color used to illustrate the center of the spawning radius
 
 {: .comment }
-Border default
-
-```json
-{
-    "color": {
-        "r": 50,
-        "g": 50,
-        "b": 50
-    }
-}
-```
+> Border default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 50,
+>         "g": 50,
+>         "b": 50
+>     }
+> }
+> ```
 
 ## Color Definition
 
@@ -241,40 +241,40 @@ A Color may be:
 Examples:
 
 {: .comment }
-rgb object
-
-```json
-{
-    "r": 65,
-    "g": 41,
-    "b": 245
-}
-```
-
-{: .comment }
-hsv object
-
-```json
-{
-    "h": 0.234,
-    "s": 0.812,
-    "v": 0.473
-}
-```
+> rgb object
+>
+> ```json
+> {
+>     "r": 65,
+>     "g": 41,
+>     "b": 245
+> }
+> ```
 
 {: .comment }
-String
-
-```json
-"F24DE9"
-```
+> hsv object
+>
+> ```json
+> {
+>     "h": 0.234,
+>     "s": 0.812,
+>     "v": 0.473
+> }
+> ```
 
 {: .comment }
-Number
+> String
+>
+> ```json
+> "F24DE9"
+> ```
 
-```json
-15879657
-```
+{: .comment }
+> Number
+>
+> ```json
+> 15879657
+> ```
 
 ## Color Gradient Definition
 
@@ -298,44 +298,50 @@ A color gradient definition is an object with 2 fields:
 Examples:
 
 {: .comment }
-Reference: tfcgenviewer/tfcgenviewer/rock_types/oceanic.json
+> Reference: tfcgenviewer/tfcgenviewer/rock_types/oceanic.json
+>
+> ```json
+> {
+>     "reference": "blue",
+>     "key": "tfcgenviewer.rock_type.oceanic"
+> }
+> ```
 
-```json
-{
-    "reference": "blue",
-    "key": "tfcgenviewer.rock_type.oceanic"
-}
-```
+{: .comment }
+> An example of the object form of a gradient
+>
+> ```json
+> {
+>     "gradient": {
+>         "from": {
+>             "r": 12,
+>             "g": 0,
+>             "b": 164
+>         },
+>         "to": {
+>             "h": 0.44,
+>             "s": 0.1222,
+>             "v": 0.36
+>         }
+>     }
+> }
+> ```
 
-```json
-{
-    "gradient": {
-        "from": {
-            "r": 12,
-            "g": 0,
-            "b": 164
-        },
-        "to": {
-            "h": 0.44,
-            "s": 0.1222,
-            "v": 0.36
-        }
-    }
-}
-```
-
-```json
-{
-    "gradient": [
-        "B4B4C8",
-        "C8783C",
-        "B4B4DC",
-        "50C850",
-        {
-            "r": 32,
-            "g": 48,
-            "b": 120
-        }
-    ]
-}
-```
+{: .comment }
+> An example of the array from of a gradient
+>
+> ```json
+> {
+>     "gradient": [
+>         "B4B4C8",
+>         "C8783C",
+>         "B4B4DC",
+>         "50C850",
+>         {
+>             "r": 32,
+>             "g": 48,
+>             "b": 120
+>         }
+>     ]
+> }
+> ```
