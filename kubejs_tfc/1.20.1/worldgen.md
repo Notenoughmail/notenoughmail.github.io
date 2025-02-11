@@ -406,7 +406,7 @@ TFCEvents.worldgenData(event => {
         })
     })
 })
-ServerEvents.tags('worldgen/placed_features', event => {
+ServerEvents.tags('worldgen/placed_feature', event => {
     event.add('tfc:in_biome/soil_discs/hills', 'kubejs_tfc:example_soil_disc')
 })
 ```
@@ -451,7 +451,7 @@ TFCEvents.worldgenData(event => {
     ], 5, 23, 40), placement => {}
     )
 })
-ServerEvents.tags('worldgen/placed_features', event => {
+ServerEvents.tags('worldgen/placed_feature', event => {
     event.add('tfc:in_biome/large_features/old_mountains', 'kubejs_tfc:example_hot_spring')
 })
 ```
@@ -494,7 +494,7 @@ TFCEvents.worldgenData(event => {
         })
     })
 })
-ServerEvents.tags('worldgen/placed_features', event => {
+ServerEvents.tags('worldgen/placed_feature', event => {
     event.add('tfc:feature/crops', 'kubejs_tfc:example_crop_placement')
 })
 ```
@@ -529,7 +529,7 @@ event.randomPatch(
 TFCEvents.worldgenData(event => {
     event.randomPatch('example_crop_patch', 30, 15, 10, 'kubejs_tfc:example_crop_placement', placement => {})
 })
-ServerEvents.tags('worldgen/placed_features', event => {
+ServerEvents.tags('worldgen/placed_feature', event => {
     event.add('tfc:feature/crops', 'kubejs_tfc:example_crop_patch')
 })
 ```
