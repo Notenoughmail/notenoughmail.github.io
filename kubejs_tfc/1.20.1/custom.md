@@ -134,6 +134,7 @@ Inherits the methods of the default block builder
 - `.intermediateIgneousIntrusive()`: Sets the item's rock type tooltip to be that of intermediate igneous intrusive rocks
 - `.metamorphic()`: Sets the item's rock type tooltip to be that of metamorphic rocks
 - `.sedimentary()`: Sets the item's rock type tooltip to be that of sedimentary rocks
+- `.uniqueSideTextures()`: Makes the default model generator use the 'side' and 'end' textures instead of just the 'end'
 
 #### Example
 

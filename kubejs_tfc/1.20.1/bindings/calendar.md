@@ -15,6 +15,11 @@ These are available under the `TFC.calendar` field
 ## Method Signatures
 
 ```ts
+TFC.calendar.TICKS_IN_HOUR
+TFC.calendar.HOURS_IN_DAY
+TFC.calendar.TICKS_IN_DAY
+TFC.calendar.MONTHS_IN_YEAR
+TFC.calendar.TICKS_IN_MINUTE
 TFC.calendar.getCalendar()
 TFC.calendar.getCalendar(isClientSide: boolean)
 TFC.calendar.getCalendar(level: LevelReader)

@@ -27,6 +27,7 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Register Interactions](#register-interactions)
 - [Modifying Worldgen Defaults](#modifying-worldgen-defaults)
 - [Register Fauna Definitions](#register-fauna-definitions)
+- [Create Glass Operations](#create-glass-operations)
 
 ## Rock Settings
 
@@ -322,12 +323,14 @@ declare class LoggingEventJS {
     getLevel(): Level
     getAxe(): ItemStack
     getBlock(): BlockContainerJS
+    getPos(): BlockPos
 }
 ```
 
 - `.getLevel()`: Returns the level
 - `.getAxe()`: Returns the item stack of the axe used
 - `.getBlock()`: Returns the `BlockContainerJS` of the event
+- `.getPos()`: Returns the position that was initially broken
 
 ### Example
 
@@ -439,6 +442,7 @@ declare class DouseFireEventJS {
     getBlock(): BlockContainerJS
     getBounds(): AABB
     getPlayer(): @Nullable Player
+    getPos(): BlockPos
 }
 ```
 
@@ -446,6 +450,7 @@ declare class DouseFireEventJS {
 - `.getBlock()`: Returns the event's `BlockContainerJS`
 - `.getBounds()`: Returns an `AABB` representing the total effected area
 - `.getPlayer()`: Returns the player that doused the fire, may be null
+- `.getPos()`: Returns the position that is being doused
 
 ### Example
 
@@ -792,5 +797,42 @@ event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlaceme
 ```js
 TFCEvents.registerFaunas(event => {
     event.register('minecraft:pig', 'on_ground', 'world_surface_wg')
+})
+```
+
+## Create Glass Operations
+
+**Type**: `startup_scripts`
+
+Allows for the creation of new glass operations for use in [glassworking]({% link kubejs_tfc/1.20.1/recipes.md %}#glassowrking) recipes
+
+{: .notice #glass-operations-notice }
+> For multiplayer connections the order and names of the new operations *must* be the same, otherwise the connection will be refused
+>
+> All operations created via this event will have `kubejs_` prefixed to their name
+
+### Method Signatures
+
+```js
+event.create(name: string, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)
+event.createPowder(powderItemId: ResourceLocation, name: string, customSound?: ResourceLocation, minHeat?: number)
+```
+
+- `.create(name: string, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)`: Creates a new glass operation with the given name
+    - Name: The name of the operation, will be prepended with `kubejs_`
+    - DisplayStack: An item stack that will be used to display the operation in JEI, if the item is `tfc:blowpipe_with_glass`, `tfc:ceramic_blowpipe_with_glass` will also be displayed. Optional
+    - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
+    - MinHeat: The minimum heat required to perform the operation. Optional, defaults to 480°C
+- `.createPowder(powderItemId: ResourceLocation, name: string, customSound?: ResourceLocation, minHeat?: number)`: Creates a new glass operation with the given name and enables it to be added via the powder bowl
+    - PowderItemId: The registry id of an item to use as this operation's powder, requires the `tfc:powders` tag in order to be put in a bowl. Will be used as the display item in JEI
+    - Name: The name of the operations, will be prepended with `kubejs_`
+    - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
+    - MinHeat: The minimum heat required to perform the operation. Optional, defaults to 480°C
+
+### Example
+
+```js
+TFCEvents.createGlassOperations(event => {
+    event.createPowder('kubejs:quartz_powder', 'quartz')
 })
 ```
