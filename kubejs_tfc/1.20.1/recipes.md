@@ -1075,5 +1075,18 @@ event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
 - MinTemp: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`
 - MaxTemp: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`
 - temps: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
-- RequiresNaturalLog: Determines if the recipe needs the log block to have the `natural=true` property to work, defaults to `true`
+- RequiresNaturalLog: Determines if the recipe needs the input block to have TFC's [`branch_direction`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/blocks/TFCBlockStateProperties.java#L82) state property and have a value that is not `none` to work. Defaults to `true`
 - SpringOnly: Determines if the recipe only works during the spring time, defaults to `false`
+
+{: .notice #treetap-notice }
+Tree taps can only be placed on blocks with the `afc:tappable_logs` tag, make sure the input blocks(s) are tagged as such
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.afc.tree_tapping(TFC.blockIngredient('minecraft:oak_log'))
+        .resultFluid(Fluid.of('miencraft:water', 2))
+        .springOnly(true)
+})
+```
