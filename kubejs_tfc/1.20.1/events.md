@@ -127,56 +127,49 @@ TFC implements a system for local temperature, rainfall, fog, wind, and more. Th
 
 ```ts
 declare class RegisterClimateModelEventJS {
-    registerClimateModel(name: string, model: Consumer<KubeJSClimateModel>): void
-    registerAdvancedClimateModel(name: string, model: Consumer<AdvancedKubeJSClimateModel>): void
-    newVec2(x: number, y: number): Vec2
-    getDefaultCurrentTemperatureCallback(): (LevelReader, BlockPos, long, int) => number
-    getDefaultAverageTemperatureCallback(): (LevelReader, BlockPos) => number
-    getDefaultAverageRainfallCallback(): (LevelReader, BlockPos) => number
-    getDefaultAirFogCallback(): (LevelReader, BlockPos, long) => number
-    getDefaultWaterFogCallback(): (LevelReader, BlockPos, long) => number
-    getDefaultWindVectorCallback(): (BlockContainerJS, long) => Vec2
+    register(name: ResourceLocation, modelBuilder: Consumer<ClimateModelbuilder>): void
+}
+
+declare class ClimateModelBuilder {
+    getTemperatureScale(): number
+    getRainfallScale(): number
+    getClimateSeed(): number
+    vector(x: number, z: number): Vec2
+    setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>): void
+    setAverageTemperatureCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
+    setAverageRainfallCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
+    setAriFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
+    setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
+    setWindVector(calc: TriFunction<Level, BlockPos, number, number>): void
+    setOnWorldLoad(calc: Consumer<ServerLevel>): void
+    setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>): void
+    newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>): number
+    noise(index: number): Noise2D
+    getTfcWind(): TriFunction<Level, BlockPos, number, number>
+    getTfcChunkLoad(): TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>
+    getTfcCurrentTemperature(): QuadFunction<LevelReader, BlockPos, number, number, number>
+    getTfcAverageTemperature(): BiFunction<LevelReader, BlockPos, number>
+    getTfcAverageRainfall(): BiFunction<LevelReader, BlockPos, number>
+    getTfcAirFog(): TriFunction<LevelReader, BlockPos, number, number>
+    getTfcWaterFog(): TriFunction<LevelReader, BlockPos, number, number>
+    currentTemperature(level: LevelReader, pos: BlockPos, calendarTicks: number): number
+    averageTemperature(level: LevelReader, pos: BlockPos): number
+    averageRainfall(level: LevelReader, pos: BlockPos): number
 }
 ```
 
 The two register methods have the following arguments:
 
-- 1st argument: A string, the registry name of the model
+- 1st argument: A resource location, the registry name of the model
 - 2nd argument: A consumer with several methods:
-    - `setCurrentTemperatureCalculation(callback)`: Sets the model's calculation for the current temperature at a position. The callback provides a `LevelReader`, `BlockPos`, `long`, and `int` and expects a number to be returned
-        - `LevelReader`: The level reader
-        - `BlockPos`: The position
-        - `long`: The calendar tick
-        - `int`: The number of days in a month
-    - `setAverageTemperatureCalculation(callback)`: Sets the model's calculation for the average yearly temperature at a position. The callback provides a `LevelReader` and `BlockPos` and expects a number to be returned
-        - `LevelReader`: The level reader
-        - `BlockPos`: The position
-    - `setAverageRainfallCalculation(callback)`: Sets the model's calculation for the average yearly rainfall at a position. The callback provides a `LevelReader` and `BlockPos` and expects a number to be returned
-        - `LevelReader`: The level reader
-        - `BlockPos`: The position
-    - `.setAirFog(callback)`: Sets the model's calculation for fogginess at a position and time. The callback provides a `LevelReader`, `BlockPos`, and `long` and expects a number, in the range [0, 1], to be returned
-        - `LevelReader`: The level reader
-        - `BlockPos`: The position
-        - `long`: The calendar tick
-    - `.setWaterFog(callback)`: Sets the model's calculation for water fogginess at a position and time. The callback provides a `LevelReader`, `BlockPos`, and `long` and expects a number, in the range [0, 1], to be returned
-        - `LevelReader`: The level reader
-        - `BlockPos`: The position
-        - `long`: The calendar tick
-    - `.setWindVector(callback)`: Sets the model's calculation for the wind vector at a position and time. The callback provides a `BlockContainerJS` and a `long` and expects a `Vec2` to be returned
-        - `BlockContainerJS`: The level and position
-        - `long`: The calendar tick
-    - `.setOnWorldLoad(Consumer<ServerLevel>)`: Sets the model's actions when the world loads. Only available for advanced models
-    - `.setOnChunkLoad(callback)`: Sets the model's actions when a chunk loads. The callback provides a `WorldGenLevel`, `ChunkAccess`, and `ChunkData`. TFC uses this to update blocks on load with climate specific modifications. Only available for advanced models
-
-The `newVec2` method creates a `Vec2` for use in the wind vector callback and has the following arguments:
-
-- 1st argument: A number, the x component of the `Vec2`
-- 2nd argument: A number, the z component of the `Vec2`
+    - `.getTemperatureScale()`: Returns the temperature scale of the level, defaults to 20000 if the level does not have a TFC-like generator
+    - `.getRainfallScale()`: Returns the rainfall scale of the level, defaults to 20000 if the level does not have a TFC-like generator
+    - `.getClimateSeed()`: Returns the climate seed being used
+    - `.vector(x: number, z: number)`: Creates a new wind vector with the provided x and z components. Each component should be in the range [0, 1]
+    - // TODO: The rest of the methods
 
 {: .notice #climate-model-registration-vector-notice }
 Internally, the components of a `Vec2` are labeled `x` and `y`, but TFC uses the `y` component for the `z` direction
-
-The `getDefault` methods return a callback equivalent to that used by TFC's overworld model
 
 ### Examples
 
@@ -225,7 +218,7 @@ declare class SelectClimateModelEventJS {
 - `.getLevel()`: Returns the event's level
 - `.getModel()`: Returns the events current model, defaults to a biome based model, TFC sets the overworld to use its own overworld model
 - `.getModelName()`: Returns the registry name of the event's current model
-- `setModel(model: ClimateModel)`: Sets the events climate model
+- `.setModel(model: ClimateModel)`: Sets the events climate model
 
 ### Example
 
