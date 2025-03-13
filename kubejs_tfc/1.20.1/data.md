@@ -54,7 +54,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.climateRange(climateRange: Consumer<BuildClimateRangeData>, name: ResourceLocation)
+event.climateRange(
+    climateRange: Consumer<BuildClimateRangeData>,
+    name: ResourceLocation
+)
 ```
 
 - 1st argument: A consumer with several additional methods:
@@ -88,8 +91,20 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signatures
 
 ```ts
-event.itemDamageResistance(ingredient: Ingredient, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: ResourceLocation)
-event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slashing: @Nullable number, crushing: @Nullable number, name?: ResourceLocation)
+event.itemDamageResistance(
+    ingredient: Ingredient,
+    piercing: @Nullable number,
+    slashing: @Nullable number,
+    crushing: @Nullable number,
+    name?: ResourceLocation
+)
+event.entityDamageResistance(
+    entityTag: string,
+    piercing: @Nullable number,
+    slashing: @Nullable number,
+    crushing: @Nullable number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument:
@@ -104,8 +119,19 @@ event.entityDamageResistance(entityTag: string, piercing: @Nullable number, slas
 
 ```js
 TFCEvents.data(event => {
-    event.itemDamageResistance('minecraft:iron_helmet', 300, 2, null)
-    event.entityDamageResistance('minecraft:fish', -500, null, 3, 'kubejs:fish_get_pierced')
+    event.itemDamageResistance(
+        'minecraft:iron_helmet',
+        300,
+        2,
+        null
+    )
+    event.entityDamageResistance(
+        'tfc:small_fish',
+        -500,
+        null,
+        3,
+        'kubejs:fish_get_pierced'
+    )
 })
 ```
 
@@ -116,7 +142,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.drinkable(fluidIngredient: FluidIngredient, drinkableData: Consumer<BuildDrinkableData>, name?: ResourceLocation)
+event.drinkable(
+    fluidIngredient: FluidIngredient,
+    drinkableData: Consumer<BuildDrinkableData>,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
@@ -158,7 +188,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.fauna(climateData: Consumer<PlacedFeatureProperties$Climate>, faunaData: Consumer<BuildFaunaData>, name: ResourceLocation)
+event.fauna(
+    climateData: Consumer<PlacedFeatureProperties$Climate>,
+    faunaData: Consumer<BuildFaunaData>,
+    name: ResourceLocation
+)
 ```
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
@@ -194,7 +228,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorus: @Nullable number, potassium: @Nullable number, name?: ResourceLocation)
+event.fertilizer(
+    ingredient: Ingredient,
+    nitrogen: @Nullable number,
+    hosphorus: @Nullable number,
+    potassium: @Nullable number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items the fertilizer applies to
@@ -207,7 +247,13 @@ event.fertilizer(ingredient: Ingredient, nitrogen: @Nullable number, phosphorus:
 
 ```js
 TFCEvents.data(event => {
-    event.fertilizer('minecraft:rooted_dirt', 0.2, null, 0.1, 'kubejs:root_fertilizer')
+    event.fertilizer(
+        'minecraft:rooted_dirt',
+        0.2,
+        null,
+        0.1,
+        'kubejs:root_fertilizer'
+    )
 })
 ```
 
@@ -218,7 +264,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.foodItem(ingredient: Ingredient, foodItemData: Consumer<BuildFoodItemData>, name?: ResourceLocation)
+event.foodItem(
+    ingredient: Ingredient,
+    foodItemData: Consumer<BuildFoodItemData>,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items to which the food item definition applies to
@@ -254,7 +304,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.fuel(ingredient: Ingredient, temperature: number, duration: number, purity: @Nullable number, name?: ResourceLocation)
+event.fuel(
+    ingredient: Ingredient,
+    temperature: number,
+    duration: number,
+    purity: @Nullable number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items the fuel applies to
@@ -278,7 +334,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.itemHeat(ingredient: Ingredient, heatCapacity: number, forgingTemperature: @Nullable number, weldingTemperature: @Nullable number, name?: ResourceLocation)
+event.itemHeat(
+    ingredient: Ingredient,
+    heatCapacity: number,
+    forgingTemperature: @Nullable number,
+    weldingTemperature: @Nullable number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items the heat definition applies to
@@ -302,7 +364,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.itemSize(ingredient: Ingredient, size: @Nullable Size, weight: @Nullable Weight, name?: ResourceLocation)
+event.itemSize(
+    ingredient: Ingredient,
+    size: @Nullable Size,
+    weight: @Nullable Weight,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items the size applies to
@@ -354,7 +421,17 @@ event.knappingType(
 
 ```js
 TFCEvents.data(event => {
-    event.knappingType('minecraft:deepslate', 1, 5, 'minecraft:entity.warden.roar', false, true, true, 'minecraft:deepslate', 'kubejs:deepslate')
+    event.knappingType(
+        'minecraft:deepslate',
+        1,
+        5,
+        'minecraft:entity.warden.roar',
+        false,
+        true,
+        true,
+        'minecraft:deepslate',
+        'kubejs:deepslate'
+    )
 })
 ```
 
@@ -365,7 +442,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.lampFuel(fluidIngredient: FluidIngredient, blockIngredient: BlockIngredient, burnRate: number, name?: ResourceLocation)
+event.lampFuel(
+    fluidIngredient: FluidIngredient,
+    blockIngredient: BlockIngredient,
+    burnRate: number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: A [FluidIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient), determines which fluids the lamp fuel applies to
@@ -397,7 +479,7 @@ event.metal(
     sheet: @Nullable Ingredient,
     tier: number,
     name?: ResourceLocation
-    )
+)
 ```
 
 - 1st argument: A `Fluid`, the fluid this metal is built upon
@@ -425,7 +507,16 @@ event.metal(
 
 ```js
 TFCEvents.data(event => {
-    event.metal('minecraft:lava', 2000, 0.5, null, null, 'kubejs:lava_sheet', 3, 'kubejs:lava') // If the name had not be specified it would have been 'kubejs_tfc:minecraft_lava'
+    event.metal(
+        'minecraft:lava',
+        2000,
+        0.5,
+        null,
+        null,
+        'kubejs:lava_sheet',
+        3,
+        'kubejs:lava' // If the name had not be specified, it would have been 'kubejs_tfc:minecraft_lava'
+    )
 })
 ```
 
@@ -436,7 +527,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.support(blockIngredient: BlockIngredient, up: number, down: number, horizontal: number, name?: ResourceLocation)
+event.support(
+    blockIngredient: BlockIngredient,
+    up: number,
+    down: number,
+    horizontal: number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), determines what blocks the support applies to
@@ -460,7 +557,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.sluicing(ingredient: Ingredient, lootTable: string, name?: ResourceLocation)
+event.sluicing(
+    ingredient: Ingredient,
+    lootTable: string,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: An item ingredient, the items the sluicing definition applies to
@@ -482,7 +583,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ### Method Signature
 
 ```ts
-event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<string>, name?: ResourceLocation)
+event.panning(
+    blockIngredient: BlockIngredient,
+    lootTable: string,
+    models: List<string>,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the blocks that will go into the pan
@@ -494,7 +600,14 @@ event.panning(blockIngredient: BlockIngredient, lootTable: string, models: List<
 
 ```js
 TFCEvents.data(event => {
-    event.panning('minecraft:gravel', 'kubejs:gravel_panning', ['tfc:item/pan/native_gold/quartzite_full', 'tfc:item/pan/native_gold/result'])
+    event.panning(
+        'minecraft:gravel',
+        'kubejs:gravel_panning',
+        [
+            'tfc:item/pan/native_gold/quartzite_full',
+            'tfc:item/pan/native_gold/result'
+        ]
+    )
 })
 ```
 
@@ -505,7 +618,11 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.firmalifeGreenhouseType(ingredient: BlockIngredient, tier: number, name?: ResourceLocation)
+event.firmalifeGreenhouseType(
+    ingredient: BlockIngredient,
+    tier: number,
+    name?: ResourceLocation
+)
 ```
 
 - 1st argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the blocks that will be accepted by the greenhouse type

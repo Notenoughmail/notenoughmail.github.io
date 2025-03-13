@@ -351,6 +351,9 @@ Inherits the methods of the default block builder
 - `.productItem(item: Consumer<ItemBuilder>)`: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`: Sets the bush's product item to be an existing item, will prevent the other product item from being created
+- `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`: Sets the model for the given lifecycle and stage, stage can be one of `0`, `1`, and `2`
+- `.allModels(modelsCreator: BiFunction<Lifecycle, number, Consumer<ModelGenerator>>)`: Sets the model for all lifecycle and stage combinations via a callback. `null` can be returned to use the default model generation for that lifecycle/stage combination
+- `.texture(lifecycle: Lifecycle, stage: number, texture: string)`: Sets the texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
@@ -359,11 +362,22 @@ Additionally, this will register a climate range with the same id as the block, 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_stationary_bush', 'tfc:stationary_berry_bush')
+        .productItem('minecraft:glow_berries')
         .lifecycle('march', 'healthy')
         .lifecycle('april', 'healthy')
         .lifecycle('may', 'flowering')
         .lifecycle('june', 'fruiting')
         .lifecycle('july', 'healthy')
+        .allModels((lifecycle, stage) => {
+            if (lifecycle.active()) return null
+
+            return m => {
+                m.parent(`tfc:block/plant/stationary_bush_${stage}`)
+                m.texture('bush', 'tfc:block/berry_bush/dead_bush')
+                m.texture('particle', 'tfc:block/mud/silt')
+            }
+        })
+        .texture('flowering', 2, 'minecraft:flowering_azalea_leaves')
 })
 ```
 

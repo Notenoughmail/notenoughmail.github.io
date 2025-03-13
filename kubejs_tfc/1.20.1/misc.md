@@ -56,4 +56,12 @@ The `/kubejs_tfc describe` command has two arguments: a data type and a resource
 
 Using this command will print a formatted description of the requested data value to the chat
 
-Example `/kubejs_tfc describe tfc.fuels tfc:coal`
+Example: `/kubejs_tfc describe tfc.fuels tfc:coal`
+
+## Search
+
+The `/kubejs_tfc search` command has two arguments: a data type and a resource location, the registry id to search for in the data type
+
+Using the command will print a list of data definitions which apply to the given item/block/fluid/entity type, each entry can be clicked on to describe it via `/kubejs_tfc describe`
+
+Examples: `/kubejs_tfc search tfc.metals tfc:metal/copper`, `/kubejs_tfc search tfc.entity_damage_resistances minecraft:creeper`, `/kubejs_tfc search tfc.fertilizers tfc:powder/wood_ash`

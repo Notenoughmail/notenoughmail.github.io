@@ -27,7 +27,7 @@ The following recipes are supported by KubeJS TFC:
 - [Loom](#loom)
 - [Jam Pot](#jam-pot)
 - [Simple Pot](#simple-pot)
-- [Soup Pot](#simple-pot)
+- [Soup Pot](#soup-pot)
 - [Quern](#quern)
 - [Scraping](#scraping)
 - [Sewing](#sewing)
@@ -60,7 +60,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.alloy(result: string, contents: AlloyPart[])
+event.recipes.tfc.alloy(
+    result: string,
+    contents: AlloyPart[]
+)
 ```
 
 - 1st argument: A string representing the name of a metal
@@ -73,11 +76,14 @@ See [here]({% link kubejs_tfc/1.20.1/data.md %}#metals) for defining custom meta
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.alloy('tfc:metal', [
-        TFC.alloyPart('tfc:copper', 0.2, 0.3),
-        TFC.alloyPart('tfc:rose_gold', 0.4, 0.8),
-        TFC.alloyPart('tfc:black_steel', 0.2, 0.5)
-    ])
+    event.recipes.tfc.alloy(
+        'tfc:metal',
+        [
+            TFC.alloyPart('tfc:copper', 0.2, 0.3),
+            TFC.alloyPart('tfc:rose_gold', 0.4, 0.8),
+            TFC.alloyPart('tfc:black_steel', 0.2, 0.5)
+        ]
+    )
 })
 ```
 
@@ -88,7 +94,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method signature
 
 ```ts
-event.recipes.tfc.welding(result: ItemStackProviderJS, firstInput: Ingredient, secondInput: Ingredient, tier?: number)
+event.recipes.tfc.welding(
+    result: ItemStackProviderJS,
+    firstInput: Ingredient,
+    secondInput: Ingredient,
+    tier?: number
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
@@ -100,7 +111,11 @@ event.recipes.tfc.welding(result: ItemStackProviderJS, firstInput: Ingredient, s
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.welding('minecraft:brick', 'tfc:rock/cobble/dacite', 'minecraft:clay')
+    event.recipes.tfc.welding(
+        'minecraft:brick',
+        'tfc:rock/cobble/dacite',
+        'minecraft:clay'
+    )
 })
 ```
 
@@ -111,7 +126,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.anvil(result: ItemStackProviderJS, input: Ingredient, rules: ForgeRule[])
+event.recipes.tfc.anvil(
+    result: ItemStackProviderJS,
+    input: Ingredient,
+    rules: ForgeRule[]
+)
     // Additional methods
     .tier(tier: number)
     .bonus(applyBonus: boolean)
@@ -130,7 +149,14 @@ event.recipes.tfc.anvil(result: ItemStackProviderJS, input: Ingredient, rules: F
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.anvil('kubejs:my_cool_shears', 'kubejs:unworked_shears', ['hit_not_last', 'upset_any']).bonus(true)
+    event.recipes.tfc.anvil(
+        'kubejs:my_cool_shears',
+        'kubejs:unworked_shears',
+        [
+            'hit_not_last',
+            'upset_any'
+        ]
+    ).bonus(true)
 })
 ```
 
@@ -141,7 +167,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.barrel_instant_fluid(outputFluid: FluidStack, primaryFluid: FluidStackIngredient, addedFluid: FluidStackIngredient, sound?: string)
+event.recipes.tfc.barrel_instant_fluid(
+    outputFluid: FluidStack,
+    primaryFluid: FluidStackIngredient,
+    addedFluid: FluidStackIngredient,
+    sound?: string
+)
 ```
 
 - 1st argument: A `FluidStack`, the result of the recipe
@@ -156,7 +187,11 @@ Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make 
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.barrel_instant_fluid(Fluid.of('minecraft:water', 50), TFC.fluidStackIngredient('#forge:milk', 30), TFC.fluidStackIngredient('minecraft:lava', 20))
+    event.recipes.tfc.barrel_instant_fluid(
+        Fluid.of('minecraft:water', 50),
+        TFC.fluidStackIngredient('#forge:milk', 30),
+        TFC.fluidStackIngredient('minecraft:lava', 20)
+    )
 })
 ```
 
@@ -259,7 +294,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.blast_furnace(result: FluidStack, catalyst: Ingredient, fluid: FluidStackIngredient)
+event.recipes.tfc.blast_furnace(
+    result: FluidStack,
+    catalyst: Ingredient,
+    fluid: FluidStackIngredient
+)
 ```
 
 - 1st argument: A `FluidStack`, the output fluid of the recipe
@@ -270,7 +309,11 @@ event.recipes.tfc.blast_furnace(result: FluidStack, catalyst: Ingredient, fluid:
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.blast_furnace(Fluid.of('tfc:metal/zinc', 5), 'kubejs:magic_catalyst', TFC.fluidStackIngredient(['tfc:metal/copper', 'tfc:metal/nickel'], 90))
+    event.recipes.tfc.blast_furnace(
+        Fluid.of('tfc:metal/zinc', 5),
+        'kubejs:magic_catalyst',
+        TFC.fluidStackIngredient(['tfc:metal/copper', 'tfc:metal/nickel'], 90)
+    )
 })
 ```
 
@@ -281,7 +324,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.bloomery(result: ItemStackProviderJS, catalyst: Ingredient, fluid: FluidStackIngredient, duration: number)
+event.recipes.tfc.bloomery(
+    result: ItemStackProviderJS,
+    catalyst: Ingredient,
+    fluid: FluidStackIngredient,
+    duration: number
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
@@ -293,7 +341,12 @@ event.recipes.tfc.bloomery(result: ItemStackProviderJS, catalyst: Ingredient, fl
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.bloomery('3x minecraft:dirt', '#kubejs:dirt_makers', Fluid.of('kubejs:dirt_fluid', 50), 5000)
+    event.recipes.tfc.bloomery(
+        '3x minecraft:dirt',
+        '#kubejs:dirt_makers',
+        Fluid.of('kubejs:dirt_fluid', 50),
+        5000
+    )
 })
 ```
 
@@ -304,7 +357,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.casting(result: ItemStackProviderJS, mold: Ingredient, fluid: FluidStackIngredient, breakChance: number)
+event.recipes.tfc.casting(
+    result: ItemStackProviderJS,
+    mold: Ingredient,
+    fluid: FluidStackIngredient,
+    breakChance: number
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
@@ -319,7 +377,12 @@ event.recipes.tfc.casting(result: ItemStackProviderJS, mold: Ingredient, fluid: 
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.casting('8x ae2:skystone', 'kubejs:block_mold', TFC.fluidStackIngredient('minecraft:lava', 4000), 1)
+    event.recipes.tfc.casting(
+        '8x ae2:skystone',
+        'kubejs:block_mold',
+        TFC.fluidStackIngredient('minecraft:lava', 4000),
+        1
+    )
 })
 ```
 
@@ -384,7 +447,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.glassworking(result: ItemStack, batch: Ingredient, operations: GlassOperation[])
+event.recipes.tfc.glassworking(
+    result: ItemStack,
+    batch: Ingredient,
+    operations: GlassOperation[]
+)
 ```
 
 - 1st argument: An item stack, the result of the recipe
@@ -395,7 +462,15 @@ event.recipes.tfc.glassworking(result: ItemStack, batch: Ingredient, operations:
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.glassworking('3x minecraft:red_stained_glass_pane', 'minecraft:red_stained_glass', ['blow', 'stretch', 'stretch'])
+    event.recipes.tfc.glassworking(
+        '3x minecraft:red_stained_glass_pane',
+        'minecraft:red_stained_glass',
+        [
+            'blow',
+            'stretch',
+            'stretch'
+        ]
+    )
 })
 ```
 
@@ -449,7 +524,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.knapping(result: ItemStack, knappingType: string, pattern: string[])
+event.recipes.tfc.knapping(
+    result: ItemStack,
+    knappingType: string,
+    pattern: string[]
+)
     //Additional methods
     .ingredient(ingredient: Ingredient)
     .outsideSlotRequired(required: boolean)
@@ -468,8 +547,15 @@ event.recipes.tfc.knapping(result: ItemStack, knappingType: string, pattern: str
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.knapping('minecraft:clay', 'tfc:clay', ['XXX', 'X X', 'XXX'])
-        .outsideSlotRequired(false)
+    event.recipes.tfc.knapping(
+        'minecraft:clay',
+        'tfc:clay',
+        [
+            'XXX',
+            'X X',
+            'XXX'
+        ]
+    ).outsideSlotRequired(false)
 })
 ```
 
@@ -480,7 +566,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.loom(result: ItemStackProviderJS, ingredient: Ingredient, requiredSteps: number, inProgressTexture: string)
+event.recipes.tfc.loom(
+    result: ItemStackProviderJS,
+    ingredient: Ingredient,
+    requiredSteps: number,
+    inProgressTexture: string
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result produced by this recipe
@@ -492,7 +583,12 @@ event.recipes.tfc.loom(result: ItemStackProviderJS, ingredient: Ingredient, requ
 
 ```js
 ServerEvent.recipes(event => {
-    event.recipes.tfc.loom('4x minecraft:red_wool', '4x minecraft:blue_wool', 4, 'minecraft:block/purple_wool')
+    event.recipes.tfc.loom(
+        '4x minecraft:red_wool',
+        '4x minecraft:blue_wool',
+        4,
+        'minecraft:block/purple_wool'
+    )
 })
 ```
 
@@ -503,7 +599,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.pot_jam(result: ItemStack, ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number, texture: string)
+event.recipes.tfc.pot_jam(
+    result: ItemStack,
+    ingredients: Ingredient[],
+    fluidIngredient: FluidStackIngredient,
+    duration: number,
+    temperature: number,
+    texture: string
+)
 ```
 
 - 1st argument: The item given to the the player when the pot is clicked with an empty jar
@@ -520,7 +623,17 @@ Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the in
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.pot_jam('3x tfc:jar/banana', ['minecraft:stick', TFC.ingredient.notRotten('minecraft:cooked_porkchop')], Fluid.of('kubejs:sweet_water', 500), 50, 400, 'tfc:block/jar/banana')
+    event.recipes.tfc.pot_jam(
+        '3x tfc:jar/banana',
+        [
+            'minecraft:stick',
+            TFC.ingredient.notRotten('minecraft:cooked_porkchop')
+        ],
+        Fluid.of('kubejs:sweet_water', 500),
+        50,
+        400,
+        'tfc:block/jar/banana'
+    )
 })
 ```
 
@@ -531,7 +644,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.pot(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+event.recipes.tfc.pot(
+    ingredients: Ingredient[],
+    fluidIngredient: FluidStackIngredient,
+    duration: number,
+    temperature: number
+)
     // Additional methods
     .itemOutput(itemOutput: ItemStackProviderJS[])
     .fluidOutput(fluidOutput: FluidStack)
@@ -556,8 +674,21 @@ Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the in
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.pot(['minecraft:grass', 'minecraft:stone'], Fluid.of('minecraft:lava', 750), 100, 750)
-        .outputs(['minecraft:dirt', 'minecraft:red_stained_glass'], Fluid.of('minecraft:water', 50))
+    event.recipes.tfc.pot(
+        [
+            'minecraft:grass',
+            'minecraft:stone'
+        ],
+        Fluid.of('minecraft:lava', 750),
+        100,
+        750
+    ).outputs(
+        [
+            'minecraft:dirt',
+            'minecraft:red_stained_glass'
+        ],
+        Fluid.of('minecraft:water', 50)
+    )
 })
 ```
 
@@ -568,7 +699,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.pot_soup(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+event.recipes.tfc.pot_soup(
+    ingredients: Ingredient[],
+    fluidIngredient: FluidStackIngredient,
+    duration: number,
+    temperature: number
+)
 ```
 
 - 1st argument: An array of item ingredients that the recipe consumes
@@ -583,7 +719,15 @@ Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the in
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.pot_soup(['minecraft:red_stained_glass', '#minecraft:flowers'], TFC.fluidStackIngredient('#kubejs:soupy', 750), 845, 300)
+    event.recipes.tfc.pot_soup(
+        [
+            'minecraft:red_stained_glass',
+            '#minecraft:flowers'
+        ],
+        TFC.fluidStackIngredient('#kubejs:soupy', 750),
+        845,
+        300
+    )
 })
 ```
 
@@ -615,7 +759,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```ts
-event.recipes.tfc.scraping(result: ItemStackProviderJS, ingredient: Ingredient, outputTexture: string, inputTexture: string, extraDrop?: ItemStackProviderJS)
+event.recipes.tfc.scraping(
+    result: ItemStackProviderJS,
+    ingredient: Ingredient,
+    outputTexture: string,
+    inputTexture: string,
+    extraDrop?: ItemStackProviderJS
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
@@ -628,7 +778,12 @@ event.recipes.tfc.scraping(result: ItemStackProviderJS, ingredient: Ingredient, 
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.scraping('4x minecraft:paper', '#minecraft:flowers', 'minecraft:block/dirt', 'minecraft:block/red_stained_glass')
+    event.recipes.tfc.scraping(
+        '4x minecraft:paper',
+        '#minecraft:flowers',
+        'minecraft:block/dirt',
+        'minecraft:block/red_stained_glass'
+    )
 })
 ```
 
@@ -650,18 +805,21 @@ event.recipes.tfc.sewing(result: ItemStack, stitches: number[45], squares: numbe
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.sewing('6x minecraft:dirt', [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 
-        1, 0, 0, 0, 1, 0, 0, 0, 1,
-        0, 1, 1, 1, 0, 1, 1, 1, 0,
-        1, 0, 0, 0, 1, 0, 0, 0, 1,
-        0, 0, 0, 0, 0, 0, 0, 0, 0
-    ], [
-        -1, -1, 0, -1, -1, 0, -1, -1,
-         0,  0, 1,  0,  0, 1,  0,  0,
-         0,  0, 1,  0,  0, 1,  0,  0,
-        -1, -1, 0, -1, -1, 0, -1, -1
-    ])
+    event.recipes.tfc.sewing(
+        '6x minecraft:dirt',
+        [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            1, 0, 0, 0, 1, 0, 0, 0, 1,
+            0, 1, 1, 1, 0, 1, 1, 1, 0,
+            1, 0, 0, 0, 1, 0, 0, 0, 1,
+            0, 0, 0, 0, 0, 0, 0, 0, 0
+        ], [
+            -1, -1, 0, -1, -1, 0, -1, -1,
+             0,  0, 1,  0,  0, 1,  0,  0,
+             0,  0, 1,  0,  0, 1,  0,  0,
+            -1, -1, 0, -1, -1, 0, -1, -1
+        ]
+    )
 })
 ```
 
@@ -672,7 +830,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 ### Method Signature
 
 ```ts
-event.recipes.tfc.advanced_shaped_crafting(result: ItemStackProviderJS, pattern: string[], key: Map<Character, Ingredient>, row: number, column: number)
+event.recipes.tfc.advanced_shaped_crafting(
+    result: ItemStackProviderJS,
+    pattern: string[],
+    key: Map<Character, Ingredient>,
+    row: number,
+    column: number
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
@@ -685,14 +849,19 @@ event.recipes.tfc.advanced_shaped_crafting(result: ItemStackProviderJS, pattern:
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.advanced_shaped_crafting(TFC.itemStackProvider.of('tfc:food/red_apple').addTrait('kubejs:fruity'), [
-        'FLK',
-        'KLF'
-    ], {
-        F: '#minecraft:flowers',
-        L: 'minecraft:dirt',
-        K: 'tfc:food/red_apple'
-    }, 0, 0)
+    event.recipes.tfc.advanced_shaped_crafting(
+        TFC.itemStackProvider.of('tfc:food/red_apple').addTrait('kubejs:fruity'),
+        [
+            'FLK',
+            'KLF'
+        ], {
+            F: '#minecraft:flowers',
+            L: 'minecraft:dirt',
+            K: 'tfc:food/red_apple'
+        },
+        0,
+        0
+    )
 })
 ```
 
@@ -703,7 +872,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 ### Method Signature
 
 ```ts
-event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingredients: Ingredient[], primaryIngredient?: Ingredient)
+event.recipes.tfc.advanced_shapeless_crafting(
+    result: ItemStackProviderJS,
+    ingredients: Ingredient[],
+    primaryIngredient?: Ingredient
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
@@ -714,8 +887,21 @@ event.recipes.tfc.advanced_shapeless_crafting(result: ItemStackProviderJS, ingre
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.advanced_shapeless_crafting('minecraft:dirt', ['minecraft:stone', 'minecraft:cobblestone'])
-    event.recipes.tfc.advanced_shapeless_crafting(TFC.itemStackProvider.copyInput().addTrait('kubejs:with_added_stones'), ['tfc:food/red_apple', 'tfc:rock/loose/dacite'], 'tfc:food/red_apple')
+    event.recipes.tfc.advanced_shapeless_crafting(
+        'minecraft:dirt',
+        [
+            'minecraft:stone',
+            'minecraft:cobblestone'
+        ]
+    )
+    event.recipes.tfc.advanced_shapeless_crafting(
+        TFC.itemStackProvider.copyInput().addTrait('kubejs:with_added_stones'),
+        [
+            'tfc:food/red_apple',
+            'tfc:rock/loose/dacite'
+        ],
+        'tfc:food/red_apple'
+    )
 })
 ```
 
@@ -736,13 +922,26 @@ event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingReci
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.damage_inputs_shaped_crafting(event.recipes.minecraft.crafting_shaped('minecraft:dirt', [
-        'MMN'
-    ], {
-        M: 'minecraft:stone',
-        N: '#tfc:knives'
-    }))
-    event.recipes.tfc.damage_inputs_shapeless_crafting(event.recipes.minecraft.crafting_shapeless('minecraft:stone', ['#minecraft:flowers', '#minecraft:axes']))
+    event.recipes.tfc.damage_inputs_shaped_crafting(
+        event.recipes.minecraft.crafting_shaped(
+            'minecraft:dirt',
+            [
+                'MMN'
+            ], {
+                M: 'minecraft:stone',
+                N: '#tfc:knives'
+            }
+        )
+    )
+    event.recipes.tfc.damage_inputs_shapeless_crafting(
+        event.recipes.minecraft.crafting_shapeless(
+            'minecraft:stone',
+            [
+                '#minecraft:flowers',
+                '#minecraft:axes'
+            ]
+        )
+    )
 })
 ```
 
@@ -753,8 +952,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 ### Method Signatures
 
 ```ts
-event.recipes.tfc.extra_products_shaped_crafting(extraProducts: ItemStack[], recipe: ShapedCraftingRecipe)
-event.recipes.tfc.extra_products_shapeless_crafting(extraProducts: ItemStack[], recipe: ShapelessCraftingRecipe)
+event.recipes.tfc.extra_products_shaped_crafting(
+    extraProducts: ItemStack[],
+    recipe: ShapedCraftingRecipe
+)
+event.recipes.tfc.extra_products_shapeless_crafting(
+    extraProducts: ItemStack[],
+    recipe: ShapelessCraftingRecipe
+)
 ```
 
 - 1st argument: An array of `ItemStack`s, the extra products of the recipe
@@ -764,14 +969,29 @@ event.recipes.tfc.extra_products_shapeless_crafting(extraProducts: ItemStack[], 
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.extra_products_shaped_crafting('3x minecraft:red_stained_glass', event.recipes.minecraft.crafting_shaped('minecraft:dirt', [
-        'GHJ'
-    ], {
-        G: '#minecraft:flowers',
-        H: 'minecraft:stone',
-        J: 'tfc:rock/raw/diorite'
-    }))
-    event.recipes.tfc.extra_products_shapeless_crafting('4x minecraft:green_stained_glass_pane', event.recipes.minecraft.crafting_shapeless('minecraft:red_stained_glass', ['minecraft:dirt', '#minecraft:flowers']))
+    event.recipes.tfc.extra_products_shaped_crafting(
+        '3x minecraft:red_stained_glass',
+        event.recipes.minecraft.crafting_shaped(
+            'minecraft:dirt',
+            [
+                'GHJ'
+            ], {
+                G: '#minecraft:flowers',
+                H: 'minecraft:stone',
+                J: 'tfc:rock/raw/diorite'
+            }
+        )
+    )
+    event.recipes.tfc.extra_products_shapeless_crafting(
+        '4x minecraft:green_stained_glass_pane',
+        event.recipes.minecraft.crafting_shapeless(
+            'minecraft:red_stained_glass',
+            [
+                'minecraft:dirt',
+                '#minecraft:flowers'
+            ]
+        )
+    )
 })
 ```
 
@@ -792,13 +1012,26 @@ event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecip
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.tfc.no_remainder_shaped_crafting(event.recipes.minecraft.crafting_shaped('minecraft:ice', [
-        'SAS'
-    ], {
-        S: 'kubejs:super_cooler',
-        A: 'minecraft:water_bucket'
-    }))
-    event.recipes.tfc.no_remainder_shapeless_crafting(event.recipes.minecraft.crafting_shapeless('minecraft:obsidian', ['minecraft:water_bucket', 'minecraft:lava_bucket']))
+    event.recipes.tfc.no_remainder_shaped_crafting(
+        event.recipes.minecraft.crafting_shaped(
+            'minecraft:ice',
+            [
+                'SAS'
+            ], {
+                S: 'kubejs:super_cooler',
+                A: 'minecraft:water_bucket'
+            }
+        )
+    )
+    event.recipes.tfc.no_remainder_shapeless_crafting(
+        event.recipes.minecraft.crafting_shapeless(
+            'minecraft:obsidian',
+            [
+                'minecraft:water_bucket',
+                'minecraft:lava_bucket'
+            ]
+        )
+    )
 })
 ```
 
@@ -809,7 +1042,10 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.drying(result: ItemStackProviderJS, ingredient: Ingredient)
+event.recipes.firmalife.drying(
+    result: ItemStackProviderJS,
+    ingredient: Ingredient
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
@@ -819,7 +1055,10 @@ event.recipes.firmalife.drying(result: ItemStackProviderJS, ingredient: Ingredie
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.drying('kubejs:jerky', TFC.ingredient.notRotten('#tfc:meat'))
+    event.recipes.firmalife.drying(
+        'kubejs:jerky',
+        TFC.ingredient.notRotten('#tfc:meat')
+    )
 })
 ```
 
@@ -830,7 +1069,10 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.smoking(result: ItemStackIngredientJS, ingredient: Ingredient)
+event.recipes.firmalife.smoking(
+    result: ItemStackIngredientJS,
+    ingredient: Ingredient
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
@@ -840,7 +1082,10 @@ event.recipes.firmalife.smoking(result: ItemStackIngredientJS, ingredient: Ingre
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.smoking(TFC.itemStackProvider.copyInput().addTrait('kubejs:smoked'), TFC.ingredient.notRotten('#tfc:meats'))
+    event.recipes.firmalife.smoking(
+        TFC.isp.copyInput().addTrait('kubejs:smoked'),
+        TFC.ingredient.notRotten('#tfc:meats')
+    )
 })
 ```
 
@@ -885,7 +1130,12 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.oven(ingredient: Ingredient, temperature: number, duration: number, resultItem?: ItemStackProviderJS)
+event.recipes.firmalife.oven(
+    ingredient: Ingredient,
+    temperature: number,
+    duration: number,
+    resultItem?: ItemStackProviderJS
+)
 ```
 
 - 1st argument: An item ingredient, the input of the recipe
@@ -897,7 +1147,12 @@ event.recipes.firmalife.oven(ingredient: Ingredient, temperature: number, durati
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.oven('minecraft:spruce_log', 500, 100, 'minecraft:oak_log')
+    event.recipes.firmalife.oven(
+        'minecraft:spruce_log',
+        500,
+        100,
+        'minecraft:oak_log'
+    )
 })
 ```
 
@@ -908,7 +1163,12 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.stinky_soup(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number)
+event.recipes.firmalife.stinky_soup(
+    ingredients: Ingredient[],
+    fluidIngredient: FluidStackIngredient,
+    duration: number,
+    temperature: number
+)
 ```
 
 - 1st argument: An array of item ingredients, the item inputs of the recipe
@@ -923,7 +1183,15 @@ Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the in
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.stinky_soup(['minecraft:dirt', TFC.ingredient.not(TFC.ingredient.notRotten())], TFC.fluidStackIngredient('#minecraft:water', 1000), 500, 460)
+    event.recipes.firmalife.stinky_soup(
+        [
+            'minecraft:dirt',
+            TFC.ingredient.not(TFC.ingredient.notRotten())
+        ],
+        TFC.fluidStackIngredient('#minecraft:water', 1000),
+        500,
+        460
+    )
 })
 ```
 
@@ -957,6 +1225,17 @@ event.recipes.firmalife.vat()
 - Temperature: A number, the minimum temperature °C of the vat in order to process, defaults to `300`
 - Jar: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
 
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.firmalife.vat()
+        .outputItem('minecraft:dirt')
+        .inputFluid(Fluid.of('minecraft:lava', 500))
+        .length(60)
+})
+```
+
 ## FirmaLife Stomping
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
@@ -964,7 +1243,13 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.stomping(result: ItemStackProviderJS, ingredient, Ingredient, inputTexture: string, outputTexture: string, sound: string)
+event.recipes.firmalife.stomping(
+    result: ItemStackProviderJS,
+    ingredient, Ingredient,
+    inputTexture: string,
+    outputTexture: string,
+    sound: string
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
@@ -977,7 +1262,13 @@ event.recipes.firmalife.stomping(result: ItemStackProviderJS, ingredient, Ingred
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.stomping('minecraft:dirt', 'minecraft:stone', 'tfc:block/charcoal_pile', 'tfc:block/powder/charcoal', 'tfc:block.charcoal.fall')
+    event.recipes.firmalife.stomping(
+        'minecraft:dirt',
+        'minecraft:stone',
+        'tfc:block/charcoal_pile',
+        'tfc:block/powder/charcoal',
+        'tfc:block.charcoal.fall'
+    )
 })
 ```
 
@@ -988,7 +1279,14 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ### Method Signature
 
 ```ts
-event.recipes.firmalife.bowl_pot(itemOutput: ItemStack, ingredients: Ingredient[], fluidIngredient: FluidStackIngredient, duration: number, temperature: number, food: (Consumer<FoodData> | {water?: number, hunger?: number, saturation?: number, grain?: number, fruit?: number, vegetables?: number, protein?: number, dairy?: number, decay_modifier?: number}))
+event.recipes.firmalife.bowl_pot(
+    itemOutput: ItemStack,
+    ingredients: Ingredient[],
+    fluidIngredient: FluidStackIngredient,
+    duration: number,
+    temperature: number,
+    food: (Consumer<FoodData> | {water?: number, hunger?: number, saturation?: number, grain?: number, fruit?: number, vegetables?: number, protein?: number, dairy?: number, decay_modifier?: number})
+)
 ```
 
 - 1st argument: An item stack, the output of the recipe
@@ -996,7 +1294,7 @@ event.recipes.firmalife.bowl_pot(itemOutput: ItemStack, ingredients: Ingredient[
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid ingredient of the recipe
 - 4th argument: A number, the number of ticks the pot will process for
 - 5th argument: A number, the temperature °C that the pot needs to get to for the recipe to begin
-- 6th argument: Either a [FoodData]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) consumer or a string to number map containing any of `water`, `saturation`, `grain`, `fruit`, `vegetables`, `protein`, `dairy`, `hunger`, and `decay_modifier` values
+- 6th argument: Either a [FoodData]({% link kubejs_tfc/1.20.1/data.md %}#food-items) consumer or a string to number map containing any of `water`, `saturation`, `grain`, `fruit`, `vegetables`, `protein`, `dairy`, `hunger`, and `decay_modifier` values
 
 {: .notice #firmalife-bowl-pot-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
@@ -1005,22 +1303,36 @@ Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the in
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.bowl_pot('minecraft:cooked_beef', [
-        'minecraft:dirt',
-        'minecraft:stone'
-    ], 'minecraft:water', 20, 100, food => {
-        food.hunger(50)
-        food.protein(10.6)
-        food.saturation(2)
-    })
-    event.recipes.firmalife.bowl_pot('tfc:food/red_apple', [
-        'minecraft:poppy',
-        'minecraft:oak_log'
-    ], 'minecraft:lava', 20, 100, {
-        hunger: 3,
-        fruit: 12,
-        decay_modifier: 0.9
-    })
+    event.recipes.firmalife.bowl_pot(
+        'minecraft:cooked_beef',
+        [
+            'minecraft:dirt',
+            'minecraft:stone'
+        ],
+        'minecraft:water',
+        20,
+        100,
+        food => {
+            food.hunger(50)
+            food.protein(10.6)
+            food.saturation(2)
+        }
+    )
+    event.recipes.firmalife.bowl_pot(
+        'tfc:food/red_apple',
+        [
+            'minecraft:poppy',
+            'minecraft:oak_log'
+        ],
+        'minecraft:lava',
+        20,
+        100,
+        {
+            hunger: 3,
+            fruit: 12,
+            decay_modifier: 0.9
+        }
+    )
 })
 ```
 
@@ -1034,7 +1346,13 @@ This recipe type is currently unused by FirmaLife and actually adds itself to th
 ## Method Signature
 
 ```ts
-event.recipes.firmalife.press(result: ItemStackProviderJS, ingredient, Ingredient, inputTexture: string, outputTexture: string, sound: string)
+event.recipes.firmalife.press(
+    result: ItemStackProviderJS,
+    ingredient: Ingredient,
+    inputTexture: string,
+    outputTexture: string,
+    sound: string
+)
 ```
 
 - 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
@@ -1047,7 +1365,13 @@ event.recipes.firmalife.press(result: ItemStackProviderJS, ingredient, Ingredien
 
 ```js
 ServerEvents.recipes(event => {
-    event.recipes.firmalife.press('minecraft:smooth_stone', 'minecraft:cobblestone', 'minecraft:block/cobblestone', 'minecraft:block/smooth_stone', 'tfc:block.charcoal.fall')
+    event.recipes.firmalife.press(
+        'minecraft:smooth_stone',
+        'minecraft:cobblestone',
+        'minecraft:block/cobblestone',
+        'minecraft:block/smooth_stone',
+        'tfc:block.charcoal.fall'
+    )
 })
 ```
 
@@ -1059,6 +1383,7 @@ AFC's tree tapping recipe type
 
 ```ts
 event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
+    // Additional methods
     .resultFluid(fluid: FluidStackJS)
     .minTemp(f: number)
     .maxTemp(f: number)
