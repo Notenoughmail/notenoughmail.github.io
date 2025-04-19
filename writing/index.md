@@ -26,7 +26,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 {% assign posts = site.posts | where:"prog_unv","true" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y }}</time></li>
-{% enfor %}
+{% endfor %}
 </ul>
 </div>
 
