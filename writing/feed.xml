@@ -20,7 +20,7 @@ permalink: /writing/feed.xml
                     <span style="font-style:small;"><ul>
                         {% for tag in page.tags %}
                         <li><a href="{{ tag.tag[1] }}">{{ tag.tag[0] }}</a></li>
-                        {% enfor %}
+                        {% endfor %}
                     </ul></span>
                 </details>
                 {% endunless %}
