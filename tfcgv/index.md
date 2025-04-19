@@ -2,9 +2,7 @@
 layout: page
 title: TFCGenViewer
 permalink: /tfcgv/
-nav_order: 2
 has_children: true
-has_toc: false
 parent: Minecraft Mods
 ---
 
@@ -15,6 +13,8 @@ Preview the generation of your TFC worlds before creating them
 Available on [Modrinth](https://modrinth.com/mod/tfcgenviewer) and [CurseForge](https://curseforge.com/minecraft/mc-mods/tfcgenviewer)
 
 Source available on [GitHub](https://github.com/Notenoughmail/TFCGenViewer)
+
+A list of updates can be found [here](updates/)
 
 ## [1.20.1](1.20.1/)
 

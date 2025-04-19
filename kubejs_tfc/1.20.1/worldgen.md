@@ -32,9 +32,9 @@ In the `TFCEvents.worldgenData` event there are methods for:
 {: .notice #general-notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >
-> Use the `ServerEvent.tag('worldgen/placed_feature', event => {})` event to add to/remove entries from the correct tag
+> Use the `ServerEvent.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
 >
-> Each example will have a demonstration of this with using the appropriate tag for the example
+> Each example has a demonstration of this that uses the appropriate tag for the example
 
 ## Geodes
 
@@ -579,7 +579,7 @@ Creates a configured feature of the given type using the given config
 ### Method Signature
 
 ```ts
-event.generic(name: string, type: string, featureConfig: JsonObject, placement: COnsumer<PlacedFeatureProperties>)
+event.generic(name: string, type: string, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`

@@ -5,7 +5,6 @@ permalink: /precpros/1.20.1/config/
 parent: 1.20.1
 grand_parent: Precision Prospecting
 has_children: false
-has_toc: false
 ---
 
 # Config

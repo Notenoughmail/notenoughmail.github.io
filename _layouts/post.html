@@ -1,17 +1,19 @@
 ---
 layout: default
+search_exclude: true
+nav_exclude: false
 ---
 
 <body>
     {% unless page.tags == empty %}
-    <div class="tags">
-        <span style="font-size:small;">
-            Tags:
+    <details class="tags">
+        <summary>Tags</summary>
+        <span style="font-style:small;"><ul>
             {% for tag in page.tags %}
-                <a href="/writing/#{{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</a>
+            <li><a href="{{ tag.tag[1] }}">{{ tag.tag[0] }}</a></li>
             {% endfor %}
-        </span>
-    </div>
+        </ul></span>
+    </details>
     {% endunless %}
 </body>
 

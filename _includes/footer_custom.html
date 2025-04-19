@@ -1,9 +1,10 @@
 <!--An absolutely terrible way to do this, but it works-->
 <script>
-    const calloutTypes = [];
-    {% for c in site.callouts %}
-        calloutTypes.push("{{ c[0] }}");
-    {% endfor %}
+    const calloutTypes = [
+        {% for c in site.callouts %}
+        "{{ c[0] }}",
+        {% endfor %}
+    ];
     calloutTypes.forEach(type => {
         var elements = document.getElementsByClassName(type);
         for (let i = 0 ; i < elements.length ; i++) {

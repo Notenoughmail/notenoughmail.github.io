@@ -2,9 +2,7 @@
 layout: page
 title: KubeJS TFC
 permalink: /kubejs_tfc/
-nav_order: 2
 has_children: true
-has_toc: false
 parent: Minecraft Mods
 ---
 
@@ -15,6 +13,8 @@ This is the documentation for KubeJS TFC
 Available on [Modrinth](https://modrinth.com/mod/kubejs-tfc) and [CurseForge](https://curseforge.com/minecraft/mc-mods/kubejs-tfc)
 
 Source available on [GitHub](https://github.com/Notenoughmail/KubeJS-TFC)
+
+A list of updates can be found [here](updates/) 
 
 ## [1.18.2](1.18.2/)
 

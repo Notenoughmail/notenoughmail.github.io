@@ -2,9 +2,7 @@
 layout: page
 title: ConfigJS
 permalink: /configjs/
-nav_order: 2
 has_children: true
-has_toc: false
 parent: Minecraft Mods
 ---
 
@@ -15,6 +13,8 @@ This is the documentation for ConfigJS, a KubeJS addon that allows you to create
 Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](https://curseforge.com/minecraft/mc-mods/configjs)
 
 Source available on [GitHub](https://github.com/Notenoughmail/ConfigJS)
+
+A list of updates can be found [here](updates/)
 
 ## [1.20.1](1.20.1/)
 

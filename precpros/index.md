@@ -2,9 +2,7 @@
 layout: page
 title: Precision Prospecting
 permalink: /precpros/
-nav_order: 2
 has_children: true
-has_toc: false
 parent: Minecraft Mods
 ---
 
@@ -15,6 +13,8 @@ Documentation for Precision Prospecting
 Available on [Modrinth](https://modrinth.com/mod/precision-prospecting) and [CurseForge](https://curseforge.com/minecraft/mc-mods/precision-prospecting)
 
 Source available on [GitHub](https://github.com/Notenoughmail/precision-prospecting)
+
+A list of updates can be found [here](updates/)
 
 ## [1.18.2](1.18.2/)
 

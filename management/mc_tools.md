@@ -4,7 +4,6 @@ layout: page
 permalink: /mc/tools/
 parent: Minecraft
 has_children: true
-has_toc: false
 ---
 
 # Minecraft Tools

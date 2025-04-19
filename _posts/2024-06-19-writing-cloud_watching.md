@@ -4,9 +4,17 @@ layout: post
 date: 2024-06-19 19:08:00 MST
 permalink: writing/cloud_watching
 cat: writing
+fiction: true
+olwicks: true
 tags:
-    - Fiction
-    - Port-in-Orbit Olwicks-2
+    - tag:
+        - Fiction
+        - /writing/#fiction
+    - tag:
+        - Port-in-Orbit Olwicks-2
+        - /writing/olwicks
+parent: (Series) Port-in-Orbit Olwicks-2
+grand_parent: Progenitology Universe
 ---
 
 # Cloud Watching

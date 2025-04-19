@@ -4,7 +4,6 @@ title: 1.20.1
 permalink: /tfcgv/1.20.1/
 parent: TFCGenViewer
 has_children: true
-has_toc: false
 ---
 
 # 1.20.1

@@ -5,7 +5,6 @@ permalink: /tfcgv/1.20.1/customization/
 parent: 1.20.1
 grand_parent: TFCGenViewer
 has_children: false
-has_toc: false
 ---
 
 # Customization

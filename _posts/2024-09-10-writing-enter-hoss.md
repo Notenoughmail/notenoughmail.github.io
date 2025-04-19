@@ -4,9 +4,17 @@ layout: post
 date: 2024-09-10 22:19:00 MST
 permalink: writing/enter-hoss
 cat: writing
+fiction: true
+olwicks: true
 tags:
-    - Fiction
-    - Port-in-Orbit Olwicks-2
+    - tag:
+        - Fiction
+        - /writing/#fiction
+    - tag:
+        - Port-in-Orbit Olwicks-2
+        - /writing/olwicks/
+parent: (Series) Port-in-Orbit Olwicks-2
+grand_parent: Progenitology Universe
 ---
 
 # Enter Hoss
