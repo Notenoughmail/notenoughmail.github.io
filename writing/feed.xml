@@ -14,11 +14,11 @@ permalink: /writing/feed.xml
         <item>
             <title>{{ post.title | xml_escape }}</title>
             {% capture desc %}
-                {% unless page.tags == empty %}
+                {% unless post.tags == empty %}
                 <details class="tags">
                     <summary>Tags</summary>
                     <span style="font-style:small;"><ul>
-                        {% for tag in page.tags %}
+                        {% for tag in post.tags %}
                         <li><a href="{{ tag.tag[1] }}">{{ tag.tag[0] }}</a></li>
                         {% endfor %}
                     </ul></span>

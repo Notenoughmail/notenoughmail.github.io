@@ -3,6 +3,7 @@ title: Progenitology Universe
 layout: page
 permalink: /writing/progenitology/
 parent: Writing
+has_toc: false
 ---
 
 # Progenitology Universe
