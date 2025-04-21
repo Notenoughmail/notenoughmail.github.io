@@ -3,9 +3,10 @@ title: Cloud Watching
 layout: post
 date: 2024-06-19 19:08:00 MST
 permalink: writing/cloud_watching
-cat: writing
-fiction: true
-olwicks: true
+cat: 
+    - writing
+    - fiction
+    - olwicks
 tags:
     - tag:
         - Fiction

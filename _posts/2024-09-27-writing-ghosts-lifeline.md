@@ -3,9 +3,10 @@ title: Ghost's Lifeline
 layout: post
 date: 2024-09-27 19:55:00 MST
 permalink: /writing/ghosts-lifeline
-cat: writing
-fiction: true
-olwicks: true
+cat:
+    - writing
+    - fiction
+    - olwicks
 tags:
     - tag:
         - Fiction

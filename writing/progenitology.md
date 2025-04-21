@@ -18,9 +18,9 @@ This is collection of stories about the future, space, and the people between. I
 ## By Post Date
 
 <ul>
-{% assign prog = site.posts | where:"prog_unv","true" %}
-{% assign olwicks = site.posts | where:"olwicks","true" %}
-{% assign all = prog | concat: olwicks | sort: "date" %}
+{% assign prog = site.posts | where: "cat", "prog_unv" %}
+{% assign olwicks = site.posts | where: "cat", "olwicks" %}
+{% assign all = prog | concat: olwicks | uniq | sort: "date" %}
 {% for post in all %}
 <li><a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}

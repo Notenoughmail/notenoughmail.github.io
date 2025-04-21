@@ -3,9 +3,10 @@ title: Enter Hoss
 layout: post
 date: 2024-09-10 22:19:00 MST
 permalink: writing/enter-hoss
-cat: writing
-fiction: true
-olwicks: true
+cat:
+    - writing
+    - fiction
+    - olwicks
 tags:
     - tag:
         - Fiction

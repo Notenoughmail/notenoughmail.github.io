@@ -23,7 +23,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="progenitology">
 <ul>
-{% assign posts = site.posts | where:"prog_unv","true" %}
+{% assign posts = site.posts | where: "cat", "prog_unv" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
@@ -34,7 +34,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="olwicks">
 <ul>
-{% assign posts = site.posts | where:"olwicks","true" %}
+{% assign posts = site.posts | where: "cat", "olwicks" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
@@ -45,7 +45,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="all-fiction">
 <ul>
-{% assign posts = site.posts | where:"fiction","true" %}
+{% assign posts = site.posts | where: "cat", "fiction" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
@@ -56,7 +56,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="water">
 <ul>
-{% assign posts = site.posts | where:"water","true" %}
+{% assign posts = site.posts | where: "cat", "fiction" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
@@ -67,7 +67,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="politics">
 <ul>
-{% assign posts = site.posts | where:"politics","true" %}
+{% assign posts = site.posts | where: "cat", "politics" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
@@ -77,7 +77,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 ## All Writing
 
 <ul>
-{% assign posts = site.posts | where:"cat","writing" %}
+{% assign posts = site.posts | where: "cat", "writing" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}

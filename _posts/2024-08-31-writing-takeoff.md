@@ -3,9 +3,10 @@ title: Takeoff
 layout: post
 date: 2024-08-31 20:40:00 MST
 permalink: writing/takeoff
-cat: writing
-fiction: true
-olwicks: true
+cat: 
+    - writing
+    - fiction
+    - olwicks
 tags:
     - tag:
         - Fiction

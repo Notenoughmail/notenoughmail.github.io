@@ -20,7 +20,7 @@ This series is also part of larger collection of works known as the [Progenitolo
 ## By Post Date
 
 <ul>
-{% assign posts = site.posts | where: "tags" , "olwicks" | sort: "date" %}
+{% assign posts = site.posts | where: "cat", "olwicks" | sort: "date" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
