@@ -143,6 +143,7 @@ declare class ClimateModelBuilder {
     setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>): void
     setOnWorldLoad(calc: Consumer<ServerLevel>): void
     setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>): void
+    setCreateChunkData(callback: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>): void
     newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>): number
     noise(index: number): Noise2D
     getTfcWind(): TriFunction<Level, BlockPos, number, Vec2>
@@ -200,6 +201,10 @@ The register method of the event has the following arguments:
         - `level: WorldGenLevel`: The level
         - `chunk: ChunkAccess`: The chunk being loaded
         - `chunkData: ChunkData`: Additional TFC data about the chunk, will be invalid if the level does not have a TFC-like generator
+    - `.setCreateChunkData(callback: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>)`: Explicitly allow for editing/creation of [`ChunkData`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java#L176-L198) on chunk creation in non-TFC level generation contexts. Only ever called on first creation of a chunk in levels that do not have a TFC-like generator. Accepts a callback with the following values:
+        - `level: WorldgenLevel`: The level
+        - `chunk: ChunkAccess`: The chunk being loaded
+        - `chunkData: ChunkData`: A fresh `ChunkData` object that has not been populated with values, use `#generatePartial` and `#generateFull` to populate values
     - `.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>)`: Adds a new `Noise2D` to the model and returns a number which can be used to retrieve it in calculations. Accepts a callback with the following values:
         - `simplex: OpenSimplex2D`: The base [`OpenSimplex2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/OpenSimplex2D.java) that is used to make the noise; and
         - `return: Noise2D`: The final noise

@@ -460,6 +460,8 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 Creates a `minecraft:simple_block` configured feature using a simple state provider
 
+Notably used by TFC for its wild crops via a [random patch](#random-patch) feature
+
 ### Method Signature
 
 ```ts
@@ -527,12 +529,25 @@ event.randomPatch(
 
 ```js
 TFCEvents.worldgenData(event => {
-    event.randomPatch('example_crop_patch', 30, 15, 10, 'kubejs_tfc:example_crop_placement', placement => {})
+    event.randomPatch('example_crop_patch', 30, 15, 10, 'kubejs_tfc:example_crop_placement', placement => {
+        placement.rarityFilter(80)
+        placement.inSquare()
+        placement.climate(climate => {
+            climate.minTemp(5)
+            climate.maxTemp(18)
+            cliamte.maxForest('normal')
+        })
+    })
 })
 ServerEvents.tags('worldgen/placed_feature', event => {
     event.add('tfc:feature/crops', 'kubejs_tfc:example_crop_patch')
 })
 ```
+
+{: .notice #random-patch-notice }
+> This feature type places multiple of another feature, which may also have its own placement filters which will apply after this feature's placement filters. In this pair of examples, the patch feature limits where the crops can be placed and how often they appear in the world, while the individual block featue specifies local restrictions on placement.
+>
+> The placement filters of these examples mirror those used by TFC's crops
 
 ## Tall Wild Crop
 
