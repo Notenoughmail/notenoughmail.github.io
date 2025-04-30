@@ -28,4 +28,4 @@ This is collection of stories about the future, space, and the people between. I
 
 ## Chronologically
 
-- The [Port-in-Orbit Olwicks-2](..olwicks/#chronologically) series
+- The [Port-in-Orbit Olwicks-2](../olwicks/#chronologically) series

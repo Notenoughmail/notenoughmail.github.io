@@ -51,6 +51,9 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#climate-ranges)!
 
+{: .notice #climate-range-notice }
+Climate ranges cannot be added through this, only existing, registered ones can be modified
+
 ### Method Signature
 
 ```ts
@@ -68,9 +71,6 @@ event.climateRange(
     - `.maxTemperature(f: number)`: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to 100
     - `.temperatureWiggle(f: number)`: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
 - 2nd argument: A `ResourceLocation`, the name of the climate range
-
-{: .notice #climate-range-notice }
-Climate ranges cannot be added through this, only existing, registered ones can be modified
 
 ### Example
 
@@ -185,6 +185,11 @@ TFCEvents.data(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#fauna)!
 
+{: .notice #fauna-notice }
+> Faunas cannot be added through this, only existing, registered ones can be modified
+>
+> To register a fauna definition see the [event]({% link kubejs_tfc/1.20.1/events.md %}#register-fauna-definitions) for registering them
+
 ### Method Signature
 
 ```ts
@@ -202,11 +207,6 @@ event.fauna(
     - `.solidGround(b: boolean)`: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`
     - `.maxBrightness(i: number)`: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
-
-{: .notice #fauna-notice }
-> Faunas cannot be added through this, only existing, registered ones can be modified
->
-> To register a fauna definition see the [event]({% link kubejs_tfc/1.20.1/events.md %}#register-fauna-definitions) for registering them
 
 ### Example
 
@@ -389,6 +389,9 @@ TFCEvents.data(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#knapping-types)!
 
+{: .notice #knapping-type-notice }
+Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is requried for any changes to affect knapping interactions
+
 ### Method Signature
 
 ```ts
@@ -496,7 +499,7 @@ event.metal(
 >
 > The name is generated like so:
 >
-> - The name space becomes `kubejs_tfc`
+> - The namespace becomes `kubejs_tfc`
 > - the path becomes the name of the fluid with the following applied:
 >     - All non `a-z0-9` characters are replaced with `_`
 >     - All repeating `_`s are shortened to just one `_`
