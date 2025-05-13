@@ -34,7 +34,7 @@ In the `TFCEvents.worldgenData` event there are methods for:
 >
 > Use the `ServerEvent.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
 >
-> Each example has a demonstration of this that uses the appropriate tag for the example
+> Each example has a demonstration of this that uses the appropriate tag for the type it cooresponds to
 
 ## Geodes
 
@@ -43,7 +43,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```ts
-event.geode(name: string, outer: string, middle: string, inner: List<string>, placement: Consumer<PlacedFeatureProperties>)
+event.geode(
+    name: string,
+    outer: string,
+    middle: string,
+    inner: List<string>,
+    placement: Consumer<PlacedFeatureProperties>
+)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -154,7 +160,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```ts
-event.thinSpike(name: string, state: string, radius: number, tries: number, minHeight: number, maxHeight: number, placement: Consumer<PlacedFeatureProperties>)
+event.thinSpike(
+    name: string,
+    state: string,
+    radius: number,
+    tries: number,
+    minHeight: number,
+    maxHeight: number,
+    placement: Consumer<PlacedFeatureProperties>
+)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -219,8 +233,9 @@ event.clusterVein(
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
-- 7th argument: A [vein properties consumer](#vein-properties) that defines the optional parameters of the vein
-- 8th argument: A [feature placement consumer](#feature-placement)
+- 7th argument: A number, the size of the vien
+- 8th argument: A [vein properties consumer](#vein-properties) that defines the optional parameters of the vein
+- 9th argument: A [feature placement consumer](#feature-placement)
 
 ### Example
 
