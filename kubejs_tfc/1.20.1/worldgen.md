@@ -228,7 +228,7 @@ event.clusterVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [VeinReplacementEntries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -243,8 +243,8 @@ event.clusterVein(
 TFCEvents.worldgenData(event => {
     event.clusterVein(
         'example_cluster_vein', [
-            event.veinReplacement(['tfc:rock/raw/dacite', 'tfc:rock/raw/granite'], ['8 minecraft:oak_log[axis=z]', 'minecraft:gold_block']),
-            event.veinReplacement(['tfc:rock/raw/andesite', 'tfc:rock/raw/rhyolite'], ['15 minecraft:dirt_block', '2 minecraft:moss_block'])
+            event.blockToWeightedBlockState(['tfc:rock/raw/dacite', 'tfc:rock/raw/granite'], ['8 minecraft:oak_log[axis=z]', 'minecraft:gold_block']),
+            event.blockToWeightedBlockState(['tfc:rock/raw/andesite', 'tfc:rock/raw/rhyolite'], ['15 minecraft:dirt_block', '2 minecraft:moss_block'])
         ], 43, 0.75, -64, 15, vein => {
             vein.indicator(15, 5, 7, 3, ['minecraft:diamond_block', '7 minecraft:iron_bars'])
             vein.nearLava(true)
@@ -283,7 +283,7 @@ event.pipeVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [vein replacement entries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -304,8 +304,8 @@ event.pipeVein(
 TFCEvents.worldgenData(event => {
     event.pipeVein(
         'example_pipe_vein', [
-            event.veinReplacement(['tfc:rock/raw/shale', 'tfc:rock/raw/limestone'], ['7 minecraft:spruce_log[axis=z]', 'minecraft:stripped_spruce_log']),
-            event.veinReplacement(['tfc:rock/raw/chert', 'tfc:rock/raw/basalt'], ['minecraft:sponge'])
+            event.blockToWeightedBlockState(['tfc:rock/raw/shale', 'tfc:rock/raw/limestone'], ['7 minecraft:spruce_log[axis=z]', 'minecraft:stripped_spruce_log']),
+            event.blockToWeightedBlockState(['tfc:rock/raw/chert', 'tfc:rock/raw/basalt'], ['minecraft:sponge'])
         ], 48, 0.43, -64, 100, 30, 4, 0, 2, 0, 4, 0.5, vein => {
             vein.indicator(15, 5, 7, 3, ['minecraft:sponge'])
             vein.project(true)
@@ -339,7 +339,7 @@ event.discVein(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A list of [vein replacement entries](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
+- 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
@@ -355,7 +355,7 @@ event.discVein(
 TFCEvents.worldgenData(event => {
     event.discVein(
         'example_disc_vein', [
-            event.veinReplacement(['tfc:rock/raw/dolomite'], ['kubejs:my_cool_ore', '15 kubejs:my_less-cool_ore'])
+            event.blockToWeightedBlockState(['tfc:rock/raw/dolomite'], ['kubejs:my_cool_ore', '15 kubejs:my_less-cool_ore'])
         ], 75, 0.15, -64, -32, 12, 3, vein => {
             vein.nearLava(true)
         }, placement => {}
