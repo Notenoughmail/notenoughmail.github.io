@@ -56,7 +56,7 @@ Also, if you've a prompt, questions about something I've written, or otherwise w
 
 <div id="water">
 <ul>
-{% assign posts = site.posts | where: "cat", "fiction" %}
+{% assign posts = site.posts | where: "cat", "water" %}
 {% for post in posts %}
 <li><a href="{{ post.url }}">{{ post.title }}</a> <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}

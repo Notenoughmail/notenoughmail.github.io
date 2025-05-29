@@ -7,13 +7,10 @@ cat:
     - writing
     - fiction
     - olwicks
+    - prompt
 tags:
-    - tag:
-        - Fiction
-        - /writing/#fiction
-    - tag:
-        - Port-in-Orbit Olwicks-2
-        - /writing/olwicks/
+    - 2
+    - 0
 parent: (Series) Port-in-Orbit Olwicks-2
 grand_parent: Progenitology Universe
 ---

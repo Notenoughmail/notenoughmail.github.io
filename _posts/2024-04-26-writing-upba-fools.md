@@ -8,12 +8,8 @@ cat:
     - water
     - politics
 tags:
-    - tag:
-        - Water
-        - /writing/#water
-    - tag:
-        - Politics
-        - /writing/#politics
+    - 1
+    - 4
 ---
 
 > Mexico plays an important role in the thinking of both the Upper and Lower Basin states. Mexico is due 1.5 million acre-feet (maf) annually under treaty. The Upper Basin states **do not recognize** that they have any obligation to meet this volume.

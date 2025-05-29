@@ -28,7 +28,6 @@
                         definition = definition + "Volcanic --> " + volcanic[i] + "\n";
                     }
                     definition = definition + "subgraph bottoms [ ];\nbottom[" + toTitleCase(bottom.join(", ")) + "]\nend\n";
-                    let layerMap = {};
                     for (let i in layers) {
                         let layer = layers[i];
                         definition = definition + layer + "@{ shape: start }" + "\n";

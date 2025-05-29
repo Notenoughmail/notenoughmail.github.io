@@ -9,8 +9,8 @@ nav_exclude: false
     <details class="tags">
         <summary>Tags</summary>
         <span style="font-style:small;"><ul>
-            {% for tag in page.tags %}
-            <li><a href="{{ tag.tag[1] }}">{{ tag.tag[0] }}</a></li>
+            {% for tag in page.tags %}{% assign t = site.post-tags[tag].tag %}
+            <li><a href="{{ t[1] }}">{{ t[0] }}</a></li>
             {% endfor %}
         </ul></span>
     </details>

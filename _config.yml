@@ -73,3 +73,20 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+
+post-tags:
+  - tag:
+    - Port-in-Orbit Olwicks-2
+    - /writing/olwicks/
+  - tag:
+    - Water
+    - /writing/#water
+  - tag:
+    - Fiction
+    - /writing/#fiction
+  - tag:
+    - Progenitology Universe
+    - /writing/progenitology/
+  - tag:
+    - Politics
+    - /writing/#politics
