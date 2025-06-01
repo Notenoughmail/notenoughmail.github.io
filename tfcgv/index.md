@@ -4,6 +4,7 @@ title: TFCGenViewer
 permalink: /tfcgv/
 has_children: true
 parent: Minecraft Mods
+has_toc: false
 ---
 
 # TFCGenViewer

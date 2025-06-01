@@ -4,6 +4,7 @@ title: 1.20.1
 permalink: /kubejs_tfc/1.20.1/
 parent: KubeJS TFC
 has_children: true
+has_toc: false
 ---
 
 # 1.20.1

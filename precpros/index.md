@@ -4,6 +4,7 @@ title: Precision Prospecting
 permalink: /precpros/
 has_children: true
 parent: Minecraft Mods
+has_toc: false
 ---
 
 # Precision Prospecting

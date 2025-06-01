@@ -4,6 +4,7 @@ title: Minecraft Mods
 permalink: /mc/mods/
 parent: Minecraft
 has_children: true
+has_toc: false
 ---
 
 # Minecraft Mods

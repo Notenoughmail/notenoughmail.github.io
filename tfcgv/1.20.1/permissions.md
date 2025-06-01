@@ -9,7 +9,7 @@ has_children: false
 
 # Permissions
 
-As of 1.3.0, the preview function can be used in-world. Naturally some way want to disable this or limit what information may be displayed, and that can be done via the server config and commands (level **3** required).
+As of 1.3.0, the preview function can be used in-world. Naturally some may want to disable this or limit what information may be displayed, and that can be done via the server config and commands (level **3** required).
 
 ## Configs
 
@@ -17,7 +17,7 @@ As of 1.3.0, the preview function can be used in-world. Naturally some way want 
 
 The first option in the server config is the `viewPermission` option which has 6 options
 
-- `SEED_COMMAND`: Allows a player to open the preview, and view all information, if they have access to /seed (level 2), default
+- `SEED_COMMAND`: Allows a player to open the preview, and view all information, if they have access to /seed (level **2**), default
 - `BY_CATEGORY`: Allows a player to open the preview, with the information available being filtered via the other config options
 - `NEVER`: No player may ever open the preview
 - `ALWAYS`: A player may always open the preview and view all information
@@ -32,7 +32,7 @@ These options are only relevant if `viewPermission` is set to `BY_CATEGORY`
 
 All of these options have the same possible values and behavior
 
-- `SEED_COMMAND`: If the player has /seed permission (level 2) they can access that feature, default
+- `SEED_COMMAND`: If the player has /seed permission (level **2**) they can access that feature, default
 - `ALLOW_LIST`: If the player is part of that filter, they may access that feature
 - `DENY_LIST`: If the player is part of that filter, they may ***not*** access that feature
 - `NEVER`: No player may ever access that feature
@@ -74,7 +74,7 @@ If the player has access to this, they may view the *Biomes* and *Inland Height*
 
 This setting can be set via the `/tfcgenviewer set biomes <permission_type>` command and gotten via `/tfcgenviewer get biomes`
 
-### riversPermission
+#### riversPermission
 
 If the player has access to this, they may view the *Rivers and Mountains* and *Biome Altitude* visualizers
 

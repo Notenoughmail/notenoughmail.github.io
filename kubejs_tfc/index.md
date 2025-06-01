@@ -4,6 +4,7 @@ title: KubeJS TFC
 permalink: /kubejs_tfc/
 has_children: true
 parent: Minecraft Mods
+has_toc: false
 ---
 
 # KubeJS TFC

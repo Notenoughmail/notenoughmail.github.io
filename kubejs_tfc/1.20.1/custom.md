@@ -717,7 +717,7 @@ StartupEvents.registry('block', event => {
 
 Creates a new TFC log block
 
-Inherits the methods of the defautl block buidler
+Inherits the methods of the default block buidler
 
 **Type**: `tfc:log`
 

@@ -4,6 +4,7 @@ title: ConfigJS
 permalink: /configjs/
 has_children: true
 parent: Minecraft Mods
+has_toc: false
 ---
 
 # ConfigJS

@@ -280,7 +280,7 @@ event.recipes.tfc.barrel_sealed(duration: number)
 ### Example
 
 ```js
-SeverEvents.recipes(event => {
+ServerEvents.recipes(event => {
     event.recipes.tfc.barrel_sealed(5000)
         .outputItem('8x minecraft:mud')
         .inputs('8x #tfc:dirt', TFC.fluidStackIngredient('#minecraft:water', 1000))

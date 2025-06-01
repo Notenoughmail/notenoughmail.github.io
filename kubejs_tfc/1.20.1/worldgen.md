@@ -475,7 +475,7 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 Creates a `minecraft:simple_block` configured feature using a simple state provider
 
-Notably used by TFC for its wild crops via a [random patch](#random-patch) feature
+Notably used by TFC for its wild crops in tandem with [random patch](#random-patch) features
 
 ### Method Signature
 
