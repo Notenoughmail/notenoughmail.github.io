@@ -261,6 +261,9 @@ TFCEvents.data(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#food-items)!
 
+{: .notice #food-notice }
+Items with food data still require vanilla's food properties in order for the game to know they are consumable
+
 ### Method Signature
 
 ```ts
