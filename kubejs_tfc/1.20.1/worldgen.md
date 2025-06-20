@@ -29,10 +29,12 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Spreading Bush](#spreading-bush)
 - [Generic Features](#generic)
 
+This event goes in the `server_scripts` folder.
+
 {: .notice #general-notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >
-> Use the `ServerEvent.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
+> Use the `ServerEvents.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
 >
 > Each example has a demonstration of this that uses the appropriate tag for the type it cooresponds to
 

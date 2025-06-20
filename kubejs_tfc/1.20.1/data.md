@@ -36,7 +36,9 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Nether Fertilizer](#beneath-nether-fertilizer)
 - [Lost Page](#beneath-lost-page)
 
-Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
+This event goes in the `server_evetns` folder.
+
+Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [Attached TFC Data](#attached-tfc-data) for specifics
 
 {: .notice #general-notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition

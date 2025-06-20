@@ -28,6 +28,7 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Modifying Worldgen Defaults](#modifying-worldgen-defaults)
 - [Register Fauna Definitions](#register-fauna-definitions)
 - [Create Glass Operations](#create-glass-operations)
+- [Create Chunk Data Provider](#create-chunk-data-provider)
 
 ## Rock Settings
 
@@ -103,7 +104,7 @@ declare class ContainerLimiterEventJS {
 
 Allows size values: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`
 
-Additionally, every event listener requires the name of a menu type[^1] in its declaration
+Additionally, every event listener requires the name of a menu type[^1] in its declaration as a key for which menus the limits are applied to.
 
 ### Examples
 
@@ -865,5 +866,104 @@ event.createPowder(powderItemId: ResourceLocation, name: string, customSound?: R
 ```js
 TFCEvents.createGlassOperations(event => {
     event.createPowder('kubejs:quartz_powder', 'quartz')
+})
+```
+
+## Create Chunk Data Provider
+
+**Type**: `server_scripts`
+
+When used with a specific chunk generator type, this event allows for custom generation of TFC's [ChunkData]({% link kubejs_tfc/1.20.1/misc.md %}#print-chunk-data) permitting [fauna definitions](#register-fauna-definitions), [climate placement modifiers]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate), and TFC's climate-based strucutre modifier to function properly with level generators other htan TFC's.
+
+### Chunk Generator
+
+Due to how TFC's chunk data works, this functionality is inheritly tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped` which will wrap any arbitrary chunk generator and imitate its function while providing TFC's additional values.
+
+In its json definition, the generator definition has the following fields:
+
+- `type` must be `kubejs_tfc:wrapped`
+- `event_key`: The key which the event is fired for. A string.
+- `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are unlikely to be used except for the rock layer settings which can be used in custom rock generation.
+- `generator`: A chunk generator.
+
+### Method Signatures
+
+```js
+event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
+event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
+event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
+event.rocks(getter: RocksGetter): void
+```
+
+
+
+### Example
+
+The json chunk generator definition
+
+```json
+"generator": {
+  "type": "kubejs_tfc:wrapped",
+  "event_key": "nether",
+  "settings": {
+    "flat_bedrock": false,
+    "spawn_distance": 0,
+    "spawn_center_x": 0,
+    "spawn_center_z": 0,
+    "temperature_scale": 0,
+    "rainfall_scale": 0,
+    "continentalness": 0,
+    "rock_layer_settings": {
+      "rocks": {
+        "nether": {
+          "raw": "minecraft:netherrack",
+          "hardened": "minecraft:black_stone",
+          "gravel": "minecraft:gravel",
+          "cobble": "minecraft:basalt",
+          "sand": "minecraft:soul_sand",
+          "sandstone": "minecraft:soul_soil"
+        }
+      },
+      "layers": [
+        {
+          "id": "nether",
+          "layers": {
+            "nether": "bottom"
+          }
+        }
+      ],
+      "bottom": [ "nether" ],
+      "ocean_floor": [ "nether" ],
+      "volcanic": [ "nether" ],
+      "land": [ "nether" ],
+      "uplift": [ "nether" ]
+    }
+  },
+ "generator": {
+   "type": "minecraft:noise",
+   "biome_source": {
+     "type": "minecraft:multi_noise",
+     "preset": "minecraft:nether"
+   },
+   "settings": "minecraft:nether"
+ }
+}
+```
+
+The event with matching key
+
+```js
+TFCEvents.createChunkDataProvider('nether', event => {
+    event.partial((data, chunk) => {
+
+    });
+
+    event.full((data, chunk) => {
+        
+    });
+
+    event.rocks((x, y, z, surfaceY, cache, rockLayers) => {
+        return rockLayers.sampleAtLayer(0, 0);
+    });
 })
 ```

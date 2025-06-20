@@ -827,6 +827,10 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#advanced-shaped-crafting)!
 
+This recipe type supports[^2] Kube's ingredient and result modifiers. The result modifiers apply *after* any ISP modifiers.
+
+[^2]: Technically, the support is implemented through an entirely different recipe type, but this is automatically converted to that type when any of Kube's ingredient/result modifiers are present.
+
 ### Method Signature
 
 ```ts
@@ -868,6 +872,8 @@ ServerEvents.recipes(event => {
 ## Advanced Shapeless Crafting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#advanced-shapeless-crafting)!
+
+This recipe type supports[^2] Kube's ingredient and result modifiers. The result modifiers apply *after* any ISP modifiers.
 
 ### Method Signature
 
