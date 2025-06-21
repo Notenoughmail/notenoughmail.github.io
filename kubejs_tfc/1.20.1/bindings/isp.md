@@ -14,7 +14,7 @@ These are available from the `TFC.itemStackProvider` and `TFC.isp` fields
 
 ## Method Signatures
 
-```ts
+```js
 TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
 TFC.isp.empty(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
 TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
@@ -107,7 +107,7 @@ An `ItemStackProviderJS` is an object which is meant to mirror an actual `ItemSt
 
 ## Method Signatures
 
-```ts
+```js
 declare class ItemStackProviderJS {
     stack(): ItemStack
     modifiers(): JsonArray
@@ -148,49 +148,49 @@ declare class ItemStackProviderJS {
 }
 ```
 
-- `.stack()`: Returns the `ItemStack` of the ISP
-- `.modifiers()`: Returns a json array of all of the applied modifiers
-- `.isEmpty()`: Returns true if the stack and modifier list is empty
-- `.withCount(i: number)`: Sets the stacks count to the provided value
-- `.getCount()`: Returns the stack's count
-- `.getJsonStack()`: Returns a json object representing the item stack
-- `.getModifiersOfType(type: string)`: Returns a list of json objects which represent the applied modifiers with the given type
-- `.toJson()`: Returns the json representation of the ISP
-- `.asCanonClass()`: Returns the ISP as an `ItemStackProvider` object, TFC's canonical class for this data
-- `.dependsOnInput()`: Returns true if any of the applied modifiers is dependent on the recipe's input
-- `.copy()`: Returns a copy of the ISP
-- `.getTag()`: Returns the item stack's `CompoundTag`, may be null
-- `.setTag(tag: CompoundTag)`: Sets the item stack's `CompoundTag`
-- `.mergeTag(tag: CompoundTag)`: Merges the provided `CompoundTag` into the item stack's
-- `.simpleModifier(type: string)`: Adds a modifier of the provided type
-- `.jsonModifier(modifier: JsonObject)`: Adds the provided json modifier
-- `.dyeLeather(color: DyeColor)`: Adds a `tfc:dye_leather` modifier with the provided color
-- `.addHeat(temperature: number)`: Adds a `tfc:add_heat` with the provided temperature, allows negative values
-- `.addPowder()`: Adds a `tfc:add_powder` modifier
-- `.addTrait(trait: string)`: Adds a `tfc:add_trait` modifier with the provided trait value
-- `.removeTrait(trait: string)`: Adds a `tfc:remove_trait` modifier with the provided trait value
-- `.addGlass()`: Adds a `tfc:add_glass` modifier
-- `.copyFood()`: Adds a `tfc:copy_food` modifier
-- `.copyForgingBonus()`: Adds a `tfc:copy_forging_bonus` modifier
-- `.copyHeat()`: Adds a `tfc:copy_heat` modifier
-- `.copyInput()`: Adds a `tfc:copy_input` modifier
-- `.emptyBowl()`: Adds a `tfc:empty_bowl` modifier
-- `.resetFood()`: Adds a `tfc:reset_food` modifier
-- `.copyOldestFood()`: Adds a `tfc:copy_oldest_food` modifier
-- `.addBait()`: Adds a `tfc:add_bait_to_rod` modifier
-- `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`: Adds a `tfc:meal` modifier
+- `.stack()`{: .language-javascript }: Returns the `ItemStack` of the ISP
+- `.modifiers()`{: .language-javascript }: Returns a json array of all of the applied modifiers
+- `.isEmpty()`{: .language-javascript }: Returns true if the stack and modifier list is empty
+- `.withCount(i: number)`{: .language-javascript }: Sets the stacks count to the provided value
+- `.getCount()`{: .language-javascript }: Returns the stack's count
+- `.getJsonStack()`{: .language-javascript }: Returns a json object representing the item stack
+- `.getModifiersOfType(type: string)`{: .language-javascript }: Returns a list of json objects which represent the applied modifiers with the given type
+- `.toJson()`{: .language-javascript }: Returns the json representation of the ISP
+- `.asCanonClass()`{: .language-javascript }: Returns the ISP as an `ItemStackProvider` object, TFC's canonical class for this data
+- `.dependsOnInput()`{: .language-javascript }: Returns true if any of the applied modifiers is dependent on the recipe's input
+- `.copy()`{: .language-javascript }: Returns a copy of the ISP
+- `.getTag()`{: .language-javascript }: Returns the item stack's `CompoundTag`, may be null
+- `.setTag(tag: CompoundTag)`{: .language-javascript }: Sets the item stack's `CompoundTag`
+- `.mergeTag(tag: CompoundTag)`{: .language-javascript }: Merges the provided `CompoundTag` into the item stack's
+- `.simpleModifier(type: string)`{: .language-javascript }: Adds a modifier of the provided type
+- `.jsonModifier(modifier: JsonObject)`{: .language-javascript }: Adds the provided json modifier
+- `.dyeLeather(color: DyeColor)`{: .language-javascript }: Adds a `tfc:dye_leather` modifier with the provided color
+- `.addHeat(temperature: number)`{: .language-javascript }: Adds a `tfc:add_heat` with the provided temperature, allows negative values
+- `.addPowder()`{: .language-javascript }: Adds a `tfc:add_powder` modifier
+- `.addTrait(trait: string)`{: .language-javascript }: Adds a `tfc:add_trait` modifier with the provided trait value
+- `.removeTrait(trait: string)`{: .language-javascript }: Adds a `tfc:remove_trait` modifier with the provided trait value
+- `.addGlass()`{: .language-javascript }: Adds a `tfc:add_glass` modifier
+- `.copyFood()`{: .language-javascript }: Adds a `tfc:copy_food` modifier
+- `.copyForgingBonus()`{: .language-javascript }: Adds a `tfc:copy_forging_bonus` modifier
+- `.copyHeat()`{: .language-javascript }: Adds a `tfc:copy_heat` modifier
+- `.copyInput()`{: .language-javascript }: Adds a `tfc:copy_input` modifier
+- `.emptyBowl()`{: .language-javascript }: Adds a `tfc:empty_bowl` modifier
+- `.resetFood()`{: .language-javascript }: Adds a `tfc:reset_food` modifier
+- `.copyOldestFood()`{: .language-javascript }: Adds a `tfc:copy_oldest_food` modifier
+- `.addBait()`{: .language-javascript }: Adds a `tfc:add_bait_to_rod` modifier
+- `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`{: .language-javascript }: Adds a `tfc:meal` modifier
     - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition]({% link kubejs_tfc/1.20.1/data.md %}#food-items)
     - *Optional 2nd argument*: An array of consumers specifying the portions of a meal
-        - `.ingredient(ingredient: Ingredient)`: Sets the portion's ingredient
-        - `.nutrientModifier(modifier: number)`: Multiplies the nutrition from the ingredient, defaults to 1
-        - `.waterModifier(modifier: number)`: Multiplies the water from the ingredient, defaults to 1
-        - `.saturationModifier(modifier: number)`: Multiplies the saturation from the ingredient, defaults to 1
+        - `.ingredient(ingredient: Ingredient)`{: .language-javascript }: Sets the portion's ingredient
+        - `.nutrientModifier(modifier: number)`{: .language-javascript }: Multiplies the nutrition from the ingredient, defaults to 1
+        - `.waterModifier(modifier: number)`{: .language-javascript }: Multiplies the water from the ingredient, defaults to 1
+        - `.saturationModifier(modifier: number)`{: .language-javascript }: Multiplies the saturation from the ingredient, defaults to 1
 
 <a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
 
-- `.firmaLifeAddPiePan()`: Adds a `firmalife:add_pie_pan` modifier
-- `.firmaLifeCopyDynamicFood()`: Adds a `firmalife:copy_dynamic_food` modifier
-- `.firmaLifeEmptyPan()`: Adds a `firmalife:empty_pan` modifier
+- `.firmaLifeAddPiePan()`{: .language-javascript }: Adds a `firmalife:add_pie_pan` modifier
+- `.firmaLifeCopyDynamicFood()`{: .language-javascript }: Adds a `firmalife:copy_dynamic_food` modifier
+- `.firmaLifeEmptyPan()`{: .language-javascript }: Adds a `firmalife:empty_pan` modifier
 
 ## Examples
 

@@ -59,7 +59,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.alloy(
     result: string,
     contents: AlloyPart[]
@@ -93,7 +93,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method signature
 
-```ts
+```js
 event.recipes.tfc.welding(
     result: ItemStackProviderJS,
     firstInput: Ingredient,
@@ -125,7 +125,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.anvil(
     result: ItemStackProviderJS,
     input: Ingredient,
@@ -166,7 +166,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.barrel_instant_fluid(
     outputFluid: FluidStack,
     primaryFluid: FluidStackIngredient,
@@ -201,7 +201,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.barrel_instant()
     // Additional methods
     .outputItem(outputItem: ItemStackProviderJS)
@@ -242,7 +242,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.barrel_sealed(duration: number)
     // Additional methods
     .outputItem(outputItem: ItemStackProviderJS)
@@ -293,7 +293,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.blast_furnace(
     result: FluidStack,
     catalyst: Ingredient,
@@ -323,7 +323,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.bloomery(
     result: ItemStackProviderJS,
     catalyst: Ingredient,
@@ -356,7 +356,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.casting(
     result: ItemStackProviderJS,
     mold: Ingredient,
@@ -392,7 +392,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: ChiselMode)
     // Additional methods
     .itemIngredient(itemIngredient: Ingredient)
@@ -423,7 +423,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/recipe
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.collapse(result?: BlockState, ingredient: BlockIngredient)
 event.recipes.tfc.landslide(result?: BlockState, ingredient: BlockIngredient)
 ```
@@ -446,7 +446,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.glassworking(
     result: ItemStack,
     batch: Ingredient,
@@ -480,7 +480,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
     // Additional methods
     .resultItem(resultItem: ItemStackProviderJS)
@@ -523,7 +523,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.knapping(
     result: ItemStack,
     knappingType: string,
@@ -565,7 +565,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.loom(
     result: ItemStackProviderJS,
     ingredient: Ingredient,
@@ -598,7 +598,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.pot_jam(
     result: ItemStack,
     ingredients: Ingredient[],
@@ -643,7 +643,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.pot(
     ingredients: Ingredient[],
     fluidIngredient: FluidStackIngredient,
@@ -698,7 +698,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.pot_soup(
     ingredients: Ingredient[],
     fluidIngredient: FluidStackIngredient,
@@ -737,7 +737,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.quern(result: ItemStackProviderJS, ingredient: Ingredient)
 ```
 
@@ -758,7 +758,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.scraping(
     result: ItemStackProviderJS,
     ingredient: Ingredient,
@@ -793,7 +793,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.sewing(result: ItemStack, stitches: number[45], squares: number[32])
 ```
 
@@ -833,7 +833,7 @@ This recipe type supports[^2] Kube's ingredient and result modifiers. The result
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.advanced_shaped_crafting(
     result: ItemStackProviderJS,
     pattern: string[],
@@ -877,7 +877,7 @@ This recipe type supports[^2] Kube's ingredient and result modifiers. The result
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.tfc.advanced_shapeless_crafting(
     result: ItemStackProviderJS,
     ingredients: Ingredient[],
@@ -917,7 +917,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 
 ### Method Signatures
 
-```ts
+```js
 event.recipes.tfc.damage_inputs_shaped_crafting(recipe: ShapedCraftingRecipe)
 event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingRecipe)
 ```
@@ -957,7 +957,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 
 ### Method Signatures
 
-```ts
+```js
 event.recipes.tfc.extra_products_shaped_crafting(
     extraProducts: ItemStack[],
     recipe: ShapedCraftingRecipe
@@ -1007,7 +1007,7 @@ This is a crafting recipe type that prevents any remainders from being left afte
 
 ### Method Signatures
 
-```ts
+```js
 event.recipes.tfc.no_remainder_shaped_crafting(recipe: ShapedCraftingRecipe)
 event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecipe)
 ```
@@ -1047,7 +1047,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.drying(
     result: ItemStackProviderJS,
     ingredient: Ingredient
@@ -1074,7 +1074,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.smoking(
     result: ItemStackIngredientJS,
     ingredient: Ingredient
@@ -1101,7 +1101,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.mixing_bowl()
     // Additional Methods
     .outputItem(outputItem: ItemStack)
@@ -1135,7 +1135,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.oven(
     ingredient: Ingredient,
     temperature: number,
@@ -1168,7 +1168,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.stinky_soup(
     ingredients: Ingredient[],
     fluidIngredient: FluidStackIngredient,
@@ -1207,7 +1207,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.vat()
     // Additional methods
     .outputItem(outputProvider: ItemStackProviderJS)
@@ -1248,7 +1248,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.stomping(
     result: ItemStackProviderJS,
     ingredient, Ingredient,
@@ -1284,7 +1284,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.firmalife.bowl_pot(
     itemOutput: ItemStack,
     ingredients: Ingredient[],
@@ -1351,7 +1351,7 @@ This recipe type is currently unused by FirmaLife and actually adds itself to th
 
 ## Method Signature
 
-```ts
+```js
 event.recipes.firmalife.press(
     result: ItemStackProviderJS,
     ingredient: Ingredient,
@@ -1387,7 +1387,7 @@ AFC's tree tapping recipe type
 
 ### Method Signature
 
-```ts
+```js
 event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
     // Additional methods
     .resultFluid(fluid: FluidStackJS)

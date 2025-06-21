@@ -75,7 +75,7 @@ The `/kubejs_tfc print_world_settings` command has no arguments.
 
 Using the command will print out the [TFC Settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/) of the current level if its generator is TFC-like (implements TFC's `ChunkGeneratorExtension`).
 
-The rock layer settings will not be printed, due to them usually filling the entirety of the message history itself. Instead, `~~~` will be printed in its place with a click intereaction to run the command that [prints rock settings](#print-rock-settings).
+The rock layer settings will not be printed, due to them usually filling the entirety of the message history itself. Instead, `~~~` will be printed in its place with a click interaction to run the command that [prints rock settings](#print-rock-settings).
 
 ## Print Rock Settings
 

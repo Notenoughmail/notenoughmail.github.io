@@ -29,8 +29,8 @@ permalink: /writing/feed.xml
                 <details class="tags">
                     <summary>Tags</summary>
                     <span style="font-style:small;"><ul>
-                        {% for tag in post.tags %}{% assign t = site.post-tags[tag].tag %}
-                        <li><a href="{{ t[1] }}">{{ t[0] }}</a></li>
+                        {% for tag in post.tags %}{% assign t = site.post-tags[tag] %}
+                        <li><a href="{{ t.link }}">{{ t.title }}</a></li>
                         {% endfor %}
                     </ul></span>
                 </details>

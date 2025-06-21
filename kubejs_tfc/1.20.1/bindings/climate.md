@@ -16,7 +16,7 @@ These are available under the `TFC.climate` field
 
 ## Method Signatures
 
-```ts
+```js
 TFC.climate.getModel(o: any)
 TFC.climate.getName(model: ClimateModel)
 TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos)
@@ -29,16 +29,16 @@ TFC.climate.getWindVector(level: Level, pos: BlockPos)
 TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos)
 ```
 
-- `.getModel(o: any)`: Attempts to get a climate model from the provided object, will return null if it cannot do so
-- `.getName(model: ClimateModel)`: Returns the name of the provided climate model
-- `.getCurrentTemperature(level: Level, pos: BlockPos)`: Returns the current temperature at the given level and position
-- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`: Returns the temperature at the given level, position, and calendar tick
-- `.getAverageTemperature(level: Level, pos: BlockPos)`: Returns the yearly average temperature at the given level and position
-- `.getAverageRainfall(level: Level, pos: BlockPos)`: Returns the yearly average temperature at the given level and position
-- `.getFogginess(level: Level, pos: BlockPos)`: Returns the current air fog value at the given level and position
-- `.getWaterFogginess(level: Level, pos: BlockPos)`: Returns the current water fog value at the given level and position
-- `.getWindVector(level: Level, pos: BlockPos)`: Returns the current `Vec2` wend vector at the given level and position
-- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`: Returns `true` if it is currently warm enough to rain at the given level and position
+- `.getModel(o: any)`{: .language-javascript }: Attempts to get a climate model from the provided object, will return null if it cannot do so
+- `.getName(model: ClimateModel)`{: .language-javascript }: Returns the name of the provided climate model
+- `.getCurrentTemperature(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current temperature at the given level and position
+- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`{: .language-javascript }: Returns the temperature at the given level, position, and calendar tick
+- `.getAverageTemperature(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the yearly average temperature at the given level and position
+- `.getAverageRainfall(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the yearly average temperature at the given level and position
+- `.getFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current air fog value at the given level and position
+- `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current water fog value at the given level and position
+- `.getWindVector(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current `Vec2` wend vector at the given level and position
+- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-javascript }: Returns `true` if it is currently warm enough to rain at the given level and position
 
 ## Example
 

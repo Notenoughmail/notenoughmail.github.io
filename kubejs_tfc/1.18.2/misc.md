@@ -606,15 +606,15 @@ AnimalGender.MALE
 
 A collection of helpful methods when dealing with climate models
 
-- `getModel(Object)`: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
-- `getName(ClimateModel)`: Will retrieve the name of the provided climate model
-- `getCurrentTemperature(BlockContainerJS)`: Returns the temperature at the specified block at that moment
-- `getTemperature(BlockContainerJS, Long)`: Returns the temperature at the specified block at he provided calendar tick
-- `getAverageTemperature(BlockContainerJS)`: Returns the average temperature at the specified block
-- `getAverageRainfall(BlockContainerJS)`: Returns the average rainfall at the specified block
-- `getFogginess(BlockContainerJS)`: Returns the fogginess at the specified block
-- `getWaterFogginess(BlockContainerJS)`: Returns the water fogginess at the specified block
-- `isWarnEnoughToRain(BlockContainerJS)`: Returns true if it is warm enough to rain at the specified block
+- `.getModel(Object)`{: .language-javascript }: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
+- `.getName(ClimateModel)`{: .language-javascript }: Will retrieve the name of the provided climate model
+- `.getCurrentTemperature(BlockContainerJS)`{: .language-javascript }: RReturns the temperature at the specified block at that moment
+- `.getTemperature(BlockContainerJS, Long)`{: .language-javascript }: RReturns the temperature at the specified block at he provided calendar tick
+- `.getAverageTemperature(BlockContainerJS)`{: .language-javascript }: RReturns the average temperature at the specified block
+- `.getAverageRainfall(BlockContainerJS)`{: .language-javascript }: Returns the average rainfall at the specified block
+- `.getFogginess(BlockContainerJS)`{: .language-javascript }: Returns the fogginess at the specified block
+- `.getWaterFogginess(BlockContainerJS)`{: .language-javascript }: Returns the water fogginess at the specified block
+- `.isWarnEnoughToRain(BlockContainerJS)`{: .language-javascript }: Returns true if it is warm enough to rain at the specified block
 
 ```js
 Climate.getModel('kubejs:my_advanced_model')
@@ -639,10 +639,10 @@ Represents the months of the year
 
 Each month also has a few methods:
 
-- `getTemperatureModifier()`: Returns a number that TFC uses to adjust the temperature during a month
-- `next()`: Returns the next month
-- `isWithin(Month, Month)`: Returns true if the month is between the two provided months
-- `getSeason()`: Returns the season the month is in
+- `.getTemperatureModifier()`{: .language-javascript }: Returns a number that TFC uses to adjust the temperature during a month
+- `.next()`{: .language-javascript }: Returns the next month
+- `.isWithin(Month, Month)`{: .language-javascript }: Returns true if the month is between the two provided months
+- `.getSeason()`{: .language-javascript }: Returns the season the month is in
 
 ```js
 Month.JULY.next()
@@ -659,8 +659,8 @@ Represents the seasons of the year
 
 Each season also has a few methods:
 
-- `next()`: Returns the next season
-- `previous()`: Returns the previous season
+- `.next()`{: .language-javascript }: Returns the next season
+- `.previous()`{: .language-javascript }: Returns the previous season
 
 ```js
 Season.FALL.next()
@@ -670,54 +670,54 @@ Season.FALL.next()
 
 A collection of methods for getting information about the calendar. Methods with 'calendar' in their name are synced with the daylight cycle and should not be used to save time stamps as they may go backwards
 
-- `getCalendarTicksInMonth(Integer)`: Returns how many ticks are in a month based upon the provided number of days in a month
-- `getCalendarTicksInYear(Integer)`: Returns how many ticks are in a year based upon the provided number of days in a month
-- `getTotalMinutes(number)`: Returns how many in-game minutes are in the number of provided time
-- `getTotalHours(number)`: Returns how many in-game hours are in the number of provided time
-- `getTotalDays(number)`: Returns how many in-game days are in the number of provided time
-- `getTotalMonths(number, Integer)`: Returns how many in-game months are in the number of provided time for the provided number of days in a month
-- `getTotalYears(number, Integer)`: Returns how many in-game years are in the number of provided time for the provided number of days in a month
-- `getMinuteOfHour(number)`: Returns the minute of the hour, [0, 59] of the provided time
-- `getHourOfDay(number)`: Returns the hour of the day, [0, 23], of the provided time
-- `getDayOfMonth(number, Integer)`: Returns the day of the month of the provided time for the provided number of days in a month
-- `getFractionOfMonth(number, Integer)`: Returns how far through a month, [0, 1], the provided time is for the given number of days in a month
-- `getFractionOfYear(number, Integer)`: Returns how far through a year, [0, 1], the provided time is for the given number of days in a month
-- `getMonthOfYear(number, Integer)`: Returns the month of the provided time for the given number of days in a month
-- `getTimeAndDate(number, Integer)`: Returns a text component displaying text component displaying an exact time stamp of the provided time and number of days in a month
-- `getTimeAndDat(Integer, Integer, Month, Integer, number)`: Returns a text component displaying an exact time stamp of the provided hour, minute, month, day, and year
-- `getTimeDelta(number, Integer)`: Returns a text component displaying the amount of time in hour/day/month/year format for the provided number of ticks and number of days in a month
+- `.getCalendarTicksInMonth(Integer)`{: .language-javascript }: Returns how many ticks are in a month based upon the provided number of days in a month
+- `.getCalendarTicksInYear(Integer)`{: .language-javascript }: Returns how many ticks are in a year based upon the provided number of days in a month
+- `.getTotalMinutes(number)`{: .language-javascript }: Returns how many in-game minutes are in the number of provided time
+- `.getTotalHours(number)`{: .language-javascript }: Returns how many in-game hours are in the number of provided time
+- `.getTotalDays(number)`{: .language-javascript }: Returns how many in-game days are in the number of provided time
+- `.getTotalMonths(number, Integer)`{: .language-javascript }: Returns how many in-game months are in the number of provided time for the provided number of days in a month
+- `.getTotalYears(number, Integer)`{: .language-javascript }: Returns how many in-game years are in the number of provided time for the provided number of days in a month
+- `.getMinuteOfHour(number)`{: .language-javascript }: Returns the minute of the hour, [0, 59] of the provided time
+- `.getHourOfDay(number)`{: .language-javascript }: Returns the hour of the day, [0, 23], of the provided time
+- `.getDayOfMonth(number, Integer)`{: .language-javascript }: Returns the day of the month of the provided time for the provided number of days in a month
+- `.getFractionOfMonth(number, Integer)`{: .language-javascript }: Returns how far through a month, [0, 1], the provided time is for the given number of days in a month
+- `.getFractionOfYear(number, Integer)`{: .language-javascript }: Returns how far through a year, [0, 1], the provided time is for the given number of days in a month
+- `.getMonthOfYear(number, Integer)`{: .language-javascript }: Returns the month of the provided time for the given number of days in a month
+- `.getTimeAndDate(number, Integer)`{: .language-javascript }: Returns a text component displaying text component displaying an exact time stamp of the provided time and number of days in a month
+- `.getTimeAndDat(Integer, Integer, Month, Integer, number)`{: .language-javascript }: Returns a text component displaying an exact time stamp of the provided hour, minute, month, day, and year
+- `.getTimeDelta(number, Integer)`{: .language-javascript }: Returns a text component displaying the amount of time in hour/day/month/year format for the provided number of ticks and number of days in a month
 
 The following methods return a Calendar object
 
-- `getCalendar()`: Returns a Calendar, may be the server or client side calendar depending on if the calling location appears to be server or client side
-- `getCalendar(boolean)`: Returns a Calendar. If true returns the client calendar, else the server calendar
-- `getCalendar(LevelReader)`: Returns the provided level's calendar
-- `getCalendar(LevelJS)`: Returns the provided LevelJS's calendar
+- `.getCalendar()`{: .language-javascript }: Returns a Calendar, may be the server or client side calendar depending on if the calling location appears to be server or client side
+- `.getCalendar(boolean)`{: .language-javascript }: Returns a Calendar. If true returns the client calendar, else the server calendar
+- `.getCalendar(LevelReader)`{: .language-javascript }: Returns the provided level's calendar
+- `.getCalendar(LevelJS)`{: .language-javascript }: Returns the provided LevelJS's calendar
 
 The calendars have the following methods available
 
-- `getTicks()`: Returns the amount of ticks since the world was created
-- `getCalendarTicks()`: Returns the amount of ticks since Jan 1, 1000
-- `getCalendarDaysInMonth()`: Returns the amount of days in a month
-- `ticksToCalendarTicks(number)`: Returns the calendar tick corresponding to the given tick
-- `getTotalHours()`: Returns the total amount of hours passed
-- `getTotalCalendarHours()`: Returns the total number of hours passed since Jan 1, 1000
-- `getTotalDays()`: Returns the total amount of days passed
-- `getTotalCalendarDays()`: Returns the total amount of days passed since Jan 1, 1000
-- `getTotalMonths()`: Returns the total amount of months passed
-- `getTotalCalendarMonths()`: Returns the total amount of months passed since Jan 1, 1000
-- `getTotalYears()`: Returns the total amount of years passed
-- `getTotalCalendarYears()`: Returns the total amount of years passed since Jan 1, 1000
-- `getCalendarDayTime()`: Returns the equivalent total world time; 0 = 6:00 which is calendar time 6000
-- `getCalendarDayOfMonth()`: Returns the current day of the month
-- `getCalendarFractionOfMonth()`: Returns the progress through the month
-- `getCalendarFractionOfYear()`: Returns the progress though the year
-- `getCalendarDayOfYear()`: Returns a text component displaying the current day of the week
-- `getCalendarMonthOfYear()`: Returns a text component displaying the current month of the year
-- `getCalendarTicksInMonth()`: Returns the number of ticks in a month
-- `getCalendarTicksInYear()`: Returns the number of ticks in a year
-- `getCalendarTimeAndDate()`: Returns a text component displaying an exact time stamp
-- `getTimeDelta(number)`: Returns a text component displaying a length of time based upon the number given
+- `.getTicks()`{: .language-javascript }: Returns the amount of ticks since the world was created
+- `.getCalendarTicks()`{: .language-javascript }: Returns the amount of ticks since Jan 1, 1000
+- `.getCalendarDaysInMonth()`{: .language-javascript }: Returns the amount of days in a month
+- `.ticksToCalendarTicks(number)`{: .language-javascript }: Returns the calendar tick corresponding to the given tick
+- `.getTotalHours()`{: .language-javascript }: Returns the total amount of hours passed
+- `.getTotalCalendarHours()`{: .language-javascript }: Returns the total number of hours passed since Jan 1, 1000
+- `.getTotalDays()`{: .language-javascript }: Returns the total amount of days passed
+- `.getTotalCalendarDays()`{: .language-javascript }: Returns the total amount of days passed since Jan 1, 1000
+- `.getTotalMonths()`{: .language-javascript }: Returns the total amount of months passed
+- `.getTotalCalendarMonths()`{: .language-javascript }: Returns the total amount of months passed since Jan 1, 1000
+- `.getTotalYears()`{: .language-javascript }: Returns the total amount of years passed
+- `.getTotalCalendarYears()`{: .language-javascript }: Returns the total amount of years passed since Jan 1, 1000
+- `.getCalendarDayTime()`{: .language-javascript }: Returns the equivalent total world time; 0 = 6:00 which is calendar time 6000
+- `.getCalendarDayOfMonth()`{: .language-javascript }: Returns the current day of the month
+- `.getCalendarFractionOfMonth()`{: .language-javascript }: Returns the progress through the month
+- `.getCalendarFractionOfYear()`{: .language-javascript }: Returns the progress though the year
+- `.getCalendarDayOfYear()`{: .language-javascript }: Returns a text component displaying the current day of the week
+- `.getCalendarMonthOfYear()`{: .language-javascript }: Returns a text component displaying the current month of the year
+- `.getCalendarTicksInMonth()`{: .language-javascript }: Returns the number of ticks in a month
+- `.getCalendarTicksInYear()`{: .language-javascript }: Returns the number of ticks in a year
+- `.getCalendarTimeAndDate()`{: .language-javascript }: Returns a text component displaying an exact time stamp
+- `.getTimeDelta(number)`{: .language-javascript }: Returns a text component displaying a length of time based upon the number given
 
 ```js
 Calendar.getCalendar().getTotalYears()

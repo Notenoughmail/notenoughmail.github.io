@@ -44,7 +44,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.geode(
     name: string,
     outer: string,
@@ -93,7 +93,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.boulder(name: string, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -127,7 +127,7 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ### Method Signature
 
-```ts
+```js
 event.babyBoulder(name: string, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -161,7 +161,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.thinSpike(
     name: string,
     state: string,
@@ -215,7 +215,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.clusterVein(
     name: string,
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
@@ -264,7 +264,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.pipeVein(
     name: string,
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
@@ -325,7 +325,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.discVein(
     name :string,
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
@@ -374,7 +374,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.ifThen(name: string, if_: string, then: string, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -389,7 +389,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.soilDisc(
     name: string,
     replacementMap: List<BlockToBlockStateMapEntry>,
@@ -434,7 +434,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.hotSpring(
     name: string,
     wallState: @Nullable string,
@@ -481,7 +481,7 @@ Notably used by TFC for its wild crops in tandem with [random patch](#random-pat
 
 ### Method Signature
 
-```ts
+```js
 event.simpleBlockState(name: string, blockState: string, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -524,7 +524,7 @@ Creates a `minecraft:random_patch` configured feature
 
 ### Method Signature
 
-```ts
+```js
 event.randomPatch(
     name: string,
     tries: @Nullable number,
@@ -572,7 +572,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -582,7 +582,7 @@ event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatur
 
 ## Spreading Crop
 
-```ts
+```js
 event.spreadingCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -596,7 +596,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```ts
+```js
 event.spreadingBush(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -610,7 +610,7 @@ Creates a configured feature of the given type using the given config
 
 ### Method Signature
 
-```ts
+```js
 event.generic(name: string, type: string, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -625,7 +625,7 @@ This defines an entry to a boulder feature's `state` value
 
 ### Method Signature
 
-```ts
+```js
 event.boulderState(rock: string, blockStates: List<string>)
 ```
 
@@ -640,7 +640,7 @@ This defines an entry to a blocks to weighted blockstates map
 
 ### Method Signature
 
-```ts
+```js
 event.blockToWeightedBlockState(replace: List<string>, with: List<string>)
 ```
 
@@ -655,7 +655,7 @@ This defines an entry to a block to blockstate map
 
 ### Method Signature
 
-```ts
+```js
 event.blockToBlockState(block: string, state: string)
 ```
 
@@ -668,7 +668,7 @@ Hot springs and fissures may have additional decorations around them, this is us
 
 ### Method Signature
 
-```ts
+```js
 event.fissureDecoration(
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
@@ -692,7 +692,7 @@ Defines the vein's indicator
 
 Method signature:
 
-```ts
+```js
 vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: List<string>)
 ```
 
@@ -708,7 +708,7 @@ Determines the `project` value of the vein
 
 Method signature:
 
-```ts
+```js
 vein.project(b: boolean)
 ```
 
@@ -720,7 +720,7 @@ Determines the `project_offset` value of the vein
 
 Method signature:
 
-```ts
+```js
 vein.projectOffset(b: boolean)
 ```
 
@@ -732,7 +732,7 @@ Determines the `biomes` values of the vein
 
 Method signature:
 
-```ts
+```js
 vein.biomes(biomeTag: string)
 ```
 
@@ -744,7 +744,7 @@ Determines the `near_lava` value of the vein
 
 Method signature:
 
-```ts
+```js
 vein.nearLava(b: boolean)
 ```
 
@@ -760,7 +760,7 @@ Adds a placement of the provided type with no arguments
 
 Method signature:
 
-```ts
+```js
 placement.simplePlacement(type: string)
 ```
 
@@ -772,7 +772,7 @@ Adds the provided json object as a placement modifier
 
 Method signature:
 
-```ts
+```js
 placement.jsonPlacement(json: JsonObject)
 ```
 
@@ -784,7 +784,7 @@ Adds a placement modifier of type `tfc:biome`
 
 Method Signature:
 
-```ts
+```js
 placement.tfcBiome()
 ```
 
@@ -794,18 +794,18 @@ Adds a placement modifier of type `tfc:climate`
 
 Method signature:
 
-```ts
+```js
 placement.climate(climate: Consumer<ClimateModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.minRain(f: number)`: Accepts a number, sets the minimum rainfall
-    - `.maxRain(f: number)`: Accepts a number, sets the maximum rainfall
-    - `.minTemp(f: number)`: Accepts a number, sets the minimum temperature
-    - `.maxTemp(f: number)`: Accepts a number, sets the maximum temperature
-    - `.minForest(forest: string)`: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
-    - `.maxForest(forest: string)`: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
-    - `.fuzzy(b: boolean)`: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
+    - `.minRain(f: number)`{: .language-javascript }: Accepts a number, sets the minimum rainfall
+    - `.maxRain(f: number)`{: .language-javascript }: Accepts a number, sets the maximum rainfall
+    - `.minTemp(f: number)`{: .language-javascript }: Accepts a number, sets the minimum temperature
+    - `.maxTemp(f: number)`{: .language-javascript }: Accepts a number, sets the maximum temperature
+    - `.minForest(forest: string)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
+    - `.maxForest(forest: string)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
+    - `.fuzzy(b: boolean)`{: .language-javascript }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
 
@@ -813,14 +813,14 @@ Adds a placement modifier of type `tfc:flat_enough`
 
 Method signature:
 
-```ts
+```js
 placement.flatEnough(flatness: Consumer<FlatnessModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.flatness(f: number)`: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`
-    - `.radius(i: number)`: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to 2
-    - `.maxDepth(i: number)`: Accepts a number, sets how deep from the initial position the modifier should search, defaults to 4
+    - `.flatness(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`
+    - `.radius(i: number)`{: .language-javascript }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to 2
+    - `.maxDepth(i: number)`{: .language-javascript }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to 4
 
 ### Near Water
 
@@ -828,7 +828,7 @@ Adds a placement modifier of type `tfc:near_water`
 
 Method signature:
 
-```ts
+```js
 placement.nearWater(radius: number)
 ```
 
@@ -840,7 +840,7 @@ Adds a placement modifier of type `tfc:shallow_water`
 
 Method Signature:
 
-```ts
+```js
 placement.shallowWater(depth: number)
 ```
 
@@ -852,7 +852,7 @@ Adds a placement modifier of type `tfc:underground`
 
 Method signature:
 
-```ts
+```js
 placement.underground()
 ```
 
@@ -862,7 +862,7 @@ Adds a placement modifier of type `tfc:volcano`
 
 Method signature:
 
-```ts
+```js
 placement.volcano(center: boolean, distance: number)
 ```
 
@@ -875,7 +875,7 @@ Adds a placement modifier of type `minecraft:in_square`
 
 Method signature:
 
-```ts
+```js
 placement.inSquare()
 ```
 
@@ -885,7 +885,7 @@ Adds a placement modifier of type `minecraft:rarity_filter`
 
 Method signature:
 
-```ts
+```js
 placement.rarityFilter(chance: number)
 ```
 
@@ -897,7 +897,7 @@ Adds a placement modifier of type `minecraft:heightmap`
 
 Method signature:
 
-```ts
+```js
 placement.heightMap(heightMap: string)
 ```
 

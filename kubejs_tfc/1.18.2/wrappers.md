@@ -146,25 +146,25 @@ Adds a [meal](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-s
 
 The first argument is a consumer and is the same as the one used to define a [food item](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Data#food-items), however the available methods are here for convenience
 
-- `hunger(integer)`: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
+- `.hunger(integer)`{: .language-javascript }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
     - The player's full hunger bar is equal to 20
-- `saturation(number)`: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
-- `water(number)`: Accepts a number and defines how much water the ingredient restores, defaults to 0
+- `.saturation(number)`{: .language-javascript }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
+- `.water(number)`{: .language-javascript }: Accepts a number and defines how much water the ingredient restores, defaults to 0
     - The player's full water bar is equal to 100
-- `decayModifier(number)`: Accepts a number and defines how quickly the ingredient decays, defaults to 1
+- `.decayModifier(number)`{: .language-javascript }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
     - A higher value means a faster decay and shorter expiration time
-- `grain(number)`: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
-- `fruit(number)`: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
-- `vegetables(number)`: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
-- `protein(number)`: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
-- `dairy(number)`: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
+- `.grain(number)`{: .language-javascript }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
+- `.fruit(number)`{: .language-javascript }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
+- `.vegetables(number)`{: .language-javascript }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
+- `.protein(number)`{: .language-javascript }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
+- `.dairy(number)`{: .language-javascript }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
 
 The second argument is an optional array of portion consumers which have four optional methods available
 
-- `ingredient(ingredient)`: Accepts an ingredient, sets the ingredient to be used for this portion, if not specified this will match all foods
-- `nutrientModifier(number)`: Accepts a number and multiplies the nutrition from the food of this portion, defaults to 1.0
-- `waterModifier(number)`: Accepts a number and multiples the water from the food of this portion, defaults to 1.0
-- `saturationModifier(number)`: Accepts a number and multiples the saturation from the food of this portion, defaults to 1.0
+- `.ingredient(ingredient)`{: .language-javascript }: Accepts an ingredient, sets the ingredient to be used for this portion, if not specified this will match all foods
+- `.nutrientModifier(number)`{: .language-javascript }: Accepts a number and multiplies the nutrition from the food of this portion, defaults to 1.0
+- `.waterModifier(number)`{: .language-javascript }: Accepts a number and multiples the water from the food of this portion, defaults to 1.0
+- `.saturationModifier(number)`{: .language-javascript }: Accepts a number and multiples the saturation from the food of this portion, defaults to 1.0
 
 For an example of usage see the advanced shapeless crafting recipe [example](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Recipes#advanced-shapeless-crafting)
 
@@ -226,12 +226,12 @@ Adds a `tfcchannelcasting:conditional` modifier
 
 The first consumer has several methods
 
-- `type(string)`: Sets the type of condition, may either be `has_trait` or `date_range`
-- `trait(string)`: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
-- `minDay(integer)`: Sets the minimum day of the month the conditional looks for, only applicable for the `date_range` type
-- `maxDay(integer)`: Sets the maximum day of the month the conditional looks for, only applicable for the `date_range` type
-- `minMonth(integer)`: Sets the minimum month of the year the conditional looks for, only applicable for the `date_range` type
-- `maxMonth(integer)`: Sets the maximum month of the year the conditional looks for, only applicable for the `date_range` type
+- `.type(string)`{: .language-javascript }: Sets the type of condition, may either be `has_trait` or `date_range`
+- `.trait(string)`{: .language-javascript }: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
+- `.minDay(integer)`{: .language-javascript }: Sets the minimum day of the month the conditional looks for, only applicable for the `date_range` type
+- `.maxDay(integer)`{: .language-javascript }: Sets the maximum day of the month the conditional looks for, only applicable for the `date_range` type
+- `.minMonth(integer)`{: .language-javascript }: Sets the minimum month of the year the conditional looks for, only applicable for the `date_range` type
+- `.maxMonth(integer)`{: .language-javascript }: Sets the maximum month of the year the conditional looks for, only applicable for the `date_range` type
 
 The second consumer will accept any item stack provider modifiers, these will be applied to the item if the conditional passes
 

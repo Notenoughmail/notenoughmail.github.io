@@ -35,7 +35,7 @@ This defines an object which defines the values used in an [alloy recipe]({% lin
 
 Method signature:
 
-```ts
+```js
 TFC.alloyPart(metal: string, min: number, max: number)
 ```
 
@@ -63,7 +63,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signature:
 
-```ts
+```js
 TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | Regex | List<(string | Block | BlockState | tagKey<Block> | Regex)> | BlockIngredient))
 ```
 
@@ -101,7 +101,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signature:
 
-```ts
+```js
 TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | Regex | List<(string | Fluid | TagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
 
@@ -139,7 +139,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signatures:
 
-```ts
+```js
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number)
 TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | Regex | List<(string | Fluid | tagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
