@@ -36,7 +36,9 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Nether Fertilizer](#beneath-nether-fertilizer)
 - [Lost Page](#beneath-lost-page)
 
-Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [here](#attached-tfc-data) for specifics
+This event goes in the `server_evetns` folder.
+
+Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [Attached TFC Data](#attached-tfc-data) for specifics
 
 {: .notice #general-notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition
@@ -56,7 +58,7 @@ Climate ranges cannot be added through this, only existing, registered ones can 
 
 ### Method Signature
 
-```ts
+```js
 event.climateRange(
     climateRange: Consumer<BuildClimateRangeData>,
     name: ResourceLocation
@@ -64,12 +66,12 @@ event.climateRange(
 ```
 
 - 1st argument: A consumer with several additional methods:
-    - `.minHydration(i: number)`: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to 0
-    - `.maxHydration(i: number)`: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to 100
-    - `.hydrationWiggle(i: number)`: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to 0
-    - `.minTemperature(f: number)`: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to -100
-    - `.maxTemperature(f: number)`: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to 100
-    - `.temperatureWiggle(f: number)`: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
+    - `.minHydration(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to 0
+    - `.maxHydration(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to 100
+    - `.hydrationWiggle(i: number)`{: .language-javascript }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to 0
+    - `.minTemperature(f: number)`{: .language-javascript }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to -100
+    - `.maxTemperature(f: number)`{: .language-javascript }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to 100
+    - `.temperatureWiggle(f: number)`{: .language-javascript }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
 ### Example
@@ -90,7 +92,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signatures
 
-```ts
+```js
 event.itemDamageResistance(
     ingredient: Ingredient,
     piercing: @Nullable number,
@@ -141,7 +143,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.drinkable(
     fluidIngredient: FluidIngredient,
     drinkableData: Consumer<BuildDrinkableData>,
@@ -151,14 +153,14 @@ event.drinkable(
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.consumeChance(f: number)`: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to 0
-    - `.thirst(i: number)`: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to 0
-    - `.intoxication(i: number)`: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to 0
-    - `.effect(effect: string, effectData?: Consumer<BuildEffectData>)`: Accepts a string, the name of the effect[^1] to be applied and an optional consumer with several additional methods:
-        - `.duration(i: number)`: Accepts a number specifying the number of ticks the effect is applied for, defaults to 20
-        - `.amplifier(i: number)`: Accepts a number specifying the level of the potion effect applied, defaults to 0
-        - `.chance(f: number)`: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to 1
-    - `.food(foodData: Consumer<BuildFoodItemData>)`: Accepts a consumer with the same methods as the one in [food items](#food-items)
+    - `.consumeChance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to 0
+    - `.thirst(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to 0
+    - `.intoxication(i: number)`{: .language-javascript }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to 0
+    - `.effect(effect: string, effectData?: Consumer<BuildEffectData>)`{: .language-javascript }: Accepts a string, the name of the effect[^1] to be applied and an optional consumer with several additional methods:
+        - `.duration(i: number)`{: .language-javascript }: Accepts a number specifying the number of ticks the effect is applied for, defaults to 20
+        - `.amplifier(i: number)`{: .language-javascript }: Accepts a number specifying the level of the potion effect applied, defaults to 0
+        - `.chance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to 1
+    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-javascript }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
@@ -192,7 +194,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.fauna(
     climateData: Consumer<PlacedFeatureProperties$Climate>,
     faunaData: Consumer<BuildFaunaData>,
@@ -202,10 +204,10 @@ event.fauna(
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
 - 2nd argument: A consumer with several additional methods:
-    - `.chance(i: number)`: Accepts a number, sets the chance in 1/N chunks that something will spawn, defaults to 1
-    - `.distanceBelowSeaLevel(i: number)`: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
-    - `.solidGround(b: boolean)`: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`
-    - `.maxBrightness(i: number)`: Accepts a number, sets the maximum light level the mob may spawn in
+    - `.chance(i: number)`{: .language-javascript }: Accepts a number, sets the chance in 1/N chunks that something will spawn, defaults to 1
+    - `.distanceBelowSeaLevel(i: number)`{: .language-javascript }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
+    - `.solidGround(b: boolean)`{: .language-javascript }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`
+    - `.maxBrightness(i: number)`{: .language-javascript }: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
 ### Example
@@ -227,7 +229,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.fertilizer(
     ingredient: Ingredient,
     nitrogen: @Nullable number,
@@ -266,7 +268,7 @@ Items with food data still require vanilla's food properties in order for the ga
 
 ### Method Signature
 
-```ts
+```js
 event.foodItem(
     ingredient: Ingredient,
     foodItemData: Consumer<BuildFoodItemData>,
@@ -276,16 +278,16 @@ event.foodItem(
 
 - 1st argument: An item ingredient, the items to which the food item definition applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.type(type: string)`: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
-    - `.hunger(i: number)`: Accepts a number, sets how much hunger the food restores, defaults to 4. A full hunger bar is 20
-    - `.saturation(f: number)`: Accepts a number, sets how much saturation the food restores, defaults to 0
-    - `.water(f: number)`: Accepts a number, sets how much water the food restores, defaults to 0. A full water bar is equal to 100
-    - `.decayModifier(f: number)`: Accepts a number, sets how quickly the food decays, defaults to 1. A higher number indicates a faster decay rate
-    - `.grain(f: number)`: Accepts a number, sets the amount of grain nutrient the food restores, defaults to 0
-    - `.fruit(f: number)`: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to 0
-    - `.vegetables(f: number)`: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to 0
-    - `.protein(f: number)`: Accepts a number, sets the amount of protein nutrient the food restores, defaults to 0
-    - `.dairy(f: number)`: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to 0
+    - `.type(type: string)`{: .language-javascript }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
+    - `.hunger(i: number)`{: .language-javascript }: Accepts a number, sets how much hunger the food restores, defaults to 4. A full hunger bar is 20
+    - `.saturation(f: number)`{: .language-javascript }: Accepts a number, sets how much saturation the food restores, defaults to 0
+    - `.water(f: number)`{: .language-javascript }: Accepts a number, sets how much water the food restores, defaults to 0. A full water bar is equal to 100
+    - `.decayModifier(f: number)`{: .language-javascript }: Accepts a number, sets how quickly the food decays, defaults to 1. A higher number indicates a faster decay rate
+    - `.grain(f: number)`{: .language-javascript }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to 0
+    - `.fruit(f: number)`{: .language-javascript }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to 0
+    - `.vegetables(f: number)`{: .language-javascript }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to 0
+    - `.protein(f: number)`{: .language-javascript }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to 0
+    - `.dairy(f: number)`{: .language-javascript }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to 0
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the food definition
 
 ### Example
@@ -306,7 +308,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.fuel(
     ingredient: Ingredient,
     temperature: number,
@@ -336,7 +338,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.itemHeat(
     ingredient: Ingredient,
     heatCapacity: number,
@@ -366,7 +368,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.itemSize(
     ingredient: Ingredient,
     size: @Nullable Size,
@@ -393,11 +395,11 @@ TFCEvents.data(event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#knapping-types)!
 
 {: .notice #knapping-type-notice }
-Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is requried for any changes to affect knapping interactions
+Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is required for any changes to affect knapping interactions
 
 ### Method Signature
 
-```ts
+```js
 event.knappingType(
     ingredient: Ingredient,
     ingredientCount: number,
@@ -447,7 +449,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.lampFuel(
     fluidIngredient: FluidIngredient,
     blockIngredient: BlockIngredient,
@@ -475,7 +477,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.metal(
     fluid: Fluid,
     meltTemperature: number,
@@ -532,7 +534,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.support(
     blockIngredient: BlockIngredient,
     up: number,
@@ -562,7 +564,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.sluicing(
     ingredient: Ingredient,
     lootTable: string,
@@ -588,7 +590,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```ts
+```js
 event.panning(
     blockIngredient: BlockIngredient,
     lootTable: string,
@@ -623,7 +625,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.firmalifeGreenhouseType(
     ingredient: BlockIngredient,
     tier: number,
@@ -653,7 +655,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```ts
+```js
 event.firmalifePlantable(
     ingredient: Ingredient,
     planterType: @Nullable PlanterType,
@@ -715,7 +717,7 @@ Defines a new nether fertilizer
 
 ### Method Signature
 
-```ts
+```js
 event.beneathNetherFertilizer(
     ingredient: Ingredient,
     death: @Nullable number,
@@ -757,7 +759,7 @@ Defines a new lost page ritual, added to the pool of possible rituals that may b
 
 ### Method Definition
 
-```ts
+```js
 event.beneathLostPage(
     ingredient: Ingredient,
     reward: Item,
@@ -775,7 +777,7 @@ event.beneathLostPage(
 - 4th argument: A number array, must contain at least one value. When a lost page is 'activated', one of these numbers will be chosen and used as the number of reward items the ritual gives
 - 5th argument: A `Punishment` array, must contain at least one value. When a lost page is 'activated', one of these punishments will be chosen and for application on ritual completion. The available punishments are as follows
     - `none`: Does nothing
-    - `levitation`: Makes nearby living entities levitation briefly
+    - `levitation`: Makes nearby living entities levitate briefly
     - `drunkenness`: Makes the player drunk and nauseous
     - `blaze_inferno`: Spawns a handful of blazes nearby and alights the ground
     - `infestation`: Spawns a handful of silverfish nearby
@@ -821,7 +823,7 @@ There are several methods to access and modify the state of TFC's additional dat
 
 ### Method Signatures
 
-```ts
+```js
 declare class TFCPlayerDataJS {
     constructor(player: Player)
     getChiselMode(): ChiselMode
@@ -848,27 +850,27 @@ declare class TFCPlayerDataJS {
 }
 ```
 
-- `.getChiselMode()`: Returns the player's current `ChiselMode`, will be either `smooth`, `stair`, or `slab`
-- `.setChiselMode(mode: ChiselMode)`: Sets the player's current chisel mode, will accept `smooth`, `stair`, or `slab`
-- `.getIntoxicatedTicks()`: Returns the number of ticks the player is intoxicated for
-- `.addIntoxicatedTicks(ticks: number)`: Adds to the player's intoxicated ticks
-- `.getLastDrinkTick()`: Returns the last tick the player drank something
-- `.setLastDrinkTick(tick: number)`: Sets the last tick the player drank something
-- `.playerEat(item: ItemStack)`: Makes the player eat the provided `ItemStack`
-- `.getFoodLevel()`: Returns the player's current food level
-- `.setFoodLevel(i: number)`: Sets the player's current food level
-- `.needsFood()`: Returns true if the player needs food
-- `.addExhaustion(f: number)`: Adds the given exhaustion to the player
-- `.getSaturationLevel()`: Returns the player's saturation level
-- `.setSaturationLevel(f: number)`: Sets the player's saturation level
-- `.getThirstModifier()`: Returns the player's total thirst loss per tick, on a scale of [0, 100]
-- `.getThirstContributionFromTemperature()`: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
-- `.getThirst()`: Returns the player's thirst
-- `.setThirst(f: number)`: Sets the player's thirst
-- `.addThirst(f: number)`: Adds the provided thirst the the player's thirst
-- `.getAverageNutrition()`: Returns the average nutrition level of the player
-- `.getNutrient(nutrient: Nutrient)`: Returns the player's nutrition level for the given nutrient, accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
-- `.getNutrients()`: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`, `fruit`, `vegetables`, `protein`, `dairy`
+- `.getChiselMode()`{: .language-javascript }: Returns the player's current `ChiselMode`, will be either `smooth`, `stair`, or `slab`
+- `.setChiselMode(mode: ChiselMode)`{: .language-javascript }: Sets the player's current chisel mode, will accept `smooth`, `stair`, or `slab`
+- `.getIntoxicatedTicks()`{: .language-javascript }: Returns the number of ticks the player is intoxicated for
+- `.addIntoxicatedTicks(ticks: number)`{: .language-javascript }: Adds to the player's intoxicated ticks
+- `.getLastDrinkTick()`{: .language-javascript }: Returns the last tick the player drank something
+- `.setLastDrinkTick(tick: number)`{: .language-javascript }: Sets the last tick the player drank something
+- `.playerEat(item: ItemStack)`{: .language-javascript }: Makes the player eat the provided `ItemStack`
+- `.getFoodLevel()`{: .language-javascript }: Returns the player's current food level
+- `.setFoodLevel(i: number)`{: .language-javascript }: Sets the player's current food level
+- `.needsFood()`{: .language-javascript }: Returns true if the player needs food
+- `.addExhaustion(f: number)`{: .language-javascript }: Adds the given exhaustion to the player
+- `.getSaturationLevel()`{: .language-javascript }: Returns the player's saturation level
+- `.setSaturationLevel(f: number)`{: .language-javascript }: Sets the player's saturation level
+- `.getThirstModifier()`{: .language-javascript }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
+- `.getThirstContributionFromTemperature()`{: .language-javascript }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
+- `.getThirst()`{: .language-javascript }: Returns the player's thirst
+- `.setThirst(f: number)`{: .language-javascript }: Sets the player's thirst
+- `.addThirst(f: number)`{: .language-javascript }: Adds the provided thirst the the player's thirst
+- `.getAverageNutrition()`{: .language-javascript }: Returns the average nutrition level of the player
+- `.getNutrient(nutrient: Nutrient)`{: .language-javascript }: Returns the player's nutrition level for the given nutrient, accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
+- `.getNutrients()`{: .language-javascript }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`, `fruit`, `vegetables`, `protein`, `dairy`
 
 ### Example
 

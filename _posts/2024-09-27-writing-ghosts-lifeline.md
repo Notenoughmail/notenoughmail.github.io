@@ -9,8 +9,8 @@ cat:
     - olwicks
     - prompt
 tags:
-    - 2
-    - 0
+    - fiction
+    - olwicks
 parent: (Series) Port-in-Orbit Olwicks-2
 grand_parent: Progenitology Universe
 ---

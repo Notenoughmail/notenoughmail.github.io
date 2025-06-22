@@ -23,7 +23,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient)
 ```
 
@@ -79,7 +79,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.hasTrait(delegate?: Ingredient, trait: string)
 ```
 
@@ -120,7 +120,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.heatable(delegate?: Ingredient, min: @Nullable number, max: @Nullable number)
 ```
 
@@ -163,7 +163,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: string)
 ```
 
@@ -204,7 +204,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.not(delegate?: Ingredient)
 ```
 
@@ -242,7 +242,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```ts
+```js
 TFC.ingredient.notRotten(delegate?: Ingredient)
 ```
 

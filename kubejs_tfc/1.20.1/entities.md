@@ -34,16 +34,16 @@ Inherits the methods of animal builders
 
 ### Extra methods
 
-- `.configs(configBuilder: Consumer<MammalConfigBuilder>)`: Sets the default values of the type's config
-    - `gestationDays(i: number)`: Sets the number of days the mammal will gestate young for
-    - `childCount(i: number)`: Sets the number of children the mammal will have
-    - `animalName(name: string)`: Sets the name of the mammal in the config file
-    - `daysToAdult(i: number)`: Sets the number of days the mammal will take to reach adulthood
-    - `uses(i: number)`: Sets the number of uses the mammal has
-    - `maxFamiliarity(d: number)`: Sets the maximum familiarity, in the range [0, 1], that an adult mammal may be brought up to
-    - `eastRottenFood(eats: boolean)`: Sets if the animal will eat rotten food
-- `foodTag(tag: string)`: Sets the item tag the mammal will consider food
-- `sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
+- `.configs(configBuilder: Consumer<MammalConfigBuilder>)`{: .language-javascript }: Sets the default values of the type's config
+    - `.gestationDays(i: number)`{: .language-javascript }: Sets the number of days the mammal will gestate young for
+    - `.childCount(i: number)`{: .language-javascript }: Sets the number of children the mammal will have
+    - `.animalName(name: string)`{: .language-javascript }: Sets the name of the mammal in the config file
+    - `.daysToAdult(i: number)`{: .language-javascript }: Sets the number of days the mammal will take to reach adulthood
+    - `.uses(i: number)`{: .language-javascript }: Sets the number of uses the mammal has
+    - `.maxFamiliarity(d: number)`{: .language-javascript }: Sets the maximum familiarity, in the range [0, 1], that an adult mammal may be brought up to
+    - `.eastRottenFood(eats: boolean)`{: .language-javascript }: Sets if the animal will eat rotten food
+- `.foodTag(tag: string)`{: .language-javascript }: Sets the item tag the mammal will consider food
+- `.sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`{: .language-javascript }: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
 
 ### Example
 
@@ -64,17 +64,17 @@ Inherits the methods of animal builders
 
 ### Extra Methods
 
-- `.crows(crows: boolean)`: If the animal should crow every so often, defaults to `false`
-- `.productReadyMessage(message: Component)`: Sets the message displayed when the animal has a product ready
-- `.configs(configBuilder: Consumer<OviparousConfigBuilder>)`: Sets the default values of the type's config
-    - `hatchDays(i: number)`: Sets the number of days the animal will take to hatch
-    - `animalName(name: string)`: Sets the name of the animal in the config file
-    - `daysToAdult(i: number)`: Sets the number of days the animal will take to reach adulthood
-    - `uses(i: number)`: Sets the number of uses the animal has
-    - `maxFamiliarity(d: number)`: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
-    - `eastRottenFood(eats: boolean)`: Sets if the animal will eat rotten food
-- `foodTag(tag: string)`: Sets the item tag the mammal will consider food
-- `sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
+- `.crows(crows: boolean)`{: .language-javascript }: If the animal should crow every so often, defaults to `false`
+- `.productReadyMessage(message: Component)`{: .language-javascript }: Sets the message displayed when the animal has a product ready
+- `.configs(configBuilder: Consumer<OviparousConfigBuilder>)`{: .language-javascript }: Sets the default values of the type's config
+    - `.hatchDays(i: number)`{: .language-javascript }: Sets the number of days the animal will take to hatch
+    - `.animalName(name: string)`{: .language-javascript }: Sets the name of the animal in the config file
+    - `.daysToAdult(i: number)`{: .language-javascript }: Sets the number of days the animal will take to reach adulthood
+    - `.uses(i: number)`{: .language-javascript }: Sets the number of uses the animal has
+    - `.maxFamiliarity(d: number)`{: .language-javascript }: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
+    - `.eastRottenFood(eats: boolean)`{: .language-javascript }: Sets if the animal will eat rotten food
+- `.foodTag(tag: string)`{: .language-javascript }: Sets the item tag the mammal will consider food
+- `.sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`{: .language-javascript }: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
 
 ### Example
 
@@ -100,16 +100,16 @@ Inherits the methods of animal builders
 
 ### Extra Methods
 
-- `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`: Sets the default values of the type's config
-    - `ticksToProduce(i: number)`: Sets the number of ticks the animal will take to create produce
-    - `produceFamiliarity(d: number)`: Sets the familiarity, in the range [0, 1], that is required for the animal to have its product harvested
-    - `animalName(name: string)`: Sets the name of the animal in the config file
-    - `daysToAdult(i: number)`: Sets the number of days the animal will take to reach adulthood
-    - `uses(i: number)`: Sets the number of uses the animal has
-    - `maxFamiliarity(d: number)`: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
-    - `eastRottenFood(eats: boolean)`: Sets if the animal will eat rotten food
-- `foodTag(tag: string)`: Sets the item tag the mammal will consider food
-- `sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
+- `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`{: .language-javascript }: Sets the default values of the type's config
+    - `.ticksToProduce(i: number)`{: .language-javascript }: Sets the number of ticks the animal will take to create produce
+    - `.produceFamiliarity(d: number)`{: .language-javascript }: Sets the familiarity, in the range [0, 1], that is required for the animal to have its product harvested
+    - `.animalName(name: string)`{: .language-javascript }: Sets the name of the animal in the config file
+    - `.daysToAdult(i: number)`{: .language-javascript }: Sets the number of days the animal will take to reach adulthood
+    - `.uses(i: number)`{: .language-javascript }: Sets the number of uses the animal has
+    - `.maxFamiliarity(d: number)`{: .language-javascript }: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
+    - `.eastRottenFood(eats: boolean)`{: .language-javascript }: Sets if the animal will eat rotten food
+- `.foodTag(tag: string)`{: .language-javascript }: Sets the item tag the mammal will consider food
+- `.sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`{: .language-javascript }: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
 
 ### Example
 
@@ -130,16 +130,16 @@ Inherits the methods of animal builders
 
 ### Extra Methods
 
-- `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`: Sets the default values of the type's config
-    - `ticksToProduce(i: number)`: Sets the number of ticks the animal will take to create produce
-    - `produceFamiliarity(d: number)`: Sets the familiarity, in the range [0, 1], that is required for the animal to have its product harvested
-    - `animalName(name: string)`: Sets the name of the animal in the config file
-    - `daysToAdult(i: number)`: Sets the number of days the animal will take to reach adulthood
-    - `uses(i: number)`: Sets the number of uses the animal has
-    - `maxFamiliarity(d: number)`: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
-    - `eastRottenFood(eats: boolean)`: Sets if the animal will eat rotten food
-- `foodTag(tag: string)`: Sets the item tag the mammal will consider food
-- `sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
+- `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`{: .language-javascript }: Sets the default values of the type's config
+    - `.ticksToProduce(i: number)`{: .language-javascript }: Sets the number of ticks the animal will take to create produce
+    - `.produceFamiliarity(d: number)`{: .language-javascript }: Sets the familiarity, in the range [0, 1], that is required for the animal to have its product harvested
+    - `.animalName(name: string)`{: .language-javascript }: Sets the name of the animal in the config file
+    - `.daysToAdult(i: number)`{: .language-javascript }: Sets the number of days the animal will take to reach adulthood
+    - `.uses(i: number)`{: .language-javascript }: Sets the number of uses the animal has
+    - `.maxFamiliarity(d: number)`{: .language-javascript }: Sets the maximum familiarity, in the range [0, 1], that an adult animal may be brought up to
+    - `.eastRottenFood(eats: boolean)`{: .language-javascript }: Sets if the animal will eat rotten food
+- `.foodTag(tag: string)`{: .language-javascript }: Sets the item tag the mammal will consider food
+- `.sounds(ambient: string, death: string, hurt: string, step: string, attack: string, sleep: string)`{: .language-javascript }: Accepts the registry ids of and sets the sound events the entity uses, `attack`, and `sleep` may be null
 
 ### Example
 

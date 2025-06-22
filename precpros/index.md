@@ -15,7 +15,7 @@ Available on [Modrinth](https://modrinth.com/mod/precision-prospecting) and [Cur
 
 Source available on [GitHub](https://github.com/Notenoughmail/precision-prospecting)
 
-A list of updates can be found [here](updates/)
+A list of updates can be found on the [updates page](updates/)
 
 ## [1.18.2](1.18.2/)
 

@@ -47,7 +47,7 @@ Gets the `IHeat` of a given item stack, may be null
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getHeat(stack: ItemStack): @Nullable IHeat
 ```
 
@@ -63,7 +63,7 @@ Returns true if the given item stack has an `IHeat`
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.hasHeat(stack: ItemStack): boolean
 ```
 
@@ -99,7 +99,7 @@ Gets the `IFood` of the given stack, may be null
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getFood(stack: ItemStack): @Nullable IFood
 ```
 
@@ -115,7 +115,7 @@ Returns true if the given item stack has an `IFood`
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.hasFood(stack: ItemStack): boolean
 ```
 
@@ -131,7 +131,7 @@ Makes the provided stack rotten if possible and returns it
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.setRotten(stack: ItemStack): ItemStack
 ```
 
@@ -141,7 +141,7 @@ Makes it so the provided stack never expires
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.setNeverExpires(stack: ItemStack): void
 ```
 
@@ -151,7 +151,7 @@ Retrieves the food trait with the given registry name or null if not found
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getFoodTrait(id: string): FoodTrait
 ```
 
@@ -167,7 +167,7 @@ Returns the id of the given food trait
 
 Method Signature
 
-```ts
+```js
 TFC.misc.getFoodTraitId(trait: FoodTrait): string
 ```
 
@@ -177,7 +177,7 @@ Applies the given trait to the stack, modifying it
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.applyFoodTrait(stack: ItemStack, trait: ResourceLocation): void
 ```
 
@@ -187,7 +187,7 @@ Removes the given trait to the stack, modifying it
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.removeFoodTrait(stack: ItemStack, trait: ResourceLocation): void
 ```
 
@@ -199,7 +199,7 @@ Returns the `Size` of the given item stack
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getSize(stack: ItemStack): Size
 ```
 
@@ -209,7 +209,7 @@ Returns the `Weight` if the given item stack
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getWeight(stack: ItemStack): Weight
 ```
 
@@ -221,7 +221,7 @@ Returns true if the given level and position can start a collapse
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.canStartCollapse(level: LevelAccessor, pos: BlockPos): boolean
 ```
 
@@ -234,7 +234,7 @@ Attempts to cause a collapse at the given level and position, returns false if n
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.tryCollapse(level: Level, pos: BlockPos): boolean
 ```
 
@@ -247,7 +247,7 @@ Forces a collapse to happen at a position, returns true if any blocks started co
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.forceCollapse(level: Level, pos: BlockPos)
 ```
 
@@ -260,7 +260,7 @@ Finds all positions in the given area that are unsupported
 
 Methods Signatures:
 
-```ts
+```js
 TFC.misc.findUnsupportedPositions(level: BlockGetter, from: BlockPos, to: BlockPos): Set<BlockPos>
 ```
 
@@ -268,7 +268,7 @@ TFC.misc.findUnsupportedPositions(level: BlockGetter, from: BlockPos, to: BlockP
 - `from`: The minimum corner to check
 - `to`: The maximum corner to check
 
-```ts
+```js
 TFC.misc.findUnsupportedPositions(level: BlockGetter, center: BlockPos, horizontal: number, up: number, down: number): Set<BlockPos>
 ```
 
@@ -284,7 +284,7 @@ Returns true if the position is supported
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.isSupported(level: BlockGetter, pos: BlockPos): boolean
 ```
 
@@ -296,7 +296,7 @@ Returns an iterable of all positions that could possibly be supported around the
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getMaximumSupportedAreaAround(minPoint: BlockPos, maxPoint: BlockPos): Iterable<BlockPos>
 ```
 
@@ -306,7 +306,7 @@ Returns the `SupportRange` that is used as a maximum for checking if an area is 
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getSupportCheckRange(): SupportRange
 ```
 
@@ -316,7 +316,7 @@ Gets the support from the block, or null if it is not a supporting block
 
 Method Signatures:
 
-```ts
+```js
 TFC.misc.getSupport(state: BlockState): @Nullable Support
 TFC.misc.getSupport(level: BlockGetter, pos:BlockPos): @Nullable Support
 ```
@@ -329,7 +329,7 @@ Gets TFC's `ChunkData` for the given level and position
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getChunkData(level: LevelReader, pos: BlockPos): ChunkData
 ```
 
@@ -342,7 +342,7 @@ Get's TFC's `RockData` for the given level and position, may be null
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getRockData(level: LevelReader, pos: BlockPos): @Nullable RockData
 ```
 
@@ -355,14 +355,14 @@ Gets TFC's `RockSettings`, a collection of blocks that define a rock layer, see 
 
 Method Signatures:
 
-```ts
+```js
 TFC.misc.getRockSettings(level: LevelReader, pos: BlockPos): @Nullable RockSettings
 ```
 
 - `level`: The level to get the settings from
 - `pos`: The position to get the settings from
 
-```ts
+```js
 TFC.misc.getRockSettings(level: LevelAccessor, block: Block): @Nullable RockSettings
 ```
 
@@ -375,7 +375,7 @@ Gets TFC's `ForestType` for the given level and position
 
 Method Signature:
 
-```ts
+```js
 TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 ```
 
@@ -386,12 +386,25 @@ TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 
 Returns a number, in the range [0, 100], an expression of how hydrated soil at the position would be
 
-```ts
+```js
 TFC.misc.getHydration(level: LevelAccessor, posL BlockPos): number
 ```
 
 - `level`: The level to get the hydration level from
 - `pos`: The position to get the hydration level from
+
+### Lerp Float Layer
+
+Returns a `LerpFloatLayer`, an interpolated square of numbers which are known at corners and interpolated between for intermediate values
+
+```js
+TFC.misc.lerpFloatLayer(value00: number, value01: number, value10: number, value11: number): LerpFloatLayer
+```
+
+- `value00`: The value at the [low x, low z] corner
+- `value01`: The value at the [low x, high z] corner
+- `value10`: The value at the [high x, low z] corner
+- `value11`: The value at the [high x, high z] corner
 
 ## Noise Utils
 
@@ -401,7 +414,7 @@ TFC uses open simplex noise for most, if not all, of its custom worldgen, these 
 
 Method Signatures:
 
-```ts
+```js
 TFC.misc.newOpenSimplex2D(seed: number)
 TFC.misc.newOpenSimplex3D(seed: number)
 ```
@@ -414,7 +427,7 @@ TFC uses [metaballs](https://en.wikipedia.org/wiki/Metaballs) for its generation
 
 Method Signatures:
 
-```ts
+```js
 TFC.misc.newMetaballs2D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number)
 TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number)
 ```
@@ -432,7 +445,7 @@ TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number
 
 Returns the `Metal` associated with the given fluid, may be null
 
-```ts
+```js
 TFC.misc.getMetal(fluid: Fluid): Metal
 ```
 
@@ -440,7 +453,7 @@ TFC.misc.getMetal(fluid: Fluid): Metal
 
 Returns the first `Metal` whose ingots match the given stack, may be null
 
-```ts
+```js
 TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
 ```
 
@@ -448,7 +461,7 @@ TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
 
 Returns the first `Metal` whose sheets match the given stack, may be null
 
-```ts
+```js
 TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
 ```
 
@@ -458,7 +471,7 @@ TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
 
 Gets the first `LampFuel` that matches the given fluid and blockstate, may be null
 
-```ts
+```js
 TFC.misc.getLampFuel(fluid: Fluid, state: BlockState): LampFuel
 ```
 
@@ -466,7 +479,7 @@ TFC.misc.getLampFuel(fluid: Fluid, state: BlockState): LampFuel
 
 Gets the first `Drinkable` that matches the given fluid, may be null
 
-```ts
+```js
 TFC.misc.getDrinkable(fluid: Fluid): Drinkable
 ```
 
@@ -474,7 +487,7 @@ TFC.misc.getDrinkable(fluid: Fluid): Drinkable
 
 Gets the first `Fertilizer` that matches the given stack, may be null
 
-```ts
+```js
 TFC.misc.getFertilizer(stack ItemStack): Fertilizer
 ```
 
@@ -482,7 +495,7 @@ TFC.misc.getFertilizer(stack ItemStack): Fertilizer
 
 Gets the first `Fuel` that matches the given stack, may be null
 
-```ts
+```js
 TFC.misc.getFuel(stack: ItemStack): Fuel
 ```
 
@@ -490,7 +503,7 @@ TFC.misc.getFuel(stack: ItemStack): Fuel
 
 Gets the first `Pannable` that matches the given block state, may be null
 
-```ts
+```js
 TFC.misc.getPannable(state: BlockState): Pannable
 ```
 
@@ -498,6 +511,6 @@ TFC.misc.getPannable(state: BlockState): Pannable
 
 Gets the first `Sluiceable` that matches the given item, may be null
 
-```ts
+```js
 TFC.misc.getSluiceable(stack: ItemStack): Sluiceable
 ```

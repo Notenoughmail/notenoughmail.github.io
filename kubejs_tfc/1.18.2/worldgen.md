@@ -35,9 +35,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods
-    - `outer(string)`: Accepts a block state and sets the outer layer of the geode
-    - `middle(string)`: Accepts a block state and sets the middle layer of the geode
-    - `inner(string...)`: Accepts an array of weighted block states and sets the inner layer of the geode
+    - `.outer(string)`{: .language-javascript }: Accepts a block state and sets the outer layer of the geode
+    - `.middle(string)`{: .language-javascript }: Accepts a block state and sets the middle layer of the geode
+    - `.inner(string...)`{: .language-javascript }: Accepts an array of weighted block states and sets the inner layer of the geode
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
@@ -113,10 +113,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods:
-    - `state(string)`: Accepts a block state and sets the block to be used. **Note:** must be a [thin spike block](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#thin-spike)
-    - `radius(integer)`: Accepts an integer, in the range [1, 16], and sets the radius which to place spikes in
-    - `tries(integer)`: Accepts an integer and sets how many attempts should be made to place spikes
-    - `heights(integer, integer)`: Accepts two integers, the first setting the minimum height of the spike, and the second the maximum
+    - `.state(string)`{: .language-javascript }: Accepts a block state and sets the block to be used. **Note:** must be a [thin spike block](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#thin-spike)
+    - `.radius(integer)`{: .language-javascript }: Accepts an integer, in the range [1, 16], and sets the radius which to place spikes in
+    - `.tries(integer)`{: .language-javascript }: Accepts an integer and sets how many attempts should be made to place spikes
+    - `.heights(integer, integer)`{: .language-javascript }: Accepts two integers, the first setting the minimum height of the spike, and the second the maximum
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
@@ -160,32 +160,32 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods:
-    - `type(string)`: Accepts a `cluster`, `disc`, or `pipe` and sets the type of vein this feature will be, defaults to `cluster`
-    - `rarity(integer)`: Accepts an integer and sets the rarity, defaults to 60
+    - `.type(string)`{: .language-javascript }: Accepts a `cluster`, `disc`, or `pipe` and sets the type of vein this feature will be, defaults to `cluster`
+    - `.rarity(integer)`{: .language-javascript }: Accepts an integer and sets the rarity, defaults to 60
         - **Note:** the rarity is 1 over the provided value, i.e. .rarity(3) would make the vein occur in 1/3 chunks on average
-    - `size(integer)`: Accepts an integer and sets the size, defaults to 8
-    - `density(number)`: Accepts a number, in the range [0, 1], and sets the density of the vein, defaults to 0.2
-    - `minY(object)`: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the minimum y level the vein will spawn at
-    - `maxY(object)`: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the maximum y level the vein will spawn at
-    - `indicator(consumer)`: Accepts a consumer with several methods:
-        - `depth(integer)`: Accepts an integer and sets the maximum depth below the surface the vein will spawn surface indicators, defaults to 35
-        - `spread(integer)`: Accepts an integer and sets the maximum horizontal distance from a vein that an indicator will spawn, defaults to 15
-        - `rarity(integer)`: Accepts an integer and sets the rarity to spawn indicators, as a fraction of horizontal locations the vein places ore blocks, defaults to 10
-        - `indicators(string...)`: Accepts an array of weighted block states and sets the indicator(s) to use
-    - `replacementMap(consumer)`: Accepts a consumer with a method pair:
-        - `replace(string...)`: A string array representing the list of blocks to replaced with:
-        - `with(string...)`: An array of weighted block states, representing the ores of the vein, this method *must* be attached to a `replace` method
-    - `salt(integer)`: Accepts an integer and sets the salt of the placement algorithm, defaults to the world's seed
-    - `biomeFilter(string)`: Accepts string matching a biome tag and sets the filter for allowed biomes, defaults to allowing all biomes
+    - `.size(integer)`{: .language-javascript }: Accepts an integer and sets the size, defaults to 8
+    - `.density(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the density of the vein, defaults to 0.2
+    - `.minY(object)`{: .language-javascript }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the minimum y level the vein will spawn at
+    - `.maxY(object)`{: .language-javascript }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the maximum y level the vein will spawn at
+    - `.indicator(consumer)`{: .language-javascript }: Accepts a consumer with several methods:
+        - `.depth(integer)`{: .language-javascript }: Accepts an integer and sets the maximum depth below the surface the vein will spawn surface indicators, defaults to 35
+        - `.spread(integer)`{: .language-javascript }: Accepts an integer and sets the maximum horizontal distance from a vein that an indicator will spawn, defaults to 15
+        - `.rarity(integer)`{: .language-javascript }: Accepts an integer and sets the rarity to spawn indicators, as a fraction of horizontal locations the vein places ore blocks, defaults to 10
+        - `.indicators(string...)`{: .language-javascript }: Accepts an array of weighted block states and sets the indicator(s) to use
+    - `.replacementMap(consumer)`{: .language-javascript }: Accepts a consumer with a method pair:
+        - `.replace(string...)`{: .language-javascript }: A string array representing the list of blocks to replaced with:
+        - `.with(string...)`{: .language-javascript }: An array of weighted block states, representing the ores of the vein, this method *must* be attached to a `replace` method
+    - `.salt(integer)`{: .language-javascript }: Accepts an integer and sets the salt of the placement algorithm, defaults to the world's seed
+    - `.biomeFilter(string)`{: .language-javascript }: Accepts string matching a biome tag and sets the filter for allowed biomes, defaults to allowing all biomes
     - If the type is `disc` the following method is also available:
-        - `height(integer)`: Accepts an integer and sets the height of the vein, the size parameter will be interpreted as the radius
+        - `.height(integer)`{: .language-javascript }: Accepts an integer and sets the height of the vein, the size parameter will be interpreted as the radius
     - If the type is `pipe` the following methods are also available:
-        - `radius(integer)`: Accepts an integer and sets the radius of the vein, defaults to 3
-        - `minSkew(integer)`: Accepts an integer and sets the minimum skew of the vein, defaults to 0
-        - `maxSkew(integer)`: Accepts an integer and sets the maximum skew of the vein, defaults to 0
-        - `minSlant(integer)`: Accepts an integer and sets the minimum slant of the vein, defaults to 0
-        - `maxSlant(integer)`: Accepts an integer and sets the maximum slant of the vein, defaults to 0
-        - `sign(number)`: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
+        - `.radius(integer)`{: .language-javascript }: Accepts an integer and sets the radius of the vein, defaults to 3
+        - `.minSkew(integer)`{: .language-javascript }: Accepts an integer and sets the minimum skew of the vein, defaults to 0
+        - `.maxSkew(integer)`{: .language-javascript }: Accepts an integer and sets the maximum skew of the vein, defaults to 0
+        - `.minSlant(integer)`{: .language-javascript }: Accepts an integer and sets the minimum slant of the vein, defaults to 0
+        - `.maxSlant(integer)`{: .language-javascript }: Accepts an integer and sets the maximum slant of the vein, defaults to 0
+        - `.sign(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
 
 ### Example
 
@@ -245,13 +245,13 @@ Adds TFC's [climate](https://terrafirmacraft.github.io/Documentation/1.18.x/worl
 
 Accepts a consumer with several methods:
 
-- `minTemp(number)`: Accepts a number and sets the minimum allowed average yearly temperature
-- `maxTemp(number)`: Accepts a number and sets the maximum allowed average yearly temperature
-- `minRain(number)`: Accepts a number and sets the minimum allowed rainfall
-- `maxRain(number)`: Accepts a number and sets the maximum allowed rainfall
-- `minForest(string)`: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the minimum required forest density
-- `maxForest(number)`: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the maximum required forest density
-- `fuzzy(boolean)`: Accepts a boolean (default false). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges
+- `.minTemp(number)`{: .language-javascript }: Accepts a number and sets the minimum allowed average yearly temperature
+- `.maxTemp(number)`{: .language-javascript }: Accepts a number and sets the maximum allowed average yearly temperature
+- `.minRain(number)`{: .language-javascript }: Accepts a number and sets the minimum allowed rainfall
+- `.maxRain(number)`{: .language-javascript }: Accepts a number and sets the maximum allowed rainfall
+- `.minForest(string)`{: .language-javascript }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the minimum required forest density
+- `.maxForest(number)`{: .language-javascript }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the maximum required forest density
+- `.fuzzy(boolean)`{: .language-javascript }: Accepts a boolean (default false). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges
 
 ### .flatEnough(consumer)
 
@@ -259,9 +259,9 @@ Adds TFC's [flat enough](https://terrafirmacraft.github.io/Documentation/1.18.x/
 
 Accepts a consumer with several methods:
 
-- `flatness(number)`: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
-- `radius(integer)`: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
-- `maxDepth(integer)`: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
+- `.flatness(number)`{: .language-javascript }: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
+- `.radius(integer)`{: .language-javascript }: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
+- `.maxDepth(integer)`{: .language-javascript }: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
 
 ### .nearWater(integer)
 
@@ -337,20 +337,20 @@ TFC's world is built around rock layers which can be modified through the modifi
 
 - 1st argument: The resource location of the rock layer you will be adding. Generally advised to use `kubejs` as the namespace as to not overwrite or be overwritten by another mod
 - 2nd argument: A consumer with several methods:
-    - `raw(string)`: Accepts a string representing the registry name of a block, sets the 'raw' block type for the rock layer
-    - `hardened(string)`: Accepts a string representing the registry name of a block, sets the 'hardened' block type for the rock layer
-    - `gravel(string)`: Accepts a string representing the registry name of a block, sets the 'gravel' block type for the rock layer
-    - `cobble(string)`: Accepts a string representing the registry name of a block, sets the 'cobble' block type for the rock layer
-    - `sand(string)`: Accepts a string representing the registry name of a block, sets the 'sand' block type for the rock layer
-    - `sandstone(string)`: Accepts a string representing the registry name of a block, sets the 'sandstone' block type for the rock layer
-    - `spike(string)`: Accepts a string representing the registry name of a block, sets the 'spike' block type for the rock layer. This value is optional
+    - `.raw(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'raw' block type for the rock layer
+    - `.hardened(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'hardened' block type for the rock layer
+    - `.gravel(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'gravel' block type for the rock layer
+    - `.cobble(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'cobble' block type for the rock layer
+    - `.sand(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'sand' block type for the rock layer
+    - `.sandstone(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'sandstone' block type for the rock layer
+    - `.spike(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'spike' block type for the rock layer. This value is optional
         - **Note**: The provided block *must* be an instance of [RockSpikeBlock](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#rock-spike) or the game may crash due to lacking the required block states
-    - `loose(string)`: Accepts a string representing the registry name of a block, sets the 'loose' block type for the rock layer. This value is optional
+    - `.loose(string)`{: .language-javascript }: Accepts a string representing the registry name of a block, sets the 'loose' block type for the rock layer. This value is optional
         - **Note**: The provided block *must* be an instance of [LooseRockBlock](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#loose-rock) or the game may crash due to lacking the required block states
-    - `top()`: Allows the rock layer to spawn on the top rock layer in the world
-    - `middle()`: Allows the rock layer to spawn on the middle rock layer in the world
-    - `bottom()`: Allows the rock layer to spawn on the bottom rock layer in the world
-    - `noWarnings()`: A utility method which will disable non-critical warnings about the rock layer
+    - `.top()`{: .language-javascript }: Allows the rock layer to spawn on the top rock layer in the world
+    - `.middle()`{: .language-javascript }: Allows the rock layer to spawn on the middle rock layer in the world
+    - `.bottom()`{: .language-javascript }: Allows the rock layer to spawn on the bottom rock layer in the world
+    - `.noWarnings()`{: .language-javascript }: A utility method which will disable non-critical warnings about the rock layer
 
 #### Example
 
@@ -388,9 +388,9 @@ onEvent('tfc.rock_settings.register', event => {
 - 1st argument: The resource location of the rock layer you will be modifying
     - TFC's layer are `tfc:` + the name of the rock ('andesite', 'basalt', etc.)
 - 2nd argument: A consumer with the same methods as adding a layer and some additional methods:
-    - `top(boolean)`: Accepts a boolean, determines if the layer is allowed to generate in the top rock layer of the world or not
-    - `middle(boolean)`: Accepts a boolean, determines if the layer is allowed to generate in the middle rock layer of the world or not
-    - `bottom(boolean)`: Accepts a boolean, determines if the layer is allowed to generate in the bottom rock layer of the world or not
+    - `.top(boolean)`{: .language-javascript }: Accepts a boolean, determines if the layer is allowed to generate in the top rock layer of the world or not
+    - `.middle(boolean)`{: .language-javascript }: Accepts a boolean, determines if the layer is allowed to generate in the middle rock layer of the world or not
+    - `.bottom(boolean)`{: .language-javascript }: Accepts a boolean, determines if the layer is allowed to generate in the bottom rock layer of the world or not
 
 #### Example
 

@@ -87,15 +87,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid(s) which this drinkable data will apply to
 - 2nd argument: A consumer with several methods:
-    - `consumeChance(number)`: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
-    - `thirst(integer)`: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
-    - `intoxication(integer)`: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
-    - `effect`
+    - `.consumeChance(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
+    - `.thirst(integer)`{: .language-javascript }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
+    - `.intoxication(integer)`{: .language-javascript }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
+    - `.effect(string, Consumer<EffectData>?)`{: .language-javascript }
         - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
         - *optional 2nd argument*: A consumer with several methods:
-            - `duration(integer)`: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
-            - `amplifier(integer)`: Accepts an integer and sets the level of the effect applied, defaults to 0
-            - `chance(number)`: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
+            - `.duration(integer)`{: .language-javascript }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
+            - `.amplifier(integer)`{: .language-javascript }: Accepts an integer and sets the level of the effect applied, defaults to 0
+            - `.chance(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the drinkable, if not provided a name will be automatically generated based on the fluid ingredient
 
 ## Example
@@ -140,19 +140,19 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: An ingredient, the item(s) the which this food item data will apply to
 - 2nd argument: A consumer with several methods:
-    - `type(sting)`: Accepts either `dynamic` or `dynamic_bowl`, if either of those are provided the values below will be ignored. This is primarily used for meals, see the dynamic foods note [here](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#food-items)
-    - `hunger(integer)`: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
-        - The player's full hunger bar is equal to 20
-    - `saturation(number)`: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
-    - `water(number)`: Accepts a number and defines how much water the ingredient restores, defaults to 0
+    - `.type(sting)`{: .language-javascript }: Accepts either `dynamic` or `dynamic_bowl`, if either of those are provided the values below will be ignored. This is primarily used for meals, see the dynamic foods note [in food data](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#food-items)
+    - `.hunger(integer)`{: .language-javascript }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
+        - A full hunger bar is 20
+    - `.saturation(number)`{: .language-javascript }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
+    - `.water(number)`{: .language-javascript }: Accepts a number and defines how much water the ingredient restores, defaults to 0
         - The player's full water bar is equal to 100
-    - `decayModifier(number)`: Accepts a number and defines how quickly the ingredient decays, defaults to 1
+    - `.decayModifier(number)`{: .language-javascript }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
         - A higher value means a faster decay and shorter expiration time
-    - `grain(number)`: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
-    - `fruit(number)`: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
-    - `vegetables(number)`: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
-    - `protein(number)`: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
-    - `dairy(number)`: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
+    - `.grain(number)`{: .language-javascript }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
+    - `.fruit(number)`{: .language-javascript }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
+    - `.vegetables(number)`{: .language-javascript }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
+    - `.protein(number)`{: .language-javascript }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
+    - `.dairy(number)`{: .language-javascript }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the food item, if not provided a name will be automatically generated based on the ingredient
 
 ## Example
@@ -340,12 +340,12 @@ onEvent('tfc.data', event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#climate-ranges)!
 
 - 1st argument: A consumer with several optional methods
-    - `minHydration(integer)`: Sets the `min_hydration` property, in the range [0,100]
-    - `maxHydration(integer)`: Sets the `max_hydration` property, in the the range [0, 100]
-    - `hydrationWiggle(integer)`: Sets the `hydration_wiggle_range` property
-    - `minTemperature(integer)`: Sets the `min_temperature` property
-    - `maxTemperature(integer)`: Sets the `max_temperature` property
-    - `temperatureWiggle(integer)`: Sets the `temperature_wiggle_range` property
+    - `.minHydration(integer)`{: .language-javascript }: Sets the `min_hydration` property, in the range [0,100]
+    - `.maxHydration(integer)`{: .language-javascript }: Sets the `max_hydration` property, in the the range [0, 100]
+    - `.hydrationWiggle(integer)`{: .language-javascript }: Sets the `hydration_wiggle_range` property
+    - `.minTemperature(integer)`{: .language-javascript }: Sets the `min_temperature` property
+    - `.maxTemperature(integer)`{: .language-javascript }: Sets the `max_temperature` property
+    - `.temperatureWiggle(integer)`{: .language-javascript }: Sets the `temperature_wiggle_range` property
 - 2nd argument: A `ResourceLocation` which defines the name/file of the climate range
 
 ## Example
@@ -367,10 +367,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A consumer with methods matching world generation feature placement [climate consumer](https://github.com/Notenoughmail/KubeJS-TFC/wiki/World-Generation#climateconsumer)
 - 2nd argument: A consumer with several optional methods
-    - `chance(integer)`: Sets the chance (in 1/N chunks) that something will spawn
-    - `distanceBelowSeaLevel(integer)`: Sets the distance below sea level something must spawn under, should only be used for aquatic animals
-    - `solidGround(boolean)`: If true, requires the mob to spawn on a block with the `minecraft:valid_spawn` tag
-    - `maxBrightness(integer)`: Sets the maximum brightness the mob may spawn at
+    - `.chance(integer)`{: .language-javascript }: Sets the chance (in 1/N chunks) that something will spawn
+    - `.distanceBelowSeaLevel(integer)`{: .language-javascript }: Sets the distance below sea level something must spawn under, should only be used for aquatic animals
+    - `.solidGround(boolean)`{: .language-javascript }: If true, requires the mob to spawn on a block with the `minecraft:valid_spawn` tag
+    - `.maxBrightness(integer)`{: .language-javascript }: Sets the maximum brightness the mob may spawn at
 - 3rd argument: A `ResourceLocation` which determines the name/file of the fauna definition
 
 ## Example
@@ -420,22 +420,22 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 - 1st argument: An ingredient, specifying the seed to use
 - 2nd argument: A consumer with several methods
-    - `planter(string)`: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
-    - `tier(integer)`: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
-    - `stages(integer)`: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
+    - `.planter(string)`{: .language-javascript }: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
+    - `.tier(integer)`{: .language-javascript }: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
+    - `.stages(integer)`{: .language-javascript }: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
         - As an example squash has 5 textures that it uses for growing, the stage number is 4
-    - `extraSeedChance(number)`: Accepts a number, in the range [0, 1], sets the chance of getting a second seed back, defaults to 0.5
-    - `seed(object)`: Accepts an item, sets the seed that will be returned when picked
-    - `crop(object)`: Accepts an item, sets the item that is guaranteed to be returned when picked
-    - `nitrogen()`: Sets the nutrient to `nitrogen`
-    - `phosphorous()`: Sets the nutrient to `phosphorous`
-    - `potassium()`: Sets the nutrient to `potassium`
-    - `texture(string...)`: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
-        - For `large`, `quad`, `hydroponic`, and `hanging`: List the textures in order of growth
-        - For `trellis`: List the strings in the order: `growing`, `dry`, `flowering`, `fruiting`
-        - For `bonsai`: List the strings in the order: `fruiting`, `dry`, `flowering`, `branch`, `leaves`
-    - `specials(string...)`: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
-        - For `hanging`: Specify the fruit texture
+    - `.extraSeedChance(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], sets the chance of getting a second seed back, defaults to 0.5
+    - `.seed(object)`{: .language-javascript }: Accepts an item, sets the seed that will be returned when picked
+    - `.crop(object)`{: .language-javascript }: Accepts an item, sets the item that is guaranteed to be returned when picked
+    - `.nitrogen()`{: .language-javascript }: Sets the nutrient to `nitrogen`
+    - `.phosphorous()`{: .language-javascript }: Sets the nutrient to `phosphorous`
+    - `.potassium()`{: .language-javascript }: Sets the nutrient to `potassium`
+    - `.texture(string...)`{: .language-javascript }: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
+        - For `large`, `quad`, `hydroponic`, and `hanging`:List the textures in order of growth
+        - For `trellis`:List the strings in the order: `growing`, `dry`, `flowering`, `fruiting`
+        - For `bonsai`:List the strings in the order: `fruiting`, `dry`, `flowering`, `branch`, `leaves`
+    - `.specials(string...)`{: .language-javascript }: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
+        - For `hanging`:Specify the fruit texture
         - For everything else this method isn't needed
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the plantable definition, if not provided a name will be automatically generated based on the ingredient
 

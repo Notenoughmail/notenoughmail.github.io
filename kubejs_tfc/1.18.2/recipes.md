@@ -97,8 +97,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.tier(int)`: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
-- `.combineForgingBonus()`: Sets the `combine_forging_bonus` property to `true`
+- `.tier(int)`{: .language-javascript }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
+- `.combineForgingBonus()`{: .language-javascript }: Sets the `combine_forging_bonus` property to `true`
 
 ### Example
 
@@ -118,8 +118,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.tier(int)`: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
-- `.applyBonus()`: Sets the `apply_forging_bonus` property to `true`
+- `.tier(int)`{: .language-javascript }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
+- `.applyBonus()`{: .language-javascript }: Sets the `apply_forging_bonus` property to `true`
 
 ### Example
 
@@ -138,7 +138,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Example
 
@@ -157,7 +157,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Examples
 
@@ -178,9 +178,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.sound(string)`: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
-- `.onSeal(item stack provider)`: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
-- `.onUnseal(item stack provider)`: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
+- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.onSeal(item stack provider)`{: .language-javascript }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
+- `.onUnseal(item stack provider)`{: .language-javascript }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
 
 ### Example
 
@@ -250,8 +250,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.extraDrop(item stack provider)`: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) specifying an item to be dropped upon chiseling
-- `.itemIngredients(ingredients...)`: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
+- `.extraDrop(item stack provider)`{: .language-javascript }: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) specifying an item to be dropped upon chiseling
+- `.itemIngredients(ingredients...)`{: .language-javascript }: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
 
 ### Example
 
@@ -294,7 +294,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.useDurability()`: sets the `use_durability` property to true
+- `.useDurability()`{: .language-javascript }: sets the `use_durability` property to true
 
 ### Examples
 
@@ -314,7 +314,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-javascript }: Sets the `outside_slot_required` property to false
 
 ### Examples
 
@@ -337,7 +337,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.inProgressTexture(string)`: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
+- `.inProgressTexture(string)`{: .language-javascript }: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
 
 ### Example
 
@@ -390,7 +390,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-javascript }: Sets the `outside_slot_required` property to false
 
 ### Example
 
@@ -408,8 +408,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.inputTexture(string)`: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
-- `.outputTexture(string)`: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
+- `.inputTexture(string)`{: .language-javascript }: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
+- `.outputTexture(string)`{: .language-javascript }: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
 
 ### Example
 
@@ -632,7 +632,7 @@ event.recipes.firmalife.mixing_bowl(['tfc:glue', Fluid.of('tfc:limewater', 50)],
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-javascript }: Sets the `outside_slot_required` property to false
 
 ### Examples
 
@@ -668,7 +668,7 @@ event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/ande
 
 ### Extra Methods
 
-- `.jar(object)`: An item stack. Only used for operations that produce `firmalife:fruity_fluid` in conjunction with the jarring station.
+- `.jar(object)`{: .language-javascript }: An item stack. Only used for operations that produce `firmalife:fruity_fluid` in conjunction with the jarring station.
 
 ### Example
 
@@ -723,11 +723,11 @@ event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 
 ### Extra Methods
 
-- `.minTemp(number)`: Sets the minimum ambient temperature the recipe can be completed at, defaults to -50°C
-- `.maxTemp(number)`: Sets the maximum ambient temperature the recipe can be completed at, defaults to 50°C
-- `.requiresNatural(boolean)`: See 3rd argument above
-- `.onlyInSpring(boolean)`: Determines if the recipe can only be completed during spring, defaults to false
-- `.onlyInSpring()`: equivalent to `.onlyInSpring(true)`
+- `.minTemp(number)`{: .language-javascript }: Sets the minimum ambient temperature the recipe can be completed at, defaults to -50°C
+- `.maxTemp(number)`{: .language-javascript }: Sets the maximum ambient temperature the recipe can be completed at, defaults to 50°C
+- `.requiresNatural(boolean)`{: .language-javascript }: See 3rd argument above
+- `.onlyInSpring(boolean)`{: .language-javascript }: Determines if the recipe can only be completed during spring, defaults to false
+- `.onlyInSpring()`{: .language-javascript }: equivalent to `.onlyInSpring(true)`
 
 ### Example
 

@@ -13,6 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+#
+# TODO: Custom Ruby plugin/module/whatever-its-called that has updated JS highlighting
+# Kramdown uses Rouge which is locked to 3.30.0 by GitHub Pages, but JS methods are not distinctly highlighted until 4.1.0...
+# See https://github.com/rouge-ruby/rouge/pull/1920/ for fix
+# See https://stackoverflow.com/questions/75903579/how-to-add-custom-language-syntax-highlighter-to-markdown-code-block-in-vscode for hacking VSC to work with the most reasonable implimentation of the above
+# When doing the above, don't forget to change over {: .language-javascript } & ```js to the new language
+
 title: NotEnoughMail's Stuff
 description: >- # this means to ignore newlines until "baseurl:"
   NotEnoughMail's site for his online projects: writing, documentation, and possibly more
@@ -75,18 +82,18 @@ exclude:
   - README.md
 
 post-tags:
-  - tag:
-    - Port-in-Orbit Olwicks-2
-    - /writing/olwicks/
-  - tag:
-    - Water
-    - /writing/#water
-  - tag:
-    - Fiction
-    - /writing/#fiction
-  - tag:
-    - Progenitology Universe
-    - /writing/progenitology/
-  - tag:
-    - Politics
-    - /writing/#politics
+  olwicks:
+    title: Port-in-Orbit Olwicks-2
+    link: /writing/olwicks/
+  water:
+    title: Water
+    link: /writing/#water
+  fiction:
+    title: Fiction
+    link: /writing/#fiction
+  prog_unv:
+    title: Progenitology Universe
+    link: /writing/progenitology/
+  politics:
+    title: Politics
+    link: /writing/#politics
