@@ -37,6 +37,7 @@ The following types are available:
 - [Axles](#axles)
 - [Encased Axles](#encased-axles)
 - [Log](#log)
+- [Torch](#torch)
 
 <a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -529,9 +530,11 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.stages(i: number)`{: .language-javascript }: Sets the number of growth stages the block has, should be a number between 1 and 12, defaults to `8`
-- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-javascript }: A consumer for editing the properties of the crop's dead block
-    - The consumer has the same methods as the default block builder and one additional one:
+- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-javascript }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+    - `.models(models: BiConsumer<DeadModelVariant, ModelGenerator>)`{: .language-javascript }: Sets the model generation for the dead crop. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
+        - `.variant()`{: .language-javascript }: A string. The variant key used for the model in the blockstate file
+        - `.mature()`{: .language-javascript }: A boolean. If the variant in operation represents a mature state
 - `.seedItem(seedItem: Consumer<SeedItemBuilder>)`{: .language-javascript }: A consumer for setting the properties of the block's seed item
 - `.productItem(productItem: Consumer<ItemBuilder>)`{: .language-javascript }: A consumer for setting the properties of the block's product item
 - `.productItem(productItem: ResourceLocation)`{: .language-javascript }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
@@ -575,6 +578,13 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 - `.stages(i: number)`{: .language-javascript }: Sets the number of growth stages the block has, should be a number between 1 and 6, defaults to `4`
 - `.doubleStages(i: number)`{: .language-javascript }: Sets the number of stages the crop has in its top state, should be a number between 1 and 6, defaults to `4`
 - `.requiresStick(required: boolean)`{: .language-javascript }: Determines if the crop needs a stick to grow
+- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuidler>)`{: .language-javascript }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+    - `.models(models: BiConsumer<DeadModelVariant, ModelGenerator>)`{: .language-javascript }: Sets the model generation for the dead crop. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
+        - `.variant()`{: .language-javascript }: A string. The variant key used for the model in the blockstate file
+        - `.mature()`{: .language-javascript }: A boolean. If the variant in operation represents a mature state
+        - `.bottom()`{: .language-javascript }: A boolean. If the variant in operation represents a bottom state
+        - `.stick()`{: .language-javascript }: A boolean. If the variant in operation represents a a state with `stick=true`. Only relevant if `.requiresStick(true)`{: .language-javascript } has been called
 
 #### Example
 
@@ -582,6 +592,13 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 StartupEvents.registry('block', event => {
     event.create('my_double_crop', 'tfc:double_crop')
         .requiresStick(true)
+        .dead(dead => {
+            dead.models((variant, m) => {
+                if (variant.stick()) {
+                    m.parent('tfc:block/crop/stick');
+                }
+            })
+        })
 })
 ```
 
@@ -657,7 +674,7 @@ Will not automatically support blocks, use the [support method]({% link kubejs_t
 
 #### Extra methods
 
-- `.horizontal(horizontalSUpport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-javascript }: Allows for editing of the properties of the horizontal block
+- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-javascript }: Allows for editing of the properties of the horizontal block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -776,6 +793,43 @@ StartupEvents.registry('block', event => {
         .useFullBlockForItemModel()
         .stripped(stripped => {
             stripped.useFullBlockForItemModel()
+        })
+})
+```
+
+### Torch
+
+Creates a new TFC torch block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:torch`
+
+#### Extra Methods
+
+- `.deadItem(item: @Nullable Consumer<ItemBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit item, may be null to not have a dead/unlit item
+- `.decayLength(i: number)`{: .language-javascript }: Sets the time, in calendar ticks, the torch will burn for
+- `.decayLengthSupplier(length: Supplier<Integer>)`{: .language-javascript }: Sets the supplier for the time, in calendar ticks, the torch will burn for. Defaults to Using TFC's server config value for torch burn length
+- `.flameParticle(particle: string)`{: .language-javascript }: Sets the flame particle of the torch, may be null to not have a flame particle. Defaults to `minecraft:flame`[^1]
+- `.smokeParticle(particle: string)`{: .language-javascript }: Sets the smoke particle of the torch, may be null to not have a smoke particle. Defaults to `minecraft:smoke`[^1]
+- `.dead(dead: Consumer<DeadTorchBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
+- `.wall(wall: Consumer<WallTorchBuilder>)`{: .language-javascript }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
+- `.deadWall(deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_torch', 'tfc:torch')
+        .deacyLength(120000) // 6 in game days
+        .flameParticle('minecraft:soul_fire_flame')
+        .dead(dead => {
+            dead.lootTable = (buidler) => {
+                builder.addPool(pool => {
+                    pool.survivesExplosion();
+                    pool.addItem('3x minecraft:glowstone');
+                })
+            }
         })
 })
 ```
@@ -1512,7 +1566,7 @@ StartupEvents.registry('block', event => {
                 temperatureCallback: (be, currentTemperature, calendarTick, skippedTicks) => {
                     if (skippedTicks > 1) {
                         // Cools down while unloaded
-                        var afterSkip = currentTemperature * ((4000 - skippedTicks) / 4000) // After 4000 ticks passed (~ 3 1/3 irl minutes) the temp becomes 0
+                        var afterSkip = currentTemperature - (2.5 * skippedTicks) // Cools 2.5°C per tick unloaded
                         return Math.max(0, afterSkip);
                     } else {
                         if (be.data.heating) {
@@ -1530,3 +1584,40 @@ StartupEvents.registry('block', event => {
 
 ### Calendar
 
+Adds a new attachment that can be used to keep track of a calendar timestamp
+
+**Type**: `tfc:calendar`
+
+#### Definition
+
+- `defaultDuration`: A number. Optional, defaults to -1. Specifies the duration, in calendar ticks, to time for if a duration is not provided in `.startTiming()`{: .language-javascript }
+
+#### Methods
+
+- `.startTiming(duration?: number)`{: .language-javascript }: Sets the attachment's tick to the current tick and duration to either the default duration or the duration provided
+- `.getCalendarTick()`{: .language-javascript }: Returns a number. Gets the calendar tick the attachment is timing from
+- `.hasDurationElapsed()`{: .language-javascript }: Returns a boolean. If current calendar tick is more than `duration` ticks after the calendar tick the attachment is timing from
+- `.reset()`{: .language-javascript }: Sets the calendar tick the attachment is timing from to be -1, considered to be a 'non-timing' timestamp
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('calendar_example')
+        .blockEntity(be => {
+            be.attach('tfc:calendar', {
+                defaultDuration: 500
+            })
+            be.serverTicks(be => {
+                let cal = be.attachments[0];
+                if (cal.calendarTick != -1 && cal.hasDurationElapsed()) {
+                    be.level.playSound(null, be.x, be.y, be.z, 'minecraft:block.anvil.place', 'blocks', 1, 1);
+                    cal.reset();
+                }
+            })
+        })
+        .rightClick(event => {
+            event.block.enttiy.attachments[0].startTiming();
+        })
+})
+```

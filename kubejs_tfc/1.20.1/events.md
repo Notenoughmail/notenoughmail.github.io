@@ -889,12 +889,14 @@ In its json definition, the generator definition has the following fields:
 ### Method Signatures
 
 ```js
+event.getWorldSeed(): number
 event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
 event.rocks(getter: RocksGetter): void
 ```
 
+- `.getWorldSeed()`{: .language-javascript }: Returns the seed of the world the chunk data provider is being applied to
 - `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`. Accepts a callback with two parameters and no return value. If not set, or `#generatePartial` is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
     - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generatePartial` should be called here. `#generateFull` *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `#generatePartial` are:
         - `rainfallLayer: LerpFloatLayer`{: .language-javascript }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
@@ -977,12 +979,54 @@ The event with matching key
 
 ```js
 TFCEvents.createChunkDataProvider('nether', event => {
-    event.partial((data, chunk) => {
 
+    const rain = TFC.misc.lerpFloatLayer(0, 0, 0, 0);
+    const tempLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 4621678939469)
+        .spread(0.2)
+        .octaves(3)
+        .scaled(70, 90)
+    const forestLayer = TFC>misc.newOpenSimplex2D(event.worldSeed + 98713856895664)
+        .spread(0.8)
+        .terraces(9)
+        .affine(6, 12)
+        .scaled(6, 18, 0, 1)
+
+    // Precompute the surface & aquifer heights as constants as this is nether and does not realistically change
+    var heights = [];
+    var i = 0;
+    while (i < 256) {
+        hights.push(127);
+        i++;
+    }
+    var aquifer = [];
+    i = 0;
+    while (i < 16) {
+        aquifer.push(0);
+        i++;
+    }
+
+    event.partial((data, chunk) => {
+        var x = chunk.pos.minBlockX;
+        var z = chunk.pos.minBlockZ;
+
+        var temp = TFC.misc.lerpFloatLayer(
+            tempLayer.noise(x, z),
+            tempLayer.noise(x, z + 15),
+            tempLayer.noise(x + 15, z),
+            tempLayer.noise(x + 15, z + 15)
+        );
+
+        data.generatePartial(
+            rain,
+            temp,
+            forestLayer.noise(x, z) * 4, // Kube accepts ordinal numbers for enum constants
+            forestlayer.noise(x * 78423 + 869, z),
+            forestLayer.noise(x, z * 651349 - 698763)
+        );
     });
 
     event.full((data, chunk) => {
-        
+        data.generateFull(heights, aquifer);
     });
 
     event.rocks((x, y, z, surfaceY, cache, rockLayers) => {
