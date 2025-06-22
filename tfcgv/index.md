@@ -15,7 +15,7 @@ Available on [Modrinth](https://modrinth.com/mod/tfcgenviewer) and [CurseForge](
 
 Source available on [GitHub](https://github.com/Notenoughmail/TFCGenViewer)
 
-A list of updates can be found [here](updates/)
+A list of updates can be found on the [updates page](updates/)
 
 ## [1.20.1](1.20.1/)
 

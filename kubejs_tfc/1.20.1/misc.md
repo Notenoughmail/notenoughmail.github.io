@@ -87,4 +87,4 @@ Using this command will print out the [rock layer settings](https://terrafirmacr
 
 The `/kubejs_tfc print_chunk_data` command has no arguments.
 
-Using the command will print out the server [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java) of the current chunk in a somewhat readable format. Only the information availabe will be printed, that is to say: if the status is `EMPTY`, `CLIENT`, or `INVALID`, no additional information will be printed; and the surface and aquifer heights will only be printed if the status is `FULL`.
+Using the command will print out the server [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java) of the current chunk in a somewhat readable format. Only the information available will be printed, that is to say: if the status is `EMPTY`, `CLIENT`, or `INVALID`, no additional information will be printed; and the surface and aquifer heights will only be printed if the status is `FULL`.

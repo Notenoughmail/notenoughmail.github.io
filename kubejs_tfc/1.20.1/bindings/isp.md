@@ -165,20 +165,20 @@ declare class ItemStackProviderJS {
 - `.simpleModifier(type: string)`{: .language-javascript }: Adds a modifier of the provided type
 - `.jsonModifier(modifier: JsonObject)`{: .language-javascript }: Adds the provided json modifier
 - `.dyeLeather(color: DyeColor)`{: .language-javascript }: Adds a `tfc:dye_leather` modifier with the provided color
-- `.addHeat(temperature: number)`{: .language-javascript }: Adds a `tfc:add_heat` with the provided temperature, allows negative values
-- `.addPowder()`{: .language-javascript }: Adds a `tfc:add_powder` modifier
-- `.addTrait(trait: string)`{: .language-javascript }: Adds a `tfc:add_trait` modifier with the provided trait value
-- `.removeTrait(trait: string)`{: .language-javascript }: Adds a `tfc:remove_trait` modifier with the provided trait value
-- `.addGlass()`{: .language-javascript }: Adds a `tfc:add_glass` modifier
-- `.copyFood()`{: .language-javascript }: Adds a `tfc:copy_food` modifier
-- `.copyForgingBonus()`{: .language-javascript }: Adds a `tfc:copy_forging_bonus` modifier
-- `.copyHeat()`{: .language-javascript }: Adds a `tfc:copy_heat` modifier
-- `.copyInput()`{: .language-javascript }: Adds a `tfc:copy_input` modifier
-- `.emptyBowl()`{: .language-javascript }: Adds a `tfc:empty_bowl` modifier
-- `.resetFood()`{: .language-javascript }: Adds a `tfc:reset_food` modifier
-- `.copyOldestFood()`{: .language-javascript }: Adds a `tfc:copy_oldest_food` modifier
-- `.addBait()`{: .language-javascript }: Adds a `tfc:add_bait_to_rod` modifier
-- `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`{: .language-javascript }: Adds a `tfc:meal` modifier
+- `.addHeat(temperature: number)`{: .language-javascript }: Adds a [`tfc:add_heat`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-heat) with the provided temperature, allows negative values
+- `.addPowder()`{: .language-javascript }: Adds a [`tfc:add_powder`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-powder) modifier
+- `.addTrait(trait: string)`{: .language-javascript }: Adds a [`tfc:add_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-trait) modifier with the provided trait value
+- `.removeTrait(trait: string)`{: .language-javascript }: Adds a [`tfc:remove_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#remove-trait) modifier with the provided trait value
+- `.addGlass()`{: .language-javascript }: Adds a [`tfc:add_glass`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-glass) modifier
+- `.copyFood()`{: .language-javascript }: Adds a [`tfc:copy_food`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-food) modifier
+- `.copyForgingBonus()`{: .language-javascript }: Adds a [`tfc:copy_forging_bonus`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-forging-bonus) modifier
+- `.copyHeat()`{: .language-javascript }: Adds a [`tfc:copy_heat`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-heat) modifier
+- `.copyInput()`{: .language-javascript }: Adds a [`tfc:copy_input`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-input) modifier
+- `.emptyBowl()`{: .language-javascript }: Adds a [`tfc:empty_bowl`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#empty-bowl) modifier
+- `.resetFood()`{: .language-javascript }: Adds a [`tfc:reset_food`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#reset-food) modifier
+- `.copyOldestFood()`{: .language-javascript }: Adds a [`tfc:copy_oldest_food`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-oldest-food) modifier
+- `.addBait()`{: .language-javascript }: Adds a [`tfc:add_bait_to_rod`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-bait-to-rod) modifier
+- `.meal(food: Consumer<BuildFoodItemData>, portions?: Consumer<BuildPortionData>[])`{: .language-javascript }: Adds a [`tfc:meal`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#meal) modifier
     - 1st argument: A consumer with the same methods as the 2nd argument of a [food definition]({% link kubejs_tfc/1.20.1/data.md %}#food-items)
     - *Optional 2nd argument*: An array of consumers specifying the portions of a meal
         - `.ingredient(ingredient: Ingredient)`{: .language-javascript }: Sets the portion's ingredient

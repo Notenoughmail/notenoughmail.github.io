@@ -36,7 +36,7 @@ This event goes in the `server_scripts` folder.
 >
 > Use the `ServerEvents.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
 >
-> Each example has a demonstration of this that uses the appropriate tag for the type it cooresponds to
+> Each example has a demonstration of this that uses the appropriate tag for the type it corresponds to
 
 ## Geodes
 
@@ -235,7 +235,7 @@ event.clusterVein(
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
-- 7th argument: A number, the size of the vien
+- 7th argument: A number, the size of the vein
 - 8th argument: A [vein properties consumer](#vein-properties) that defines the optional parameters of the vein
 - 9th argument: A [feature placement consumer](#feature-placement)
 
@@ -562,7 +562,7 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 ```
 
 {: .notice #random-patch-notice }
-> This feature type places multiple of another feature, which may also have its own placement filters which will apply after this feature's placement filters. In this pair of examples, the patch feature limits where the crops can be placed and how often they appear in the world, while the individual block featue specifies local restrictions on placement.
+> This feature type places multiple of another feature, which may also have its own placement filters which will apply after this feature's placement filters. In this pair of examples, the patch feature limits where the crops can be placed and how often they appear in the world, while the individual block feature specifies local restrictions on placement.
 >
 > The placement filters of these examples mirror those used by TFC's crops
 

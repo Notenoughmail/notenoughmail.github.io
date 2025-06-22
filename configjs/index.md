@@ -15,7 +15,7 @@ Available on [Modrinth](https://modrinth.com/mod/configjs) and [CurseForge](http
 
 Source available on [GitHub](https://github.com/Notenoughmail/ConfigJS)
 
-A list of updates can be found [here](updates/)
+A list of updates can be found on the [updates page](updates/)
 
 ## [1.20.1](1.20.1/)
 

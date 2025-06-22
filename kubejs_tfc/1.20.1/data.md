@@ -395,7 +395,7 @@ TFCEvents.data(event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#knapping-types)!
 
 {: .notice #knapping-type-notice }
-Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is requried for any changes to affect knapping interactions
+Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is required for any changes to affect knapping interactions
 
 ### Method Signature
 

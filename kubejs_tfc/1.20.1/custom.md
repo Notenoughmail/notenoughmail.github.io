@@ -54,12 +54,23 @@ Inherits the methods of the default block builder
 
 - `.allowedFluids(fluids: string[])`{: .language-javascript }: Sets the fluids that the aqueduct may hold
     - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
+- `models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
+    - `.base()`{: .language-javascript }: A boolean. If the model part in operation is for the base
+    - `.north()`{: .language-javascript }: A boolean. If the model part in operation is the north part
+    - `.south()`{: .language-javascript }: A boolean. If the model part in operation is the south part
+    - `.east()`{: .language-javascript }: A boolean. If the model part in operation is the east part
+    - `.west()`{: .language-javascript }: A boolean. If the model part in operation is the west part
 
 #### Example
 
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_aqueduct', 'tfc:aqueduct')
+        .models((type, m) => {
+            if (type.north() || type.south()) {
+                m.texture("texture", "minecraft:block/cobbled_deepslate");
+            }
+        })
 })
 ```
 
@@ -154,6 +165,13 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:rock_spike`
 
+#### Extra Method
+
+- `.models(models: BiConsumer<SpikeModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the spike. Accepts a callback with two parameters. The second parameter is a model generator and the second generator has the following methods:
+    - `.base()`{: .language-javascript }: A boolean. If the model type in operation represents a base state
+    - `.middle()`{: .language-javascript }: A boolean. If the model type in operation represents a middle state
+    - `.tip()`{: .language-javascript }: A boolean. If the model type in operation represents a tip state
+
 #### Example
 
 ```js
@@ -172,13 +190,12 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.drips()`{: .language-javascript }: Makes the block drip particles
 - `.dripChance(f: number)`{: .language-javascript }: Sets the chance, in the range [0, 1], the block will drip per tick
 - `.dripTemp(f: number)`{: .language-javascript }: Sets the temperature at which the block must be above to begin dripping
 - `.melts()`{: .language-javascript }: makes the block melt under certain conditions
 - `.meltChance(f: number)`{: .language-javascript }: Sets the chance, in the range [0, 1], that the block will melt per random tick
 - `.meltTemp(f: number)`{: .language-javascript }: Sets the temperature above which the block can melt
-- `.dripParticle(particle: string)`{: .language-javascript }: The registry name of a particle, the particle that will drip from the block
+- `.dripParticle(particle: string)`{: .language-javascript }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to null
 - `.meltFluid(fluid: FluidStackJS)`{: .language-javascript }: The fluid that the block melts into
 - `.tipModel(model: string)`{: .language-javascript }: Sets the parent model of the tip state
 
@@ -328,6 +345,9 @@ Inherits the methods of the default block builder
 
 - `.lightLevel(i: number)`{: .language-javascript }: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.models(models: BiConsumer<LampModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the lamp. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
+    - `on`: A boolean. If the model type represents a lit state
+    - `hanging`: A boolean. If the model type represents a hanging state
 
 #### Example
 
@@ -335,6 +355,11 @@ Inherits the methods of the default block builder
 StartupEvents.registry('block', event => {
     event.create('my_lamp', 'tfc:lamp')
         .lightLevel(4)
+        .models((type, m) => {
+            if (type.on) {
+                m.texture("lamp", "minecraft:block/glowstone");
+            }
+        })
 })
 ```
 
@@ -353,7 +378,7 @@ Inherits the methods of the default block builder
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`{: .language-javascript }: Sets the bush's product item to be an existing item, will prevent the other product item from being created
 - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the model for the given lifecycle and stage, stage can be one of `0`, `1`, and `2`
-- `.allModels(modelsCreator: BiFunction<Lifecycle, number, Consumer<ModelGenerator>>)`{: .language-javascript }: Sets the model for all lifecycle and stage combinations via a callback. `null` can be returned to use the default model generation for that lifecycle/stage combination
+- `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript }: Sets the model for all lifecycle and stage combinations
 - `.texture(lifecycle: Lifecycle, stage: number, texture: string)`{: .language-javascript }: Sets the texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
@@ -369,13 +394,11 @@ StartupEvents.registry('block', event => {
         .lifecycle('may', 'flowering')
         .lifecycle('june', 'fruiting')
         .lifecycle('july', 'healthy')
-        .allModels((lifecycle, stage) => {
-            if (lifecycle.active()) return null
-
-            return m => {
-                m.parent(`tfc:block/plant/stationary_bush_${stage}`)
-                m.texture('bush', 'tfc:block/berry_bush/dead_bush')
-                m.texture('particle', 'tfc:block/mud/silt')
+        .models((lifecycle, stage, modelGen) => {
+            if (!lifecycle.active()) {
+                m.parent(`tfc:block/plant/stationary_bush_${stage}`);
+                m.texture('bush', 'tfc:block/nerry_bush/dead_bush');
+                m.texture('particle', 'tfc:block/mud/silt');
             }
         })
         .texture('flowering', 2, 'minecraft:flowering_azalea_leaves')
@@ -393,6 +416,11 @@ Inherits the methods of the stationary bush builder
 #### Extra Methods
 
 - `.maxHeight(i: number)`{: .language-javascript }: Sets the maximum number of blocks the bush may climb, defaults to `3`
+- `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-javascript }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
+    - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`, `1`, and `2`
+    - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript }: Sets the model for all lifecycle and stage combinations
+    - `.texture(lifecycle: Lifecycle, stage: number, texture: string)`{: .language-javascript }: Sets the cane texture for the given lifecycle and stage
+    - `.texture(lifecycle: Lifecycle, stage: number, caneTexture: string, bushTexture)`{: .language-javascript }: Sets the cane and bush texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
@@ -421,6 +449,11 @@ Inherits the methods of the default block builder
 
 - `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-javascript }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder and:
     - `.uniqueDirtTexture()`{: .language-javascript }: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
+    - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first ahs the following properties:
+        - `snowy`: A boolean. If the model part in operation represents a snowy state
+        - `side`: A boolean. If the model part in operation represents a side part
+        - `top`: A boolean. If the model part in operation represents a top part
+        - `bottom`: A boolean. If the model part in operation represents a bottom part
 - `.path(path: Consumer<TFCPathBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
 - `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
     - Those of the default block builder
@@ -435,6 +468,11 @@ StartupEvents.registry('block', event => {
     event.create('my_dirt', 'tfc:dirt')
         .grass(grass => {
             grass.hardness(1)
+            grass.models((type, m) => {
+                if (type.snowy && type.top) {
+                    m.texture('texture', 'minecraft:block/snow')
+                }
+            })
         })
         .path(path => {
             path.hardness(1)
@@ -677,9 +715,13 @@ Inherits the methods of the default block builder
 - `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+    - `.models(models: BiConsumer<GearBoxModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the gear box. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following method:
+        - `.port()`{: .language-javascript }: A boolean. If the model type in operation represents a port (open) state
 - `.clutch(clutch: Consumer<ClutchBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's clutch block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+    - `.models(models: BiConsumer<ClutchModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the clutch. Accepts a callback with two parameters. The second parameter is a model generator, the first has the following method:
+        - `.powered()`{: .language-javascript }: A boolean. If the model type in operation represents a powered state
 - `.bladedAxle(bladed: Consumer<BladedAxleBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's bladed axle block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -717,13 +759,13 @@ StartupEvents.registry('block', event => {
 
 Creates a new TFC log block
 
-Inherits the methods of the default block buidler
+Inherits the methods of the default block builder
 
 **Type**: `tfc:log`
 
 #### Extra Methods
 
-- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-javascript }: Sets the properties of the stipped log variant, consumer has same methods as this block except for this method. May pass in null to remove the stripped block
+- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-javascript }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in null to remove the stripped block
 - `.useFullBlockForItemModel()`{: .language-javascript }: Makes the autogenerated item model use the model of the block instead of a custom texture
 
 #### Example
@@ -1387,11 +1429,9 @@ Inherits the methods of the basic fluid builder
 
 #### Extra Methods
 
-- `.bubbleParticle(particle: string)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]
-- `.steamParticle(particle: string)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]
+- `.bubbleParticle(particle: string)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]. May be null to not have bubble particles
+- `.steamParticle(particle: string)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]. May be null to not have steam particles
 - `.healingAmount(f: number)`{: .language-javascript }: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`
-- `.hasBubbles(b: boolean)`{: .language-javascript }: Determines if the liquid emits bubble particles, defaults to `true`
-- `.hasSteam(b: boolean)`{: .language-javascript }: Determines if the liquid emits steam particles, defaults to `true`
 
 [^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type` in-game
 
@@ -1406,9 +1446,11 @@ StartupEvents.registry('fluid', event => {
 
 ## Attachments
 
-In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds an attachment that can be used in scripts
+In 1.20.1, KubeJS added the ability to add block entity attachments to its basic blocks, KubeJS TFC adds a few attachments that can be used in scripts
 
 - [Inventory](#inventory)
+- [Heat](#heat)
+- [Calendar](#calendar)
 
 ### Inventory
 
@@ -1439,3 +1481,52 @@ StartupEvents.registry('block', event => {
         })
 })
 ```
+
+### Heat
+
+Adds a new attachment that implements TFC's `IHeatBlock` interface, updates its temperature every tick, and can provide heat to blocks above it like the charcoal forge
+
+**Type**: `tfc:heat`
+
+**Note**: Due to the way KubeJS works, this does not directly expose the `IHeatBlock` interface on the block entity, nor does it attach a block heat capability to it so other blocks will not be able to automatically interface with it, nor will Jade show the temperature
+
+#### Definition
+
+- `temperatureCallback`: One of:
+    - A number, a constant temperature
+    - A callback, dynamically sets the temperature based on the parameters:
+        - `be: BlockEnttiyJS`{: .language-javascript }: The block entity
+        - `currentTemperature: number`{: .language-javascript }: The current temperature of the block
+        - `calendarTick: number`{: .language-javascript }: The current calendar tick during the calculation
+        - `calendarTicksSinceLastUpdate: number`{: .language-javascript }: The number of calendar ticks that have passed since the calculation was last run
+        - `return: number`: The new temperature to set the block to. May be negative to keep the previous temperature
+- `providesHeat`: A boolean. Optional, defaults to false. If true, the block will provide its temperature to a heat block above it, similar to the charcoal forge
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('heat_example')
+        .blockEntity(be => {
+            be.attach('tfc:heat', {
+                temperatureCallback: (be, currentTemperature, calendarTick, skippedTicks) => {
+                    if (skippedTicks > 1) {
+                        // Cools down while unloaded
+                        var afterSkip = currentTemperature * ((4000 - skippedTicks) / 4000) // After 4000 ticks passed (~ 3 1/3 irl minutes) the temp becomes 0
+                        return Math.max(0, afterSkip);
+                    } else {
+                        if (be.data.heating) {
+                            return Math.min(5000, currentTemperture + 0.5);
+                        } else {
+                            return -1;
+                        }
+                    }
+                },
+                providesHeat: true
+            })
+        })
+})
+```
+
+### Calendar
+
