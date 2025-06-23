@@ -17,7 +17,7 @@ ConfigJS adds a single binding to scripts, the `ConfigJS` object which has only 
 
 ```js
 declare class ConfigJS {
-    getOtherValueFromEnumConfig(configValue: ForgeConfigSpec$EnumValue<T>, name: string): T
+    getOtherValueFromEnumConfig(configValue: ForgeConfigSpec$EnumValue<T>, name: String): T
 }
 ```
 
@@ -35,69 +35,69 @@ ConfigJS adds three startup events, `ConfigsEvent.common`, `ConfigsEvent.server`
 
 ```js
 declare class ConfigEventJS {
-    setName(name: string): ConfigEventJS
+    setName(name: String): ConfigEventJS
     pop(i?: number): ConfigEventJS
-    push(path: string): ConfigEventJS
-    swap(path: string): ConfigEventJS
-    comment(comments...: string[]): ConfigEventJS
-    intValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$IntValue
-    longValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$LongValue
-    doubleValue(name: string, defaultValue: number, min: number, max: number): ForgeConfigSpec$DoubleValue
-    booleanValue(name: string, defaultValue: boolean): ForgeConfigSpec$BooleanValue
-    enumValue(name: string, defaultValue: string, enumValues: string[]): ForgeConfigSpec$EnumValue<? extends Enum<?>>
-    enumValue(name: string, defaultValue: T extends Enum<T>): ForgeConfigSpec$EnumValue<T>
-    stringValue(name: string, defaultValue: string): ForgeConfigSpec$ConfigValue<string>
-    stringValueWithPredicate(name: string, defaultValue: string, validator: Predicate<string>): ForgeConfigSpec$ConfigValue<string>
-    stringValue(name: string, defaultValue: string, allowedValues: string[]): ForgeConfigSpec$ConfigValue<string>
-    stringListValue(name: string, defaultValues: string[], validator: Predicate<string>): ForgeConfigSpec$ConfigValue<List<? extends string>>
+    push(path: String): ConfigEventJS
+    swap(path: String): ConfigEventJS
+    comment(comments...: String[]): ConfigEventJS
+    intValue(name: String, defaultValue: number, min: number, max: number): ForgeConfigSpec$IntValue
+    longValue(name: String, defaultValue: number, min: number, max: number): ForgeConfigSpec$LongValue
+    doubleValue(name: String, defaultValue: number, min: number, max: number): ForgeConfigSpec$DoubleValue
+    booleanValue(name: String, defaultValue: boolean): ForgeConfigSpec$BooleanValue
+    enumValue(name: String, defaultValue: String, enumValues: String[]): ForgeConfigSpec$EnumValue<? extends Enum<?>>
+    enumValue(name: String, defaultValue: T extends Enum<T>): ForgeConfigSpec$EnumValue<T>
+    stringValue(name: String, defaultValue: String): ForgeConfigSpec$ConfigValue<String>
+    stringValueWithPredicate(name: String, defaultValue: String, validator: Predicate<String>): ForgeConfigSpec$ConfigValue<String>
+    stringValue(name: String, defaultValue: String, allowedValues: String[]): ForgeConfigSpec$ConfigValue<String>
+    stringListValue(name: String, defaultValues: String[], validator: Predicate<String>): ForgeConfigSpec$ConfigValue<List<? extends String>>
 }
 ```
 
-- `.setName(name: string)`{: .language-javascript }: Sets the name of the config file, defaults to `configjs-<configType>`
+- `.setName(name: String)`{: .language-javascript }: Sets the name of the config file, defaults to `configjs-<configType>`
 - `.pop(i?: number)`{: .language-javascript }: Moves the active section to be edited left by the specified number of tabs, defaults to `1`
-- `.push(path: string)`{: .language-javascript }: Adds a section to the config with the given name and moves the active section right by one
-- `.swap(path: string)`{: .language-javascript }: Pops the active section by 1 and pushes the given path as the active section
-- `.comment(comments...: string[])`{: .language-javascript }: Adds the given strings as comments to the file, each new string is a new line
+- `.push(path: String)`{: .language-javascript }: Adds a section to the config with the given name and moves the active section right by one
+- `.swap(path: String)`{: .language-javascript }: Pops the active section by 1 and pushes the given path as the active section
+- `.comment(comments...: String[])`{: .language-javascript }: Adds the given strings as comments to the file, each new string is a new line
 
 The following options actually define a config value, and return an instance of a `ForgeConfigSpec$ConfigValue<?>`, it is strongly recommended to use the `global` binding to use the values throughout your scripts, a demonstration can be seen in the example
 
-- `.intValue(name: string, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new integer config option
+- `.intValue(name: String, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new integer config option
     - Name: The name of the config option
     - DefaultValue: The default values of the option, must be between the minimum and maximum values specified
     - Min: The minimum value the config option may be, inclusive
     - Max: The maximum values the config option may be, inclusive
-- `.longValue(name: string, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new long config option
+- `.longValue(name: String, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new long config option
     - Name: The name of the config option
     - DefaultValue: The default values of the option, must be between the minimum and maximum values specified
     - Min: The minimum value the config option may be, inclusive
     - Max: The maximum values the config option may be, inclusive
-- `.doubleValue(name: string, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new double config option
+- `.doubleValue(name: String, defaultValue: number, min: number, max: number)`{: .language-javascript }: Defines a new double config option
     - Name: The name of the config option
     - DefaultValue: The default values of the option, must be between the minimum and maximum values specified
     - Min: The minimum value the config option may be, inclusive
     - Max: The maximum values the config option may be, inclusive
-- `.booleanValue(name: string, defaultValue: boolean)`{: .language-javascript }: Defines a new boolean config option
+- `.booleanValue(name: String, defaultValue: boolean)`{: .language-javascript }: Defines a new boolean config option
     - Name: The name of the config option
     - DefaultValue: The default value of the option
-- `.enumValue(name: string, defaultValue: string, enumValues: string[])`{: .language-javascript }: Defines a new enum config option
+- `.enumValue(name: String, defaultValue: String, enumValues: String[])`{: .language-javascript }: Defines a new enum config option
     - Name: The name of the config option
     - DefaultValue: The default enum value for the config, should be included in `enumValues`
     - EnumValues: The list of allowed values for the config option
-- `.enumValue(name: string, defaultValue: T extends Enum<T>)`{: .language-javascript }: Defines a new enum config option from the class of the given enum value
+- `.enumValue(name: String, defaultValue: T extends Enum<T>)`{: .language-javascript }: Defines a new enum config option from the class of the given enum value
     - Name: The name of the config option
     - DefaultValue: An enum value
-- `.stringValue(name: string, defaultValue: string)`{: .language-javascript }: Defines a new string config option, accepts any non-empty string
+- `.stringValue(name: String, defaultValue: String)`{: .language-javascript }: Defines a new string config option, accepts any non-empty string
     - Name: The name of the config option
     - DefaultValue: The default value for the config
-- `.stringValueWithPredicate(name: string, defaultValue: string, validator: Predicate<string>)`{: .language-javascript }: Defines a new string config option
+- `.stringValueWithPredicate(name: String, defaultValue: String, validator: Predicate<String>)`{: .language-javascript }: Defines a new string config option
     - Name: The name of the config option
     - DefaultValue: The default value for the config
     - Validator: A callback that gives a string and expects a boolean to be returned, determines what config values are valid, should permit the default value
-- `.stringValue(name: string, defaultValue: string, allowedValues: string[])`{: .language-javascript }: Defines a new string config option
+- `.stringValue(name: String, defaultValue: String, allowedValues: String[])`{: .language-javascript }: Defines a new string config option
     - Name: The name of the config option
     - DefaultValue: The default value for the config option
     - AllowedValues: The values that are valid for this config option. should include the default value
-- `.stringListValue(name: string, defaultValues: string[], validator: Predicate<string>)`{: .language-javascript }: Defines a new string list config option
+- `.stringListValue(name: String, defaultValues: String[], validator: Predicate<String>)`{: .language-javascript }: Defines a new string list config option
     - Name: The name of the config option
     - DefaultValues: The default values of the config option
     - Validator: The validator of the elements of the config's elements, should permit the default values

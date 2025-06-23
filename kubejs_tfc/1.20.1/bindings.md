@@ -36,7 +36,7 @@ This defines an object which defines the values used in an [alloy recipe]({% lin
 Method signature:
 
 ```js
-TFC.alloyPart(metal: string, min: number, max: number)
+TFC.alloyPart(metal: String, min: number, max: number)
 ```
 
 Creates an `AlloyPart` which can be converted to and from json easily. Only values in the range [0, 1] are valid for the `min` and `max` arguments
@@ -64,7 +64,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 Method signature:
 
 ```js
-TFC.blockIngredient(blockIngredient: (string | Block | BlockState | TagKey<Block> | Regex | List<(string | Block | BlockState | tagKey<Block> | Regex)> | BlockIngredient))
+TFC.blockIngredient(blockIngredient: (String | Block | BlockState | TagKey<Block> | Regex | List<(String | Block | BlockState | tagKey<Block> | Regex)> | BlockIngredient))
 ```
 
 Creates a `BlockIngredient` representing the blocks/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
@@ -102,7 +102,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 Method signature:
 
 ```js
-TFC.fluidIngredient(fluidIngredient: (string | Fluid | TagKey<Fluid> | FluidStackJS | Regex | List<(string | Fluid | TagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
+TFC.fluidIngredient(fluidIngredient: (String | Fluid | TagKey<Fluid> | FluidStackJS | Regex | List<(String | Fluid | TagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
 
 Creates a `FluidIngredient` representing the fluids/tags given. If provided a string, a `#` at the beginning will cause it to be interpreted as a tag
@@ -141,7 +141,7 @@ Method signatures:
 
 ```js
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number)
-TFC.fluidStackIngredient(fluidStackIngredient: (string | Fluid | TagKey<fluid> | FluidStackJS | Regex | List<(string | Fluid | tagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
+TFC.fluidStackIngredient(fluidStackIngredient: (String | Fluid | TagKey<fluid> | FluidStackJS | Regex | List<(String | Fluid | tagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient))
 ```
 
 Creates a `FluidStackIngredient` representing the fluids/tags given with the provided amount or with a default amount of 1000 if no amount can be assumed from the given object.

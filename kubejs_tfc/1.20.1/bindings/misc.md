@@ -152,7 +152,7 @@ Retrieves the food trait with the given registry name or null if not found
 Method Signature:
 
 ```js
-TFC.misc.getFoodTrait(id: string): FoodTrait
+TFC.misc.getFoodTrait(id: String): FoodTrait
 ```
 
 Example:
@@ -168,7 +168,7 @@ Returns the id of the given food trait
 Method Signature
 
 ```js
-TFC.misc.getFoodTraitId(trait: FoodTrait): string
+TFC.misc.getFoodTraitId(trait: FoodTrait): String
 ```
 
 ### Apply Trait
@@ -248,7 +248,7 @@ Forces a collapse to happen at a position, returns true if any blocks started co
 Method Signature:
 
 ```js
-TFC.misc.forceCollapse(level: Level, pos: BlockPos)
+TFC.misc.forceCollapse(level: Level, pos: BlockPos): boolean
 ```
 
 - `level`: The level where the collapse will occur
@@ -415,8 +415,8 @@ TFC uses open simplex noise for most, if not all, of its custom worldgen, these 
 Method Signatures:
 
 ```js
-TFC.misc.newOpenSimplex2D(seed: number)
-TFC.misc.newOpenSimplex3D(seed: number)
+TFC.misc.newOpenSimplex2D(seed: number): OpenSimplex2D
+TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 ```
 
 - `seed`: The seed for the noise's algorithm
@@ -428,8 +428,8 @@ TFC uses [metaballs](https://en.wikipedia.org/wiki/Metaballs) for its generation
 Method Signatures:
 
 ```js
-TFC.misc.newMetaballs2D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number)
-TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number)
+TFC.misc.newMetaballs2D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number): metaballs2D
+TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number): Metaballs3D
 ```
 
 - `random`: The random source used by the metaballs to create variance between instances

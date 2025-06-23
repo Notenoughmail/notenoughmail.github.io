@@ -97,3 +97,15 @@ post-tags:
   politics:
     title: Politics
     link: /writing/#politics
+
+code-colors:
+  enum: ff42b5
+  symbol: 47ab36
+  annotation: 71d7ff
+  number: eddc96
+  func: fdce68
+  primitive: e19ef5
+  reserved: e19ef5
+  method: ab94fa
+  string: a3eea0
+  variable: 60eded

@@ -80,7 +80,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.hasTrait(delegate?: Ingredient, trait: string)
+TFC.ingredient.hasTrait(delegate?: Ingredient, trait: String)
 ```
 
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
@@ -164,7 +164,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: string)
+TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: String)
 ```
 
 - *Optional 1st argument*: An item ingredient, limits the items to which this ingredient applies

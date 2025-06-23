@@ -1,20 +1,90 @@
 .highlight {
     .nf {
-        color:#a5e7f7;
+        color:#{{ site.code-colors.method }};
+    }
+    .k {
+        color:#{{ site.code-colors.reserved }};
     }
     .o {
-        color:#47ab36;
+        color:#{{ site.code-colors.symbol }};
+    }
+    .nb {
+        color:#{{ site.code-colors.func }};
+    }
+    .mi {
+        color:#{{ site.code-colors.number }};
+    }
+    .enum {
+        color:#{{ site.code-colors.enum }};
+    }
+    .e {
+        color:#{{ site.code-colors.enum }};
+    }
+    .nd {
+        color:#{{ site.code-colors.annotation }};
+    }
+    .kc {
+        color:#{{ site.code-colors.primitive }};
+    }
+    .s1 {
+        color:#{{ site.code-colors.string }};
+    }
+    .kv {
+        color:#{{ site.code-colors.variable }};
     }
 }
 
 code {
     .nf {
-        color:#a5e7f7;
+        color:#{{ site.code-colors.method }};
     }
     .k {
-        color:#e19ef5;
+        color:#{{ site.code-colors.reserved }};
     }
     .o {
-        color:#47ab36;
+        color:#{{ site.code-colors.symbol }};
     }
+    .nb {
+        color:#{{ site.code-colors.func }};
+    }
+    .mi {
+        color:#{{ site.code-colors.number }};
+    }
+    .e {
+        color:#{{ site.code-colors.enum }};
+    }
+    .enum {
+        color:#{{ site.code-colors.enum }};
+    }
+    .nd {
+        color:#{{ site.code-colors.annotation }};
+    }
+    .kc {
+        color:#{{ site.code-colors.primitive }};
+    }
+    .s1 {
+        color:#{{ site.code-colors.string }};
+    }
+    .kv {
+        color:#{{ site.code-colors.variable }};
+    }
+}
+
+code.e {
+    color:#{{ site.code-colors.enum }};
+}
+code.f {
+    color:#{{ site.code-colors.func }};
+}
+code.p {
+    color:#{{ site.code-colors.primitive }};
+}
+code.m {
+    color:#{{ site.code-colors.method }};
+}
+code.s {
+    color:#{{ site.code-colors.string }};
+}
+code.n {
+    color:#{{ site.code-colors.number }};
 }

@@ -38,7 +38,7 @@ TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos)
 - `.getFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current air fog value at the given level and position
 - `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current water fog value at the given level and position
 - `.getWindVector(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current `Vec2` wend vector at the given level and position
-- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-javascript }: Returns `true` if it is currently warm enough to rain at the given level and position
+- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-javascript }: Returns `true`{:.p} if it is currently warm enough to rain at the given level and position
 
 ## Example
 

@@ -15,17 +15,17 @@ These are available from the `TFC.itemStackProvider` and `TFC.isp` fields
 ## Method Signatures
 
 ```js
-TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
-TFC.isp.empty(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
-TFC.itemStackProvider.copyInput(modifiers?: (string | JsonArray | JsonObject | List<(string | JsonObject)>))
+TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
+TFC.isp.empty(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
+TFC.itemStackProvider.copyInput(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
 ```
 
-- Of: Returns an item stack provider with the given item and modifiers
+- `.of(itemStack: ItemStack, modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))`{: .language-javascript }: Returns an item stack provider with the given item and modifiers
     - 1st argument: An item stack, the item stack of the ISP
     - *Optional 2nd argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the ISP
-- Empty: Returns an item stack modifier with an empty item stack and the provided modifiers
+- `.empty(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))`{: .language-javascript }: Returns an item stack modifier with an empty item stack and the provided modifiers
     - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, no modifiers will be applied to the ISP
-- CopyInput: Returns an empty ISP with the `tfc:copy_input` modifier and the provided modifiers
+- `.copyInput(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))`{: .language-javascript }: Returns an empty ISP with the `tfc:copy_input` modifier and the provided modifiers
     - *Optional 1st argument*: A string, json array, json object, of list of strings and/or json objects, the modifiers to add. If not provided, only the copy input modifier will be applied to the ISP
 
 {: .notice #method-notice }
@@ -116,7 +116,7 @@ declare class ItemStackProviderJS {
     withCount(i: number): ItemStackProviderJS
     getCount(): number
     getJsonStack(): JsonObject
-    getModifiersOfType(type: string): List<JsonObject>
+    getModifiersOfType(type: String): List<JsonObject>
     toJson(): JsonObject
     asCanonClass(): ItemStackProvider
     dependsOnInput(): boolean
@@ -124,13 +124,13 @@ declare class ItemStackProviderJS {
     getTag(): @Nullable CompoundTag
     setTag(tag: CompoundTag): ItemStackProviderJS
     mergeTag(tag: CompoundTag): ItemStackProviderJS
-    simpleModifier(type: string): ItemStackProviderJS
+    simpleModifier(type: String): ItemStackProviderJS
     jsonModifier(modifier: JsonObject): ItemStackProviderJS
     dyeLeather(color: DyeColor): ItemStackProviderJS
     addHeat(temperature: number): ItemStackProviderJS
     addPowder(): ItemStackProviderJS
-    addTrait(trait: string): ItemStackProviderJS
-    removeTrait(trait: string): ItemStackProviderJS
+    addTrait(trait: String): ItemStackProviderJS
+    removeTrait(trait: String): ItemStackProviderJS
     addGlass(): ItemStackProviderJS
     copyFood(): ItemStackProviderJS
     copyForgingBonus(): ItemStackProviderJS
@@ -154,7 +154,7 @@ declare class ItemStackProviderJS {
 - `.withCount(i: number)`{: .language-javascript }: Sets the stacks count to the provided value
 - `.getCount()`{: .language-javascript }: Returns the stack's count
 - `.getJsonStack()`{: .language-javascript }: Returns a json object representing the item stack
-- `.getModifiersOfType(type: string)`{: .language-javascript }: Returns a list of json objects which represent the applied modifiers with the given type
+- `.getModifiersOfType(type: String)`{: .language-javascript }: Returns a list of json objects which represent the applied modifiers with the given type
 - `.toJson()`{: .language-javascript }: Returns the json representation of the ISP
 - `.asCanonClass()`{: .language-javascript }: Returns the ISP as an `ItemStackProvider` object, TFC's canonical class for this data
 - `.dependsOnInput()`{: .language-javascript }: Returns true if any of the applied modifiers is dependent on the recipe's input
@@ -162,13 +162,13 @@ declare class ItemStackProviderJS {
 - `.getTag()`{: .language-javascript }: Returns the item stack's `CompoundTag`, may be null
 - `.setTag(tag: CompoundTag)`{: .language-javascript }: Sets the item stack's `CompoundTag`
 - `.mergeTag(tag: CompoundTag)`{: .language-javascript }: Merges the provided `CompoundTag` into the item stack's
-- `.simpleModifier(type: string)`{: .language-javascript }: Adds a modifier of the provided type
+- `.simpleModifier(type: String)`{: .language-javascript }: Adds a modifier of the provided type
 - `.jsonModifier(modifier: JsonObject)`{: .language-javascript }: Adds the provided json modifier
 - `.dyeLeather(color: DyeColor)`{: .language-javascript }: Adds a `tfc:dye_leather` modifier with the provided color
 - `.addHeat(temperature: number)`{: .language-javascript }: Adds a [`tfc:add_heat`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-heat) with the provided temperature, allows negative values
 - `.addPowder()`{: .language-javascript }: Adds a [`tfc:add_powder`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-powder) modifier
-- `.addTrait(trait: string)`{: .language-javascript }: Adds a [`tfc:add_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-trait) modifier with the provided trait value
-- `.removeTrait(trait: string)`{: .language-javascript }: Adds a [`tfc:remove_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#remove-trait) modifier with the provided trait value
+- `.addTrait(trait: String)`{: .language-javascript }: Adds a [`tfc:add_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-trait) modifier with the provided trait value
+- `.removeTrait(trait: String)`{: .language-javascript }: Adds a [`tfc:remove_trait`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#remove-trait) modifier with the provided trait value
 - `.addGlass()`{: .language-javascript }: Adds a [`tfc:add_glass`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#add-glass) modifier
 - `.copyFood()`{: .language-javascript }: Adds a [`tfc:copy_food`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-food) modifier
 - `.copyForgingBonus()`{: .language-javascript }: Adds a [`tfc:copy_forging_bonus`](https://terrafirmacraft.github.io/Documentation/1.20.x/item-stack-modifiers/#copy-forging-bonus) modifier

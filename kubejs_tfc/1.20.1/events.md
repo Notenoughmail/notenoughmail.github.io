@@ -40,7 +40,7 @@ Defines a new layer or overrides an existing layer which can be referenced from 
 
 ```js
 event.defineRock(
-    id: string,
+    id: String,
     raw: Block,
     hardened: Block,
     gravel: Block,
@@ -84,7 +84,7 @@ TFC has an item size feature which it uses to limit which items can go into its 
 
 The basic functionality and idea is based off of a 1.12 [addon](https://github.com/DoubleDoorDevelopment/OversizedItemInStorageArea) that did much the same. It is licensed under the [BSD License](https://www.curseforge.com/minecraft/mc-mods/oversized-item-in-storage-area/comments#license)
 
-Upon a player closing a container limited through this event, any items that are 1) in the limited slots and are not within the size limits will be removed from the container and spawned in world around the player
+Upon a player closing a container limited through this event, any items that are 1) in the limited slots and 2) are not within the size limits will be removed from the container and spawned in world around the player
 
 ### Method Signatures
 
@@ -97,12 +97,12 @@ declare class ContainerLimiterEventJS {
 }
 ```
 
-- `.limit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
-- `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
-- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
-- `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small` will accept items with a size of `small`, defaults to `true`
+- `.limit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 
-Allows size values: `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`
+Allows size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, `huge`{:.e}
 
 Additionally, every event listener requires the name of a menu type[^1] in its declaration as a key for which menus the limits are applied to.
 
@@ -195,16 +195,16 @@ The register method of the event has the following arguments:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position
         - `calendarTicks: number`{: .language-javascript }: The calendar tick the calculation is being made at; and
-        - `return: Vec2`{: .language-javascript }: A 2D vector, representing the strength and direction of wind, each component should be in the range [0, 1]. Vectors can be made through the `.vector()` method described above
+        - `return: Vec2`{: .language-javascript }: A 2D vector, representing the strength and direction of wind, each component should be in the range [0, 1]. Vectors can be made through the `.vector()`{:.m} method described above
     - `.setOnWorldLoad(calc: Consumer<ServerLevel>)`{: .language-javascript }: Sets the model's behavior when the world is loaded, accepts a consumer of a `ServerLevel`
     - `.setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>)`{: .language-javascript }: Sets the model's behavior on chunk load, accepts a callback with the following values:
         - `level: WorldGenLevel`{: .language-javascript }: The level
         - `chunk: ChunkAccess`{: .language-javascript }: The chunk being loaded
         - `chunkData: ChunkData`{: .language-javascript }: Additional TFC data about the chunk, will be invalid if the level does not have a TFC-like generator
-    - `.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>)`{: .language-javascript }: Adds a new `Noise2D` to the model and returns a number which can be used to retrieve it in calculations. Accepts a callback with the following values:
+    - `.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>)`{: .language-javascript }: Adds a new `Noise2D`{:.f} to the model and returns a number which can be used to retrieve it in calculations. Accepts a callback with the following values:
         - `simplex: OpenSimplex2D`{: .language-javascript }: The base [`OpenSimplex2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/OpenSimplex2D.java) that is used to make the noise; and
         - `return: Noise2D`{: .language-javascript }: The final noise
-    - `.noise(index: number)`{: .language-javascript }: Gets the model's [`Noise2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Noise2D.java) with the given index
+    - `.noise(index: number)`{: .language-javascript }: Gets the model's [`Noise2D`{:.f}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Noise2D.java) with the given index
     - `.getTfcWind()`{: .language-javascript }: Returns the callback TFC uses for its Overworld wind calculations
     - `.getTfcChunkLoad()`{: .language-javascript }: Returns the callback TFC uses for its Overworld chunk load actions
     - `.getTfcCurrentTemperature()`{: .language-javascript }: Returns the callback TFC uses for its Overworld current temperature calculation
@@ -329,8 +329,8 @@ declare class ProspectEventJS {
 ```
 
 - `.getEntity()`{: .language-javascript }: Returns the player that prospected
-- `.getBlock()`{: .language-javascript }: Returns the found block, or if the prospect result is `nothing`, the clicked block
-- `.getProspectResult()`{: .language-javascript }: Results the prospect result, can be `nothing`, `traces`, `small`, `medium`, `large`, `very_large`, and `found`
+- `.getBlock()`{: .language-javascript }: Returns the found block, or if the prospect result is `nothing`{:.e}, the clicked block
+- `.getProspectResult()`{: .language-javascript }: Results the prospect result, can be `nothing`{:.e}, `traces`{:.e}, `small`{:.e}, `medium`{:.e}, `large`{:.e}, `very_large`{:.e}, and `found`{:.e}
 
 ### Example
 
@@ -506,13 +506,13 @@ Food traits are applied to food items while in a container or after completion o
 
 ```js
 declare class RegisterFoodTraitEventJS {
-    registerTrait(decayModifier: number, id: string): void
-    registerTraitWithTooltip(decayModifier: number, id: string): void
+    registerTrait(decayModifier: number, id: String): void
+    registerTraitWithTooltip(decayModifier: number, id: String): void
 }
 ```
 
-- `.registerTrait(decayModifier: number, id: string)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier
-- `.registerTraitWithTooltip(decayModifier: number, id: string)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier, this trait will have a tooltip on the item with a translation key of `<id namespace>.tooltip.foodtrait.<id path>`
+- `.registerTrait(decayModifier: number, id: String)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier
+- `.registerTraitWithTooltip(decayModifier: number, id: String)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier, this trait will have a tooltip on the item with a translation key of `<id namespace>.tooltip.foodtrait.<id path>`
 
 **Note**: A higher `decayModifier` means the food rots faster
 
@@ -535,19 +535,19 @@ TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/
 
 ```js
 declare class RegisterItemStackModifierEventJS {
-    simple(id: string, applicator: Function<ItemStack, ItemStack>): void
-    withInput(id: string, applicator: BiFunction<ItemStack, ItemStack, ItemStack>): void
-    withInventory(id: string, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>): void
+    simple(id: String, applicator: Function<ItemStack, ItemStack>): void
+    withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>): void
+    withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>): void
 }
 ```
 
-- `.simple(id: string, applicator: Function<ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is not input dependent
+- `.simple(id: String, applicator: Function<ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is not input dependent
     - Id: A string, the registry id to register the modifier as
     - Applicator: A function that receives and returns an `ItemStack`, the output stack. Performs the modifications to the output stack
-- `.withInput(id: string, applicator: BiFunction<ItemStack, ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent
+- `.withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent
     - Id: A string, the registry id to register the modifier as
     - Applicator: A bi-function that receives two `ItemStack`s, the output stack and the input stack[^2], and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
-- `.withInventory(id: string, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent and has access to an iterable view of the input inventory
+- `.withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent and has access to an iterable view of the input inventory
     - Id: A string, the registry id to register the modifier as
     - Applicator: A tri-function that receives two `ItemStack`s, the output stack and the input stack[^2], and an `Iterable<ItemStack>`, an iterable view of the input inventory, and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
 
@@ -616,13 +616,13 @@ TFC has an easter egg in its calendar screen where on certain dates it will show
 
 ```js
 declare class BirthdayEventsJS {
-    add(month: Month, day: number, name: string): void
+    add(month: Month, day: number, name: String): void
     remove(month: Month, day: number): void
     removeAll(): void
 }
 ```
 
-- `.add(month: Month, day: number, name: string)`{: .language-javascript }: Adds a birthday to the given month and day
+- `.add(month: Month, day: number, name: String)`{: .language-javascript }: Adds a birthday to the given month and day
 - `.remove(month: Month, day: number)`{: .language-javascript }: Removes the birthday on the given month and day if there is one
 - `.removeAll()`{: .language-javascript }: Removes all birthdays
 
@@ -669,7 +669,7 @@ TFCEvents.registerInteractions(event => {
 
 ### OnItemUseAction
 
-The basis of an interaction, a callback that takes a `ItemStack`, the item in the hand, and a `UseOnContext`, the context of the event, and returns an `InteractionResult`. It has the following method signature:
+The basis of an interaction, a callback that takes a `ItemStack`, the item in the hand, and a `UseOnContext`, the context of the event, and returns an `InteractionResult`{:.e}. It has the following method signature:
 
 ```js
 apply(stack: ItemStack, context: UseOnContext): InteractionResult
@@ -695,35 +695,35 @@ declare class ModifyDefaultWorldgenSettingsEventJS {
     setRainfallConstant(f: number): void
     setContinentalness(f: number): void
     setGrassDensity(f: number): void
-    addRock(rock: RockSettings, name: string, bottom: boolean): void
-    addRockFromId(id: string, name: string, bottom: boolean): void
-    getRock(name: string): RockSettings
-    getRockNames(): Set<string>
-    removeRock(name: string): void
-    addToBottom(name: string): void
-    removeFromBottom(name: string): void
-    defineLayer(id: string, rockMap: Map<string, string>): void
-    removeLayer(layerId: string): void
-    getLayerIds(): List<string>
+    addRock(rock: RockSettings, name: String, bottom: boolean): void
+    addRockFromId(id: String, name: String, bottom: boolean): void
+    getRock(name: String): RockSettings
+    getRockNames(): Set<String>
+    removeRock(name: String): void
+    addToBottom(name: String): void
+    removeFromBottom(name: String): void
+    defineLayer(id: String, rockMap: Map<String, String>): void
+    removeLayer(layerId: String): void
+    getLayerIds(): List<String>
     cleanSlate(): void
-    addOceanFloorLayer(name: string): void
-    removeOceanFloorLayer(name: string): void
-    getOceanFloorLayers(): List<string>
-    addLandLayer(name: string): void
-    removeLandLayer(name: string): void
-    getLandLayers(): List<string>
-    addVolcanicLayer(name: string): void
-    removeVolcanicLayer(name: string): void
-    getVolcanicLayers(): List<string>
-    addUpliftLayer(name: string): void
-    removeUpliftLayer(name: string): void
-    getUpliftLayers(): List<string>
+    addOceanFloorLayer(name: String): void
+    removeOceanFloorLayer(name: String): void
+    getOceanFloorLayers(): List<String>
+    addLandLayer(name: String): void
+    removeLandLayer(name: String): void
+    getLandLayers(): List<String>
+    addVolcanicLayer(name: String): void
+    removeVolcanicLayer(name: String): void
+    getVolcanicLayers(): List<String>
+    addUpliftLayer(name: String): void
+    removeUpliftLayer(name: String): void
+    getUpliftLayers(): List<String>
 }
 ```
 
 #### Climate Modifiers
 
-- `.flatBedrock(flat?: boolean)`{: .language-javascript }: Sets if the world should have flat bedrock, defaults to `false`, calling without any arguments sets it to `true`
+- `.flatBedrock(flat?: boolean)`{: .language-javascript }: Sets if the world should have flat bedrock, defaults to `false`{:.p}, calling without any arguments sets it to `true`{:.p}
 - `.setSpawnDistance(i: number)`{: .language-javascript }: Sets the distance from the spawn center that players may spawn, defaults to 4000
 - `.setSpawnCenterX(i: number)`{: .language-javascript }: Sets the spawn center on the x-coordinate, defaults to 0
 - `.setSpawnCenterZ(i: number)`{: .language-javascript }: Sets the spawn center on the z-coordinate, defaults to 0
@@ -740,36 +740,36 @@ TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^3
 
 [^3]: These terms are unofficial and exist to better help explain TFC's worldgen
 
-- `.addRock(rock: RockSettings, name: string, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
+- `.addRock(rock: RockSettings, name: String, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
     - Rock: the `RockSettings` to add
     - Name: The name which the rock can be referenced by
     - Bottom: If the rock should be added to the 'bottom' layer of the world
-- `.addRockFromId(id: string, name: string, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
+- `.addRockFromId(id: String, name: String, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
     - Id: the [registered](#rock-settings) id of the `RockSettings` to add
     - Name: The name which the rock can be referenced by
     - Bottom: If the rock should be added the the 'bottom' layer of the world
-- `.getRock(name: string)`{: .language-javascript }: Returns the `RockSettings` with the given name
+- `.getRock(name: String)`{: .language-javascript }: Returns the `RockSettings` with the given name
 - `.getRockNames()`{: .language-javascript }: Returns a set of the names of all the rocks currently in the generator's pool of rocks
-- `.removeRock(name: string)`{: .language-javascript }: Removes the provided rock from the generator's pool of available rocks and any references to it
-- `.addToBottom(name: string)`{: .language-javascript }: Adds the given rock to the 'bottom' layer
-- `.removeFromBottom(name: string)`{: .language-javascript }: Removes the given rock from the 'bottom' layer
-- `.defineLayer(id: string, rockMap: Map<string, string>)`{: .language-javascript }: Defines a new layer
+- `.removeRock(name: String)`{: .language-javascript }: Removes the provided rock from the generator's pool of available rocks and any references to it
+- `.addToBottom(name: String)`{: .language-javascript }: Adds the given rock to the 'bottom' layer
+- `.removeFromBottom(name: String)`{: .language-javascript }: Removes the given rock from the 'bottom' layer
+- `.defineLayer(id: String, rockMap: Map<String, String>)`{: .language-javascript }: Defines a new layer
     - Id: the name of the layer to add
     - RockMap: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
-- `.removeLayer(layerId: string)`{: .language-javascript }: removes the given layer from the generator
+- `.removeLayer(layerId: String)`{: .language-javascript }: removes the given layer from the generator
 - `.getLayerIds()`{: .language-javascript }: returns a list of the names of all layers currently in the generator's pool of layers
 - `.cleanSlate()`{: .language-javascript }: Removes all rocks and layers from the generator
-- `.addOceanFloorLayer(name: string)`{: .language-javascript }: Adds the given layer to the 'ocean_floor' layer type
-- `.removeOceanFloorLayer(name: string)`{: .language-javascript }: removes the given layer from the 'ocean_floor' layer type
+- `.addOceanFloorLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'ocean_floor' layer type
+- `.removeOceanFloorLayer(name: String)`{: .language-javascript }: removes the given layer from the 'ocean_floor' layer type
 - `.getOceanFloorLayers()`{: .language-javascript }: Gets the layers currently in the 'ocean_floor' layer type
-- `.addLandLayer(name: string)`{: .language-javascript }: Adds the given layer to the 'land' layer type
-- `.removeLandLayer(name: string)`{: .language-javascript }: removes the given layer from the 'land' layer type
+- `.addLandLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'land' layer type
+- `.removeLandLayer(name: String)`{: .language-javascript }: removes the given layer from the 'land' layer type
 - `.getLandLayers()`{: .language-javascript }: Gets the layers currently in the 'land' layer type
-- `.addVolcanicLayer(name: string)`{: .language-javascript }: Adds the given layer to the 'volcanic' layer type
-- `.removeVolcanicLayer(name: string)`{: .language-javascript }: Removes the given layer from the 'volcanic' layer type
+- `.addVolcanicLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'volcanic' layer type
+- `.removeVolcanicLayer(name: String)`{: .language-javascript }: Removes the given layer from the 'volcanic' layer type
 - `.getVolcanicLayers()`{: .language-javascript }: Gets the layers currently in the 'volcanic' layer type
-- `.addUpliftLayer(name: string)`{: .language-javascript }: Adds the given layer to the 'uplift' layer type
-- `.removeUpliftLayer(name: string)`{: .language-javascript }: Removes the given layer from the 'uplift' layer type
+- `.addUpliftLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'uplift' layer type
+- `.removeUpliftLayer(name: String)`{: .language-javascript }: Removes the given layer from the 'uplift' layer type
 - `.getUpliftLayers()`{: .language-javascript }: Gets the layers that are currently in the 'uplift' layer type
 
 ### Example
@@ -798,8 +798,8 @@ Allows for registering a [fauna definition]({% link kubejs_tfc/1.20.1/data.md %}
 
 ```js
 event.replace(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
-event.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacement$Type, heightmap: Heightmap$Types): void
-event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacement$Type, heightmap: Heightmap$Types): void
+event.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
+event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
 ```
 
 - `.replace(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and overwrites any spawn conditions it may have had before
@@ -807,12 +807,12 @@ event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlaceme
     - Suffix: See below
     - PlacementType: See below
     - Heightmap: See below
-- `.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacement$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ANDs any pre-existing spawn conditions it may have had before with the fauna's rules
+- `.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ANDs any pre-existing spawn conditions it may have had before with the fauna's rules
     - EntityType: The entity type to register the fauna for
     - Suffix: See below
     - PlacementType: See below
     - Heightmap: See below
-- `.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacement$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ORs any pre-existing spawn conditions it may have had before with the fauna's conditions, including other fauna definitions
+- `.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ORs any pre-existing spawn conditions it may have had before with the fauna's conditions, including other fauna definitions
     - EntityType: The entity type to register the fauna for
     - Suffix: See below
     - PlacementType: See below
@@ -821,8 +821,8 @@ event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlaceme
 {: .notice #fauna-definition-notice }
 >
 > - `suffix`: An optional suffix to the autogenerated fauna id, by default just the entity type's id. Suffixed to the end of the id with a `/`. May be null or simply not present
-> - `placementType` may be any of `'on_ground'`, `'in_water'`, `'no_restrictions'`, or `'in_lava`' and determines where the entity may be placed
-> - `heightmap` may be any of `'world_surface_wg'`, `'world_surface'`, `'ocean_floor_wg'`, `'ocean_floor'`, `'motion_blocking'`, or `'motion_blocking_no_leaves'`. See the [Minecraft Wiki](https://minecraft.wiki/w/Heightmap) for an explanation for what each of these mean
+> - `placementType` may be any of `on_ground`{:.e}, `in_water`{:.e}, `no_restrictions`{:.e}, or `in_lava`{:.e} and determines where the entity may be placed
+> - `heightmap` may be any of `world_surface_wg`{:.e}, `world_surface`{:.e}, `ocean_floor_wg`{:.e}, `ocean_floor`{:.e}, `motion_blocking`{:.e}, or `motion_blocking_no_leaves`{:.e}. See the [Minecraft Wiki](https://minecraft.wiki/w/Heightmap) for an explanation for what each of these mean
 
 ### Example
 
@@ -846,16 +846,16 @@ Allows for the creation of new glass operations for use in [glassworking]({% lin
 ### Method Signatures
 
 ```js
-event.create(name: string, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)
-event.createPowder(powderItemId: ResourceLocation, name: string, customSound?: ResourceLocation, minHeat?: number)
+event.create(name: String, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)
+event.createPowder(powderItemId: ResourceLocation, name: String, customSound?: ResourceLocation, minHeat?: number)
 ```
 
-- `.create(name: string, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name
+- `.create(name: String, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name
     - Name: The name of the operation, will be prepended with `kubejs_`
     - DisplayStack: An item stack that will be used to display the operation in JEI, if the item is `tfc:blowpipe_with_glass`, `tfc:ceramic_blowpipe_with_glass` will also be displayed. Optional
     - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
     - MinHeat: The minimum heat required to perform the operation. Optional, defaults to 480°C
-- `.createPowder(powderItemId: ResourceLocation, name: string, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name and enables it to be added via the powder bowl
+- `.createPowder(powderItemId: ResourceLocation, name: String, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name and enables it to be added via the powder bowl
     - PowderItemId: The registry id of an item to use as this operation's powder, requires the `tfc:powders` tag in order to be put in a bowl. Will be used as the display item in JEI
     - Name: The name of the operations, will be prepended with `kubejs_`
     - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
@@ -897,17 +897,17 @@ event.rocks(getter: RocksGetter): void
 ```
 
 - `.getWorldSeed()`{: .language-javascript }: Returns the seed of the world the chunk data provider is being applied to
-- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`. Accepts a callback with two parameters and no return value. If not set, or `#generatePartial` is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
-    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generatePartial` should be called here. `#generateFull` *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `#generatePartial` are:
+- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generatePartial`{:.m} is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
+    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generatePartial`{:.m} should be called here. `#generateFull`{:.m} *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `#generatePartial`{:.m} are:
         - `rainfallLayer: LerpFloatLayer`{: .language-javascript }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
         - `temperatureLayer: LerpFloatLayer`{: .language-javascript }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by TFC's climate model to determine the average temperature at a position
-        - `forestType: ForestType`{: .language-javascript }: The forest type of the chunk, may be `none`, `sparse`, `edge`, `normal`, or `old_growth`
-        - `.forestWeirdness: number: A number, in the range [0, 1], for the 'weirdness' of forests in the chunk. USed by TFC's forest configured feature
-        - `.forestDensity: number`{: .language-javascript }: A number, in the range [0, 1], for the density of the forests in the chunk. USed by TFC's forest configured feature
+        - `forestType: ForestType`{: .language-javascript }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
+        - `.forestWeirdness: number`{: .language-javascript }: A number, in the range [0, 1], for the 'weirdness' of forests in the chunk. Used by TFC's forest configured feature
+        - `.forestDensity: number`{: .language-javascript }: A number, in the range [0, 1], for the density of the forests in the chunk. Used by TFC's forest configured feature
     - `chunk: ChunkAccess`{: .language-javascript }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
-- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL` to `FULL`. Accepts a callback with two parameters and no return value. If not set, or `#generateFull` is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
-    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generateFull` should be called here and the chunk is guaranteed to have access to heightmaps during this callback. The parameters for `#generateFull` are:
-        - `surfaceHeight: int[256]`{: .language-javascript }: An array of integer values of size 256 (16 * 16; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z` where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY` parameter of a `RocksGetter` callback is sources from.
+- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generateFull` is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
+    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generateFull`{:.m} should be called here and the chunk is guaranteed to have access to heightmaps during this callback. The parameters for `#generateFull`{:.m} are:
+        - `surfaceHeight: int[256]`{: .language-javascript }: An array of integer values of size 256 (16 * 16; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z` where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY` parameter of a `RocksGetter`{:.f} callback is sources from.
         - `.aquiferSurfaceHeight: int[16]`{: .language-javascript }: An array of integer values of size 16 (4 * 4; `QuartPos` resolution) representing the height of aquifer surfaces. Only used by [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
     - `chunk: ChunkAccess`{: .language-javascript }: The chunk data is being generated for
 - `.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>)`{: .language-javascript}: Sets the calculation for the `Aquifer` of a given chunk. This aquifer is used by TFC's erosion feature to place subterranean liquids. Accepts a callback with one parameter and a return value. If not set, an aquifer that only fills air will be returned. The parameters are:
@@ -917,7 +917,7 @@ event.rocks(getter: RocksGetter): void
     - `x: number`{: .language-javascript }: A number, the x coordinate
     - `y: number`{: .language-javascript }: A number, the y coordinate
     - `z: number`{: .language-javascript }: A number, the z coordinate
-    - `surfaceY`{: .language-javascript }: A number, the surface elevation of the block column, as determined from the calculation provided in `.full()`{: .language-javascript }
+    - `surfaceY: number`{: .language-javascript }: A number, the surface elevation of the block column, as determined from the calculation provided in `.full()`{: .language-javascript }
     - `cache: @Nullable ChunkRockDataCache`{: .language-javascript }: A [ChunkRockDataCache](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkRockDataCache.java) which may be null
     - `rockLayers: RockLayerSettings`{: .language-javascript }: The [RockLayerSettings](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/RockLayerSettings.java) defined in the chunk generator's `settings` object
     - `return: RockSettings`{: .language-javascript }: A [RockSettings](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/RockSettings.java) describing the rock at the position. Ideally retrieved from the `RockLayerSettings`
@@ -985,7 +985,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
         .spread(0.2)
         .octaves(3)
         .scaled(70, 90)
-    const forestLayer = TFC>misc.newOpenSimplex2D(event.worldSeed + 98713856895664)
+    const forestLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 98713856895664)
         .spread(0.8)
         .terraces(9)
         .affine(6, 12)

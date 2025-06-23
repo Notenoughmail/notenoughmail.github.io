@@ -38,5 +38,78 @@
         svg.appendChild(use);
         anchor.appendChild(svg);
         return anchor;
+    };
+
+    /* Extremely terrible way to do this, but it colors things decently until the Proper Solution™ is implemented */
+    const functionalInterfaces = [
+        "Consumer",
+        "BiConsumer",
+        "TriConsumer",
+        "BiFunction",
+        "TriFunction",
+        "QuadFunction",
+        "RockFunction",
+        "OnItemUseAction",
+        "Supplier",
+        "RocksGetter",
+        "MossGrowingCallback",
+        "Predicate",
+        "Noise2D",
+        "BlockBehaviour$StateArgumentPredicate",
+        "BlockBehaviour$StatePredicate"
+    ];
+    const enums = [
+        "Month",
+        "SpawnPlacements$Type",
+        "Heightmap$Types",
+        "ForestType",
+        "ProspectResult",
+        "Punishment",
+        "Direction",
+        "AqueductModelPart",
+        "SpikeModelType",
+        "LampModelType",
+        "Lifecycle",
+        "GrassModelPart",
+        "DeadModelVariant",
+        "NutrientType",
+        "GearBoxModelType",
+        "ClutchModelType",
+        "PushReaction",
+        "OffsetType",
+        "NoteBlockInstrument",
+        "ItemDisplayContext",
+        "GlassOperation",
+        "Size",
+        "Weight",
+        "PlanterType",
+        "ChiselMode",
+        "ForgeRule",
+        "DyeColor",
+        "Heat",
+        "InteractionResult",
+        "Type"
+    ];
+    const primitives = [
+        "number",
+        "boolean",
+        "declare",
+        "int",
+        "float",
+        "long",
+        "double",
+        "integer"
+    ];
+    var elements = document.getElementsByClassName('nx');
+    for (let i = 0 ; i < elements.length ; i++) {
+        var elm = elements.item(i);
+        var txt = elm.textContent;
+        if (primitives.includes(txt)) {
+            elm.className = "kc";
+        } else if (enums.includes(txt)) {
+            elm.className = "enum";
+        } else if (functionalInterfaces.includes(txt)) {
+            elm.className = "nb";
+        }
     }
 </script>

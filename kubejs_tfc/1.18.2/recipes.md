@@ -138,7 +138,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(String)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Example
 
@@ -157,7 +157,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(String)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Examples
 
@@ -178,7 +178,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.sound(string)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(String)`{: .language-javascript }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 - `.onSeal(item stack provider)`{: .language-javascript }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
 - `.onUnseal(item stack provider)`{: .language-javascript }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
 
@@ -337,7 +337,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.inProgressTexture(string)`{: .language-javascript }: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
+- `.inProgressTexture(String)`{: .language-javascript }: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
 
 ### Example
 
@@ -408,8 +408,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.inputTexture(string)`{: .language-javascript }: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
-- `.outputTexture(string)`{: .language-javascript }: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
+- `.inputTexture(String)`{: .language-javascript }: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
+- `.outputTexture(String)`{: .language-javascript }: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
 
 ### Example
 

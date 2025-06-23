@@ -46,10 +46,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.geode(
-    name: string,
-    outer: string,
-    middle: string,
-    inner: List<string>,
+    name: String,
+    outer: String,
+    middle: String,
+    inner: List<String>,
     placement: Consumer<PlacedFeatureProperties>
 )
 ```
@@ -94,7 +94,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```js
-event.boulder(name: string, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
+event.boulder(name: String, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -128,7 +128,7 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 ### Method Signature
 
 ```js
-event.babyBoulder(name: string, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
+event.babyBoulder(name: String, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -163,8 +163,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.thinSpike(
-    name: string,
-    state: string,
+    name: String,
+    state: String,
     radius: number,
     tries: number,
     minHeight: number,
@@ -217,7 +217,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.clusterVein(
-    name: string,
+    name: String,
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
     density: number,
@@ -266,7 +266,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.pipeVein(
-    name: string,
+    name: String,
     replacementMap: List<BlockToWeightedBlockStateMapEntry>,
     rarity: number,
     density: number,
@@ -375,7 +375,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```js
-event.ifThen(name: string, if_: string, then: string, placement: Consumer<PlacedFeatureProperties>)
+event.ifThen(name: String, if_: String, then: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -391,7 +391,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.soilDisc(
-    name: string,
+    name: String,
     replacementMap: List<BlockToBlockStateMapEntry>,
     minRadius: number,
     maxRadius: number,
@@ -436,9 +436,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ```js
 event.hotSpring(
-    name: string,
-    wallState: @Nullable string,
-    fluidState: string,
+    name: String,
+    wallState: @Nullable String,
+    fluidState: String,
     radius: number,
     allowUnderwater: boolean,
     replacesFluidOnContact: @Nullable List<BlockToWeightedBlockStateMapEntry>,
@@ -482,7 +482,7 @@ Notably used by TFC for its wild crops in tandem with [random patch](#random-pat
 ### Method Signature
 
 ```js
-event.simpleBlockState(name: string, blockState: string, placement: Consumer<PlacedFeatureProperties>)
+event.simpleBlockState(name: String, blockState: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -526,11 +526,11 @@ Creates a `minecraft:random_patch` configured feature
 
 ```js
 event.randomPatch(
-    name: string,
+    name: String,
     tries: @Nullable number,
     xzSpread: @Nullable number,
     ySpread: @nullable number,
-    feature: string,
+    feature: String,
     placement: Consumer<PlacedFeatureProperties>
 )
 ```
@@ -573,7 +573,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```js
-event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+event.tallWildCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -583,7 +583,7 @@ event.tallWildCrop(name: string, block: string, placement: Consumer<PlacedFeatur
 ## Spreading Crop
 
 ```js
-event.spreadingCrop(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+event.spreadingCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -597,7 +597,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```js
-event.spreadingBush(name: string, block: string, placement: Consumer<PlacedFeatureProperties>)
+event.spreadingBush(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -611,7 +611,7 @@ Creates a configured feature of the given type using the given config
 ### Method Signature
 
 ```js
-event.generic(name: string, type: string, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
+event.generic(name: String, type: String, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -626,7 +626,7 @@ This defines an entry to a boulder feature's `state` value
 ### Method Signature
 
 ```js
-event.boulderState(rock: string, blockStates: List<string>)
+event.boulderState(rock: String, blockStates: List<String>)
 ```
 
 - 1st argument: The registry name of a block, the raw rock block of a rock layer for the `blockStates` to spawn in
@@ -641,7 +641,7 @@ This defines an entry to a blocks to weighted blockstates map
 ### Method Signature
 
 ```js
-event.blockToWeightedBlockState(replace: List<string>, with: List<string>)
+event.blockToWeightedBlockState(replace: List<String>, with: List<String>)
 ```
 
 - 1st argument: A list of strings, the registry name of blocks to be replaced
@@ -656,7 +656,7 @@ This defines an entry to a block to blockstate map
 ### Method Signature
 
 ```js
-event.blockToBlockState(block: string, state: string)
+event.blockToBlockState(block: String, state: String)
 ```
 
 - 1st argument: A string, the block to be replaced
@@ -693,7 +693,7 @@ Defines the vein's indicator
 Method signature:
 
 ```js
-vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: List<string>)
+vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: List<String>)
 ```
 
 - 1st argument: A number, the number of blocks above the top of the vein the indicators may spawn
@@ -733,7 +733,7 @@ Determines the `biomes` values of the vein
 Method signature:
 
 ```js
-vein.biomes(biomeTag: string)
+vein.biomes(biomeTag: String)
 ```
 
 - 1st argument: A string, a biome tag that the vein may spawn in, defaults to allowing all biomes
@@ -761,7 +761,7 @@ Adds a placement of the provided type with no arguments
 Method signature:
 
 ```js
-placement.simplePlacement(type: string)
+placement.simplePlacement(type: String)
 ```
 
 - 1st argument: A string, the type of the placement modifier to be added
@@ -803,8 +803,8 @@ placement.climate(climate: Consumer<ClimateModifier>)
     - `.maxRain(f: number)`{: .language-javascript }: Accepts a number, sets the maximum rainfall
     - `.minTemp(f: number)`{: .language-javascript }: Accepts a number, sets the minimum temperature
     - `.maxTemp(f: number)`{: .language-javascript }: Accepts a number, sets the maximum temperature
-    - `.minForest(forest: string)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
-    - `.maxForest(forest: string)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
+    - `.minForest(forest: String)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
+    - `.maxForest(forest: String)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
     - `.fuzzy(b: boolean)`{: .language-javascript }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
@@ -898,7 +898,7 @@ Adds a placement modifier of type `minecraft:heightmap`
 Method signature:
 
 ```js
-placement.heightMap(heightMap: string)
+placement.heightMap(heightMap: String)
 ```
 
 - 1st argument: A string, the name of the height map to use
