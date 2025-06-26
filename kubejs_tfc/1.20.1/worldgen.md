@@ -247,7 +247,7 @@ TFCEvents.worldgenData(event => {
         'example_cluster_vein', [
             event.blockToWeightedBlockState(['tfc:rock/raw/dacite', 'tfc:rock/raw/granite'], ['8 minecraft:oak_log[axis=z]', 'minecraft:gold_block']),
             event.blockToWeightedBlockState(['tfc:rock/raw/andesite', 'tfc:rock/raw/rhyolite'], ['15 minecraft:dirt_block', '2 minecraft:moss_block'])
-        ], 43, 0.75, -64, 15, vein => {
+        ], 43, 0.75, -64, 15, 20, vein => {
             vein.indicator(15, 5, 7, 3, ['minecraft:diamond_block', '7 minecraft:iron_bars'])
             vein.nearLava(true)
         }, placement => {}
