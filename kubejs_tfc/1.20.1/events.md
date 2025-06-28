@@ -60,9 +60,9 @@ event.defineRock(
 - 5th argument: A block, to be used as the cobble block of the rock
 - 6th argument: A block, to be used as the sand block of the rock
 - 7th argument: A block, to be used as the sandstone block of the rock
-- 8th argument: A block, to be used as the spike block of the rock, may be null
-- 9th argument: A block, to be used as the loose rock block of the rock, may be null
-- 10th argument: A block, to be used as the mossy loose rock block of the rock, may be null
+- 8th argument: A block, to be used as the spike block of the rock, may be null. Needs to have TFC's `ROCK_SPIKE_PART` state property/be a [rock spike]({% link kubejs_tfc/1.20.1/custom.md %}#rock-spike)
+- 9th argument: A block, to be used as the loose rock block of the rock, may be null. Needs to have TFC's `COUNT_1_3` state property/be a [loose rock]({% link kubejs_tfc/1.20.1/custom.md %}#loose-rock)
+- 10th argument: A block, to be used as the mossy loose rock block of the rock, may be null. Needs to have TFC's `COUNT_1_3` state property/be a [loose rock]({% link kubejs_tfc/1.20.1/custom.md %}#loose-rock)
 
 ### Example
 

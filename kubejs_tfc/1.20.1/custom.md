@@ -728,7 +728,8 @@ Inherits the methods of the default block builder
 - `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's water wheel block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-    - `.texture(texture: string)`{: .language-javascript }: Sets the texture the water wheel will use, the path is relative to `/textures/entity/waterwheel/`
+    - `.texture(texture: string)`{: .language-javascript }: Sets the texture the water wheel will use, the path is relative to the `/textures/entity/water_wheel/` subdirectory
+    - `.textureRaw(texture: String)`{: .language-javascript}: Sets the texture the water wheel will use, the apth is relative to the `/textures/` subdirectory
 - `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
