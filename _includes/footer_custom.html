@@ -69,7 +69,8 @@
         "Predicate",
         "Noise2D",
         "BlockBehaviour$StateArgumentPredicate",
-        "BlockBehaviour$StatePredicate"
+        "BlockBehaviour$StatePredicate",
+        "TemperatureCallback"
     ];
     const enums = [
         "Month",
@@ -101,7 +102,8 @@
         "DyeColor",
         "Heat",
         "InteractionResult",
-        "Type"
+        "Type",
+        "Enum"
     ];
     const primitives = [
         "number",
@@ -136,7 +138,7 @@
                     i--;
                 } else {
                     let prevElm = elm.previousElementSibling;
-                    if (prevElm && prevElm.textContent && prevElm.className == "p" && prevElm.textContent == "." && /\(\)?[;:]?/.test(nextElm.textContent)) {
+                    if (prevElm && prevElm.textContent && prevElm.className == "p" && /\(?\)?\./.test(prevElm.textContent) && /\(\)?[;:]?/.test(nextElm.textContent)) {
                         elm.className = "nf";
                         i--;
                     }

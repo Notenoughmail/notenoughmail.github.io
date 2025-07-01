@@ -15,9 +15,9 @@ These are available from the `TFC.itemStackProvider` and `TFC.isp` fields
 ## Method Signatures
 
 ```js
-TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
-TFC.isp.empty(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
-TFC.itemStackProvider.copyInput(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))
+TFC.itemStackProvider.of(itemStack: ItemStack, modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>)): ItemStackProvider
+TFC.isp.empty(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>)): ItemStackProvider
+TFC.itemStackProvider.copyInput(modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>)): ItemStackProvider
 ```
 
 - `.of(itemStack: ItemStack, modifiers?: (String | JsonArray | JsonObject | List<(String | JsonObject)>))`{: .language-javascript .m-link #of }: Returns an item stack provider with the given item and modifiers

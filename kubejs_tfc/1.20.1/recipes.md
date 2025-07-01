@@ -95,14 +95,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.welding(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     firstInput: Ingredient,
     secondInput: Ingredient,
     tier?: number
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An item ingredient
 - *Optional 4th argument*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`{:.n}
@@ -127,7 +127,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.anvil(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     input: Ingredient,
     rules: ForgeRule[]
 )
@@ -136,14 +136,14 @@ event.recipes.tfc.anvil(
     .bonus(applyBonus: boolean)
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An array of up to 3 `ForgeRule`{:.e}s, see the main page for a full list
 
-<br>
+<span></span>
 
-- Tier: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
-- Bonus: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
+- `.tier(tier:number)`{: .language-javascript .m-link #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
+- `.bonus(applyBnus: boolean)`{: .language-javascript .m-link # }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
 
 ### Example
 
@@ -204,7 +204,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ```js
 event.recipes.tfc.barrel_instant()
     // Additional methods
-    .outputItem(outputItem: ItemStackProviderJS)
+    .outputItem(outputItem: ItemStackProvider)
     .outputFluid(outputFluid: FluidStack)
     .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
     .inputItem(inputItem: Ingredient)
@@ -213,13 +213,13 @@ event.recipes.tfc.barrel_instant()
     .sound(sound: String)
 ```
 
-- OutputItem: Accepts an [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
-- OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- Outputs: A convenience method for setting both outputs, identical to `.outputItem().outputFluid()`{: .language-javascript }
-- InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
-- InputFluid: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
-- Inputs: A convenience method for setting both inputs, identical to `.inputItem().inputFluid()`{: .language-javascript }
-- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
+- `.outputItem(otuputItem: ItemStackProvider)`{: .language-javascript .m-link #instant-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
+- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #instant-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- `.outputs(outputItem: ItemStackProvider, outputFluif: FluidStack)`{: .language-javascript .m-link #instant-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
+- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #instant-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #instant-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #instant-barrel-inputs }: A convenience method for setting both inputs, identical to calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
+- `.sound(sound: String)`{: .language-javascript .m-link #instant-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 {: .notice #instant-barrel-notice }
 > An instant barrel recipe must have an input item, input fluid, or both
@@ -245,30 +245,32 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ```js
 event.recipes.tfc.barrel_sealed(duration: number)
     // Additional methods
-    .outputItem(outputItem: ItemStackProviderJS)
+    .outputItem(outputItem: ItemStackProvider)
     .outputFluid(outputFluid: FluidStack)
-    .outputs(outputItem: ItemStackProviderJS, outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
     .inputItem(inputItem: Ingredient)
     .inputFluid(inputFluid: FluidStackIngredient)
     .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
     .sound(sound: String)
-    .onSeal(onSeal: ItemStackProviderJS)
-    .onUnseal(onUnseal: ItemStackProviderJS)
-    .seal(onSeal: ItemStackProviderJS, onUnseal: ItemStackProviderJS)
+    .onSeal(onSeal: ItemStackProvider)
+    .onUnseal(onUnseal: ItemStackProvider)
+    .seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)
 ```
 
 - 1st argument: A number, sets the duration in ticks the barrel must be sealed for, a duration of `-1`{:.n} will make the recipe **infinite**, one or both of the seal types should be defined
 
-- OutputItem: Accepts an [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
-- OutputFluid: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- Outputs: A convenience method for setting both outputs, identical to `.outputItem().outputFluid()`{: .language-javascript }
-- InputItem: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
-- InputFluid: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
-- Inputs: A convenience method for setting both inputs, identical to `.inputItem().inputFluid()`{: .language-javascript }
-- Sound: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
-- OnSeal: Accepts an [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is sealed
-- OnUnseal: Accepts an [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is unsealed
-- Seal: A convenience method for setting both seals, identical to `.onSeal().onUnseal()`{: .language-javascript }
+<span></span>
+
+- `.outputItem(outputItem: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
+- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #sealed-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-javascript .m-link #sealed-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
+- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #sealed-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #sealed-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredeint)`{: .language-javascript .m-link #sealed-barrel-inputs }: A convenience method for setting both inputs, identical to `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
+- `.sound(sound: String)`{: .language-javascript .m-link #sealed-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
+- `.onSeal(onSeal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-on-seal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is sealed
+- `.onUnseal(onUnseal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-on-unseal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is unsealed
+- `.seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-seal }: A convenience method for setting both seals, identical to calling `.onSeal(onSeal).onUnseal(onUnseal)`{: .language-javascript }
 
 {: .notice #sealed-barrel-notice }
 > A sealed barrel recipe must have an input item, input fluid, or both
@@ -325,14 +327,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.bloomery(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     catalyst: Ingredient,
     fluid: FluidStackIngredient,
     duration: number
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient, the ingredient which catalysts match, will accept amounts greater than 1
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
 - 4th argument: A number, the number of ticks until the recipe is complete
@@ -358,14 +360,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.casting(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     mold: Ingredient,
     fluid: FluidStackIngredient,
     breakChance: number
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, used to match the mold item
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
 - 4th argument: A number in the range [0, 1], the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
@@ -396,17 +398,17 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: ChiselMode)
     // Additional methods
     .itemIngredient(itemIngredient: Ingredient)
-    .extraDrop(extraDrop: ItemStackProviderJS)
+    .extraDrop(extraDrop: ItemStackProvider)
 ```
 
 - 1st argument: A `BlockState`, the result of the recipe
 - 2nd argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the block to be chiseled for the recipe
 - 3rd argument: A `ChiselMode`{:.e}, the chisel mode for the recipe, either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
 
-<br>
+<span></span>
 
-- ItemIngredient: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
-- ExtraDrop: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
+- `.itemIngredient(itemIngredient: Ingredient)`{: .language-javascript .m-link #chisel-item-ingredient }: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
+- `.extraDrop(extraDrop: ItemStackProvider)`{: .language-javascript .m-link #chisel-extra-drop }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
 
 ### Example
 
@@ -483,9 +485,9 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ```js
 event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
     // Additional methods
-    .resultItem(resultItem: ItemStackProviderJS)
+    .resultItem(resultItem: ItemStackProvider)
     .resultFluid(resultFluid: FluidStack)
-    .results(resultItem: ItemStackProviderJS, resultFluid: FluidStack)
+    .results(resultItem: ItemStackProvider, resultFluid: FluidStack)
     .useDurability(useDurability: boolean)
     .chance(chance: number)
 ```
@@ -493,13 +495,13 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 - 1st argument: An item ingredient, the input of the recipe
 - 2nd argument: A number, the temperature °C at which the inputs will convert to the outputs (if any)
 
-<br>
+<span></span>
 
-- ResultItem: Accepts an [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the result item of the recipe, defaults to empty
-- ResultFluid: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
-- Results: A convenience method for setting both results, identical to `.resultItem().resultFluid()`{: .language-javascript }
-- useDurability: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
-- Chance: Accepts a number, in the range [0, 1], sets the chance of the item output
+- `.resultItem(resultItem: ItemStackProvider)`{: .language-javascript .m-link #heating-result-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the result item of the recipe, defaults to empty
+- `.resultFluid(resultFluid: FluidStack)`{: .language-javascript .m-link #heating-result-fluid }: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
+- `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-javascript .m-link #heating-results }: A convenience method for setting both results, identical to calling `.resultItem(resultItem).resultFluid(resultFluid)`{: .language-javascript }
+- `.useDurability(useDurability: number)`{: .language-javascript .m-link #heating-use-durability }: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
+- `.chance(chance: number)`{: .language-javascript .m-link #heating-chance }: Accepts a number, in the range [0, 1], sets the chance of the item output
 
 {: .notice #heating-notice }
 > The ingredient needs to have an [item heat]({% link kubejs_tfc/1.20.1/data.md %}#item-heats) added to it
@@ -538,10 +540,10 @@ event.recipes.tfc.knapping(
 - 2nd argument: A string, the id of the [knapping type]({% link kubejs_tfc/1.20.1/data.md %}#knapping-types) of the recipe
 - 3rd argument: An array of strings representing the knapping grid, may be up to 5 x 5. Spaces are empty spots while any other character are a filled spot
 
-<br>
+<span></span>
 
-- Ingredient: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
-- OutsideSlotRequired: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`{:.p}
+- `.ingredient(ingredient: ingredient)`{: .language-javascript .m-link #knapping-ingredient }: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
+- `.outsideSlotRequired(required: boolean)`{: .language-javascript .m-link #knapping-outside-required }: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`{:.p}
 
 ### Example
 
@@ -567,14 +569,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.loom(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredient: Ingredient,
     requiredSteps: number,
     inProgressTexture: String
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result produced by this recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result produced by this recipe
 - 2nd argument: An item ingredient, will accepts counts greater than 1
 - 3rd argument: A number, the number of times the loom must be interacted with to complete the recipe
 - 4th argument: A string, the texture the loom uses to render the recipe while in progress
@@ -651,9 +653,9 @@ event.recipes.tfc.pot(
     temperature: number
 )
     // Additional methods
-    .itemOutput(itemOutput: ItemStackProviderJS[])
+    .itemOutput(itemOutput: ItemStackProvider[])
     .fluidOutput(fluidOutput: FluidStack)
-    .outputs(itemOutput: ItemStackProviderJS[], fluidOutput: FluidStack)
+    .outputs(itemOutput: ItemStackProvider[], fluidOutput: FluidStack)
 ```
 
 - 1st argument: An array of item ingredients that the recipe consumes
@@ -661,11 +663,11 @@ event.recipes.tfc.pot(
 - 3rd argument: A number, the number of ticks the pot must boil for
 - 4th argument: A number, the temperature °C that the pot must be above to start boiling
 
-<br>
+<span></span>
 
-- ItemOutput: An array of [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider)s indicating what items should be left in the pot
-- FluidOutput: A `FluidStack` that the pot produces at the completion of the recipe
-- Outputs: A convenience method for setting both outputs, identical to `.itemOutput().fluidOutput()`{: .language-javascript }
+- `.itemOutput(itemOutput: ItemStackProvider[])`{: .language-javascript .m-link #simple-pot-item-output }: An array of [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider)s indicating what items should be left in the pot
+- `.fluidOutput(fluidOutput: FluidStack)`{: .language-javascript .m-link #simple-pot-fluid-output }: A `FluidStack` that the pot produces at the completion of the recipe
+- `.outputs(itemOutput: itemStackProvier[], fluidOutput: FluidStack)`{: .language-javascript .m-link #simple-pot-outputs }: A convenience method for setting both outputs, identical to `.itemOutput(itemOutput).fluidOutput(fluidOutput)`{: .language-javascript }
 
 {: .notice #simple-pot-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
@@ -738,10 +740,10 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 ### Method Signature
 
 ```js
-event.recipes.tfc.quern(result: ItemStackProviderJS, ingredient: Ingredient)
+event.recipes.tfc.quern(result: ItemStackProvider, ingredient: Ingredient)
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}/#item-stack-provider), the output of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}/#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, the input for the recipe
 
 ### Example
@@ -760,22 +762,22 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recip
 
 ```js
 event.recipes.tfc.scraping(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredient: Ingredient,
     outputTexture: String,
     inputTexture: String,
-    extraDrop?: ItemStackProviderJS
+    extraDrop?: ItemStackProvider
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: an item ingredient, the input of the recipe
 - 3rd argument: A string, the texture of the scraped item
 - 4th argument: A string, the texture of the unscraped item
-- *Optional 5th argument*: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), an optional extra drop, only applicable to TFC 3.1.3-beta and above
+- *Optional 5th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), an optional extra drop
 
 {: .notice #scraping-ingredient-tag }
-In order to actually place an item on a log to scrape it, it must have the `tfc:scrapable` item tag
+In order to actually place an item on a log to scrape it, it must have the `tfc:scrapable` item tag. Additionally, a game restart may be required for this to enable placement
 
 ### Example
 
@@ -838,7 +840,7 @@ This recipe type supports[^2] Kube's ingredient and result modifiers. The result
 
 ```js
 event.recipes.tfc.advanced_shaped_crafting(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     pattern: String[],
     key: Map<Character, Ingredient>,
     row: number,
@@ -846,7 +848,7 @@ event.recipes.tfc.advanced_shaped_crafting(
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
 - 2nd argument: The pattern for the crafting grid, spaces can be used to indicate an empty slot
 - 3rd argument: A `Character` to ingredient map, associates the pattern to ingredients
 - 4th argument: A number, the row of the input ingredient the output uses if it is dependent on its inputs
@@ -882,13 +884,13 @@ This recipe type supports[^2] Kube's ingredient and result modifiers. The result
 
 ```js
 event.recipes.tfc.advanced_shapeless_crafting(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredients: Ingredient[],
     primaryIngredient?: Ingredient
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
 - 2nd argument: An array of item ingredients, the inputs of the recipe
 - *Optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent
 
@@ -1052,12 +1054,12 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ```js
 event.recipes.firmalife.drying(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredient: Ingredient
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -1084,7 +1086,7 @@ event.recipes.firmalife.smoking(
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 
 ### Example
@@ -1108,19 +1110,19 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 event.recipes.firmalife.mixing_bowl()
     // Additional Methods
     .outputItem(outputItem: ItemStack)
-    .outputFluid(outputFluid: FluidStackJS)
-    .outputs(outputItem: ItemStack, outputFluid: FluidStackJS)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStack, outputFluid: FluidStack)
     .itemIngredients(ingredients: Ingredient[])
     .fluidIngredient(fluidIngredient: FluidStackIngredient)
-    .ingredients(ingredients: Ingredient[], fluidIngredient: FLuidStackIngredient)
+    .ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)
 ```
 
-- OutputItem: An `ItemStack`, the item output
-- OutputFluid: A `FluidStackJS`, the fluid output
-- Outputs: A convenience method for setting both outputs, the same as calling `.outputItem().outputFluid()`{: .language-javascript }
-- ItemIngredients: An array of item ingredients, the item inputs
-- FluidIngredient: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
-- Ingredients: A convenience method for setting both inputs, the same as calling `.itemIngredients().fluidIngredient()`{: .language-javascript }
+- `.outputItem(outputItem: ItemStack)`{: .language-javascript .m-link #mixing-bowl-output-item }: An `ItemStack`, the item output
+- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #mixing-bowl-output-fluid }: A `FluidStack`, the fluid output
+- `.outputs(outputItem: ItemStack, outputFluid: Fluidstack)`{: .language-javascript .m-link #mixing-bowl-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
+- `.itemIngredients(ingredients: Ingredient[])`{: .language-javascript .m-link #mixing-bowl-item-ingredients }: An array of item ingredients, the item inputs
+- `.fluidIngredient(fluidIngredient: FluidStackIgnredient)`{: .language-javascript .m-link #mixing-bowl-fluid-ingredients }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
+- `.ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)`{: .language-javascript .m-link #mixing-bowl-ingredients }: A convenience method for setting both inputs, the same as calling `.itemIngredients(ingredients).fluidIngredient(fluidIngredient)`{: .language-javascript }
 
 ### Example
 
@@ -1143,14 +1145,14 @@ event.recipes.firmalife.oven(
     ingredient: Ingredient,
     temperature: number,
     duration: number,
-    resultItem?: ItemStackProviderJS
+    resultItem?: ItemStackProvider
 )
 ```
 
 - 1st argument: An item ingredient, the input of the recipe
 - 2nd argument: A number, the minimum temperature °C of the top oven for the recipe to operate
 - 3rd argument: A number, the number of ticks required for the recipe to finish
-- *Optional 4th argument*: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`{: .language-javascript }
+- *Optional 4th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`{: .language-javascript }
 
 ### Example
 
@@ -1213,9 +1215,9 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ```js
 event.recipes.firmalife.vat()
     // Additional methods
-    .outputItem(outputProvider: ItemStackProviderJS)
-    .outputFluid(outputFluid: FluidStackJS)
-    .outputs(itemOutput: ItemStackProviderJS, outputFluid: FluidStackJS)
+    .outputItem(outputProvider: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(itemOutput: ItemStackProvider, outputFluid: FluidStack)
     .inputItem(inputItem: Ingredient)
     .inputFluid(inputFluid: FluidStackIngredient)
     .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
@@ -1224,15 +1226,15 @@ event.recipes.firmalife.vat()
     .jar(jar: ItemStack)
 ```
 
-- OutputItem: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the item output
-- OutputFluid: A `FluidStackJS`, the fluid output
-- Outputs: A convenience method for setting both outputs, the same as calling `.outputItem().outputFluid()`{: .language-javascript }
-- InputItem: An item ingredient, the item input
-- InputFluid: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid input
-- Inputs: A convenience method for setting both inputs, the same as calling `.inputItem().inputFluid()`{: .language-javascript }
-- Length: A number, the number of ticks the vat must process for, defaults to `600`{:.n}
-- Temperature: A number, the minimum temperature °C of the vat in order to process, defaults to `300`{:.n}
-- Jar: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
+- `.outputItem(outputProvier: ItemStackProvider)`{: .language-javascript .m-link #vat-output-item }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the item output
+- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #vat-output-fluid }: A `FluidStack`, the fluid output
+- `.outputs(itemOutput: ItemStackProvider, outputFluid: FluidStack)`{: .language-javascript .m-link #vat-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(itemOutput).outputFluid(outputFluid)`{: .language-javascript }
+- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #vat-input-item }: An item ingredient, the item input
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #vat-input-fluid }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid input
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #vat-inputs }: A convenience method for setting both inputs, the same as calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
+- `.length(length: number)`{: .language-javascript .m-link #vat-length }: A number, the number of ticks the vat must process for, defaults to `600`{:.n}
+- `.temperature(temp: number)`{: .language-javascript .m-link #vat-temperature }: A number, the minimum temperature °C of the vat in order to process, defaults to `300`{:.n}
+- `.jar(jar: ItemStack)`{: .language-javascript .m-link #vat-jar }: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
 
 ### Example
 
@@ -1253,7 +1255,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ```js
 event.recipes.firmalife.stomping(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredient, Ingredient,
     inputTexture: String,
     outputTexture: String,
@@ -1261,7 +1263,7 @@ event.recipes.firmalife.stomping(
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
 - 2nd argument: An item ingredient, the input
 - 3rd argument: A string, the texture to use in the stomping barrel with the input item
 - 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
@@ -1294,7 +1296,17 @@ event.recipes.firmalife.bowl_pot(
     fluidIngredient: FluidStackIngredient,
     duration: number,
     temperature: number,
-    food: (Consumer<FoodData> | {water?: number, hunger?: number, saturation?: number, grain?: number, fruit?: number, vegetables?: number, protein?: number, dairy?: number, decay_modifier?: number})
+    food: (Consumer<FoodData> | {
+        water?: number,
+        hunger?: number,
+        saturation?: number,
+        grain?: number,
+        fruit?: number,
+        vegetables?: number,
+        protein?: number,
+        dairy?: number,
+        decay_modifier?: number
+    })
 )
 ```
 
@@ -1303,7 +1315,7 @@ event.recipes.firmalife.bowl_pot(
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid ingredient of the recipe
 - 4th argument: A number, the number of ticks the pot will process for
 - 5th argument: A number, the temperature °C that the pot needs to get to for the recipe to begin
-- 6th argument: Either a [FoodData]({% link kubejs_tfc/1.20.1/data.md %}#food-items) consumer or a string to number map containing any of `water`, `saturation`, `grain`, `fruit`, `vegetables`, `protein`, `dairy`, `hunger`, and `decay_modifier` values
+- 6th argument: Either a [FoodData]({% link kubejs_tfc/1.20.1/data.md %}#food-items) consumer or a string to number map containing any of `water`{:.v}, `saturation`{:.v}, `grain`{:.v}, `fruit`{:.v}, `vegetables`{:.v}, `protein`{:.v}, `dairy`{:.v}, `hunger`{:.v}, and `decay_modifier`{:.v} values
 
 {: .notice #firmalife-bowl-pot-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
@@ -1356,7 +1368,7 @@ This recipe type is currently unused by FirmaLife and actually adds itself to th
 
 ```js
 event.recipes.firmalife.press(
-    result: ItemStackProviderJS,
+    result: ItemStackProvider,
     ingredient: Ingredient,
     inputTexture: String,
     outputTexture: String,
@@ -1364,7 +1376,7 @@ event.recipes.firmalife.press(
 )
 ```
 
-- 1st argument: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
+- 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result
 - 2nd argument: An item ingredient, the input
 - 3rd argument: A string, the texture to use in the stomping barrel with the input item
 - 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
@@ -1393,7 +1405,7 @@ AFC's tree tapping recipe type
 ```js
 event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
     // Additional methods
-    .resultFluid(fluid: FluidStackJS)
+    .resultFluid(fluid: FluidStack)
     .minTemp(f: number)
     .maxTemp(f: number)
     .temps(min: number, max: number)
@@ -1403,14 +1415,14 @@ event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
 
 - 1st argument: A [block ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient)
 
-<br>
+<span></span>
 
-- ResultFluid: Sets the fluid result of the recipe
-- MinTemp: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`
-- MaxTemp: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`
-- temps: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
-- RequiresNaturalLog: Determines if the recipe needs the input block to have TFC's [`branch_direction`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/blocks/TFCBlockStateProperties.java#L82) state property and have a value that is not `none` to work. Defaults to `true`{:.p}
-- SpringOnly: Determines if the recipe only works during the spring time, defaults to `false`{:.p}
+- `.resultFluid(fluid: FluidStack)`{: .language-javascript .m-link #tree-tap-result-fluid }: Sets the fluid result of the recipe
+- `.minTemp(f: number)`{: .language-javascript .m-link #tree-tap-min-temp }: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`{:.n}
+- `.maxTemp(f: number)`{: .language-javascript .m-link #tree-tap-max-temp }: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`{:.n}
+- `.temps(min: number, max: number)`{: .language-javascript .m-link #tree-tap-temps }: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
+- `.requiresNaturalLog(required: boolean)`{: .language-javascript .m-link #tree-tap-requires-natural }: Determines if the recipe needs the input block to have TFC's [`branch_direction`{:.e}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/blocks/TFCBlockStateProperties.java#L82) state property and have a value that is not `none`{:.e} to work. Defaults to `true`{:.p}
+- `.springOnly(springOnly: boolean)`{: .language-javascript .m-link #tree-tap-spring-only }: Determines if the recipe only works during the spring time, defaults to `false`{:.p}
 
 {: .notice #treetap-notice }
 Tree taps can only be placed on blocks with the `afc:tappable_logs` tag, make sure the input blocks(s) are tagged as such

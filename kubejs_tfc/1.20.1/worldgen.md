@@ -49,7 +49,7 @@ event.geode(
     name: String,
     outer: String,
     middle: String,
-    inner: List<String>,
+    inner: String[],
     placement: Consumer<PlacedFeatureProperties>
 )
 ```
@@ -94,7 +94,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ### Method Signature
 
 ```js
-event.boulder(name: String, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
+event.boulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -128,7 +128,7 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 ### Method Signature
 
 ```js
-event.babyBoulder(name: String, states: List<BoulderState>, placement: Consumer<PlacedFeatureProperties>)
+event.babyBoulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
@@ -218,7 +218,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```js
 event.clusterVein(
     name: String,
-    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
+    replacementMap: BlockToWeightedBlockStateMapEntry[],
     rarity: number,
     density: number,
     minY: number,
@@ -231,7 +231,7 @@ event.clusterVein(
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in 1/N chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-javascript } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -267,7 +267,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```js
 event.pipeVein(
     name: String,
-    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
+    replacementMap: BlockToWeightedBlockStateMapEntry[],
     rarity: number,
     density: number,
     minY: number,
@@ -286,7 +286,7 @@ event.pipeVein(
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in 1/N chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-javascript } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -328,7 +328,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```js
 event.discVein(
     name :string,
-    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
+    replacementMap: BlockToWeightedBlockStateMapEntry[],
     rarity: number,
     density: number,
     minY: number,
@@ -392,7 +392,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```js
 event.soilDisc(
     name: String,
-    replacementMap: List<BlockToBlockStateMapEntry>,
+    replacementMap: BlockToBlockStateMapEntry[],
     minRadius: number,
     maxRadius: number,
     height: number,
@@ -406,7 +406,7 @@ event.soilDisc(
 - 3rd argument: A number, the minimum radius of the disc
 - 4th argument: A number, the maximum radius of the disc
 - 5th argument: A number, the height of the disc
-- 6th argument: A number, in the range [0, 1], specifies the probability that any given block in the disc will place, may be null to specify the default value of `1`
+- 6th argument: A number, in the range [0, 1], specifies the probability that any given block in the disc will place, may be `null`{:.p} to specify the default value of `1`{:.n}
 - 7th argument: A [feature placement consumer](#feature-placement)
 
 ### Example
@@ -441,7 +441,7 @@ event.hotSpring(
     fluidState: String,
     radius: number,
     allowUnderwater: boolean,
-    replacesFluidOnContact: @Nullable List<BlockToWeightedBlockStateMapEntry>,
+    replacesFluidOnContact: @Nullable BlockToWeightedBlockStateMapEntry[],
     decoration: @Nullable FissureDecoration,
     placement: Consumer<PlacedFeatureProperties>
 )
@@ -452,8 +452,8 @@ event.hotSpring(
 - 3rd argument: A string, the fluid to fill the spring with, may be air
 - 4th argument: A number, in the range [1, 16], the approximate radius of the spring
 - 5th argument: A boolean, if the hot spring should be allowed to generate underwater
-- 6th argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the blocks to place if placed underwater, may be null
-- 7th argument: A [fissure decoration](#fissure-decoration) object, may be null
+- 6th argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the blocks to place if placed underwater, may be `null`{:.p}
+- 7th argument: A [fissure decoration](#fissure-decoration) object, may be `null`{:.p}
 - 8th argument: A [feature placement consumer](#feature-placement)
 
 ### Example
@@ -536,9 +536,9 @@ event.randomPatch(
 ```
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
-- 2nd argument: A number, how many times the feature should attempt to place, may be null to default to 128
-- 3rd argument: A number, the horizontal spread of the patch, may be null to default to 7
-- 4th argument: A number, the vertical spread of the patch, may be null to default to 3
+- 2nd argument: A number, how many times the feature should attempt to place, may be `null`{:.p} to default to `128`{:.n}
+- 3rd argument: A number, the horizontal spread of the patch, may be `null`{:.p} to default to `7`{:.n}
+- 4th argument: A number, the vertical spread of the patch, may be `null`{:.p} to default to `3`{:.n}
 - 5th argument: A string, the name of the feature to attempt to place
 - 6th argument: A [feature placement consumer](#feature-placement)
 
@@ -562,7 +562,9 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 ```
 
 {: .notice #random-patch-notice }
-> This feature type places multiple of another feature, which may also have its own placement filters which will apply after this feature's placement filters. In this pair of examples, the patch feature limits where the crops can be placed and how often they appear in the world, while the individual block feature specifies local restrictions on placement.
+> This feature type places multiple of another feature, which may also have its own placement filters. Those filters will apply after this feature's placement filters.
+>
+> In this pair of examples, the patch feature limits where the crops can be placed and how often they appear in the world, while the individual block feature specifies local restrictions on placement.
 >
 > The placement filters of these examples mirror those used by TFC's crops
 
@@ -626,7 +628,7 @@ This defines an entry to a boulder feature's `state` value
 ### Method Signature
 
 ```js
-event.boulderState(rock: String, blockStates: List<String>)
+event.boulderState(rock: String, blockStates: String[])
 ```
 
 - 1st argument: The registry name of a block, the raw rock block of a rock layer for the `blockStates` to spawn in
@@ -641,7 +643,7 @@ This defines an entry to a blocks to weighted blockstates map
 ### Method Signature
 
 ```js
-event.blockToWeightedBlockState(replace: List<String>, with: List<String>)
+event.blockToWeightedBlockState(replace: String[], with: String[])
 ```
 
 - 1st argument: A list of strings, the registry name of blocks to be replaced
@@ -670,7 +672,7 @@ Hot springs and fissures may have additional decorations around them, this is us
 
 ```js
 event.fissureDecoration(
-    replacementMap: List<BlockToWeightedBlockStateMapEntry>,
+    replacementMap: BlockToWeightedBlockStateMapEntry[],
     rarity: number,
     radius: number,
     count: number
@@ -680,7 +682,7 @@ event.fissureDecoration(
 - 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the additional ores that should spawn around the fissure
 - 2nd argument: A number, the rarity of block s being replaced
 - 3rd argument: A number, the radius around the fissure that blocks should be replaced
-- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`
+- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-javascript }
 
 ## Vein Properties
 
@@ -693,7 +695,7 @@ Defines the vein's indicator
 Method signature:
 
 ```js
-vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: List<String>)
+vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: String[])
 ```
 
 - 1st argument: A number, the number of blocks above the top of the vein the indicators may spawn
@@ -799,13 +801,13 @@ placement.climate(climate: Consumer<ClimateModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.minRain(f: number)`{: .language-javascript }: Accepts a number, sets the minimum rainfall
-    - `.maxRain(f: number)`{: .language-javascript }: Accepts a number, sets the maximum rainfall
-    - `.minTemp(f: number)`{: .language-javascript }: Accepts a number, sets the minimum temperature
-    - `.maxTemp(f: number)`{: .language-javascript }: Accepts a number, sets the maximum temperature
-    - `.minForest(forest: String)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the minimum forest level
-    - `.maxForest(forest: String)`{: .language-javascript }: Accepts `none`, `sparse`, `edge`, `normal`, and `old_growth`, sets the maximum forest level
-    - `.fuzzy(b: boolean)`{: .language-javascript }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
+    - `.minRain(f: number)`{: .language-javascript .m-link #climate-placement-min-rain }: Accepts a number, sets the minimum rainfall
+    - `.maxRain(f: number)`{: .language-javascript .m-link #climate-placement-max-rain }: Accepts a number, sets the maximum rainfall
+    - `.minTemp(f: number)`{: .language-javascript .m-link #climate-placement-min-temp }: Accepts a number, sets the minimum temperature
+    - `.maxTemp(f: number)`{: .language-javascript .m-link #climate-placement-max-temp }: Accepts a number, sets the maximum temperature
+    - `.minForest(forest: String)`{: .language-javascript .m-link #climate-placement-min-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the minimum forest level
+    - `.maxForest(forest: String)`{: .language-javascript .m-link #climate-placement-max-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the maximum forest level
+    - `.fuzzy(b: boolean)`{: .language-javascript .m-link #climate-placement-fuzzy }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
 
@@ -818,9 +820,9 @@ placement.flatEnough(flatness: Consumer<FlatnessModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.flatness(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`
-    - `.radius(i: number)`{: .language-javascript }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to 2
-    - `.maxDepth(i: number)`{: .language-javascript }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to 4
+    - `.flatness(f: number)`{: .language-javascript .m-link #flat-placement-flatness }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
+    - `.radius(i: number)`{: .language-javascript .m-link #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
+    - `.maxDepth(i: number)`{: .language-javascript .m-link #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
 
 ### Near Water
 
@@ -866,7 +868,7 @@ Method signature:
 placement.volcano(center: boolean, distance: number)
 ```
 
-- 1st argument: A boolean, if true the feature will be placed at the exact center of the volcano and disregard the `distance` property
+- 1st argument: A boolean, if true the feature will be placed at the exact center of the volcano and disregard the `distance`{:.v} parameter
 - 2nd argument: A number, in the range [0, 1], sets the distance from the center of the volcano the feature needs to generate
 
 ### In Square

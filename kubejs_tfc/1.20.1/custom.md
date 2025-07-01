@@ -55,7 +55,7 @@ Inherits the methods of the default block builder
 
 - `.allowedFluids(fluids: String[])`{: .language-javascript .m-link #aqueduct-allowed-fluids }: Sets the fluids that the aqueduct may hold
     - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
-- `models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-javascript .m-link #aqueduct-models }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
+- `.models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-javascript .m-link #aqueduct-models }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
     - `.base()`{: .language-javascript }: A boolean. If the model part in operation is for the base
     - `.north()`{: .language-javascript }: A boolean. If the model part in operation is the north part
     - `.south()`{: .language-javascript }: A boolean. If the model part in operation is the south part
@@ -87,7 +87,7 @@ Inherits the methods of the default block builder
 
 - `.ore()`{: .language-javascript .m-link #ground-cover-ore }: Sets the collision shape to that of TFC's ores
 - `.twig()`{: .language-javascript .m-link #ground-cover-twig }: Sets the collision shape to that of TFC's twigs and makes the block flammable
-- `.groundCoverModel(model: String)`{: .language-javascript .m-link #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`
+- `.groundCoverModel(model: String)`{: .language-javascript .m-link #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`{:.s}
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
 - `.notAxisAligned()`{: .language-javascript .m-link #ground-cover-axis-aligned }: Rotates placed models by 45 degrees
 - `.collision()`{: .language-javascript .m-link #ground-cover-collision }: Enables collision for the block
@@ -148,7 +148,7 @@ Inherits the methods of the default block builder
 - `.intermediateIgneousIntrusive()`{: .language-javascript .m-link #raw-intermediate-intrusive}: Sets the item's rock type tooltip to be that of intermediate igneous intrusive rocks
 - `.metamorphic()`{: .language-javascript .m-link #raw-metamorphic }: Sets the item's rock type tooltip to be that of metamorphic rocks
 - `.sedimentary()`{: .language-javascript .m-link #raw-sedimentary }: Sets the item's rock type tooltip to be that of sedimentary rocks
-- `.uniqueSideTextures()`{: .language-javascript .m-link #raw-unique-sides }: Makes the default model generator use the 'side' and 'end' textures instead of just the 'end'
+- `.uniqueSideTextures()`{: .language-javascript .m-link #raw-unique-sides }: Makes the default model generator use the `side`{:.s} and `end`{:.s} textures instead of just the `end`{:.s}
 
 #### Example
 
@@ -197,8 +197,8 @@ Inherits the methods of the default block builder
 - `.melts()`{: .language-javascript .m-link #thin-spike-melts }: makes the block melt under certain conditions
 - `.meltChance(f: number)`{: .language-javascript .m-link #thin-spike-melt-chance}: Sets the chance, in the range [0, 1], that the block will melt per random tick
 - `.meltTemp(f: number)`{: .language-javascript .m-link #thin-spike-melt-temp }: Sets the temperature above which the block can melt
-- `.dripParticle(particle: String)`{: .language-javascript .m-link #thin-spike-drip-particle }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to null
-- `.meltFluid(fluid: FluidStackJS)`{: .language-javascript .m-link #thin-spike-melt-fluid }: The fluid that the block melts into
+- `.dripParticle(particle: String)`{: .language-javascript .m-link #thin-spike-drip-particle }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to `null`{:,p}
+- `.meltFluid(fluid: FluidStack)`{: .language-javascript .m-link #thin-spike-melt-fluid }: The fluid that the block melts into
 - `.tipModel(model: String)`{: .language-javascript .m-link #thin-spike-tip-model }: Sets the parent model of the tip state
 
 ### Example
@@ -316,7 +316,11 @@ StartupEvents.registry('block', event => {
 
 This is used when determining if a moss growing block should convert to its mossy variant
 
-You are given a `BlockContainerJS` and a boolean, known as `needsWater`, which, in default TFC, is always `true`{:.p} and expected to return a boolean indicating if the block should convert
+The parameters of the callback are:
+
+- `container: BlockContainerJS`{: .language-javascript }: The block and level being checked
+- `needsWater: boolean`{: .language-javascript }: A boolean representing if a need for water should be respected. This is always `true`{:.p} in default TFC
+- `return: boolean`{: .language-javascript }: If the block should convert
 
 #### Examples
 
@@ -375,11 +379,11 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.lifecycle(month: Month, lifecycle: Lifecycle)`{: .language-javascript .m-link #stationary-bush-lifecycle }: Sets the bush's lifecycle for a particular month, defaults to `dormant` for every month, accepts a month for the first parameter, and either `healthy`{:.e}, `dormant`{:.e}, `fruiting`{:.e}, or `flowering`{:.e} for the second
+- `.lifecycle(month: Month, lifecycle: Lifecycle)`{: .language-javascript .m-link #stationary-bush-lifecycle }: Sets the bush's lifecycle for a particular month, defaults to `dormant`{:.e} for every month, accepts a month for the first parameter, and either `healthy`{:.e}, `dormant`{:.e}, `fruiting`{:.e}, or `flowering`{:.e} for the second
 - `.productItem(item: Consumer<ItemBuilder>)`{: .language-javascript .m-link #stationary-bush-product-item-0 }: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #stationary-bush-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.productItem(item: ResourceLocation)`{: .language-javascript .m-link #stationary-bush-product-item-1 }: Sets the bush's product item to be an existing item, will prevent the other product item from being created
-- `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #stationary-bush-model }: Sets the model for the given lifecycle and stage, stage can be one of `0`, `1`, and `2`
+- `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #stationary-bush-model }: Sets the model for the given lifecycle and stage, stage can be one of `0`{:.n}, `1`{:.n}, and `2`{:.n}
 - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript .m-link #stationary-bush-models }: Sets the model for all lifecycle and stage combinations
 - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript .m-link #stationary-bush-texture }: Sets the texture for the given lifecycle and stage
 
@@ -417,9 +421,9 @@ Inherits the methods of the stationary bush builder
 
 #### Extra Methods
 
-- `.maxHeight(i: number)`{: .language-javascript .m-link #spreading-bush-max-height }: Sets the maximum number of blocks the bush may climb, defaults to `3`
+- `.maxHeight(i: number)`{: .language-javascript .m-link #spreading-bush-max-height }: Sets the maximum number of blocks the bush may climb, defaults to `3`{:.n}
 - `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-javascript .m-link #spreading-bush-cane }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
-    - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #cane-bush-model }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`, `1`, and `2`
+    - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #cane-bush-model }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`{:.n}, `1`{:.n}, and `2`{:.n}
     - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript .m-link #cane-bush-models }: Sets the model for all lifecycle and stage combinations
     - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript .m-link #cane-bush-texture-0 }: Sets the cane texture for the given lifecycle and stage
     - `.texture(lifecycle: Lifecycle, stage: number, caneTexture: String, bushTexture)`{: .language-javascript .m-link #caen-bush-texture-1}: Sets the cane and bush texture for the given lifecycle and stage
@@ -452,7 +456,7 @@ Inherits the methods of the default block builder
 - `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-javascript .m-link #dirt-grass }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
     - Those of the default block builder
     - `.uniqueDirtTexture()`{: .language-javascript .m-link #dirt-grass-unique-texture}: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
-    - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-javascript .m-link #dirt-grass-models }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first ahs the following properties:
+    - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-javascript .m-link #dirt-grass-models }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
         - `snowy`: A boolean. If the model part in operation represents a snowy state
         - `side`: A boolean. If the model part in operation represents a side part
         - `top`: A boolean. If the model part in operation represents a top part
@@ -504,7 +508,7 @@ Inherits the methods of the default block builder
 
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #wild-crop-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.type(type: Type)`{: .language-javascript .m-link #wild-crop-type }: Sets the type of wild crop block to be used, available options are `default`{:.e}, `double`{:.e}, `flooded`{:.e}, and `spreading`{:.e}, defaults to `default`{:.e}
-- `.spreadingFruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript .m-link #wild-crop-fruit-block }: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
+- `.spreadingFruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript .m-link #wild-crop-fruit-block }: Sets the block to be used as the fruit block if the wild crop's type is `spreading`{:.e}, defaults to `minecraft:honey_block`
 - `.seeds(seedItem: ResourceLocation)`{: .language-javascript .m-link #wild-crop-seeds }: Sets the 'seed' item to be used in the auto-generated loot table
 - `.food(foodItem: ResourceLocation)`{: .language-javascript .m-link #wild-crop-food }: Sets the 'food' item to be used in the auto-generated loot table
 - `.deadModel(model: String)`{: .language-javascript .m-link #wild-crop-dead-model }: Sets the model to use when the crop is dead/immature and its type is `default`{:.e} or `flooded`{:.e}
@@ -531,26 +535,26 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.stages(i: number)`{: .language-javascript }: Sets the number of growth stages the block has, should be a number between 1 and 12, defaults to `8`
-- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-javascript }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
+- `.stages(i: number)`{: .language-javascript .m-link #crop-stages }: Sets the number of growth stages the block has, should be a number between `1`{:.n} and `12`{:.n}, defaults to `8`{:.n}
+- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-javascript .m-link #crop-dead }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<DeadModelVariant, ModelGenerator>)`{: .language-javascript }: Sets the model generation for the dead crop. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
         - `.variant()`{: .language-javascript }: A string. The variant key used for the model in the blockstate file
         - `.mature()`{: .language-javascript }: A boolean. If the variant in operation represents a mature state
-- `.seedItem(seedItem: Consumer<SeedItemBuilder>)`{: .language-javascript }: A consumer for setting the properties of the block's seed item
-- `.productItem(productItem: Consumer<ItemBuilder>)`{: .language-javascript }: A consumer for setting the properties of the block's product item
-- `.productItem(productItem: ResourceLocation)`{: .language-javascript }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
-- `.nutrient(nutrient: NutrientType)`{: .language-javascript }: Sets the nutrient the crop consumes, available options are `nitrogen`{:.e}, `phosphorous`{:.e} , and `potassium`{:.e}, defaults to `nitrogen`{:.e}
-- `.texture(texture: String)`{: .language-javascript }: Sets the crop's `crop` texture for all growth stages
-- `.textureAll(id: String, texture: String)`{: .language-javascript }: Sets the crop's texture for the id for all growth stages
-- `.model(model: String)`{: .language-javascript }: Sets the crop's model for all growth stages
-- `.model(gen: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the crop's model for all growth stages
-- `.model(i: number, gen: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the crop's model for a specific growth stage
-- `.model(i: number, model: String)`{: .language-javascript }: Sets the crop's model for a specific growth stage
-- `.texture(i: number, id: String, texture: String)`{: .language-javascript }: Textures a specific key for the given stage
-- `.texture(i: number, texture: String)`{: .language-javascript }: Sets the crop's `crop` texture for the given growth stage
-- `.textures(textures: JsonObject)`{: .language-javascript }: Sets the crop's textures for all growth stages
-- `.textures(i: number, textures: JsonObject)`{: .language-javascript }: Sets the crop's textures for the given growth stage
+- `.seedItem(seedItem: Consumer<SeedItemBuilder>)`{: .language-javascript .m-link #crop-seed-item }: A consumer for setting the properties of the block's seed item
+- `.productItem(productItem: Consumer<ItemBuilder>)`{: .language-javascript .m-link #crop-product-item-0 }: A consumer for setting the properties of the block's product item
+- `.productItem(productItem: ResourceLocation)`{: .language-javascript .m-link #crop-product-item-1 }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
+- `.nutrient(nutrient: NutrientType)`{: .language-javascript .m-link #crop-nutrient }: Sets the nutrient the crop consumes, available options are `nitrogen`{:.e}, `phosphorous`{:.e} , and `potassium`{:.e}, defaults to `nitrogen`{:.e}
+- `.textureAll(id: String, texture: String)`{: .language-javascript .m-link #crop-texture-all }: Sets the crop's texture for the id for all growth stages
+- `.model(model: String)`{: .language-javascript .m-link #crop-model-0 }: Sets the crop's model for all growth stages
+- `.model(gen: Consumer<ModelGenerator>)`{: .language-javascript .m-link #crop-model-1 }: Sets the crop's model for all growth stages
+- `.model(i: number, gen: Consumer<ModelGenerator>)`{: .language-javascript .m-link #crop-model-2 }: Sets the crop's model for a specific growth stage
+- `.model(i: number, model: String)`{: .language-javascript .m-link #crop-model-3 }: Sets the crop's model for a specific growth stage
+- `.texture(texture: String)`{: .language-javascript .m-link #crop-texture-0 }: Sets the crop's `crop`{:.s} texture for all growth stages
+- `.texture(i: number, id: String, texture: String)`{: .language-javascript .m-link #crop-texture-1 }: Textures a specific key for the given stage
+- `.texture(i: number, texture: String)`{: .language-javascript .m-link #crop-texture-2 }: Sets the crop's `crop`{:.s} texture for the given growth stage
+- `.textures(textures: JsonObject)`{: .language-javascript .m-link #crop-textures-0 }: Sets the crop's textures for all growth stages
+- `.textures(i: number, textures: JsonObject)`{: .language-javascript .m-link #crop-textures-1 }: Sets the crop's textures for the given growth stage
 
 Additionally this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
@@ -577,10 +581,10 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 
 #### Extra Methods
 
-- `.stages(i: number)`{: .language-javascript }: Sets the number of growth stages the block has, should be a number between 1 and 6, defaults to `4`
-- `.doubleStages(i: number)`{: .language-javascript }: Sets the number of stages the crop has in its top state, should be a number between 1 and 6, defaults to `4`
-- `.requiresStick(required: boolean)`{: .language-javascript }: Determines if the crop needs a stick to grow
-- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuidler>)`{: .language-javascript }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
+- `.stages(i: number)`{: .language-javascript .m-link #double-crop-stages }: Sets the number of growth stages the block has, should be a number between `1`{:.n} and `6`{:.n}, defaults to `4`{:.n}
+- `.doubleStages(i: number)`{: .language-javascript .m-link #double-crop-double-stages }: Sets the number of stages the crop has in its top state, should be a number between `1`{:.n} and `6`{:.n}, defaults to `4`{:.n}
+- `.requiresStick(required: boolean)`{: .language-javascript .m-link #double-crop-requires-stick }: Determines if the crop needs a stick to grow
+- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuidler>)`{: .language-javascript .m-link #double-crop-dead-block }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<DeadModelVariant, ModelGenerator>)`{: .language-javascript }: Sets the model generation for the dead crop. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
         - `.variant()`{: .language-javascript }: A string. The variant key used for the model in the blockstate file
@@ -614,7 +618,7 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 
 #### Extra Method
 
-- `.fruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript }: Sets the block that will be used as the block's fruit block, defaults to `minecraft:honey_block`
+- `.fruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript .m-link #spreading-crop-fruit-block }: Sets the block that will be used as the block's fruit block, defaults to `minecraft:honey_block`
 
 #### Example
 
@@ -651,8 +655,8 @@ Inherits the methods of [TFC's crop builder](#default-crops)
 
 #### Extra Methods
 
-- `.fruit(fruit: ResourceLocation)`{: .language-javascript }: Sets the item the player will be given when they pick the block
-- `.matureFruit(fruit: ResourceLocation)`{: .language-javascript }: Sets the item the player will be given when they pick the block and the crop is mature, defaults to `minecraft:apple`
+- `.fruit(fruit: ResourceLocation)`{: .language-javascript .m-link #pickable-crop-fruit }: Sets the item the player will be given when they pick the block
+- `.matureFruit(fruit: ResourceLocation)`{: .language-javascript .m-link #pickable-crop-mature-fruit }: Sets the item the player will be given when they pick the block and the crop is mature, defaults to `minecraft:apple`
 
 #### Example
 
@@ -676,10 +680,10 @@ Will not automatically support blocks, use the [support method]({% link kubejs_t
 
 #### Extra methods
 
-- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-javascript }: Allows for editing of the properties of the horizontal block
+- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-javascript .m-link #support-horizontal }: Allows for editing of the properties of the horizontal block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #support-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
 #### Example
 
@@ -699,9 +703,9 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.tier(i: number)`{: .language-javascript }: Sets the tier of the anvil, defaults to 0
-- `.defaultName(name: Component)`{: .language-javascript }: Sets the default name of the anvil screen, defaults to `Text.translatable('tfc.block_entity.anvil')`
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.tier(i: number)`{: .language-javascript .m-link #anvil-tier }: Sets the tier of the anvil, defaults to `0`{:.n}
+- `.defaultName(name: Component)`{: .language-javascript .m-link #anvil-default-name }: Sets the default name of the anvil screen, defaults to `Text.translatable('tfc.block_entity.anvil')`{: .language-javascript }
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #anvil-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
 #### Example
 
@@ -723,28 +727,28 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.axleTexture(texture: String)`{: .language-javascript }: Sets the texture the axle will be rendered with
-- `.windmill(windmill: Consumer<WindmillBlockBuilder>)`{: .language-javascript }: Sets the properties of the axle's windmill block
+- `.axleTexture(texture: String)`{: .language-javascript .m-link #axle-axle-texture}: Sets the texture the axle will be rendered with
+- `.windmill(windmill: Consumer<WindmillBlockBuilder>)`{: .language-javascript .m-link #axle-windmill }: Sets the properties of the axle's windmill block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's water wheel block
+- `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-javascript .m-link #axle-water-wheel }: Creates and sets the properties of the axle's water wheel block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.texture(texture: String)`{: .language-javascript }: Sets the texture the water wheel will use, the path is relative to `/textures/entity/waterwheel/`
-- `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's gear box block
+- `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-javascript .m-link #axle-gear-box }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<GearBoxModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the gear box. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following method:
         - `.port()`{: .language-javascript }: A boolean. If the model type in operation represents a port (open) state
-- `.clutch(clutch: Consumer<ClutchBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's clutch block
+- `.clutch(clutch: Consumer<ClutchBlockBuilder>)`{: .language-javascript .m-link #axle-clutch }: Creates and sets the properties of the axle's clutch block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<ClutchModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the clutch. Accepts a callback with two parameters. The second parameter is a model generator, the first has the following method:
         - `.powered()`{: .language-javascript }: A boolean. If the model type in operation represents a powered state
-- `.bladedAxle(bladed: Consumer<BladedAxleBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the axle's bladed axle block
+- `.bladedAxle(bladed: Consumer<BladedAxleBlockBuilder>)`{: .language-javascript .m-link #axle-bladed-axle }: Creates and sets the properties of the axle's bladed axle block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #axle-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
 #### Example
 
@@ -784,8 +788,8 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-javascript }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in null to remove the stripped block
-- `.useFullBlockForItemModel()`{: .language-javascript }: Makes the autogenerated item model use the model of the block instead of a custom texture
+- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-javascript .m-link #log-stripped }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in `null`{:.p} to remove the stripped block
+- `.useFullBlockForItemModel()`{: .language-javascript .m-link #log-full-item-model }: Makes the autogenerated item model use the model of the block instead of a custom texture
 
 #### Example
 
@@ -809,14 +813,14 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.deadItem(item: @Nullable Consumer<ItemBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit item, may be null to not have a dead/unlit item
-- `.decayLength(i: number)`{: .language-javascript }: Sets the time, in calendar ticks, the torch will burn for
-- `.decayLengthSupplier(length: Supplier<Integer>)`{: .language-javascript }: Sets the supplier for the time, in calendar ticks, the torch will burn for. Defaults to Using TFC's server config value for torch burn length
-- `.flameParticle(particle: String)`{: .language-javascript }: Sets the flame particle of the torch, may be null to not have a flame particle. Defaults to `minecraft:flame`[^1]
-- `.smokeParticle(particle: String)`{: .language-javascript }: Sets the smoke particle of the torch, may be null to not have a smoke particle. Defaults to `minecraft:smoke`[^1]
-- `.dead(dead: Consumer<DeadTorchBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
-- `.wall(wall: Consumer<WallTorchBuilder>)`{: .language-javascript }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
-- `.deadWall(deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-javascript }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
+- `.deadItem(item: @Nullable Consumer<ItemBuidler>)`{: .language-javascript .m-link #torch-dead-item }: Sets the properties of the dead/unlit item, may be `null`{:.p} to not have a dead/unlit item
+- `.decayLength(i: number)`{: .language-javascript .m-link #torch-decay-length }: Sets the time, in calendar ticks, the torch will burn for. Defaults to the value in TFC's server config value for torch burn length
+- `.decayLengthSupplier(length: Supplier<Integer>)`{: .language-javascript .m-link #torch-decay-length-supplier }: Sets the supplier for the time, in calendar ticks, the torch will burn for. Defaults to using TFC's server config value for torch burn length
+- `.flameParticle(particle: String)`{: .language-javascript .m-link #torch-flame-particle }: Sets the flame particle of the torch, may be null to not have a flame particle. Defaults to `minecraft:flame`[^1]
+- `.smokeParticle(particle: String)`{: .language-javascript .m-link #torch-smoke-particle }: Sets the smoke particle of the torch, may be null to not have a smoke particle. Defaults to `minecraft:smoke`[^1]
+- `.dead(dead: Consumer<DeadTorchBuidler>)`{: .language-javascript .m-link #torch-dead }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
+- `.wall(wall: Consumer<WallTorchBuilder>)`{: .language-javascript .m-link #torch-wall }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
+- `.deadWall(deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-javascript .m-link #torch-dead-wall }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
 
 #### Example
 
@@ -846,10 +850,10 @@ Inherits the methods of the default block builder
 
 #### Extra Method
 
-- `.sliceItem(slice: Consumer<ItemBuilder>)`{: .language-javascript }: Sets the properties of the cheese wheel's slice item
-- `.freshInsideTexture(tex: String)`{: .language-javascript }: Sets the inside texture when the cheese is fresh
-- `.agedInsideTexture(tex: String)`{: .language-javascript }: Sets the inside texture when the cheese is aged
-- `.vintageInsideTexture(tex: String)`{: .language-javascript }: Sets the inside texture when the cheese is vintage
+- `.sliceItem(slice: Consumer<ItemBuilder>)`{: .language-javascript .m-link #cheese-wheel-slice }: Sets the properties of the cheese wheel's slice item
+- `.freshInsideTexture(tex: String)`{: .language-javascript .m-link #cheese-wheel-fresh-inside }: Sets the inside texture when the cheese is fresh
+- `.agedInsideTexture(tex: String)`{: .language-javascript .m-link #cheese-wheel-aged-inside }: Sets the inside texture when the cheese is aged
+- `.vintageInsideTexture(tex: String)`{: .language-javascript .m-link #cheese-wheel-vintage-inside }: Sets the inside texture when the cheese is vintage
 
 #### Example
 
@@ -863,42 +867,42 @@ StartupEvents.registry('block', event => {
 
 Some of TFC's blocks have extended properties which allow the block properties object passed into them to define more of their behavior, builders for these types of blocks have a method with a consumer that allows you to modify some of those properties
 
-- `.flammable(flammability: number, fireSpreadSpeed: number)`{: .language-javascript }: Sets the flammability and fire spread speed of the block
-- `.pathType(pathType: BlockPathTypes)`{: .language-javascript }: Sets the block's path type, used by mobs to determine if they may walk over it or not
-- `.enchantPower(f: number)`{: .language-javascript }: Sets the block's enchant power
-- `.enchantPowerFunction(function: Function<BlockState, Double>)`{: .language-javascript }: Sets the function the block uses to determine its enchant power based on its block state
-- `.noCollision()`{: .language-javascript }: Removes the block's collision
-- `.noOcclusion()`{: .language-javascript }: Makes the block not occlude blocks behind it
-- `.friction(f: number)`{: .language-javascript }: Sets the friction of the block
-- `.speedFactor(f: number)`{: .language-javascript }: Sets the speed factor of the block
-- `.jumpFactor(f: number)`{: .language-javascript }: Sets the jump factor of the block
-- `.sound(sound: SoundType)`{: .language-javascript }: Sets the sound type the block uses
-- `.lightLevel(lightLevel: Function<BlockState, number>)`{: .language-javascript }: Sets the light level, in the range [0, 15], of the block, as a function of its state
-- `.strength(destroyTime: number, explosionResistance: number)`{: .language-javascript }: Sets the destroy time and explosion resistance of the block
-- `.instabreak()`{: .language-javascript }: Makes the block instabreak
-- `.strength(f: number)`{: .language-javascript }: Sets the destroy time and explosion resistance of the block
-- `.randomTicks()`{: .language-javascript }: Sets the block to random tick
-- `.dynamicShape()`{: .language-javascript }: Marks the block as having a dynamic shape
-- `.noLootTable()`{: .language-javascript }: Marks the block as having no loot table
-- `.dropsLike(block: Supplier<Block>)`{: .language-javascript }: makes the block drop like the supplied block
-- `.air()`{: .language-javascript }: Marks the block as being air-like
-- `.isValidSpawn(isValidSpawn: BlockBehaviour$StateArgumentPredicate<EntityType<?>>)`{: .language-javascript }: Determines if an entity may spawn on the block
-- `.isSuffocating(isSuffocating: BlockBehaviour$StatePredicate)`{: .language-javascript }: Determines if the block is suffocating
-- `.isViewBlocking(isBlocking: BlockBehaviour$StatePredicate)`{: .language-javascript }: Determines if the block is view blocking
-- `.requiresCorrectToolForDrops()`{: .language-javascript }: Sets the block to require a 'correct' tool (as determined by a tag) for it to drops its loot table
-- `.mapColor(color: MapColor)`{: .language-javascript }: Sets the map color of the block
-- `.mapColor(color: Function<BlockState, MapColor>)`{: .language-javascript }: Sets the map color of the block per state
-- `.destroyTime(f: number)`{: .language-javascript }: Sets the destroy time of the block
-- `.explosionResistance(f: number)`{: .language-javascript }: Sets the explosion resistance of the block
-- `.ignitedByLava()`{: .language-javascript }: Sets the block to be ignited by lava
-- `.forceSolidOn()`{: .language-javascript }: Forces the block to be solid
-- `.forceSolidOff()`{: .language-javascript }: Forces the block to be non-solid (?)
-- `.pushReaction(reaction: PushReaction)`{: .language-javascript }: Sets the block's reaction to being pushed by pistons
-- `.offsetType(type: OffsetType)`{: .language-javascript }: Sets the block's hitbox offset type
-- `.noParticlesOnBreak()`{: .language-javascript }: Sets the block to not create any particles when broken
-- `.instrument(instrument: NoteBlockInstrument)`{: .language-javascript }: Sets the note block instrument the block has
-- `.defaultInstrument()`{: .language-javascript }: Sets the block's not block instrument to be the harp
-- `.replaceable()`{: .language-javascript }: Marks the block as being replaceable
+- `.flammable(flammability: number, fireSpreadSpeed: number)`{: .language-javascript .m-link #extend-props-flammable }: Sets the flammability and fire spread speed of the block
+- `.pathType(pathType: BlockPathTypes)`{: .language-javascript .m-link #extend-props-path-type }: Sets the block's path type, used by mobs to determine if they may walk over it or not
+- `.enchantPower(f: number)`{: .language-javascript .m-link #extend-props-enchant-power }: Sets the block's enchant power
+- `.enchantPowerFunction(function: Function<BlockState, Double>)`{: .language-javascript .m-link #extend-props-enchant-power-function }: Sets the function the block uses to determine its enchant power based on its block state
+- `.noCollision()`{: .language-javascript .m-link #extend-props-no-collision }: Removes the block's collision
+- `.noOcclusion()`{: .language-javascript .m-link #extend-props-no-occlusion }: Makes the block not occlude blocks behind it
+- `.friction(f: number)`{: .language-javascript .m-link #extend-props-friction }: Sets the friction of the block
+- `.speedFactor(f: number)`{: .language-javascript .m-link #extend-props-speed-factor }: Sets the speed factor of the block
+- `.jumpFactor(f: number)`{: .language-javascript .m-link #extend-props-jump-factor }: Sets the jump factor of the block
+- `.sound(sound: SoundType)`{: .language-javascript .m-link #extend-props-sound }: Sets the sound type the block uses
+- `.lightLevel(lightLevel: Function<BlockState, number>)`{: .language-javascript .m-link #extend-props-light-level }: Sets the light level, in the range [0, 15], of the block, as a function of its state
+- `.strength(destroyTime: number, explosionResistance: number)`{: .language-javascript .m-link #extend-props-strength-0 }: Sets the destroy time and explosion resistance of the block
+- `.instabreak()`{: .language-javascript .m-link #extend-props-instabreak }: Makes the block instabreak
+- `.strength(f: number)`{: .language-javascript .m-link #extend-props-strength-1 }: Sets the destroy time and explosion resistance of the block
+- `.randomTicks()`{: .language-javascript .m-link #extend-props-random-ticks }: Sets the block to random tick
+- `.dynamicShape()`{: .language-javascript .m-link #extend-props-dynamic-shape }: Marks the block as having a dynamic shape
+- `.noLootTable()`{: .language-javascript .m-link #extend-props-no-loot-table }: Marks the block as having no loot table
+- `.dropsLike(block: Supplier<Block>)`{: .language-javascript .m-link #extend-props-drops-like }: makes the block drop like the supplied block
+- `.air()`{: .language-javascript .m-link #extend-props-air }: Marks the block as being air-like
+- `.isValidSpawn(isValidSpawn: BlockBehaviour$StateArgumentPredicate<EntityType<?>>)`{: .language-javascript .m-link #extend-props-is-valid-spawn }: Determines if an entity may spawn on the block
+- `.isSuffocating(isSuffocating: BlockBehaviour$StatePredicate)`{: .language-javascript .m-link #extend-props-is-suffocating }: Determines if the block is suffocating
+- `.isViewBlocking(isBlocking: BlockBehaviour$StatePredicate)`{: .language-javascript .m-link #extend-props-is-view-blocking }: Determines if the block is view blocking
+- `.requiresCorrectToolForDrops()`{: .language-javascript .m-link #extend-props-requires-correct-tool }: Sets the block to require a 'correct' tool (as determined by a tag) for it to drops its loot table
+- `.mapColor(color: MapColor)`{: .language-javascript .m-link #extend-props-map-color-0 }: Sets the map color of the block
+- `.mapColor(color: Function<BlockState, MapColor>)`{: .language-javascript .m-link #extend-props-map-color-1 }: Sets the map color of the block per state
+- `.destroyTime(f: number)`{: .language-javascript .m-link #extend-props-destroy-time }: Sets the destroy time of the block
+- `.explosionResistance(f: number)`{: .language-javascript .m-link #extend-props-explosion-resistance }: Sets the explosion resistance of the block
+- `.ignitedByLava()`{: .language-javascript .m-link #extend-props-ignited-by-lava }: Sets the block to be ignited by lava
+- `.forceSolidOn()`{: .language-javascript .m-link #extend-props-force-solid-on }: Forces the block to be solid (?)
+- `.forceSolidOff()`{: .language-javascript .m-link #extend-props-force-solid-off }: Forces the block to be non-solid (?)
+- `.pushReaction(reaction: PushReaction)`{: .language-javascript .m-link #extend-props-push-reaction }: Sets the block's reaction to being pushed by pistons
+- `.offsetType(type: OffsetType)`{: .language-javascript .m-link #extend-props-offset-type }: Sets the block's hitbox offset type
+- `.noParticlesOnBreak()`{: .language-javascript .m-link #extend-props-no-particles-on-break }: Sets the block to not create any particles when broken
+- `.instrument(instrument: NoteBlockInstrument)`{: .language-javascript .m-link #extend-props-instrument }: Sets the note block instrument the block has
+- `.defaultInstrument()`{: .language-javascript .m-link #extend-props-default-instrument }: Sets the block's not block instrument to be the harp
+- `.replaceable()`{: .language-javascript .m-link #extend-props-replaceable }: Marks the block as being replaceable
 
 ## Items
 
@@ -962,8 +966,8 @@ Inherits the methods of the basic item builder
 {: .notice #fluid-container-texture-notice }
 > This item requires two textures to function properly
 >
-> - item/\<name>: The base texture
-> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+> - `item/<name>`: The base texture
+> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png` and `kubejs/textures/item/my_fluid_container_overlay.png`
 >
@@ -971,12 +975,12 @@ Inherits the methods of the basic item builder
 
 #### Extra Methods
 
-- `.canPlaceLiquid(b: boolean)`{: .language-javascript }: Determines if the item can place liquids in world, defaults to `false`{:.p}
-- `.canPlaceLiquidSource(b: boolean)`{: .language-javascript }: Determines if the the item can place source blocks in world, defaults to `false`{:.p}
-- `.capacity(i: number)`{: .language-javascript }: Sets the mB capacity of the item, defaults to `100`
-- `.fluidTagAccept(tag: String)`{: .language-javascript }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
-- `.filledDisplayName(c: Component)`{: .language-javascript }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
-- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript }: Sets the mB supplier capacity of the item, defaults to `() => 100`
+- `.canPlaceLiquid(b: boolean)`{: .language-javascript .m-link #fluid-container-can-place-liquid }: Determines if the item can place liquids in world, defaults to `false`{:.p}
+- `.canPlaceLiquidSource(b: boolean)`{: .language-javascript .m-link #fluid-container-can-place-liquid-source }: Determines if the the item can place source blocks in world, defaults to `false`{:.p}
+- `.capacity(i: number)`{: .language-javascript .m-link #fluid-container-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
+- `.fluidTagAccept(tag: String)`{: .language-javascript .m-link #fluid-container-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+- `.filledDisplayName(c: Component)`{: .language-javascript .m-link #fluid-container-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript .m-link #fluid-container-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-javascript }
 
 #### Example
 
@@ -998,7 +1002,7 @@ Inherits the methods of other tool item builders
 
 #### Extra Method
 
-- `.metalTexture(texture: String)`{: .language-javascript }: Sets the texture of the hammer when in a trip hammer, this is required if you want the hammer to be usable in a trip hammer
+- `.metalTexture(texture: String)`{: .language-javascript .m-link #hammer-metal-texture }: Sets the texture of the hammer when in a trip hammer, this is required if you want the hammer to be usable in a trip hammer
 
 #### Example
 
@@ -1019,11 +1023,11 @@ Inherits the methods of other tool item builders
 
 #### Extra Methods
 
-- `.thrownDamage(f: number)`{: .language-javascript }: Sets the thrown damage of the javelin, defaults to `0.3`
-- `.skeletonWeapon()`{: .language-javascript }: Adds the item to the `tfc:skeleton_weapons` item tag
-- `.throwingModel(m: String)`{: .language-javascript }: Sets the model to use when throwing the javelin, before release
-- `.modelAtPerspective(perspective: ItemDisplayContext, model: String)`{: .language-javascript }: Sets the model to use at the specified display context
-- `.guiModel(m: String)`{: .language-javascript }: Sets the model to use for the `none`{:.e}, `fixed`{:.e}, `ground`{:.e}, and `gui`{:.e} display contexts
+- `.thrownDamage(f: number)`{: .language-javascript .m-link #javelin-thrown-damage }: Sets the thrown damage of the javelin, defaults to `0.3`{:.n}
+- `.skeletonWeapon()`{: .language-javascript .m-link #javelin-skeleton-weapon }: Adds the item to the `tfc:skeleton_weapons` item tag
+- `.throwingModel(m: String)`{: .language-javascript .m-link #javelin-throwing-model }: Sets the model to use when throwing the javelin, before release
+- `.modelAtPerspective(perspective: ItemDisplayContext, model: String)`{: .language-javascript .m-link #javelin-model-at-perspective }: Sets the model to use at the specified display context
+- `.guiModel(m: String)`{: .language-javascript .m-link #javelin-gui-model }: Sets the model to use for the `none`{:.e}, `fixed`{:.e}, `ground`{:.e}, and `gui`{:.e} display contexts
 
 #### Example
 
@@ -1062,22 +1066,22 @@ Inherits the methods of the basic item builder
 {: .notice #mold-texture-notice }
 > This item requires two textures to function properly
 >
-> - item/\<name>: The base texture
-> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+> - `item/<name>`: The base texture
+> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_mold.png` and `kubejs/textures/item/my_mold_overlay.png`
 >
-> These locations can be changed by setting the `base`{:.s} and `fluid`{:.e} textures using the `.texture(key: String, texture: String)`{: ,language-javascript } method
+> These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-javascript } method
 
 #### Extra Methods
 
-- `.capacity(i: number)`{: .language-javascript }: Sets the mB capacity of the mold, defaults to `100`
-- `.fluidTagAccept(fluidTag: String)`{: .language-javascript }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
-- `.capacity(capacity: Supplier<Integer>)`{: .language-javascript }: Sets the mB capacity supplier of the mold, defaults to `() => 100`
+- `.capacity(i: number)`{: .language-javascript .m-link #mold-capacity }: Sets the mB capacity of the mold, defaults to `100`{:.n}
+- `.fluidTagAccept(fluidTag: String)`{: .language-javascript .m-link #mold-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
+- `.capacity(capacity: Supplier<Integer>)`{: .language-javascript .m-link #mold-capacity-supplier }: Sets the mB capacity supplier of the mold, defaults to `() => 100`{: .language-javascript }
 
 <a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
 
-- `.tfcccAllowedInMoldTable(model?: List<String>)`{: .language-javascript }: Allows the mold to be placed in a mold table
+- `.tfcccAllowedInMoldTable(model?: List<String>)`{: .language-javascript .m-link #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
 
 #### Example
@@ -1115,7 +1119,7 @@ Inherits the methods of other tool item builders
 
 #### Extra Method
 
-- `.mineableBlocksTag(blockTag: String)`{: .language-javascript }: Sets the block tag that the scythe can properly dig at full speed, defaults to `tfc:mineable_with_scythe`
+- `.mineableBlocksTag(blockTag: String)`{: .language-javascript .m-link #scythe-mineable-blocks-tag }: Sets the block tag that the scythe can properly dig at full speed, defaults to `tfc:mineable_with_scythe`
 
 #### Example
 
@@ -1151,8 +1155,8 @@ Inherits the methods of other tool item builders
 
 #### Extra methods
 
-- `.mineableBlocksTag(blockTag: String)`{: .language-javascript }: Sets the block tag that the 'tool' can properly dig at full speed, defaults to `tfc:mineable_with_knife`
-- `.knife()`{: .language-javascript }: Adds the item to the `tfc:knives` tag and sets its mineable blocks tag to `tfc:mineable_with_knife`
+- `.mineableBlocksTag(blockTag: String)`{: .language-javascript .m-link #tool-minable-blocks-tag }: Sets the block tag that the 'tool' can properly dig at full speed, defaults to `tfc:mineable_with_knife`
+- `.knife()`{: .language-javascript .m-link #tool-knife }: Adds the item to the `tfc:knives` tag and sets its mineable blocks tag to `tfc:mineable_with_knife`
 
 #### Example
 
@@ -1172,11 +1176,11 @@ Inherits the methods of other tool item builders
 
 #### Extra Methods
 
-- `.fishingStrength(f: number)`{: .language-javascript }: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
-- `.castModel(model: String)`{: .language-javascript }: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end or the one provided via the `.castTexture` method
-- `.smallBait()`{: .language-javascript }: Adds the rod to the correct tag to allow it to hold small bait
-- `.largeBait()`{: .language-javascript }: Adds the rod to the correct tag to allow it to hold large bait
-- `.castTexture(t: String)`{: .language-javascript }: Sets the texture used when the rod is cast out
+- `.fishingStrength(f: number)`{: .language-javascript .m-link #fishing-rod-strength }: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
+- `.castModel(model: String)`{: .language-javascript .m-link #fishing-rod-cast-model }: Sets the model used when the rod is cast, if not set a default one will be created which will use a texture with the same path as the normal texture with `_cast` appended to the end or the one provided via the `.castTexture(t: String)`{: .language-javascript } method
+- `.smallBait()`{: .language-javascript .m-link #fishing-rod-small-bait }: Adds the rod to the correct tag to allow it to hold small bait
+- `.largeBait()`{: .language-javascript .m-link #fishing-rod-large-bait }: Adds the rod to the correct tag to allow it to hold large bait
+- `.castTexture(t: String)`{: .language-javascript .m-link #fishing-rod-cast-texture }: Sets the texture used when the rod is cast out
 
 #### Example
 
@@ -1198,7 +1202,7 @@ Inherits the methods of the default item builder
 
 #### Extra Method
 
-- `.placedModel(model: String)`{: .language-javascript }: Sets the model of the jar when placed, defaults to the item's id
+- `.placedModel(model: String)`{: .language-javascript .m-link #jar-placed-model }: Sets the model of the jar when placed, defaults to the item's id
 
 #### Example
 
@@ -1219,7 +1223,7 @@ Inherits the methods of the default item builder
 
 #### Extra Method
 
-- `.operation(operation: GlassOperation)`{: .language-javascript }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
+- `.operation(operation: GlassOperation)`{: .language-javascript .m-link #glassworking-operation }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
 
 #### Example
 
@@ -1240,8 +1244,8 @@ Inherits the methods of the default item builder
 
 #### Extra Methods
 
-- `.bladeColor(color: Color)`{: .language-javascript }: Sets the color of the blade, defaults to `0x000000`
-- `.bladeTexture(texture: String)`{: .language-javascript }: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`
+- `.bladeColor(color: Color)`{: .language-javascript .m-link #windmill-blade-color }: Sets the color of the blade, defaults to `0x000000`{:.n}
+- `.bladeTexture(texture: String)`{: .language-javascript .m-link #windmill-blade-texture }: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`. `textures/` and `.png` must be specified
 
 #### Example
 
@@ -1262,7 +1266,7 @@ Inherits the methods of the [tool item builder](#tool)
 
 #### Extra Method
 
-- `.operation(operation: GlassOperation)`{: .language-javascript }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
+- `.operation(operation: GlassOperation)`{: .language-javascript .m-link #glassworking-tool-operation }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
 
 #### Example
 
@@ -1285,8 +1289,8 @@ Inherits the methods of the basic item builder
 {: .notice #glass-bottle-texture-notice }
 > This item requires two textures to function properly
 >
-> - item/\<name>: The base texture
-> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+> - `item/<name>`: The base texture
+> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
 >
 > For the example below, the textures would be in `kubejs/textures/item/my_glass_bottle.png` and `kubejs/textures/item/my_glass_bottle_overlay.png`
 >
@@ -1294,12 +1298,12 @@ Inherits the methods of the basic item builder
 
 #### Extra Methods
 
-- `.filledDisplayName(c: Component)`{: .language-javascript }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
-- `.capacity(i: number)`{: .language-javascript }: Sets the mB capacity of the item, defaults to `100`
-- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript }: Sets the mB supplier capacity of the item, defaults to `() => 100`
-- `.breakChance(chance: number)`{: .language-javascript }: Sets the break chance, in the range [0, 1], of the bottle
-- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-javascript }: Sets the break chance, in the range [0, 1], supplier of the bottle
-- `.fluidTagAccept(tag: String)`{: .language-javascript }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+- `.filledDisplayName(c: Component)`{: .language-javascript .m-link #glass-bottle-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`{: .language-javascript .m-link #glass-bottle-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
+- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript .m-link #glass-bottle-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-javascript }
+- `.breakChance(chance: number)`{: .language-javascript .m-link #glass-bottle-break-chance }: Sets the break chance, in the range [0, 1], of the bottle
+- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-javascript .m-link #glass-bottle-break-chance-supplier }: Sets the break chance, in the range [0, 1], supplier of the bottle
+- `.fluidTagAccept(tag: String)`{: .language-javascript .m-link #glass-bottle-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 
 #### Example
 
@@ -1322,17 +1326,17 @@ Inherits the methods of the default item builder
 {: .notice #jug-texture-notice }
 > This item requires two textures to function properly
 >
-> - item/\<name>: The base texture
-> - item/\<name> + `_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+> - `item/<name>`: The base texture
+> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: STring)`{: .language-javascript } method as seen in the example
 
 #### Extra Methods
 
-- `.filledDisplayName(c: Component)`{: .language-javascript }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
-- `.capacity(i: number)`{: .language-javascript }: Sets the mB capacity of the item, defaults to `100`
-- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript }: Sets the mB supplier capacity of the item, defaults to `() => 100`
-- `.fluidTagAccept(tag: String)`{: .language-javascript }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+- `.filledDisplayName(c: Component)`{: .language-javascript .m-link #jug-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
+- `.capacity(i: number)`{: .language-javascript .m-link #jug-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
+- `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-javascript .m-link #jug-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-javascript }
+- `.fluidTagAccept(tag: String)`{: .language-javascript .m-link #jug-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 
 #### Example
 
@@ -1419,14 +1423,14 @@ Inherits the methods of other tool items
 
 #### Extra Methods
 
-- `.cooldown(i: number)`{: .language-javascript }: Sets the cooldown, in ticks, the item gets when it prospects, defaults to `20`
-- `.primaryRadius(i: number)`{: .language-javascript }: Sets the primary radius of the prospector, defaults to `10`
-- `.primaryRadius(supplier: Supplier<Integer>)`{: .language-javascript }: Sets the integer supplier that defines the item's primary radius, defaults to `() => 10`
-- `.secondaryRadius(i: number)`{: .language-javascript }: Sets the secondary radius of the prospector, defaults to `10`
-- `.secondaryRadius(supplier: Supplier<Integer>)`{: .language-javascript }: Sets the integer supplier that defines the item's secondary radius, defaults to `() => 10`
-- `.displacement(i: number)`{: .language-javascript }: Sets the displacement of the prospector, defaults to `0`
-- `.displacement(supplier: Supplier<Integer>)`{: .language-javascript }: Sets the integer supplier that defines the item's displacement, defaults to `() => 0`
-- `.prospectTag(blockTag: String)`{: .language-javascript }: Sets the block tag that the item can prospect, defaults to `tfc:prospectable`
+- `.cooldown(i: number)`{: .language-javascript .m-link #prospector-cooldown }: Sets the cooldown, in ticks, the item gets when it prospects, defaults to `20`{:.n}
+- `.primaryRadius(i: number)`{: .language-javascript .m-link #prospector-primary-radius-0 }: Sets the primary radius of the prospector, defaults to `10`{:.n}
+- `.primaryRadius(supplier: Supplier<Integer>)`{: .language-javascript .m-link #prospector-primary-radius-1 }: Sets the integer supplier that defines the item's primary radius, defaults to `() => 10`{: .language-javascript }
+- `.secondaryRadius(i: number)`{: .language-javascript .m-link #prospector-secondary-radius-0 }: Sets the secondary radius of the prospector, defaults to `10`{:.n}
+- `.secondaryRadius(supplier: Supplier<Integer>)`{: .language-javascript .m-link #prospector-secondary-radius-1 }: Sets the integer supplier that defines the item's secondary radius, defaults to `() => 10`{: .language-javascript }
+- `.displacement(i: number)`{: .language-javascript .m-link #prospector-displacement-0 }: Sets the displacement of the prospector, defaults to `0`{:.n}
+- `.displacement(supplier: Supplier<Integer>)`{: .language-javascript .m-link #prospector-displacement-1 }: Sets the integer supplier that defines the item's displacement, defaults to `() => 0`{: .language-javascript }
+- `.prospectTag(blockTag: String)`{: .language-javascript .m-link #prospector-prospect-tag }: Sets the block tag that the item can prospect, defaults to `tfc:prospectable`
 
 #### Example
 
@@ -1485,9 +1489,9 @@ Inherits the methods of the basic fluid builder
 
 #### Extra Methods
 
-- `.bubbleParticle(particle: String)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]. May be null to not have bubble particles
-- `.steamParticle(particle: String)`{: .language-javascript }: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]. May be null to not have steam particles
-- `.healingAmount(f: number)`{: .language-javascript }: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`
+- `.bubbleParticle(particle: String)`{: .language-javascript .m-link #spring-bubble-particle }: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]. May be null to not have bubble particles
+- `.steamParticle(particle: String)`{: .language-javascript .m-link #spring-steam-particle  }: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]. May be null to not have steam particles
+- `.healingAmount(f: number)`{: .language-javascript .m-link #spring-healing-amount }: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`{:.n}
 
 [^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type` in-game
 
@@ -1516,11 +1520,11 @@ Adds a new inventory attachment that can have its contents restricted based on T
 
 #### Definition
 
-- `width`: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
-- `height`: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
-- `inputFilter`: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory `inputFilter`. Optional
-- `size`: A `Predicate<Size>`, a filter for what size of items are allowed into the container. Optional
-- `weight`: A `Predicate<Weight>`{: .language-javascript }, a filter for what weight of items are allowed into the container. Optional
+- `width: number`{: .language-javascript }: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
+- `height: number`{: .language-javascript }: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
+- `inputFilter?: Ingredient`{: .language-javascript }: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory `inputFilter`{:.v}. Optional
+- `size?: Predicate<Size>`{: .language-javascript }: A `Predicate<Size>`{: .language-javascript }, a filter for what size of items are allowed into the container. Optional
+- `weight?: Predicate<Weight>`{: .language-javascript }: A `Predicate<Weight>`{: .language-javascript }, a filter for what weight of items are allowed into the container. Optional
 
 #### Example
 
@@ -1548,15 +1552,15 @@ Adds a new attachment that implements TFC's `IHeatBlock` interface, updates its 
 
 #### Definition
 
-- `temperatureCallback`: One of:
+- `temperatureCallback: (number | TemperatureCallback)`{: .language-javascript }: One of:
     - A number, a constant temperature
     - A callback, dynamically sets the temperature based on the parameters:
         - `be: BlockEnttiyJS`{: .language-javascript }: The block entity
         - `currentTemperature: number`{: .language-javascript }: The current temperature of the block
         - `calendarTick: number`{: .language-javascript }: The current calendar tick during the calculation
         - `calendarTicksSinceLastUpdate: number`{: .language-javascript }: The number of calendar ticks that have passed since the calculation was last run
-        - `return: number`: The new temperature to set the block to. May be negative to keep the previous temperature
-- `providesHeat`: A boolean. Optional, defaults to false. If true, the block will provide its temperature to a heat block above it, similar to the charcoal forge
+        - `return: number`{: .language-javascript }: The new temperature to set the block to. May be negative to keep the previous temperature
+- `providesHeat: boolean`{: .language-javascript }: A boolean. Optional, defaults to false. If true, the block will provide its temperature to a heat block above it, similar to the charcoal forge
 
 #### Example
 
@@ -1592,14 +1596,14 @@ Adds a new attachment that can be used to keep track of a calendar timestamp
 
 #### Definition
 
-- `defaultDuration`: A number. Optional, defaults to -1. Specifies the duration, in calendar ticks, to time for if a duration is not provided in `.startTiming()`{: .language-javascript }
+- `defaultDuration: number`{: .language-javascript }: A number. Optional, defaults to `-1`{:.n}. Specifies the duration, in calendar ticks, to time for if a duration is not provided in `.startTiming()`{: .language-javascript }
 
 #### Methods
 
-- `.startTiming(duration?: number)`{: .language-javascript }: Sets the attachment's tick to the current tick and duration to either the default duration or the duration provided
-- `.getCalendarTick()`{: .language-javascript }: Returns a number. Gets the calendar tick the attachment is timing from
-- `.hasDurationElapsed()`{: .language-javascript }: Returns a boolean. If current calendar tick is more than `duration` ticks after the calendar tick the attachment is timing from
-- `.reset()`{: .language-javascript }: Sets the calendar tick the attachment is timing from to be -1, considered to be a 'non-timing' timestamp
+- `.startTiming(duration?: number)`{: .language-javascript .m-link #calendar-attachment-start-timing }: Sets the attachment's tick to the current tick and duration to either the default duration or the duration provided
+- `.getCalendarTick()`{: .language-javascript .m-link #calendar-attachment-get-calendar-tick }: Returns a number. Gets the calendar tick the attachment is timing from
+- `.hasDurationElapsed()`{: .language-javascript .m-link #calendar-attachment-has-duration-elapsed }: Returns a boolean. If current calendar tick is more than `duration` ticks after the calendar tick the attachment is timing from
+- `.reset()`{: .language-javascript .m-link #calendar-attachment-reset }: Sets the calendar tick the attachment is timing from to be `-1`{:.n}, considered to be a 'non-timing' timestamp
 
 #### Example
 

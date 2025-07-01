@@ -17,16 +17,16 @@ These are available under the `TFC.climate` field
 ## Method Signatures
 
 ```js
-TFC.climate.getModel(o: any)
-TFC.climate.getName(model: ClimateModel)
-TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos)
-TFC.climate.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)
-TFC.climate.getAverageTemperature(level: Level, pos: BlockPos)
-TFC.climate.getAverageRainfall(level: Level, pos: BlockPos)
-TFC.climate.getFogginess(level: Level, pos: BlockPos)
-TFC.climate.getWaterFogginess(level: Level, pos: BlockPos)
-TFC.climate.getWindVector(level: Level, pos: BlockPos)
-TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos)
+TFC.climate.getModel(o: any): @Nullable ClimateModel
+TFC.climate.getName(model: ClimateModel): ResourceLocation
+TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos): number
+TFC.climate.getTemperature(level: Level, pos: BlockPos, calendarTicks: number): number
+TFC.climate.getAverageTemperature(level: Level, pos: BlockPos): number
+TFC.climate.getAverageRainfall(level: Level, pos: BlockPos): number
+TFC.climate.getFogginess(level: Level, pos: BlockPos): number
+TFC.climate.getWaterFogginess(level: Level, pos: BlockPos): number
+TFC.climate.getWindVector(level: Level, pos: BlockPos): number
+TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos): Vec2
 ```
 
 - `.getModel(o: any)`{: .language-javascript .m-link #get-model }: Attempts to get a climate model from the provided object, will return null if it cannot do so

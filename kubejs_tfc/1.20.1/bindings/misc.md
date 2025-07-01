@@ -225,8 +225,8 @@ Method Signature:
 TFC.misc.canStartCollapse(level: LevelAccessor, pos: BlockPos): boolean
 ```
 
-- `level`: The level being checked
-- `pos`: The block pos being checked
+- `level: LevelAccessor`{: .language-javascript }: The level being checked
+- `pos: BlockPos`{: .language-javascript }: The block pos being checked
 
 ### Try Collapse
 
@@ -238,8 +238,8 @@ Method Signature:
 TFC.misc.tryCollapse(level: Level, pos: BlockPos): boolean
 ```
 
-- `level`: The level where the collapse is trying to be created
-- `pos`: The center of where the collapse is trying to be created
+- `level: Level`{: .language-javascript }: The level where the collapse is trying to be created
+- `pos: BlockPos`{: .language-javascript }: The center of where the collapse is trying to be created
 
 ### Force Collapse
 
@@ -251,8 +251,8 @@ Method Signature:
 TFC.misc.forceCollapse(level: Level, pos: BlockPos): boolean
 ```
 
-- `level`: The level where the collapse will occur
-- `pos`: The center of the collapse
+- `level: Level`{: .language-javascript }: The level where the collapse will occur
+- `pos: BlockPos`{: .language-javascript }: The center of the collapse
 
 ### Find Unsupported Positions
 
@@ -261,22 +261,22 @@ Finds all positions in the given area that are unsupported
 Methods Signatures:
 
 ```js
-TFC.misc.findUnsupportedPositions(level: BlockGetter, from: BlockPos, to: BlockPos): Set<BlockPos>
+TFC.misc.findUnsupportedPositions(level: BlockGetter, from_: BlockPos, to: BlockPos): Set<BlockPos>
 ```
 
-- `level`: The level to check in
-- `from`: The minimum corner to check
-- `to`: The maximum corner to check
+- `level: BlockGetter`{: .language-javascript }: The level to check in
+- `from_: BlockPos`{: .language-javascript }: The minimum corner to check
+- `to: BlockPos`{: .language-javascript }: The maximum corner to check
 
 ```js
 TFC.misc.findUnsupportedPositions(level: BlockGetter, center: BlockPos, horizontal: number, up: number, down: number): Set<BlockPos>
 ```
 
-- `level`: The level to check in
-- `center`: The center position to check
-- `horizontal`: The number of blocks around the center to check horizontally
-- `up`: The number of blocks to check above the center
-- `down`: The number of blocks to check below the center
+- `level: BlockGetter`{: .language-javascript }: The level to check in
+- `center: BlockPos`{: .language-javascript }: The center position to check
+- `horizontal: number`{: .language-javascript }: The number of blocks around the center to check horizontally
+- `up: number`{: .language-javascript }: The number of blocks to check above the center
+- `down: number`{: .language-javascript }: The number of blocks to check below the center
 
 ### Is Supported
 
@@ -333,8 +333,8 @@ Method Signature:
 TFC.misc.getChunkData(level: LevelReader, pos: BlockPos): ChunkData
 ```
 
-- `level`: The level to get the data from
-- `pos`: The position to get the data from
+- `level: LevelReader`{: .language-javascript }: The level to get the data from
+- `pos: BlockPos`{: .language-javascript }: The position to get the data from
 
 ### Rock Data
 
@@ -346,8 +346,8 @@ Method Signature:
 TFC.misc.getRockData(level: LevelReader, pos: BlockPos): @Nullable RockData
 ```
 
-- `level`: The level to get the data from
-- `pos`: The position to get the data from
+- `level: LevelReader`{: .language-javascript }: The level to get the data from
+- `pos: BlockPos`{: .language-javascript }: The position to get the data from
 
 ### Rock Settings
 
@@ -359,15 +359,15 @@ Method Signatures:
 TFC.misc.getRockSettings(level: LevelReader, pos: BlockPos): @Nullable RockSettings
 ```
 
-- `level`: The level to get the settings from
-- `pos`: The position to get the settings from
+- `level: LevelReader`{: .language-javascript }: The level to get the settings from
+- `pos: BlockPos`{: .language-javascript }: The position to get the settings from
 
 ```js
 TFC.misc.getRockSettings(level: LevelAccessor, block: Block): @Nullable RockSettings
 ```
 
-- `level`: The level to check in
-- `block`: The block to check
+- `level: LevelAccessor`{: .language-javascript }: The level to check in
+- `block: Block`{: .language-javascript }: The block to check
 
 ### Forest Type
 
@@ -379,19 +379,19 @@ Method Signature:
 TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 ```
 
-- `level`: The level to get the forest type from
-- `pos`: The position to get the forest type from
+- `level: LevelReader`{: .language-javascript }: The level to get the forest type from
+- `pos: BlockPos`{: .language-javascript }: The position to get the forest type from
 
 ### Get Hydration
 
 Returns a number, in the range [0, 100], an expression of how hydrated soil at the position would be
 
 ```js
-TFC.misc.getHydration(level: LevelAccessor, posL BlockPos): number
+TFC.misc.getHydration(level: LevelAccessor, pos: BlockPos): number
 ```
 
-- `level`: The level to get the hydration level from
-- `pos`: The position to get the hydration level from
+- `level: LevelAccessor`{: .language-javascript }: The level to get the hydration level from
+- `pos: BlockPos`{: .language-javascript }: The position to get the hydration level from
 
 ### Lerp Float Layer
 
@@ -401,10 +401,10 @@ Returns a `LerpFloatLayer`, an interpolated square of numbers which are known at
 TFC.misc.lerpFloatLayer(value00: number, value01: number, value10: number, value11: number): LerpFloatLayer
 ```
 
-- `value00`: The value at the [low x, low z] corner
-- `value01`: The value at the [low x, high z] corner
-- `value10`: The value at the [high x, low z] corner
-- `value11`: The value at the [high x, high z] corner
+- `value00: number`{: .language-javascript }: The value at the [low x, low z] corner
+- `value01: number`{: .language-javascript }: The value at the [low x, high z] corner
+- `value10: number`{: .language-javascript }: The value at the [high x, low z] corner
+- `value11: number`{: .language-javascript }: The value at the [high x, high z] corner
 
 ## Noise Utils
 
@@ -419,7 +419,7 @@ TFC.misc.newOpenSimplex2D(seed: number): OpenSimplex2D
 TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 ```
 
-- `seed`: The seed for the noise's algorithm
+- `seed: number`{: .language-javascript }: The seed for the noise's algorithm
 
 ### Metaballs
 
@@ -432,12 +432,12 @@ TFC.misc.newMetaballs2D(random: RandomSource, minBalls: number, maxBalls: number
 TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number): Metaballs3D
 ```
 
-- `random`: The random source used by the metaballs to create variance between instances
-- `minBalls`: The minimum number of individual balls
-- `maxBalls`: The maximum number of individual balls
-- `minSize`: The minimum size of the metaballs
-- `maxSize`: The maximum size of the metaballs
-- `radius`: The maximum radius of an individual ball
+- `random: RandomSource`{: .language-javascript }: The random source used by the metaballs to create variance between instances
+- `minBalls: number`{: .language-javascript }: The minimum number of individual balls
+- `maxBalls: number`{: .language-javascript }: The maximum number of individual balls
+- `minSize: number`{: .language-javascript }: The minimum size of the metaballs
+- `maxSize: number`{: .language-javascript }: The maximum size of the metaballs
+- `radius: number`{: .language-javascript }: The maximum radius of an individual ball
 
 ## Metal Utils
 

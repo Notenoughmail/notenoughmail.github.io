@@ -53,7 +53,7 @@ KubeJS TFC supports its
 
 - [Items]({% link kubejs_tfc/1.20.1/custom.md %}#precision-prospecting-items)
 
-# TFC Casting with Channels
+## TFC Casting with Channels
 
 An addon that allows for faster casting of metals with the titular channels, read more about it [on its page](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels)
 
