@@ -50,10 +50,7 @@ code {
     .mi {
         color:#{{ site.code-colors.number }};
     }
-    .e {
-        color:#{{ site.code-colors.enum }};
-    }
-    .enum {
+    .enum, .e {
         color:#{{ site.code-colors.enum }};
     }
     .nd {
@@ -87,4 +84,17 @@ code.s {
 }
 code.n {
     color:#{{ site.code-colors.number }};
+}
+
+h6.m-link-viz {
+    font-size:inherit !important;
+    display: inline;
+}
+
+h6.m-link-viz .anchor-heading {
+    left: -1.25rem;
+}
+
+h6.callout {
+    font-size:inherit !important;
 }

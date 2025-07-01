@@ -89,18 +89,16 @@ Upon a player closing a container limited through this event, any items that are
 ### Method Signatures
 
 ```js
-declare class ContainerLimiterEventJS {
-    limit(size: Size, allowsEqual?: boolean): void
-    limit(size: Size, min: number, max: number, allowsEqual?: boolean): void
-    lowerLimit(size: Size, allowsEqual?: boolean): void
-    lowerLimit(size: SIze, min: number, max: number, allowsEqual?: boolean): void
-}
+event.limit(size: Size, allowsEqual?: boolean): void
+event.limit(size: Size, min: number, max: number, allowsEqual?: boolean): void
+event.lowerLimit(size: Size, allowsEqual?: boolean): void
+event.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean): void
 ```
 
-- `.limit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
-- `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
-- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-javascript }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
-- `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.limit(size: Size, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-0 }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-1 }: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-2 }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-3 }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 
 Allows size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, `huge`{:.e}
 
@@ -127,94 +125,92 @@ TFC implements a system for local temperature, rainfall, fog, wind, and more. Th
 ### Method Signatures
 
 ```js
-declare class RegisterClimateModelEventJS {
-    register(name: ResourceLocation, modelBuilder: Consumer<ClimateModelbuilder>): void
-}
+// The event itself
+event.register(name: ResourceLocation, modelBuilder: Consumer<ClimateModelbuilder>): void
 
-declare class ClimateModelBuilder {
-    getTemperatureScale(): number
-    getRainfallScale(): number
-    getClimateSeed(): number
-    vector(x: number, z: number): Vec2
-    setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>): void
-    setAverageTemperatureCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
-    setAverageRainfallCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
-    setAriFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
-    setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
-    setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>): void
-    setOnWorldLoad(calc: Consumer<ServerLevel>): void
-    setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>): void
-    newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>): number
-    noise(index: number): Noise2D
-    getTfcWind(): TriFunction<Level, BlockPos, number, Vec2>
-    getTfcChunkLoad(): TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>
-    getTfcCurrentTemperature(): QuadFunction<LevelReader, BlockPos, number, number, number>
-    getTfcAverageTemperature(): BiFunction<LevelReader, BlockPos, number>
-    getTfcAverageRainfall(): BiFunction<LevelReader, BlockPos, number>
-    getTfcAirFog(): TriFunction<LevelReader, BlockPos, number, number>
-    getTfcWaterFog(): TriFunction<LevelReader, BlockPos, number, number>
-    currentTemperature(level: LevelReader, pos: BlockPos, calendarTicks: number): number
-    averageTemperature(level: LevelReader, pos: BlockPos): number
-    averageRainfall(level: LevelReader, pos: BlockPos): number
-}
+// The ClimateModelBuidler
+event.getTemperatureScale(): number
+event.getRainfallScale(): number
+event.getClimateSeed(): number
+event.vector(x: number, z: number): Vec2
+event.setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>): void
+event.setAverageTemperatureCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
+event.setAverageRainfallCalculation(calc: BiFunction<LevelReader, BlockPos, number>): void
+event.setAriFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
+event.setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>): void
+event.setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>): void
+event.setOnWorldLoad(calc: Consumer<ServerLevel>): void
+event.setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>): void
+event.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>): number
+event.noise(index: number): Noise2D
+event.getTfcWind(): TriFunction<Level, BlockPos, number, Vec2>
+event.getTfcChunkLoad(): TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>
+event.getTfcCurrentTemperature(): QuadFunction<LevelReader, BlockPos, number, number, number>
+event.getTfcAverageTemperature(): BiFunction<LevelReader, BlockPos, number>
+event.getTfcAverageRainfall(): BiFunction<LevelReader, BlockPos, number>
+event.getTfcAirFog(): TriFunction<LevelReader, BlockPos, number, number>
+event.getTfcWaterFog(): TriFunction<LevelReader, BlockPos, number, number>
+event.currentTemperature(level: LevelReader, pos: BlockPos, calendarTicks: number): number
+event.averageTemperature(level: LevelReader, pos: BlockPos): number
+event.averageRainfall(level: LevelReader, pos: BlockPos): number
 ```
 
 The register method of the event has the following arguments:
 
 - 1st argument: A resource location, the registry name of the model
 - 2nd argument: A `ClimateModelBuilder` consumer, with the following methods:
-    - `.getTemperatureScale()`{: .language-javascript }: Returns the temperature scale of the level, defaults to 20000 if the level does not have a TFC-like generator
-    - `.getRainfallScale()`{: .language-javascript }: Returns the rainfall scale of the level, defaults to 20000 if the level does not have a TFC-like generator
-    - `.getClimateSeed()`{: .language-javascript }: Returns the climate seed being used
-    - `.vector(x: number, z: number)`{: .language-javascript }: Creates a new wind vector with the provided x and z components. Each component should be in the range [0, 1]
-    - `.setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>)`{: .language-javascript }: Sets how the model will determine the current temperature at a given temperature and time, accepts a callback with the following values:
+    - `.getTemperatureScale()`{: .language-javascript .m-link #climate-reg-temp-scale }: Returns the temperature scale of the level, defaults to 20000 if the level does not have a TFC-like generator
+    - `.getRainfallScale()`{: .language-javascript .m-link #climate-reg-rain-scale }: Returns the rainfall scale of the level, defaults to 20000 if the level does not have a TFC-like generator
+    - `.getClimateSeed()`{: .language-javascript .m-link #climate-reg-seed }: Returns the climate seed being used
+    - `.vector(x: number, z: number)`{: .language-javascript .m-link #climate-reg-vector }: Creates a new wind vector with the provided x and z components. Each component should be in the range [0, 1]
+    - `.setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>)`{: .language-javascript .m-link #climate-reg-current-temp-calc }: Sets how the model will determine the current temperature at a given temperature and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position
         - `calendarTicks: number`{: .language-javascript }: The calendar tick the calculation is being made at
         - `daysInMonth: number`{: .language-javascript }: The number of days in a month; and
         - `return: number`{: .language-javascript }: A number should be returned in the callback, the temperature in °C
-    - `.setAverageTemperatureCalculation(calc: BiFunction<LevelReader, BlockPos, number>)`{: .language-javascript }: Sets how the model will determine the average temperature at a given position, accepts a callback with the following values:
+    - `.setAverageTemperatureCalculation(calc: BiFunction<LevelReader, BlockPos, number>)`{: .language-javascript .m-link #climate-reg-avg-temp-calc }: Sets how the model will determine the average temperature at a given position, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position; and
         - `return: number`{: .language-javascript }: A number should be returned in the callback, the temperature in °C
-    - `.setAverageRainfallCalculation(calc: BiFunction<LevelReader, BlockPos, number>)`{: .language-javascript }: Sets how the model will determine the average rainfall at a given position, accepts a callback with the following values:
+    - `.setAverageRainfallCalculation(calc: BiFunction<LevelReader, BlockPos, number>)`{: .language-javascript .m-link #climate-reg-rain-calc }: Sets how the model will determine the average rainfall at a given position, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position; and
         - `return: number`{: .language-javascript }: A number should be returned in the callback, the rainfall in mm
-    - `.setAriFog(calc: TriFunction<LevelReader, BlockPos, number, number>)`{: .language-javascript }: Sets how the model will determine the fogginess at a given position and time, accepts a callback with the following values:
+    - `.setAirFog(calc: TriFunction<LevelReader, BlockPos, number, number>)`{: .language-javascript .m-link #climate-reg-air-fog }: Sets how the model will determine the fogginess at a given position and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position
         - `calendarTicks: number`{: .language-javascript }: The calendar tick the calculation is being made at; and
         - `return: number`{: .language-javascript }: A number, in the range [0, 1], should be returned in the callback, a multiplier on the view distance
-    - `.setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>)`{: .language-javascript }: Sets how the model will determine the fogginess at a given position and time, accepts a callback with the following values:
+    - `.setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>)`{: .language-javascript .m-link #climate-reg-water-fog }: Sets how the model will determine the fogginess at a given position and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position
         - `calendarTicks: number`{: .language-javascript }: The calendar tick the calculation is being made at; and
         - `return: number`{: .language-javascript }: A number, in the range [0, 1], should be returned in the callback, a multiplier on the view distance
-    - `.setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>)`{: .language-javascript }: Sets how the model will determine the wind strength at a given position and time, accepts a callback with the following values:
+    - `.setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>)`{: .language-javascript .m-link #climate-reg-wind }: Sets how the model will determine the wind strength at a given position and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-javascript }: The level
         - `pos: BlockPos`{: .language-javascript }: The position
         - `calendarTicks: number`{: .language-javascript }: The calendar tick the calculation is being made at; and
         - `return: Vec2`{: .language-javascript }: A 2D vector, representing the strength and direction of wind, each component should be in the range [0, 1]. Vectors can be made through the `.vector()`{:.m} method described above
-    - `.setOnWorldLoad(calc: Consumer<ServerLevel>)`{: .language-javascript }: Sets the model's behavior when the world is loaded, accepts a consumer of a `ServerLevel`
-    - `.setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>)`{: .language-javascript }: Sets the model's behavior on chunk load, accepts a callback with the following values:
+    - `.setOnWorldLoad(calc: Consumer<ServerLevel>)`{: .language-javascript .m-link #climate-reg-world-load }: Sets the model's behavior when the world is loaded, accepts a consumer of a `ServerLevel`
+    - `.setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>)`{: .language-javascript .m-link #climate-reg-chunk-load }: Sets the model's behavior on chunk load, accepts a callback with the following values:
         - `level: WorldGenLevel`{: .language-javascript }: The level
         - `chunk: ChunkAccess`{: .language-javascript }: The chunk being loaded
         - `chunkData: ChunkData`{: .language-javascript }: Additional TFC data about the chunk, will be invalid if the level does not have a TFC-like generator
-    - `.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>)`{: .language-javascript }: Adds a new `Noise2D`{:.f} to the model and returns a number which can be used to retrieve it in calculations. Accepts a callback with the following values:
+    - `.newNoise(noiseMaker: Function<OpenSimplex2D, Noise2D>)`{: .language-javascript .m-link #climate-reg-new-noise }: Adds a new `Noise2D`{:.f} to the model and returns a number which can be used to retrieve it in calculations. Accepts a callback with the following values:
         - `simplex: OpenSimplex2D`{: .language-javascript }: The base [`OpenSimplex2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/OpenSimplex2D.java) that is used to make the noise; and
         - `return: Noise2D`{: .language-javascript }: The final noise
-    - `.noise(index: number)`{: .language-javascript }: Gets the model's [`Noise2D`{:.f}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Noise2D.java) with the given index
-    - `.getTfcWind()`{: .language-javascript }: Returns the callback TFC uses for its Overworld wind calculations
-    - `.getTfcChunkLoad()`{: .language-javascript }: Returns the callback TFC uses for its Overworld chunk load actions
-    - `.getTfcCurrentTemperature()`{: .language-javascript }: Returns the callback TFC uses for its Overworld current temperature calculation
-    - `.getTfcAverageTemperature()`{: .language-javascript }: Returns the callback TFC uses for its Overworld average temperature calculation
-    - `.getTfcAverageRainfall()`{: .language-javascript }: Returns the callback TFC uses for its Overworld average rainfall calculation
-    - `.getTfcAirFog()`{: .language-javascript }: Returns the callback TFC uses for its Overworld air fogginess calculation
-    - `.getTfcWaterFog()`{: .language-javascript }: Returns the callback TFC uses for its Overworld water fogginess calculation
-    - `.currentTemperature(level: LevelReader, pos: BlockPos, calendarTicks: number)`{: .language-javascript }: Returns the current temperature in the model at the given position and time
-    - `.averageTemperature(level: LevelReader, pos: BlockPos)`{: .language-javascript }: Returns the average temperature in the model at the given position
-    - `.averageRainfall(level: LevelReader, pos: BlockPos)`{: .language-javascript }: Returns the average rainfall in the model at the given position
+    - `.noise(index: number)`{: .language-javascript .m-link #climate-reg-get-noise }: Gets the model's [`Noise2D`{:.f}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Noise2D.java) with the given index
+    - `.getTfcWind()`{: .language-javascript .m-link #climate-reg-tfc-wind }: Returns the callback TFC uses for its Overworld wind calculations
+    - `.getTfcChunkLoad()`{: .language-javascript .m-link #climate-reg-tfc-chunk-load }: Returns the callback TFC uses for its Overworld chunk load actions
+    - `.getTfcCurrentTemperature()`{: .language-javascript .m-link #climate-reg-tfc-current-temp }: Returns the callback TFC uses for its Overworld current temperature calculation
+    - `.getTfcAverageTemperature()`{: .language-javascript .m-link #climate-reg-tfc-avg-temp }: Returns the callback TFC uses for its Overworld average temperature calculation
+    - `.getTfcAverageRainfall()`{: .language-javascript .m-link #climate-reg-tfc-rain }: Returns the callback TFC uses for its Overworld average rainfall calculation
+    - `.getTfcAirFog()`{: .language-javascript .m-link #climate-reg-tfc-air-fog }: Returns the callback TFC uses for its Overworld air fogginess calculation
+    - `.getTfcWaterFog()`{: .language-javascript .m-link #climate-reg-water-fog }: Returns the callback TFC uses for its Overworld water fogginess calculation
+    - `.currentTemperature(level: LevelReader, pos: BlockPos, calendarTicks: number)`{: .language-javascript .m-link #climate-reg-get-current-temp }: Returns the current temperature in the model at the given position and time
+    - `.averageTemperature(level: LevelReader, pos: BlockPos)`{: .language-javascript .m-link #climate-reg-get-avg-temp }: Returns the average temperature in the model at the given position
+    - `.averageRainfall(level: LevelReader, pos: BlockPos)`{: .language-javascript .m-link #climate-reg-get-rain }: Returns the average rainfall in the model at the given position
 
 {: .notice #climate-model-registration-vector-notice }
 Internally, the components of a `Vec2` are labeled `x` and `y`, but TFC uses the `y` component for the `z` direction
@@ -246,18 +242,16 @@ This event is fired when a world is loading and selecting the climate model to u
 ### Method Signatures
 
 ```js
-declare class SelectClimateModelEventJS {
-    getLevel(): Level
-    getModel(): ClimateModel
-    getModelName(): ResourceLocation
-    setModel(model: ClimateModel): void
-}
+event.getLevel(): Level
+event.getModel(): ClimateModel
+event.getModelName(): ResourceLocation
+event.setModel(model: ClimateModel): void
 ```
 
-- `.getLevel()`{: .language-javascript }: Returns the event's level
-- `.getModel()`{: .language-javascript }: Returns the events current model, defaults to a biome based model, TFC sets the overworld to use its own overworld model
-- `.getModelName()`{: .language-javascript }: Returns the registry name of the event's current model
-- `.setModel(model: ClimateModel)`{: .language-javascript }: Sets the events climate model
+- `.getLevel()`{: .language-javascript .m-link #climate-select-level }: Returns the event's level
+- `.getModel()`{: .language-javascript .m-link #climate-select-model }: Returns the events current model, defaults to a biome based model, TFC sets the overworld to use its own overworld model
+- `.getModelName()`{: .language-javascript .m-link #climate-select-name }: Returns the registry name of the event's current model
+- `.setModel(model: ClimateModel)`{: .language-javascript .m-link #climate-select-set-model }: Sets the events climate model
 
 ### Example
 
@@ -278,22 +272,20 @@ TFC uses this event for lighting fires or optionally light-able blocks. This eve
 ### Method Signatures
 
 ```js
-declare class StartFireEventJS {
-    getLevel(): Level
-    getBlock(): BlockContainerJS
-    getTargetedFace(): Direction
-    getEntity(): @Nullable Player
-    getItem(): ItemStack
-    isString(): boolean
-}
+event.getLevel(): Level
+event.getBlock(): BlockContainerJS
+event.getTargetedFace(): Direction
+event.getEntity(): @Nullable Player
+event.getItem(): ItemStack
+event.isString(): boolean
 ```
 
-- `.getLevel()`{: .language-javascript }: Returns the level of the event
-- `.getBlock()`{: .language-javascript }: Returns the `BlockContainerJS` of the event
-- `.getTargetedFace()`{: .language-javascript }: Returns the direction of the clicked face
-- `.getEntity()`{: .language-javascript }: Returns the player of the event, may be null
-- `.getItem()`{: .language-javascript }: Returns the item stack used to start the fire
-- `.isStrong()`{: .language-javascript }: Returns true if the event is strong
+- `.getLevel()`{: .language-javascript .m-link #fire-level }: Returns the level of the event
+- `.getBlock()`{: .language-javascript .m-link #fire-block }: Returns the `BlockContainerJS` of the event
+- `.getTargetedFace()`{: .language-javascript .m-link #fire-face }: Returns the direction of the clicked face
+- `.getEntity()`{: .language-javascript .m-link #fire-entity }: Returns the player of the event, may be null
+- `.getItem()`{: .language-javascript .m-link #fire-item }: Returns the item stack used to start the fire
+- `.isStrong()`{: .language-javascript .m-link #fire-strong }: Returns true if the event is strong
 
 ### Example
 
@@ -321,16 +313,14 @@ Whenever a prospector's pick is used, this event is fired. It is purely informat
 ### Method Signature
 
 ```js
-declare class ProspectEventJS {
-    getEntity(): Player
-    getBlock(): Block
-    getProspectResult(): ProspectResult
-}
+event.getEntity(): Player
+event.getBlock(): Block
+event.getProspectResult(): ProspectResult
 ```
 
-- `.getEntity()`{: .language-javascript }: Returns the player that prospected
-- `.getBlock()`{: .language-javascript }: Returns the found block, or if the prospect result is `nothing`{:.e}, the clicked block
-- `.getProspectResult()`{: .language-javascript }: Results the prospect result, can be `nothing`{:.e}, `traces`{:.e}, `small`{:.e}, `medium`{:.e}, `large`{:.e}, `very_large`{:.e}, and `found`{:.e}
+- `.getEntity()`{: .language-javascript .m-link #prospect-entity }: Returns the player that prospected
+- `.getBlock()`{: .language-javascript .m-link #prospect-block }: Returns the found block, or if the prospect result is `nothing`{:.e}, the clicked block
+- `.getProspectResult()`{: .language-javascript .m-link #prospect-result }: Results the prospect result, can be `nothing`{:.e}, `traces`{:.e}, `small`{:.e}, `medium`{:.e}, `large`{:.e}, `very_large`{:.e}, and `found`{:.e}
 
 ### Example
 
@@ -351,18 +341,16 @@ This event is fired when a tree is about to be felled by an axe. Cancelling it w
 ### Method Signature
 
 ```js
-declare class LoggingEventJS {
-    getLevel(): Level
-    getAxe(): ItemStack
-    getBlock(): BlockContainerJS
-    getPos(): BlockPos
-}
+event.getLevel(): Level
+event.getAxe(): ItemStack
+event.getBlock(): BlockContainerJS
+event.getPos(): BlockPos
 ```
 
-- `.getLevel()`{: .language-javascript }: Returns the level
-- `.getAxe()`{: .language-javascript }: Returns the item stack of the axe used
-- `.getBlock()`{: .language-javascript }: Returns the `BlockContainerJS` of the event
-- `.getPos()`{: .language-javascript }: Returns the position that was initially broken
+- `.getLevel()`{: .language-javascript .m-link #log-level }: Returns the level
+- `.getAxe()`{: .language-javascript .m-link #log-axe }: Returns the item stack of the axe used
+- `.getBlock()`{: .language-javascript .m-link #log-block }: Returns the `BlockContainerJS` of the event
+- `.getPos()`{: .language-javascript .m-link #log-pos }: Returns the position that was initially broken
 
 ### Example
 
@@ -385,36 +373,34 @@ This event has a product, it may wither be an `ItemStack` or a `FluidStackJS`, n
 ### Method Signature
 
 ```js
-declare class AnimalProductEventJS {
-    getPlayer(): @Nullable Player
-    getAnimal(): Entity
-    getLevel(): Level
-    getBlock(): BlockContainerJS
-    getAnimalProperties(): TFCAnimalProperties
-    getTool(): ItemStack
-    getItemProduct(): ItemStack
-    getFluidProduct(): FluidStackJS
-    isItemProduct(): boolean
-    setItemProduct(item: ItemStack): void
-    setFluidProduct(fluid: FluidStackJS): void
-    getUses(): number
-    setUses(uses: number): void
-}
+event.getPlayer(): @Nullable Player
+event.getAnimal(): Entity
+event.getLevel(): Level
+event.getBlock(): BlockContainerJS
+event.getAnimalProperties(): TFCAnimalProperties
+event.getTool(): ItemStack
+event.getItemProduct(): ItemStack
+event.getFluidProduct(): FluidStackJS
+event.isItemProduct(): boolean
+event.setItemProduct(item: ItemStack): void
+event.setFluidProduct(fluid: FluidStackJS): void
+event.getUses(): number
+event.setUses(uses: number): void
 ```
 
-- `.getPlayer()`{: .language-javascript }: Returns the player that used the tool, may be null
-- `.getAnimal()`{: .language-javascript }: Returns the animal the product comes from
-- `.getLevel()`{: .language-javascript }: Returns the level of the event
-- `.getBlock()`{: .language-javascript }: Returns the `BlockContainerJS` of the event
-- `.getAnimalProperties()`{: .language-javascript }: Returns the [TFCAnimalProperties](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/entities/livestock/TFCAnimalProperties.java) of the animal
-- `.getTool()`{: .language-javascript }: Returns the tool used
-- `.getItemProduct()`{: .language-javascript }: Returns an `ItemStack`, the *item* product, may be empty
-- `.getFluidProduct()`{: .language-javascript }: Returns a `FluidStackJS`, the *fluid* product, may be empty
-- `.isItemProduct()`{: .language-javascript }: Returns true if the item product is not empty
-- `.setItemProduct(item: ItemStack)`{: .language-javascript }: Sets the item product to the given item stack
-- `.setFluidProduct(fluid: FluidStackJS)`{: .language-javascript }: Sets the fluid product to the given fluid
-- `.getUses()`{: .language-javascript }: Returns how much wear the animal will take from this event
-- `.setUses(uses: number)`{: .language-javascript }: Sets the number of uses the animal will take from this event
+- `.getPlayer()`{: .language-javascript .m-link #product-player }: Returns the player that used the tool, may be null
+- `.getAnimal()`{: .language-javascript .m-link #product-animal }: Returns the animal the product comes from
+- `.getLevel()`{: .language-javascript .m-link #product-level }: Returns the level of the event
+- `.getBlock()`{: .language-javascript .m-link #product-block }: Returns the `BlockContainerJS` of the event
+- `.getAnimalProperties()`{: .language-javascript .m-link #product-properties }: Returns the [TFCAnimalProperties](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/entities/livestock/TFCAnimalProperties.java) of the animal
+- `.getTool()`{: .language-javascript .m-link #product-tool }: Returns the tool used
+- `.getItemProduct()`{: .language-javascript .m-link #product-item-product }: Returns an `ItemStack`, the *item* product, may be empty
+- `.getFluidProduct()`{: .language-javascript .m-link #product-fluid-product }: Returns a `FluidStackJS`, the *fluid* product, may be empty
+- `.isItemProduct()`{: .language-javascript .m-link #product-is-item }: Returns true if the item product is not empty
+- `.setItemProduct(item: ItemStack)`{: .language-javascript .m-link #product-set-item }: Sets the item product to the given item stack
+- `.setFluidProduct(fluid: FluidStackJS)`{: .language-javascript .m-link #product-set-fluid}: Sets the fluid product to the given fluid
+- `.getUses()`{: .language-javascript .m-link #product-get-uses }: Returns how much wear the animal will take from this event
+- `.setUses(uses: number)`{: .language-javascript .m-link #product-set-uses }: Sets the number of uses the animal will take from this event
 
 ### Example
 
@@ -435,20 +421,18 @@ This event is fired whenever a collapse happens, including fake collapses
 ### Method Signature
 
 ```js
-declare class CollapseEventJS {
-    getCenterBlock(): BlockContainerJS
-    getLevel(): Level
-    getRadiusSquared(): number
-    getSecondaryPositions(): List<BlockPos>
-    isFake(): boolean
-}
+event.getCenterBlock(): BlockContainerJS
+event.getLevel(): Level
+event.getRadiusSquared(): number
+event.getSecondaryPositions(): List<BlockPos>
+event.isFake(): boolean
 ```
 
-- `.getCenterBlock()`{: .language-javascript }: Returns the `BlockContainerJS` of the center block of the collapse
-- `.getLevel()`{: .language-javascript }: Returns the level of the collapse
-- `.getRadiusSquared()`{: .language-javascript }: Returns the squared radius of the collapse, will be `0` if the collapse is fake
-- `.getSecondaryPositions()`{: .language-javascript }: Returns a list of `BlockPos`es which are the positions that will collapse
-- `.isFake()`{: .language-javascript }: Returns true if the collapse is fake
+- `.getCenterBlock()`{: .language-javascript .m-link #collapse-center}: Returns the `BlockContainerJS` of the center block of the collapse
+- `.getLevel()`{: .language-javascript .m-link #collapse-level }: Returns the level of the collapse
+- `.getRadiusSquared()`{: .language-javascript .m-link #collapse-radius }: Returns the squared radius of the collapse, will be `0` if the collapse is fake
+- `.getSecondaryPositions()`{: .language-javascript .m-link #collapse-secondaries }: Returns a list of `BlockPos`es which are the positions that will collapse
+- `.isFake()`{: .language-javascript .m-link #collapse-fake }: Returns true if the collapse is fake
 
 ### Example
 
@@ -469,20 +453,18 @@ This event fires when a fire-dousing item is used on a block or a water potion l
 ### Method Signature
 
 ```js
-declare class DouseFireEventJS {
-    getLevel(): Level
-    getBlock(): BlockContainerJS
-    getBounds(): AABB
-    getPlayer(): @Nullable Player
-    getPos(): BlockPos
-}
+event.getLevel(): Level
+event.getBlock(): BlockContainerJS
+event.getBounds(): AABB
+event.getPlayer(): @Nullable Player
+event.getPos(): BlockPos
 ```
 
-- `.getLevel()`{: .language-javascript }: Returns the event's level
-- `.getBlock()`{: .language-javascript }: Returns the event's `BlockContainerJS`
-- `.getBounds()`{: .language-javascript }: Returns an `AABB` representing the total effected area
-- `.getPlayer()`{: .language-javascript }: Returns the player that doused the fire, may be null
-- `.getPos()`{: .language-javascript }: Returns the position that is being doused
+- `.getLevel()`{: .language-javascript .m-link #douse-level }: Returns the event's level
+- `.getBlock()`{: .language-javascript .m-link #douse-block }: Returns the event's `BlockContainerJS`
+- `.getBounds()`{: .language-javascript .m-link #douse-bounds }: Returns an `AABB` representing the total effected area
+- `.getPlayer()`{: .language-javascript .m-link #douse-player }: Returns the player that doused the fire, may be null
+- `.getPos()`{: .language-javascript .m-link #douse-pos }: Returns the position that is being doused
 
 ### Example
 
@@ -505,14 +487,12 @@ Food traits are applied to food items while in a container or after completion o
 ### Method Signature
 
 ```js
-declare class RegisterFoodTraitEventJS {
-    registerTrait(decayModifier: number, id: String): void
-    registerTraitWithTooltip(decayModifier: number, id: String): void
-}
+event.registerTrait(decayModifier: number, id: String): void
+event.registerTraitWithTooltip(decayModifier: number, id: String): void
 ```
 
-- `.registerTrait(decayModifier: number, id: String)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier
-- `.registerTraitWithTooltip(decayModifier: number, id: String)`{: .language-javascript }: Registers a food trait under the given id with the provided decay modifier, this trait will have a tooltip on the item with a translation key of `<id namespace>.tooltip.foodtrait.<id path>`
+- `.registerTrait(decayModifier: number, id: String)`{: .language-javascript .m-link #trait-reg}: Registers a food trait under the given id with the provided decay modifier
+- `.registerTraitWithTooltip(decayModifier: number, id: String)`{: .language-javascript .m-link #trait-reg-tooltip }: Registers a food trait under the given id with the provided decay modifier, this trait will have a tooltip on the item with a translation key of `<id namespace>.tooltip.foodtrait.<id path>`
 
 **Note**: A higher `decayModifier` means the food rots faster
 
@@ -534,22 +514,20 @@ TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/
 ### Method Signatures
 
 ```js
-declare class RegisterItemStackModifierEventJS {
-    simple(id: String, applicator: Function<ItemStack, ItemStack>): void
-    withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>): void
-    withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>): void
-}
+simple(id: String, applicator: Function<ItemStack, ItemStack>): void
+withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>): void
+withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>): void
 ```
 
-- `.simple(id: String, applicator: Function<ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is not input dependent
-    - Id: A string, the registry id to register the modifier as
-    - Applicator: A function that receives and returns an `ItemStack`, the output stack. Performs the modifications to the output stack
-- `.withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent
-    - Id: A string, the registry id to register the modifier as
-    - Applicator: A bi-function that receives two `ItemStack`s, the output stack and the input stack[^2], and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
-- `.withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>)`{: .language-javascript }: Registers a modifier that is input dependent and has access to an iterable view of the input inventory
-    - Id: A string, the registry id to register the modifier as
-    - Applicator: A tri-function that receives two `ItemStack`s, the output stack and the input stack[^2], and an `Iterable<ItemStack>`, an iterable view of the input inventory, and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
+- `.simple(id: String, applicator: Function<ItemStack, ItemStack>)`{: .language-javascript .m-link #ism-simple }: Registers a modifier that is not input dependent
+    - `id: String`{: .language-javascript }: A string, the registry id to register the modifier as
+    - `applicator: Function<ItemStack, ItemStack>`{: .language-javascript }: A function that receives and returns an `ItemStack`, the output stack. Performs the modifications to the output stack
+- `.withInput(id: String, applicator: BiFunction<ItemStack, ItemStack, ItemStack>)`{: .language-javascript .m-link #ism-with-input }: Registers a modifier that is input dependent
+    - `id: String`{: .language-javascript }: A string, the registry id to register the modifier as
+    - `applicator: BiFunction<ItemStack, ItemStack, ItemStack>`{: .language-javascript }: A bi-function that receives two `ItemStack`s, the output stack and the input stack[^2], and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
+- `.withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>)`{: .language-javascript .m-link #ism-with-inv }: Registers a modifier that is input dependent and has access to an iterable view of the input inventory
+    - `id: String`{: .language-javascript }: A string, the registry id to register the modifier as
+    - `applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>`{: .language-javascript }: A tri-function that receives two `ItemStack`s, the output stack and the input stack[^2], and an `Iterable<ItemStack>`, an iterable view of the input inventory, and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
 
 [^2]: This stack should *not* be modified at all
 
@@ -596,7 +574,7 @@ event.register(representative: Block, blocks: Block[]): void
 ```
 
 - 1st argument: The block to represent the other blocks
-- 22nd argument: An array of blocks, to be represented by the first argument when prospecting
+- 2nd argument: An array of blocks, to be represented by the first argument when prospecting
 
 ### Example
 
@@ -615,16 +593,14 @@ TFC has an easter egg in its calendar screen where on certain dates it will show
 ### Method Signatures
 
 ```js
-declare class BirthdayEventsJS {
-    add(month: Month, day: number, name: String): void
-    remove(month: Month, day: number): void
-    removeAll(): void
-}
+event.add(month: Month, day: number, name: String): void
+event.remove(month: Month, day: number): void
+event.removeAll(): void
 ```
 
-- `.add(month: Month, day: number, name: String)`{: .language-javascript }: Adds a birthday to the given month and day
-- `.remove(month: Month, day: number)`{: .language-javascript }: Removes the birthday on the given month and day if there is one
-- `.removeAll()`{: .language-javascript }: Removes all birthdays
+- `.add(month: Month, day: number, name: String)`{: .language-javascript .m-link #birthdays-add }: Adds a birthday to the given month and day
+- `.remove(month: Month, day: number)`{: .language-javascript .m-link #birthday-remove }: Removes the birthday on the given month and day if there is one
+- `.removeAll()`{: .language-javascript .m-link #birthday-remove-all }: Removes all birthdays
 
 ### Example
 
@@ -643,18 +619,16 @@ TFC has a custom system for performing certain interactions with items, most not
 ### Method Signatures
 
 ```js
-declare class RegisterInteractionsEventJS {
-    interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction): void
-    interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction): void
-    interaction(ingredient: Ingredient, action: OnItemUseAction): void
-    blockItemPlacement(item: Item, block: Block): void
-}
+event.interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction): void
+event.interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction): void
+event.interaction(ingredient: Ingredient, action: OnItemUseAction): void
+event.blockItemPlacement(item: Item, block: Block): void
 ```
 
-- `.interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction)`{: .language-javascript }: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean params determine if blocks and air should be valid targets
-- `.interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction)`{: .language-javascript }: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean param determines if air is a valid target, blocks default to being a valid target
-- `.interaction(ingredient: Ingredient, action: OnItemUseAction)`{: .language-javascript }: Registers the given ingredient for the provided [action](#onitemuseaction), defaulting to blocks being valid targets and air not
-- `.blockItemPlacement(item: Item, block: Block)`{: .language-javascript }: Registers a block placement for the given item, placing the given block
+- `.interaction(ingredient: Ingredient, targetBlocks: boolean, targetAir: boolean, action: OnItemUseAction)`{: .language-javascript .m-link #interactions-interact-full }: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean params determine if blocks and air should be valid targets
+- `.interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction)`{: .language-javascript .m-link #interactions-interact-pared-down }: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean param determines if air is a valid target, blocks default to being a valid target
+- `.interaction(ingredient: Ingredient, action: OnItemUseAction)`{: .language-javascript .m-link #interactions-interact-min }: Registers the given ingredient for the provided [action](#onitemuseaction), defaulting to blocks being valid targets and air not
+- `.blockItemPlacement(item: Item, block: Block)`{: .language-javascript .m-link #interactions-placement }: Registers a block placement for the given item, placing the given block
 
 ### Example
 
@@ -684,55 +658,53 @@ Allows for editing the default settings of TFC chunk generator at world creation
 ### Method Signatures
 
 ```js
-declare class ModifyDefaultWorldgenSettingsEventJS {
-    flatBedrock(flat?: boolean): void
-    setSpawnDistance(i: number): void
-    setSpawnCenterX(i: number): void
-    setSpawnCenterZ(i: number): void
-    setTemperatureScale(i: number): void
-    setTemperatureConstant(f: number): void
-    setRainfallScale(i: number): void
-    setRainfallConstant(f: number): void
-    setContinentalness(f: number): void
-    setGrassDensity(f: number): void
-    addRock(rock: RockSettings, name: String, bottom: boolean): void
-    addRockFromId(id: String, name: String, bottom: boolean): void
-    getRock(name: String): RockSettings
-    getRockNames(): Set<String>
-    removeRock(name: String): void
-    addToBottom(name: String): void
-    removeFromBottom(name: String): void
-    defineLayer(id: String, rockMap: Map<String, String>): void
-    removeLayer(layerId: String): void
-    getLayerIds(): List<String>
-    cleanSlate(): void
-    addOceanFloorLayer(name: String): void
-    removeOceanFloorLayer(name: String): void
-    getOceanFloorLayers(): List<String>
-    addLandLayer(name: String): void
-    removeLandLayer(name: String): void
-    getLandLayers(): List<String>
-    addVolcanicLayer(name: String): void
-    removeVolcanicLayer(name: String): void
-    getVolcanicLayers(): List<String>
-    addUpliftLayer(name: String): void
-    removeUpliftLayer(name: String): void
-    getUpliftLayers(): List<String>
-}
+event.flatBedrock(flat?: boolean): void
+event.setSpawnDistance(i: number): void
+event.setSpawnCenterX(i: number): void
+event.setSpawnCenterZ(i: number): void
+event.setTemperatureScale(i: number): void
+event.setTemperatureConstant(f: number): void
+event.setRainfallScale(i: number): void
+event.setRainfallConstant(f: number): void
+event.setContinentalness(f: number): void
+event.setGrassDensity(f: number): void
+event.addRock(rock: RockSettings, name: String, bottom: boolean): void
+event.addRockFromId(id: String, name: String, bottom: boolean): void
+event.getRock(name: String): RockSettings
+event.getRockNames(): Set<String>
+event.removeRock(name: String): void
+event.addToBottom(name: String): void
+event.removeFromBottom(name: String): void
+event.defineLayer(id: String, rockMap: Map<String, String>): void
+event.removeLayer(layerId: String): void
+event.getLayerIds(): List<String>
+event.cleanSlate(): void
+event.addOceanFloorLayer(name: String): void
+event.removeOceanFloorLayer(name: String): void
+event.getOceanFloorLayers(): List<String>
+event.addLandLayer(name: String): void
+event.removeLandLayer(name: String): void
+event.getLandLayers(): List<String>
+event.addVolcanicLayer(name: String): void
+event.removeVolcanicLayer(name: String): void
+event.getVolcanicLayers(): List<String>
+event.addUpliftLayer(name: String): void
+event.removeUpliftLayer(name: String): void
+event.getUpliftLayers(): List<String>
 ```
 
 #### Climate Modifiers
 
-- `.flatBedrock(flat?: boolean)`{: .language-javascript }: Sets if the world should have flat bedrock, defaults to `false`{:.p}, calling without any arguments sets it to `true`{:.p}
-- `.setSpawnDistance(i: number)`{: .language-javascript }: Sets the distance from the spawn center that players may spawn, defaults to 4000
-- `.setSpawnCenterX(i: number)`{: .language-javascript }: Sets the spawn center on the x-coordinate, defaults to 0
-- `.setSpawnCenterZ(i: number)`{: .language-javascript }: Sets the spawn center on the z-coordinate, defaults to 0
-- `.setTemperatureScale(i: number)`{: .language-javascript }: Sets the temperature scale of the world, the distance from pole-to-pole, defaults to 20000
-- `.setTemperatureConstant(f: number)`{: .language-javascript }: Sets the relative constant temperature of the world, defaults to 0
-- `.setRainfallScale(i: number)`{: .language-javascript }: Sets the rainfall scale of the world, the distance from peak to peak, defaults to 20000
-- `.setRainfallConstant(f: number)`{: .language-javascript }: Sets the relative constant temperature of the world, defaults to 0
-- `.setContinentalness(f: number)`{: .language-javascript }: Sets the proportion of the world that is land instead of water, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
-- `.setGrassDensity(f: number)`{: .language-javascript }: Sets the grass density of the world, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
+- `.flatBedrock(flat?: boolean)`{: .language-javascript .m-link #worldgen-bedrock }: Sets if the world should have flat bedrock, defaults to `false`{:.p}, calling without any arguments sets it to `true`{:.p}
+- `.setSpawnDistance(i: number)`{: .language-javascript .m-link #worldgen-spawn-distance }: Sets the distance from the spawn center that players may spawn, defaults to 4000
+- `.setSpawnCenterX(i: number)`{: .language-javascript .m-link #worldgen-spawn-x }: Sets the spawn center on the x-coordinate, defaults to 0
+- `.setSpawnCenterZ(i: number)`{: .language-javascript .m-link #worldgen-spawn-z }: Sets the spawn center on the z-coordinate, defaults to 0
+- `.setTemperatureScale(i: number)`{: .language-javascript .m-link #worldgen-temp-scale }: Sets the temperature scale of the world, the distance from pole-to-pole, defaults to 20000
+- `.setTemperatureConstant(f: number)`{: .language-javascript .m-link #worldgen-temp-const }: Sets the relative constant temperature of the world, defaults to 0
+- `.setRainfallScale(i: number)`{: .language-javascript .m-link #worldgen-rain-scale }: Sets the rainfall scale of the world, the distance from peak to peak, defaults to 20000
+- `.setRainfallConstant(f: number)`{: .language-javascript .m-link #worldgen-rain-const }: Sets the relative constant temperature of the world, defaults to 0
+- `.setContinentalness(f: number)`{: .language-javascript .m-link #worldgen-continentalness }: Sets the proportion of the world that is land instead of water, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
+- `.setGrassDensity(f: number)`{: .language-javascript .m-link #worldgen-grass-density }: Sets the grass density of the world, defaults to 0.5. A value of 0 translates to -100% on the world creation screen and 1 translates to +100%
 
 #### Rock Layer Settings Modifiers
 
@@ -740,37 +712,37 @@ TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^3
 
 [^3]: These terms are unofficial and exist to better help explain TFC's worldgen
 
-- `.addRock(rock: RockSettings, name: String, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
+- `.addRock(rock: RockSettings, name: String, bottom: boolean)`{: .language-javascript .m-link #worldgen-add-rock }: Adds the given rock to the generator's pool of available rocks
     - Rock: the `RockSettings` to add
     - Name: The name which the rock can be referenced by
     - Bottom: If the rock should be added to the 'bottom' layer of the world
-- `.addRockFromId(id: String, name: String, bottom: boolean)`{: .language-javascript }: Adds the given rock to the generator's pool of available rocks
+- `.addRockFromId(id: String, name: String, bottom: boolean)`{: .language-javascript .m-link #worldgen-add-rock-id }: Adds the given rock to the generator's pool of available rocks
     - Id: the [registered](#rock-settings) id of the `RockSettings` to add
     - Name: The name which the rock can be referenced by
     - Bottom: If the rock should be added the the 'bottom' layer of the world
-- `.getRock(name: String)`{: .language-javascript }: Returns the `RockSettings` with the given name
-- `.getRockNames()`{: .language-javascript }: Returns a set of the names of all the rocks currently in the generator's pool of rocks
-- `.removeRock(name: String)`{: .language-javascript }: Removes the provided rock from the generator's pool of available rocks and any references to it
-- `.addToBottom(name: String)`{: .language-javascript }: Adds the given rock to the 'bottom' layer
-- `.removeFromBottom(name: String)`{: .language-javascript }: Removes the given rock from the 'bottom' layer
-- `.defineLayer(id: String, rockMap: Map<String, String>)`{: .language-javascript }: Defines a new layer
-    - Id: the name of the layer to add
-    - RockMap: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
-- `.removeLayer(layerId: String)`{: .language-javascript }: removes the given layer from the generator
-- `.getLayerIds()`{: .language-javascript }: returns a list of the names of all layers currently in the generator's pool of layers
-- `.cleanSlate()`{: .language-javascript }: Removes all rocks and layers from the generator
-- `.addOceanFloorLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'ocean_floor' layer type
-- `.removeOceanFloorLayer(name: String)`{: .language-javascript }: removes the given layer from the 'ocean_floor' layer type
-- `.getOceanFloorLayers()`{: .language-javascript }: Gets the layers currently in the 'ocean_floor' layer type
-- `.addLandLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'land' layer type
-- `.removeLandLayer(name: String)`{: .language-javascript }: removes the given layer from the 'land' layer type
-- `.getLandLayers()`{: .language-javascript }: Gets the layers currently in the 'land' layer type
-- `.addVolcanicLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'volcanic' layer type
-- `.removeVolcanicLayer(name: String)`{: .language-javascript }: Removes the given layer from the 'volcanic' layer type
-- `.getVolcanicLayers()`{: .language-javascript }: Gets the layers currently in the 'volcanic' layer type
-- `.addUpliftLayer(name: String)`{: .language-javascript }: Adds the given layer to the 'uplift' layer type
-- `.removeUpliftLayer(name: String)`{: .language-javascript }: Removes the given layer from the 'uplift' layer type
-- `.getUpliftLayers()`{: .language-javascript }: Gets the layers that are currently in the 'uplift' layer type
+- `.getRock(name: String)`{: .language-javascript .m-link #worldgen-get-rock }: Returns the `RockSettings` with the given name
+- `.getRockNames()`{: .language-javascript .m-link #worldgen-rock-names }: Returns a set of the names of all the rocks currently in the generator's pool of rocks
+- `.removeRock(name: String)`{: .language-javascript .m-link #worldgen-remove-rock }: Removes the provided rock from the generator's pool of available rocks and any references to it
+- `.addToBottom(name: String)`{: .language-javascript .m-link #worldgen-add-bottom }: Adds the given rock to the 'bottom' layer
+- `.removeFromBottom(name: String)`{: .language-javascript .m-link #worldgen-remove-bottom }: Removes the given rock from the 'bottom' layer
+- `.defineLayer(id: String, rockMap: Map<String, String>)`{: .language-javascript .m-link #worldgen-define-layer }: Defines a new layer
+    - `id:String`{: .language-javascript }: the name of the layer to add
+    - `rockMap: Map<STring, String>`{: .language-javascript }: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
+- `.removeLayer(layerId: String)`{: .language-javascript .m-link #worldgen-remove-layer }: removes the given layer from the generator
+- `.getLayerIds()`{: .language-javascript .m-link #worldgen-get-layer-ids }: returns a list of the names of all layers currently in the generator's pool of layers
+- `.cleanSlate()`{: .language-javascript .m-link #worldgen-clean-slate }: Removes all rocks and layers from the generator
+- `.addOceanFloorLayer(name: String)`{: .language-javascript .m-link #worldgen-add-ocean }: Adds the given layer to the 'ocean_floor' layer type
+- `.removeOceanFloorLayer(name: String)`{: .language-javascript .m-link #worldgen-remove-ocean }: removes the given layer from the 'ocean_floor' layer type
+- `.getOceanFloorLayers()`{: .language-javascript .m-link #worldgen-get-ocean }: Gets the layers currently in the 'ocean_floor' layer type
+- `.addLandLayer(name: String)`{: .language-javascript .m-link #worldgen-add-land }: Adds the given layer to the 'land' layer type
+- `.removeLandLayer(name: String)`{: .language-javascript .m-link #worldgen-remove-land }: removes the given layer from the 'land' layer type
+- `.getLandLayers()`{: .language-javascript .m-link #worldgen-get-land }: Gets the layers currently in the 'land' layer type
+- `.addVolcanicLayer(name: String)`{: .language-javascript .m-link #worldgen-add-volcanic }: Adds the given layer to the 'volcanic' layer type
+- `.removeVolcanicLayer(name: String)`{: .language-javascript .m-link #worldgen-remove-volcanic }: Removes the given layer from the 'volcanic' layer type
+- `.getVolcanicLayers()`{: .language-javascript .m-link #worldgen-get-volcanic }: Gets the layers currently in the 'volcanic' layer type
+- `.addUpliftLayer(name: String)`{: .language-javascript .m-link #worldgen-add-uplift }: Adds the given layer to the 'uplift' layer type
+- `.removeUpliftLayer(name: String)`{: .language-javascript .m-link #worldgen-remove-uplift }: Removes the given layer from the 'uplift' layer type
+- `.getUpliftLayers()`{: .language-javascript .m-link #worldgen-get-uplift }: Gets the layers that are currently in the 'uplift' layer type
 
 ### Example
 
@@ -802,17 +774,17 @@ event.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacem
 event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types): void
 ```
 
-- `.replace(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and overwrites any spawn conditions it may have had before
+- `.replace(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript .m-link #fauna-replace }: Registers a new fauna definition for the entity type and overwrites any spawn conditions it may have had before
     - EntityType: The entity type to register the fauna for
     - Suffix: See below
     - PlacementType: See below
     - Heightmap: See below
-- `.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ANDs any pre-existing spawn conditions it may have had before with the fauna's rules
+- `.and(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript .m-link #fauna-and }: Registers a new fauna definition for the entity type and ANDs any pre-existing spawn conditions it may have had before with the fauna's rules
     - EntityType: The entity type to register the fauna for
     - Suffix: See below
     - PlacementType: See below
     - Heightmap: See below
-- `.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript }: Registers a new fauna definition for the entity type and ORs any pre-existing spawn conditions it may have had before with the fauna's conditions, including other fauna definitions
+- `.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlacements$Type, heightmap: Heightmap$Types)`{: .language-javascript .m-link #fauna-or }: Registers a new fauna definition for the entity type and ORs any pre-existing spawn conditions it may have had before with the fauna's conditions, including other fauna definitions
     - EntityType: The entity type to register the fauna for
     - Suffix: See below
     - PlacementType: See below
@@ -850,16 +822,16 @@ event.create(name: String, displayStack?: Supplier<ItemStack>, customSound?: Res
 event.createPowder(powderItemId: ResourceLocation, name: String, customSound?: ResourceLocation, minHeat?: number)
 ```
 
-- `.create(name: String, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name
-    - Name: The name of the operation, will be prepended with `kubejs_`
-    - DisplayStack: An item stack that will be used to display the operation in JEI, if the item is `tfc:blowpipe_with_glass`, `tfc:ceramic_blowpipe_with_glass` will also be displayed. Optional
-    - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
-    - MinHeat: The minimum heat required to perform the operation. Optional, defaults to 480°C
-- `.createPowder(powderItemId: ResourceLocation, name: String, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript }: Creates a new glass operation with the given name and enables it to be added via the powder bowl
-    - PowderItemId: The registry id of an item to use as this operation's powder, requires the `tfc:powders` tag in order to be put in a bowl. Will be used as the display item in JEI
-    - Name: The name of the operations, will be prepended with `kubejs_`
-    - CustomSound: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
-    - MinHeat: The minimum heat required to perform the operation. Optional, defaults to 480°C
+- `.create(name: String, displayStack?: Supplier<ItemStack>, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript .m-link #glass-op-create }: Creates a new glass operation with the given name
+    - `name: String`{: .language-javascript }: The name of the operation, will be prepended with `kubejs_`
+    - `displayStack?: Supplier<ItemStack>`{: .language-javascript }: An item stack that will be used to display the operation in JEI, if the item is `tfc:blowpipe_with_glass`, `tfc:ceramic_blowpipe_with_glass` will also be displayed. Optional
+    - `customSound?: ResourceLocation`{: .language-javascript }: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
+    - `minHeat?: number`{: .language-javascript }: The minimum heat required to perform the operation. Optional, defaults to 480°C
+- `.createPowder(powderItemId: ResourceLocation, name: String, customSound?: ResourceLocation, minHeat?: number)`{: .language-javascript .m-link #glass-op-powder }: Creates a new glass operation with the given name and enables it to be added via the powder bowl
+    - `powderItemId: ResourceLocation`{: .language-javascript }: The registry id of an item to use as this operation's powder, requires the `tfc:powders` tag in order to be put in a bowl. Will be used as the display item in JEI
+    - `name: String`{: .language-javascript }: The name of the operations, will be prepended with `kubejs_`
+    - `customSound?: ResourceLocation`{: .language-javascript }: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
+    - `minHeat: number`{: .language-javascript }: The minimum heat required to perform the operation. Optional, defaults to 480°C
 
 ### Example
 
@@ -896,24 +868,24 @@ event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
 event.rocks(getter: RocksGetter): void
 ```
 
-- `.getWorldSeed()`{: .language-javascript }: Returns the seed of the world the chunk data provider is being applied to
-- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generatePartial`{:.m} is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
-    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generatePartial`{:.m} should be called here. `#generateFull`{:.m} *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `#generatePartial`{:.m} are:
+- `.getWorldSeed()`{: .language-javascript .m-link #chunk-data-provider-seed }: Returns the seed of the world the chunk data provider is being applied to
+- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript .m-link #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generatePartial`{:.m} is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
+    - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generatePartial(...)`{:.m} should be called here. `.generateFull(...)`{:.m} *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `.generatePartial(...)`{:.m} are:
         - `rainfallLayer: LerpFloatLayer`{: .language-javascript }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
         - `temperatureLayer: LerpFloatLayer`{: .language-javascript }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by TFC's climate model to determine the average temperature at a position
         - `forestType: ForestType`{: .language-javascript }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
         - `.forestWeirdness: number`{: .language-javascript }: A number, in the range [0, 1], for the 'weirdness' of forests in the chunk. Used by TFC's forest configured feature
         - `.forestDensity: number`{: .language-javascript }: A number, in the range [0, 1], for the density of the forests in the chunk. Used by TFC's forest configured feature
     - `chunk: ChunkAccess`{: .language-javascript }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
-- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generateFull` is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
+- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-javascript .m-link #chunk-data-provider-full }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `#generateFull` is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
     - `data: ChunkData`{: .language-javascript }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `#generateFull`{:.m} should be called here and the chunk is guaranteed to have access to heightmaps during this callback. The parameters for `#generateFull`{:.m} are:
         - `surfaceHeight: int[256]`{: .language-javascript }: An array of integer values of size 256 (16 * 16; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z` where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY` parameter of a `RocksGetter`{:.f} callback is sources from.
         - `.aquiferSurfaceHeight: int[16]`{: .language-javascript }: An array of integer values of size 16 (4 * 4; `QuartPos` resolution) representing the height of aquifer surfaces. Only used by [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
     - `chunk: ChunkAccess`{: .language-javascript }: The chunk data is being generated for
-- `.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>)`{: .language-javascript}: Sets the calculation for the `Aquifer` of a given chunk. This aquifer is used by TFC's erosion feature to place subterranean liquids. Accepts a callback with one parameter and a return value. If not set, an aquifer that only fills air will be returned. The parameters are:
+- `.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>)`{: .language-javascript .m-link #chunk-data-provider-aquifer }: Sets the calculation for the `Aquifer` of a given chunk. This aquifer is used by TFC's erosion feature to place subterranean liquids. Accepts a callback with one parameter and a return value. If not set, an aquifer that only fills air will be returned. The parameters are:
     - `chunk: ChunkAccess`{: .language-javascript }: The chunk the aquifer is being generated for
     - `return: Aquifer`{: .language-javascript }: An `Aquifer`. See [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java) for TFC's implementation.
-- `.rocks(getter: RocksGetter)`{: .language-javascript }: Sets the Calculation for the `RockSettings` at a position. Used by several configured feature types to determine what blocks to place. Accepts a callback with 6 parameters and a return value. If not set, or when null is returned, a `RockSettings` made entirely of air is returned. The parameters are:
+- `.rocks(getter: RocksGetter)`{: .language-javascript .m-link #chunk-data-provider-rocks }: Sets the Calculation for the `RockSettings` at a position. Used by several configured feature types to determine what blocks to place. Accepts a callback with 6 parameters and a return value. If not set, or when null is returned, a `RockSettings` made entirely of air is returned. The parameters are:
     - `x: number`{: .language-javascript }: A number, the x coordinate
     - `y: number`{: .language-javascript }: A number, the y coordinate
     - `z: number`{: .language-javascript }: A number, the z coordinate

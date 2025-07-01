@@ -9,13 +9,11 @@
         var elements = document.getElementsByClassName(type);
         for (let i = 0 ; i < elements.length ; i++) {
             var item = elements.item(i);
-            if (item != null) {
-                var id = "";
-                heading = document.createElement('h3');
-                if (item.id != null && item.id.length > 0) {
-                    id = item.id;
-                    heading.appendChild(createAnchor(id));
-                }
+            if (item != null && item.id != null && item.id.length > 0) {
+                heading = document.createElement('h6');
+                heading.className = "callout";
+                var id = item.id;
+                heading.appendChild(createAnchor(id));
                 heading.id = id;
                 item.parentElement.insertBefore(heading, item);
                 item.parentElement.removeChild(item);
@@ -39,6 +37,21 @@
         anchor.appendChild(svg);
         return anchor;
     };
+
+    var methodsNeedingLinks = document.getElementsByClassName("m-link");
+    for (let i = 0 ; i < methodsNeedingLinks.length ; i++) {
+        var item = methodsNeedingLinks.item(i);
+        if (item != null && item.id != null && item.id.length > 0) {
+            header = document.createElement('h6');
+            header.className = "m-link-viz";
+            var id = item.id;
+            header.appendChild(createAnchor(id));
+            header.id = id;
+            item.parentElement.insertBefore(header, item);
+            item.parentElement.removeChild(item);
+            header.appendChild(item);
+        }
+    }
 
     /* Extremely terrible way to do this, but it colors things decently until the Proper Solution™ is implemented */
     const functionalInterfaces = [
@@ -98,18 +111,37 @@
         "float",
         "long",
         "double",
-        "integer"
+        "integer",
+        "console"
     ];
+    /* Important! Changing the class name removes an elm from the eleemnts collection, so the index must be decremented when the class is changed */
     var elements = document.getElementsByClassName('nx');
     for (let i = 0 ; i < elements.length ; i++) {
         var elm = elements.item(i);
         var txt = elm.textContent;
         if (primitives.includes(txt)) {
             elm.className = "kc";
+            i--;
         } else if (enums.includes(txt)) {
             elm.className = "enum";
+            i--;
         } else if (functionalInterfaces.includes(txt)) {
             elm.className = "nb";
+            i--;
+        } else {
+            let nextElm = elm.nextElementSibling;
+            if (nextElm && nextElm.className == "p" && nextElm.textContent) {
+                if (nextElm.textContent == ":" || nextElm.textContent == "?:") {
+                    elm.className ="kv";
+                    i--;
+                } else {
+                    let prevElm = elm.previousElementSibling;
+                    if (prevElm && prevElm.textContent && prevElm.className == "p" && prevElm.textContent == "." && /\(\)?[;:]?/.test(nextElm.textContent)) {
+                        elm.className = "nf";
+                        i--;
+                    }
+                }
+            }
         }
     }
 </script>

@@ -53,9 +53,9 @@ Inherits the methods of the default block builder
 
 #### Extra Method
 
-- `.allowedFluids(fluids: String[])`{: .language-javascript }: Sets the fluids that the aqueduct may hold
+- `.allowedFluids(fluids: String[])`{: .language-javascript .m-link #aqueduct-allowed-fluids }: Sets the fluids that the aqueduct may hold
     - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
-- `models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
+- `models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-javascript .m-link #aqueduct-models }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
     - `.base()`{: .language-javascript }: A boolean. If the model part in operation is for the base
     - `.north()`{: .language-javascript }: A boolean. If the model part in operation is the north part
     - `.south()`{: .language-javascript }: A boolean. If the model part in operation is the south part
@@ -85,13 +85,14 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.ore()`{: .language-javascript }: Sets the collision shape to that of TFC's ores
-- `.twig()`{: .language-javascript }: Sets the collision shape to that of TFC's twigs and makes the block flammable
-- `.groundCoverModel(model: String)`{: .language-javascript }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`
+- `.ore()`{: .language-javascript .m-link #ground-cover-ore }: Sets the collision shape to that of TFC's ores
+- `.twig()`{: .language-javascript .m-link #ground-cover-twig }: Sets the collision shape to that of TFC's twigs and makes the block flammable
+- `.groundCoverModel(model: String)`{: .language-javascript .m-link #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
-- `.notAxisAligned()`{: .language-javascript }: Rotates placed models by 45 degrees
-- `.collision()`{: .language-javascript }: Enables collision for the block
-- `.withPreexistingItem(item: ResourceLocation)`{: .language-javascript }: Sets the 'block item' of the block to be an existing item
+- `.notAxisAligned()`{: .language-javascript .m-link #ground-cover-axis-aligned }: Rotates placed models by 45 degrees
+- `.collision()`{: .language-javascript .m-link #ground-cover-collision }: Enables collision for the block
+- `.withPreexistingItem(item: ResourceLocation)`{: .language-javascript .m-link #ground-cover-preexisting-item }: Sets the 'block item' of the block to be an existing item
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #ground-cover-extend-props}: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
 ### Example
 
@@ -111,12 +112,12 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.rotateModel(i: number)`{: .language-javascript }: Rotates the placed models by the given amount of degrees
-- `.collision()`{: .language-javascript }: Enables collision for the block
-- `.itemTexture(texture: String)`{: .language-javascript }: Sets the item's `layer0`{:.s} texture
-- `.itemTexture(key: String, texture: String)`{: .language-javascript }: Sets the item's texture for the given key
-- `.itemTextureJson(json: JsonObject)`{: .language-javascript }: Sets the json for the item model
-- `.rockTypeModel(type: String)`Sets the rock type models that should automatically be used, accepts `igneous_extrusive`{:.s}, `igneous_intrusive`{:.s}, `metamorphic`{:.s}, or `sedimentary`{:.s}, defaults to `metamorphic`{:.s}
+- `.rotateModel(i: number)`{: .language-javascript .m-link #loose-rock-rate-model }: Rotates the placed models by the given amount of degrees
+- `.collision()`{: .language-javascript .m-link #loose-rock-collision }: Enables collision for the block
+- `.itemTexture(texture: String)`{: .language-javascript .m-link #loose-rock-item-texture-0 }: Sets the item's `layer0`{:.s} texture
+- `.itemTexture(key: String, texture: String)`{: .language-javascript .m-link #loose-rock-item-texture-1 }: Sets the item's texture for the given key
+- `.itemTextureJson(json: JsonObject)`{: .language-javascript .m-link #loose-rock-item-texture-json }: Sets the json for the item model
+- `.rockTypeModel(type: String)`{: .language-javascript .m-link #loose-rock-rock-type-model }Sets the rock type models that should automatically be used, accepts `igneous_extrusive`{:.s}, `igneous_intrusive`{:.s}, `metamorphic`{:.s}, or `sedimentary`{:.s}, defaults to `metamorphic`{:.s}
 
 #### Example
 
@@ -137,17 +138,17 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.naturallySupported(supported: boolean)`{: .language-javascript }: Determines if the block is considered to be naturally supported for the purposes of spawning particles indicating unsupported regions
-- `.rockTypeTooltip(component: Component)`{: .language-javascript }: Sets the tooltip component indicating the block's rock type
-- `.felsicIgneousExtrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of felsic igneous extrusive rocks
-- `.intermediateIgneousExtrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of intermediate igneous extrusive rocks
-- `.maficIgneousExtrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of intermediate mafic extrusive rocks
-- `.maficIgneousIntrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of mafic igneous intrusive rocks
-- `.felsicIgneousIntrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of felsic igneous intrusive rocks
-- `.intermediateIgneousIntrusive()`{: .language-javascript }: Sets the item's rock type tooltip to be that of intermediate igneous intrusive rocks
-- `.metamorphic()`{: .language-javascript }: Sets the item's rock type tooltip to be that of metamorphic rocks
-- `.sedimentary()`{: .language-javascript }: Sets the item's rock type tooltip to be that of sedimentary rocks
-- `.uniqueSideTextures()`{: .language-javascript }: Makes the default model generator use the 'side' and 'end' textures instead of just the 'end'
+- `.naturallySupported(supported: boolean)`{: .language-javascript .m-link #raw-support }: Determines if the block is considered to be naturally supported for the purposes of spawning particles indicating unsupported regions
+- `.rockTypeTooltip(component: Component)`{: .language-javascript .m-link #raw-tooltip }: Sets the tooltip component indicating the block's rock type
+- `.felsicIgneousExtrusive()`{: .language-javascript .m-link #raw-felsic-extrusive }: Sets the item's rock type tooltip to be that of felsic igneous extrusive rocks
+- `.intermediateIgneousExtrusive()`{: .language-javascript .m-link #raw-intermediate-extrusive }: Sets the item's rock type tooltip to be that of intermediate igneous extrusive rocks
+- `.maficIgneousExtrusive()`{: .language-javascript .m-link #raw-mafic-extrusive }: Sets the item's rock type tooltip to be that of intermediate mafic extrusive rocks
+- `.maficIgneousIntrusive()`{: .language-javascript .m-link #raw-mafic-intrusive }: Sets the item's rock type tooltip to be that of mafic igneous intrusive rocks
+- `.felsicIgneousIntrusive()`{: .language-javascript .m-link #raw-felsic-intrusive }: Sets the item's rock type tooltip to be that of felsic igneous intrusive rocks
+- `.intermediateIgneousIntrusive()`{: .language-javascript .m-link #raw-intermediate-intrusive}: Sets the item's rock type tooltip to be that of intermediate igneous intrusive rocks
+- `.metamorphic()`{: .language-javascript .m-link #raw-metamorphic }: Sets the item's rock type tooltip to be that of metamorphic rocks
+- `.sedimentary()`{: .language-javascript .m-link #raw-sedimentary }: Sets the item's rock type tooltip to be that of sedimentary rocks
+- `.uniqueSideTextures()`{: .language-javascript .m-link #raw-unique-sides }: Makes the default model generator use the 'side' and 'end' textures instead of just the 'end'
 
 #### Example
 
@@ -191,14 +192,14 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.dripChance(f: number)`{: .language-javascript }: Sets the chance, in the range [0, 1], the block will drip per tick
-- `.dripTemp(f: number)`{: .language-javascript }: Sets the temperature at which the block must be above to begin dripping
-- `.melts()`{: .language-javascript }: makes the block melt under certain conditions
-- `.meltChance(f: number)`{: .language-javascript }: Sets the chance, in the range [0, 1], that the block will melt per random tick
-- `.meltTemp(f: number)`{: .language-javascript }: Sets the temperature above which the block can melt
-- `.dripParticle(particle: String)`{: .language-javascript }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to null
-- `.meltFluid(fluid: FluidStackJS)`{: .language-javascript }: The fluid that the block melts into
-- `.tipModel(model: String)`{: .language-javascript }: Sets the parent model of the tip state
+- `.dripChance(f: number)`{: .language-javascript .m-link #thin-spike-drip-chance }: Sets the chance, in the range [0, 1], the block will drip per tick
+- `.dripTemp(f: number)`{: .language-javascript .m-link #thin-spike-drip-temp }: Sets the temperature at which the block must be above to begin dripping
+- `.melts()`{: .language-javascript .m-link #thin-spike-melts }: makes the block melt under certain conditions
+- `.meltChance(f: number)`{: .language-javascript .m-link #thin-spike-melt-chance}: Sets the chance, in the range [0, 1], that the block will melt per random tick
+- `.meltTemp(f: number)`{: .language-javascript .m-link #thin-spike-melt-temp }: Sets the temperature above which the block can melt
+- `.dripParticle(particle: String)`{: .language-javascript .m-link #thin-spike-drip-particle }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to null
+- `.meltFluid(fluid: FluidStackJS)`{: .language-javascript .m-link #thin-spike-melt-fluid }: The fluid that the block melts into
+- `.tipModel(model: String)`{: .language-javascript .m-link #thin-spike-tip-model }: Sets the parent model of the tip state
 
 ### Example
 
@@ -243,8 +244,8 @@ There are four types: [block](#full-block), [stair](#stair), [slab](#slab), and 
 
 Extra methods:
 
-- `.mossyBlock(block: String)`{: .language-javascript }: Accepts a string, the registry name of the block this will turn into when moss grows to it
-- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
+- `.mossyBlock(block: String)`{: .language-javascript .m-link #moss-growing-block-mossy-block }: Accepts a string, the registry name of the block this will turn into when moss grows to it
+- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-block-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
 
 Example:
 
@@ -261,8 +262,8 @@ StartupEvents.registry('block', event => {
 
 Extra methods:
 
-- `.mossyStair(block: String)`{: .language-javascript }: Accepts a string, the registry name of a stair block that the block will turn into when moss grows to it
-- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
+- `.mossyStair(block: String)`{: .language-javascript .m-link #moss-growing-stair-mossy-stair }: Accepts a string, the registry name of a stair block that the block will turn into when moss grows to it
+- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-stair-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
 
 Example:
 
@@ -279,10 +280,10 @@ StartupEvents.registry('block', event => {
 
 Extra methods:
 
-- `.mossySlab(block: String)`{: .language-javascript }: Accepts a string, the registry name of a slab block that the block will turn into when moss grows to it
-- `.mossyConversionFull(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow when the `type` state is `double`
-- `.mossyConversionHalf(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow when the `type` state is `top` or `bottom`
-- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow for any `type` state
+- `.mossySlab(block: String)`{: .language-javascript .m-link #moss-growing-slab-mossy-slab }: Accepts a string, the registry name of a slab block that the block will turn into when moss grows to it
+- `.mossyConversionFull(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-slab-full-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow when the `type` state is `double`
+- `.mossyConversionHalf(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-slab-half-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow when the `type` state is `top` or `bottom`
+- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-slab-any-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow for any `type` state
 
 Example
 
@@ -299,8 +300,8 @@ StartupEvents.registry('block', event => {
 
 Extra methods:
 
-- `.mossyWall(block: String)`{: .language-javascript }: Accepts a string, the registry name of a wall block that the block will turn into when moss grows to it
-- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
+- `.mossyWall(block: String)`{: .language-javascript .m-link #moss-growing-wall-mossy-wall }: Accepts a string, the registry name of a wall block that the block will turn into when moss grows to it
+- `.mossyConversion(callback: MossGrowingCallback)`{: .language-javascript .m-link #moss-growing-wall-conversion }: Accepts a [MossGrowingCallback](#moss-growing-callback), sets how the block determines if moss should grow
 
 Example
 
@@ -344,9 +345,9 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.lightLevel(i: number)`{: .language-javascript }: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.models(models: BiConsumer<LampModelType, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the lamp. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
+- `.lightLevel(i: number)`{: .language-javascript .m-link #lamp-light-level }: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #lamp-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.models(models: BiConsumer<LampModelType, ModelGenerator>)`{: .language-javascript .m-link #lamp-models }: Sets the model generation of the lamp. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
     - `on`: A boolean. If the model type represents a lit state
     - `hanging`: A boolean. If the model type represents a hanging state
 
@@ -374,13 +375,13 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.lifecycle(month: Month, lifecycle: Lifecycle)`{: .language-javascript }: Sets the bush's lifecycle for a particular month, defaults to `dormant` for ever month, accepts a month for the first parameter, and either `healthy`{:.e}, `dormant`{:.e}, `fruiting`{:.e}, or `flowering`{:.e} for the second
-- `.productItem(item: Consumer<ItemBuilder>)`{: .language-javascript }: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.productItem(item: ResourceLocation)`{: .language-javascript }: Sets the bush's product item to be an existing item, will prevent the other product item from being created
-- `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the model for the given lifecycle and stage, stage can be one of `0`, `1`, and `2`
-- `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript }: Sets the model for all lifecycle and stage combinations
-- `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript }: Sets the texture for the given lifecycle and stage
+- `.lifecycle(month: Month, lifecycle: Lifecycle)`{: .language-javascript .m-link #stationary-bush-lifecycle }: Sets the bush's lifecycle for a particular month, defaults to `dormant` for every month, accepts a month for the first parameter, and either `healthy`{:.e}, `dormant`{:.e}, `fruiting`{:.e}, or `flowering`{:.e} for the second
+- `.productItem(item: Consumer<ItemBuilder>)`{: .language-javascript .m-link #stationary-bush-product-item-0 }: Sets the properties of the bush's product item, the item gotten by right clicking a bush when it is fruiting
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #stationary-bush-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.productItem(item: ResourceLocation)`{: .language-javascript .m-link #stationary-bush-product-item-1 }: Sets the bush's product item to be an existing item, will prevent the other product item from being created
+- `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #stationary-bush-model }: Sets the model for the given lifecycle and stage, stage can be one of `0`, `1`, and `2`
+- `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript .m-link #stationary-bush-models }: Sets the model for all lifecycle and stage combinations
+- `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript .m-link #stationary-bush-texture }: Sets the texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
@@ -416,12 +417,12 @@ Inherits the methods of the stationary bush builder
 
 #### Extra Methods
 
-- `.maxHeight(i: number)`{: .language-javascript }: Sets the maximum number of blocks the bush may climb, defaults to `3`
-- `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-javascript }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
-    - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`, `1`, and `2`
-    - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript }: Sets the model for all lifecycle and stage combinations
-    - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript }: Sets the cane texture for the given lifecycle and stage
-    - `.texture(lifecycle: Lifecycle, stage: number, caneTexture: String, bushTexture)`{: .language-javascript }: Sets the cane and bush texture for the given lifecycle and stage
+- `.maxHeight(i: number)`{: .language-javascript .m-link #spreading-bush-max-height }: Sets the maximum number of blocks the bush may climb, defaults to `3`
+- `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-javascript .m-link #spreading-bush-cane }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
+    - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-javascript .m-link #cane-bush-model }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`, `1`, and `2`
+    - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-javascript .m-link #cane-bush-models }: Sets the model for all lifecycle and stage combinations
+    - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-javascript .m-link #cane-bush-texture-0 }: Sets the cane texture for the given lifecycle and stage
+    - `.texture(lifecycle: Lifecycle, stage: number, caneTexture: String, bushTexture)`{: .language-javascript .m-link #caen-bush-texture-1}: Sets the cane and bush texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
 
@@ -448,19 +449,20 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-javascript }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the same methods as the default block builder and:
-    - `.uniqueDirtTexture()`{: .language-javascript }: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
-    - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-javascript }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first ahs the following properties:
+- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-javascript .m-link #dirt-grass }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
+    - Those of the default block builder
+    - `.uniqueDirtTexture()`{: .language-javascript .m-link #dirt-grass-unique-texture}: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
+    - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-javascript .m-link #dirt-grass-models }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first ahs the following properties:
         - `snowy`: A boolean. If the model part in operation represents a snowy state
         - `side`: A boolean. If the model part in operation represents a side part
         - `top`: A boolean. If the model part in operation represents a top part
         - `bottom`: A boolean. If the model part in operation represents a bottom part
-- `.path(path: Consumer<TFCPathBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
-- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
+- `.path(path: Consumer<TFCPathBlockBuilder>)`{: .language-javascript .m-link #dirt-path }: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
+- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-javascript .m-link #dirt-farmland }: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
     - Those of the default block builder
-    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
-- `.mud(mud: Consumer<BlockBuilder>)`{: .language-javascript }: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
+    - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #dirt-farmland-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-javascript .m-link #dirt-rooted }: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
+- `.mud(mud: Consumer<BlockBuilder>)`{: .language-javascript .m-link #dirt-mud }: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
 
 #### Example
 
@@ -500,14 +502,14 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.type(type: Type)`{: .language-javascript }: Sets the type of wild crop block to be used, available options are `default`{:.e}, `double`{:.e}, `flooded`{:.e}, and `spreading`{:.e}, defaults to `default`{:.e}
-- `.spreadingFruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript }: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
-- `.seeds(seedItem: ResourceLocation)`{: .language-javascript }: Sets the 'seed' item to be used in the auto-generated loot table
-- `.food(foodItem: ResourceLocation)`{: .language-javascript }: Sets the 'food' item to be used in the auto-generated loot table
-- `.deadModel(model: String)`{: .language-javascript }: Sets the model to use when the crop is dead/immature and its type is `default`{:.e} or `flooded`{:.e}
-- `.doubleDeadModels(topModel: String, bottomModel: String)`{: .language-javascript }: Sets the models to use when the crop is dead/immature and sets the crop's type to `double`{:.e}
-- `.spreadingDeadModels(coreModel: String, sideModel: String)`{: .language-javascript }: Sets the models to use when the crop is dead/immature and sets the crop's type to `spreading`{:.e}
+- `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript .m-link #wild-crop-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+- `.type(type: Type)`{: .language-javascript .m-link #wild-crop-type }: Sets the type of wild crop block to be used, available options are `default`{:.e}, `double`{:.e}, `flooded`{:.e}, and `spreading`{:.e}, defaults to `default`{:.e}
+- `.spreadingFruitBlock(fruitBlock: ResourceLocation)`{: .language-javascript .m-link #wild-crop-fruit-block }: Sets the block to be used as the fruit block if the wild crop's type is `spreading`, defaults to `minecraft:honey_block`
+- `.seeds(seedItem: ResourceLocation)`{: .language-javascript .m-link #wild-crop-seeds }: Sets the 'seed' item to be used in the auto-generated loot table
+- `.food(foodItem: ResourceLocation)`{: .language-javascript .m-link #wild-crop-food }: Sets the 'food' item to be used in the auto-generated loot table
+- `.deadModel(model: String)`{: .language-javascript .m-link #wild-crop-dead-model }: Sets the model to use when the crop is dead/immature and its type is `default`{:.e} or `flooded`{:.e}
+- `.doubleDeadModels(topModel: String, bottomModel: String)`{: .language-javascript .m-link #wild-crop-double-models }: Sets the models to use when the crop is dead/immature and sets the crop's type to `double`{:.e}
+- `.spreadingDeadModels(coreModel: String, sideModel: String)`{: .language-javascript .m-link #wild-crop-spreading-dead-models }: Sets the models to use when the crop is dead/immature and sets the crop's type to `spreading`{:.e}
 
 #### Example
 

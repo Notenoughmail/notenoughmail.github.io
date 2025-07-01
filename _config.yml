@@ -99,13 +99,13 @@ post-tags:
     link: /writing/#politics
 
 code-colors:
-  enum: ff42b5
+  enum: ff23d2
   symbol: 47ab36
-  annotation: 71d7ff
+  annotation: f77
   number: eddc96
   func: fdce68
   primitive: e19ef5
   reserved: e19ef5
-  method: ab94fa
+  method: dfff6b
   string: a3eea0
   variable: 60eded

@@ -774,6 +774,9 @@ event.recipes.tfc.scraping(
 - 4th argument: A string, the texture of the unscraped item
 - *Optional 5th argument*: An [ItemStackProviderJS]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), an optional extra drop, only applicable to TFC 3.1.3-beta and above
 
+{: .notice #scraping-ingredient-tag }
+In order to actually place an item on a log to scrape it, it must have the `tfc:scrapable` item tag
+
 ### Example
 
 ```js
