@@ -822,10 +822,10 @@ Inherits the methods of the default block builder
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_torch', 'tfc:torch')
-        .deacyLength(120000) // 6 in game days
+        .decayLength(120000) // 6 in game days
         .flameParticle('minecraft:soul_fire_flame')
         .dead(dead => {
-            dead.lootTable = (buidler) => {
+            dead.lootTable = (builder) => {
                 builder.addPool(pool => {
                     pool.survivesExplosion();
                     pool.addItem('3x minecraft:glowstone');
