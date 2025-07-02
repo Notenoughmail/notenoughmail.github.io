@@ -101,3 +101,16 @@ h6.m-link-viz .anchor-heading {
 h6.callout {
     font-size:inherit !important;
 }
+
+:is(h1, h2, h3, h4, h5, h6):not(.callout):target {
+    background-color:#{{ site.code-colors.target-highlight }};
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+li:has(> :target) {
+    background-color:#{{ site.code-colors.target-highlight }};
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid #c657f4
+}

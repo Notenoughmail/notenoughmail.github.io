@@ -116,7 +116,7 @@ event.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean): v
 - `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-2 }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 - `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-javascript .m-link #inv-limit-3 }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual`{:.v} determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 
-Allows size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, `huge`{:.e}
+Allowed size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, and `huge`{:.e}
 
 Additionally, every event listener requires the name of a menu type[^1] in its declaration as a key for which menus the limits are applied to.
 
