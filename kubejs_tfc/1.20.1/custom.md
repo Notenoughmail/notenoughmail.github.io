@@ -734,7 +734,8 @@ Inherits the methods of the default block builder
 - `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-javascript .m-link #axle-water-wheel }: Creates and sets the properties of the axle's water wheel block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-    - `.texture(texture: String)`{: .language-javascript }: Sets the texture the water wheel will use, the path is relative to `/textures/entity/waterwheel/`
+    - `.texture(texture: string)`{: .language-javascript }: Sets the texture the water wheel will use, the path is relative to the `/textures/entity/water_wheel/` subdirectory
+    - `.textureRaw(texture: String)`{: .language-javascript}: Sets the texture the water wheel will use, the path is relative to the `/textures/` subdirectory
 - `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-javascript .m-link #axle-gear-box }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-javascript }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -827,10 +828,10 @@ Inherits the methods of the default block builder
 ```js
 StartupEvents.registry('block', event => {
     event.create('my_torch', 'tfc:torch')
-        .deacyLength(120000) // 6 in game days
+        .decayLength(120000) // 6 in game days
         .flameParticle('minecraft:soul_fire_flame')
         .dead(dead => {
-            dead.lootTable = (buidler) => {
+            dead.lootTable = (builder) => {
                 builder.addPool(pool => {
                     pool.survivesExplosion();
                     pool.addItem('3x minecraft:glowstone');
