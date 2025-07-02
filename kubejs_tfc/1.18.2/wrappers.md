@@ -106,7 +106,7 @@ ItemStackProvider.of('minecraft:steak').simpleModifier('tfc:copy_food')
 ItemStackProvider.of('minecraft:steak').jsonModifier({type:'tfc:copy_food'})
 ```
 
-If the provided modifier is just a string it will be added to the modifier list as an object representing `{ "type": string }`
+If the provided modifier is just a string it will be added to the modifier list as an object representing `{ "type": String }`
 
 #### Convenience Methods
 
@@ -120,11 +120,11 @@ Returns an empty item stack provider
 
 Adds an [add heat](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-stack-modifiers/#add-heat) modifier with the provided integer.
 
-##### addTrait(string)
+##### addTrait(String)
 
 Adds an [add trait](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-stack-modifiers/#add-trait) modifier with the [trait](https://terrafirmacraft.github.io/Documentation/1.18.x/data/common-types/#food-traits) defined by the provided string
 
-##### removeTrait(string)
+##### removeTrait(String)
 
 Adds a [remove trait](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-stack-modifiers/#remove-trait) modifier with the [trait](https://terrafirmacraft.github.io/Documentation/1.18.x/data/common-types/#food-traits) defined by the provided string
 
@@ -168,7 +168,7 @@ The second argument is an optional array of portion consumers which have four op
 
 For an example of usage see the advanced shapeless crafting recipe [example](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Recipes#advanced-shapeless-crafting)
 
-##### dyeLeather(string)
+##### dyeLeather(String)
 
 Adds a `tfc:dye_leather` modifier with the color defined by the string provided, must match a dye color (red, cyan, etc.)
 
@@ -188,7 +188,7 @@ Adds a [sandwich](https://terrafirmacraft.github.io/Documentation/1.18.x/data/it
 
 Adds a `tfc:copy_oldest_food` modifier
 
-##### simpleModifier(string)
+##### simpleModifier(String)
 
 Adds a modifier with the type defined by the provided string
 
@@ -226,8 +226,8 @@ Adds a `tfcchannelcasting:conditional` modifier
 
 The first consumer has several methods
 
-- `.type(string)`{: .language-javascript }: Sets the type of condition, may either be `has_trait` or `date_range`
-- `.trait(string)`{: .language-javascript }: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
+- `.type(String)`{: .language-javascript }: Sets the type of condition, may either be `has_trait` or `date_range`
+- `.trait(String)`{: .language-javascript }: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
 - `.minDay(integer)`{: .language-javascript }: Sets the minimum day of the month the conditional looks for, only applicable for the `date_range` type
 - `.maxDay(integer)`{: .language-javascript }: Sets the maximum day of the month the conditional looks for, only applicable for the `date_range` type
 - `.minMonth(integer)`{: .language-javascript }: Sets the minimum month of the year the conditional looks for, only applicable for the `date_range` type

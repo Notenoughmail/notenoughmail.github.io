@@ -90,7 +90,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
     - `.consumeChance(number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
     - `.thirst(integer)`{: .language-javascript }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
     - `.intoxication(integer)`{: .language-javascript }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
-    - `.effect(string, Consumer<EffectData>?)`{: .language-javascript }
+    - `.effect(String, Consumer<EffectData>?)`{: .language-javascript }
         - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
         - *optional 2nd argument*: A consumer with several methods:
             - `.duration(integer)`{: .language-javascript }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
@@ -420,7 +420,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 - 1st argument: An ingredient, specifying the seed to use
 - 2nd argument: A consumer with several methods
-    - `.planter(string)`{: .language-javascript }: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
+    - `.planter(String)`{: .language-javascript }: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
     - `.tier(integer)`{: .language-javascript }: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
     - `.stages(integer)`{: .language-javascript }: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
         - As an example squash has 5 textures that it uses for growing, the stage number is 4
@@ -430,11 +430,11 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
     - `.nitrogen()`{: .language-javascript }: Sets the nutrient to `nitrogen`
     - `.phosphorous()`{: .language-javascript }: Sets the nutrient to `phosphorous`
     - `.potassium()`{: .language-javascript }: Sets the nutrient to `potassium`
-    - `.texture(string...)`{: .language-javascript }: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
+    - `.texture(String...)`{: .language-javascript }: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
         - For `large`, `quad`, `hydroponic`, and `hanging`:List the textures in order of growth
         - For `trellis`:List the strings in the order: `growing`, `dry`, `flowering`, `fruiting`
         - For `bonsai`:List the strings in the order: `fruiting`, `dry`, `flowering`, `branch`, `leaves`
-    - `.specials(string...)`{: .language-javascript }: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
+    - `.specials(String...)`{: .language-javascript }: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
         - For `hanging`:Specify the fruit texture
         - For everything else this method isn't needed
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the plantable definition, if not provided a name will be automatically generated based on the ingredient

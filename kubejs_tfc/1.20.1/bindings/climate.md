@@ -17,28 +17,28 @@ These are available under the `TFC.climate` field
 ## Method Signatures
 
 ```js
-TFC.climate.getModel(o: any)
-TFC.climate.getName(model: ClimateModel)
-TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos)
-TFC.climate.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)
-TFC.climate.getAverageTemperature(level: Level, pos: BlockPos)
-TFC.climate.getAverageRainfall(level: Level, pos: BlockPos)
-TFC.climate.getFogginess(level: Level, pos: BlockPos)
-TFC.climate.getWaterFogginess(level: Level, pos: BlockPos)
-TFC.climate.getWindVector(level: Level, pos: BlockPos)
-TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos)
+TFC.climate.getModel(o: any): @Nullable ClimateModel
+TFC.climate.getName(model: ClimateModel): ResourceLocation
+TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos): number
+TFC.climate.getTemperature(level: Level, pos: BlockPos, calendarTicks: number): number
+TFC.climate.getAverageTemperature(level: Level, pos: BlockPos): number
+TFC.climate.getAverageRainfall(level: Level, pos: BlockPos): number
+TFC.climate.getFogginess(level: Level, pos: BlockPos): number
+TFC.climate.getWaterFogginess(level: Level, pos: BlockPos): number
+TFC.climate.getWindVector(level: Level, pos: BlockPos): number
+TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos): Vec2
 ```
 
-- `.getModel(o: any)`{: .language-javascript }: Attempts to get a climate model from the provided object, will return null if it cannot do so
-- `.getName(model: ClimateModel)`{: .language-javascript }: Returns the name of the provided climate model
-- `.getCurrentTemperature(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current temperature at the given level and position
-- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`{: .language-javascript }: Returns the temperature at the given level, position, and calendar tick
-- `.getAverageTemperature(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the yearly average temperature at the given level and position
-- `.getAverageRainfall(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the yearly average temperature at the given level and position
-- `.getFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current air fog value at the given level and position
-- `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current water fog value at the given level and position
-- `.getWindVector(level: Level, pos: BlockPos)`{: .language-javascript }: Returns the current `Vec2` wend vector at the given level and position
-- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-javascript }: Returns `true` if it is currently warm enough to rain at the given level and position
+- `.getModel(o: any)`{: .language-javascript .m-link #get-model }: Attempts to get a climate model from the provided object, will return null if it cannot do so
+- `.getName(model: ClimateModel)`{: .language-javascript .m-link #get-name}: Returns the name of the provided climate model
+- `.getCurrentTemperature(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-current-temp }: Returns the current temperature at the given level and position
+- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`{: .language-javascript .m-link #get-temp }: Returns the temperature at the given level, position, and calendar tick
+- `.getAverageTemperature(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-avg-temp }: Returns the yearly average temperature at the given level and position
+- `.getAverageRainfall(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-rain}: Returns the yearly average temperature at the given level and position
+- `.getFogginess(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-fog }: Returns the current air fog value at the given level and position
+- `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-water-fog }: Returns the current water fog value at the given level and position
+- `.getWindVector(level: Level, pos: BlockPos)`{: .language-javascript .m-link #get-wind }: Returns the current `Vec2` wend vector at the given level and position
+- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-javascript .m-link #warm-enough-to-rain }: Returns `true`{:.p} if it is currently warm enough to rain at the given level and position
 
 ## Example
 

@@ -1,20 +1,116 @@
 .highlight {
     .nf {
-        color:#a5e7f7;
+        color:#{{ site.code-colors.method }};
+    }
+    .k {
+        color:#{{ site.code-colors.reserved }};
     }
     .o {
-        color:#47ab36;
+        color:#{{ site.code-colors.symbol }};
+    }
+    .nb {
+        color:#{{ site.code-colors.func }};
+    }
+    .mi {
+        color:#{{ site.code-colors.number }};
+    }
+    .enum {
+        color:#{{ site.code-colors.enum }};
+    }
+    .e {
+        color:#{{ site.code-colors.enum }};
+    }
+    .nd {
+        color:#{{ site.code-colors.annotation }};
+    }
+    .kc {
+        color:#{{ site.code-colors.primitive }};
+    }
+    .s1 {
+        color:#{{ site.code-colors.string }};
+    }
+    .kv {
+        color:#{{ site.code-colors.params }};
     }
 }
 
 code {
     .nf {
-        color:#a5e7f7;
+        color:#{{ site.code-colors.method }};
     }
     .k {
-        color:#e19ef5;
+        color:#{{ site.code-colors.reserved }};
     }
     .o {
-        color:#47ab36;
+        color:#{{ site.code-colors.symbol }};
     }
+    .nb {
+        color:#{{ site.code-colors.func }};
+    }
+    .mi {
+        color:#{{ site.code-colors.number }};
+    }
+    .enum, .e {
+        color:#{{ site.code-colors.enum }};
+    }
+    .nd {
+        color:#{{ site.code-colors.annotation }};
+    }
+    .kc {
+        color:#{{ site.code-colors.primitive }};
+    }
+    .s1 {
+        color:#{{ site.code-colors.string }};
+    }
+    .kv {
+        color:#{{ site.code-colors.params }};
+    }
+}
+
+code.e {
+    color:#{{ site.code-colors.enum }};
+}
+code.f {
+    color:#{{ site.code-colors.func }};
+}
+code.p {
+    color:#{{ site.code-colors.primitive }};
+}
+code.m {
+    color:#{{ site.code-colors.method }};
+}
+code.s {
+    color:#{{ site.code-colors.string }};
+}
+code.n {
+    color:#{{ site.code-colors.number }};
+}
+code.v {
+    color:#{{ site.code-colors.params }};
+}
+
+h6.m-link-viz {
+    font-size:inherit !important;
+    display: inline;
+}
+
+h6.m-link-viz .anchor-heading {
+    left: -1.25rem;
+}
+
+h6.callout {
+    font-size:inherit !important;
+}
+
+:is(h1, h2, h3, h4, h5, h6):not(.callout):target {
+    background-color:#{{ site.code-colors.target-highlight }};
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+li:has(> :target) {
+    background-color:#{{ site.code-colors.target-highlight }};
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: 1px solid #c657f4
 }

@@ -24,7 +24,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient)
+TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
@@ -80,7 +80,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.hasTrait(delegate?: Ingredient, trait: string)
+TFC.ingredient.hasTrait(delegate?: Ingredient, trait: String): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient to which this ingredient applies to
@@ -121,7 +121,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.heatable(delegate?: Ingredient, min: @Nullable number, max: @Nullable number)
+TFC.ingredient.heatable(delegate?: Ingredient, min: @Nullable number, max: @Nullable number): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient, limits the items to which this ingredient applies to
@@ -164,7 +164,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: string)
+TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: String): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient, limits the items to which this ingredient applies
@@ -205,7 +205,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.not(delegate?: Ingredient)
+TFC.ingredient.not(delegate?: Ingredient): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient to which the ingredient is applied
@@ -243,7 +243,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 ### Method Signature
 
 ```js
-TFC.ingredient.notRotten(delegate?: Ingredient)
+TFC.ingredient.notRotten(delegate?: Ingredient): Ingredient
 ```
 
 - *Optional 1st argument*: An item ingredient to which the ingredient is applied to

@@ -45,7 +45,7 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 >
 > This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
 >
-> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `toString()` value
+> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-javascript } value
 >
 > Additionally, for definitions that use ingredients, if there are multiple definitions that have the same valid item/block/fluid, then there is no guarantee your custom definition will take precedence. This can be fixed by overriding the existing definition or modifying the tag that is used for it
 
@@ -66,12 +66,12 @@ event.climateRange(
 ```
 
 - 1st argument: A consumer with several additional methods:
-    - `.minHydration(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to 0
-    - `.maxHydration(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to 100
-    - `.hydrationWiggle(i: number)`{: .language-javascript }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to 0
-    - `.minTemperature(f: number)`{: .language-javascript }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to -100
-    - `.maxTemperature(f: number)`{: .language-javascript }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to 100
-    - `.temperatureWiggle(f: number)`{: .language-javascript }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to 0
+    - `.minHydration(i: number)`{: .language-javascript .m-link #climate-min-hydro }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to `0`{:.n}
+    - `.maxHydration(i: number)`{: .language-javascript .m-link #climate-max-hydro }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to `100`{:.n}
+    - `.hydrationWiggle(i: number)`{: .language-javascript .m-link #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
+    - `.minTemperature(f: number)`{: .language-javascript .m-link #climate-min-temp }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to `-100`{:.n}
+    - `.maxTemperature(f: number)`{: .language-javascript .m-link #climate-max-temp }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to `100`{:.n}
+    - `.temperatureWiggle(f: number)`{: .language-javascript .m-link #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
 ### Example
@@ -101,7 +101,7 @@ event.itemDamageResistance(
     name?: ResourceLocation
 )
 event.entityDamageResistance(
-    entityTag: string,
+    entityTag: String,
     piercing: @Nullable number,
     slashing: @Nullable number,
     crushing: @Nullable number,
@@ -112,9 +112,9 @@ event.entityDamageResistance(
 - 1st argument:
     - For items: An ingredient, the armor items the resistance applies to
     - For entities: A string, the entity tag to be given the resistance
-- 2nd argument: A number, the piercing resistance, may be null to not specify a resistance
-- 3rd argument: A number, the slashing resistance, may be null to not specify a resistance
-- 4th argument: A number, the crushing resistance, may be null to not specify a resistance
+- 2nd argument: A number, the piercing resistance, may be `null`{:.p} to not specify a resistance
+- 3rd argument: A number, the slashing resistance, may be `null`{:.p} to not specify a resistance
+- 4th argument: A number, the crushing resistance, may be `null`{:.p} to not specify a resistance
 - *Optional 5th argument*: A `ResourceLocation`, the name of the resistance
 
 ### Examples
@@ -153,14 +153,14 @@ event.drinkable(
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.consumeChance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to 0
-    - `.thirst(i: number)`{: .language-javascript }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to 0
-    - `.intoxication(i: number)`{: .language-javascript }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to 0
-    - `.effect(effect: string, effectData?: Consumer<BuildEffectData>)`{: .language-javascript }: Accepts a string, the name of the effect[^1] to be applied and an optional consumer with several additional methods:
-        - `.duration(i: number)`{: .language-javascript }: Accepts a number specifying the number of ticks the effect is applied for, defaults to 20
-        - `.amplifier(i: number)`{: .language-javascript }: Accepts a number specifying the level of the potion effect applied, defaults to 0
-        - `.chance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to 1
-    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-javascript }: Accepts a consumer with the same methods as the one in [food items](#food-items)
+    - `.consumeChance(f: number)`{: .language-javascript .m-link #drinkable-consume-chance }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
+    - `.thirst(i: number)`{: .language-javascript .m-link #drinkable-thirst }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
+    - `.intoxication(i: number)`{: .language-javascript .m-link #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
+    - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-javascript .m-link #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
+        - `.duration(i: number)`{: .language-javascript }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
+        - `.amplifier(i: number)`{: .language-javascript }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
+        - `.chance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
+    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-javascript .m-link #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
@@ -204,10 +204,10 @@ event.fauna(
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
 - 2nd argument: A consumer with several additional methods:
-    - `.chance(i: number)`{: .language-javascript }: Accepts a number, sets the chance in 1/N chunks that something will spawn, defaults to 1
-    - `.distanceBelowSeaLevel(i: number)`{: .language-javascript }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
-    - `.solidGround(b: boolean)`{: .language-javascript }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`
-    - `.maxBrightness(i: number)`{: .language-javascript }: Accepts a number, sets the maximum light level the mob may spawn in
+    - `.chance(i: number)`{: .language-javascript .m-link #fauna-chance }: Accepts a number, sets the chance in `1/N`{: .language-javascript } chunks that something will spawn, defaults to `1`{:.n}
+    - `.distanceBelowSeaLevel(i: number)`{: .language-javascript .m-link #fauna-distance-below-sea-level }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
+    - `.solidGround(b: boolean)`{: .language-javascript .m-link #fauna-solid-ground }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`{:.p}
+    - `.maxBrightness(i: number)`{: .language-javascript .m-link #fauna-max-brightness }: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
 ### Example
@@ -240,9 +240,9 @@ event.fertilizer(
 ```
 
 - 1st argument: An item ingredient, the items the fertilizer applies to
-- 2nd argument: A number, sets the nitrogen value of the fertilizer, may be null to not set a value, defaults to 0
-- 3rd argument: A number, sets the phosphorus value of the fertilizer, may be null to not set a value, defaults to 0
-- 4th argument: A number, sets the potassium value of the fertilizer, may be null to not set a value, defaults to 0
+- 2nd argument: A number, sets the nitrogen value of the fertilizer, may be `null`{:.p} to not set a value, defaults to `0`{:.n}
+- 3rd argument: A number, sets the phosphorus value of the fertilizer, may be `null`{:.p} to not set a value, defaults to `0`{:.n}
+- 4th argument: A number, sets the potassium value of the fertilizer, may be `null`{:.p} to not set a value, defaults to `0`{:.n}
 - *Optional 5th argument*: A `ResourceLocation`, the name of the fertilizer
 
 ### Example
@@ -278,16 +278,16 @@ event.foodItem(
 
 - 1st argument: An item ingredient, the items to which the food item definition applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.type(type: string)`{: .language-javascript }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
-    - `.hunger(i: number)`{: .language-javascript }: Accepts a number, sets how much hunger the food restores, defaults to 4. A full hunger bar is 20
-    - `.saturation(f: number)`{: .language-javascript }: Accepts a number, sets how much saturation the food restores, defaults to 0
-    - `.water(f: number)`{: .language-javascript }: Accepts a number, sets how much water the food restores, defaults to 0. A full water bar is equal to 100
-    - `.decayModifier(f: number)`{: .language-javascript }: Accepts a number, sets how quickly the food decays, defaults to 1. A higher number indicates a faster decay rate
-    - `.grain(f: number)`{: .language-javascript }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to 0
-    - `.fruit(f: number)`{: .language-javascript }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to 0
-    - `.vegetables(f: number)`{: .language-javascript }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to 0
-    - `.protein(f: number)`{: .language-javascript }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to 0
-    - `.dairy(f: number)`{: .language-javascript }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to 0
+    - `.type(type: String)`{: .language-javascript .m-link #food-item-type }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
+    - `.hunger(i: number)`{: .language-javascript .m-link #food-item-hunger }: Accepts a number, sets how much hunger the food restores, defaults to `4`{:.n}. A full hunger bar is `20`{:.n}
+    - `.saturation(f: number)`{: .language-javascript .m-link #food-item-saturation }: Accepts a number, sets how much saturation the food restores, defaults to `0`{:.n}
+    - `.water(f: number)`{: .language-javascript .m-link #food-item-water }: Accepts a number, sets how much water the food restores, defaults to `0`{:.n}. A full water bar is equal to `100`{:.n}
+    - `.decayModifier(f: number)`{: .language-javascript .m-link #food-item-decay-mod }: Accepts a number, sets how quickly the food decays, defaults to `1`{:.n}. A higher number indicates a faster decay rate
+    - `.grain(f: number)`{: .language-javascript .m-link #food-item-grain }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to `0`{:.n}
+    - `.fruit(f: number)`{: .language-javascript .m-link #food-item-fruit }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to `0`{:.n}
+    - `.vegetables(f: number)`{: .language-javascript .m-link #food-item-veg }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to `0`{:.n}
+    - `.protein(f: number)`{: .language-javascript .m-link #food-item-protein }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to `0`{:.n}
+    - `.dairy(f: number)`{: .language-javascript .m-link #food-item-dairy }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to `0`{:.n}
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the food definition
 
 ### Example
@@ -321,7 +321,7 @@ event.fuel(
 - 1st argument: An item ingredient, the items the fuel applies to
 - 2nd argument: A number, the temperature °C that the fuel burns at
 - 3rd argument: A number, the number of ticks the fuel burns for
-- 4th argument: A number, the purity of the fuel, may be null to not specify a value
+- 4th argument: A number, the purity of the fuel, may be `null`{:.p} to not specify a value
 - *Optional 5th argument*: A `ResourceLocation`, the name of the fuel
 
 ### Example
@@ -350,8 +350,8 @@ event.itemHeat(
 
 - 1st argument: An item ingredient, the items the heat definition applies to
 - 2nd argument: A number, specifies how fast the the item heats up relative to others, measured in Energy / °C
-- 3rd argument: A number, specifies the temperature at which the item can be worked, may be null to allow working at any temperature
-- 4th argument: A number, specifies the temperature at which the item can be welded, may be null to allow welding at any temperature
+- 3rd argument: A number, specifies the temperature at which the item can be worked, may be `null`{:.p} to allow working at any temperature
+- 4th argument: A number, specifies the temperature at which the item can be welded, may be `null`{:.p} to allow welding at any temperature
 - *Optional 5th argument*: A `ResourceLocation`, the name of the heat definition
 
 ### Example
@@ -378,8 +378,8 @@ event.itemSize(
 ```
 
 - 1st argument: An item ingredient, the items the size applies to
-- 2nd argument: A `Size`, sets the size of the item, may be `tiny`, `very_small`, `small`, `normal`, `large`, `very_large`, `huge`, or null to not specify a size
-- 3rd argument: A `Weight`, sets the weight of the item, may be `very_light`, `light`, `medium`, `heavy`, `very_heavy`, or null to not specify a weight
+- 2nd argument: A `Size`{:.e}, sets the size of the item, may be `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, `huge`{:.e}, or `null`{:.p} to not specify a size
+- 3rd argument: A `Weight`{:.e}, sets the weight of the item, may be `very_light`{:.e}, `light`{:.e}, `medium`{:.e}, `heavy`{:.e}, `very_heavy`{:.e}, or `null`{:.p} to not specify a weight
 - *Optional 4th argument*: A `ResourceLocation`, the name of the size definition
 
 ### Example
@@ -404,7 +404,7 @@ event.knappingType(
     ingredient: Ingredient,
     ingredientCount: number,
     amountToConsume: number,
-    clickSound: string,
+    clickSound: String,
     consumeAfterComplete: boolean,
     useDisabledTexture: boolean,
     spawnsParticles: boolean,
@@ -493,9 +493,9 @@ event.metal(
 - 1st argument: A `Fluid`, the fluid this metal is built upon
 - 2nd argument: A number, the melting temperature of the metal
 - 3rd argument: A number, specifies how fast the metal heats up relative to others, measured in Energy / (mB * °C)
-- 4th argument: An item ingredient, defines the ingots of the metal, may be null to indicate the metal does not have any ingots
-- 5th argument: An item ingredient, defines the double ingots of the metal, may be null to indicate the metal does not have any double ingots
-- 6th argument: An item ingredient, defines the sheets of the metal, may be null to indicate the metal does not have any sheets
+- 4th argument: An item ingredient, defines the ingots of the metal, may be `null`{:.p} to indicate the metal does not have any ingots
+- 5th argument: An item ingredient, defines the double ingots of the metal, may be `null`{:.p} to indicate the metal does not have any double ingots
+- 6th argument: An item ingredient, defines the sheets of the metal, may be `null`{:.p} to indicate the metal does not have any sheets
 - 7th argument: A number, the tier of the metal
 - *Optional 8th argument*: A `ResourceLocation`, the name of the metal
 
@@ -567,7 +567,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ```js
 event.sluicing(
     ingredient: Ingredient,
-    lootTable: string,
+    lootTable: String,
     name?: ResourceLocation
 )
 ```
@@ -593,8 +593,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 ```js
 event.panning(
     blockIngredient: BlockIngredient,
-    lootTable: string,
-    models: List<string>,
+    lootTable: String,
+    models: List<String>,
     name?: ResourceLocation
 )
 ```
@@ -664,26 +664,26 @@ event.firmalifePlantable(
     extraSeedChance: @Nullable number,
     seed: @Nullable ItemStack,
     crop: ItemStack,
-    nutrient: @Nullable Nutrient,
-    textures: string[],
-    special: @Nullable string,
+    nutrient: @Nullable NutrientType,
+    textures: String[],
+    special: @Nullable String,
     name?: ResourceLocation
 )
 ```
 
 - 1st argument: An item ingredient, the seed items to be used for the plantable definition
-- 2nd argument: The planter type to use, may be `quad`, `large`, `hanging`, `trellis`, `bonsai`, or `hydroponic`, may be null to default to `quad`
-- 3rd argument: The minimum greenhouse tier needed for the plant to grow, defaults to `0`
-- 4th argument: How many stages the planter has, one less than the number of textures the planter must cycle through, may be null for `trellis`, and `bonsai` planter types
-- 5th argument: A number, in the range [0, 1], determines the chance of getting an extra seed stack back when harvesting, may be null to default to `0.5`
-- 6th argument: An item stack, the seed item returned when harvested, may be null to not drop a seed item
+- 2nd argument: The planter type to use, may be `quad`{:.e}, `large`{:.e}, `hanging`{:.e}, `trellis`{:.e}, `bonsai`{:.e}, or `hydroponic`{:.e}, may be `null`{:.p} to default to `quad`{:.e}
+- 3rd argument: The minimum greenhouse tier needed for the plant to grow, defaults to `0`{:.n}
+- 4th argument: How many stages the planter has, one less than the number of textures the planter must cycle through, may be `null`{:.p} for `trellis`{:.e}, and `bonsai`{:.e} planter types
+- 5th argument: A number, in the range [0, 1], determines the chance of getting an extra seed stack back when harvesting, may be `null`{:.p} to default to `0.5`{:.n}
+- 6th argument: An item stack, the seed item returned when harvested, may be `null`{:.p} to not drop a seed item
 - 7th argument: An item stack, the product of the crop
-- 8th argument: A `Nutrient`, the nutrient the crop consumes, may be `nitrogen`, `phosphorous`, or `potassium`, may be null to default to `nitrogen`
+- 8th argument: A `NutrientType`{:.e}, the nutrient the crop consumes, may be `nitrogen`{:.e}, `phosphorous`{:.e}, or `potassium`{:.e}, may be `null`{:.e} to default to `nitrogen`{:.e}
 - 9th argument: An array of strings, the path of textures to use. Has different rules for different planter types
-    - For `large`, `quad`, `hydroponic`, and `hanging` planter types: Order the textures in the same order as the growth order
-    - For the `trellis` planter type: Order the textures in the order growing, dry, flowering, fruiting
-    - For the `bonsai` planter type: Order the textures in the order fruiting, dry, flowering, branch, leaves
-- 10th argument: A string, the extra texture used by `hanging` planter types. Pass in the fruit texture if the planter type is `hanging` else pass in null
+    - For `large`{:.e}, `quad`{:.e}, `hydroponic`{:.e}, and `hanging`{:.e} planter types: Order the textures in the same order as the growth order
+    - For the `trellis`{:.e} planter type: Order the textures in the order growing, dry, flowering, fruiting
+    - For the `bonsai`{:.e} planter type: Order the textures in the order fruiting, dry, flowering, branch, leaves
+- 10th argument: A string, the extra texture used by `hanging`{:.e} planter types. Pass in the fruit texture if the planter type is `hanging`{:.e} else pass in `null`{:.p}
 - *Optional 11th argument*: A `ResourceLocation`, the name of the planter definition
 
 ### Example
@@ -730,11 +730,11 @@ event.beneathNetherFertilizer(
 ```
 
 - 1st argument: An item ingredient, the items this definition applies to
-- 2nd argument: A number, in the range [0, 1], sets the 'death' value of the fertilizer, may be null to omit specifying a value
-- 3rd argument: A number, in the range [0, 1], sets the 'destruction' value of the fertilizer, may be null to omit specifying a value
-- 4th argument: A number, in the range [0, 1], sets the 'decay' value of the fertilizer, may be null to omit specifying a value
-- 5th argument: A number, in the range [0, 1], sets the 'sorrow' value of the fertilizer, may be null to omit specifying a value
-- 6th argument: A number, in the range [0, 1], sets the 'flame' value of the fertilizer, may be null to omit specifying the value
+- 2nd argument: A number, in the range [0, 1], sets the `death`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 3rd argument: A number, in the range [0, 1], sets the `destruction`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 4th argument: A number, in the range [0, 1], sets the `decay`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 5th argument: A number, in the range [0, 1], sets the `sorrow`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 6th argument: A number, in the range [0, 1], sets the `flame`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying the value
 - *optional 7th argument*: A `ResourceLocation`, the name of the nether fertilizer definition
 
 ### Example
@@ -766,7 +766,7 @@ event.beneathLostPage(
     costs: number[],
     rewards: number[],
     punishments: Punishment[],
-    langKey: @Nullable string,
+    langKey: @Nullable String,
     name?: ResourceLocation
 )
 ```
@@ -775,16 +775,16 @@ event.beneathLostPage(
 - 2nd argument: A item, the reward for completing the ritual
 - 3rd argument: A number array, must contain at least one value. When a lost page is 'activated', one of these numbers will be chosen and used as the number of ingredients required
 - 4th argument: A number array, must contain at least one value. When a lost page is 'activated', one of these numbers will be chosen and used as the number of reward items the ritual gives
-- 5th argument: A `Punishment` array, must contain at least one value. When a lost page is 'activated', one of these punishments will be chosen and for application on ritual completion. The available punishments are as follows
-    - `none`: Does nothing
-    - `levitation`: Makes nearby living entities levitate briefly
-    - `drunkenness`: Makes the player drunk and nauseous
-    - `blaze_inferno`: Spawns a handful of blazes nearby and alights the ground
-    - `infestation`: Spawns a handful of silverfish nearby
-    - `withering`: Spawns a handful of wither skeletons nearby and gives the player withering
-    - `slime`: Spawns a handful of slimes nearby, drops some slimeballs on the ground, and replaces certain blocks nearby with slimed netherrack
-    - `unknown`: Randomly selects one of the other punishments to enact
-- 6th argument: A string, the lang key to use instead of the ingredients when a 'activated' lost page's info screen is present. Useful for ingredients that are not single items. May be null to default to the ingredient's first valid item
+- 5th argument: A `Punishment`{:.e} array, must contain at least one value. When a lost page is 'activated', one of these punishments will be chosen and for application on ritual completion. The available punishments are as follows
+    - `none`{:.e}: Does nothing
+    - `levitation`{:.e}: Makes nearby living entities levitate briefly
+    - `drunkenness`{:.e}: Makes the player drunk and nauseous
+    - `blaze_inferno`{:.e}: Spawns a handful of blazes nearby and alights the ground
+    - `infestation`{:.e}: Spawns a handful of silverfish nearby
+    - `withering`{:.e}: Spawns a handful of wither skeletons nearby and gives the player withering
+    - `slime`{:.e}: Spawns a handful of slimes nearby, drops some slimeballs on the ground, and replaces certain blocks nearby with slimed netherrack
+    - `unknown`{:.e}: Randomly selects one of the other punishments to enact
+- 6th argument: A string, the lang key to use instead of the ingredients when a 'activated' lost page's info screen is present. Useful for ingredients that are not single items. may be `null`{:.p} to default to the ingredient's first valid item
 - *optional 7th argument*: A `ResourceLocation`, the name of the lost page definition
 
 ### Example
@@ -817,60 +817,57 @@ TFCEvents.data(event => {
 
 ## Attached TFC data
 
-In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `getData()` method which returns a `Map<String, Object>`. TFC's data can be accessed through `tfc:player_data`
+In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `.getData()`{: .language-javascript } method which returns a `Map<String, Object>`{: .language-javascript }. TFC's data can be accessed through `tfc:player_data`
 
 There are several methods to access and modify the state of TFC's additional data
 
 ### Method Signatures
 
 ```js
-declare class TFCPlayerDataJS {
-    constructor(player: Player)
-    getChiselMode(): ChiselMode
-    setChiselMode(mode: ChiselMode): void
-    getIntoxicatedTicks(): number
-    addIntoxicatedTicks(ticks: number): void
-    getLastDrinkTick(): number
-    setLastDrinkTick(tick: number): void
-    playerEat(item: ItemStack): void
-    getFoodLevel(): number
-    setFoodLevel(i: number): void
-    needsFood(): boolean
-    addExhaustion(f: number): void
-    getSaturationLevel(): number
-    setSaturationLevel(f: number): void
-    getThirstModifier(): number
-    getThirstContributionFromTemperature(): number
-    getThirst(): number
-    setThirst(f: number): void
-    addThirst(f: number): void
-    getAverageNutrition(): number
-    getNutrient(nutrient: Nutrient): number
-    getNutrients(): number[]
-}
+data.getChiselMode(): ChiselMode
+data.setChiselMode(mode: ChiselMode): void
+data.getIntoxicatedTicks(): number
+data.addIntoxicatedTicks(ticks: number): void
+data.getLastDrinkTick(): number
+data.setLastDrinkTick(tick: number): void
+data.playerEat(item: ItemStack): void
+data.getFoodLevel(): number
+data.setFoodLevel(i: number): void
+data.needsFood(): boolean
+data.addExhaustion(f: number): void
+data.getSaturationLevel(): number
+data.setSaturationLevel(f: number): void
+data.getThirstModifier(): number
+data.getThirstContributionFromTemperature(): number
+data.getThirst(): number
+data.setThirst(f: number): void
+data.addThirst(f: number): void
+data.getAverageNutrition(): number
+data.getNutrient(nutrient: NutrientType): number
+data.getNutrients(): number[]
 ```
 
-- `.getChiselMode()`{: .language-javascript }: Returns the player's current `ChiselMode`, will be either `smooth`, `stair`, or `slab`
-- `.setChiselMode(mode: ChiselMode)`{: .language-javascript }: Sets the player's current chisel mode, will accept `smooth`, `stair`, or `slab`
-- `.getIntoxicatedTicks()`{: .language-javascript }: Returns the number of ticks the player is intoxicated for
-- `.addIntoxicatedTicks(ticks: number)`{: .language-javascript }: Adds to the player's intoxicated ticks
-- `.getLastDrinkTick()`{: .language-javascript }: Returns the last tick the player drank something
-- `.setLastDrinkTick(tick: number)`{: .language-javascript }: Sets the last tick the player drank something
-- `.playerEat(item: ItemStack)`{: .language-javascript }: Makes the player eat the provided `ItemStack`
-- `.getFoodLevel()`{: .language-javascript }: Returns the player's current food level
-- `.setFoodLevel(i: number)`{: .language-javascript }: Sets the player's current food level
-- `.needsFood()`{: .language-javascript }: Returns true if the player needs food
-- `.addExhaustion(f: number)`{: .language-javascript }: Adds the given exhaustion to the player
-- `.getSaturationLevel()`{: .language-javascript }: Returns the player's saturation level
-- `.setSaturationLevel(f: number)`{: .language-javascript }: Sets the player's saturation level
-- `.getThirstModifier()`{: .language-javascript }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
-- `.getThirstContributionFromTemperature()`{: .language-javascript }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
-- `.getThirst()`{: .language-javascript }: Returns the player's thirst
-- `.setThirst(f: number)`{: .language-javascript }: Sets the player's thirst
-- `.addThirst(f: number)`{: .language-javascript }: Adds the provided thirst the the player's thirst
-- `.getAverageNutrition()`{: .language-javascript }: Returns the average nutrition level of the player
-- `.getNutrient(nutrient: Nutrient)`{: .language-javascript }: Returns the player's nutrition level for the given nutrient, accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
-- `.getNutrients()`{: .language-javascript }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`, `fruit`, `vegetables`, `protein`, `dairy`
+- `.getChiselMode()`{: .language-javascript .m-link #player-data-chisel }: Returns the player's current `ChiselMode`{:.e}, will be either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.setChiselMode(mode: ChiselMode)`{: .language-javascript .m-link #player-data-set-chisel }: Sets the player's current chisel mode, will accept `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.getIntoxicatedTicks()`{: .language-javascript .m-link #player-data-intoxication-ticks }: Returns the number of ticks the player is intoxicated for
+- `.addIntoxicatedTicks(ticks: number)`{: .language-javascript .m-link #player-data-add-intoxication-ticks }: Adds to the player's intoxicated ticks
+- `.getLastDrinkTick()`{: .language-javascript .m-link #player-data-last-drink-tick }: Returns the last tick the player drank something
+- `.setLastDrinkTick(tick: number)`{: .language-javascript .m-link #player-data-set-last-drink-tick }: Sets the last tick the player drank something
+- `.playerEat(item: ItemStack)`{: .language-javascript .m-link #player-data-eat }: Makes the player eat the provided `ItemStack`
+- `.getFoodLevel()`{: .language-javascript .m-link #player-data-food-level }: Returns the player's current food level
+- `.setFoodLevel(i: number)`{: .language-javascript .m-link #player-data-set-food-level }: Sets the player's current food level
+- `.needsFood()`{: .language-javascript .m-link #player-data-needs-food }: Returns true if the player needs food
+- `.addExhaustion(f: number)`{: .language-javascript .m-link #player-data-add-exhaustion }: Adds the given exhaustion to the player
+- `.getSaturationLevel()`{: .language-javascript .m-link #player-data-saturation-level }: Returns the player's saturation level
+- `.setSaturationLevel(f: number)`{: .language-javascript .m-link #player-data-set-saturation-level }: Sets the player's saturation level
+- `.getThirstModifier()`{: .language-javascript .m-link #player-data-thirst-modifier }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
+- `.getThirstContributionFromTemperature()`{: .language-javascript .m-link #player-data-thirst-contribution-temp }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
+- `.getThirst()`{: .language-javascript .m-link #player-data-thirst }: Returns the player's thirst
+- `.setThirst(f: number)`{: .language-javascript .m-link #player-data-set-thirst }: Sets the player's thirst
+- `.addThirst(f: number)`{: .language-javascript .m-link #player-data-add-thirst }: Adds the provided thirst the the player's thirst
+- `.getAverageNutrition()`{: .language-javascript .m-link #player-data-avg-nutrition }: Returns the average nutrition level of the player
+- `.getNutrient(nutrient: NutrientType)`{: .language-javascript .m-link #player-data-nutrient }: Returns the player's nutrition level for the given nutrient, accepts `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
+- `.getNutrients()`{: .language-javascript .m-link #player-data-nutrients }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, `dairy`{:.e}
 
 ### Example
 
