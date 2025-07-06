@@ -53,6 +53,8 @@
         }
     }
 
+    if (!document.location.href.endsWith("test/")) {
+
     /* Extremely terrible way to do this, but it colors things decently until the Proper Solution™ is implemented */
     const functionalInterfaces = [
         "Consumer",
@@ -146,4 +148,7 @@
             }
         }
     }
+} else {
+    console.warn("Encountered test page");
+}
 </script>
