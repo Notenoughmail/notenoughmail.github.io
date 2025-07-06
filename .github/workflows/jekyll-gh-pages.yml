@@ -6,7 +6,7 @@ on:
       - main  # Here source code branch is `master`, it could be other branch
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,41 +25,16 @@ jobs:
       # For latest version: `jeffreytse/jekyll-deploy-action@master`
       - uses: jeffreytse/jekyll-deploy-action@master
         with:
-          provider: 'github'                 # Default is github
+          provider: 'github'         # Default is github
           token: ${{ secrets.GITHUB_TOKEN }} # It's your Personal Access Token(PAT)
-          ssh_private_key: ''                # It's your SSH private key (SSH approach)
-          repository: ''                     # Default is current repository
-          branch: 'gh-pages'                 # Default is gh-pages for github provider
-          jekyll_src: './'                   # Default is root directory
-          jekyll_cfg: '_config.yml'          # Default is _config.yml
-          jekyll_baseurl: ''                 # Default is according to _config.yml
-          ruby_ver: '3.2.0'                  # Default is 3.2.0 version
-          bundler_ver: '2.5.9'               # Default is compatible bundler version (~>2.5.0)
-          cname: ''                          # Default is to not use a cname
-          actor: 'github-actions[bot]'       # Default is the GITHUB_ACTOR
-          pre_build_commands: ''             # Installing additional dependencies (Arch Linux)
-
-      - uses: actions/upload-pages-artifact@v3
-        name: Upload static files
-        id: deployment
-        with:
-          path: './github/workspace/build/' 
-
-  deploy:
-    permissions:
-      id-token: 'write'
-      contents: 'write'
-      deployments: 'write'
-      pages: 'write'
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - uses: actions/deploy-pages@v4
-        name: Deploy
-        id: deployment
+          ssh_private_key: ''        # It's your SSH private key (SSH approach)
+          repository: ''             # Default is current repository
+          branch: 'gh-pages'         # Default is gh-pages for github provider
+          jekyll_src: './'           # Default is root directory
+          jekyll_cfg: '_config.yml'  # Default is _config.yml
+          jekyll_baseurl: ''         # Default is according to _config.yml
+          ruby_ver: '3.2.0'               # Default is 3.2.0 version
+          bundler_ver: '2.5.9'            # Default is compatible bundler version (~>2.5.0)
+          cname: ''                  # Default is to not use a cname
+          actor: ''                  # Default is the GITHUB_ACTOR
+          pre_build_commands: ''     # Installing additional dependencies (Arch Linux)
