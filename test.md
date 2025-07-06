@@ -85,3 +85,34 @@ htmz:
 This page can be safely ignored :)
 
 <code style="color:25FF25;">Haggard</code>
+
+Kube Lang Parser Test
+
+```kube
+event.describe(param: Function<NotBlockIntrument, number>): @Nullable boolean
+
+ServerEvents.recipes(event => {
+    let { tfc } = event.recipes;
+
+    label:
+    tfc.heating(TFC.isp.blah())
+        .woah()
+})
+
+TFC.call('Belieze', {
+    width: 9,
+    height: 1,
+    size: s => s.isSmallerThan("large")
+})
+
+callback: Month
+
+declare class TemperatureCallback {
+    apply(be: BlockEntityJS, currentTemperature: number, calendarTick: number, skippedTicks: number): number
+    fill(quest: int[5000]): void
+}
+```
+
+`woah: Clazz`{: .language-kube }
+
+`.huh(): Woah`{: .language-kube }
