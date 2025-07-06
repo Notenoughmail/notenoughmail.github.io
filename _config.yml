@@ -98,7 +98,7 @@ post-tags:
     title: Politics
     link: /writing/#politics
 
-code-colors:
+colors:
   enum: ff23d2
   symbol: 47ab36
   annotation: f77
@@ -111,3 +111,4 @@ code-colors:
   params: 28e5e5
   target-highlight: 4a0068
   object-key: c1a226
+  light-link: 82b5fa

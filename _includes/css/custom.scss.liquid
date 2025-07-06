@@ -1,95 +1,95 @@
 .highlight {
     .nf {
-        color:#{{ site.code-colors.method }};
+        color:#{{ site.colors.method }};
     }
     .na {
-        color:#{{ site.code-colors.object-key }};
+        color:#{{ site.colors.object-key }};
     }
     .k {
-        color:#{{ site.code-colors.reserved }};
+        color:#{{ site.colors.reserved }};
     }
     .o {
-        color:#{{ site.code-colors.symbol }};
+        color:#{{ site.colors.symbol }};
     }
     .nb {
-        color:#{{ site.code-colors.func }};
+        color:#{{ site.colors.func }};
     }
     .mi {
-        color:#{{ site.code-colors.number }};
+        color:#{{ site.colors.number }};
     }
     .enum {
-        color:#{{ site.code-colors.enum }};
+        color:#{{ site.colors.enum }};
     }
     .e {
-        color:#{{ site.code-colors.enum }};
+        color:#{{ site.colors.enum }};
     }
     .nd {
-        color:#{{ site.code-colors.annotation }};
+        color:#{{ site.colors.annotation }};
     }
     .kc {
-        color:#{{ site.code-colors.primitive }};
+        color:#{{ site.colors.primitive }};
     }
     .s1 {
-        color:#{{ site.code-colors.string }};
+        color:#{{ site.colors.string }};
     }
     .kv {
-        color:#{{ site.code-colors.params }};
+        color:#{{ site.colors.params }};
     }
 }
 
 code {
     .nf {
-        color:#{{ site.code-colors.method }};
+        color:#{{ site.colors.method }};
     }
     .k {
-        color:#{{ site.code-colors.reserved }};
+        color:#{{ site.colors.reserved }};
     }
     .o {
-        color:#{{ site.code-colors.symbol }};
+        color:#{{ site.colors.symbol }};
     }
     .nb {
-        color:#{{ site.code-colors.func }};
+        color:#{{ site.colors.func }};
     }
     .mi {
-        color:#{{ site.code-colors.number }};
+        color:#{{ site.colors.number }};
     }
     .enum, .e {
-        color:#{{ site.code-colors.enum }};
+        color:#{{ site.colors.enum }};
     }
     .nd {
-        color:#{{ site.code-colors.annotation }};
+        color:#{{ site.colors.annotation }};
     }
     .kc {
-        color:#{{ site.code-colors.primitive }};
+        color:#{{ site.colors.primitive }};
     }
     .s1 {
-        color:#{{ site.code-colors.string }};
+        color:#{{ site.colors.string }};
     }
     .kv {
-        color:#{{ site.code-colors.params }};
+        color:#{{ site.colors.params }};
     }
 }
 
 code.e {
-    color:#{{ site.code-colors.enum }};
+    color:#{{ site.colors.enum }};
 }
 code.f {
-    color:#{{ site.code-colors.func }};
+    color:#{{ site.colors.func }};
 }
 code.p {
-    color:#{{ site.code-colors.primitive }};
+    color:#{{ site.colors.primitive }};
 }
 code.m {
-    color:#{{ site.code-colors.method }};
+    color:#{{ site.colors.method }};
 }
 code.s {
-    color:#{{ site.code-colors.string }};
+    color:#{{ site.colors.string }};
 }
 code.n {
-    color:#{{ site.code-colors.number }};
+    color:#{{ site.colors.number }};
 }
 code.v {
-    color:#{{ site.code-colors.params }};
+    color:#{{ site.colors.params }};
 }
 
 h6.m-link-viz {
@@ -106,14 +106,27 @@ h6.callout {
 }
 
 :is(h1, h2, h3, h4, h5, h6):not(.callout):target {
-    background-color:#{{ site.code-colors.target-highlight }};
+    background-color:#{{ site.colors.target-highlight }};
     padding: 0.25rem;
     border-radius: 0.25rem;
+    a:not(.anchor-heading) {
+        color:#{{ site.colors.light-link }};
+    }
 }
 
 li:has(> :target) {
-    background-color:#{{ site.code-colors.target-highlight }};
+    background-color:#{{ site.colors.target-highlight }};
     padding: 0.25rem;
     border-radius: 0.25rem;
-    border: 1px solid #c657f4
+    border: 1px solid #c657f4;
+    a:not(.anchor-heading) {
+        color:#{{ site.colors.light-link }};
+    }
+    h6:target {
+        padding-left: 0;
+    }
+}
+
+a > code {
+    color:#{{ site.colors.light-link }};
 }

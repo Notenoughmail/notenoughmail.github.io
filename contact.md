@@ -19,21 +19,21 @@ These are the primary places where I provide support[^1] for KubeJS TFC, Precisi
 
 And if I ever make a mod that's not tied to TFC/KubeJS I might talk about it in the *#showcase* channel of the [NeoForge](https://discord.gg/neoforged) server
 
-## <span style="font-size:0em;">Cohost</span><a href="#cohost"><img src="/assets/images/cohost.gif" alt="cohost"></a>
+## <span style="font-size:0em;">Cohost</span><a href="https://web.archive.org/web/20250000000000*/https://cohost.org/Roughly-Enough-Mail"><img src="/assets/images/cohost.gif" alt="cohost"></a>
 
 I loved cohost, it was something different and better. And yet, I never did use it to its fullest extent, so I'll leave this here as a keepsake
 
-I was [@Roughly-Enough-Mail](https://cohost.org/Roughly-Enough-Mail) on cohost; occasionally, I'd be salient enough to post something there
+I was [@Roughly-Enough-Mail](https://web.archive.org/web/20250000000000*/https://cohost.org/Roughly-Enough-Mail) on cohost; occasionally, I'd be salient enough to post something there
 
 Those were good days
 
-## <span style="font-size:0em;">GitHub</span><a href="#github"><img src="/assets/images/github.png" alt="GitHub"></a>
+## <span style="font-size:0em;">GitHub</span><a href="https://github.com/Notenoughmail"><img src="/assets/images/github.png" alt="GitHub"></a>
 
 Wow! The place that hosts this site, no way
 
 Maybe GitHub will fully pivot into being a social media with direct messaging capabilities. When that happens I can be found at [Notenoughmail](https://github.com/Notenoughmail) doing who-knows-what, probably making kube-scripts-that-*really*-oughta-be-mods
 
-## <span style="font-size:0em;">Modrinth & CurseForge</span><a href="#modrinth--curseforge"><img src="/assets/images/modrinth.png" alt="Modrinth"><img src="/assets/images/curseforge.png" alt="CurseForge"></a>
+## <span style="font-size:0em;">Modrinth & CurseForge</span><a href="https://modrinth.com/user/Notenoughmail"><img src="/assets/images/modrinth.png" alt="Modrinth"></a><a href="https://www.curseforge.com/members/notenoughmail/projects"><img src="/assets/images/curseforge.png" alt="CurseForge"></a>
 
 Not really social media, but CF has direct messages so eh
 
@@ -46,7 +46,7 @@ Not really useful for contacting me, just felt it a good idea to include
 
 Want to contact me through email? You can do that at <a href="mailto:roughlyenoughmail@gmail.com">roughlyenoughmail@gmail.com</a>. Response times will vary with how busy I am, but send something anyway, I'll get to it, eventually
 
-## <span style="font-size:0em;">YouTube</span><a href="#youtube"><img src="/assets/images/youtube.png" alt="YouTube"></a>
+## <span style="font-size:0em;">YouTube</span><a href="https://www.youtube.com/@justenoughmail"><img src="/assets/images/youtube.png" alt="YouTube"></a>
 
 I do have a youtube, you might've seen used in other parts of the site for videos. I can be found at [Just Enough Mail](https://www.youtube.com/@justenoughmail), though I don't post much of anything
 
