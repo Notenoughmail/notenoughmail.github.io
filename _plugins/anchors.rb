@@ -4,10 +4,6 @@ module Jekyll
     
     class << self
 
-      def icon
-        @icon ||= make_icon
-      end
-
       def callout_regexs
         @callout_regexs ||= make_callout_regexs
       end
@@ -17,12 +13,6 @@ module Jekyll
           /\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid="(.+?)"\>.+?\<\/code\>/,
           /(\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid=".+?"\>.+?\<\/code\>)/
         ]
-      end
-
-      def make_icon
-        i = Liquid::Template.parse("{% include icons/link.html %}")
-        i.registers[:site] = Jekyll.sites[0]
-        return i.render().to_s
       end
 
       # Multiline for the rare occasion that a full code block is inside a callout
@@ -43,7 +33,12 @@ module Jekyll
       def code(str)
         if str.match?(code_regexs[0])
           str.match(code_regexs[0]) { |m|
-            return make_anchor(str, m[1], 'm-link')
+            begin
+              return make_anchor(str, m[1], 'm-link')
+            rescue => e
+              puts "Did you include single quotes in a inline code block?"
+              raise e
+            end
           }
         end
         return str

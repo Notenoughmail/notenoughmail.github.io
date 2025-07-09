@@ -209,7 +209,14 @@ module Rouge
 
                 rule %r/function(?=(\(.*\)))/, Keyword::Declaration # For anonymous functions
 
-                rule %r/(#{id})[ \t]*(?=(\(.*\)))/m, Name::Function
+                # See https://github.com/rouge-ruby/rouge/pull/1938
+                rule %r/(#{id})[ \t]*(?=(\(.*\)))/m do |m|
+                    if self.class.keywords.include?(m[1])
+                        token Keyword
+                    else
+                        token Name::Function
+                    end
+                end
 
                 rule %r/[{}]/, Punctuation, :statement
 

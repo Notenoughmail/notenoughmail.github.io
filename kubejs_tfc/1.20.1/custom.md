@@ -598,7 +598,7 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 StartupEvents.registry('block', event => {
     event.create('my_double_crop', 'tfc:double_crop')
         .requiresStick(true)
-        .dead(dead => {
+        .deadBlock(dead => {
             dead.models((variant, m) => {
                 if (variant.stick()) {
                     m.parent('tfc:block/crop/stick');
