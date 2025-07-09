@@ -75,34 +75,34 @@ TFC implements local temperature and rainfall, this is done through the use of c
 
 ## Consumer
 
-- `.setCurrentTemperatureCalculation(callback)`{: .language-javascript }: Sets the calculation for current temperature at a position. The callback provides:
+- `.setCurrentTemperatureCalculation(callback)`{: .language-kube }: Sets the calculation for current temperature at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A `Long`, the calendar ticks
     - An `Integer`, the number of days in a month
     - And expects a number
-- `.setAverageTemperatureCalculation(callback)`{: .language-javascript }: Sets the calculation for the average temperature at a position. The callback provides:
+- `.setAverageTemperatureCalculation(callback)`{: .language-kube }: Sets the calculation for the average temperature at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - And expects a number
-- `.setAverageRainfallCalculation(callback)`{: .language-javascript }: Sets the calculation for the average rainfall at a position. The callback provides:
+- `.setAverageRainfallCalculation(callback)`{: .language-kube }: Sets the calculation for the average rainfall at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - And expects a number between 0 and 500
-- `.setAirFog(callback)`{: .language-javascript }: Sets the fogginess at a position and time. The callback provides:
+- `.setAirFog(callback)`{: .language-kube }: Sets the fogginess at a position and time. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A `Long`, the calendar ticks
     - And expects a number between 0 and 1
-- `.setWaterFog(callback)`{: .language-javascript }: Sets the water fogginess at a position and time. The callback provides:
+- `.setWaterFog(callback)`{: .language-kube }: Sets the water fogginess at a position and time. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A`Long`, the calendar ticks
     - And expects a number between 0 and 1
-- `.getClimateSeed()`{: .language-javascript }: Returns the climate seed, a number based on the level's seed
-- `.getNewNoise()`{: .language-javascript }: Returns an OpenSimplex2D noise generator.
-- `.getTemperatureSettings()`{: .language-javascript }: Returns the level's temperature [climate settings](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/#climate-settings), or the default if none
-- `.getRainfallSettings()`{: .language-javascript }: Returns the level's rainfall climate settings, or default if none
+- `.getClimateSeed()`{: .language-kube }: Returns the climate seed, a number based on the level's seed
+- `.getNewNoise()`{: .language-kube }: Returns an OpenSimplex2D noise generator.
+- `.getTemperatureSettings()`{: .language-kube }: Returns the level's temperature [climate settings](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/#climate-settings), or the default if none
+- `.getRainfallSettings()`{: .language-kube }: Returns the level's rainfall climate settings, or default if none
 - `averageTemperature`:Returns a reference to the model's average temperature calculation, use `getValue(LevelReader, BlockPos)` to get its value
 - `averageRainfall`:Returns a reference to the model's average rainfall calculation, use `getValue(LevelReader, BlockPos)` to get its value
 - `currentTemperature`:Returns a reference to the model's current temperature calculation, use `getValue(LevelReader, BlockPos, Long, Int) to get its value
@@ -111,9 +111,9 @@ TFC implements local temperature and rainfall, this is done through the use of c
 
 If registering an advanced model the following are also available
 
-- `.setOnWorldLoad(callback)`{: .language-javascript }: Sets what should be done upon the world loading. The callback provides:
+- `.setOnWorldLoad(callback)`{: .language-kube }: Sets what should be done upon the world loading. The callback provides:
     - A `ServerLevel`, the level
-- `.setOnChunkLoad(callback)`{: .language-javascript }: Sets what should be done upon a chunk loading, by default this is only called during world generation and TFC's update climate command. The callback provides:
+- `.setOnChunkLoad(callback)`{: .language-kube }: Sets what should be done upon a chunk loading, by default this is only called during world generation and TFC's update climate command. The callback provides:
     - A `WorldGenLevel`, the level
     - A `ChunkAccess`, the chunk
     - A `ChunkData`, the chunk's TFC data

@@ -79,9 +79,9 @@ This specifies an ingredient which only accepts items if they are heatable and o
 
 ### Extra Methods
 
-- `.minTemp(integer)`{: .language-javascript }: Sets the minimum temperature of the ingredient
-- `.maxTemp(integer)`{: .language-javascript }: Sets the maximum temperature of the ingredient
-- `.temps(integer, integer)`{: .language-javascript }: Sets the minimum and maximum temperatures of the ingredient
+- `.minTemp(integer)`{: .language-kube }: Sets the minimum temperature of the ingredient
+- `.maxTemp(integer)`{: .language-kube }: Sets the maximum temperature of the ingredient
+- `.temps(integer, integer)`{: .language-kube }: Sets the minimum and maximum temperatures of the ingredient
 
 ### Examples
 
@@ -119,7 +119,7 @@ This specifies an item which is expected to contain a fluid
 
 ### Extra Method
 
-- `.withFluidAmount(integer)`{: .language-javascript }: Sets the amount of the fluid required, defaults to the amount defined by the fluid stack ingredient itself
+- `.withFluidAmount(integer)`{: .language-kube }: Sets the amount of the fluid required, defaults to the amount defined by the fluid stack ingredient itself
 
 ### Examples
 

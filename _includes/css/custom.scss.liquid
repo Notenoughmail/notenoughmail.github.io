@@ -62,7 +62,7 @@ code {
     .kc {
         color:#{{ site.colors.primitive }};
     }
-    .s1 {
+    .s1, .s2 {
         color:#{{ site.colors.string }};
     }
     .kv {
@@ -92,17 +92,18 @@ code.v {
     color:#{{ site.colors.params }};
 }
 
-h6.m-link-viz {
+h6.m-link {
     font-size:inherit !important;
     display: inline;
 }
 
-h6.m-link-viz .anchor-heading {
+h6.m-link .anchor-heading {
     left: -1.25rem;
 }
 
 h6.callout {
     font-size:inherit !important;
+    line-height:inherit !important;
 }
 
 :is(h1, h2, h3, h4, h5, h6):not(.callout):target {

@@ -45,7 +45,7 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 >
 > This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
 >
-> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-javascript } value
+> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-kube } value
 >
 > Additionally, for definitions that use ingredients, if there are multiple definitions that have the same valid item/block/fluid, then there is no guarantee your custom definition will take precedence. This can be fixed by overriding the existing definition or modifying the tag that is used for it
 
@@ -66,12 +66,12 @@ event.climateRange(
 ```
 
 - 1st argument: A consumer with several additional methods:
-    - `.minHydration(i: number)`{: .language-javascript .m-link #climate-min-hydro }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to `0`{:.n}
-    - `.maxHydration(i: number)`{: .language-javascript .m-link #climate-max-hydro }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to `100`{:.n}
-    - `.hydrationWiggle(i: number)`{: .language-javascript .m-link #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
-    - `.minTemperature(f: number)`{: .language-javascript .m-link #climate-min-temp }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to `-100`{:.n}
-    - `.maxTemperature(f: number)`{: .language-javascript .m-link #climate-max-temp }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to `100`{:.n}
-    - `.temperatureWiggle(f: number)`{: .language-javascript .m-link #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
+    - `.minHydration(i: number)`{: .language-kube #climate-min-hydro }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to `0`{:.n}
+    - `.maxHydration(i: number)`{: .language-kube #climate-max-hydro }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to `100`{:.n}
+    - `.hydrationWiggle(i: number)`{: .language-kube #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
+    - `.minTemperature(f: number)`{: .language-kube #climate-min-temp }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to `-100`{:.n}
+    - `.maxTemperature(f: number)`{: .language-kube #climate-max-temp }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to `100`{:.n}
+    - `.temperatureWiggle(f: number)`{: .language-kube #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
 ### Example
@@ -153,14 +153,14 @@ event.drinkable(
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.consumeChance(f: number)`{: .language-javascript .m-link #drinkable-consume-chance }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
-    - `.thirst(i: number)`{: .language-javascript .m-link #drinkable-thirst }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
-    - `.intoxication(i: number)`{: .language-javascript .m-link #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
-    - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-javascript .m-link #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
-        - `.duration(i: number)`{: .language-javascript }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
-        - `.amplifier(i: number)`{: .language-javascript }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
-        - `.chance(f: number)`{: .language-javascript }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
-    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-javascript .m-link #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
+    - `.consumeChance(f: number)`{: .language-kube #drinkable-consume-chance }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
+    - `.thirst(i: number)`{: .language-kube #drinkable-thirst }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
+    - `.intoxication(i: number)`{: .language-kube #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
+    - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-kube #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
+        - `.duration(i: number)`{: .language-kube }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
+        - `.amplifier(i: number)`{: .language-kube }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
+        - `.chance(f: number)`{: .language-kube }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
+    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
@@ -204,10 +204,10 @@ event.fauna(
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
 - 2nd argument: A consumer with several additional methods:
-    - `.chance(i: number)`{: .language-javascript .m-link #fauna-chance }: Accepts a number, sets the chance in `1/N`{: .language-javascript } chunks that something will spawn, defaults to `1`{:.n}
-    - `.distanceBelowSeaLevel(i: number)`{: .language-javascript .m-link #fauna-distance-below-sea-level }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
-    - `.solidGround(b: boolean)`{: .language-javascript .m-link #fauna-solid-ground }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`{:.p}
-    - `.maxBrightness(i: number)`{: .language-javascript .m-link #fauna-max-brightness }: Accepts a number, sets the maximum light level the mob may spawn in
+    - `.chance(i: number)`{: .language-kube #fauna-chance }: Accepts a number, sets the chance in `1/N`{: .language-kube } chunks that something will spawn, defaults to `1`{:.n}
+    - `.distanceBelowSeaLevel(i: number)`{: .language-kube #fauna-distance-below-sea-level }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
+    - `.solidGround(b: boolean)`{: .language-kube #fauna-solid-ground }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`{:.p}
+    - `.maxBrightness(i: number)`{: .language-kube #fauna-max-brightness }: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
 ### Example
@@ -278,16 +278,16 @@ event.foodItem(
 
 - 1st argument: An item ingredient, the items to which the food item definition applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.type(type: String)`{: .language-javascript .m-link #food-item-type }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
-    - `.hunger(i: number)`{: .language-javascript .m-link #food-item-hunger }: Accepts a number, sets how much hunger the food restores, defaults to `4`{:.n}. A full hunger bar is `20`{:.n}
-    - `.saturation(f: number)`{: .language-javascript .m-link #food-item-saturation }: Accepts a number, sets how much saturation the food restores, defaults to `0`{:.n}
-    - `.water(f: number)`{: .language-javascript .m-link #food-item-water }: Accepts a number, sets how much water the food restores, defaults to `0`{:.n}. A full water bar is equal to `100`{:.n}
-    - `.decayModifier(f: number)`{: .language-javascript .m-link #food-item-decay-mod }: Accepts a number, sets how quickly the food decays, defaults to `1`{:.n}. A higher number indicates a faster decay rate
-    - `.grain(f: number)`{: .language-javascript .m-link #food-item-grain }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to `0`{:.n}
-    - `.fruit(f: number)`{: .language-javascript .m-link #food-item-fruit }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to `0`{:.n}
-    - `.vegetables(f: number)`{: .language-javascript .m-link #food-item-veg }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to `0`{:.n}
-    - `.protein(f: number)`{: .language-javascript .m-link #food-item-protein }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to `0`{:.n}
-    - `.dairy(f: number)`{: .language-javascript .m-link #food-item-dairy }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to `0`{:.n}
+    - `.type(type: String)`{: .language-kube #food-item-type }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
+    - `.hunger(i: number)`{: .language-kube #food-item-hunger }: Accepts a number, sets how much hunger the food restores, defaults to `4`{:.n}. A full hunger bar is `20`{:.n}
+    - `.saturation(f: number)`{: .language-kube #food-item-saturation }: Accepts a number, sets how much saturation the food restores, defaults to `0`{:.n}
+    - `.water(f: number)`{: .language-kube #food-item-water }: Accepts a number, sets how much water the food restores, defaults to `0`{:.n}. A full water bar is equal to `100`{:.n}
+    - `.decayModifier(f: number)`{: .language-kube #food-item-decay-mod }: Accepts a number, sets how quickly the food decays, defaults to `1`{:.n}. A higher number indicates a faster decay rate
+    - `.grain(f: number)`{: .language-kube #food-item-grain }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to `0`{:.n}
+    - `.fruit(f: number)`{: .language-kube #food-item-fruit }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to `0`{:.n}
+    - `.vegetables(f: number)`{: .language-kube #food-item-veg }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to `0`{:.n}
+    - `.protein(f: number)`{: .language-kube #food-item-protein }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to `0`{:.n}
+    - `.dairy(f: number)`{: .language-kube #food-item-dairy }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to `0`{:.n}
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the food definition
 
 ### Example
@@ -817,7 +817,7 @@ TFCEvents.data(event => {
 
 ## Attached TFC data
 
-In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `.getData()`{: .language-javascript } method which returns a `Map<String, Object>`{: .language-javascript }. TFC's data can be accessed through `tfc:player_data`
+In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `.getData()`{: .language-kube } method which returns a `Map<String, Object>`{: .language-kube }. TFC's data can be accessed through `tfc:player_data`
 
 There are several methods to access and modify the state of TFC's additional data
 
@@ -847,27 +847,27 @@ data.getNutrient(nutrient: NutrientType): number
 data.getNutrients(): number[]
 ```
 
-- `.getChiselMode()`{: .language-javascript .m-link #player-data-chisel }: Returns the player's current `ChiselMode`{:.e}, will be either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
-- `.setChiselMode(mode: ChiselMode)`{: .language-javascript .m-link #player-data-set-chisel }: Sets the player's current chisel mode, will accept `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
-- `.getIntoxicatedTicks()`{: .language-javascript .m-link #player-data-intoxication-ticks }: Returns the number of ticks the player is intoxicated for
-- `.addIntoxicatedTicks(ticks: number)`{: .language-javascript .m-link #player-data-add-intoxication-ticks }: Adds to the player's intoxicated ticks
-- `.getLastDrinkTick()`{: .language-javascript .m-link #player-data-last-drink-tick }: Returns the last tick the player drank something
-- `.setLastDrinkTick(tick: number)`{: .language-javascript .m-link #player-data-set-last-drink-tick }: Sets the last tick the player drank something
-- `.playerEat(item: ItemStack)`{: .language-javascript .m-link #player-data-eat }: Makes the player eat the provided `ItemStack`
-- `.getFoodLevel()`{: .language-javascript .m-link #player-data-food-level }: Returns the player's current food level
-- `.setFoodLevel(i: number)`{: .language-javascript .m-link #player-data-set-food-level }: Sets the player's current food level
-- `.needsFood()`{: .language-javascript .m-link #player-data-needs-food }: Returns true if the player needs food
-- `.addExhaustion(f: number)`{: .language-javascript .m-link #player-data-add-exhaustion }: Adds the given exhaustion to the player
-- `.getSaturationLevel()`{: .language-javascript .m-link #player-data-saturation-level }: Returns the player's saturation level
-- `.setSaturationLevel(f: number)`{: .language-javascript .m-link #player-data-set-saturation-level }: Sets the player's saturation level
-- `.getThirstModifier()`{: .language-javascript .m-link #player-data-thirst-modifier }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
-- `.getThirstContributionFromTemperature()`{: .language-javascript .m-link #player-data-thirst-contribution-temp }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
-- `.getThirst()`{: .language-javascript .m-link #player-data-thirst }: Returns the player's thirst
-- `.setThirst(f: number)`{: .language-javascript .m-link #player-data-set-thirst }: Sets the player's thirst
-- `.addThirst(f: number)`{: .language-javascript .m-link #player-data-add-thirst }: Adds the provided thirst the the player's thirst
-- `.getAverageNutrition()`{: .language-javascript .m-link #player-data-avg-nutrition }: Returns the average nutrition level of the player
-- `.getNutrient(nutrient: NutrientType)`{: .language-javascript .m-link #player-data-nutrient }: Returns the player's nutrition level for the given nutrient, accepts `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
-- `.getNutrients()`{: .language-javascript .m-link #player-data-nutrients }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, `dairy`{:.e}
+- `.getChiselMode()`{: .language-kube #player-data-chisel }: Returns the player's current `ChiselMode`{:.e}, will be either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.setChiselMode(mode: ChiselMode)`{: .language-kube #player-data-set-chisel }: Sets the player's current chisel mode, will accept `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.getIntoxicatedTicks()`{: .language-kube #player-data-intoxication-ticks }: Returns the number of ticks the player is intoxicated for
+- `.addIntoxicatedTicks(ticks: number)`{: .language-kube #player-data-add-intoxication-ticks }: Adds to the player's intoxicated ticks
+- `.getLastDrinkTick()`{: .language-kube #player-data-last-drink-tick }: Returns the last tick the player drank something
+- `.setLastDrinkTick(tick: number)`{: .language-kube #player-data-set-last-drink-tick }: Sets the last tick the player drank something
+- `.playerEat(item: ItemStack)`{: .language-kube #player-data-eat }: Makes the player eat the provided `ItemStack`
+- `.getFoodLevel()`{: .language-kube #player-data-food-level }: Returns the player's current food level
+- `.setFoodLevel(i: number)`{: .language-kube #player-data-set-food-level }: Sets the player's current food level
+- `.needsFood()`{: .language-kube #player-data-needs-food }: Returns true if the player needs food
+- `.addExhaustion(f: number)`{: .language-kube #player-data-add-exhaustion }: Adds the given exhaustion to the player
+- `.getSaturationLevel()`{: .language-kube #player-data-saturation-level }: Returns the player's saturation level
+- `.setSaturationLevel(f: number)`{: .language-kube #player-data-set-saturation-level }: Sets the player's saturation level
+- `.getThirstModifier()`{: .language-kube #player-data-thirst-modifier }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
+- `.getThirstContributionFromTemperature()`{: .language-kube #player-data-thirst-contribution-temp }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
+- `.getThirst()`{: .language-kube #player-data-thirst }: Returns the player's thirst
+- `.setThirst(f: number)`{: .language-kube #player-data-set-thirst }: Sets the player's thirst
+- `.addThirst(f: number)`{: .language-kube #player-data-add-thirst }: Adds the provided thirst the the player's thirst
+- `.getAverageNutrition()`{: .language-kube #player-data-avg-nutrition }: Returns the average nutrition level of the player
+- `.getNutrient(nutrient: NutrientType)`{: .language-kube #player-data-nutrient }: Returns the player's nutrition level for the given nutrient, accepts `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
+- `.getNutrients()`{: .language-kube #player-data-nutrients }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, `dairy`{:.e}
 
 ### Example
 

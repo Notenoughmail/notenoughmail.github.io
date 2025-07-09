@@ -107,12 +107,26 @@ TFC.call('Belieze', {
 
 callback: Month
 
+let i = 0;
+function antelope() {
+    return `You have ${i++} antelope!`;
+}
+
+"double quotes?".split("o");
+
 declare class TemperatureCallback {
     apply(be: BlockEntityJS, currentTemperature: number, calendarTick: number, skippedTicks: number): number
-    fill(quest: int[5000]): void
+    fill(if: int[5000]): void
 }
 ```
 
 `woah: Clazz`{: .language-kube }
 
 `.huh(): Woah`{: .language-kube }
+
+- `event: Threat`{: .language-kube }
+- `return: Harm`{: .language-kube }
+
+`"Inline strings".split('i').join("Denmark")`{: .language-kube }
+
+`SpawnPlacements$Type.ON_GROUND`{: .language-kube }

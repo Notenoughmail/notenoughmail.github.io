@@ -2,7 +2,7 @@
 # as of 2023-02-07, which is several version later than the one used
 # by GitHub Pages, and some tweaks for my site (like param color and special keywords)
 
-# Rouge is MIT, I would not be doing this if GitHub offered the ability to update dependencies
+# Rouge is MIT
 
 require 'rouge'
 
@@ -15,7 +15,7 @@ module Rouge
             desc "JavaScript, but decent. Called Kube because that's what its used for here"
 
             tag 'kube'
-            aliases 'kube', 'js', 'javascript'
+            aliases 'kube', 'js', 'javascript' # This overrides Rouge's inbuilt js parser, meaning js can be used for code blocks without losing editor highlighting while having the highlighting of the kube 'language'
             filenames '*.kube', '*.js',
             mimetypes('application/javascript', 'text/javascript')
 
@@ -134,9 +134,12 @@ module Rouge
                 )
             end
 
+            # An important regarding inner classes: The aprt before and after the $ will be treated as different 'words'
+            # thus they will not be parsed & colored as a single string, so only the part after the $ should be included
+            # the $ will be included with the second string and is safe to include here
             def self.enums
                 @enums ||= Set.new %w(
-                    Month SpawnPlacements$Type Heightmap$Types ForestType ProspectResult
+                    Month $Type $Types ForestType ProspectResult
                     Punishment Direction AqueductModelPart SpikeModelPart LampModelType
                     Lifecycle GrassModelPart DeadModelVariant NutrientType GearBoxModelType
                     ClutchModelType PshReaction OffsetType NotBlockInstrument ItemDisplayContext
@@ -149,11 +152,12 @@ module Rouge
                 @functional_interfaces ||= Set.new %w(
                     Consumer BiConsumer TriConsumer BiFunction TriFunction QuadFunction
                     RockFunction OnItemUseAction Supplier RocksGetter MossGrowingCallback
-                    Predicate Noise2D BlockBehavior$StateArgumentPredicate
-                    BlockBehavior$StatePredicate TemperatureCallback
+                    Predicate Noise2D $StateArgumentPredicate $StatePredicate
+                    TemperatureCallback
                 )
             end
 
+            # TODO: Maybe adjust this to be able to handle Blah$Blah as a single word
             def self.id_regex
                 /[\p{L}\p{Nl}$_][\p{Word}]*/io
             end
@@ -210,8 +214,12 @@ module Rouge
                 rule %r/[{}]/, Punctuation, :statement
 
                 # By this point labels & object declarations have been checked
-                rule %r/(#{id})(\s*)(\??:)/ do
-                    groups Keyword::Variable, Text, Punctuation
+                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                    if m[1].eql?('return') # Special case for descriptions of callback return values
+                        groups Keyword, Text, Punctuation
+                    else
+                        groups Keyword::Variable, Text, Punctuation
+                    end
                 end
 
                 rule id do |m|
@@ -328,8 +336,11 @@ module Rouge
             end
 
             state :variables do
-                rule %r/(#{id})(\s*)(\??:)/ do
-                    if @stack.include?(get_state(:object)) # Realistically, variable declarations should not happen within an object declaration
+                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                    # Realistically, variable declarations should not happen within an object declaration
+                    # Unless the declaration is for a map...
+                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & poping a varibles state would generalize much better
+                    if m[3].eql?(":") && @stack.include?(get_state(:object))
                         groups Name::Attribute, Text, Punctuation
                         goto :expr_start 
                     else

@@ -34,7 +34,7 @@ This event goes in the `server_scripts` folder.
 {: .notice #general-notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >
-> Use the `ServerEvents.tag('worldgen/placed_feature', ...)` event to add/remove entries from the correct tag
+> Use the `ServerEvents.tag("worldgen/placed_feature", event => {})`{: .language-kube } event to add/remove entries from the correct tag
 >
 > Each example has a demonstration of this that uses the appropriate tag for the type it corresponds to
 
@@ -231,7 +231,7 @@ event.clusterVein(
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-javascript } chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -286,7 +286,7 @@ event.pipeVein(
 
 - 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-javascript } chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -682,7 +682,7 @@ event.fissureDecoration(
 - 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the additional ores that should spawn around the fissure
 - 2nd argument: A number, the rarity of block s being replaced
 - 3rd argument: A number, the radius around the fissure that blocks should be replaced
-- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-javascript }
+- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-kube }
 
 ## Vein Properties
 
@@ -801,13 +801,13 @@ placement.climate(climate: Consumer<ClimateModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.minRain(f: number)`{: .language-javascript .m-link #climate-placement-min-rain }: Accepts a number, sets the minimum rainfall
-    - `.maxRain(f: number)`{: .language-javascript .m-link #climate-placement-max-rain }: Accepts a number, sets the maximum rainfall
-    - `.minTemp(f: number)`{: .language-javascript .m-link #climate-placement-min-temp }: Accepts a number, sets the minimum temperature
-    - `.maxTemp(f: number)`{: .language-javascript .m-link #climate-placement-max-temp }: Accepts a number, sets the maximum temperature
-    - `.minForest(forest: String)`{: .language-javascript .m-link #climate-placement-min-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the minimum forest level
-    - `.maxForest(forest: String)`{: .language-javascript .m-link #climate-placement-max-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the maximum forest level
-    - `.fuzzy(b: boolean)`{: .language-javascript .m-link #climate-placement-fuzzy }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
+    - `.minRain(f: number)`{: .language-kube #climate-placement-min-rain }: Accepts a number, sets the minimum rainfall
+    - `.maxRain(f: number)`{: .language-kube #climate-placement-max-rain }: Accepts a number, sets the maximum rainfall
+    - `.minTemp(f: number)`{: .language-kube #climate-placement-min-temp }: Accepts a number, sets the minimum temperature
+    - `.maxTemp(f: number)`{: .language-kube #climate-placement-max-temp }: Accepts a number, sets the maximum temperature
+    - `.minForest(forest: String)`{: .language-kube #climate-placement-min-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the minimum forest level
+    - `.maxForest(forest: String)`{: .language-kube #climate-placement-max-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the maximum forest level
+    - `.fuzzy(b: boolean)`{: .language-kube #climate-placement-fuzzy }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
 
@@ -820,9 +820,9 @@ placement.flatEnough(flatness: Consumer<FlatnessModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.flatness(f: number)`{: .language-javascript .m-link #flat-placement-flatness }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
-    - `.radius(i: number)`{: .language-javascript .m-link #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
-    - `.maxDepth(i: number)`{: .language-javascript .m-link #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
+    - `.flatness(f: number)`{: .language-kube #flat-placement-flatness }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
+    - `.radius(i: number)`{: .language-kube #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
+    - `.maxDepth(i: number)`{: .language-kube #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
 
 ### Near Water
 

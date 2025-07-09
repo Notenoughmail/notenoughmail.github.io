@@ -70,7 +70,7 @@ event.recipes.tfc.alloy(
 - 2nd argument: An array of [AlloyPart]({% link kubejs_tfc/1.20.1/bindings.md %}#alloy-part)s defining the components and their percentage ranges for the recipe
 
 {: .related #alloy-metal-info }
-See [here]({% link kubejs_tfc/1.20.1/data.md %}#metals) for defining custom metals
+See [the relevant page]({% link kubejs_tfc/1.20.1/data.md %}#metals) for defining custom metals
 
 ### Example
 
@@ -142,8 +142,8 @@ event.recipes.tfc.anvil(
 
 <span></span>
 
-- `.tier(tier:number)`{: .language-javascript .m-link #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
-- `.bonus(applyBnus: boolean)`{: .language-javascript .m-link # }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
+- `.tier(tier:number)`{: .language-kube #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
+- `.bonus(applyBnus: boolean)`{: .language-kube #anvil-working-bonus }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
 
 ### Example
 
@@ -213,13 +213,13 @@ event.recipes.tfc.barrel_instant()
     .sound(sound: String)
 ```
 
-- `.outputItem(otuputItem: ItemStackProvider)`{: .language-javascript .m-link #instant-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
-- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #instant-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- `.outputs(outputItem: ItemStackProvider, outputFluif: FluidStack)`{: .language-javascript .m-link #instant-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
-- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #instant-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
-- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #instant-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
-- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #instant-barrel-inputs }: A convenience method for setting both inputs, identical to calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
-- `.sound(sound: String)`{: .language-javascript .m-link #instant-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
+- `.outputItem(otuputItem: ItemStackProvider)`{: .language-kube #instant-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube #instant-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- `.outputs(outputItem: ItemStackProvider, outputFluif: FluidStack)`{: .language-kube #instant-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-kube }
+- `.inputItem(inputItem: Ingredient)`{: .language-kube #instant-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-kube #instant-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-kube #instant-barrel-inputs }: A convenience method for setting both inputs, identical to calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-kube }
+- `.sound(sound: String)`{: .language-kube #instant-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
 
 {: .notice #instant-barrel-notice }
 > An instant barrel recipe must have an input item, input fluid, or both
@@ -261,16 +261,16 @@ event.recipes.tfc.barrel_sealed(duration: number)
 
 <span></span>
 
-- `.outputItem(outputItem: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
-- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #sealed-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
-- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-javascript .m-link #sealed-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
-- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #sealed-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
-- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #sealed-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
-- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredeint)`{: .language-javascript .m-link #sealed-barrel-inputs }: A convenience method for setting both inputs, identical to `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
-- `.sound(sound: String)`{: .language-javascript .m-link #sealed-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
-- `.onSeal(onSeal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-on-seal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is sealed
-- `.onUnseal(onUnseal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-on-unseal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is unsealed
-- `.seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)`{: .language-javascript .m-link #sealed-barrel-seal }: A convenience method for setting both seals, identical to calling `.onSeal(onSeal).onUnseal(onUnseal)`{: .language-javascript }
+- `.outputItem(outputItem: ItemStackProvider)`{: .language-kube #sealed-barrel-output-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube #sealed-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube #sealed-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-kube }
+- `.inputItem(inputItem: Ingredient)`{: .language-kube #sealed-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-kube #sealed-barrel-input-fluid }: Accepts a [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredeint)`{: .language-kube #sealed-barrel-inputs }: A convenience method for setting both inputs, identical to `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-kube }
+- `.sound(sound: String)`{: .language-kube #sealed-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
+- `.onSeal(onSeal: ItemStackProvider)`{: .language-kube #sealed-barrel-on-seal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is sealed
+- `.onUnseal(onUnseal: ItemStackProvider)`{: .language-kube #sealed-barrel-on-unseal }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) which will be applied when the barrel is unsealed
+- `.seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)`{: .language-kube #sealed-barrel-seal }: A convenience method for setting both seals, identical to calling `.onSeal(onSeal).onUnseal(onUnseal)`{: .language-kube }
 
 {: .notice #sealed-barrel-notice }
 > A sealed barrel recipe must have an input item, input fluid, or both
@@ -407,8 +407,8 @@ event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: 
 
 <span></span>
 
-- `.itemIngredient(itemIngredient: Ingredient)`{: .language-javascript .m-link #chisel-item-ingredient }: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
-- `.extraDrop(extraDrop: ItemStackProvider)`{: .language-javascript .m-link #chisel-extra-drop }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
+- `.itemIngredient(itemIngredient: Ingredient)`{: .language-kube #chisel-item-ingredient }: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
+- `.extraDrop(extraDrop: ItemStackProvider)`{: .language-kube #chisel-extra-drop }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
 
 ### Example
 
@@ -497,11 +497,11 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 
 <span></span>
 
-- `.resultItem(resultItem: ItemStackProvider)`{: .language-javascript .m-link #heating-result-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the result item of the recipe, defaults to empty
-- `.resultFluid(resultFluid: FluidStack)`{: .language-javascript .m-link #heating-result-fluid }: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
-- `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-javascript .m-link #heating-results }: A convenience method for setting both results, identical to calling `.resultItem(resultItem).resultFluid(resultFluid)`{: .language-javascript }
-- `.useDurability(useDurability: number)`{: .language-javascript .m-link #heating-use-durability }: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
-- `.chance(chance: number)`{: .language-javascript .m-link #heating-chance }: Accepts a number, in the range [0, 1], sets the chance of the item output
+- `.resultItem(resultItem: ItemStackProvider)`{: .language-kube #heating-result-item }: Accepts an [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the result item of the recipe, defaults to empty
+- `.resultFluid(resultFluid: FluidStack)`{: .language-kube #heating-result-fluid }: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
+- `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube #heating-results }: A convenience method for setting both results, identical to calling `.resultItem(resultItem).resultFluid(resultFluid)`{: .language-kube }
+- `.useDurability(useDurability: number)`{: .language-kube #heating-use-durability }: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
+- `.chance(chance: number)`{: .language-kube #heating-chance }: Accepts a number, in the range [0, 1], sets the chance of the item output
 
 {: .notice #heating-notice }
 > The ingredient needs to have an [item heat]({% link kubejs_tfc/1.20.1/data.md %}#item-heats) added to it
@@ -542,8 +542,8 @@ event.recipes.tfc.knapping(
 
 <span></span>
 
-- `.ingredient(ingredient: ingredient)`{: .language-javascript .m-link #knapping-ingredient }: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
-- `.outsideSlotRequired(required: boolean)`{: .language-javascript .m-link #knapping-outside-required }: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`{:.p}
+- `.ingredient(ingredient: ingredient)`{: .language-kube #knapping-ingredient }: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
+- `.outsideSlotRequired(required: boolean)`{: .language-kube #knapping-outside-required }: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`{:.p}
 
 ### Example
 
@@ -665,9 +665,9 @@ event.recipes.tfc.pot(
 
 <span></span>
 
-- `.itemOutput(itemOutput: ItemStackProvider[])`{: .language-javascript .m-link #simple-pot-item-output }: An array of [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider)s indicating what items should be left in the pot
-- `.fluidOutput(fluidOutput: FluidStack)`{: .language-javascript .m-link #simple-pot-fluid-output }: A `FluidStack` that the pot produces at the completion of the recipe
-- `.outputs(itemOutput: itemStackProvier[], fluidOutput: FluidStack)`{: .language-javascript .m-link #simple-pot-outputs }: A convenience method for setting both outputs, identical to `.itemOutput(itemOutput).fluidOutput(fluidOutput)`{: .language-javascript }
+- `.itemOutput(itemOutput: ItemStackProvider[])`{: .language-kube #simple-pot-item-output }: An array of [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider)s indicating what items should be left in the pot
+- `.fluidOutput(fluidOutput: FluidStack)`{: .language-kube #simple-pot-fluid-output }: A `FluidStack` that the pot produces at the completion of the recipe
+- `.outputs(itemOutput: itemStackProvier[], fluidOutput: FluidStack)`{: .language-kube #simple-pot-outputs }: A convenience method for setting both outputs, identical to `.itemOutput(itemOutput).fluidOutput(fluidOutput)`{: .language-kube }
 
 {: .notice #simple-pot-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
@@ -777,7 +777,7 @@ event.recipes.tfc.scraping(
 - *Optional 5th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), an optional extra drop
 
 {: .notice #scraping-ingredient-tag }
-In order to actually place an item on a log to scrape it, it must have the `tfc:scrapable` item tag. Additionally, a game restart may be required for this to enable placement
+In order to actually place an item on a log to scrape, it must have the `tfc:scrapable` item tag. Additionally, a game restart may be required for placement to become possible
 
 ### Example
 
@@ -1117,12 +1117,12 @@ event.recipes.firmalife.mixing_bowl()
     .ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)
 ```
 
-- `.outputItem(outputItem: ItemStack)`{: .language-javascript .m-link #mixing-bowl-output-item }: An `ItemStack`, the item output
-- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #mixing-bowl-output-fluid }: A `FluidStack`, the fluid output
-- `.outputs(outputItem: ItemStack, outputFluid: Fluidstack)`{: .language-javascript .m-link #mixing-bowl-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-javascript }
-- `.itemIngredients(ingredients: Ingredient[])`{: .language-javascript .m-link #mixing-bowl-item-ingredients }: An array of item ingredients, the item inputs
-- `.fluidIngredient(fluidIngredient: FluidStackIgnredient)`{: .language-javascript .m-link #mixing-bowl-fluid-ingredients }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
-- `.ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)`{: .language-javascript .m-link #mixing-bowl-ingredients }: A convenience method for setting both inputs, the same as calling `.itemIngredients(ingredients).fluidIngredient(fluidIngredient)`{: .language-javascript }
+- `.outputItem(outputItem: ItemStack)`{: .language-kube #mixing-bowl-output-item }: An `ItemStack`, the item output
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube #mixing-bowl-output-fluid }: A `FluidStack`, the fluid output
+- `.outputs(outputItem: ItemStack, outputFluid: Fluidstack)`{: .language-kube #mixing-bowl-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-kube }
+- `.itemIngredients(ingredients: Ingredient[])`{: .language-kube #mixing-bowl-item-ingredients }: An array of item ingredients, the item inputs
+- `.fluidIngredient(fluidIngredient: FluidStackIgnredient)`{: .language-kube #mixing-bowl-fluid-ingredients }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
+- `.ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)`{: .language-kube #mixing-bowl-ingredients }: A convenience method for setting both inputs, the same as calling `.itemIngredients(ingredients).fluidIngredient(fluidIngredient)`{: .language-kube }
 
 ### Example
 
@@ -1152,7 +1152,7 @@ event.recipes.firmalife.oven(
 - 1st argument: An item ingredient, the input of the recipe
 - 2nd argument: A number, the minimum temperature °C of the top oven for the recipe to operate
 - 3rd argument: A number, the number of ticks required for the recipe to finish
-- *Optional 4th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`{: .language-javascript }
+- *Optional 4th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`{: .language-kube }
 
 ### Example
 
@@ -1226,15 +1226,15 @@ event.recipes.firmalife.vat()
     .jar(jar: ItemStack)
 ```
 
-- `.outputItem(outputProvier: ItemStackProvider)`{: .language-javascript .m-link #vat-output-item }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the item output
-- `.outputFluid(outputFluid: FluidStack)`{: .language-javascript .m-link #vat-output-fluid }: A `FluidStack`, the fluid output
-- `.outputs(itemOutput: ItemStackProvider, outputFluid: FluidStack)`{: .language-javascript .m-link #vat-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(itemOutput).outputFluid(outputFluid)`{: .language-javascript }
-- `.inputItem(inputItem: Ingredient)`{: .language-javascript .m-link #vat-input-item }: An item ingredient, the item input
-- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #vat-input-fluid }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid input
-- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-javascript .m-link #vat-inputs }: A convenience method for setting both inputs, the same as calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-javascript }
-- `.length(length: number)`{: .language-javascript .m-link #vat-length }: A number, the number of ticks the vat must process for, defaults to `600`{:.n}
-- `.temperature(temp: number)`{: .language-javascript .m-link #vat-temperature }: A number, the minimum temperature °C of the vat in order to process, defaults to `300`{:.n}
-- `.jar(jar: ItemStack)`{: .language-javascript .m-link #vat-jar }: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
+- `.outputItem(outputProvier: ItemStackProvider)`{: .language-kube #vat-output-item }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the item output
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube #vat-output-fluid }: A `FluidStack`, the fluid output
+- `.outputs(itemOutput: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube #vat-outputs }: A convenience method for setting both outputs, the same as calling `.outputItem(itemOutput).outputFluid(outputFluid)`{: .language-kube }
+- `.inputItem(inputItem: Ingredient)`{: .language-kube #vat-input-item }: An item ingredient, the item input
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-kube #vat-input-fluid }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient), the fluid input
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-kube #vat-inputs }: A convenience method for setting both inputs, the same as calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-kube }
+- `.length(length: number)`{: .language-kube #vat-length }: A number, the number of ticks the vat must process for, defaults to `600`{:.n}
+- `.temperature(temp: number)`{: .language-kube #vat-temperature }: A number, the minimum temperature °C of the vat in order to process, defaults to `300`{:.n}
+- `.jar(jar: ItemStack)`{: .language-kube #vat-jar }: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
 
 ### Example
 
@@ -1417,12 +1417,12 @@ event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
 
 <span></span>
 
-- `.resultFluid(fluid: FluidStack)`{: .language-javascript .m-link #tree-tap-result-fluid }: Sets the fluid result of the recipe
-- `.minTemp(f: number)`{: .language-javascript .m-link #tree-tap-min-temp }: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`{:.n}
-- `.maxTemp(f: number)`{: .language-javascript .m-link #tree-tap-max-temp }: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`{:.n}
-- `.temps(min: number, max: number)`{: .language-javascript .m-link #tree-tap-temps }: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
-- `.requiresNaturalLog(required: boolean)`{: .language-javascript .m-link #tree-tap-requires-natural }: Determines if the recipe needs the input block to have TFC's [`branch_direction`{:.e}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/blocks/TFCBlockStateProperties.java#L82) state property and have a value that is not `none`{:.e} to work. Defaults to `true`{:.p}
-- `.springOnly(springOnly: boolean)`{: .language-javascript .m-link #tree-tap-spring-only }: Determines if the recipe only works during the spring time, defaults to `false`{:.p}
+- `.resultFluid(fluid: FluidStack)`{: .language-kube #tree-tap-result-fluid }: Sets the fluid result of the recipe
+- `.minTemp(f: number)`{: .language-kube #tree-tap-min-temp }: Sets the minimum temperature °C at which the recipe will be valid, defaults to `-50`{:.n}
+- `.maxTemp(f: number)`{: .language-kube #tree-tap-max-temp }: Sets the maximum temperature °C at which the recipe will be valid, defaults to `50`{:.n}
+- `.temps(min: number, max: number)`{: .language-kube #tree-tap-temps }: Sets the maximum and minimum temperatures °C at which will the recipe will be valid
+- `.requiresNaturalLog(required: boolean)`{: .language-kube #tree-tap-requires-natural }: Determines if the recipe needs the input block to have TFC's [`branch_direction`{:.e}](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/common/blocks/TFCBlockStateProperties.java#L82) state property and have a value that is not `none`{:.e} to work. Defaults to `true`{:.p}
+- `.springOnly(springOnly: boolean)`{: .language-kube #tree-tap-spring-only }: Determines if the recipe only works during the spring time, defaults to `false`{:.p}
 
 {: .notice #treetap-notice }
 Tree taps can only be placed on blocks with the `afc:tappable_logs` tag, make sure the input blocks(s) are tagged as such
