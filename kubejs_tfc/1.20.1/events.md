@@ -1008,7 +1008,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
             rain,
             temp,
             forestLayer.noise(x, z) * 4, // Kube accepts ordinal numbers for enum constants
-            forestlayer.noise(x * 78423 + 869, z),
+            forestLayer.noise(x * 78423 + 869, z),
             forestLayer.noise(x, z * 651349 - 698763)
         );
     });
