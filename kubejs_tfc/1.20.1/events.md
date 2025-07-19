@@ -930,7 +930,7 @@ The json chunk generator definition
       "rocks": {
         "nether": {
           "raw": "minecraft:netherrack",
-          "hardened": "minecraft:black_stone",
+          "hardened": "minecraft:blackstone",
           "gravel": "minecraft:gravel",
           "cobble": "minecraft:basalt",
           "sand": "minecraft:soul_sand",
@@ -983,7 +983,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
     var heights = [];
     var i = 0;
     while (i < 256) {
-        hights.push(127);
+        heights.push(127);
         i++;
     }
     var aquifer = [];
