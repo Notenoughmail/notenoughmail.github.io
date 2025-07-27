@@ -29,12 +29,15 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Register Fauna Definitions](#register-fauna-definitions)
 - [Create Glass Operations](#create-glass-operations)
 - [Create Chunk Data Provider](#create-chunk-data-provider)
+- [Register Item Stack Modifier Converters](#item-stack-modifier-converters)
 
 ## Rock Settings
 
 - **Type**: `startup_scripts`
 
 Defines a new layer or overrides an existing layer which can be referenced from a [world preset json](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/data/tfc/worldgen/world_preset/overworld.json)
+
+{: #rock-settings-methods }
 
 ### Method Signature
 
@@ -63,6 +66,8 @@ event.defineRock(
 - 8th argument: A block, to be used as the spike block of the rock, may be `null`{:.p}. Needs to have TFC's `ROCK_SPIKE_PART` state property/be a [rock spike]({% link kubejs_tfc/1.20.1/custom.md %}#rock-spike)
 - 9th argument: A block, to be used as the loose rock block of the rock, may be `null`{:.p}. Needs to have TFC's `COUNT_1_3` state property/be a [loose rock]({% link kubejs_tfc/1.20.1/custom.md %}#loose-rock)
 - 10th argument: A block, to be used as the mossy loose rock block of the rock, may be `null`{:.p}. Needs to have TFC's `COUNT_1_3` state property/be a [loose rock]({% link kubejs_tfc/1.20.1/custom.md %}#loose-rock)
+
+{: #rock-settings-example }
 
 ### Example
 
@@ -102,6 +107,8 @@ Upon a player closing a container limited through this event, any items that are
 
 will be removed from the container and spawned in world around the player
 
+{: #limit-container-methods }
+
 ### Method Signatures
 
 ```js
@@ -120,7 +127,9 @@ Allowed size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}
 
 Additionally, every event listener requires the name of a menu type[^1] in its declaration as a key for which menus the limits are applied to.
 
-### Examples
+{: #limit-container-example }
+
+### Example
 
 ```js
 TFCEvents.limitContainer('minecraft:generic_3x3', event => {
@@ -137,6 +146,8 @@ TFCEvents.limitContainer('minecraft:generic_3x3', event => {
 - **Type**: `startup_scripts`
 
 TFC implements a system for local temperature, rainfall, fog, wind, and more. This is done through a `ClimateModel`
+
+{: #register-climate-model-methods }
 
 ### Method Signatures
 
@@ -231,7 +242,9 @@ The register method of the event has the following arguments:
 {: .notice #climate-model-registration-vector-notice }
 Internally, the components of a `Vec2` are labeled `x` and `y`, but TFC uses the `y` component for the `z` direction
 
-### Examples
+{: #register-climate-models-example }
+
+### Example
 
 ```js
 TFCEvents.registerClimateModel(event => {
@@ -255,6 +268,8 @@ TFCEvents.registerClimateModel(event => {
 
 This event is fired when a world is loading and selecting the climate model to use
 
+{: #select-climate-model-methods }
+
 ### Method Signatures
 
 ```js
@@ -268,6 +283,8 @@ event.setModel(model: ClimateModel): void
 - `.getModel()`{: .language-kube #climate-select-model }: Returns the events current model, defaults to a biome based model, TFC sets the overworld to use its own overworld model
 - `.getModelName()`{: .language-kube #climate-select-name }: Returns the registry name of the event's current model
 - `.setModel(model: ClimateModel)`{: .language-kube #climate-select-set-model }: Sets the events climate model
+
+{: #select-climate-model-example }
 
 ### Example
 
@@ -284,6 +301,8 @@ TFCEvents.selectClimateModel(event => {
 - **Type**: `server_scripts`
 
 TFC uses this event for lighting fires or optionally light-able blocks. This event *should* be cancelled if it was handled here. If you want your items to act like Flint and Steel or Torches, add them to either the `tfc:starts_fires_with_items` tag or the `tfc:starts_fires_with_durability` tags.
+
+{: #start-fire-methods }
 
 ### Method Signatures
 
@@ -302,6 +321,8 @@ event.isString(): boolean
 - `.getEntity()`{: .language-kube #fire-entity }: Returns the player of the event, may be null
 - `.getItem()`{: .language-kube #fire-item }: Returns the item stack used to start the fire
 - `.isStrong()`{: .language-kube #fire-strong }: Returns true if the event is strong
+
+{: #start-fire-example }
 
 ### Example
 
@@ -326,7 +347,9 @@ TFCEvents.startFire(event =>{
 
 Whenever a prospector's pick is used, this event is fired. It is purely informational and cannot change anything
 
-### Method Signature
+{: #prospect-methods }
+
+### Method Signatures
 
 ```js
 event.getEntity(): Player
@@ -337,6 +360,8 @@ event.getProspectResult(): ProspectResult
 - `.getEntity()`{: .language-kube #prospect-entity }: Returns the player that prospected
 - `.getBlock()`{: .language-kube #prospect-block }: Returns the found block, or if the prospect result is `nothing`{:.e}, the clicked block
 - `.getProspectResult()`{: .language-kube #prospect-result }: Results the prospect result, can be `nothing`{:.e}, `traces`{:.e}, `small`{:.e}, `medium`{:.e}, `large`{:.e}, `very_large`{:.e}, and `found`{:.e}
+
+{: #prospect-example }
 
 ### Example
 
@@ -354,7 +379,9 @@ TFCEvents.prospect(event => {
 
 This event is fired when a tree is about to be felled by an axe. Cancelling it will cause the block to be broken normally
 
-### Method Signature
+{: #logging-methods }
+
+### Method Signatures
 
 ```js
 event.getLevel(): Level
@@ -367,6 +394,8 @@ event.getPos(): BlockPos
 - `.getAxe()`{: .language-kube #log-axe }: Returns the item stack of the axe used
 - `.getBlock()`{: .language-kube #log-block }: Returns the `BlockContainerJS` of the event
 - `.getPos()`{: .language-kube #log-pos }: Returns the position that was initially broken
+
+{: #logging-example }
 
 ### Example
 
@@ -385,6 +414,8 @@ TFCEvents.log(event => {
 This event is fired whenever a sheep is sheared, a cow is milked, or similar action happens. Cancelling it will prevent the default behavior, which is controlled by each entity's implementation. This event does not control if an entity can give products, it is for the sole purpose of modifying/blocking what happens when products are made
 
 This event has a product, it may wither be an `ItemStack` or a `FluidStackJS`, not both. Only the non-empty type will retain modifications, attempting to change the type will void the original product
+
+{: #animal-product-methods }
 
 ### Method Signatures
 
@@ -418,6 +449,8 @@ event.setUses(uses: number): void
 - `.getUses()`{: .language-kube #product-get-uses }: Returns how much wear the animal will take from this event
 - `.setUses(uses: number)`{: .language-kube #product-set-uses }: Sets the number of uses the animal will take from this event
 
+{: #animal-product-example }
+
 ### Example
 
 ```js
@@ -433,6 +466,8 @@ TFCEvents.animalProduct(event => {
 - **Type**: `server_scripts`
 
 This event is fired whenever a collapse happens, including fake collapses
+
+{: #collapse-methods }
 
 ### Method Signature
 
@@ -450,6 +485,8 @@ event.isFake(): boolean
 - `.getSecondaryPositions()`{: .language-kube #collapse-secondaries }: Returns a list of `BlockPos`es which are the positions that will collapse
 - `.isFake()`{: .language-kube #collapse-fake }: Returns true if the collapse is fake
 
+{: #collapse-example }
+
 ### Example
 
 ```js
@@ -466,6 +503,8 @@ TFCEvents.collapse(event => {
 
 This event fires when a fire-dousing item is used on a block or a water potion lands
 
+{: #douse-fire-methods }
+
 ### Method Signature
 
 ```js
@@ -481,6 +520,8 @@ event.getPos(): BlockPos
 - `.getBounds()`{: .language-kube #douse-bounds }: Returns an `AABB` representing the total effected area
 - `.getPlayer()`{: .language-kube #douse-player }: Returns the player that doused the fire, may be null
 - `.getPos()`{: .language-kube #douse-pos }: Returns the position that is being doused
+
+{: #douse-fire-example }
 
 ### Example
 
@@ -500,6 +541,8 @@ TFCEvents.douseFire(event => {
 
 Food traits are applied to food items while in a container or after completion of a recipe and are used to effect how fast an item rots
 
+{: #food-trait-methods }
+
 ### Method Signature
 
 ```js
@@ -511,6 +554,8 @@ event.registerTraitWithTooltip(decayModifier: number, id: String): void
 - `.registerTraitWithTooltip(decayModifier: number, id: String)`{: .language-kube #trait-reg-tooltip }: Registers a food trait under the given id with the provided decay modifier, this trait will have a tooltip on the item with a translation key of `<id namespace>.tooltip.foodtrait.<id path>`
 
 **Note**: A higher `decayModifier`{:.v} means the food rots faster
+
+{: #food-trait-examples }
 
 ### Examples
 
@@ -526,6 +571,8 @@ TFCEvents.registerFoodTrait(event => {
 - **Type**: `startup_scripts`
 
 TFC uses [item stack modifiers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/item-stack-modifiers/) to, as one might imagine, modify item stacks created by recipes that support [item stack providers](https://terrafirmacraft.github.io/Documentation/1.20.x/data/common-types/#item-stack-providers). This event allows you to register custom modifiers with new functionality
+
+{: #ism-methods }
 
 ### Method Signatures
 
@@ -546,6 +593,8 @@ withInventory(id: String, applicator: TriFunction<ItemStack, ItemStack, Iterable
     - `applicator: TriFunction<ItemStack, ItemStack, Iterable<ItemStack>, ItemStack>`{: .language-kube }: A tri-function that receives two `ItemStack`s, the output stack and the input stack[^2], and an `Iterable<ItemStack>`{: .language-kube }, an iterable view of the input inventory, and returns an `ItemStack`, the modified output stack. Performs the modifications to the output stack
 
 [^2]: This stack should *not* be modified at all
+
+{: #ism-examples }
 
 ### Examples
 
@@ -583,6 +632,8 @@ TFCEvents.registerItemStackModifier(event => {
 
 In 1.20, TFC added a representative blocks system for prospecting, essentially allowing ores of the same type but different grades to be viewed as the same when the prospector's pick counts the blocks nearby, this event allows you to register new representatives
 
+{: #representative-methods }
+
 ### Method Signature
 
 ```js
@@ -591,6 +642,8 @@ event.register(representative: Block, blocks: Block[]): void
 
 - 1st argument: The block to represent the other blocks
 - 2nd argument: An array of blocks, to be represented by the first argument when prospecting
+
+{: #representative-examples }
 
 ### Example
 
@@ -606,6 +659,8 @@ TFCEvents.prospectRepresentative(event => {
 
 TFC has an easter egg in its calendar screen where on certain dates it will show someone's birthday, this event allows you to add and remove names from the list of birthdays
 
+{: #birthdays-methods }
+
 ### Method Signatures
 
 ```js
@@ -617,6 +672,8 @@ event.removeAll(): void
 - `.add(month: Month, day: number, name: String)`{: .language-kube #birthdays-add }: Adds a birthday to the given month and day
 - `.remove(month: Month, day: number)`{: .language-kube #birthday-remove }: Removes the birthday on the given month and day if there is one
 - `.removeAll()`{: .language-kube #birthday-remove-all }: Removes all birthdays
+
+{: #birthdays-example }
 
 ### Example
 
@@ -632,6 +689,8 @@ TFCEvents.birthdays(event => {
 
 TFC has a custom system for performing certain interactions with items, most notably knapping, this event exposes the ability to create your own interactions
 
+{: #interactions-methods }
+
 ### Method Signatures
 
 ```js
@@ -645,6 +704,8 @@ event.blockItemPlacement(item: Item, block: Block): void
 - `.interaction(ingredient: Ingredient, targetAir: boolean, action: OnItemUseAction)`{: .language-kube #interactions-interact-pared-down }: Registers the given ingredient for the provided [action](#onitemuseaction), the boolean param determines if air is a valid target, blocks default to being a valid target
 - `.interaction(ingredient: Ingredient, action: OnItemUseAction)`{: .language-kube #interactions-interact-min }: Registers the given ingredient for the provided [action](#onitemuseaction), defaulting to blocks being valid targets and air not
 - `.blockItemPlacement(item: Item, block: Block)`{: .language-kube #interactions-placement }: Registers a block placement for the given item, placing the given block
+
+{: #interactions-example }
 
 ### Example
 
@@ -670,6 +731,8 @@ The basis of an interaction, a callback with two parameters and a return value:
 **Type**: `startup_scripts`
 
 Allows for editing the default settings of TFC chunk generator at world creation, including editing the rock layers
+
+{: #worldgen-defaults-methods }
 
 ### Method Signatures
 
@@ -760,6 +823,8 @@ TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^3
 - `.removeUpliftLayer(name: String)`{: .language-kube #worldgen-remove-uplift }: Removes the given layer from the 'uplift' layer type
 - `.getUpliftLayers()`{: .language-kube #worldgen-get-uplift }: Gets the layers that are currently in the 'uplift' layer type
 
+{: #worldgen-defaults-example }
+
 ### Example
 
 ```js
@@ -781,6 +846,8 @@ TFCEvents.defaultWorldSettings(event => {
 **Type**: `startup_scripts`
 
 Allows for registering a [fauna definition]({% link kubejs_tfc/1.20.1/data.md %}#fauna) for any entity type
+
+{: #fauna-def-methods }
 
 ### Method Signatures
 
@@ -812,6 +879,8 @@ event.or(entityType: EntityType<?>, suffix?: String, placementType: SpawnPlaceme
 > - `placementType: SpawnPlacements$Type`{: .language-kube }: Any of `on_ground`{:.e}, `in_water`{:.e}, `no_restrictions`{:.e}, or `in_lava`{:.e} and determines where the entity may be placed
 > - `heightmap: Heightmap$Types`{: .language-kube }: Any of `world_surface_wg`{:.e}, `world_surface`{:.e}, `ocean_floor_wg`{:.e}, `ocean_floor`{:.e}, `motion_blocking`{:.e}, or `motion_blocking_no_leaves`{:.e}. See the [Minecraft Wiki](https://minecraft.wiki/w/Heightmap) for an explanation for what each of these mean
 
+{: #fauna-def-example }
+
 ### Example
 
 ```js
@@ -831,6 +900,8 @@ Allows for the creation of new glass operations for use in [glassworking]({% lin
 >
 > All operations created via this event will have `kubejs_` prefixed to their name
 
+{: #glass-operations-methods }
+
 ### Method Signatures
 
 ```js
@@ -849,6 +920,8 @@ event.createPowder(powderItemId: ResourceLocation, name: String, customSound?: R
     - `customSound?: ResourceLocation`{: .language-kube }: The registry id of a custom sound to play when the operation is performed. Optional, defaults to `minecraft:block.anvil.use`
     - `minHeat: number`{: .language-kube }: The minimum heat required to perform the operation. Optional, defaults to 480°C
 
+{: #glass-operations-example }
+
 ### Example
 
 ```js
@@ -863,6 +936,8 @@ TFCEvents.createGlassOperations(event => {
 
 When used with a specific chunk generator type, this event allows for custom generation of TFC's [ChunkData]({% link kubejs_tfc/1.20.1/misc.md %}#print-chunk-data) permitting [fauna definitions](#register-fauna-definitions), [climate placement modifiers]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate), TFC's climate-based structure modifier, and any other configured features which are dependent on the world generator to be TFC-like (erosion, boulders, etc.) to function properly with level generators other than TFC's.
 
+{: #chunk-data-provider-generator }
+
 ### Chunk Generator
 
 Due to how TFC's chunk data works, this functionality is inherently tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped` which will wrap any arbitrary chunk generator and imitate its function while providing TFC's additional values.
@@ -874,11 +949,19 @@ In its json definition, the generator definition has the following fields:
 - `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are unlikely to be used except for the rock layer settings which can be used in custom rock generation.
 - `generator`: A chunk generator.
 
+{: #chunk-data-provider-rule-source }
+
+### Surface Rule Source
+
+
+
+{: #chunk-data-provider-methods }
+
 ### Method Signatures
 
 ```js
 event.getWorldSeed(): number
-event.getNormalNoise(id: ResourceLocation): NomralNoise
+event.getNormalNoise(id: ResourceLocation): NormalNoise
 event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
@@ -886,7 +969,7 @@ event.rocks(getter: RocksGetter): void
 ```
 
 - `.getWorldSeed()`{: .language-kube #chunk-data-provider-seed }: Returns the seed of the world the chunk data provider is being applied to
-- `.getNormalNoise(id: ResourceLocation)`{: .language-kube }: Returns the `NomralNoise` defined by the noise parameters at the given id
+- `.getNormalNoise(id: ResourceLocation)`{: .language-kube #chunk-data-provider-normal-noise }: Returns the `NormalNoise` defined by the noise parameters at the given id
 - `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generatePartial(...)`{: .language-kube } is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
     - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generatePartial(...)`{: .language-kube } should be called here. `.generateFull(...)`{: .language-kube } *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `.generatePartial(...)`{: .language-kube } are:
         - `rainfallLayer: LerpFloatLayer`{: .language-kube }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
@@ -896,7 +979,7 @@ event.rocks(getter: RocksGetter): void
         - `forestDensity: number`{: .language-kube }: A number, in the range [0, 1], for the density of the forests in the chunk. Used by TFC's forest configured feature
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
 - `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-full }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generateFull(...)`{: .language-kube } is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
-    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generateFull(...)`{: .language-kube } should be called here and the chunk is guaranteed to have access to the `WORLD_SURFACE_WG`{:.e} and `OCEAN_FLOOR_WG`{:>e} heightmaps during this callback. The parameters for `.generateFull(...)`{: .language-kube } are:
+    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generateFull(...)`{: .language-kube } should be called here and the chunk is guaranteed to have access to the `WORLD_SURFACE_WG`{:.e} and `OCEAN_FLOOR_WG`{:.e} heightmaps during this callback. The parameters for `.generateFull(...)`{: .language-kube } are:
         - `surfaceHeight: int[256]`{: .language-kube }: An array of integer values of size `256`{:.n} (`16`{:.n} * `16`{:.n}; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z`{: .language-kube } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY`{:.v} parameter of a `RocksGetter`{:.f} callback is gotten from.
         - `aquiferSurfaceHeight: int[16]`{: .language-kube }: An array of integer values of size `16`{:.n} (`4`{:.n} * `4`{:.n}; `QuartPos` resolution) representing the height of aquifer surfaces. Only used by [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for
@@ -921,6 +1004,8 @@ event.rocks(getter: RocksGetter): void
 
       And the top 30 bits are used as a seed for a random number generator which is used to pick the layer that comes after the next layer when `layerN`{:.v} is greater than `0`{:.n}
     - `layerN: int`{: .language-kube }: How many times to iterate to a layer's next layer as described in layer's mapping. Accepts any non-negative number; the `bottom` pseudo-layer points towards itself
+
+{: #chunk-data-provider-example }
 
 ### Example
 
@@ -1064,5 +1149,41 @@ TFCEvents.createChunkDataProvider('nether', event => {
 
         return rockLayers.sampleAtLayer(rockLayerNoise.noise(x, z), layer);
     });
+})
+```
+
+## Item Stack Modifier Converters
+
+**Type**: `startup_scripts`
+
+KubeJS TFC's wrapper around TFC's `ItemStackProvider`s holds its [item stack modifiers](#custom-item-stack-modifiers) in json form. Typically, this is fine; but when converting the canon ISP class to the wrapper type, the ISMs need to be converted to json. This is not supported by default
+
+This event allows scripters to register custom ISM -> json converters for types not already handled
+
+By default, all TFC, Firmalife, and TFC Casting with Channels ISM types have converters. Additionally, all simple (extends `ItemStackModifier$SingleInstance`) ISM types, including custom kube modifiers, are converted automatically
+
+{: #ism-converter-methods }
+
+### Method Signature
+
+```js
+<T extends ItemStackModifier> event.register(type: Class<T>, converter: BiConsumer<T, JsonObject>): void
+```
+
+- 1st argument: The class to register a converter for
+- 2nd argument: A callback with two parameters
+    - The modifier to be converted
+    - A `JsonObject`; this already has the `type` property
+
+{: #ism-converter-example }
+
+### Example
+
+```js
+TFCEvents.registerItemStackModifierConverters(event => {
+    event.register(Java.loadClass('com.sunshine_mods.sunny_tfc.common.SunnyModifier'), (modifier, json) => {
+        json.addProperty('sun_value', modifier.sunValue());
+        json.addProperty('brightness', modifier.brightness());
+    })
 })
 ```

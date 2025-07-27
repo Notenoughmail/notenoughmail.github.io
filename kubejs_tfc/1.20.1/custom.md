@@ -38,6 +38,8 @@ The following types are available:
 - [Encased Axles](#encased-axles)
 - [Log](#log)
 - [Torch](#torch)
+- [Sapling](#sapling)
+- [Leaves](#leaves)
 
 <a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
 
@@ -51,7 +53,9 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:aqueduct`
 
-#### Extra Method
+{: #aqueduct-methods }
+
+#### Extra Methods
 
 - `.allowedFluids(fluids: String[])`{: .language-kube #aqueduct-allowed-fluids }: Sets the fluids that the aqueduct may hold
     - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
@@ -61,6 +65,8 @@ Inherits the methods of the default block builder
     - `.south()`{: .language-kube }: A boolean. If the model part in operation is the south part
     - `.east()`{: .language-kube }: A boolean. If the model part in operation is the east part
     - `.west()`{: .language-kube }: A boolean. If the model part in operation is the west part
+
+{: #aqueduct-example }
 
 #### Example
 
@@ -83,6 +89,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:ground_cover`
 
+{: #ground-cover-methods }
+
 #### Extra Methods
 
 - `.ore()`{: .language-kube #ground-cover-ore }: Sets the collision shape to that of TFC's ores
@@ -94,7 +102,9 @@ Inherits the methods of the default block builder
 - `.withPreexistingItem(item: ResourceLocation)`{: .language-kube #ground-cover-preexisting-item }: Sets the 'block item' of the block to be an existing item
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #ground-cover-extend-props}: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
-### Example
+{: #ground-cover-example }
+
+#### Example
 
 ```js
 StartupEvents.registry('block', event => {
@@ -110,6 +120,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:loose_rock`
 
+{: #loose-rock-methods }
+
 #### Extra Methods
 
 - `.rotateModel(i: number)`{: .language-kube #loose-rock-rate-model }: Rotates the placed models by the given amount of degrees
@@ -118,6 +130,8 @@ Inherits the methods of the default block builder
 - `.itemTexture(key: String, texture: String)`{: .language-kube #loose-rock-item-texture-1 }: Sets the item's texture for the given key
 - `.itemTextureJson(json: JsonObject)`{: .language-kube #loose-rock-item-texture-json }: Sets the json for the item model
 - `.rockTypeModel(type: String)`{: .language-kube #loose-rock-rock-type-model }Sets the rock type models that should automatically be used, accepts `igneous_extrusive`{:.s}, `igneous_intrusive`{:.s}, `metamorphic`{:.s}, or `sedimentary`{:.s}, defaults to `metamorphic`{:.s}
+
+{: #loose-rock-example }
 
 #### Example
 
@@ -136,6 +150,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:raw_rock`
 
+{: #raw-rock-methods }
+
 #### Extra Methods
 
 - `.naturallySupported(supported: boolean)`{: .language-kube #raw-support }: Determines if the block is considered to be naturally supported for the purposes of spawning particles indicating unsupported regions
@@ -149,6 +165,8 @@ Inherits the methods of the default block builder
 - `.metamorphic()`{: .language-kube #raw-metamorphic }: Sets the item's rock type tooltip to be that of metamorphic rocks
 - `.sedimentary()`{: .language-kube #raw-sedimentary }: Sets the item's rock type tooltip to be that of sedimentary rocks
 - `.uniqueSideTextures()`{: .language-kube #raw-unique-sides }: Makes the default model generator use the `side`{:.s} and `end`{:.s} textures instead of just the `end`{:.s}
+
+{: #raw-rock-example }
 
 #### Example
 
@@ -167,12 +185,16 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:rock_spike`
 
+{: #rock-spike-methods }
+
 #### Extra Method
 
 - `.models(models: BiConsumer<SpikeModelType, ModelGenerator>)`{: .language-kube }: Sets the model generation of the spike. Accepts a callback with two parameters. The second parameter is a model generator and the second generator has the following methods:
     - `.base()`{: .language-kube }: A boolean. If the model type in operation represents a base state
     - `.middle()`{: .language-kube }: A boolean. If the model type in operation represents a middle state
     - `.tip()`{: .language-kube }: A boolean. If the model type in operation represents a tip state
+
+{: #rock-spike-example }
 
 #### Example
 
@@ -190,6 +212,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:thin_spike`
 
+{: #thin-spike-methods }
+
 #### Extra Methods
 
 - `.dripChance(f: number)`{: .language-kube #thin-spike-drip-chance }: Sets the chance, in the range [0, 1], the block will drip per tick
@@ -201,7 +225,9 @@ Inherits the methods of the default block builder
 - `.meltFluid(fluid: FluidStack)`{: .language-kube #thin-spike-melt-fluid }: The fluid that the block melts into
 - `.tipModel(model: String)`{: .language-kube #thin-spike-tip-model }: Sets the parent model of the tip state
 
-### Example
+{: #thin-spike-example }
+
+#### Example
 
 ```js
 StartupEvents.registry('block', event => {
@@ -220,6 +246,8 @@ There are four types: block, stair, slab, and wall and have the same methods as 
 These are effected by TFC's mossy spreading config
 
 **Types**: `tfc:moss_spreading_block`, `tfc:moss_spreading_stair`, `tfc:moss_spreading_slab`, `tfc:moss_spreading_wall`
+
+{: #moss-spreading-examples }
 
 #### Examples
 
@@ -322,6 +350,8 @@ The parameters of the callback are:
 - `needsWater: boolean`{: .language-kube }: A boolean representing if a need for water should be respected. This is always `true`{:.p} in default TFC
 - `return: boolean`{: .language-kube }: If the block should convert
 
+{: #moss-growing-callback-examples }
+
 #### Examples
 
 ```js
@@ -347,6 +377,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:lamp`
 
+{: #lamp-methods }
+
 #### Extra Methods
 
 - `.lightLevel(i: number)`{: .language-kube #lamp-light-level }: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
@@ -354,6 +386,8 @@ Inherits the methods of the default block builder
 - `.models(models: BiConsumer<LampModelType, ModelGenerator>)`{: .language-kube #lamp-models }: Sets the model generation of the lamp. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
     - `on`: A boolean. If the model type represents a lit state
     - `hanging`: A boolean. If the model type represents a hanging state
+
+{: #lamp-example }
 
 #### Example
 
@@ -377,6 +411,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:stationary_berry_bush`
 
+{: #stationary-berry-bush-methods }
+
 #### Extra Methods
 
 - `.lifecycle(month: Month, lifecycle: Lifecycle)`{: .language-kube #stationary-bush-lifecycle }: Sets the bush's lifecycle for a particular month, defaults to `dormant`{:.e} for every month, accepts a month for the first parameter, and either `healthy`{:.e}, `dormant`{:.e}, `fruiting`{:.e}, or `flowering`{:.e} for the second
@@ -388,6 +424,8 @@ Inherits the methods of the default block builder
 - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-kube #stationary-bush-texture }: Sets the texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
+
+{: #stationary-berry-bush-example }
 
 #### Example
 
@@ -419,6 +457,8 @@ Inherits the methods of the stationary bush builder
 
 **Type**: `tfc:spreading_berry_bush`
 
+{: #spreading-berry-bush-methods }
+
 #### Extra Methods
 
 - `.maxHeight(i: number)`{: .language-kube #spreading-bush-max-height }: Sets the maximum number of blocks the bush may climb, defaults to `3`{:.n}
@@ -429,6 +469,8 @@ Inherits the methods of the stationary bush builder
     - `.texture(lifecycle: Lifecycle, stage: number, caneTexture: String, bushTexture)`{: .language-kube #cane-bush-texture-1}: Sets the cane and bush texture for the given lifecycle and stage
 
 Additionally, this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
+
+{: @spreading-berry-bush-example }
 
 #### Example
 
@@ -451,6 +493,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:dirt`
 
+{: #dirt-methods }
+
 #### Extra Methods
 
 - `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-kube #dirt-grass }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
@@ -467,6 +511,8 @@ Inherits the methods of the default block builder
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #dirt-farmland-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-kube #dirt-rooted }: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
 - `.mud(mud: Consumer<BlockBuilder>)`{: .language-kube #dirt-mud }: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
+
+{: #dirt-example }
 
 #### Example
 
@@ -504,6 +550,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:wild_crop`
 
+{: #wild-crop-methods }
+
 #### Extra Methods
 
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #wild-crop-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -514,6 +562,8 @@ Inherits the methods of the default block builder
 - `.deadModel(model: String)`{: .language-kube #wild-crop-dead-model }: Sets the model to use when the crop is dead/immature and its type is `default`{:.e} or `flooded`{:.e}
 - `.doubleDeadModels(topModel: String, bottomModel: String)`{: .language-kube #wild-crop-double-models }: Sets the models to use when the crop is dead/immature and sets the crop's type to `double`{:.e}
 - `.spreadingDeadModels(coreModel: String, sideModel: String)`{: .language-kube #wild-crop-spreading-dead-models }: Sets the models to use when the crop is dead/immature and sets the crop's type to `spreading`{:.e}
+
+{: #wild-crop-example }
 
 #### Example
 
@@ -533,6 +583,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:crop`
 
+{: #default-crop-methods }
+
 #### Extra Methods
 
 - `.stages(i: number)`{: .language-kube #crop-stages }: Sets the number of growth stages the block has, should be a number between `1`{:.n} and `12`{:.n}, defaults to `8`{:.n}
@@ -543,20 +595,26 @@ Inherits the methods of the default block builder
         - `.mature()`{: .language-kube }: A boolean. If the variant in operation represents a mature state
 - `.seedItem(seedItem: Consumer<SeedItemBuilder>)`{: .language-kube #crop-seed-item }: A consumer for setting the properties of the block's seed item
 - `.productItem(productItem: Consumer<ItemBuilder>)`{: .language-kube #crop-product-item-0 }: A consumer for setting the properties of the block's product item
-- `.productItem(productItem: ResourceLocation)`{: .language-kube #crop-product-item-1 }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
+- `.existingProductItem(productItem: ResourceLocation)`{: .language-kube #crop-product-item-1 }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
 - `.nutrient(nutrient: NutrientType)`{: .language-kube #crop-nutrient }: Sets the nutrient the crop consumes, available options are `nitrogen`{:.e}, `phosphorous`{:.e} , and `potassium`{:.e}, defaults to `nitrogen`{:.e}
 - `.textureAll(id: String, texture: String)`{: .language-kube #crop-texture-all }: Sets the crop's texture for the id for all growth stages
 - `.model(model: String)`{: .language-kube #crop-model-0 }: Sets the crop's model for all growth stages
-- `.model(gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-1 }: Sets the crop's model for all growth stages
-- `.model(i: number, gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-2 }: Sets the crop's model for a specific growth stage
+- `.setModel(gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-1 }: Sets the crop's model for all growth stages
+- `.setModel(i: number, gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-2 }: Sets the crop's model for a specific growth stage
 - `.model(i: number, model: String)`{: .language-kube #crop-model-3 }: Sets the crop's model for a specific growth stage
 - `.texture(texture: String)`{: .language-kube crop-texture-0 }: Sets the crop's `crop`{:.s} texture for all growth stages
 - `.texture(i: number, id: String, texture: String)`{: .language-kube #crop-texture-1 }: Textures a specific key for the given stage
 - `.texture(i: number, texture: String)`{: .language-kube #crop-texture-2 }: Sets the crop's `crop`{:.s} texture for the given growth stage
 - `.textures(textures: JsonObject)`{: .language-kube #crop-textures-0 }: Sets the crop's textures for all growth stages
 - `.textures(i: number, textures: JsonObject)`{: .language-kube #crop-textures-1 }: Sets the crop's textures for the given growth stage
+- `.growthModifier(d: number)`{: .language-kube #crop-growth-modifier }: Sets the growth modifier of the crop. A higher value will slow growth
+- `.growthModifierSupplier(mod: Supplier<Double>)`{: .language-kube #crop-growth-modifier-supplier }: Sets the growth modifier of the crop as a supplier. A higher value will slow growth
+- `.expiryModifier(d: number)`{: .language-kube #crop-expiry-modifier }: Sets the expiry modifier of the crop. A higher value will slow death
+- `.expiryModifierSupplier(mod: Supplier<Double>)`{: .language-kube #crop-expiry-modifier-suppler }: Sets the expiry modifier of the crop as a supplier. A higher value will slow death
 
 Additionally this will register a climate range with the same id as the block, it can be set through the [data event]({% link kubejs_tfc/1.20.1/data.md %}#climate-ranges)
+
+{: #default-crop-example }
 
 #### Example
 
@@ -579,6 +637,8 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 
 **Type**: `tfc:double_crop`
 
+{: #double-crop-method }
+
 #### Extra Methods
 
 - `.stages(i: number)`{: .language-kube #double-crop-stages }: Sets the number of growth stages the block has, should be a number between `1`{:.n} and `6`{:.n}, defaults to `4`{:.n}
@@ -591,6 +651,8 @@ Inherits the methods of the [TFC crop builder](#default-crops)
         - `.mature()`{: .language-kube }: A boolean. If the variant in operation represents a mature state
         - `.bottom()`{: .language-kube }: A boolean. If the variant in operation represents a bottom state
         - `.stick()`{: .language-kube }: A boolean. If the variant in operation represents a a state with `stick=true`. Only relevant if `.requiresStick(true)`{: .language-kube } has been called
+
+{: #double-crop-example }
 
 #### Example
 
@@ -616,9 +678,13 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 
 **Type**: `tfc:spreading_crop`
 
+{: #spreading-crop-methods }
+
 #### Extra Method
 
 - `.fruitBlock(fruitBlock: ResourceLocation)`{: .language-kube #spreading-crop-fruit-block }: Sets the block that will be used as the block's fruit block, defaults to `minecraft:honey_block`
+
+{: #spreading-crop-example }
 
 #### Example
 
@@ -637,6 +703,8 @@ Inherits the methods of [TFC's crop builder](#default-crops)
 
 **Type**: `tfc:flooded_crop`
 
+{: #flooded-crop-example }
+
 #### Example
 
 ```js
@@ -653,10 +721,14 @@ Inherits the methods of [TFC's crop builder](#default-crops)
 
 **Type**: `tfc:pickable_crop`
 
+{: #pickable-crop-methods }
+
 #### Extra Methods
 
 - `.fruit(fruit: ResourceLocation)`{: .language-kube #pickable-crop-fruit }: Sets the item the player will be given when they pick the block
 - `.matureFruit(fruit: ResourceLocation)`{: .language-kube #pickable-crop-mature-fruit }: Sets the item the player will be given when they pick the block and the crop is mature, defaults to `minecraft:apple`
+
+{: #pickable-crop-example }
 
 #### Example
 
@@ -678,12 +750,16 @@ Will not automatically support blocks, use the [support method]({% link kubejs_t
 
 **Type**: `tfc:support`
 
+{: #support-methods }
+
 #### Extra methods
 
 - `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube #support-horizontal }: Allows for editing of the properties of the horizontal block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #support-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+{: #support-example }
 
 #### Example
 
@@ -701,11 +777,15 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:anvil`
 
+{: #anvil-methods }
+
 #### Extra Methods
 
 - `.tier(i: number)`{: .language-kube #anvil-tier }: Sets the tier of the anvil, defaults to `0`{:.n}
 - `.defaultName(name: Component)`{: .language-kube #anvil-default-name }: Sets the default name of the anvil screen, defaults to `Text.translatable('tfc.block_entity.anvil')`{: .language-kube }
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #anvil-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
+
+{: #anvil-example }
 
 #### Example
 
@@ -724,6 +804,8 @@ Creates a new axle block, in addition to blocks derived from it
 Inherits the methods of the default block builder
 
 **Type**: `tfc:axle`
+
+{: #axle-methods }
 
 #### Extra Methods
 
@@ -751,6 +833,8 @@ Inherits the methods of the default block builder
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #axle-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 
+{: #axle-example }
+
 #### Example
 
 ```js
@@ -771,6 +855,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:encased_axle`
 
+{: #encased-axle-example }
+
 #### Example
 
 ```js
@@ -787,10 +873,14 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:log`
 
+{: #log-methods }
+
 #### Extra Methods
 
 - `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-kube #log-stripped }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in `null`{:.p} to remove the stripped block
 - `.useFullBlockForItemModel()`{: .language-kube #log-full-item-model }: Makes the autogenerated item model use the model of the block instead of a custom texture
+
+{: #log-example }
 
 #### Example
 
@@ -812,6 +902,8 @@ Inherits the methods of the default block builder
 
 **Type**: `tfc:torch`
 
+{: #torch-methods }
+
 #### Extra Methods
 
 - `.deadItem(item: @Nullable Consumer<ItemBuidler>)`{: .language-kube #torch-dead-item }: Sets the properties of the dead/unlit item, may be `null`{:.p} to not have a dead/unlit item
@@ -822,6 +914,9 @@ Inherits the methods of the default block builder
 - `.dead(dead: Consumer<DeadTorchBuidler>)`{: .language-kube #torch-dead }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
 - `.wall(wall: Consumer<WallTorchBuilder>)`{: .language-kube #torch-wall }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
 - `.deadWall(deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-kube #torch-dead-wall }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
+- `.deadModel(model: String)`{: .language-kube #torch-dead-model }: Sets the model for the dead block and item
+
+{: #torch-example }
 
 #### Example
 
@@ -841,6 +936,70 @@ StartupEvents.registry('block', event => {
 })
 ```
 
+### Sapling
+
+Creates a new TFC sapling block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:sapling`
+
+{: #sapling-methods }
+
+#### Extra Methods
+
+- `.placeableOnSand()`{: .language-kube #sapling-place-on-sand }: Allows the sapling to be placed on sand
+- `.growthDays(i: number)`{: .language-kube #sapling-growth-days }: Sets the number of days it takes for the sapling to grow. Defaults to `8`{:.n}
+- `.growthDaysSupplier(days: Supplier<Integer>)`{: .language-kube #sapling-growth-days-supplier }: Sets the number of days, via a supplier, it takes for the sapling to grow. Defaults to `() => 8`{: .language-kube }
+- `.features(normal: ResourceLocation, oldGrowth: ResourceLocation)`{: .language-kube #sapling-features-0 }: Sets the normal and old growth features of the sapling. Defaults to `minecraft:oak` for both
+- `.features(trees: ResourceLocation)`{: .language-kube #sapling-features-1 }: Sets the normal and old growth features of the sapling to the same feature. Defaults to `minecraft:oak`
+
+{: #sapling-example }
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_sapling', 'tfc:sapling')
+        .features('kubejs:tree/coconut')
+        .placeableOnSand()
+        .growthDays(22)
+})
+```
+
+### Leaves
+
+Creates a new TFC leaves block
+
+Inherits the methods of the default block builder
+
+**Type**: `tfc:leaves`
+
+{: #leaves-methods }
+
+#### Extra Methods
+
+- `.autumnIndex(i: number)`{: .language-kube #leaves-autumn-index }: Sets the vertical coordinate, in the range [0, 255], on TFC's `foliage_fall` colormap for leaves. Defaults to `0`{:.n}
+- `.fallenLeaves(fallenLeaves: @Nullable Consumer<FallenLeavesBlockBuidler>)`{: .language-kube #leaves-fallen }: Sets the properties of the fallen leaves block. May pass null to not have a fallen leaves block
+    - The consumer has the same methods as the default block builder and:
+    - `.models(models: BiConsumer<FallenLeafModelType, ModelGenerator>)`{: .language-kube }: Sets the model generation of the fallen leaves block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
+        - `.height`{: .language-kube }: A number, the height in pixels of the state
+        - `.layers`{: .language-kube }: A number, the `layers` block state property value of the state
+- `.twig(id: ResourceLocation)`{: .language-kube #leaves-twig }: Sets the twig block to be placed when a natural leaf is broken
+- `.seasonalColors(seasonalColors: boolean)`{: .language-kube #leaves-seasonal-colors}: If the tint of the leaves should change seasonally. Defaults to `true`{:.p}
+
+{: #leaves-example }
+
+#### Example
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('my_leaves', 'tfc:leaves')
+        .seasonalColors(false)
+        .fallenLeaves(null)
+})
+```
+
 ### FirmaLife Cheese Wheel
 
 Creates a new cheese wheel block
@@ -849,12 +1008,16 @@ Inherits the methods of the default block builder
 
 **Type**: `firmalife:cheese_wheel`
 
+{: #cheese-wheel-methods }
+
 #### Extra Method
 
 - `.sliceItem(slice: Consumer<ItemBuilder>)`{: .language-kube #cheese-wheel-slice }: Sets the properties of the cheese wheel's slice item
 - `.freshInsideTexture(tex: String)`{: .language-kube #cheese-wheel-fresh-inside }: Sets the inside texture when the cheese is fresh
 - `.agedInsideTexture(tex: String)`{: .language-kube #cheese-wheel-aged-inside }: Sets the inside texture when the cheese is aged
 - `.vintageInsideTexture(tex: String)`{: .language-kube #cheese-wheel-vintage-inside }: Sets the inside texture when the cheese is vintage
+
+{: #cheese-wheel-example }
 
 #### Example
 
@@ -961,6 +1124,8 @@ Inherits the methods of other tool builders
 
 **Type**: `tfc:chisel`
 
+{: #chisel-example }
+
 #### Example
 
 ```js
@@ -987,6 +1152,8 @@ Inherits the methods of the basic item builder
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
+{: #fluid-container-methods }
+
 #### Extra Methods
 
 - `.canPlaceLiquid(b: boolean)`{: .language-kube #fluid-container-can-place-liquid }: Determines if the item can place liquids in world, defaults to `false`{:.p}
@@ -995,6 +1162,8 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(tag: String)`{: .language-kube #fluid-container-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 - `.filledDisplayName(c: Component)`{: .language-kube #fluid-container-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-kube #fluid-container-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-kube }
+
+{: #fluid-container-example }
 
 #### Example
 
@@ -1014,9 +1183,13 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:hammer`
 
+{: #hammer-methods }
+
 #### Extra Method
 
 - `.metalTexture(texture: String)`{: .language-kube #hammer-metal-texture }: Sets the texture of the hammer when in a trip hammer, this is required if you want the hammer to be usable in a trip hammer
+
+{: #hammer-example }
 
 #### Example
 
@@ -1035,6 +1208,8 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:javelin`
 
+{: #javelin-methods }
+
 #### Extra Methods
 
 - `.thrownDamage(f: number)`{: .language-kube #javelin-thrown-damage }: Sets the thrown damage of the javelin, defaults to `0.3`{:.n}
@@ -1042,6 +1217,8 @@ Inherits the methods of other tool item builders
 - `.throwingModel(m: String)`{: .language-kube #javelin-throwing-model }: Sets the model to use when throwing the javelin, before release
 - `.modelAtPerspective(perspective: ItemDisplayContext, model: String)`{: .language-kube #javelin-model-at-perspective }: Sets the model to use at the specified display context
 - `.guiModel(m: String)`{: .language-kube #javelin-gui-model }: Sets the model to use for the `none`{:.e}, `fixed`{:.e}, `ground`{:.e}, and `gui`{:.e} display contexts
+
+{: #javelin-example }
 
 #### Example
 
@@ -1060,6 +1237,8 @@ Creates a new mace item
 Inherits the methods of other tool item builders
 
 **Type**: `tfc:mace`
+
+{: #mace-example }
 
 #### Example
 
@@ -1087,6 +1266,8 @@ Inherits the methods of the basic item builder
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
+{: #mold-methods }
+
 #### Extra Methods
 
 - `.capacity(i: number)`{: .language-kube #mold-capacity }: Sets the mB capacity of the mold, defaults to `100`{:.n}
@@ -1097,6 +1278,8 @@ Inherits the methods of the basic item builder
 
 - `.tfcccAllowedInMoldTable(model?: List<String>)`{: .language-kube #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
+
+{: #mold-example }
 
 #### Example
 
@@ -1115,6 +1298,8 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:propick`
 
+{: #propick-example }
+
 #### Example
 
 ```js
@@ -1131,9 +1316,13 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:scythe`
 
+{: #scythe-methods }
+
 #### Extra Method
 
 - `.mineableBlocksTag(blockTag: String)`{: .language-kube #scythe-mineable-blocks-tag }: Sets the block tag that the scythe can properly dig at full speed, defaults to `tfc:mineable_with_scythe`
+
+{: #scythe-example }
 
 #### Example
 
@@ -1151,6 +1340,8 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:hoe`
 
+{: #hoe-example }
+
 #### Example
 
 ```js
@@ -1167,10 +1358,14 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:tool`
 
+{: #tool-methods }
+
 #### Extra methods
 
 - `.mineableBlocksTag(blockTag: String)`{: .language-kube #tool-minable-blocks-tag }: Sets the block tag that the 'tool' can properly dig at full speed, defaults to `tfc:mineable_with_knife`
 - `.knife()`{: .language-kube #tool-knife }: Adds the item to the `tfc:knives` tag and sets its mineable blocks tag to `tfc:mineable_with_knife`
+
+{: #tool-example }
 
 #### Example
 
@@ -1188,6 +1383,8 @@ Inherits the methods of other tool item builders
 
 **Type**: `tfc:fishing_rod`
 
+{: #fishing-rod-methods }
+
 #### Extra Methods
 
 - `.fishingStrength(f: number)`{: .language-kube #fishing-rod-strength }: Sets the fishing strength of the rod, defaults to a value based on the tool's tier
@@ -1195,6 +1392,8 @@ Inherits the methods of other tool item builders
 - `.smallBait()`{: .language-kube #fishing-rod-small-bait }: Adds the rod to the correct tag to allow it to hold small bait
 - `.largeBait()`{: .language-kube #fishing-rod-large-bait }: Adds the rod to the correct tag to allow it to hold large bait
 - `.castTexture(t: String)`{: .language-kube #fishing-rod-cast-texture }: Sets the texture used when the rod is cast out
+
+{: #fishing-rod-example }
 
 #### Example
 
@@ -1214,9 +1413,13 @@ Inherits the methods of the default item builder
 
 **Type**: `tfc:jar`
 
+{: #jar-methods }
+
 #### Extra Method
 
 - `.placedModel(model: String)`{: .language-kube #jar-placed-model }: Sets the model of the jar when placed, defaults to the item's id
+
+{: #jar-example }
 
 #### Example
 
@@ -1235,9 +1438,13 @@ Inherits the methods of the default item builder
 
 **Type**: `tfc:glassworking`
 
+{: #glassworking-methods }
+
 #### Extra Method
 
 - `.operation(operation: GlassOperation)`{: .language-kube #glassworking-operation }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
+
+{: #glassworking-example }
 
 #### Example
 
@@ -1256,10 +1463,14 @@ Inherits the methods of the default item builder
 
 **Type**: `tfc:windmill_blade`
 
+{: #windmill-blade-methods }
+
 #### Extra Methods
 
 - `.bladeColor(color: Color)`{: .language-kube #windmill-blade-color }: Sets the color of the blade, defaults to `0x000000`{:.n}
 - `.bladeTexture(texture: String)`{: .language-kube #windmill-blade-texture }: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`. `textures/` and `.png` must be specified
+
+{: #windmill-blade-example }
 
 #### Example
 
@@ -1278,9 +1489,13 @@ Inherits the methods of the [tool item builder](#tool)
 
 **Type**: `tfc:glassworking_tool`
 
+{: #glassworking-too-methods }
+
 #### Extra Method
 
 - `.operation(operation: GlassOperation)`{: .language-kube #glassworking-tool-operation }: Sets the `GlassOperation`{:.e} the item is capable of performing, defaults to `saw`{:.e}
+
+{: #glassworking-tool-example }
 
 #### Example
 
@@ -1310,6 +1525,8 @@ Inherits the methods of the basic item builder
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
+{: #glass-bottle-methods }
+
 #### Extra Methods
 
 - `.filledDisplayName(c: Component)`{: .language-kube #glass-bottle-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
@@ -1318,6 +1535,8 @@ Inherits the methods of the basic item builder
 - `.breakChance(chance: number)`{: .language-kube #glass-bottle-break-chance }: Sets the break chance, in the range [0, 1], of the bottle
 - `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-kube #glass-bottle-break-chance-supplier }: Sets the break chance, in the range [0, 1], supplier of the bottle
 - `.fluidTagAccept(tag: String)`{: .language-kube #glass-bottle-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+{: #glass-bottle-example }
 
 #### Example
 
@@ -1345,12 +1564,16 @@ Inherits the methods of the default item builder
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: STring)`{: .language-kube } method as seen in the example
 
+{: #jug-methods }
+
 #### Extra Methods
 
 - `.filledDisplayName(c: Component)`{: .language-kube #jug-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacity(i: number)`{: .language-kube #jug-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
 - `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-kube #jug-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-kube }
 - `.fluidTagAccept(tag: String)`{: .language-kube #jug-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
+
+{: #jug-example }
 
 #### Example
 
@@ -1371,6 +1594,8 @@ Inherits the methods of the default item builder
 
 **Type**: `firmalife:watering_can`
 
+{: #watering-can-example }
+
 #### Example
 
 ```js
@@ -1386,6 +1611,8 @@ Creates a new prospector's hammer item
 Inherits the methods of other tool item builders
 
 **Type**: `precpros:hammer`
+
+{: #pros-hammer-example }
 
 #### Example
 
@@ -1403,6 +1630,8 @@ Inherits the methods of other tool item builders
 
 **Type**: `precpros:drill`
 
+{: #pros-drill-example }
+
 #### Example
 
 ```js
@@ -1418,6 +1647,8 @@ Creates a new mineral prospector item
 Inherits the methods of other tool item builders
 
 **Type**: `precpros:mineral`
+
+{: #mineral-pros-example }
 
 #### Example
 
@@ -1435,6 +1666,8 @@ Inherits the methods of other tool items
 
 **Type**: `precpros:custom`
 
+{: #custom-pros-methods }
+
 #### Extra Methods
 
 - `.cooldown(i: number)`{: .language-kube #prospector-cooldown }: Sets the cooldown, in ticks, the item gets when it prospects, defaults to `20`{:.n}
@@ -1445,6 +1678,8 @@ Inherits the methods of other tool items
 - `.displacement(i: number)`{: .language-kube #prospector-displacement-0 }: Sets the displacement of the prospector, defaults to `0`{:.n}
 - `.displacement(supplier: Supplier<Integer>)`{: .language-kube #prospector-displacement-1 }: Sets the integer supplier that defines the item's displacement, defaults to `() => 0`{: .language-kube }
 - `.prospectTag(blockTag: String)`{: .language-kube #prospector-prospect-tag }: Sets the block tag that the item can prospect, defaults to `tfc:prospectable`
+
+{: #custom-pros-example }
 
 #### Example
 
@@ -1501,6 +1736,8 @@ Inherits the methods of the basic fluid builder
 
 **Type**: `tfc:spring`
 
+{: #spring-methods }
+
 #### Extra Methods
 
 - `.bubbleParticle(particle: String)`{: .language-kube #spring-bubble-particle }: Accepts a string, the registry name of a particle, sets the bubble particle of the liquid block, defaults to `minecraft:bubble`[^1]. May be null to not have bubble particles
@@ -1508,6 +1745,8 @@ Inherits the methods of the basic fluid builder
 - `.healingAmount(f: number)`{: .language-kube #spring-healing-amount }: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`{:.n}
 
 [^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type` in-game
+
+{: #spring-example }
 
 #### Example
 
@@ -1525,12 +1764,15 @@ In 1.20.1, KubeJS added the ability to add block entity attachments to its basic
 - [Inventory](#inventory)
 - [Heat](#heat)
 - [Calendar](#calendar)
+- [Sealable Inventory](#sealable-inventory)
 
 ### Inventory
 
 Adds a new inventory attachment that can have its contents restricted based on TFC's size and weight values
 
 **Type**: `tfc:inventory`
+
+{: #inv-attach-def }
 
 #### Definition
 
@@ -1539,6 +1781,8 @@ Adds a new inventory attachment that can have its contents restricted based on T
 - `inputFilter?: Ingredient`{: .language-kube }: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory `inputFilter`{:.v}. Optional
 - `size?: Predicate<Size>`{: .language-kube }: A `Predicate<Size>`{: .language-kube }, a filter for what size of items are allowed into the container. Optional
 - `weight?: Predicate<Weight>`{: .language-kube }: A `Predicate<Weight>`{: .language-kube }, a filter for what weight of items are allowed into the container. Optional
+
+{: #inv-attach-example }
 
 #### Example
 
@@ -1564,6 +1808,8 @@ Adds a new attachment that implements TFC's `IHeatBlock` interface, updates its 
 
 **Note**: Due to the way KubeJS works, this does not directly expose the `IHeatBlock` interface on the block entity, nor does it attach a block heat capability to it so other blocks will not be able to automatically interface with it, nor will Jade show the temperature
 
+{: #heat-attach-definition }
+
 #### Definition
 
 - `temperatureCallback: (number | TemperatureCallback)`{: .language-kube }: One of:
@@ -1575,6 +1821,8 @@ Adds a new attachment that implements TFC's `IHeatBlock` interface, updates its 
         - `calendarTicksSinceLastUpdate: number`{: .language-kube }: The number of calendar ticks that have passed since the calculation was last run
         - `return: number`{: .language-kube }: The new temperature to set the block to. May be negative to keep the previous temperature
 - `providesHeat: boolean`{: .language-kube }: A boolean. Optional, defaults to false. If true, the block will provide its temperature to a heat block above it, similar to the charcoal forge
+
+{: #heat-attach-example }
 
 #### Example
 
@@ -1608,9 +1856,13 @@ Adds a new attachment that can be used to keep track of a calendar timestamp
 
 **Type**: `tfc:calendar`
 
+{: #calendar-attach-definition }
+
 #### Definition
 
 - `defaultDuration: number`{: .language-kube }: A number. Optional, defaults to `-1`{:.n}. Specifies the duration, in calendar ticks, to time for if a duration is not provided in `.startTiming()`{: .language-kube }
+
+{: #calendar-attach-methods }
 
 #### Methods
 
@@ -1618,6 +1870,8 @@ Adds a new attachment that can be used to keep track of a calendar timestamp
 - `.getCalendarTick()`{: .language-kube #calendar-attachment-get-calendar-tick }: Returns a number. Gets the calendar tick the attachment is timing from
 - `.hasDurationElapsed()`{: .language-kube #calendar-attachment-has-duration-elapsed }: Returns a boolean. If current calendar tick is more than `duration` ticks after the calendar tick the attachment is timing from
 - `.reset()`{: .language-kube #calendar-attachment-reset }: Sets the calendar tick the attachment is timing from to be `-1`{:.n}, considered to be a 'non-timing' timestamp
+
+{: #calendar-attach-example }
 
 #### Example
 
@@ -1639,5 +1893,70 @@ StartupEvents.registry('block', event => {
         .rightClick(event => {
             event.block.enttiy.attachments[0].startTiming();
         })
+})
+```
+
+### Sealable Inventory
+
+Adds a new inventory attachment can have its content restricted based on their size and weights, can be sealed, and applies a [food trait]({% link kubejs_tfc/1.20.1/events.md %}#custom-food-traits) to items either while sealed or just within the inventory
+
+**Type**: `tfc:sealable_inventory`
+
+{: #seal-inv-attach-definition }
+
+#### Definition
+
+- `width: number`{: .language-kube }: A number, determines how wide the container is, identical to KubeJS's default inventory width. Required
+- `height: number`{: .language-kube }: A number, determines how tall the container is, identical to KubeJS's default inventory height. Required
+- `inputFilter?: Ingredient`{: .language-kube }: An ingredient, a filter for what items are allowed into the container, identical to KubeJS's default inventory `inputFilter`{:.v}. Optional
+- `size?: Predicate<Size>`{: .language-kube }: A `Predicate<Size>`{: .language-kube }, a filter for what size of items are allowed into the container. Optional
+- `weight?: Predicate<Weight>`{: .language-kube }: A `Predicate<Weight>`{: .language-kube }, a filter for what weight of items are allowed into the container. Optional
+- `requiresSeal?: boolean`{: .language-kube }: A boolean, if the inventory needs to be sealed for the food trait to apply to items within the inventory. Optional, defaults to `true`{:.p}
+- `canSeal?: boolean`{: .language-kube }: A boolean, if the inventory can seal. Optional, defaults to `true`{:.p}
+- `trait: ResourceLocation`{: .language-kube }: A `ResourceLocation`, the id of the food trait to apply to items within the inventory
+
+{: #seal-inv-attach-methods }
+
+#### Methods
+
+- `.seal()`{: .language-kube #seal-inv-attachment-seal }: Seals the inventory if not already and sealing is enabled
+- `.unseal()`{: .language-kube #seal-inv-attachment-unseal }: Unseals the inventory if not already
+- `.toggleSeal()`{: .language-kube #seal-inv-attachment-toggle-seal }: Toggles the seal of the inventory if sealing is enabled. Returns the sealed state after toggling
+- `.isSealed()`{: .language-kube #seal-inv-is-sealed }: Returns the sealed state of the inventory
+
+{: #seal-inv-attach-examples }
+
+#### Examples
+
+```js
+StartupEvents.registry('block', event => {
+    event.create('sealable_example')
+        .blockEntity(be => {
+            be.attach('tfc:sealable_inventory', {
+                width: 9,
+                height: 1,
+                trait: 'kubejs:sealed'
+            });
+        })
+        .rigthClick(e => {
+            let { player } = e;
+            let be = event.block.entity;
+            if (player.shiftKeyDown) {
+                be.inventory.toogleSeal();
+            } else {
+                player.openInventoryGUI(be.inventory, event.block.blockState.name);
+            }
+        });
+    event.create('preserve_example')
+        .blockEntity(be => {
+            be.attach('tfc:sealable_inventory', {
+                width: 9,
+                height: 1,
+                requiresSeal: false,
+                canSeal: false,
+                trait: 'kubejs:sealed'
+            });
+            be.rightClickOpensInventory();
+        });
 })
 ```
