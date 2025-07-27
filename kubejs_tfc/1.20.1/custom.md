@@ -888,8 +888,21 @@ Some of TFC's blocks have extended properties which allow the block properties o
 - `.dropsLike(block: Supplier<Block>)`{: .language-kube #extend-props-drops-like }: makes the block drop like the supplied block
 - `.air()`{: .language-kube #extend-props-air }: Marks the block as being air-like
 - `.isValidSpawn(isValidSpawn: BlockBehaviour$StateArgumentPredicate<EntityType<?>>)`{: .language-kube #extend-props-is-valid-spawn }: Determines if an entity may spawn on the block
+- `.isRedstoneConductor(conductor: BlockBehaviour$StatePredicate)`{: .language-kube #extend-props-is-redstone-conductor }: Determines if the block is a redstone conductor
+- `.alwaysIsRedstoneConductor()`{: .language-kube #extend-props-always-redstone-conductor }: Sets the block to always be a redstone conductor
+- `.neverIsRedstoneConductor()`{: .language-kube #extend-props-never-redstone-conductor }: Sets the block to never be a redstone conductor
 - `.isSuffocating(isSuffocating: BlockBehaviour$StatePredicate)`{: .language-kube #extend-props-is-suffocating }: Determines if the block is suffocating
+- `.alwaysSuffocating()`{: .language-kube #extended-props-always-suffocating }: Sets the block as always suffocating
+- `.neverSuffocating()`{: .language-kube #extended-props-never-suffocating }: Sets the block as never suffocating
 - `.isViewBlocking(isBlocking: BlockBehaviour$StatePredicate)`{: .language-kube #extend-props-is-view-blocking }: Determines if the block is view blocking
+- `.alwaysViewBlocking()`{: .language-kube #extend-props-always-view-blocking }: Sets the block as always view blocking
+- `.neverViewBlocking()`{: .language-kube #extend-props-never-view-blocking }: Sets the block as never view blocking
+- `.hasPostProcess(hasProcess: BlockBehaviour$StatePredicate)`{: .language-kube #extend-props-has-post-process }: Determines if the block has post processing during block placement
+- `.alwaysPostProcess()`{: .language-kube #extend-props-always-post-process }: Sets the block to always be post processed
+- `.neverPostProcess()`{: .language-kube #extend-props-never-post-process }: Sets the block to never be post processed
+- `.emissiveRendering(emissive: BlockBehaviour$StatePredicate)`: Determines if the block has emissive rendering
+- `.alwaysEmissive()`{: .language-kube #extend-props-always-emissive }: Sets the block to always have emissive rendering
+- `.neverEmissive()`{: .language-kube #extend-props-never-emissive }: Sets the block to never have emissive rendering
 - `.requiresCorrectToolForDrops()`{: .language-kube #extend-props-requires-correct-tool }: Sets the block to require a 'correct' tool (as determined by a tag) for it to drops its loot table
 - `.mapColor(color: MapColor)`{: .language-kube #extend-props-map-color-0 }: Sets the map color of the block
 - `.mapColor(color: Function<BlockState, MapColor>)`{: .language-kube #extend-props-map-color-1 }: Sets the map color of the block per state

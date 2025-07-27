@@ -878,6 +878,7 @@ In its json definition, the generator definition has the following fields:
 
 ```js
 event.getWorldSeed(): number
+event.getNormalNoise(id: ResourceLocation): NomralNoise
 event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
@@ -885,6 +886,7 @@ event.rocks(getter: RocksGetter): void
 ```
 
 - `.getWorldSeed()`{: .language-kube #chunk-data-provider-seed }: Returns the seed of the world the chunk data provider is being applied to
+- `.getNormalNoise(id: ResourceLocation)`{: .language-kube }: Returns the `NomralNoise` defined by the noise parameters at the given id
 - `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generatePartial(...)`{: .language-kube } is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
     - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generatePartial(...)`{: .language-kube } should be called here. `.generateFull(...)`{: .language-kube } *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `.generatePartial(...)`{: .language-kube } are:
         - `rainfallLayer: LerpFloatLayer`{: .language-kube }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
@@ -894,8 +896,8 @@ event.rocks(getter: RocksGetter): void
         - `forestDensity: number`{: .language-kube }: A number, in the range [0, 1], for the density of the forests in the chunk. Used by TFC's forest configured feature
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
 - `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-full }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generateFull(...)`{: .language-kube } is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
-    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generateFull(...)`{: .language-kube } should be called here and the chunk is guaranteed to have access to heightmaps during this callback. The parameters for `.generateFull(...)`{: .language-kube } are:
-        - `surfaceHeight: int[256]`{: .language-kube }: An array of integer values of size `256`{:.n} (`16`{:.n} * `16`{:.n}; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z`{: .language-kube } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY`{:.v} parameter of a `RocksGetter`{:.f} callback is sources from.
+    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generateFull(...)`{: .language-kube } should be called here and the chunk is guaranteed to have access to the `WORLD_SURFACE_WG`{:.e} and `OCEAN_FLOOR_WG`{:>e} heightmaps during this callback. The parameters for `.generateFull(...)`{: .language-kube } are:
+        - `surfaceHeight: int[256]`{: .language-kube }: An array of integer values of size `256`{:.n} (`16`{:.n} * `16`{:.n}; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z`{: .language-kube } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY`{:.v} parameter of a `RocksGetter`{:.f} callback is gotten from.
         - `aquiferSurfaceHeight: int[16]`{: .language-kube }: An array of integer values of size `16`{:.n} (`4`{:.n} * `4`{:.n}; `QuartPos` resolution) representing the height of aquifer surfaces. Only used by [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for
 - `.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>)`{: .language-kube #chunk-data-provider-aquifer }: Sets the calculation for the `Aquifer` of a given chunk. This aquifer is used by TFC's erosion feature to place subterranean liquids. Accepts a callback with one parameter and a return value. If not set, an aquifer that only fills air will be returned. The parameters are:
@@ -906,9 +908,19 @@ event.rocks(getter: RocksGetter): void
     - `y: number`{: .language-kube }: A number, the y coordinate
     - `z: number`{: .language-kube }: A number, the z coordinate
     - `surfaceY: number`{: .language-kube }: A number, the surface elevation of the block column, as determined from the calculation provided in `.full(...)`{: .language-kube }
-    - `cache: @Nullable ChunkRockDataCache`{: .language-kube }: A [ChunkRockDataCache](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkRockDataCache.java) which may be null
+    - `cache: @Nullable ChunkRockDataCache`{: .language-kube }: A [ChunkRockDataCache](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkRockDataCache.java) which may be `null`{:.p}. Holds the layer height and skew amounts per layer
     - `rockLayers: RockLayerSettings`{: .language-kube }: The [RockLayerSettings](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/RockLayerSettings.java) defined in the chunk generator's `settings` object
     - `return: RockSettings`{: .language-kube }: A [RockSettings](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/RockSettings.java) describing the rock at the position. Ideally retrieved from the `RockLayerSettings`
+
+  The `RockLayerSettings` provided in the parameters of the callback has a method, `.sampleAtLayer(pointRock: int, layerN: int)`{: .language-kube } which returns a `RockSettings`. The parameters are:
+    - `pointRock: int`{: .language-kube }: A 32-bit signed integer. The bottom two bits are used to select which primary rock type is used at the 0th layer
+        - `0b00`{:.n}: Ocean layer
+        - `0b01`{:.n}: Volcanic layer
+        - `0b10`{:.n}: Land layer
+        - `0b11`{:.n}: Uplift layer
+
+      And the top 30 bits are used as a seed for a random number generator which is used to pick the layer that comes after the next layer when `layerN`{:.v} is greater than `0`{:.n}
+    - `layerN: int`{: .language-kube }: How many times to iterate to a layer's next layer as described in layer's mapping. Accepts any non-negative number; the `bottom` pseudo-layer points towards itself
 
 ### Example
 
@@ -972,20 +984,28 @@ TFCEvents.createChunkDataProvider('nether', event => {
     const tempLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 4621678939469)
         .spread(0.2)
         .octaves(3)
-        .scaled(70, 90)
+        .scaled(70, 90);
     const forestLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 98713856895664)
         .spread(0.8)
         .terraces(9)
         .affine(6, 12)
-        .scaled(6, 18, 0, 1)
+        .scaled(6, 18, 0, 1);
 
-    // Precompute the surface & aquifer heights as constants as this is nether and does not realistically change
-    var heights = [];
-    var i = 0;
-    while (i < 256) {
-        heights.push(127);
-        i++;
-    }
+    const rockTypeNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 3216548497)
+        .spread(0.061)
+        .scaled(0, 3) // 0: Oceanic; 1: Volcanic; 2: Land; 3: Uplift
+        .map(val -> Math.round(val));
+    const rockLayerNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 9774532562233)
+        .spread(0.000697)
+        .scaled(0x80000000, 0x7fffffff) // Effectively acts as a random number generator within the range of Java's int type
+        .map(val -> val << 2) // Shift up two bits so the type noise is what is used for rock types instead of the random number
+        .add(rockTypeNoise);
+    const rockLayerHeightNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 30121796313692)
+        .octaves(6)
+        .scaled(12, 34)
+        .spread(0.009);
+
+    // Precompute the aquifer heights as constants as this is nether and will not realistically change
     var aquifer = [];
     i = 0;
     while (i < 16) {
@@ -1014,11 +1034,35 @@ TFCEvents.createChunkDataProvider('nether', event => {
     });
 
     event.full((data, chunk) => {
+        var heights = [];
+        // In the nether this will always return 127, but this is included as a demonstration of
+        // using height maps and properly indexing the height values within the array
+        for (let x = 0 ; x < 16 ; x++) {
+            for (let z = 0 ; z < 16 ; z++) {
+                let height = chunk.getHeight('ocean_floor_wg', x, z);
+                heights[x + 16 * z] = height;
+            }
+        }
         data.generateFull(heights, aquifer);
     });
 
     event.rocks((x, y, z, surfaceY, cache, rockLayers) => {
-        return rockLayers.sampleAtLayer(0, 0);
+        let layer = 0;
+        let layerHeight = 0;
+        let deltaY = surfaceY - y;
+
+        do {
+            // A simplified version of what TFC does for its layer depth
+            // Of note is the lack of skewing for either the rock layer or the heights
+            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5);
+            if (deltaY <= layerHeight) {
+                break;
+            }
+            deltaY -= layerHeight;
+            layer++;
+        } while (deltaY > 0);
+
+        return rockLayers.sampleAtLayer(rockLayerNoise.noise(x, z), layer);
     });
 })
 ```
