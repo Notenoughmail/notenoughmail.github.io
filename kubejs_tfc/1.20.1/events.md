@@ -951,9 +951,31 @@ In its json definition, the generator definition has the following fields:
 
 {: #chunk-data-provider-rule-source }
 
-### Surface Rule Source
+### Rock Surface Rule Source
 
+In addition, a custom surface rule source that uses the blocks of the `RockSettings`, as provided via the [rocks callback](#chunk-data-provider-rocks) in the event. This rule source only works with the `kubejs_tfc:wrapped` generator wrapping a `minecraft:noise`[^4] chunk generator
 
+[^4]: Or any generator type which extends `NoiseBasedChunkGenerator` and overrides `.buildSurface(ChunkAccess,WorldGenerationContext,RandomState,StructureManager,BiomeManager,Registry<Biome>,Blender)`{: .language-kube }
+
+In its json definition, the rule source has the following fields:
+
+- `type` must be `kubejs_tfc:rock`
+- `fallback_state`: A block state. Used when the `RockSettings` at a point could not be found, or the world's chunk generator is not compatible with this rule source
+- `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specifies which block from the `RockSettings` to use. Optional, defaults to `raw`
+
+{: #chunk-data-provider-rule-source-example }
+
+#### Example
+
+```json
+{
+    "type": "kubejs_tfc:rock",
+    "rock_block": "sandstone",
+    "fallback_state": {
+        "Name": "minecraft:sandstone"
+    }
+}
+```
 
 {: #chunk-data-provider-methods }
 
@@ -1002,8 +1024,8 @@ event.rocks(getter: RocksGetter): void
         - `0b10`{:.n}: Land layer
         - `0b11`{:.n}: Uplift layer
 
-      And the top 30 bits are used as a seed for a random number generator which is used to pick the layer that comes after the next layer when `layerN`{:.v} is greater than `0`{:.n}
-    - `layerN: int`{: .language-kube }: How many times to iterate to a layer's next layer as described in layer's mapping. Accepts any non-negative number; the `bottom` pseudo-layer points towards itself
+      And the top 30 bits are used as a seed for a random number generator used to pick from the layer's mappings for the next layer when `layerN`{:.v} is greater than `0`{:.n}
+    - `layerN: int`{: .language-kube }: How many times to iterate to a layer's next layer as described in the layer's mapping. Accepts any non-negative number; the `bottom` pseudo-layer points towards itself
 
 {: #chunk-data-provider-example }
 
@@ -1090,6 +1112,9 @@ TFCEvents.createChunkDataProvider('nether', event => {
         .scaled(12, 34)
         .spread(0.009);
 
+    // Noises defined through json can be gotten through this method
+    const surfaceNoise = event.getNormalNoise('minecraft:surface');
+
     // Precompute the aquifer heights as constants as this is nether and will not realistically change
     var aquifer = [];
     i = 0;
@@ -1139,7 +1164,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
         do {
             // A simplified version of what TFC does for its layer depth
             // Of note is the lack of skewing for either the rock layer or the heights
-            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5);
+            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5) + surfaceNoise.getValue(x, 56, z);
             if (deltaY <= layerHeight) {
                 break;
             }
@@ -1187,3 +1212,11 @@ TFCEvents.registerItemStackModifierConverters(event => {
     })
 })
 ```
+
+{% comment %}
+
+#### Chunk Data Provider Rocks
+
+This comment is here to make VSC shut up because it can't link to synthetic anchors
+
+{% endcomment %}

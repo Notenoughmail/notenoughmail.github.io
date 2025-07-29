@@ -40,7 +40,11 @@ This event goes in the `server_scripts` folder.
 
 ## Geodes
 
+Creates a `tfc:geode` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#geode)!
+
+{: #geode-signature }
 
 ### Method Signature
 
@@ -54,11 +58,13 @@ event.geode(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the string representation of a block state to be used as the outer block state
 - 3rd argument: A string, the string representation of a block state to be used as the middle block state
 - 4th argument: A list of strings, weighted string representations of block states to be used as the inner block states
 - 5th argument: A [feature placement consumer](#feature-placement)
+
+{: #geode-example }
 
 ### Example
 
@@ -89,7 +95,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Boulders
 
+Creates a `tfc:boulder` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#boulder)!
+
+{: #boulder-signature }
 
 ### Method Signature
 
@@ -97,9 +107,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 event.boulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [boulder states](#boulder-state) that define the blocks the boulder is made up of per rock
 - 3rd argument: A [feature placement consumer](#feature-placement)
+
+{: #boulder-example }
 
 ### Example
 
@@ -125,15 +137,21 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Baby Boulders
 
+Creates a `tfc:baby_boulder` configured feature and matching placed feature
+
+{: #baby-boulder-signature }
+
 ### Method Signature
 
 ```js
 event.babyBoulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [boulder states](#boulder-state) that define the blocks the baby boulder is made up of per rock
 - 3rd argument: A [feature placement consumer](#feature-placement)
+
+{: #baby-boulder-example }
 
 ### Example
 
@@ -157,7 +175,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Thin Spikes
 
+Creates a `tfc:thin_spike` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#thin-spike)!
+
+{: #thin-spike-signature }
 
 ### Method Signature
 
@@ -173,12 +195,14 @@ event.thinSpike(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the string representation of a block state to place, must be a thin spike block
 - 3rd argument: A number, in the range [1, 16], the radius around the target location to place spikes in
 - 4th argument: A number, the minimum height of the spike, must be positive
 - 5th argument: A number, the maximum height of the spike, must be greater than the minimum height
 - 6th argument: A [feature placement consumer](#feature-placement)
+
+{: #thin-spike-example }
 
 ### Example
 
@@ -211,7 +235,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Cluster Veins
 
+Creates a `tfc:cluster_vein` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/veins/)!
+
+{: #cluster-vein-signature }
 
 ### Method Signature
 
@@ -229,7 +257,7 @@ event.clusterVein(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
@@ -238,6 +266,8 @@ event.clusterVein(
 - 7th argument: A number, the size of the vein
 - 8th argument: A [vein properties consumer](#vein-properties) that defines the optional parameters of the vein
 - 9th argument: A [feature placement consumer](#feature-placement)
+
+{: #cluster-vein-example }
 
 ### Example
 
@@ -260,7 +290,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Pipe Veins
 
+Creates a `tfc:pipe-vein` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/veins/)!
+
+{: #pipe-vein-signature }
 
 ### Method Signature
 
@@ -284,7 +318,7 @@ event.pipeVein(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
@@ -299,6 +333,8 @@ event.pipeVein(
 - 13th argument: A number, in the range [0, 1], the sign of the vein
 - 14th argument: A [vein properties consumer](#vein-properties)
 - 15th argument: A [feature placement consumer](#feature-placement)
+
+{: #pipe-vein-example }
 
 ### Example
 
@@ -321,7 +357,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Disc Veins
 
+Creates a `tfc:disc_vein` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/veins/)!
+
+{: #disc-vein-signature }
 
 ### Method Signature
 
@@ -340,7 +380,7 @@ event.discVein(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
@@ -350,6 +390,8 @@ event.discVein(
 - 8th argument: A number, the height of the vein
 - 9th argument: A [vein properties consumer](#vein-properties)
 - 10th argument: A [feature placement consumer](#feature-placement)
+
+{: #disc-vein-example }
 
 ### Example
 
@@ -370,22 +412,30 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## If-Then
 
+Creates a `tfc:if_then` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#if-then)!
+
+{: #if-then-signature }
 
 ### Method Signature
 
 ```js
-event.ifThen(name: String, if_: String, then: String, placement: Consumer<PlacedFeatureProperties>)
+event.ifThen(name: String, if: String, then: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the id of a placed feature that will always try to place
 - 3rd argument: A string, the id of a placed feature that will only place if the first feature places
 - 4th argument: A [feature placement consumer](#feature-placement)
 
 ## Soil Disc
 
+Creates a `tfc:soil_disc` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#soil-disc)!
+
+{: #soil-disc-signature }
 
 ### Method Signature
 
@@ -401,13 +451,15 @@ event.soilDisc(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [block to block state entries](#block-to-block-state-replacement-entry), defines the replacement map of the soil disc
 - 3rd argument: A number, the minimum radius of the disc
 - 4th argument: A number, the maximum radius of the disc
 - 5th argument: A number, the height of the disc
 - 6th argument: A number, in the range [0, 1], specifies the probability that any given block in the disc will place, may be `null`{:.p} to specify the default value of `1`{:.n}
 - 7th argument: A [feature placement consumer](#feature-placement)
+
+{:# soil-disc-example }
 
 ### Example
 
@@ -430,7 +482,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Hot Spring
 
+Creates a `tfc:hot_spring` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#hot-spring)!
+
+{: #hot-spring-signature }
 
 ### Method Signature
 
@@ -447,7 +503,7 @@ event.hotSpring(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the block state to use for the hot spring, may be null to use the lowest rock layer
 - 3rd argument: A string, the fluid to fill the spring with, may be air
 - 4th argument: A number, in the range [1, 16], the approximate radius of the spring
@@ -455,6 +511,8 @@ event.hotSpring(
 - 6th argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the blocks to place if placed underwater, may be `null`{:.p}
 - 7th argument: A [fissure decoration](#fissure-decoration) object, may be `null`{:.p}
 - 8th argument: A [feature placement consumer](#feature-placement)
+
+{: #hot-spring-example }
 
 ### Example
 
@@ -479,15 +537,19 @@ Creates a `minecraft:simple_block` configured feature using a simple state provi
 
 Notably used by TFC for its wild crops in tandem with [random patch](#random-patch) features
 
+{: #simple-block-state-signature }
+
 ### Method Signature
 
 ```js
 event.simpleBlockState(name: String, blockState: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string representation of a blockstate, the state to be placed
 - 3rd argument: A [feature placement consumer](#feature-placement)
+
+{: #simple-block-state-example }
 
 ### Example
 
@@ -522,6 +584,8 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 Creates a `minecraft:random_patch` configured feature
 
+{: #random-patch-signature }
+
 ### Method Signature
 
 ```js
@@ -535,12 +599,14 @@ event.randomPatch(
 )
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A number, how many times the feature should attempt to place, may be `null`{:.p} to default to `128`{:.n}
 - 3rd argument: A number, the horizontal spread of the patch, may be `null`{:.p} to default to `7`{:.n}
 - 4th argument: A number, the vertical spread of the patch, may be `null`{:.p} to default to `3`{:.n}
 - 5th argument: A string, the name of the feature to attempt to place
 - 6th argument: A [feature placement consumer](#feature-placement)
+
+{: #random-patch-example }
 
 ### Example
 
@@ -570,7 +636,11 @@ ServerEvents.tags('worldgen/placed_feature', event => {
 
 ## Tall Wild Crop
 
+Creates a `tfc:tall-wild_crop` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#tall-wild-crop)!
+
+{: #tall-wild-crop-signature }
 
 ### Method Signature
 
@@ -578,23 +648,29 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 event.tallWildCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the block to place, must be an instance of [WildDoubleCropBlock]({% link kubejs_tfc/1.20.1/custom.md %}#wild_crop)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Spreading Crop
 
+Creates a `tfc:spreading_crop` configured feature and matching placed feature
+
 ```js
 event.spreadingCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the block to place, must be an instance of [WildSpreadingCropBlock]({% link kubejs_tfc/1.20.1/custom.md %}#wild-crops)
 - 3rd argument: A [feature placement consumer](#feature-placement)
 
 ## Spreading Bush
 
+Creates a `tfc:spreading_bush` configured feature and matching placed feature
+
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#spreading-bush)!
+
+{: #spreading-crop-signature }
 
 ### Method Signature
 
@@ -602,13 +678,224 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 event.spreadingBush(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the block to place, must be an instance of [SpreadingBushBlock]({% link kubejs_tfc/1.20.1/custom.md %}#spreading-berry-bush)
 - 3rd argument: A [feature placement consumer](#feature-placement)
+
+## Fissure
+
+Creates a `tfc:fissure` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/#fissure)!
+
+{: #fissure-signature }
+
+### Method Signature
+
+```js
+event.fissure(
+    name: String,
+    wallState: @Nullable String,
+    fluidState: String,
+    count: @Nullable number,
+    radius: @Nullable number,
+    minDepth: @Nullable JsonObject,
+    minPieces: @Nullable number,
+    maxPieces: @Nullable number,
+    maxPieceLength: @Nullable number,
+    fissureDecoration: @Nullable FissureDecoration,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string representation of a block state, the block to use for the walls of the fissure. May be `null`{:.p} to use the existing blocks for the walls
+- 3rd argument: A string representation of a block state, the block to use as the fluid of the fissure. May be air
+- 4th argument: A number, how many fissures to place. May be `null`{:.p} to default to `5`{:.n}
+- 5th argument: A number, How far from the target position to place fissures. May be `null`{:.p} to default to `12`{:.n}
+- 6th argument: A `JsonObject`, the [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/common-types/#vertical-anchor) to tie the fissure to. May be `null`{:.p}
+- 7th argument: A positive number, the minimum number of segments a fissure can be made up of. May be `null`{:.p} to default to `10`{:.n}
+- 8th argument: A positive number, the maximum number of segments a fissure can be made up of. May be `null`{:.p} to default to `24`{:.n}
+- 9th argument: A positive number, the maximum length a fissure segment can be. May be `null`{:.p} to default to `6`{:.n}
+- 10th argument: A [fissure decoration](#fissure-decoration) object, may be `null`{:.p}
+- 11th argument: A [feature placement consumer](#feature-placement)
+
+{: #fissure-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.fissure(
+        'example_fissure',
+        null,
+        'minecraft:lava',
+        3,
+        15,
+        {
+            above_bottom: 17
+        },
+        5,
+        null,
+        12,
+        event.fissureDecoration([
+            event.blockToWEightedBlockState([
+                'tfc:rock/raw/chert',
+                'tfc:rock/raw/dacite'
+            ], [
+                '7 minecraft:deepslate[axis=z]',
+                '7 minecraft:deepslate[axis=x]',
+                '7 minecraft:deepslate[axis=y]',
+                'minecraft:cobblestone'
+            ])
+        ], 5, 3, 17),
+        placement => {
+            placement.climate(climate => {
+                climate.minTemp(20)
+            })
+        }
+    )
+})
+```
+
+## Forest
+
+Creates a `tfc:forest` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#forest-feature)!
+
+{: #forest-signature }
+
+### Method Signature
+
+```js
+event.forest(
+    name: String,
+    entriesTag: String,
+    types: ForestTypesMapEntry[],
+    useWeirdness: @Nullable boolean,
+    placement: Consumer<PlacedFeatureProeprties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, a configured feature tag. All elements of the tag must be [forest entries](#forest-entry)
+- 3rd argument: A list of [forest type map entries](#forest-types-map-entry)
+- 4th argument: A boolean, if forest weirdness should be used to smooth the edges between forest entries. May be `null`{:.p} to default to `true`{:.p}
+- 5th argument: A [feature placement consumer](#feature-placement)
+
+{: #forest-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.forest(
+        'example_forest',
+        'kubejs:example_forest_entries',
+        [
+            event.forestTypesMapEntry('edge', { min: 0, max: 2}, null, 0.1, null, false, false, null),
+            event.forestTypesMapEntry('normal', { min: 1, max: 9 }, { min: 2, max: 3 }, 0.5, null, false, false, null)
+        ],
+        null,
+        placement => {}
+    )
+})
+```
+
+## Forest Entry
+
+Creates a `tfc:forest_entry` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#forest-entry)!
+
+{: #forest-entry-signature }
+
+### Method Signature
+
+```js
+event.forestEntry(
+    name: String,
+    climate: Consumer<ClimateModifer>,
+    bushLog: @Nullable String,
+    bushLeaves: @Nullable String,
+    fallenLog: @Nullable String,
+    fallenleaves: @Nullable String,
+    groundCover: String @Nullable [],
+    normalTreeFeature: String,
+    deadTreeFeature: String,
+    oldGrowthTreeFeature: @Nullable String,
+    krummholzFeature: @Nullable String,
+    oldGrowthChance: @Nullable number,
+    spoilerOldGrowthChance: @Nullable number,
+    fallenTreeChance: @Nullable number,
+    deadChance: @Nullable number,
+    floating: @Nullable boolean,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A [climate modifier](#climate)
+- 3rd argument: A string, the block to use for the log of bushes. May be `null`{:.p} to not have bushes
+- 4th argument: A string, the block to use for the leaves of bushes. May be `null`{:.p} to not have bushes
+- 5th argument: A string, the block to place for the logs of fallen trees. May be `null`{:.p} to not have fallen trees
+- 6th argument: A string, the block to place for the leaves of fallen trees. May be `null`{:.p} to not have fallen trees
+- 7th argument: A list of strings, each the string representation of a weighted block state, the blocks to be placed for other ground cover. May be `null`{:.p}
+- 8th argument: A string, the id of a configure feature to place for normal trees. See [overlay](#overlay-tree), [random](#random-tree), and [stack](#stacked-tree) trees
+- 9th argument: A string, the id of a configured feature to place for dead trees
+- 10th argument: A string, the id of a configured feature to place for old growth trees. May be `null`{:.p} to not have old growth trees
+- 11th argument: A string, the id of a configured feature to place for krummholz. May be `null`{:.p} to not have krummholz
+- 12th argument: A number, the chance, as `1 / N`{: .language-kube }, a tree will be old growth. May be `null`{:.p} to default to `6`{:.n}
+- 13th argument: A number, the chance, as `1 / N`{: .language-kube }, an old growth tree will be placed in non-old-growth forests. May be `null`{:.p} to default to `200`{:.n}
+- 14th argument: A number, the chance, in `1 / N`{: .language-kube } chunks, a fallen tree will spawn. May be `null`{:.p} to default to `14`{:.n}
+- 15th argument: A number, the chance, as `1 /N`{: .language-kube }, a tree will be a dead tree on place. May be `null`{:.p} to default to `75`
+- 16th argument: A boolean, if the placement height should use the world surface instead of ocean floor. May be `null`{:.p} to default to `false`{:.p} (ocean floor)
+- 17th argument: A [feature placement consumer](#feature-placement)
+
+{: #forest-entry-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.forestEntry(
+        'example_forest_entry',
+        climate => {
+            climate.minRain(325)
+        },
+        'tfc:wood/log/oak',
+        'tfc:wood/leaves/oak',
+        null,
+        null,
+        null,
+        'tfc:tree/oak',
+        'kubejs_tfc:example_tree',
+        'tfc:tree/pine_large',
+        null,
+        80,
+        53,
+        null,
+        62,
+        true,
+        placement => {}
+    )
+})
+```
+
+## Overlay Tree
+
+## Random Tree
+
+## Stacked Tree
+
+## Krummholz
 
 ## Generic
 
 Creates a configured feature of the given type using the given config
+
+{: #generic-feature-signature }
 
 ### Method Signature
 
@@ -616,7 +903,7 @@ Creates a configured feature of the given type using the given config
 event.generic(name: String, type: String, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
 ```
 
-- 1st argument: A string, the name of the configured feature, if no namespace is set, defaults to `kubejs_tfc`
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, the type of configured feature to be created
 - 3rd argument: A json object, the `config` object of a normal configured feature
 - 4th argument: A [feature placement consumer](#feature-placement)
@@ -624,6 +911,8 @@ event.generic(name: String, type: String, featureConfig: JsonObject, placement: 
 ## Boulder State
 
 This defines an entry to a boulder feature's `state` value
+
+{: #boulder-state-signature }
 
 ### Method Signature
 
@@ -640,6 +929,8 @@ See the [boulder](#boulders) example for an example of usage
 
 This defines an entry to a blocks to weighted blockstates map
 
+{: #block-to-block-states-replacement-entry-signature }
+
 ### Method Signature
 
 ```js
@@ -655,6 +946,8 @@ See the [cluster](#cluster-veins), [pipe](#pipe-veins), and [disc](#disc-veins) 
 
 This defines an entry to a block to blockstate map
 
+{: #block-to-block-state-replacement-entry-signature }
+
 ### Method Signature
 
 ```js
@@ -668,6 +961,8 @@ event.blockToBlockState(block: String, state: String)
 
 Hot springs and fissures may have additional decorations around them, this is used to define them
 
+{: #fissure-decoration-signature }
+
 ### Method Signature
 
 ```js
@@ -680,9 +975,19 @@ event.fissureDecoration(
 ```
 
 - 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the additional ores that should spawn around the fissure
-- 2nd argument: A number, the rarity of block s being replaced
+- 2nd argument: A number, the rarity of blocks being replaced
 - 3rd argument: A number, the radius around the fissure that blocks should be replaced
 - 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-kube }
+
+## Forest Types Map Entry
+
+## Trunk
+
+## Tree Placement
+
+## Root
+
+## Tree layer
 
 ## Vein Properties
 

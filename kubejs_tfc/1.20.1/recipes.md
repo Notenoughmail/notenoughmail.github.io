@@ -57,6 +57,8 @@ The following recipes are supported by KubeJS TFC:
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#alloy)!
 
+{: #alloy-signature }
+
 ### Method Signature
 
 ```js
@@ -71,6 +73,8 @@ event.recipes.tfc.alloy(
 
 {: .related #alloy-metal-info }
 See [the relevant page]({% link kubejs_tfc/1.20.1/data.md %}#metals) for defining custom metals
+
+{: #alloy-example }
 
 ### Example
 
@@ -91,6 +95,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#anvil-welding)!
 
+{: #welding-signature }
+
 ### Method signature
 
 ```js
@@ -107,6 +113,8 @@ event.recipes.tfc.welding(
 - 3rd argument: An item ingredient
 - *Optional 4th argument*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`{:.n}
 
+{: #welding-example }
+
 ### Example
 
 ```js
@@ -122,6 +130,8 @@ ServerEvents.recipes(event => {
 ## Working
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#anvil-working)!
+
+{: #working-signature }
 
 ### Method Signature
 
@@ -145,6 +155,8 @@ event.recipes.tfc.anvil(
 - `.tier(tier:number)`{: .language-kube #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
 - `.bonus(applyBnus: boolean)`{: .language-kube #anvil-working-bonus }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
 
+{: #working-example }
+
 ### Example
 
 ```js
@@ -163,6 +175,8 @@ ServerEvents.recipes(event => {
 ## Barrel Instant Fluid
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-instant-fluid)!
+
+{: #instant-fluid-barrel-signature }
 
 ### Method Signature
 
@@ -183,6 +197,8 @@ event.recipes.tfc.barrel_instant_fluid(
 {: .notice #instant-barrel-fluid-notice }
 Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that both the output fluid and the input fluid(s) are tagged as such
 
+{: #instant-fluid-barrel-example }
+
 ### Example
 
 ```js
@@ -198,6 +214,8 @@ ServerEvents.recipes(event => {
 ## Barrel Instant
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-instant)!
+
+{: #instant-barrel-signature }
 
 ### Method Signature
 
@@ -226,6 +244,8 @@ event.recipes.tfc.barrel_instant()
 >
 > Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that the input/output fluid(s) are tagged as such
 
+{: #instant-barrel-example }
+
 ### Example
 
 ```js
@@ -239,6 +259,8 @@ ServerEvents.recipes(event => {
 ## Barrel Sealed
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#barrel-sealed)!
+
+{: #sealed-barrel-signature }
 
 ### Method Signature
 
@@ -279,6 +301,8 @@ event.recipes.tfc.barrel_sealed(duration: number)
 
 [^1]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
 
+{: #sealed-barrel-example }
+
 ### Example
 
 ```js
@@ -293,6 +317,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#blast-furnace)!
 
+{: #blast-furnace-signature }
+
 ### Method Signature
 
 ```js
@@ -306,6 +332,8 @@ event.recipes.tfc.blast_furnace(
 - 1st argument: A `FluidStack`, the output fluid of the recipe
 - 2nd argument: An item ingredient specifying the catalyst item
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
+
+{: #blast-furnace-example }
 
 ### Example
 
@@ -323,6 +351,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#bloomery)!
 
+{: #bloomery-signature }
+
 ### Method Signature
 
 ```js
@@ -338,6 +368,8 @@ event.recipes.tfc.bloomery(
 - 2nd argument: An item ingredient, the ingredient which catalysts match, will accept amounts greater than 1
 - 3rd argument: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
 - 4th argument: A number, the number of ticks until the recipe is complete
+
+{: #bloomery-example }
 
 ### Example
 
@@ -355,6 +387,8 @@ ServerEvents.recipes(event => {
 ## Casting
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#casting)!
+
+{: #casting-signature }
 
 ### Method Signature
 
@@ -375,6 +409,8 @@ event.recipes.tfc.casting(
 {: .notice #casting-notice }
 > All input fluids for the recipe must have the appropriate fluid tag in order for the mold item to accept them, typically this is either `tfc:usable_in_ingot_mold` or `tfc:usable_in_tool_head_mold`
 
+{: #casting-example }
+
 ### Example
 
 ```js
@@ -391,6 +427,8 @@ ServerEvents.recipes(event => {
 ## Chisel
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#chiseling)!
+
+{: #chisel-signature }
 
 ### Method Signature
 
@@ -410,6 +448,8 @@ event.recipes.tfc.chisel(result: BlockState, ingredient: BlockIngredient, mode: 
 - `.itemIngredient(itemIngredient: Ingredient)`{: .language-kube #chisel-item-ingredient }: An ingredient specifying the chisel, must be in the `tfc:chisels` tag, defaults to `#tfc:chisels`
 - `.extraDrop(extraDrop: ItemStackProvider)`{: .language-kube #chisel-extra-drop }: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) specifying an extra item to be dropped after chiseling, defaults to empty
 
+{: #chisel-example }
+
 ### Example
 
 ```js
@@ -423,6 +463,8 @@ ServerEvents.recipes(event => {
 
 See the [collapse](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#collapse) and [landslide](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#landslide) main pages! **Note**: The syntax is exactly the same for both of these recipes, thus they shown together
 
+{: #collapse-landslide-signature }
+
 ### Method Signature
 
 ```js
@@ -432,6 +474,8 @@ event.recipes.tfc.landslide(result?: BlockState, ingredient: BlockIngredient)
 
 - *Optional 1st argument*: A `BlockState`, the result of the recipe, if not provided, the `copy_input` property of the recipe will be implicitly set to `true`{:.p}
 - 2nd argument: A [BlockIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient), the ingredient of the recipe
+
+{: #collapse-landslide-example }
 
 ### Example
 
@@ -446,6 +490,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#glassworking)!
 
+{: #glassworking-signature }
+
 ### Method Signature
 
 ```js
@@ -459,6 +505,8 @@ event.recipes.tfc.glassworking(
 - 1st argument: An item stack, the result of the recipe
 - 2nd argument: An item ingredient, the required item that must be attached to the blowpipe, needs the `tfc:glass_batches` tag in order to be attached to the blowpipe
 - 3rd argument: An array of `GlassOperation`{:.e}s, see the main page for a list of all possible operations
+
+{: #glassworking-example }
 
 ### Example
 
@@ -479,6 +527,8 @@ ServerEvents.recipes(event => {
 ## Heating
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#heating)!
+
+{: #heating-signature }
 
 ### Method Signature
 
@@ -510,6 +560,8 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 >
 > If the recipe has a fluid result, the fluid *must* have a matching [metal]({% link kubejs_tfc/1.20.1/data.md %}#metals) definition to work with crucibles
 
+{: #heating-example }
+
 ### Example
 
 ```js
@@ -522,6 +574,8 @@ ServerEvents.recipes(event => {
 ## Knapping
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#knapping)!
+
+{: #knapping-signature }
 
 ### Method Signature
 
@@ -545,6 +599,8 @@ event.recipes.tfc.knapping(
 - `.ingredient(ingredient: ingredient)`{: .language-kube #knapping-ingredient }: Accepts an item ingredient, used to restrict the recipe input even further from the knapping type's ingredient, defaults to empty
 - `.outsideSlotRequired(required: boolean)`{: .language-kube #knapping-outside-required }: For recipes with grids less than 5 x 5, defines if the slots outside the grid are required to be filled or not, defaults to `true`{:.p}
 
+{: #knapping-example }
+
 ### Example
 
 ```js
@@ -565,6 +621,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#loom)!
 
+{: #loom-signature }
+
 ### Method Signature
 
 ```js
@@ -580,6 +638,8 @@ event.recipes.tfc.loom(
 - 2nd argument: An item ingredient, will accepts counts greater than 1
 - 3rd argument: A number, the number of times the loom must be interacted with to complete the recipe
 - 4th argument: A string, the texture the loom uses to render the recipe while in progress
+
+{: #loom-example }
 
 ### Example
 
@@ -597,6 +657,8 @@ ServerEvent.recipes(event => {
 ## Jam Pot
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#jam-pot)!
+
+{: #jam-pot-signature }
 
 ### Method Signature
 
@@ -619,7 +681,9 @@ event.recipes.tfc.pot_jam(
 - 6th argument: A string, the texture location that is rendered in the pot when it is complete and still has output
 
 {: .notice #jam-pot-notice }
-Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+Pots will only accept fluids tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+
+{: #jam-pot-example }
 
 ### Example
 
@@ -642,6 +706,8 @@ ServerEvents.recipes(event => {
 ## Simple Pot
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#simple-pot)!
+
+{: #simple-pot-signature }
 
 ### Method Signature
 
@@ -670,7 +736,9 @@ event.recipes.tfc.pot(
 - `.outputs(itemOutput: itemStackProvier[], fluidOutput: FluidStack)`{: .language-kube #simple-pot-outputs }: A convenience method for setting both outputs, identical to `.itemOutput(itemOutput).fluidOutput(fluidOutput)`{: .language-kube }
 
 {: .notice #simple-pot-notice }
-Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
+Pots will only accept fluids tagged `tfc:usable_in_pot`, make sure the input/output fluid(s) are tagged as such
+
+{: #simple-pot-example }
 
 ### Example
 
@@ -698,6 +766,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes-pot/#soup-pot)!
 
+{: #soup-pot-signature }
+
 ### Method Signature
 
 ```js
@@ -715,7 +785,9 @@ event.recipes.tfc.pot_soup(
 - 4th argument: A number, the temperature °C that the pot must be above to start boiling
 
 {: .notice #soup-pot-notice }
-Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+Pots will only accept fluids tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+
+{: #soup-pot-example }
 
 ### Example
 
@@ -737,6 +809,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#quern)!
 
+{: #quern-signature }
+
 ### Method Signature
 
 ```js
@@ -745,6 +819,8 @@ event.recipes.tfc.quern(result: ItemStackProvider, ingredient: Ingredient)
 
 - 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}/#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, the input for the recipe
+
+{: #quern-example }
 
 ### Example
 
@@ -757,6 +833,8 @@ ServerEvents.recipes(event => {
 ## Scraping
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#scraping)!
+
+{: #scraping-signature }
 
 ### Method Signature
 
@@ -779,6 +857,8 @@ event.recipes.tfc.scraping(
 {: .notice #scraping-ingredient-tag }
 In order to actually place an item on a log to scrape, it must have the `tfc:scrapable` item tag. Additionally, a game restart may be required for placement to become possible
 
+{: #scraping-example }
+
 ### Example
 
 ```js
@@ -796,6 +876,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/recipes/#sewing)! (may not yet exist)
 
+{: #sewing-signature }
+
 ### Method Signature
 
 ```js
@@ -805,6 +887,8 @@ event.recipes.tfc.sewing(result: ItemStack, stitches: number[45], squares: numbe
 - 1st argument: An `ItemStack`, the result of the recipe
 - 2nd argument: An array of 45 numbers (9 wide by 5 tall, as mapped to the corners of the sewing table's grid spaces), a value of `0`{:.n} indicates the position does not have a stitch, a value of `1`{:.n} indicates the position does have a stitch
 - 3rd argument: An array of 32 numbers (8 wide by 4 tall, as mapped to the squares of the sewing table's grid spaces), a value of `-1`{:.n} indicates the position does not have a cloth, a value of `0`{:.n} indicates the position has a dark cloth, a value of `1`{:.n} indicates the position has a light cloth
+
+{: #sewing-example }
 
 ### Example
 
@@ -836,6 +920,8 @@ This recipe type supports[^2] Kube's ingredient and result modifiers. The result
 
 [^2]: Technically, the support is implemented through an entirely different recipe type, but this is automatically converted to that type when any of Kube's ingredient/result modifiers are present.
 
+{: #advanced-shaped-crafting-signature }
+
 ### Method Signature
 
 ```js
@@ -853,6 +939,8 @@ event.recipes.tfc.advanced_shaped_crafting(
 - 3rd argument: A `Character` to ingredient map, associates the pattern to ingredients
 - 4th argument: A number, the row of the input ingredient the output uses if it is dependent on its inputs
 - 5th argument: A number, the column of the input ingredient the output uses if it is dependent on its inputs
+
+{: #advanced-shaped-crafting-example }
 
 ### Example
 
@@ -880,6 +968,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/craft
 
 This recipe type supports[^2] Kube's ingredient and result modifiers. The result modifiers apply *after* any ISP modifiers.
 
+{: #advanced-shapeless-crafting-signature }
+
 ### Method Signature
 
 ```js
@@ -893,6 +983,8 @@ event.recipes.tfc.advanced_shapeless_crafting(
 - 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
 - 2nd argument: An array of item ingredients, the inputs of the recipe
 - *Optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent
+
+{: #advanced-shapeless-crafting-example }
 
 ### Examples
 
@@ -920,6 +1012,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#damage-inputs)!
 
+{: #damage-inputs-signature }
+
 ### Method Signatures
 
 ```js
@@ -928,6 +1022,8 @@ event.recipes.tfc.damage_inputs_shapeless_crafting(recipe: ShapelessCraftingReci
 ```
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the damage inputs recipe
+
+{: #damage-inputs-example }
 
 ### Examples
 
@@ -960,6 +1056,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/crafting/#extra-products)!
 
+{: #extra-products-signature }
+
 ### Method Signatures
 
 ```js
@@ -975,6 +1073,8 @@ event.recipes.tfc.extra_products_shapeless_crafting(
 
 - 1st argument: An array of `ItemStack`s, the extra products of the recipe
 - 2nd argument: A crafting recipe, must be the same shaped/shapeless type as the type of the extra products recipe
+
+{: #extra-products-example }
 
 ### Example
 
@@ -1010,6 +1110,8 @@ ServerEvents.recipes(event => {
 
 This is a crafting recipe type that prevents any remainders from being left after crafting
 
+{: #no-remainder-signature }
+
 ### Method Signatures
 
 ```js
@@ -1018,6 +1120,8 @@ event.recipes.tfc.no_remainder_shapeless_crafting(recipe: ShapelessCraftingRecip
 ```
 
 - 1st argument: A crafting recipe, must be the same shaped/shapeless type as the type of the no remainder recipe
+
+{: #no-remainder-example }
 
 ### Example
 
@@ -1050,6 +1154,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
 
+{: firmalife-drying-signature }
+
 ### Method Signature
 
 ```js
@@ -1061,6 +1167,8 @@ event.recipes.firmalife.drying(
 
 - 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
+
+{: #firmalife-drying-example }
 
 ### Example
 
@@ -1077,6 +1185,8 @@ ServerEvents.recipes(event => {
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
 
+{: #firmalife-smoking-signature }
+
 ### Method Signature
 
 ```js
@@ -1088,6 +1198,8 @@ event.recipes.firmalife.smoking(
 
 - 1st argument: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
+
+{: #firmalife-smoking-example }
 
 ### Example
 
@@ -1103,6 +1215,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Mixing Bowl
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-mixing-bowl-signature }
 
 ### Method Signature
 
@@ -1124,6 +1238,8 @@ event.recipes.firmalife.mixing_bowl()
 - `.fluidIngredient(fluidIngredient: FluidStackIgnredient)`{: .language-kube #mixing-bowl-fluid-ingredients }: A [FluidStackIngredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
 - `.ingredients(ingredients: Ingredient[], fluidIngredient: FluidStackIngredient)`{: .language-kube #mixing-bowl-ingredients }: A convenience method for setting both inputs, the same as calling `.itemIngredients(ingredients).fluidIngredient(fluidIngredient)`{: .language-kube }
 
+{: #firmalife-mixing-bowl-example }
+
 ### Example
 
 ```js
@@ -1137,6 +1253,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Oven
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-oven-signature }
 
 ### Method Signature
 
@@ -1154,6 +1272,8 @@ event.recipes.firmalife.oven(
 - 3rd argument: A number, the number of ticks required for the recipe to finish
 - *Optional 4th argument*: An [ItemStackProvider]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe, defaults to `TFC.itemStackProvider.empty()`{: .language-kube }
 
+{: #firmalife-oven-example }
+
 ### Example
 
 ```js
@@ -1170,6 +1290,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Stinky Soup
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-stinky-soup-signature }
 
 ### Method Signature
 
@@ -1190,6 +1312,8 @@ event.recipes.firmalife.stinky_soup(
 {: .notice #firmalife-stinky-soup-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
 
+{: #firmalife-stinky-soup-example }
+
 ### Example
 
 ```js
@@ -1209,6 +1333,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Vat
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-vat-signature }
 
 ### Method Signature
 
@@ -1236,6 +1362,8 @@ event.recipes.firmalife.vat()
 - `.temperature(temp: number)`{: .language-kube #vat-temperature }: A number, the minimum temperature °C of the vat in order to process, defaults to `300`{:.n}
 - `.jar(jar: ItemStack)`{: .language-kube #vat-jar }: An `ItemStack` to be attached, only used for recipes that produce `firmalife:fruity_fluid` in conjunction with the jarring station
 
+{: #firmalife-vat-example }
+
 ### Example
 
 ```js
@@ -1250,6 +1378,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Stomping
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-stomping-signature }
 
 ### Method Signature
 
@@ -1269,6 +1399,8 @@ event.recipes.firmalife.stomping(
 - 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
 - 5th argument: A string, the registry name of a sound event[^1], the sound to play when the barrel is stomped
 
+{: #firmalife-stomping-example }
+
 ### Example
 
 ```js
@@ -1286,6 +1418,8 @@ ServerEvents.recipes(event => {
 ## FirmaLife Bowl Pot
 
 See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation)!
+
+{: #firmalife-bowl-pot-signature }
 
 ### Method Signature
 
@@ -1319,6 +1453,8 @@ event.recipes.firmalife.bowl_pot(
 
 {: .notice #firmalife-bowl-pot-notice }
 Pots will not accept any fluids not tagged `tfc:usable_in_pot`, make sure the input fluid(s) are tagged as such
+
+{: #firmalife-bowl-pot-example }
 
 ### Examples
 
@@ -1364,6 +1500,8 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 {: .unstable #firmalife-press-unstable }
 This recipe type is currently unused by FirmaLife and actually adds itself to the stomping recipe type in JEI
 
+{: #firmalife-press-signature }
+
 ## Method Signature
 
 ```js
@@ -1382,6 +1520,8 @@ event.recipes.firmalife.press(
 - 4th argument: A string, the texture to use in the stomping barrel once the recipe has completed
 - 5th argument: A string, the registry name of a sound event[^1], the sound to play when the barrel is stomped
 
+{: #firmalife-press-example }
+
 ### Example
 
 ```js
@@ -1399,6 +1539,8 @@ ServerEvents.recipes(event => {
 ## AFC Tree Tap
 
 AFC's tree tapping recipe type
+
+{: #afc-tree-tap-signature }
 
 ### Method Signature
 
@@ -1426,6 +1568,8 @@ event.recipes.afc.tree_tapping(inputBlock: BlockIngredient)
 
 {: .notice #treetap-notice }
 Tree taps can only be placed on blocks with the `afc:tappable_logs` tag, make sure the input blocks(s) are tagged as such
+
+{: #afc-tree-tap-example }
 
 ### Example
 
