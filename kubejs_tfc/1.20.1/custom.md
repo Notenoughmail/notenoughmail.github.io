@@ -1276,7 +1276,7 @@ Inherits the methods of the basic item builder
 
 <a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
 
-- `.tfcccAllowedInMoldTable(model?: List<String>)`{: .language-kube #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
+- `.tfcccAllowedInMoldTable(model?: String[])`{: .language-kube #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
 
 {: #mold-example }

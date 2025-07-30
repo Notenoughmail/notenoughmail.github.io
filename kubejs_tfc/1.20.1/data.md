@@ -594,7 +594,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.panning(
     blockIngredient: BlockIngredient,
     lootTable: String,
-    models: List<String>,
+    models: String[],
     name?: ResourceLocation
 )
 ```

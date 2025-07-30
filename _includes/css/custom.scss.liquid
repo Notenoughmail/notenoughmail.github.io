@@ -122,13 +122,11 @@ h6.callout {
     border-left: 1px solid #7d7c7e;
     margin-left: calc(-0.25rem - 1px);
     padding-left: 0.25rem;
-    border-radius: 0.25rem;
 }
 
 li:has(> :target) {
     background-color:#{{ site.colors.target-highlight }};
     padding: 0.25rem !important;
-    border-radius: 0.25rem !important;
     border: 1px solid #c657f4 !important;
     margin-left: calc(-0.25rem - 1px) !important;
     a:not(.anchor-heading) {
@@ -147,4 +145,8 @@ img.center-image {
     display: block;
     margin: auto;
     width: 80%;
+}
+
+.main-content li {
+    border-radius: 0.25rem;
 }

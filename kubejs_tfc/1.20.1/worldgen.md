@@ -27,6 +27,13 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Tall Wild Crop](#tall-wild-crop)
 - [Spreading Crop](#spreading-crop)
 - [Spreading Bush](#spreading-bush)
+- [Fissure](#fissure)
+- [Forest](#forest)
+- [Forest Entry](#forest-entry)
+- [Overlay Tree](#overlay-tree)
+- [Random Tree](#random-patch)
+- [Stacked Tree](#stacked-tree)
+- [Krummholz](#krummholz)
 - [Generic Features](#generic)
 
 This event goes in the `server_scripts` folder.
@@ -794,8 +801,8 @@ TFCEvents.worldgenData(event => {
         'example_forest',
         'kubejs:example_forest_entries',
         [
-            event.forestTypesMapEntry('edge', { min: 0, max: 2}, null, 0.1, null, false, false, null),
-            event.forestTypesMapEntry('normal', { min: 1, max: 9 }, { min: 2, max: 3 }, 0.5, null, false, false, null)
+            event.forestTypesMapEntry('edge', [ 0, 2 ], null, 0.1, null, false, false, null),
+            event.forestTypesMapEntry('normal', [ 1, 9 ], [ 2, 3 ], 0.5, null, false, false, null)
         ],
         null,
         placement => {}
@@ -885,11 +892,196 @@ TFCEvents.worldgenData(event => {
 
 ## Overlay Tree
 
+Creates a `tfc:overlay_tree` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#overlay-tree)!
+
+{: #overlay-tree-signature }
+
+### Method Signature
+
+```js
+event.overlayTree(
+    name: String,
+    baseStructure: String,
+    overlayStructure: String,
+    trunk: @Nullable Trunk,
+    overlayIntegrity: @Nullable number,
+    treeplacement: TreePlacement,
+    rootSystem: @Nullable Root,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the id of a structure. The base structure to place
+- 3rd argument: A string, the id of a structure. The overlay structure to place
+- 4th argument: A [trunk](#trunk). The trunk below the structure. May be `null`{:.p}
+- 5th argument: A number, in the range [0, 1], the percentage of the overlay structure that will be placed. may be `null`{:.p} to default to `0.5`{:.n}
+- 6th argument: A [tree placement](#tree-placement)
+- 7th argument: A [root](#root), may be `null`{:.p}
+- 8th argument: A [feature placement consumer](#feature-placement)
+
+{: #overlay-tree-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.overlayTree(
+        'example_tree',
+        'tfc:white_cedar/base',
+        'tfc:white_cedar/overlay',
+        event.trunk('minecraft:dirt', 0, 3, false),
+        0.3,
+        event.treePlacement(1, 5, 'shallow-water'),
+        null,
+        placement => {}
+    )
+})
+```
+
 ## Random Tree
+
+Creates a `tfc:random_tree` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#random-tree)!
+
+{: #random-tree-signature }
+
+### Method Signature
+
+```js
+event.randomTree(
+    name: String,
+    struncture: String[],
+    trunk: @Nullable Trunk,
+    treePlacement: TreePlacement,
+    rootSystem: @Nullable Root,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A list of strings, the ids of structures to place at random
+- 3rd argument: A [trunk](#trunk). The trunk below the structure. May be `null`{:.p}
+- 4th argument: A [tree placement](#tree-placement)
+- 5th argument: A [root](#root), may be `null`{:.p}
+- 6th argument: A [feature placement consumer](#feature-placement)
+
+{: #random-tree-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.randomTree(
+        'willow_replica',
+        [ 
+            'tfc:willow/1',
+            'tfc:willow/2',
+            'tfc:willow/3'
+        ],
+        null,
+        event.treePlacement(1, 3, 'shallow_water'),
+        event.root([
+            event.blockToWeightedBlockState([ 'tfc:grass/silt' ], [ 'tfc:rooted_dirt/silt' ]),
+            event.blockToWeightedBlockState([ 'tfc:dirt/silt' ], [ 'tfc:rooted_dirt/silt' ])
+        ], 4, 2, 15, null, null),
+        placement => {}
+    )
+})
+```
 
 ## Stacked Tree
 
+Creates a `tfc:stacked_tree` configured feature and matching placed feature
+
+See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#stacked-tree)!
+
+{: #stacked-tree-signature }
+
+### Method Signature
+
+```js
+event.stackedTree(
+    name: String,
+    layers: TreeLayer[],
+    trunk: Trunk,
+    treePlacement: TreePlacement,
+    rootSystem: @Nullable Root,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A list of [tree layers](#tree-layer)
+- 3rd argument: A [trunk](#trunk)
+- 4th argument: A [tree placement](#tree-placement)
+- 5th argument: A [root](#root), may be `null`{:.p}
+- 6th argument: A [feature placement consumer](#feature-placement)
+
+{: #stacked-tree-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.stackedTree(
+        'example_stacked_tree',
+        [
+            event.treeLayer([ 'tfc:oak/1', 'tfc:oak/2', 'tfc:oak/3' ], 1, 3),
+            event.treeLayer([ 'tfc:ash/1', 'tfc:ash/2', 'tfc:ash/3', 'tfc:ash/4', 'tfc:ash/5' ], 2, 4)
+        ],
+        event.treePlacement(5, 2, null),
+        null,
+        placement => {}
+    )
+})
+```
+
 ## Krummholz
+
+Creates a `tfc:krummholz` configured feature and matching placed feature
+
+{: #krummholz-signature }
+
+### Method Signature
+
+```js
+event.krummholz(
+    name: String,
+    block: String,
+    height: IntProvider,
+    spawnsOnStone: @Nullable boolean,
+    spawnsOnGravel: @Nullable boolean,
+    placement: Consumer<PlacedFeatureProperties>
+)
+```
+
+- 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
+- 2nd argument: A string, the id of the block to place
+- 3rd argument: An `IntProvider`, how high the krummholz may be
+- 4th argument: A boolean, if the krummholz can spawn on stone. May be `null`{:.p} to default to `false`
+- 5th argument: A boolean, if the krummholz can spawn on gravel. May be `null`{:.p} to default to `false`
+- 6th argument: A [feature placement consumer](#feature-placement)
+
+{: #krummholz-example }
+
+### Example
+
+```js
+TFCEvents.worldgenData(event => {
+    event.krummholz(
+        'example_krummholz',
+        'tfc:plant/spruce_krummholz',
+        [ 1, 4 ],
+        true,
+        false,
+        placement => {}
+    )
+})
+```
 
 ## Generic
 
@@ -980,6 +1172,36 @@ event.fissureDecoration(
 - 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-kube }
 
 ## Forest Types Map Entry
+
+Defines an entry in a `ForestType`{:.e} to forest properties map
+
+For an example, see the [forest](#forest-example) example
+
+{: #forest-types-map-entry-signature }
+
+### Method Signature
+
+```js
+event.forestTypesMapEntry(
+    type: ForestType,
+    treeCount: @Nullable IntProvider,
+    groundcoverCount: @Nullable IntProvider,
+    perChunkChance: @Nullable number,
+    bushCount: @Nullable IntProvider,
+    hasSpoilerOldGrowth: @Nullable boolean,
+    allowsOldGrowth: @Nullable boolean,
+    leafPileCount: @Nullable IntProvider
+)
+```
+
+- 1st argument: A `ForestType`, the key in the map. May be `none`, `sparse`, `edge`, `normal`, or `old_growth`
+- 2nd argument: An `IntProvider`, how many trees should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
+- 3rd argument: An `IntProvider`, how much ground cover should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
+- 4th argument: A number, in the range [0, 1], per chunk, that forests will spawn. May be `null`{:.p} to default to `1`{:.n}
+- 5th argument: An `IntProvider`, how many bushes will try to spawn. May be `null`{:.p} to not have bushes
+- 6th argument: A boolean, if old growth trees will randomly spawn among existing tree. May be `null`{:.p} to default to `false`{:.p}
+- 7th argument: A boolean, if old growth trees spawn in this forest type. May be `null`{:.p} to default to `false`{:.p}
+- 8th argument: A `IntProvider`, how many leaf piles to place. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
 
 ## Trunk
 
@@ -1209,3 +1431,9 @@ placement.heightMap(heightMap: String)
 ```
 
 - 1st argument: A string, the name of the height map to use
+
+{% comment %}
+
+### Forest Example
+
+{% endcomment %}
