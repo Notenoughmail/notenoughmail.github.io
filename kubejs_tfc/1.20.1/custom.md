@@ -603,8 +603,8 @@ Inherits the methods of the default block builder
 - `.setModel(i: number, gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-2 }: Sets the crop's model for a specific growth stage
 - `.model(i: number, model: String)`{: .language-kube #crop-model-3 }: Sets the crop's model for a specific growth stage
 - `.texture(texture: String)`{: .language-kube crop-texture-0 }: Sets the crop's `crop`{:.s} texture for all growth stages
-- `.texture(i: number, id: String, texture: String)`{: .language-kube #crop-texture-1 }: Textures a specific key for the given stage
-- `.texture(i: number, texture: String)`{: .language-kube #crop-texture-2 }: Sets the crop's `crop`{:.s} texture for the given growth stage
+- `.textureAt(i: number, id: String, texture: String)`{: .language-kube #crop-texture-1 }: Textures a specific key for the given stage
+- `.textureAt(i: number, texture: String)`{: .language-kube #crop-texture-2 }: Sets the crop's `crop`{:.s} texture for the given growth stage
 - `.textures(textures: JsonObject)`{: .language-kube #crop-textures-0 }: Sets the crop's textures for all growth stages
 - `.textures(i: number, textures: JsonObject)`{: .language-kube #crop-textures-1 }: Sets the crop's textures for the given growth stage
 - `.growthModifier(d: number)`{: .language-kube #crop-growth-modifier }: Sets the growth modifier of the crop. A higher value will slow growth
@@ -683,6 +683,9 @@ Inherits the methods of the [TFC crop builder](#default-crops)
 #### Extra Method
 
 - `.fruitBlock(fruitBlock: ResourceLocation)`{: .language-kube #spreading-crop-fruit-block }: Sets the block that will be used as the block's fruit block, defaults to `minecraft:honey_block`
+
+{: .notice #spreading-crop-side-texture-notice }
+The texture of the side models can be set by calling `.texture("side", "<texture>")`{: .language-kube }
 
 {: #spreading-crop-example }
 

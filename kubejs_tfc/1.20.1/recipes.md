@@ -1386,7 +1386,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 ```js
 event.recipes.firmalife.stomping(
     result: ItemStackProvider,
-    ingredient, Ingredient,
+    ingredient: Ingredient,
     inputTexture: String,
     outputTexture: String,
     sound: String

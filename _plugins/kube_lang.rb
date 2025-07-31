@@ -346,8 +346,8 @@ module Rouge
                 rule %r/(#{id})(\s*)(\??:)/ do |m|
                     # Realistically, variable declarations should not happen within an object declaration
                     # Unless the declaration is for a map...
-                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & poping a varibles state would generalize much better
-                    if m[3].eql?(":") && @stack.include?(get_state(:object))
+                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & shpoping a varibles state would generalize much better
+                    if m[3].eql?(":") && in_state?(:object)
                         groups Name::Attribute, Text, Punctuation
                         goto :expr_start 
                     else

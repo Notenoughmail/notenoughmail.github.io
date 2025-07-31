@@ -61,6 +61,7 @@ module Jekyll
         return str
       end
 
+      # Change this to use .gsub
       def wrap_identified_callouts_and_code_blocks(page)
         content = page.output
         if content.match?(code_regexs[1])

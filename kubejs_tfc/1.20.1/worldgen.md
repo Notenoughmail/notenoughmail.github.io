@@ -934,7 +934,7 @@ TFCEvents.worldgenData(event => {
         'tfc:white_cedar/overlay',
         event.trunk('minecraft:dirt', 0, 3, false),
         0.3,
-        event.treePlacement(1, 5, 'shallow-water'),
+        event.treePlacement(1, 5, 'shallow_water'),
         null,
         placement => {}
     )
@@ -1033,6 +1033,7 @@ TFCEvents.worldgenData(event => {
             event.treeLayer([ 'tfc:oak/1', 'tfc:oak/2', 'tfc:oak/3' ], 1, 3),
             event.treeLayer([ 'tfc:ash/1', 'tfc:ash/2', 'tfc:ash/3', 'tfc:ash/4', 'tfc:ash/5' ], 2, 4)
         ],
+        event.trunk('minecraft:oak_log', 1, 5, false),
         event.treePlacement(5, 2, null),
         null,
         placement => {}
