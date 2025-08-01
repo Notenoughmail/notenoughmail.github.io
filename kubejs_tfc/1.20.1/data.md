@@ -493,9 +493,9 @@ event.metal(
 - 1st argument: A `Fluid`, the fluid this metal is built upon
 - 2nd argument: A number, the melting temperature of the metal
 - 3rd argument: A number, specifies how fast the metal heats up relative to others, measured in Energy / (mB * °C)
-- 4th argument: An item ingredient, defines the ingots of the metal, may be `null`{:.p} to indicate the metal does not have any ingots
-- 5th argument: An item ingredient, defines the double ingots of the metal, may be `null`{:.p} to indicate the metal does not have any double ingots
-- 6th argument: An item ingredient, defines the sheets of the metal, may be `null`{:.p} to indicate the metal does not have any sheets
+- 4th argument: An item ingredient, defines the ingots of the metal, may be `null`{:.p} to indicate the metal does not have any ingots. The item also requires the `tfc:pileable_ingots` tag in order to be placeable
+- 5th argument: An item ingredient, defines the double ingots of the metal, may be `null`{:.p} to indicate the metal does not have any double ingots. The item also requires the `tfc:pileable_double_ingots` tag in order to be placeable
+- 6th argument: An item ingredient, defines the sheets of the metal, may be `null`{:.p} to indicate the metal does not have any sheets. The item also requires the `tfc:pileable_sheets` tag in order to be placeable
 - 7th argument: A number, the tier of the metal
 - *Optional 8th argument*: A `ResourceLocation`, the name of the metal
 
@@ -594,7 +594,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.panning(
     blockIngredient: BlockIngredient,
     lootTable: String,
-    models: List<String>,
+    models: String[],
     name?: ResourceLocation
 )
 ```

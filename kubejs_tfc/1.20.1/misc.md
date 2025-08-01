@@ -45,46 +45,78 @@ Additionally, in the `dev.properties` file
 
 KubeJS TFC adds several commands used for investigating some of TFC's (and some addons) data. They all require level 3 or higher to use.
 
-## List IDs
+### List IDs
 
-The `/kubejs_tfc list_ids`{:.s} command has a single argument, a data type, all available options will be suggested
+The `/kubejs_tfc list_ids`{:.language-command} command has a single argument, a data type, all available options will be suggested
 
 Using this command will print a list the ids of data files handled by that data type to the chat
 
-Example: `/kubejs_tfc list_ids tfc.fuels`{:.s}
+Example: `/kubejs_tfc list_ids tfc.fuels`{:.language-command}
 
-## Describe
+### Describe
 
-The `/kubejs_tfc describe`{:.s} command has two arguments: a data type and a resource location, the id of the data value to describe
+The `/kubejs_tfc describe`{:.language-command} command has two arguments: a data type and a resource location, the id of the data value to describe
 
 Using this command will print a formatted description of the requested data value to the chat
 
-Example: `/kubejs_tfc describe tfc.fuels tfc:coal`{:.s}
+Example: `/kubejs_tfc describe tfc.fuels tfc:coal`{:.language-command}
 
-## Search
+### Search
 
-The `/kubejs_tfc search`{:.s} command has two arguments: a data type and a resource location, the registry id to search for in the data type
+The `/kubejs_tfc search`{:.language-command} command has two arguments: a data type and a resource location, the registry id to search for in the data type
 
-Using the command will print a list of data definitions which apply to the given item/block/fluid/entity type, each entry can be clicked on to describe it via `/kubejs_tfc describe`{:.s}
+Using the command will print a list of data definitions which apply to the given item/block/fluid/entity type, each entry can be clicked on to describe it via `/kubejs_tfc describe`{:.language-command}
 
-Examples: `/kubejs_tfc search tfc.metals tfc:metal/copper`{:.s}, `/kubejs_tfc search tfc.entity_damage_resistances minecraft:creeper`{:.s}, `/kubejs_tfc search tfc.fertilizers tfc:powder/wood_ash`{:.s}
+Examples: `/kubejs_tfc search tfc.metals tfc:metal/copper`{:.language-command}, `/kubejs_tfc search tfc.entity_damage_resistances minecraft:creeper`{:.language-command}, `/kubejs_tfc search tfc.fertilizers tfc:powder/wood_ash`{:.language-command}
 
-## Print World Settings
+### Print World Settings
 
-The `/kubejs_tfc print_world_settings`{:.s} command has no arguments.
+The `/kubejs_tfc print_world_settings`{:.language-command} command has no arguments.
 
 Using the command will print out the [TFC Settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/) of the current level if its generator is TFC-like (implements TFC's `ChunkGeneratorExtension`).
 
 The rock layer settings will not be printed, due to them usually filling the entirety of the message history itself. Instead, `~~~` will be printed in its place with a click interaction to run the command that [prints rock settings](#print-rock-settings).
 
-## Print Rock Settings
+### Print Rock Settings
 
-The `/kubejs_tfc print_rock_settings`{:.s} command has no arguments.
+The `/kubejs_tfc print_rock_settings`{:.language-command} command has no arguments.
 
 Using this command will print out the [rock layer settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/#rock-layer-settings) of the current level if its generator is TFC-like (implements TFC's `ChunkGeneratorExtension`).
 
-## Print Chunk Data
+### Print Chunk Data
 
-The `/kubejs_tfc print_chunk_data`{:.s} command has no arguments.
+The `/kubejs_tfc print_chunk_data`{:.language-command} command has no arguments.
 
 Using the command will print out the server [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java) of the current chunk in a somewhat readable format. Only the information available will be printed. That is to say, if the status is `EMPTY`{:.e}, `CLIENT`{:.e}, or `INVALID`{:.e}, no additional information will be printed; and the surface and aquifer heights will only be printed if the status is `FULL`{:.e}.
+
+### Tree Solver
+
+The `/kubejs_tfc tree_solver`{:.language-command} command has five arguments
+
+- `trunk_size`{:.v}: Either `1`{:.v} or `2`{:.v}, the size of the tree trunk to solve for within the scan area
+- `log_block`{:.m}: The block to use as the log of the tree. Is limited to and will only suggest blocks with TFC's branch direction state property. See the [log block type]({% link kubejs_tfc/1.20.1/custom.md %}#log) for custom logs
+- `leaves_block`{:.s}: The block to use as the leaves of the tree. Is limited to and will only suggest TFC [leaves]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) blocks. See the [leaves block type]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) for custom leaves
+- `from`{:.r}: A block pos, one corner of the scan area. Supports relative positions
+- `to`{:.f}: A block pos, the other corner of the scan area. Supports relative positions
+
+This command replaces blocks within the world for use in creating tree structures which work with TFC's tree logging mechanic. This is done through the use of marker blocks which are replaced with the correct block and state
+
+- `minecraft:light_blue_stained_glass`: Marks a root position, or the bottom of a tree[^1]. This is the only block that actually needs to be within the scan area. Must have a `minecraft:brown_stained_glass` immediately above; and for trunk size `2`{:.n}, should be in a two by two pattern
+- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker breadth-first along brown glass. The solver can connect to any log marker in the 3 by 3 by 3 area centered at the current position, though blocks prefer the lowest order connection they can make (order 1: share a face, order 2: share an edge, order 3: share a vertex)
+- `minecraft:green_stained_glass`: Marks where leaves will go.
+
+[^1]: While this is the bottom of a tree, it does not prevent branches 'drooping' to heights lower than that of the root position
+
+All root positions within the scan area will will be solved and converted into trees, though errors will occur if a root does not have the same size as the `trunk_size`{:.v} argument
+
+<details>
+    <summary>As an example</summary>
+    <img src="/assets/images/kjs_tfc/tree_solver/pre_solve.png" alt="A tree template using the marker blocks. The tree solver command is typed in the chat box" class="center-image">
+    <img src="/assets/images/kjs_tfc/tree_solver/post_solve.png" alt="A tree, as solved fro mthe template in the previous image" class="center-image">
+</details>
+
+<details>
+    <summary>It can also handle rather strange forms</summary>
+    <img src="/assets/images/kjs_tfc/tree_solver/pre_solve_dumb.png" alt="A tree template, though the log markers are in a large brick form" class="center-image">
+    <img src="/assets/images/kjs_tfc/tree_solver/post_solve_dumb.png" alt="The solved tree of the previous template." class="center-image">
+</details>

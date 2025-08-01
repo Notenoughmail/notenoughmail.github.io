@@ -130,3 +130,7 @@ declare class TemperatureCallback {
 `"Inline strings".split('i').join("Denmark")`{: .language-kube }
 
 `SpawnPlacements$Type.ON_GROUND`{: .language-kube }
+
+Command lang parser test
+
+`/kubejs_tfc tree_solver 2 beneath:wood/log/crimson beneath:wood/leaves/crimson ‌-200 50 10‌ ‌~ ~ ~‌ dandelions butterscotch and_such_things hmm uh`{: .language-command }

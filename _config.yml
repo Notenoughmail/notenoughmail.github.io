@@ -14,6 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+# TODO: Test {% include file %} stuff for use with large large code blocks
+
 title: NotEnoughMail's Stuff
 description: >- # this means to ignore newlines until "baseurl:"
   NotEnoughMail's site for his online projects: writing, documentation, and possibly more
@@ -108,3 +110,4 @@ colors:
   target-highlight: 4a0068
   object-key: c1a226
   light-link: 82b5fa
+  comment: d68e63

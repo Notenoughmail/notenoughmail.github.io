@@ -35,6 +35,9 @@
     .kv {
         color:#{{ site.colors.params }};
     }
+    .c1 {
+        color:#{{ site.colors.comment }};
+    }
 }
 
 code {
@@ -68,6 +71,9 @@ code {
     .kv {
         color:#{{ site.colors.params }};
     }
+    .c1 {
+        color:#{{ site.colors.comment }};
+    }
 }
 
 code.e {
@@ -90,6 +96,9 @@ code.n {
 }
 code.v {
     color:#{{ site.colors.params }};
+}
+code.r {
+    color:#{{ site.colors.reserved }};
 }
 
 h6.m-link {
@@ -115,19 +124,35 @@ h6.callout {
     }
 }
 
+.main-content li:has(li) {
+    border-left: 1px solid #7d7c7e;
+    margin-left: calc(-0.25rem - 1px);
+    padding-left: 0.25rem;
+}
+
 li:has(> :target) {
     background-color:#{{ site.colors.target-highlight }};
-    padding: 0.25rem;
-    border-radius: 0.25rem;
-    border: 1px solid #c657f4;
+    padding: 0.25rem !important;
+    border: 1px solid #c657f4 !important;
+    margin-left: calc(-0.25rem - 1px) !important;
     a:not(.anchor-heading) {
         color:#{{ site.colors.light-link }};
     }
     h6:target {
-        padding-left: 0;
+        padding-left: 0 !important;
     }
 }
 
 a > code {
     color:#{{ site.colors.light-link }};
+}
+
+img.center-image {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+.main-content li {
+    border-radius: 0.25rem;
 }
