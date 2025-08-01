@@ -144,7 +144,7 @@ module Rouge
                     Lifecycle GrassModelPart DeadModelVariant NutrientType GearBoxModelType
                     ClutchModelType PshReaction OffsetType NotBlockInstrument ItemDisplayContext
                     GlassOperation Size Weight PlanterType ChiselMode ForgeRule DyeColor Heat
-                    InteractionResult Type Enum
+                    InteractionResult Type Enum GroundType
                 )
             end
 

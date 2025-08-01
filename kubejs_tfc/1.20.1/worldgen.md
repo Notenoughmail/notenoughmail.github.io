@@ -954,7 +954,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 ```js
 event.randomTree(
     name: String,
-    struncture: String[],
+    structure: String[],
     trunk: @Nullable Trunk,
     treePlacement: TreePlacement,
     rootSystem: @Nullable Root,
@@ -1195,7 +1195,7 @@ event.forestTypesMapEntry(
 )
 ```
 
-- 1st argument: A `ForestType`, the key in the map. May be `none`, `sparse`, `edge`, `normal`, or `old_growth`
+- 1st argument: A `ForestType`{:.e}, the key in the map. May be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
 - 2nd argument: An `IntProvider`, how many trees should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
 - 3rd argument: An `IntProvider`, how much ground cover should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
 - 4th argument: A number, in the range [0, 1], per chunk, that forests will spawn. May be `null`{:.p} to default to `1`{:.n}
@@ -1206,11 +1206,105 @@ event.forestTypesMapEntry(
 
 ## Trunk
 
+Creates a new trunk object for use with [overlay](#overlay-tree), [random](#random-tree), and [stacked](#stacked-tree) trees
+
+Used to add extra height to tree structures for variance within forests. See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#trunk)!
+
+For an example, see the [stacked tree](#stacked-tree-example) example
+
+{: #trunk-signature }
+
+### Method Signature
+
+```js
+event.trunk(
+    state: String,
+    minHeight: number,
+    maxHeight: number,
+    wide: boolean
+)
+```
+
+- 1st argument: A string representation of a block state, the state to place as the trunk
+- 2nd argument: A number, the minimum height of the trunk
+- 3rd argument: A number, the maximum height of the trunk
+- 4th argument: A boolean, if the trunk is 2x2
+
 ## Tree Placement
+
+Creates a new tree placement object for use with [overlay](#overlay-tree), [random](#random-tree), and [stacked](#stacked-tree) trees
+
+Used to determine the where the tree can place. See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/trees/#tree-placement)!
+
+For an example, see the [stacked tree](#stacked-tree-example) example
+
+{: #tree-placement-signature }
+
+### Method Signature
+
+```js
+event.treePlacement(
+    width: number,
+    height: number,
+    groundType: @Nullable GroundType
+)
+```
+
+- 1st argument: A non-negative number, the horizontal distance to check
+- 2nd argument: A non-negative number, the vertical distance to check
+- 3rd argument: A `GroundType`{:.e}, determines what sort of ground to spawn in. Accepts `normal`{:.e}, `sand`{:.e}, `shallow_water`{:.e}, `submerged`{:.e}, `shallow_allow_saltwater`{:.e}, `submerged_allow_saltwater`{:.e}, or `floating`{:.e}. May be `null`{:.p} to default to `normal`{:.e}
 
 ## Root
 
+Creates a new root object for use with [overlay](#overlay-tree), [random](#random-tree), and [stacked](#stacked-tree) trees
+
+Used to replace the soil around a tree, akin to vanilla's spruce trees and podzol
+
+For an example, see the [random tree](#random-tree-example) example
+
+{: #root-signature }
+
+### Method Signature
+
+```js
+event.root(
+    blocks: BlockToWeightedBlockStateMapEntry[],
+    width: @Nullable number,
+    height: @Nullable number,
+    tries: @Nullable number,
+    specialPlacerSkewChance: @Nullable number,
+    required: @Nullable number
+)
+```
+
+- 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), what soil blocks should be replaced with
+- 2nd argument: A number, the horizontal distance to attempt to place roots. May be `null`{:.p} to default to `4`{:.n}
+- 3rd argument: A number, the vertical distance to attempt to place roots. May be `null`{:.p} to default to `3`{:.n}
+- 4th argument: A number, how many attempts should be made to place roots. May be `null`{:.p} to default to `5`{:.n}
+- 5th argument: A number, the chance, in the range [0, 1], for extra roots to be placed. May be `null`{:.p}
+- 6th argument: A boolean, if roots must be placed. May be `null`{:.p} to default to `false`{:.p}
+
 ## Tree layer
+
+Create a tree layer for use with [stacked trees](#stacked-tree)
+
+Used to provide a variety of structures to create a stacked appearance
+
+{: #tree-layer-signature }
+
+### Method Signature
+
+```js
+event.treelayer(
+    templates: String[],
+    minCount: number,
+    maxCount: number
+)
+```
+
+- 1st argument: A list of strings, the ids of structures to choose from for this layer
+- 2nd argument: A number, the minimum number of structures to have in this layer
+- 3rd argument: A number, the maximum number of structures to have in this layer
 
 ## Vein Properties
 
@@ -1436,5 +1530,9 @@ placement.heightMap(heightMap: String)
 {% comment %}
 
 ### Forest Example
+
+### Stacked Tree Example
+
+### Random Tree Example
 
 {% endcomment %}
