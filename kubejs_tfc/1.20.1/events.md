@@ -806,7 +806,7 @@ TFC's worldgen is primarily based around *rocks*, *layers*, and *layer types*[^3
 - `.removeFromBottom(name: String)`{: .language-kube #worldgen-remove-bottom }: Removes the given rock from the 'bottom' layer
 - `.defineLayer(id: String, rockMap: Map<String, String>)`{: .language-kube #worldgen-define-layer }: Defines a new layer
     - `id:String`{: .language-kube }: the name of the layer to add
-    - `rockMap: Map<STring, String>`{: .language-kube }: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
+    - `rockMap: Map<String, String>`{: .language-kube }: A map of rock names to layer names, associates a rock with the layer that will generate underneath it
 - `.removeLayer(layerId: String)`{: .language-kube #worldgen-remove-layer }: removes the given layer from the generator
 - `.getLayerIds()`{: .language-kube #worldgen-get-layer-ids }: returns a list of the names of all layers currently in the generator's pool of layers
 - `.cleanSlate()`{: .language-kube #worldgen-clean-slate }: Removes all rocks and layers from the generator
