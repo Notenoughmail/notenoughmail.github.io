@@ -143,6 +143,9 @@ li:has(> :target) {
     h6:target {
         padding-left: 0 !important;
     }
+    li:has(li) {
+        background: linear-gradient(#{{ site.colors.target-highlight }}, #{{ site.colors.target-highlight }}) padding-box, linear-gradient(90deg, #c657f4, transparent) border-box;
+    }
 }
 
 a > code {
