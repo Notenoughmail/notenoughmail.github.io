@@ -787,7 +787,7 @@ event.forest(
 
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, a configured feature tag. All elements of the tag must be [forest entries](#forest-entry)
-- 3rd argument: A list of [forest type map entries](#forest-types-map-entry)
+- 3rd argument: A list of [forest type map entries](#forest-types-map-entry). There must be an entry for every `ForestType`
 - 4th argument: A boolean, if forest weirdness should be used to smooth the edges between forest entries. May be `null`{:.p} to default to `true`{:.p}
 - 5th argument: A [feature placement consumer](#feature-placement)
 
@@ -801,8 +801,11 @@ TFCEvents.worldgenData(event => {
         'example_forest',
         'kubejs:example_forest_entries',
         [
-            event.forestTypesMapEntry('edge', [ 0, 2 ], null, 0.1, null, false, false, null),
-            event.forestTypesMapEntry('normal', [ 1, 9 ], [ 2, 3 ], 0.5, null, false, false, null)
+            event.forestTypesMapEntry('none', null, null, 0, null, null, null, null),
+            event.forestTypesMapEntry('sparse', [ 0, 1 ], null, 0.1, null, false, false, null),
+            event.forestTypesMapEntry('edge', [ 0, 2 ], null, 0.2, null, false, false, null),
+            event.forestTypesMapEntry('normal', [ 1, 9 ], [ 2, 3 ], 0.5, null, false, false, [ 0, 2 ]),
+            event.forestTypesMapEntry('old_growth', [ 3, 15 ], [ 2, 5 ], 0.7, [ 0, 5 ], true, true, [ 1, 3 ])
         ],
         null,
         placement => {}
