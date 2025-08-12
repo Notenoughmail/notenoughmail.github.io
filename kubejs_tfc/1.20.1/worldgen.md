@@ -787,7 +787,7 @@ event.forest(
 
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A string, a configured feature tag. All elements of the tag must be [forest entries](#forest-entry)
-- 3rd argument: A list of [forest type map entries](#forest-types-map-entry). There must be an entry for every `ForestType`
+- 3rd argument: A list of [forest type map entries](#forest-types-map-entry). There must be an entry for every `ForestType`{:.e}
 - 4th argument: A boolean, if forest weirdness should be used to smooth the edges between forest entries. May be `null`{:.p} to default to `true`{:.p}
 - 5th argument: A [feature placement consumer](#feature-placement)
 

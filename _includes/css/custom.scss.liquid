@@ -1,4 +1,4 @@
-.highlight {
+.highlight, code {
     .nf {
         color:#{{ site.colors.method }};
     }
@@ -12,15 +12,12 @@
         color:#{{ site.colors.symbol }};
     }
     .nb {
-        color:#{{ site.colors.func }};
+        color:#{{ site.colors.builtin }};
     }
     .mi {
         color:#{{ site.colors.number }};
     }
-    .enum {
-        color:#{{ site.colors.enum }};
-    }
-    .e {
+    .enum, .e {
         color:#{{ site.colors.enum }};
     }
     .nd {
@@ -38,41 +35,8 @@
     .c1 {
         color:#{{ site.colors.comment }};
     }
-}
-
-code {
-    .nf {
-        color:#{{ site.colors.method }};
-    }
-    .k {
-        color:#{{ site.colors.reserved }};
-    }
-    .o {
-        color:#{{ site.colors.symbol }};
-    }
-    .nb {
+    .fm {
         color:#{{ site.colors.func }};
-    }
-    .mi {
-        color:#{{ site.colors.number }};
-    }
-    .enum, .e {
-        color:#{{ site.colors.enum }};
-    }
-    .nd {
-        color:#{{ site.colors.annotation }};
-    }
-    .kc {
-        color:#{{ site.colors.primitive }};
-    }
-    .s1, .s2 {
-        color:#{{ site.colors.string }};
-    }
-    .kv {
-        color:#{{ site.colors.params }};
-    }
-    .c1 {
-        color:#{{ site.colors.comment }};
     }
 }
 

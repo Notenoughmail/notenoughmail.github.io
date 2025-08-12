@@ -121,7 +121,7 @@ module Rouge
 
             def self.builtins
                 @builtins ||= Set.new %w(
-                    Array Boolean Date Error Function Math netscape
+                    Array Boolean Date Error Math netscape
                     Number Object Packages RegExp String sun decodeURI
                     decodeURIComponent encodeURI encodeURIComponent
                     eval isFinite isNaN parseFloat parseInt
@@ -153,7 +153,7 @@ module Rouge
                     Consumer BiConsumer TriConsumer BiFunction TriFunction QuadFunction
                     RockFunction OnItemUseAction Supplier RocksGetter MossGrowingCallback
                     Predicate Noise2D $StateArgumentPredicate $StatePredicate
-                    TemperatureCallback
+                    TemperatureCallback Function
                 )
             end
 
@@ -243,7 +243,7 @@ module Rouge
                     elsif self.class.builtins.include? m[0]
                         token Name::Builtin
                     elsif self.class.functional_interfaces.include? m[0]
-                        token Name::Builtin
+                        token Name::Function::Magic
                     elsif self.class.enums.include? m[0]
                         token Rouge::Token::Enum
                     else

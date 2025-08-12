@@ -1066,7 +1066,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 - `.hasPostProcess(hasProcess: BlockBehaviour$StatePredicate)`{: .language-kube #extend-props-has-post-process }: Determines if the block has post processing during block placement
 - `.alwaysPostProcess()`{: .language-kube #extend-props-always-post-process }: Sets the block to always be post processed
 - `.neverPostProcess()`{: .language-kube #extend-props-never-post-process }: Sets the block to never be post processed
-- `.emissiveRendering(emissive: BlockBehaviour$StatePredicate)`: Determines if the block has emissive rendering
+- `.emissiveRendering(emissive: BlockBehaviour$StatePredicate)`{: .language-kube #extended-props-emissive }: Determines if the block has emissive rendering
 - `.alwaysEmissive()`{: .language-kube #extend-props-always-emissive }: Sets the block to always have emissive rendering
 - `.neverEmissive()`{: .language-kube #extend-props-never-emissive }: Sets the block to never have emissive rendering
 - `.requiresCorrectToolForDrops()`{: .language-kube #extend-props-requires-correct-tool }: Sets the block to require a 'correct' tool (as determined by a tag) for it to drops its loot table

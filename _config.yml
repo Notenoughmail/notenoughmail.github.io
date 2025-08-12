@@ -101,7 +101,7 @@ colors:
   symbol: 47ab36
   annotation: f77
   number: eddc96
-  func: fdce68
+  builtin: fdce68
   primitive: e19ef5
   reserved: e19ef5
   method: dfff6b
@@ -111,3 +111,4 @@ colors:
   object-key: c1a226
   light-link: 82b5fa
   comment: d68e63
+  func: 8bffce
