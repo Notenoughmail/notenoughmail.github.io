@@ -31,7 +31,7 @@ Has all of TFC's options
 - Continentalness
 - Grass density
 
-In addition, there are options to set the x and z offset of the preview (centered on (0,0) by default), the visualizer type, spawn overlay toggle, the preview size, a preview export button, and a seed field
+In addition, there are options to set the x and z offset of the preview (centered on (0,0) by default), the visualizer type, spawn overlay toggle, the preview size, and a seed field
 
 - Visualizer Type: Determines what the preview will show, defaults to *Rivers and Mountains*, clicking will toggle through: *Rock Types*, *Rocks*, *Biomes*, *Rainfall*, *Temperature*, *Biome Altitude*, *Inland Height*, and back to *Rivers and Mountains*
     - Biomes: Colors the preview based on the biome that was sampled at that point
@@ -104,7 +104,7 @@ In addition, there are options to set the x and z offset of the preview (centere
 - Preview Export: Exports the currently displayed preview to a file in `screenshots/tfcgenviewer`
 - Seed: Sets the seed to use in the preview
 
-Underneath those options is a button labeled *Apply*, this recreates the preview with the current options
+Underneath those options are three buttons, *Apply*, *Export Preview* and *Edit Rocks*. *Apply* recreates the preview with the current options, *Export Preview* saves the current preview to a file in the `screenshots/tfcgenveiwer` folder, and *Edit Rocks* opens the [rock editor sub-screen](rock-editor/)
 
 ### Buttons
 
