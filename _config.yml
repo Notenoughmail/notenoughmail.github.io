@@ -64,7 +64,7 @@ callouts:
     color: blue-custom
 
 mermaid:
-  version: "11.3.0"
+  version: "11.9.0"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
