@@ -3,6 +3,7 @@ layout: page
 title: Updates
 permalink: /updates/
 has_children: false
+top: true
 ---
 
 # Updates

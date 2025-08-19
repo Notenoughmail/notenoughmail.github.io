@@ -3,6 +3,7 @@ layout: page
 title: Links & Contact
 permalink: /contact/
 has_children: false
+top: true
 ---
 
 # Links & Contact

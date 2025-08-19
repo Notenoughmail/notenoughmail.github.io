@@ -2,6 +2,7 @@
 layout: page
 title: Home
 permalink: /
+top: true
 ---
 
 # NotEnoughMail's Stuff

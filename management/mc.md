@@ -4,6 +4,7 @@ title: Minecraft
 permalink: /mc/
 has_children: true
 has_toc: false
+top: true
 ---
 
 # Minecraft

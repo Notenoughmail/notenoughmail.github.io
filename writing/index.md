@@ -2,6 +2,7 @@
 layout: page
 title: Writing
 permalink: /writing/
+top: true
 ---
 
 # Writing

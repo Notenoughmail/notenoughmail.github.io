@@ -40,8 +40,8 @@ favicon_ico: "/assets/favicon.ico"
 
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
-  Updates: /feed.xml
-  Writing: /writing/feed.xml
+  Update Feed: /feed.xml
+  Writing Feed: /writing/feed.xml
   Contact: /contact/
 
 callouts:

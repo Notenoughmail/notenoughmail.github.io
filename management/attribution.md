@@ -2,6 +2,7 @@
 layout: page
 title: Attribution
 permalink: /attribution/
+top: true
 ---
 
 # Attribution

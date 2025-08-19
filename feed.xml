@@ -2,10 +2,11 @@
 layout: none
 ---
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/hidden/rss_style.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>{{ site.title | xml_escape }}</title>
-        <description>{{ site.description | xml_escape }}</description>
+        <title>Update Feed</title>
+        <description>Update posts for NotEnoughMail's projects</description>
         <link>{{ site.url }}</link>
         <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
         {% assign posts = site.posts | where:"cat","update" %}
@@ -14,10 +15,12 @@ layout: none
             <title>{{ post.title | xml_escape }}</title>
             <description>{{ post.content | xml_escape }}</description>
             <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+            <simpleDate>{{ post.date | date: "%d %b %Y" }}</simpleDate>
             <link>{{ site.url }}{{ post.url }}?utm_source=rss</link>
             <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
             <author>{{ post.author | default: site.author }}</author>
         </item>
         {% endfor %}
+        <bottom>Looking for previous updates? All updates, categorized by software, are available on the Updates page!</bottom>
     </channel>
 </rss>
