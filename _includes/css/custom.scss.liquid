@@ -122,6 +122,36 @@ img.center-image {
     width: 80%;
 }
 
+figure {
+    display: block;
+    margin: auto;
+    width: 85%;
+    border: 1px solid #7d7c7e;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
 .main-content li {
     border-radius: 0.25rem;
+}
+
+details {
+    background: linear-gradient(#27262b, #27262b) padding-box, linear-gradient(90deg, #7d7c7e, transparent) border-box;
+    border: 1px solid transparent;
+    summary::marker {
+        content: "+ ";
+        font-family: monospaced;
+        font-weight: bold;
+        color: green;
+    }
+}
+
+details[open] summary::marker {
+    content: "- ";
+    color: red;
+}
+
+summary {
+    padding-left: 0.25rem;
 }
