@@ -64,6 +64,9 @@ code.v {
 code.r {
     color:#{{ site.colors.reserved }};
 }
+code.nb {
+    color:#{{ site.colors.builtin }};
+}
 
 h6.m-link {
     font-size:inherit !important;
@@ -116,12 +119,6 @@ a > code {
     color:#{{ site.colors.light-link }};
 }
 
-img.center-image {
-    display: block;
-    margin: auto;
-    width: 80%;
-}
-
 figure {
     display: block;
     margin: auto;
@@ -139,19 +136,29 @@ figure {
 details {
     background: linear-gradient(#27262b, #27262b) padding-box, linear-gradient(90deg, #7d7c7e, transparent) border-box;
     border: 1px solid transparent;
+    margin-bottom: 0.25rem;
     summary::marker {
         content: "+ ";
         font-family: monospaced;
         font-weight: bold;
         color: green;
     }
+    summary::after {
+        content: attr(text-closed);
+    }
 }
 
-details[open] summary::marker {
-    content: "- ";
-    color: red;
+details[open] {
+    summary::marker {
+        content: "− ";
+        color: red;
+    }
+    summary::after {
+        content: attr(text-open);
+    }
 }
 
 summary {
     padding-left: 0.25rem;
+    margin-bottom: 0.25rem;
 }

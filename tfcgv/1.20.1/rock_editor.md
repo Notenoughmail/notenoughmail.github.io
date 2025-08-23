@@ -31,14 +31,10 @@ This tab is for editing, removing, and adding [rock settings](https://terrafirma
 
 Each entry in the display consists of
 
-- A remove button: Removes the rock setting outright
+- A remove button: Removes the rock setting
 - An edit button: Moves the rock setting to the editor
 - The name of the rock setting
 - The blocks which define the rock settings
-
-{: #rock-settings-editor }
-
-### Editor
 
 The editor is where the blocks of a rock setting can be changed and its name can be edited. The editor has:
 
@@ -48,12 +44,11 @@ The editor is where the blocks of a rock setting can be changed and its name can
     - When not focused, each selector will display the icon and name of the selected block.
     - When focused, the display will be replaced with a search bar and a 'scrollable' list of up to five blocks. This displays the blocks matching the search.
     - The list can be scrolled with the up and down arrows. Holding `alt` will make the list scroll five at a time and holding `shift` will force the focused element to change when using the arrow keys.
-    - The block highlighted in gold is the one currently selected, this can be confirmed and added to the setting object with the `enter` or `tab` keys.
+    - The block highlighted in gold is the one currently selected, this can be confirmed and added to the setting object with the `enter` key.
 - A clear button: Resets the editor to the default state.
 
 <details>
-    TODO: Better summary
-    <summary>Block selector suggestion list</summary>
+    <summary text-closed="Reveal block selector previews" text-open="Hide block selector previews"></summary>
     <figure>
         <img src="/assets/images/tfcgv/rock_editor/rock_settings_edit_0.png" alt="Rock settings edit 0" />
         <figcaption>The cobble block selector is focused. 'granite co' is typed and cobbled granite blocks are suggested.</figcaption>
@@ -93,11 +88,10 @@ The display has five entries for the bottom rocks and the ocean floor, volcanic,
 
 The editor contains a list of the values present in the layer type with, next to each, a delete button which removes that value. Towards the bottom of the screen there is an edit box which is used to add values. Next the edit box is a button which will add the value to the layer type currently in the editor.
 
-When focused/selected, the edit box will also have a 'scrollable' list of up to five values. The list can be scrolled with the up and down arrows and `shift` can be held to force the focused element to change when using the arrow keys. The value highlighted in gold is the currently selected value; using `enter` or `tab` will autofill the selected value. Values already in the selected layer type will not be suggested.
+When focused/selected, the edit box will also have a 'scrollable' list of up to five values. The list can be scrolled with the up and down arrows and `shift` can be held to force the focused element to change when using the arrow keys. The value highlighted in gold is the currently selected value; using `enter` will autofill the selected value. Values already in the selected layer type will not be suggested.
 
 <details>
-    TODO: Better summary
-    <summary>Layer types suggestion list</summary>
+    <summary text-closed="Reveal layer types previews" text-open="Hide layer types previews"></summary>
     <figure>
         <img src="/assets/images/tfcgv/rock_editor/layer_types_edit_0.png" alt="Layer types edit 0" />
         <figcaption>With Uplift Rock Layers (and any Rock Layers) in the editor, layer definitions are suggested.</figcaption>
@@ -111,6 +105,61 @@ When focused/selected, the edit box will also have a 'scrollable' list of up to 
 </details>
 
 ## Layer Definitions
+
+This tab is for editing, creating, and deleting [layer definitions](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/#rock-layer).
+
+<figure>
+    <img src="/assets/images/tfcgv/rock_editor/layer_definitions.png" alt="layer definitions" />
+    <figcaption>The layer definitions tab with an 'uninitialized' editor</figcaption>
+</figure>
+
+Each entry in the the display consists of
+
+- A delete button: Removes the layer definition
+- An edit button: Moves the layer definition to the editor
+- The name of the layer definition
+- A list of up to three rock settings to layer definition mappings. If there are more than three mappings, the third one will be replaced with an ellipsis.
+
+<figure>
+    <img src="/assets/images/tfcgv/rock_editor/layer_definitions_edit_empty.png" alt="layer definitions editor" />
+    <figcaption>An empty layer definition editor.</figcaption>
+</figure>
+
+<figure>
+    <img src="/assets/images/tfcgv/rock_editor/layer_definitions_edit.png" alt="layer definitions editor" />
+    <figcaption>The layer definition editor with the 'igneous_extrusive_x2' layer definition in it.</figcaption>
+</figure>
+
+The editor can be used to edit, create, and delete layer definitions. When the tab is first opened and after a layer definition in the editor is either moved to the display or deleted, the editor will be in an 'uninitialized' state.
+
+The editor can be 'initialized' by clicking the button labeled "Create Layer Definition" at the bottom or by moving a layer definition from the display. Once 'initialized', the editor consists of
+
+- A layer id entry, which has
+    - A remove button: Deletes the layer definition currently in the editor and returns the editor to an 'uninitialized' state
+    - A confirm button: Moves the layer definition to the display and returns the editor to an 'uninitialized' state
+    - An edit box where the id of the layer definition can be set
+- One or more mapping entries, which have
+    - A remove button: Deletes that mapping
+    - An edit box which suggests rock settings. Defines the key of the mapping
+    - An edit box which suggests layer definitions. Defines the value of the mapping
+
+Additional mapping entries can be added by clicking the button labeled "Add Rock to Layer Mapping" at the bottom.
+
+<details>
+    <summary text-closed="Reveal layer definition previews" text-open="Reveal layer definition previews"></summary>
+    <figure>
+        <img src="/assets/images/tfcgv/rock_editor/layer_definitions_edit_0.png" alt="Layer definitions edit" />
+        <figcaption></figcaption>
+    </figure>
+    <br />
+    <figure>
+        <img src="/assets/images/tfcgv/rock_editor/layer_definitions_edit_1.png" alt="Layer definitions edit" />
+        <figcaption></figcaption>
+    </figure>
+    <br />
+</details>
+
+TODO: Explain/mention scrolling of mapping edit boxes; explain why its called a mapping?
 
 {% comment %}
 
