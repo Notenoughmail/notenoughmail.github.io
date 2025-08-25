@@ -43,7 +43,7 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 {: .notice #general-notice }
 > Most of these methods have an optional final argument which specifies the 'name' of the definition
 >
-> This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`, the `tfc/<dataType>` folders do not need to be provided
+> This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`{:.language-fs}, the `tfc/<dataType>`{:.language-fs} folders do not need to be provided
 >
 > If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-kube } value
 >
@@ -163,7 +163,7 @@ event.drinkable(
     - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
-[^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
+[^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
 
 ### Example
 
@@ -395,7 +395,9 @@ TFCEvents.data(event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/#knapping-types)!
 
 {: .notice #knapping-type-notice }
-Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is required for any changes to affect knapping interactions
+> Knapping ingredients *must* have the `tfc:any_knapping` tag. While this tag can be reloaded at runtime, a game restart is required for any changes to affect knapping interactions
+>
+> Additionally, the textures used by the screen itself should be placed in `/assets/tfc/textures/gui/knapping/<item_path>.png`{:.language-fs} and `/assets/tfc/textures/gui/knapping/<item_path>_disabled.png`{:.language-fs} if a disabled texture is used
 
 ### Method Signature
 
@@ -423,7 +425,7 @@ event.knappingType(
 - 8th argument: An `ItemStack`, the icon item for the JEI recipe category
 - 9th argument: A `ResourceLocation`, the name of the knapping type
 
-[^2]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
+[^2]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
 
 ### Example
 

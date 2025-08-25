@@ -139,7 +139,7 @@ TFCEvents.limitContainer('minecraft:generic_3x3', event => {
 })
 ```
 
-[^1]: A full list of `MenuType`s can be accessed by running `/kubejs dump_registry minecraft:menu` in-game
+[^1]: A full list of `MenuType`s can be accessed by running `/kubejs dump_registry minecraft:menu`{:.language-command} in-game
 
 ## Register Climate Model
 

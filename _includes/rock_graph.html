@@ -2,7 +2,7 @@
     function parse() {
         query = document.location.href.split("?")[1];
         if (query == undefined) {
-            window.open(document.location.href + "?version=1.21.1&ocean_type=[igneous_extrusive]&land_type=[igneous_extrusive;sedimentary]&uplift_type=[sedimentary;uplift]&volcanic_type=[igneous_extrusive;igneous_extrusive_x2]&bottom_type=[gneiss;schist;diorite;granite;gabbro]&layers=[felsic;intermediate;mafic;igneous_extrusive;igneous_extrusive_x2;phyllite;slate;marble;quartzite;sedimentary;uplift]&felsic=[granite~bottom]&intermediate=[diorite~bottom]&mafic=[gabbro~bottom]&igneous_extrusive=[andesite~intermediate;basalt~mafic;dacite~intermediate;rhyolite~felsic]&igneous_extrusive_x2=[andesite~igneous_extrusive;basalt~igneous_extrusive;dacite~igneous_extrusive;rhyolite~igneous_extrusive]&phyllite=[gneiss~bottom;phyllite~bottom;schist~bottom]&slate=[phyllite~phyllite;slate~bottom]&marble=[marble~bottom]&quartzite=[quartzite~bottom]&sedimentary=[chalk~marble;chert~quartzite;claystone~slate;conglomerate~slate;dolomite~marble;shale~slate;limestone~marble]&uplift=[diorite~sedimentary;gabbro~sedimentary;granite~sedimentary;marble~bottom;quartzite~bottom;slate~phyllite]", "_self");
+            window.open(document.location.href + "?{% include rock_default.txt %}", "_self");
         } else {
             try {
                 properties = query.split("&");
@@ -51,7 +51,7 @@
         for (let i in def) {
             let layer = def[i];
             if (seenLayers.includes(layer)) {
-                accept(`${name} --> ${layer}`);
+                accept(`${name} -.-> ${layer}`);
             } else {
                 let mapping = allMap[layer];
                 for (let toLayer in mapping) {
@@ -126,5 +126,4 @@
         }
         return undefined;
     }
-    //TFC default 1.21: version=1.21.1&ocean_type=[igneous_extrusive]&land_type=[igneous_extrusive;sedimentary]&uplift_type=[sedimentary;uplift]&volcanic_type=[igneous_extrusive;igneous_extrusive_x2]&bottom_type=[gneiss;schist;diorite;granite;gabbro]&layers=[felsic;intermediate;mafic;igneous_extrusive;igneous_extrusive_x2;phyllite;slate;marble;quartzite;sedimentary;uplift]&felsic=[granite~bottom]&intermediate=[diorite~bottom]&mafic=[gabbro~bottom]&igneous_extrusive=[andesite~intermediate;basalt~mafic;dacite~intermediate;rhyolite~felsic]&igneous_extrusive_x2=[andesite~igneous_extrusive;basalt~igneous_extrusive;dacite~igneous_extrusive;rhyolite~igneous_extrusive]&phyllite=[gneiss~bottom;phyllite~bottom;schist~bottom]&slate=[phyllite~phyllite;slate~bottom]&marble=[marble~bottom]&quartzite=[quartzite~bottom]&sedimentary=[chalk~marble;chert~quartzite;claystone~slate;conglomerate~slate;dolomite~marble;shale~slate;limestone~marble]&uplift=[diorite~sedimentary;gabbro~sedimentary;granite~sedimentary;marble~bottom;quartzite~bottom;slate~phyllite]
 </script>

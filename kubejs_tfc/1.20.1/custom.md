@@ -819,8 +819,8 @@ Inherits the methods of the default block builder
 - `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-kube #axle-water-wheel }: Creates and sets the properties of the axle's water wheel block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-    - `.texture(texture: string)`{: .language-kube }: Sets the texture the water wheel will use, the path is relative to the `/textures/entity/water_wheel/` subdirectory
-    - `.textureRaw(texture: String)`{: .language-kube}: Sets the texture the water wheel will use, the path is relative to the `/textures/` subdirectory
+    - `.texture(texture: string)`{: .language-kube }: Sets the texture the water wheel will use, the path is relative to the `/textures/entity/water_wheel/`{:.language-fs} subdirectory
+    - `.textureRaw(texture: String)`{: .language-kube}: Sets the texture the water wheel will use, the path is relative to the `/textures/`{:.language-fs} subdirectory
 - `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-kube #axle-gear-box }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -1148,10 +1148,10 @@ Inherits the methods of the basic item builder
 {: .notice #fluid-container-texture-notice }
 > This item requires two textures to function properly
 >
-> - `item/<name>`: The base texture
-> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+> - `item/<name>`{:.language-fs}: The base texture
+> - `item/<name>_overlay`{:.language-fs}: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
-> For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png` and `kubejs/textures/item/my_fluid_container_overlay.png`
+> For the example below, the textures would be in `kubejs/textures/item/my_fluid_container.png`{:.language-fs} and `kubejs/textures/item/my_fluid_container_overlay.png`{:.language-fs}
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
@@ -1262,10 +1262,10 @@ Inherits the methods of the basic item builder
 {: .notice #mold-texture-notice }
 > This item requires two textures to function properly
 >
-> - `item/<name>`: The base texture
-> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
+> - `item/<name>`{:.language-fs}: The base texture
+> - `item/<name>_overlay`{:.language-fs}: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/ceramic/fired_mold/axe_head_overlay.png) for what it should look like
 >
-> For the example below, the textures would be in `kubejs/textures/item/my_mold.png` and `kubejs/textures/item/my_mold_overlay.png`
+> For the example below, the textures would be in `kubejs/textures/item/my_mold.png`{:.language-fs} and `kubejs/textures/item/my_mold_overlay.png`{:.language-fs}
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
@@ -1471,7 +1471,7 @@ Inherits the methods of the default item builder
 #### Extra Methods
 
 - `.bladeColor(color: Color)`{: .language-kube #windmill-blade-color }: Sets the color of the blade, defaults to `0x000000`{:.n}
-- `.bladeTexture(texture: String)`{: .language-kube #windmill-blade-texture }: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`. `textures/` and `.png` must be specified
+- `.bladeTexture(texture: String)`{: .language-kube #windmill-blade-texture }: Sets the texture of the windmill blade, defaults to `tfc:textures/entity/misc/windmill_blade.png`{:.language-fs}. `textures/`{:.language-fs} and `.png`{:.language-fs} must be specified
 
 {: #windmill-blade-example }
 
@@ -1521,10 +1521,10 @@ Inherits the methods of the basic item builder
 {: .notice #glass-bottle-texture-notice }
 > This item requires two textures to function properly
 >
-> - `item/<name>`: The base texture
-> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+> - `item/<name>`{:.language-fs}: The base texture
+> - `item/<name>_overlay`{:.language-fs}: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
 >
-> For the example below, the textures would be in `kubejs/textures/item/my_glass_bottle.png` and `kubejs/textures/item/my_glass_bottle_overlay.png`
+> For the example below, the textures would be in `kubejs/textures/item/my_glass_bottle.png`{:.language-fs} and `kubejs/textures/item/my_glass_bottle_overlay.png`{:.language-fs}
 >
 > These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method
 
@@ -1562,10 +1562,10 @@ Inherits the methods of the default item builder
 {: .notice #jug-texture-notice }
 > This item requires two textures to function properly
 >
-> - `item/<name>`: The base texture
-> - `item/<name>_overlay`: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
+> - `item/<name>`{:.language-fs}: The base texture
+> - `item/<name>_overlay`{:.language-fs}: The overlay texture, defines where the contained fluid will be shown in the item's sprite. See one of [TFC's overlays](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/resources/assets/tfc/textures/item/bucket/glass_bottle_overlay.png) for what it should look like
 >
-> These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: STring)`{: .language-kube } method as seen in the example
+> These locations can be changed by setting the `base`{:.s} and `fluid`{:.s} textures using the `.texture(key: String, texture: String)`{: .language-kube } method as seen in the example
 
 {: #jug-methods }
 
@@ -1747,7 +1747,7 @@ Inherits the methods of the basic fluid builder
 - `.steamParticle(particle: String)`{: .language-kube #spring-steam-particle  }: Accepts a string, the registry name of a particle, sets the steam particle of the liquid block, defaults to `tfc:steam`[^1]. May be null to not have steam particles
 - `.healingAmount(f: number)`{: .language-kube #spring-healing-amount }: Sets the amount of health an entity gets while standing in the fluid, defaults to `0.08`{:.n}
 
-[^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type` in-game
+[^1]: A full list of all particle types can be attained by running the command `/kubejs dump_registry minecraft:particle_type`{:.language-command} in-game
 
 {: #spring-example }
 

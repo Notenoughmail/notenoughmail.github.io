@@ -97,7 +97,7 @@ The `/kubejs_tfc tree_solver`{:.language-command} command has five arguments
 - `log_block`{:.m}: The block to use as the log of the tree. Is limited to and will only suggest blocks with TFC's branch direction state property. See the [log block type]({% link kubejs_tfc/1.20.1/custom.md %}#log) for custom logs
 - `leaves_block`{:.s}: The block to use as the leaves of the tree. Is limited to and will only suggest TFC [leaves]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) blocks. See the [leaves block type]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) for custom leaves
 - `from`{:.r}: A block pos, one corner of the scan area. Supports relative positions
-- `to`{:.f}: A block pos, the other corner of the scan area. Supports relative positions
+- `to`{:.nb}: A block pos, the other corner of the scan area. Supports relative positions
 
 This command replaces blocks within the world for use in creating tree structures which work with TFC's tree logging mechanic. This is done through the use of marker blocks which are replaced with the correct block and state
 
@@ -111,12 +111,27 @@ All root positions within the scan area will will be solved and converted into t
 
 <details>
     <summary>As an example</summary>
-    <img src="/assets/images/kjs_tfc/tree_solver/pre_solve.png" alt="A tree template using the marker blocks. The tree solver command is typed in the chat box" class="center-image">
-    <img src="/assets/images/kjs_tfc/tree_solver/post_solve.png" alt="A tree, as solved fro mthe template in the previous image" class="center-image">
+    <figure>
+        <img src="/assets/images/kjs_tfc/tree_solver/pre_solve.png" alt="pre-solve" />
+        <figcaption>A tree template using the marker blocks. The tree solver command is typed in the chat box</figcaption>
+    </figure>
+    <br />
+    <figure>
+        <img src="/assets/images/kjs_tfc/tree_solver/post_solve.png" alt="post-solve" />
+        <figcaption>A tree, as solved from the template in the previous image</figcaption>
+    </figure>
+    <br />
 </details>
-
 <details>
     <summary>It can also handle rather strange forms</summary>
-    <img src="/assets/images/kjs_tfc/tree_solver/pre_solve_dumb.png" alt="A tree template, though the log markers are in a large brick form" class="center-image">
-    <img src="/assets/images/kjs_tfc/tree_solver/post_solve_dumb.png" alt="The solved tree of the previous template." class="center-image">
+    <figure>
+        <img src="/assets/images/kjs_tfc/tree_solver/pre_solve_dumb.png" alt="pre-solve" />
+        <figcaption>A tree template, though the log markers are in a large brick form</figcaption>
+    </figure>
+    <br />
+    <figure>
+        <img src="/assets/images/kjs_tfc/tree_solver/post_solve_dumb.png" alt="post-solve" />
+        <figcaption>A brick of logs as solved from the template in the previous image. Ostensibly, a tree</figcaption>
+    </figure>
+    <br />
 </details>

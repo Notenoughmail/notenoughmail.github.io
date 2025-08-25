@@ -142,7 +142,7 @@ module Rouge
                     Month $Type $Types ForestType ProspectResult
                     Punishment Direction AqueductModelPart SpikeModelPart LampModelType
                     Lifecycle GrassModelPart DeadModelVariant NutrientType GearBoxModelType
-                    ClutchModelType PshReaction OffsetType NotBlockInstrument ItemDisplayContext
+                    ClutchModelType PshReaction OffsetType NoteBlockInstrument ItemDisplayContext
                     GlassOperation Size Weight PlanterType ChiselMode ForgeRule DyeColor Heat
                     InteractionResult Type Enum GroundType
                 )

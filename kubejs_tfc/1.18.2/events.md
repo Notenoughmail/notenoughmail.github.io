@@ -43,7 +43,7 @@ Upon a player closing a limited container any items that are (1) in the limited 
 This is available through a new startup event, `tfc.limit_container_size`, with a single method, `limitContainerSize`, available
 
 - 1st argument: A string, the registry name of a menu
-    - A full list of available menus can be found by running the command `/kubejs dump_registry minecraft:menu` in-game
+    - A full list of available menus can be found by running the command `/kubejs dump_registry minecraft:menu`{:.language-command} in-game
 - 2nd argument: A string, the maximum size of items allowed in the declared slots
     - Valid values:
         - tiny

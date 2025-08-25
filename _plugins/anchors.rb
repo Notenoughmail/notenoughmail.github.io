@@ -61,17 +61,14 @@ module Jekyll
         return str
       end
 
-      # Change this to use .gsub
       def wrap_identified_callouts_and_code_blocks(page)
         content = page.output
         if content.match?(code_regexs[1])
-          split = content.split(code_regexs[1]).map{ |str| code(str) }
-          content = split.join("")
+          content = content.gsub(code_regexs[1]) { |str| code(str) }
         end
 
         if content.match?(callout_regexs[1])
-          split = content.split(callout_regexs[1]).map{ |str| callout(str) }
-          content = split.join("")
+          content = content.gsub(callout_regexs[1]) { |str| callout(str) }
         end
 
         page.output = content

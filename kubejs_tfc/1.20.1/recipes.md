@@ -299,7 +299,7 @@ event.recipes.tfc.barrel_sealed(duration: number)
 >
 > Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that the input/output fluid(s) are tagged as such
 
-[^1]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event` in-game
+[^1]: A full list of all sound events can be attained by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
 
 {: #sealed-barrel-example }
 

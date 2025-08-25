@@ -26,15 +26,15 @@ The colors used for the different visualizer types can be changed via resource p
 
 ## Rivers and Mountains
 
-The colors for the *Rivers and Mountains* visualizer are defined in `assets/tfcgenviewer/tfcgenviewer/colors/rivers_and_mountains/*.json`
+The colors for the *Rivers and Mountains* visualizer are defined in `assets/tfcgenviewer/tfcgenviewer/colors/rivers_and_mountains/*.json`{:.language-fs}
 
-- `colors/rivers_and_mountains/river.json`: A [color definition](#color-definition), the color used for rivers
-- `colors/rivers_and_mountains/lake.json`: A [color definition](#color-definition), the color used for lakes
-- `colors/rivers_and_mountains/oceanic_volcanic_mountain.json`: A [color definition](#color-definition), the color used by oceanic and volcanic mountains
-- `colors/rivers_and_mountains/inland_mountain.json`: A [color definition](#color-definition), the color used by inland mountains
+- `colors/rivers_and_mountains/river.json`{:.language-fs}: A [color definition](#color-definition), the color used for rivers
+- `colors/rivers_and_mountains/lake.json`{:.language-fs}: A [color definition](#color-definition), the color used for lakes
+- `colors/rivers_and_mountains/oceanic_volcanic_mountain.json`{:.language-fs}: A [color definition](#color-definition), the color used by oceanic and volcanic mountains
+- `colors/rivers_and_mountains/inland_mountain.json`{:.language-fs}: A [color definition](#color-definition), the color used by inland mountains
 
 {: .comment }
-> `tfcgenviewer/tfcgenviewer/colors/rivers_and_mountains/lake.json` default
+> `tfcgenviewer/tfcgenviewer/colors/rivers_and_mountains/lake.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -49,12 +49,12 @@ The colors for the *Rivers and Mountains* visualizer are defined in `assets/tfcg
 
 ## Rock Types
 
-The colors of the rock types are defined by a [color gradient definition](#color-gradient-definition) in a resource pack. The definitions are located at `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/oceanic.json`, `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/volcanic.json`, `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/land.json`, and `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/uplift.json`
+The colors of the rock types are defined by a [color gradient definition](#color-gradient-definition) in a resource pack. The definitions are located at `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/oceanic.json`{:.language-fs}, `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/volcanic.json`{:.language-fs}, `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/land.json`{:.language-fs}, and `assets/tfcgenviewer/tfcgenviewer/gradients/rock_type/uplift.json`{:.language-fs}
 
 An example from the mod:
 
 {: .comment }
-> `tfcgenviewer/tfcgenviewer/gradients/rock_type/uplift.json` default
+> `tfcgenviewer/tfcgenviewer/gradients/rock_type/uplift.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -70,7 +70,7 @@ The color of a rock is defined by a [color definition](#color-definition) in a r
 An example from the mod:
 
 {: .comment }
-> `tfc/tfcgenviewer/rocks/rock/raw/andesite.json` default
+> `tfc/tfcgenviewer/rocks/rock/raw/andesite.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -84,16 +84,16 @@ An example from the mod:
 > }
 > ```
 
-Additionally, the color definition for unknown rocks is located at `assets/tfcgenviewer/tfcgenviewer/rocks/unknown.json`
+Additionally, the color definition for unknown rocks is located at `assets/tfcgenviewer/tfcgenviewer/rocks/unknown.json`{:.language-fs}
 
 ## Biomes
 
-The color of a biome is defined by a [color definition](#color-definition) in a resource pack matching the registry id of the biome. For the biome `tfc:canyons`, the definition would need to be at `assets/tfc/tfcgenviewer/biomes/canyons.json`
+The color of a biome is defined by a [color definition](#color-definition) in a resource pack matching the registry id of the biome. For the biome `tfc:canyons`, the definition would need to be at `assets/tfc/tfcgenviewer/biomes/canyons.json`{:.language-fs}
 
 An example from the mod:
 
 {: .comment }
-> `tfc/tfcgenviewer/biomes/plains.json` default
+> `tfc/tfcgenviewer/biomes/plains.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -107,47 +107,61 @@ An example from the mod:
 > }
 > ```
 
-Additionally, the color definition for unknown biomes is located at `assets/tfcgenviewer/tfcgenviewer/biomes/unknown.json`
+Additionally, the color definition for unknown biomes is located at `assets/tfcgenviewer/tfcgenviewer/biomes/unknown.json`{:.language-fs}
 
 ## Rainfall
 
-A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/rainfall.json` that defines the gradient used for land in the *Rainfall* visualizer
+A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/rainfall.json`{:.language-fs} that defines the gradient used for land in the *Rainfall* visualizer
 
 {: .comment }
 > Default
 >
 > ```json
 > {
->     "reference": "climate",
->     "key": "tfcgenviewer.climate.rainfall"
+>     "reference": "rain",
+>     "key": "tfcgenviewer.climate.rainfall",
+>     "tooltip_keys": [
+>         "tfcgenviewer.rainfall.0",
+>         "tfcgenviewer.rainfall.1",
+>         "tfcgenviewer.rainfall.2",
+>         "tfcgenviewer.rainfall.3",
+>         "tfcgenviewer.rainfall.4"
+>     ]
 > }
 > ```
 
 ## Temperature
 
-A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/temperature.json` that defines the gradient used for land in the *Temperature* visualizer
+A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/temperature.json`{:.language-fs} that defines the gradient used for land in the *Temperature* visualizer
 
 {: .comment }
 > Default
 >
 > ```json
 > {
->     "reference": "climate",
->     "key": "tfcgenviewer.climate.temperature"
+>     "reference": "temp",
+>     "key": "tfcgenviewer.climate.temperature",
+>     "tooltip_keys": [
+>         "tfcgenviewer.temperature.0",
+>         "tfcgenviewer.temperature.1",
+>         "tfcgenviewer.temperature.2",
+>         "tfcgenviewer.temperature.3",
+>         "tfcgenviewer.temperature.4"
+>     ]
 > }
 > ```
 
 ## Biome Altitude
 
-The colors for land in the *Biome Altitude* visualizer are defined in  `assets/tfcgenviewer/tfcgenviewer/colors/biome_altitude/*.json`
+The colors for land in the *Biome Altitude* visualizer are defined in  `assets/tfcgenviewer/tfcgenviewer/colors/biome_altitude/*.json`{:.language-fs}
 
-- `colors/biome_altitude/low.json`: A [color definition](#color-definition), the color for low altitude land
-- `colors/biome_altitude/medium.json`: A [color definition](#color-definition), the color for medium altitude land
-- `colors/biome_altitude/high.json`: A [color definition](#color-definition), the color for high altitude land
-- `colors/biome_altitude/mountain.json`: A [color definition](#color-definition), the color for mountain land
+- `colors/biome_altitude/low.json`{:.language-fs}: A [color definition](#color-definition), the color for low altitude land
+- `colors/biome_altitude/medium.json`{:.language-fs}: A [color definition](#color-definition), the color for medium altitude land
+- `colors/biome_altitude/high.json`{:.language-fs}: A [color definition](#color-definition), the color for high altitude land
+- `colors/biome_altitude/mountain.json`{:.language-fs}: A [color definition](#color-definition), the color for mountain land
 
 {: .comment }
-> `tfcgenviewer/tfcgenviewer/colors/biome_altitude/medium.json` default
+> `tfcgenviewer/tfcgenviewer/colors/biome_altitude/medium.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -162,15 +176,15 @@ The colors for land in the *Biome Altitude* visualizer are defined in  `assets/t
 
 ## Inland Height
 
-The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewer/tfcgenviewer/colors/inland_height/*.json` and `assets/tfcgenviewer/tfcgenviewer/gradients/inland_height.json`
+The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewer/tfcgenviewer/colors/inland_height/*.json`{:.language-fs} and `assets/tfcgenviewer/tfcgenviewer/gradients/inland_height.json`{:.language-fs}
 
-- `gradients/inland_height.json`: A [color gradient definition](#color-gradient-definition), the gradient used on the land
-- `colors/inland_height/shallow_water.json`: A [color definition](#color-definition), the color used for shallow water
-- `colors/inland_height/deep_water.json`: A [color definition](#color-definition), the color used for deep water
-- `colors/inland_height/very_deep_water.json`: A [color definition](#color-definition), the color used for very deep water
+- `gradients/inland_height.json`{:.language-fs}: A [color gradient definition](#color-gradient-definition), the gradient used on the land
+- `colors/inland_height/shallow_water.json`{:.language-fs}: A [color definition](#color-definition), the color used for shallow water
+- `colors/inland_height/deep_water.json`{:.language-fs}: A [color definition](#color-definition), the color used for deep water
+- `colors/inland_height/very_deep_water.json`{:.language-fs}: A [color definition](#color-definition), the color used for very deep water
 
 {: .comment }
-> `tfcgenviewer/tfcgenviewer/colors/inland_height/shallow_water.json` default
+> `tfcgenviewer/tfcgenviewer/colors/inland_height/shallow_water.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -185,7 +199,7 @@ The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewe
 
 ## Fill Ocean
 
-A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/fill_ocean.json` that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Biome Altitude*, and *Rivers and Mountains* visualizers
+A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/fill_ocean.json`{:.language-fs} that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Biome Altitude*, and *Rivers and Mountains* visualizers
 
 {: .comment }
 > Default
@@ -199,13 +213,13 @@ A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewe
 
 ## Spawn Overlay
 
-The colors for the spawn overlay are defined in `assets/tfcgenviewer/tfcgenviewer/colors/spawn/border.json` and `assets/tfcgenviewer/tfcgenviewer/colors/spawn/reticule.json`
+The colors for the spawn overlay are defined in `assets/tfcgenviewer/tfcgenviewer/colors/spawn/border.json`{:.language-fs} and `assets/tfcgenviewer/tfcgenviewer/colors/spawn/reticule.json`{:.language-fs}
 
-- `colors/spawn/border.json`: A [Color Definition](#color-definition), the color used to illustrate the maximum spawning radius
-- `colors/spawn/reticule.json`: A [Color Definition](#color-definition), the color used to illustrate the center of the spawning radius
+- `colors/spawn/border.json`{:.language-fs}: A [Color Definition](#color-definition), the color used to illustrate the maximum spawning radius
+- `colors/spawn/reticule.json`{:.language-fs}: A [Color Definition](#color-definition), the color used to illustrate the center of the spawning radius
 
 {: .comment }
-> `tfcgenviewer/tfcgenviewer/colors/spawn/border.json` default
+> `tfcgenviewer/tfcgenviewer/colors/spawn/border.json`{:.language-fs} default
 >
 > ```json
 > {
@@ -289,12 +303,14 @@ A color gradient definition is an object with up to three fields:
         - A [color](#color), a constant gradient
         - An array whose members are [colors](#color), the first element is the 'low' end of the gradient and the last element is the 'high' end
     - `reference`: Any of:
-        - `blue`, `ocean`: A gradient from <span style="color:#323296;">#323296</span> to <span style="color:#648cff;">#648CFF</span>
-        - `green`, `land`: A gradient from <span style="color:#006400;">#006400</span> to <span style="color:#50c850;">#50C850</span>
-        - `climate`, `temp`, `temperature`, `rain`, `rainfall`: A gradient through <span style="color:#b414f0;">#B414F0</span>, <span style="color:#00b4f0;">#00B4F0</span>, <span style="color:#b4b4dc;">#B4B4DC</span>, <span style="color:#d2d200;">#D2D200</span>, <span style="color:#c8783c;">#C8783C</span>, and <span style="color:#c82828;">#C82828</span>
-        - `volcanic`, `volcanic_rock`: A gradient from <span style="color:#c80064;">#C80064</span> to <span style="color:#c86464;">#C86464</span>
-        - `uplift`, `uplift_rock`: A gradient from <span style="color:#b400c8;">#B400C8</span> to <span style="color:#b4b4c8;">#B4B4C8</span>
-        - `gray`, `grey`, `grayscale`, `greyscale`: A gradient from <span style="color:#ffffff;">#FFFFFF</span> to <span style="color:#000000;">#000000</span>
+        - `blue`, `ocean`: A gradient from {% color 323296 %} to {% color 648cff %}
+        - `green`, `land`: A gradient from {% color 006400 %} to {% color 50c850 %}
+        - `climate`: A gradient through {% color b414f0 %}, {% color 00b4f0 %}, {% color b4b4dc %}, {% color d2d200 %}, {% color c8783c %}, and {% color c82828 %}
+        - `temp`, `temperature`: A gradient through {% color 870200 %}, {% color ff3200 %}, {% color ffa000 %}, {% color ffe878 %}, {% color 0fa00f %}, {% color 1464d2 %}, and {% color 78b9fa %}
+        - `rain`, `rainfall`: A gradient through {% color 001dff %}, {% color 00bbff %}, {% color 63ff94 %}, {% color e4ff13 %}, {% color ff7900 %}, and {% color d10000 %}
+        - `volcanic`, `volcanic_rock`: A gradient from {% color c80064 %} to {% color c86464 %}
+        - `uplift`, `uplift_rock`: A gradient from {% color b400c8 %} to {% color b4b4c8 %}
+        - `gray`, `grey`, `grayscale`, `greyscale`: A gradient from {% color ffffff %} to {% color 000000 %}
         - `random`: A gradient between two random colors
 - `key`: Optional. A string, defines the lang key used, defaults to an autogenerated value based on the context used
 - `tooltip_keys`: Optional. An array of strings, defines the lang keys used over the gradient when hovering over the preview, any number of keys may be present. Defaults to the value used for or provided in `key`
@@ -302,7 +318,7 @@ A color gradient definition is an object with up to three fields:
 Examples:
 
 {: .comment }
-> Reference: `tfcgenviewer/tfcgenviewer/gradients/rock_type/oceanic.json`
+> Reference: `tfcgenviewer/tfcgenviewer/gradients/rock_type/oceanic.json`{:.language-fs}
 >
 > ```json
 > {
