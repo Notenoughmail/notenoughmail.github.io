@@ -89,7 +89,7 @@ This page can be safely ignored :)
 Kube Lang Parser Test
 
 ```kube
-event.describe(param: Function<NotBlockIntrument, number>): @Nullable boolean
+event.describe(param: Function<NoteBlockInstrument, number>): @Nullable boolean
 
 ServerEvents.recipes(event => {
     let { tfc } = event.recipes;
@@ -134,3 +134,47 @@ declare class TemperatureCallback {
 Command lang parser test
 
 `/kubejs_tfc tree_solver 2 beneath:wood/log/crimson beneath:wood/leaves/crimson ‌-200 50 10‌ ‌~ ~ ~‌ dandelions butterscotch and_such_things hmm uh`{: .language-command }
+
+Code colors
+
+- `e`{:.e}: Enum
+- `f`{:.f}: Functional interfaces
+- `p`{:.p}: Primitives
+- `m`{:.m}: Methods
+- `s`{:.s}: String
+- `n`{:.n}: Number
+- `v`{:.v}: Params
+- `r`{:.r}: Reserved
+- `nb`{:.nb}: Builtin
+
+FS lang parser test
+
+`/assets/acceptable_losses/models/item/new_jersey.json`{: .language-fs }
+
+`/what.here/nothing/simple/h.__w`{: .language-fs }
+
+`/ending/in/slash/`{: .language-fs }
+
+`/template/<path_to>/folder/`{: .language-fs }
+
+`/multiple_<opt|ions>.allowed`{:.language-fs}
+
+`/dangling/end`{:.language-fs}
+
+`star/*.template`{:.language-fs}
+
+`<options/with|slashes>/home.txt`{:.language-fs}
+
+`/<many|many...|so many|options>_are.valid`{:.language-fs}
+
+`/<nested<tempalates>>/might.work`{:.language-fs}
+
+`/<one|<two/four|six/eight>|five>/`{:.language-fs}
+
+`should/.error`{:.language-fs}
+
+Color Tag Test
+
+{% color 3AA942 %}
+
+{% color 744932|▮ %}

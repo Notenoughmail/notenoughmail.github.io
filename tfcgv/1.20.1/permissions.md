@@ -24,7 +24,7 @@ The first option in the server config is the `viewPermission` option which has 6
 - `ALLOW_LIST`: If a player is part of the `universal` [filter](#filters), they may open the preview and view all information
 - `DENY_LIST`: If a player is part of the `universal` [filter](#filters), they may ***not*** open the preview
 
-This setting can also be set via the `/tfcgenviewer set view_permission <permission_type>` command and gotten via `/tfcgenviewer get view_permission`
+This setting can also be set via the `/tfcgenviewer set view_permission <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get view_permission`{:.language-command}
 
 ### Categories
 
@@ -42,49 +42,49 @@ All of these options have the same possible values and behavior
 
 If the player has access to this, they may export the preview
 
-This setting can be set via the `/tfcgenviewer set export <permission_type>` command and gotten via `/tfcgenviewer get export`
+This setting can be set via the `/tfcgenviewer set export <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get export`{:.language-command}
 
 #### seedPermission
 
 If the player has access to this, the world seed will be displayed in the preview screen
 
-This setting can be set via the `/tfcgenviewer set seed <permission_type>` command and gotten via `/tfcgenviewer get seed`
+This setting can be set via the `/tfcgenviewer set seed <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get seed`{:.language-command}
 
 #### coordsPermission
 
 If the player has access to this, they can click on the preview to display the coordinates their mouse is hovering over
 
-This setting can be set via the `/tfcgenviewer set coords <permission_type>` command and gotten via `/tfcgenviewer get coords`
+This setting can be set via the `/tfcgenviewer set coords <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get coords`{:.language-command}
 
 #### climatePermission
 
 If the player has access to this, they may view the *Rainfall* and *Temperature* visualizers
 
-This setting can be set via the `/tfcgenviewer set climate <permission_type>` command and gotten via `/tfcgenviewer get climate`
+This setting can be set via the `/tfcgenviewer set climate <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get climate`{:.language-command}
 
 #### rocksPermission
 
 If the player has access to this, they may view the *Rocks* and *Rock Types* visualizers
 
-This setting can be set via the `/tfcgenviewer set rocks <permission_type>` command and gotten via `/tfcgenviewer get rocks`
+This setting can be set via the `/tfcgenviewer set rocks <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get rocks`{:.language-command}
 
 #### biomesPermission
 
 If the player has access to this, they may view the *Biomes* and *Inland Height* visualizers
 
-This setting can be set via the `/tfcgenviewer set biomes <permission_type>` command and gotten via `/tfcgenviewer get biomes`
+This setting can be set via the `/tfcgenviewer set biomes <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get biomes`{:.language-command}
 
 #### riversPermission
 
 If the player has access to this, they may view the *Rivers and Mountains* and *Biome Altitude* visualizers
 
-This setting can be set via the `/tfcgenviewer set rivers <permission_type>` command and gotten via `/tfcgenviewer get rivers`
+This setting can be set via the `/tfcgenviewer set rivers <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get rivers`{:.language-command}
 
 ## Filters
 
 If a permission is set to `ALLOW_LIST` or `DENY_LIST`, access to that feature will depend on that player's presence in the corresponding *filter*
 
-Players can be added to filters via the `/tfcgenviewer add <category> <player>` command and removed via the `/tfcgenviewer remove <category> <player>` command
+Players can be added to filters via the `/tfcgenviewer add <category> <player>`{:.language-command} command and removed via the `/tfcgenviewer remove <category> <player>`{:.language-command} command
 
 There are 8 categories
 

@@ -7,7 +7,7 @@ grand_parent: TFCGenViewer
 has_children: false
 ---
 
-TODO: The wording of the suggestions lists implies there are only five options ever
+TODO: The wording of the scrollable lists is a bit scuffed
 
 # Rock Editor
 
@@ -42,7 +42,7 @@ The editor is where the blocks of a rock setting can be changed and its name can
 - An edit box: The name of the setting, must not be blank
 - 9 block selectors: The selectors for the blocks of the setting. Define, in order, the `raw`, `hardened`, `gravel`, `cobble`, `sand`, `sandstone`, `spike`, `loose`, and `mossy_loose` blocks. Usage:
     - When not focused, each selector will display the icon and name of the selected block.
-    - When focused, the display will be replaced with a search bar and a 'scrollable' list of up to five blocks. This displays the blocks matching the search.
+    - When focused, the display will be replaced with a search bar and a 'scrollable' list of blocks, which will show at most five blocks. This displays the blocks matching the search.
     - The list can be scrolled with the up and down arrows. Holding `alt` will make the list scroll five at a time and holding `shift` will force the focused element to change when using the arrow keys.
     - The block highlighted in gold is the one currently selected, this can be confirmed and added to the setting object with the `enter` key.
 - A clear button: Resets the editor to the default state.
@@ -88,7 +88,7 @@ The display has five entries for the bottom rocks and the ocean floor, volcanic,
 
 The editor contains a list of the values present in the layer type with, next to each, a delete button which removes that value. Towards the bottom of the screen there is an edit box which is used to add values. Next the edit box is a button which will add the value to the layer type currently in the editor.
 
-When focused/selected, the edit box will also have a 'scrollable' list of up to five values. The list can be scrolled with the up and down arrows and `shift` can be held to force the focused element to change when using the arrow keys. The value highlighted in gold is the currently selected value; using `enter` will autofill the selected value. Values already in the selected layer type will not be suggested.
+When focused/selected, the edit box will also have a 'scrollable' list of values, which will show at most five values. The list can be scrolled with the up and down arrows and `shift` can be held to force the focused element to change when using the arrow keys. The value highlighted in gold is the currently selected value; using `enter` will autofill the selected value. Values already in the selected layer type will not be suggested.
 
 <details>
     <summary text-closed="Reveal layer types previews" text-open="Hide layer types previews"></summary>

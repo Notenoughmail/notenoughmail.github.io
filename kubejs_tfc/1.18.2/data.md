@@ -91,7 +91,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
     - `.thirst(integer)`{: .language-kube }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
     - `.intoxication(integer)`{: .language-kube }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
     - `.effect(String, Consumer<EffectData>?)`{: .language-kube }
-        - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect` in-game
+        - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
         - *optional 2nd argument*: A consumer with several methods:
             - `.duration(integer)`{: .language-kube }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
             - `.amplifier(integer)`{: .language-kube }: Accepts an integer and sets the level of the effect applied, defaults to 0

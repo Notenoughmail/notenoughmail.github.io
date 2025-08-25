@@ -68,7 +68,7 @@ module Jekyll
         end
 
         if content.match?(callout_regexs[1])
-          code = content.gsub(callout_regexs[1]) { |str| callout(str) }
+          content = content.gsub(callout_regexs[1]) { |str| callout(str) }
         end
 
         page.output = content
