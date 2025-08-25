@@ -7,8 +7,6 @@ grand_parent: TFCGenViewer
 has_children: false
 ---
 
-TODO: The wording of the scrollable lists is a bit scuffed
-
 # Rock Editor
 
 The rock editor allows for the editing and graphing (via this website) of the [rock layer settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/#rock-layer-settings) of the world through a GUI. This screen is divided into three tabs that focus on [rock settings](#rock-settings), the [layer types](#layer-types), and [layer definitions](#layer-definitions). Each tab is generally split into two sections: the display on the left, and the editor on the right. The layer types tab is unique in that, due to the underlying data structure, objects in its editor are technically still in the display and edits apply immediately to the rock layer settings.
@@ -158,8 +156,6 @@ Additional mapping entries can be added by clicking the button labeled "Add Rock
     </figure>
     <br />
 </details>
-
-TODO: Explain/mention scrolling of mapping edit boxes; explain why its called a mapping?
 
 {% comment %}
 
