@@ -95,9 +95,9 @@ Inherits the methods of the default block builder
 
 - `.ore()`{: .language-kube #ground-cover-ore }: Sets the collision shape to that of TFC's ores
 - `.twig()`{: .language-kube #ground-cover-twig }: Sets the collision shape to that of TFC's twigs and makes the block flammable
-- `.groundCoverModel(model: String)`{: .language-kube #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`{:.s}
+- `.groundCoverModelShape(model: String)`{: .language-kube #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`{:.s}
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
-- `.notAxisAligned()`{: .language-kube #ground-cover-axis-aligned }: Rotates placed models by 45 degrees
+- `.notAxisAligned()`{: .language-kube #ground-cover-axis-aligned }: Rotates placed models by 45 degrees. Currently broken, will be fixed in 1.3.3
 - `.collision()`{: .language-kube #ground-cover-collision }: Enables collision for the block
 - `.withPreexistingItem(item: ResourceLocation)`{: .language-kube #ground-cover-preexisting-item }: Sets the 'block item' of the block to be an existing item
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #ground-cover-extend-props}: A consumer, that sets some of TFC's [extended properties](#extended-properties)
