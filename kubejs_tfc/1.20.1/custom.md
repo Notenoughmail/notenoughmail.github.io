@@ -97,7 +97,6 @@ Inherits the methods of the default block builder
 - `.twig()`{: .language-kube #ground-cover-twig }: Sets the collision shape to that of TFC's twigs and makes the block flammable
 - `.groundCoverModelShape(model: String)`{: .language-kube #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`{:.s}
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
-- `.notAxisAligned()`{: .language-kube #ground-cover-axis-aligned }: Rotates placed models by 45 degrees. Currently broken, will be fixed in 1.3.3
 - `.collision()`{: .language-kube #ground-cover-collision }: Enables collision for the block
 - `.withPreexistingItem(item: ResourceLocation)`{: .language-kube #ground-cover-preexisting-item }: Sets the 'block item' of the block to be an existing item
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #ground-cover-extend-props}: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -988,8 +987,10 @@ Inherits the methods of the default block builder
     - `.models(models: BiConsumer<FallenLeafModelType, ModelGenerator>)`{: .language-kube }: Sets the model generation of the fallen leaves block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
         - `.height`{: .language-kube }: A number, the height in pixels of the state
         - `.layers`{: .language-kube }: A number, the `layers` block state property value of the state
+    - `.noDynamicTinting()`{: .language-kube #leaves-no-dynamic-tinting }: Removes seasonal tinting completely
 - `.twig(id: ResourceLocation)`{: .language-kube #leaves-twig }: Sets the twig block to be placed when a natural leaf is broken
 - `.seasonalColors(seasonalColors: boolean)`{: .language-kube #leaves-seasonal-colors}: If the tint of the leaves should change seasonally. Defaults to `true`{:.p}
+- `.noDynamicTinting()`{: .language-kube #leaves-no-dynamic-tinting }: Removes seasonal tinting completely
 
 {: #leaves-example }
 
@@ -1019,6 +1020,7 @@ Inherits the methods of the default block builder
 - `.freshInsideTexture(tex: String)`{: .language-kube #cheese-wheel-fresh-inside }: Sets the inside texture when the cheese is fresh
 - `.agedInsideTexture(tex: String)`{: .language-kube #cheese-wheel-aged-inside }: Sets the inside texture when the cheese is aged
 - `.vintageInsideTexture(tex: String)`{: .language-kube #cheese-wheel-vintage-inside }: Sets the inside texture when the cheese is vintage
+- `.barrelRackModel(model: String)`{: .language-kube #cheese-wheel-barrel-rack-model }: Sets the barrel rack model to use. Defaults to `tfc:block/barrel_rack`
 
 {: #cheese-wheel-example }
 
@@ -1036,6 +1038,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 
 - `.flammable(flammability: number, fireSpreadSpeed: number)`{: .language-kube #extend-props-flammable }: Sets the flammability and fire spread speed of the block
 - `.pathType(pathType: BlockPathTypes)`{: .language-kube #extend-props-path-type }: Sets the block's path type, used by mobs to determine if they may walk over it or not
+- `.adjacentPathType(pathType: BlockPathTypes)`{: .language-kube #extend-props-adjacent-path-types }: Sets the path type the block should 'project' onto adjacent blocks
 - `.enchantPower(f: number)`{: .language-kube #extend-props-enchant-power }: Sets the block's enchant power
 - `.enchantPowerFunction(function: Function<BlockState, Double>)`{: .language-kube #extend-props-enchant-power-function }: Sets the function the block uses to determine its enchant power based on its block state
 - `.noCollision()`{: .language-kube #extend-props-no-collision }: Removes the block's collision

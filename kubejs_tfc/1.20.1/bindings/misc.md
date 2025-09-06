@@ -10,6 +10,7 @@ grand_parent: 1.20.1
 
 - [Rock Map](#rock-map)
 - [Wood Map](#wood-map)
+- [Metal Map](#metal-map)
 - [Heat utilities](#heat-utilities)
 - [Food utilities](#food-utilities)
 - [Size Utilities](#size-utilities)
@@ -37,6 +38,16 @@ A string to [NamedRegistryWood](https://github.com/Notenoughmail/KubeJS-TFC/blob
 
 ```js
 TFC.misc.wood.get('oak')
+```
+
+## Metal Map
+
+A string to [NamedRegistryMetal](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/NamedRegistryMetal.java) map of all of TFC's metals
+
+### Example
+
+```js
+TFC.misc.metal.get('bronze')
 ```
 
 ## Heat Utilities
@@ -410,7 +421,7 @@ TFC.misc.lerpFloatLayer(value00: number, value01: number, value10: number, value
 
 ### Open Simplex
 
-TFC uses open simplex noise for most, if not all, of its custom worldgen, these methods provide the ability to create and customize new 2D and 3D versions of TFC's open simplex noise implementation
+TFC uses open simplex noise, a type of [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises), for most, if not all, of its custom worldgen noises, these methods provide the ability to create and customize new 2D and 3D versions of TFC's open simplex noise implementation
 
 Method Signatures:
 
@@ -420,6 +431,62 @@ TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 ```
 
 - `seed: number`{: .language-kube }: The seed for the noise's algorithm
+
+### Cellular Noise
+
+Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) specialized to have polygonal blobs of constant value, instead of smooth, constantly changing values
+
+Method Signatures:
+
+```js
+TFC.misc.cellular2D(seed: number): Cellular2D
+TFC.misc.cellular2D(seed: number): Cellular3D
+```
+
+### FastNoiseLite
+
+FastNoiseLite is a [MIT Noise Library](https://github.com/Auburn/FastNoiseLite) for producing noise and is used in the implementations of open simplex and cellular noises. These methods provide the ability to create an actual `FastNoiseLite` object and converting it into a `Noise2D` or `Noise3D`
+
+Method Signatures:
+
+```js
+TFC.misc.fnl(seed: number): FastNoiseLite
+TFC.misc.fnl2Noise2D(fnl: FastNoiseLite): Noise2D
+TFC.misc.fnl2Noise3D(fnl: FastNoiseLite): Noise3D
+```
+
+### Custom Noises
+
+These methods convert a JS callback to a full [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) object
+
+Method Signatures:
+
+```js
+TFC.misc.customNoise2D(noise: Noise2D): Noise2D
+TFC.misc.customNoise3D(noise: Noise3D): Noise3D
+```
+
+### Noise Inspection Registration
+
+These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) object for use with the [2D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-2d-noises) and [3D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-3d-noises) noise inspection commands
+
+Method Signatures
+
+```js
+TFC.misc.register2DNoiseForInspection(name: String, noise: Noise2D): void
+TFC.misc.register3DNoiseForInspection(name: String, noise: Noise3D): void
+```
+
+### LayeredArea
+
+These methods create a [`LayeredArea`]({% link kubejs_tfc/1.20
+.1/type-explanations.md %}#layered-area)
+
+```js
+TFC.misc.layeredAreaFromNoise(noise: Noise2D, rounder?: DoubleToIntFunction, seed: number): LayeredArea
+TFC.misc.layeredArea(source: SourceLayer, seed: number): LayeredArea
+TFC.misc.uniformLayeredArea(seed: number): LayeredArea
+```
 
 ### Metaballs
 
