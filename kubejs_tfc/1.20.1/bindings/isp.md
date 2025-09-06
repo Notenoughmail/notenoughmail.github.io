@@ -190,6 +190,19 @@ isp.firmaLifeEmptyPan(): ItemStackProviderJS
 - `.firmaLifeCopyDynamicFood()`{: .language-kube #isp-firmalife-copy-dynamic-food-mod }: Adds a `firmalife:copy_dynamic_food` modifier
 - `.firmaLifeEmptyPan()`{: .language-kube #isp-firmalife-empty-pan-mod }: Adds a `firmalife:empty_pan` modifier
 
+<a id="artisanal"></a>If TFC Artisanal ([MR](https://modrinth.com/mod/tfc-artisanal) [CF](https://www.curseforge.com/minecraft/mc-mods/tfc-artisanal)) is installed the following methods are available:
+
+- `.artisanalCapHeat(max: number)`{: .language-kube #isp-artisanal-cap-heat }: Adds a `artisanal:cap_heat` modifier
+- `.artisanalCopyDynamicFood()`{: .language-kube #isp-artisanal-copy-dynamic-food }: Adds a `artisanal:copy_dynamic_food` modifier
+- `.artisanalCopyDynamicFoodNeverExpires()`{: .language-kube #isp-artisanal-copy-dynamic-food-never-expires }: Adds a `artisanal:copy_dynamic_food_never_expires` modifier
+- `.artisanalEmptyBowl()`{: .language-kube #isp-artisanal-empty-bowl }: Adds a `artisanal:empty_bowl` modifier
+- `.artisanalExtractCannedFood()`{: .language-kube #isp-artisanal-extract-canned-food }: Adds a `artisanal:extract-canned-food` modifier
+- `.artisanalHomogenousIngredients()`{: .language-kube #isp-artisanal-homogenous-ingredients }: Adds a `artisanal:homogenous-ingredients` modifier
+- `.artisanalInheritDecay(decayModifier: number)`{: .language-kube #isp-artisanal-inherit-decay }: Adds a `artisanal:inherit_decay` modifier
+- `.artisanalModifyFluid(fluid: FluidStack)`{: .language-kube #isp-artisanal-modify-fluid }: Adds a `artisanal:modify_fluid` modifier
+- `.artisanalOnlyIfGenericAnimalFat()`{: .language-kube #isp-artisanal-only-if-generic-animal-fat }: Adds a `artisanal:only_if_generic_animal_fat` modifier
+- `.artisanalRemoveButter()`{: .language-kube #isp-artisanal-remove-butter }: Adds a `artisanal:remove_butter` modifier.
+
 ## Examples
 
 ```js

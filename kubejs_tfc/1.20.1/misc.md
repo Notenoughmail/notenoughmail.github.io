@@ -13,6 +13,8 @@ This page is for features which don't deserve their own page and/or don't fit in
 - [Recipe Components](#recipe-components)
 - [Configuration](#configuration)
 - [Commands](#commands)
+- [Recipe Input/Output Replacement](#recipe-replacement)
+- [Recipe Filters](#recipe-filters)
 
 ## Recipe Components
 
@@ -36,10 +38,14 @@ KubeJS TFC adds 6 recipe component types
 
 In KubeJS's `dev.properties` file there is an option for `debugInfo`, if set to `true`{:.p}, KubeJS TFC will print various debug info to the log
 
-Additionally, in the `dev.properties` file
+Also in the `dev.properties` file
 
 - `tfc/insertSelfTestsIntoConsole`: If `true`{:.p}, TFC's self test warnings will be inserted into the KubeJS console. Allows for warnings about items/fluids missing tags for proper recipe functionality to appear on world load. Defaults to `true`{:.p}.
 - `tfc/deduplicateConsoleErrors`: If `true`{:.p}, any TFC self test warnings that are inserted into Kube's console will *not* be written to the normal log/console. Only has an effect when `tfc/insertSelfTestsIntoConsole` is `true`{:.p}. Defaults to `true`{:.p}.
+
+Additionally, in the `common.properties` file
+
+- `tfc/asyncRhinoContext`: If `true`{:.p}, certain custom callbacks, primarily those in the [custom chunk data providers]({% link kubejs_tfc/1.20.1/events.md %}#chunk-data-provider-generator). Defaults to `true`{:.p}.
 
 ## Commands
 
@@ -135,3 +141,11 @@ All root positions within the scan area will will be solved and converted into t
     </figure>
     <br />
 </details>
+
+### Inspect 2D Noises
+
+### Inspect 3D Noises
+
+## Recipe Replacement
+
+## Recipe Filters

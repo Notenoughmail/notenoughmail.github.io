@@ -37,7 +37,7 @@ The following recipes are supported by KubeJS TFC:
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
 
-<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following recipes are supported:
+<a id="firmalife"></a>If FirmaLife ([MR](https://modrinth.com/mod/firmalife) [CF](https://www.curseforge.com/minecraft/mc-mods/firmalife)) is installed, the following recipes are supported:
 
 - [Drying](#firmalife-drying)
 - [Smoking](#firmalife-smoking)
@@ -49,9 +49,14 @@ The following recipes are supported by KubeJS TFC:
 - [Bowl Pot](#firmalife-bowl-pot)
 - [Press](#firmalife-press)
 
-<a id="arborfirmacraft"></a>If [ArborFirmaCraft](https://modrinth.com/mod/arborfirmacraft-(afc)) is installed, the following recipes are supported:
+<a id="arborfirmacraft"></a>If ArborFirmaCraft ([MR](https://modrinth.com/mod/arborfirmacraft-(afc)) [CF](https://www.curseforge.com/minecraft/mc-mods/arborfirmacraft)) is installed, the following recipes are supported:
 
 - [Tree Tap](#afc-tree-tap)
+
+<a id="artisanal"></a>If Artisanal ([MR](https://modrinth.com/mod/tfc-artisanal) [CF](https://www.curseforge.com/minecraft/mc-mods/tfc-artisanal)) is installed, the following recipes are supported:
+
+- [Scalable Pot](#artisanal-scalable-pot)
+- [Damage and Catalyst Shapeless Crafting](#artisanal-damage-and-catalyst-shapeless-crafting)
 
 ## Alloy
 
@@ -1580,3 +1585,19 @@ ServerEvents.recipes(event => {
         .springOnly(true)
 })
 ```
+
+## Artisanal Scalable Pot
+
+## Artisanal Damage and Catalyst Shapeless Crafting
+
+## Artisanal Distillery
+
+## Artisanal Juicing
+
+## Artisanal Only If Flux Makes Limewater Instant Barrel
+
+## Artisanal Specific No Remainder Damage Shaped Crafting
+
+## Artisanal Specific no Remainder Shaped Crafting
+
+## Specific No Remainder Shaped
