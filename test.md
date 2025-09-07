@@ -178,3 +178,5 @@ Color Tag Test
 {% color 3AA942 %}
 
 {% color 744932|▮ %}
+
+{% include mr.html link='kubejs-tfc' %} {% include cf.html link='kubejs-tfc' %}

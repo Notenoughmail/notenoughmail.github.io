@@ -41,7 +41,7 @@ The following types are available:
 - [Sapling](#sapling)
 - [Leaves](#leaves)
 
-<a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-blocks"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 
 - [Cheese Wheel](#firmalife-cheese-wheel)
 
@@ -58,7 +58,7 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.allowedFluids(fluids: String[])`{: .language-kube #aqueduct-allowed-fluids }: Sets the fluids that the aqueduct may hold
-    - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
+    - `fluids`{:.v}: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
 - `.models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-kube #aqueduct-models }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
     - `.base()`{: .language-kube }: A boolean. If the model part in operation is for the base
     - `.north()`{: .language-kube }: A boolean. If the model part in operation is the north part
@@ -1280,7 +1280,7 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(fluidTag: String)`{: .language-kube #mold-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
 - `.capacity(capacity: Supplier<Integer>)`{: .language-kube #mold-capacity-supplier }: Sets the mB capacity supplier of the mold, defaults to `() => 100`{: .language-kube }
 
-<a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
+<a id="tfccc"></a>If *TFC Casting with Channels* {% include cf.html link='tfc-casting-with-channels' %} is installed, the following method is available
 
 - `.tfcccAllowedInMoldTable(model?: String[])`{: .language-kube #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
@@ -1421,9 +1421,10 @@ Inherits the methods of the default item builder
 
 {: #jar-methods }
 
-#### Extra Method
+#### Extra Methods
 
 - `.placedModel(model: String)`{: .language-kube #jar-placed-model }: Sets the model of the jar when placed, defaults to the item's id
+- `.withoutCraftingRemainder()`{: .language-kube #jar-without-crafting-remainder }: Makes it so the jar does not have a crafting remainder
 
 {: #jar-example }
 

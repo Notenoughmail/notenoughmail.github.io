@@ -421,7 +421,7 @@ TFC.misc.lerpFloatLayer(value00: number, value01: number, value10: number, value
 
 ### Open Simplex
 
-TFC uses open simplex noise, a type of [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises), for most, if not all, of its custom worldgen noises, these methods provide the ability to create and customize new 2D and 3D versions of TFC's open simplex noise implementation
+TFC uses open simplex noise, a type of [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d), for most, if not all, of its custom worldgen noises, these methods provide the ability to create and customize new 2D and 3D versions of TFC's open simplex noise implementation
 
 Method Signatures:
 
@@ -434,7 +434,7 @@ TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 
 ### Cellular Noise
 
-Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) specialized to have polygonal blobs of constant value, instead of smooth, constantly changing values
+Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) specialized to have polygonal blobs of constant value, instead of smooth, constantly changing values
 
 Method Signatures:
 
@@ -457,7 +457,7 @@ TFC.misc.fnl2Noise3D(fnl: FastNoiseLite): Noise3D
 
 ### Custom Noises
 
-These methods convert a JS callback to a full [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) object
+These methods convert a JS callback to a full [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object
 
 Method Signatures:
 
@@ -468,7 +468,7 @@ TFC.misc.customNoise3D(noise: Noise3D): Noise3D
 
 ### Noise Inspection Registration
 
-These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noises) object for use with the [2D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-2d-noises) and [3D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-3d-noises) noise inspection commands
+These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object for use with the [2D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-2d-noises) and [3D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-3d-noises) noise inspection commands
 
 Method Signatures
 
@@ -479,8 +479,7 @@ TFC.misc.register3DNoiseForInspection(name: String, noise: Noise3D): void
 
 ### LayeredArea
 
-These methods create a [`LayeredArea`]({% link kubejs_tfc/1.20
-.1/type-explanations.md %}#layered-area)
+These methods create a [`LayeredArea`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#layered-area)
 
 ```js
 TFC.misc.layeredAreaFromNoise(noise: Noise2D, rounder?: DoubleToIntFunction, seed: number): LayeredArea

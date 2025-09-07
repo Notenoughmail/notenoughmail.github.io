@@ -10,12 +10,20 @@ grand_parent: KubeJS TFC
 
 Lists and describes the methods available on
 
-- [Noises](#noises)
+- [Noise2D](#noise2d)
+- [noise3D](#noise3d)
+- [ChunkData](#chunk-data)
 - [LayeredArea](#layered-area)
 - [NamedRegistryMetal](#namedregistrymetal)
 - [NamedRegistryWood](#namedregistrywood)
 
-## Noises
+## Noise2D
+
+## Noise3D
+
+{: .chunk-data }
+
+## ChunkData
 
 {: .layered-area }
 
@@ -38,6 +46,8 @@ Lists and describes the methods available on
 ## NamedRegistryWood
 
 {% comment %}
+
+### chunk data
 
 ### layered area
 

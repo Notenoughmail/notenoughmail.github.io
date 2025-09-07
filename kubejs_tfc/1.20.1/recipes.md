@@ -37,7 +37,7 @@ The following recipes are supported by KubeJS TFC:
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
 
-<a id="firmalife"></a>If FirmaLife ([MR](https://modrinth.com/mod/firmalife) [CF](https://www.curseforge.com/minecraft/mc-mods/firmalife)) is installed, the following recipes are supported:
+<a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following recipes are supported:
 
 - [Drying](#firmalife-drying)
 - [Smoking](#firmalife-smoking)
@@ -49,14 +49,20 @@ The following recipes are supported by KubeJS TFC:
 - [Bowl Pot](#firmalife-bowl-pot)
 - [Press](#firmalife-press)
 
-<a id="arborfirmacraft"></a>If ArborFirmaCraft ([MR](https://modrinth.com/mod/arborfirmacraft-(afc)) [CF](https://www.curseforge.com/minecraft/mc-mods/arborfirmacraft)) is installed, the following recipes are supported:
+<a id="arborfirmacraft"></a>If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported:
 
 - [Tree Tap](#afc-tree-tap)
 
-<a id="artisanal"></a>If Artisanal ([MR](https://modrinth.com/mod/tfc-artisanal) [CF](https://www.curseforge.com/minecraft/mc-mods/tfc-artisanal)) is installed, the following recipes are supported:
+<a id="artisanal"></a>If *Artisanal* {% include mr.html link='tfc-artisanal' %} {% include cf.html link='tfc-artisanal' %} is installed, the following recipes are supported:
 
 - [Scalable Pot](#artisanal-scalable-pot)
 - [Damage and Catalyst Shapeless Crafting](#artisanal-damage-and-catalyst-shapeless-crafting)
+- [Distillery](#artisanal-distillery)
+- [Juicing](#artisanal-juicing)
+- [Only If Flux Makes Limewater Instant Barrel](#artisanal-only-if-flux-makes-limewater-instant-barrel)
+- [Specific No Remainder Damage Shaped Crafting](#artisanal-specific-no-remainder-damage-shaped-crafting)
+- [Specific No Remainder Shaped Crafting](#artisanal-specific-no-remainder-shaped-crafting)
+- [Specific No Remainder Shapeless Crafting](#artisanal-specific-no-remainder-shapeless-crafting)
 
 ## Alloy
 
@@ -1600,4 +1606,4 @@ ServerEvents.recipes(event => {
 
 ## Artisanal Specific no Remainder Shaped Crafting
 
-## Specific No Remainder Shaped
+## Artisanal Specific No Remainder Shapeless Crafting

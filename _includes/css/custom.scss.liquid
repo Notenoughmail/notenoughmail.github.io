@@ -67,6 +67,9 @@ code.r {
 code.nb {
     color:#{{ site.colors.builtin }};
 }
+code.o {
+    color:#{{ site.colors.symbol }};
+}
 
 h6.m-link {
     font-size:inherit !important;
@@ -161,4 +164,13 @@ details[open] {
 summary {
     padding-left: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+div.footnotes li:target {
+    background-color:#{{ site.colors.target-highlight }} !important;
+    padding: 0 0.25rem !important;
+}
+
+img.inline {
+    height: 1rem;
 }
