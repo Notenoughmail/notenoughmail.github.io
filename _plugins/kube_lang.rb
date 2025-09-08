@@ -153,7 +153,8 @@ module Rouge
                     Consumer BiConsumer TriConsumer BiFunction TriFunction QuadFunction
                     RockFunction OnItemUseAction Supplier RocksGetter MossGrowingCallback
                     Predicate Noise2D $StateArgumentPredicate $StatePredicate
-                    TemperatureCallback Function
+                    TemperatureCallback Function MergeLayer Noise3D TransformLayer
+                    AdjacentTransformlayer
                 )
             end
 
