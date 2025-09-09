@@ -44,7 +44,7 @@ Lists and describes the methods available on
 
 ### Cellular2D
 
-[`Cellular2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Cellular2D.java) is an implementation of [`Noise2D`](#noise2d) which creates `Cell`s, large area with the same value, instead of smooth Perlin-like gradients. It has these additional methods:
+[`Cellular2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Cellular2D.java) is an implementation of [`Noise2D`](#noise2d) specialized to have polygonal blobs of constant value, instead of smooth, constantly changing values. It has these additional methods:
 
 - `.then(func: Function<Cell, double>): Noise2D`{: .language-kube #cellular2d-then }: Converts the `Cell` to value via a function
 - `.cell(x: double, z: double): Cell`{: .language-kube #cellular2d-cell }: Gets the `Cell` at the given x-z point. `Cell` is an object with the following methods
@@ -69,7 +69,7 @@ Lists and describes the methods available on
 - `.transposeXZ(): Noise3D`{: .language-kube #noise3d-transpose-x-z }: Swaps the x and z axes
 - `.transposeXY(): Noise3D`{: .language-kube #noise3d-transpose-x-y }: Swaps the x and y axes
 - `.transposeYZ(): Noise3D`{: .language-kube #noise3d-transpose-y-z }: Swaps the y and z axes
-- `.dissolve(yNoise: Noise2D): Noise2D`{: .language-kube #noise3d-dissolve}: Dissolves the `Noise3D` to a [`Noise2D`](#noise2d) by using the provided `Noise2D` as the input y-value at a given x-z coordinate
+- `.dissolve(yNoise: Noise2D): Noise2D`{: .language-kube #noise3d-dissolve}: Dissolves the `Noise3D`{:.f} to a [`Noise2D`](#noise2d) by using the provided `Noise2D`{:.f} as the input y-value at a given x-z coordinate
 - `.rotateX(angle: double): Noise3D`{: .language-kube #noise3d-rotate-x }: Rotates the noise around the x axis
 - `.rotateY(angle: double): Noise3D`{: .language-kube #noise3d-rotate-y }: Rotates the noise around the y axis
 - `.rotateZ(angle: double): Noise3D`{: .language-kube #noise3d-rotate-z }: Rotates the noise around the z axis
@@ -80,7 +80,7 @@ Lists and describes the methods available on
 
 ### Cellular3D
 
-[`Cellular3D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Cellular3D.java) is an implementation of [`Noise3D`](#noise3d) which creates `Cell`s, large areas with the same value, instead of sooth Perlin-like gradients. It has these additional methods:
+[`Cellular3D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Cellular3D.java) is an implementation of [`Noise3D`](#noise3d) specialized to have polyhedral blobs of constant value, instead of smooth, constantly changing values. It has these additional methods:
 
 - `.cell(x: double, y: double, z: double): Cell`{: .language-kube #cellular3d-cell }: Gets the `Cell` at the given x-y-z point. `Cell` is an object with the following methods:
     - `.x()`{: .language-kube }: The x 'coordinate' of the cell
@@ -90,15 +90,41 @@ Lists and describes the methods available on
     - `.f2()`{: .language-kube }: The normalized distance from the center of a face of a cell
     - `.noise()`{: .language-kube }: The noise value of the cell
 
-{: .chunk-data }
+{: #chunk-data }
 
 ## ChunkData
 
-{: .layered-area }
+`ChunkData` is TFC's additional data it attaches to chunks during chunk generation for use during and after world generation. It has the following methods:
+
+- `.getPos(): ChunkPos`{: .language-kube #chunk-data-get-pos }: Get the `ChunkPos` that data is attached to
+- `.getRockData(): RockData`{: .language-kube #chunk-data-get-rock-data }: Get the chunk's [`RockData`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/RockData.java)
+- `.getAquiferSurfaceHeight(): int[16]`{: .language-kube #chunk-data-get-aquifer-surface-height }: Get the chunk's aquifer surface heights as an array of ints. The array has sixteen elements, representing aquifer heights at a `QuartPos` resolution
+- `.getRainfall(pos: BlockPos): float`{: .language-kube #chunk-data-get-rainfall-pos }: Get the interpolated rainfall value at the given position
+- `.getRainfall(x: int, z: int): float`{: .language-kube #chunk-data-get-rainfall-x-z }: Get the interpolated rainfall value at the given x and z coordinates
+- `.getAverageTemperature(pos: BlockPos): float`{: .language-kube #chunk-data-get-average-temperature-pos }: Get the interpolated average temperature value at the given position
+- `.getAverageTemperature(x: int, z: int): float`{: .language-kube #chunk-data-get-average-temperature-x-z }: Get the interpolated average temperature value at the given x and z coordinates
+- `.getForestType(): ForestType`{: .language-kube #chunk-data-get-forest-type }: Get the chunk's `ForestType`{:.e}
+- `.getForestWeirdness(): float`{: .language-kube #chunk-data-get-forest-weirdness }: Get the chunk's forest weirdness value
+- `.getForestDensity(): float`{: .language-kube #chunk-data-get-forest-density }: Get the chunk's forest density value
+- `.status(): ChunkData$Status`{: .language-kube #chunk-data-status }: Gets the `Status`{:.e} of the chunk data
+- `.generatePartial(...): void`{: .language-kube #chunk-data-generate-partial }: Promotes the chunk data to `PARTIAL`{:.e} from `EMPTY`{:.e} and fills in the temperature, rainfall, and forest values of the chunk. Has five parameters, in order they are:
+    - `rainfallLayer: LerpFloatLayer`{: .language-kube }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Using in climate models to determine the rainfall at a position
+    - `temperatureLayer: LerpFloatLayer`{: .language-kube }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by climate models to determine the average temperature at a position
+    - `forestType: ForestType`{: .language-kube }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
+    - `forestWeirdness: float`{: .language-kube }: The forest 'weirdness' of the chunk, in the range [0, 1]. Used by TFC's forest configured feature
+    - `forestDensity: float`{: .language-kube }: The forest density of the chunk, in the range [0, 1]. Used by TFC's forest configured feature
+- `.generateFull(...): void`{: .language-kube #chunk-data-generate-full }: Promotes the chunk data from `PARTIAL`{:.e} to `FULL`{:.e} and fills in the chunk's surface and aquifer heights. Has two parameters, in order they are:
+    - `surfaceHeight: int[256]`{: .language-kube }: An array of integer values of size `256`{:.n}[^1] representing the surface height of the world. Values indexes are `x + 16 * z`{: .language-kube } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. For custom chunk data providers, this is where the `surfaceY`{:.v} parameter of the `RocksGetter`{:.f} [callback]({% link kubejs_tfc/1.20.1/events.md %}#chunk-data-provider-rocks) is gotten from
+    - `aquiferSurfaceHeight: int[16]`{: .language-kube }: An array of integer values of size `16`{:.n}[^2] representing the height of aquifer surfaces. Only used by [`TFCAquifer`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
+
+[^1]: `16`{:.n} * `16`{:.n}; `BlockPos` resolution
+[^2]: `4`{:.n} * `4`{:.n}; `QuartPos` resolution
+
+{: #layered-area }
 
 ## LayeredArea
 
-`LayeredArea` is a specialized version of TFC's `Area`, an `AreaSource` overlaid with multiple [`TransformLayer`](#layered-area-transform-layer)s which can be though of as a pseudo-[`Noise2D`](#noise2d), designed to be easily made, edited, and used in scripts. It has the following methods:
+`LayeredArea` is a specialized version of TFC's `Area`, an `AreaSource` overlaid with multiple [`TransformLayer`](#layered-area-transform-layer)s which can be thought of as a pseudo-[`Noise2D`](#noise2d), designed to be easily made, edited, and used in scripts. It has the following methods:
 
 - `.getAt(x: int, z: int): int`{: .language-kube #layered-area-get-at }: Gets the value at the given x-z point
 - `.zoom(fuzzy: boolean, seed: long): @Self LayeredArea`{: .language-kube #layered-area-zoom }: Applies a zoom layer to the area, effectively doubling the 'resolution' of the area. The params are:
@@ -122,22 +148,22 @@ Lists and describes the methods available on
     - `otherLayeredArea: LayeredArea`{: .language-kube }: The `LayeredArea` to merge with this one
     - `seed: long`{: .language-kube }: The seed by the [`AreaContext`](#layered-area-area-context)'s random
 
-{: .layered-area-source-layer }
+{: #layered-area-source-layer }
 
 ### SourceLayer
 
-`SourceLayer` is a functional interface that originates a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the params:
+`SourceLayer`{:.f} is a functional interface that originates a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the params:
 
 - `context: AreaContext`{: .language-kube }: The seeded [`AreaContext`](#layered-area-area-context) at the point
 - `x: int`{: .language-kube }: The x position being queried
 - `z: int`{: .language-kube }: The z position being queried
 - `return: int`{: .language-kube }: The return value
 
-{: .layered-area-transform-layer }
+{: #layered-area-transform-layer }
 
 ### TransformLayer
 
-`Transformlayer` is a functional interface that transforms the result of a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the following params:
+`Transformlayer`{:.f} is a functional interface that transforms the result of a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the following params:
 
 - `context: AreaContext`{: .language-kube }: The [`AreaContext`](#layered-area-area-context) of the layer
 - `area: Area`{: .language-kube }: The [`Area`](#layered-area-area) of the `LayeredArea`
@@ -145,11 +171,11 @@ Lists and describes the methods available on
 - `z: int`{: .language-kube }: The z position being queried
 - `return: int`{: .language-kube }: The return value
 
-{: .layered-area-adjacent-transform-layer }
+{: #layered-area-adjacent-transform-layer }
 
 ### AdjacentTransformLayer
 
-`AdjacentTransformlayer` is a functional interface that transforms the result of a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the following params:
+`AdjacentTransformlayer`{:.f} is a functional interface that transforms the result of a [`LayeredArea`](#layered-area). It can be created in scripts as a callback with the following params:
 
 - `context: AreaContext`{: .language-kube }: The [`AreaContext`](#layered-area-area-context) of the layer
 - `north: int`{: .language-kube }: The value immediately north of the `center`{:.v} position
@@ -159,7 +185,7 @@ Lists and describes the methods available on
 - `center: int`{: .language-kube }: The value at the queried position
 - `return: int`{: .language-kube }: The return value
 
-{: .layered-area-area-context }
+{: #layered-area-area-context }
 
 ### AreaContext
 
@@ -173,13 +199,44 @@ Lists and describes the methods available on
 
 ### Area
 
-`Area`s are objects which represent a value source and sum contribution of all layers applied to a [`LayeredArea`](#layered-area). It has one method:
+`Area`s are objects which represent a value source and the sum contribution of all layers applied to a [`LayeredArea`](#layered-area). It has one method:
 
 - `.get(x: int, z: int): int`{: .language-kube }: Gets the value at the given x-z point
 
+{: #named-registry-metal }
+
 ## NamedRegistryMetal
 
+A `NamedRegistryMetal` is an easy way to access the items, blocks, and fluid associated with a metal. It has the following methods:
+
+- `.getMod(): String`{: .language-kube #named-reg-metal-get-mod }: Get the mod id the metal is added by
+- `.getBlock(type: Metal$BlockType): @Nullable Supplier<Block>`{: .language-kube #named-reg-metal-get-block }: Get a possibly null supplier for the block of the given type. Accepts `anvil`{:.e}, `block`{:.e}, `block_slab`{:.e}, `block_stairs`{:.e}, `bars`{:.e}, `chain`{:.e}, `lamp`{:.e}, or `trapdoor`{:.e}
+- `.getItem(type: Metal$ItemType): @Nullable Supplier<Item>`{: .language-kube #named-reg-metal-get-item }: Get a possibly null supplier for the item of the given type. Accepts `ingot`{:.e}, `double_ingot`{:.e}, `sheet`{:.e}, `double_sheet`{:.e}, `rod`{:.e}, `tuyere`{:.e}, `fish_hook`{:.e}, `fishing_rod`{:.e}, `unfinished_lamp`{:.e}, `pickaxe`{:.e}, `pickaxe_head`{:.e}, `propick`{:.e}, `propick_head`{:.e}, `axe`{:.e}, `axe_head`{:.e}, `shovel`{:.e}, `shovel_head`{:.e}, `hoe`{:.e}, `hoe_head`{:.e}, `chisel`{:.e}, `chisel_head`{:.e}, `hammer`{:.e}, `hammer_head`{:.e}, `saw`{:.e}, `saw_head`{:.e}, `javelin`{:.e}, `javelin_head`{:.e}, `sword`{:.e}, `sword_blade`{:.e}, `mace`{:.e}, `mace_head`{:.e}, `knife`{:.e}, `knife_head`{:.e}, `scythe`{:.e}, `scythe_head`{:.e}, `shears`{:.e}, `unhinished_helmet`{:.e}, `helmet`{:.e}, `unfinished_chestplate`{:.e}, `chestplate`{:.e}, `unfinished_greaves`{:.e}, `greaves`{:.e}, `unfinished_boots`{:.e}, `boots`{:.e}, `horse_armor`{:.e}, or `shield`{:.e}
+- `.getFluid(): @Nullable Supplier<Fluid>`{: .language-kube #named-reg-metal-get-fluid }: Get the possibly null supplier for the source fluid of the metal
+- `.toolTier(): ToolTier`{: .language-kube #named-reg-metal-tool-tier }: Get the tool tier of the metal and all tools it contains
+- `.armorTier(): ArmorMaterial`{: .language-kube #named-reg-metal-armor-tier }: Get the armor material of the metal and all armor pieces it contains
+- `.metalTier(): Metal$Tier`{: .language-kube #named-reg-metal-metal-tier }: Get the tier of the metal, typically the tier of [working recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#working) its metal can handle
+- `.getFullBlock(): Supplier<Block>`{: .language-kube #named-reg-metal-get-full-block }: Get a supplier for the metal's full block
+- `.mapColor(): MapColor`{: .language-kube #named-reg-metal-map-color }: Get the map color of the blocks contained by this metal
+- `.getRarity(): Rarity`{: .language-kube #named-reg-metal-get-rarity }: Get the rarity of the items contained by this metal
+- `.getSerializedName(): String`{: .language-kube #named-reg-metal-get-serialized-name }: Get the name of the metal
+
+{: #named-registry-wood }
+
 ## NamedRegistryWood
+
+A `NamedRegistryWood` is an easy way to access the blocks associated with a wood type. It has the following methods:
+
+- `.getMod(): String`{: .language-kube #named-reg-wood-get-mod }: Get the mod id the wood is added by
+- `.woodColor(): MapColor`{: .language-kube #named-reg-wood-wood-color }: Get the map color of the blocks contained by the wood
+- `.barkColor(): MapColor`{: .language-kube #named-reg-wood-bark-color }: Get the map color of the barks of the wood
+- `.tree(): TFCTreeGrower`{: .language-kube #named-reg-wood-tree }: Get the [`TFCTreeGrower`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/feature/tree/TFCTreeGrower.java) of the wood
+- `.daysToGrow(): number`{: .language-kube #named-reg-wood-}: Gets the number of days it takes for the wood's sapling to grow
+- `.autumnIndex(): number`{: .language-kube #named-reg-wood-autumn-index }: Get the vertical coordinate, in the range [0, 255], on the `foliage_fall` colormap for this wood's leaves
+- `.getBlock(type: Wood$BlockType): @Nullable Supplier<Block>`{: .language-kube #named-reg-wood-get-block }: Get a possibly null supplier for the block of the given type. Accepts `log`{:.e}, `stripped_log`{:.e}, `wood`{:.e}, `stripped_wood`{:.e}, `leaveas`{:.e}, `planks`{:.e}, `sapling`{:.e}, `potted_sapling`{:.e}, `bookshelf`{:.e}, `door`{:.e}, `trapdoor`{:.e}, `fence`{:.e}, `log_fence`{:.e}, `fence_gate`{:.e}, `button`{:.e}, `pressure_plate`{:.e}, `slab`{:.e}, `stairs`{:.e}, `too_rack`{:.e}, `twig`{:.e}, `fallen_leaves`{:.e}, `vertical_support`{:.e}, `horizontal_support`{:.e}, `workbench`{:.e}, `trapped_chest`{:.e}, `chest`{:.e}, `loom`{:.e}, `sluice`{:.e}, `sign`{:.e}, `wall_sign`{:.e}, `barrel`{:.e}, `lectern`{:.e}, `scribing_table`{:.e}, `sewing_table`{:.e}, `jar_shelf`{:.e}, `axle`{:.e}, `bladed_axle`{:.e}, `encased_axle`{:.e}, `clutch`{:.e}, `gear_box`{:.e}, `windmill`{:.e}, or `water_wheel`{:.e}
+- `.getBlockSet(): BlockSetType`{: .language-kube #named-reg-get-block-set }: Get the vanilla `BlockSetType` of the wood
+- `.getVanillaWoodType(): WoodType`{: .language-kube #named-reg-get-vanilla-wood-type }: Get the vanilla wood type of the wood
+- `.getSerializedName(): String`{: .language-kube #named-reg-get-serialized-name }: Get the name of the wood
 
 {% comment %}
 

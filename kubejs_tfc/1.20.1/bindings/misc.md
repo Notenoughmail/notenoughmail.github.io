@@ -32,7 +32,7 @@ TFC.misc.rock.get('dacite')
 
 ## Wood Map
 
-A string to [NamedRegistryWood](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/NamedRegistryWood.java) map of all of TFC's wood types
+A string to [`NamedRegistryWood`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#named-registry-wood) map of all of TFC's wood types
 
 ### Example
 
@@ -42,7 +42,7 @@ TFC.misc.wood.get('oak')
 
 ## Metal Map
 
-A string to [NamedRegistryMetal](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/NamedRegistryMetal.java) map of all of TFC's metals
+A string to [`NamedRegistryMetal`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#named-registry-metal) map of all of TFC's metals
 
 ### Example
 
@@ -336,7 +336,7 @@ TFC.misc.getSupport(level: BlockGetter, pos:BlockPos): @Nullable Support
 
 ### Chunk Data
 
-Gets TFC's `ChunkData` for the given level and position
+Gets TFC's [`ChunkData`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data) for the given level and position
 
 Method Signature:
 
@@ -382,7 +382,7 @@ TFC.misc.getRockSettings(level: LevelAccessor, block: Block): @Nullable RockSett
 
 ### Forest Type
 
-Gets TFC's `ForestType` for the given level and position
+Gets TFC's `ForestType`{:.e} for the given level and position
 
 Method Signature:
 
@@ -434,7 +434,7 @@ TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 
 ### Cellular Noise
 
-Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) specialized to have polygonal blobs of constant value, instead of smooth, constantly changing values
+Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) specialized to have polygonal/polyhedral blobs of constant value, instead of smooth, constantly changing values
 
 Method Signatures:
 
@@ -468,7 +468,7 @@ TFC.misc.customNoise3D(noise: Noise3D): Noise3D
 
 ### Noise Inspection Registration
 
-These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object for use with the [2D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-2d-noises) and [3D]({% link kubejs_tfc/1.20.1/misc.md %}#inspect-3d-noises) noise inspection commands
+These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object for use with the [2D]({% link kubejs_tfc/1.20.1/commands.md %}#inspect-2d-noise) and [3D]({% link kubejs_tfc/1.20.1/commands.md %}#inspect-3d-noise) noise inspection commands
 
 Method Signatures
 

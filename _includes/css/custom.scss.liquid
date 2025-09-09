@@ -118,7 +118,7 @@ li:has(> :target) {
     }
 }
 
-a > code {
+a:not(.preserve-color) > code {
     color:#{{ site.colors.light-link }};
 }
 
@@ -173,4 +173,15 @@ div.footnotes li:target {
 
 img.inline {
     height: 1rem;
+}
+
+a.preserve-color {
+    color: $body-text-color;
+    text-decoration-color: $link-color !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15rem;
+}
+
+a.preserve-color:hover {
+    text-decoration-color: $border-color !important;
 }
