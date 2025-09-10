@@ -58,7 +58,7 @@ event.create('my_mold', 'tfc:mold')
 
 - `.capacity(integer)`{: .language-kube }: Accepts an integer, sets the capacity, in mB, of the mold. Defaults to 100
 - `.fluidTagAccept(String)`{: .language-kube }: Accepts a string, determines which fluids are allowed in the mold. Defaults to `tfc:usable_in_ingot_mold`
-- `.allowedInMoldTable()`{: .language-kube }: Allows the mold to be put into [Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels)' mold tables if the mod is installed. The model for the mold is not made automatically, but its path is `kubejs_tfc/models/item/` + the path of the regular mold
+- `.allowedInMoldTable()`{: .language-kube }: Allows the mold to be put into *TFC Casting with Channels*' {% include cf.html link='tfc-casting-with-channels' %} mold tables if the mod is installed. The model for the mold is not made automatically, but its path is `kubejs_tfc/models/item/` + the path of the regular mold
 
 ### Chisel
 

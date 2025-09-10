@@ -942,14 +942,14 @@ In its json definition, the generator definition has the following fields:
 
 ### Rock Surface Rule Source
 
-In addition, a custom surface rule source that uses the blocks of the `RockSettings`, as provided via the [rocks callback](#chunk-data-provider-rocks) in the event. This rule source only works with the `kubejs_tfc:wrapped` generator wrapping a `minecraft:noise`[^4] chunk generator
+In addition, a custom surface rule source that uses the blocks of the `RockSettings`, as provided via the [rocks callback](#chunk-data-provider-rocks) in the event, is available. This rule source only works with the `kubejs_tfc:wrapped` generator wrapping a `minecraft:noise`[^4] chunk generator
 
 [^4]: Or any generator type which extends `NoiseBasedChunkGenerator` and overrides `.buildSurface(ChunkAccess,WorldGenerationContext,RandomState,StructureManager,BiomeManager,Registry<Biome>,Blender)`{: .language-kube }
 
 In its json definition, the rule source has the following fields:
 
 - `type` must be `kubejs_tfc:rock`
-- `fallback_state`: A block state. Used when the `RockSettings` at a point could not be found, or the world's chunk generator is not compatible with this rule source
+- `fallback_state`: A [lenient block state](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/common-types/#lenient-blockstate). Used when the `RockSettings` at a point could not be found, or the world's chunk generator is not compatible with this rule source
 - `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specifies which block from the `RockSettings` to use. Optional, defaults to `raw`
 
 {: #chunk-data-provider-rule-source-example }
@@ -960,9 +960,7 @@ In its json definition, the rule source has the following fields:
 {
     "type": "kubejs_tfc:rock",
     "rock_block": "sandstone",
-    "fallback_state": {
-        "Name": "minecraft:sandstone"
-    }
+    "fallback_state": "minecraft:sandstone"
 }
 ```
 

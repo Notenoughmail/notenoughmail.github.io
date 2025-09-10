@@ -35,7 +35,7 @@ The following recipes are supported by KubeJS TFC
 - [Extra Products Shaped Crafting](#extra-products-shaped-crafting)
 - [Extra Products Shapeless Crafting](#extra-products-shapeless-crafting)
 
-If you have [FirmaLife](https://www.curseforge.com/minecraft/mc-mods/firmalife) installed, the following recipes are also supported
+If you have *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} installed, the following recipes are also supported
 
 - [Drying](#drying)
 - [Smoking](#smoking)
@@ -46,13 +46,13 @@ If you have [FirmaLife](https://www.curseforge.com/minecraft/mc-mods/firmalife) 
 
 Take a look through its [docs](https://github.com/eerussianguy/firmalife/wiki/Datapack-Documentation/#recipes)
 
-if you have [TFC Rosia](https://legacy.curseforge.com/minecraft/mc-mods/tfc-rosia) installed, the following recipes are also supported
+if you have *TFC Rosia* {% include cf.html link='tfc-rosia' %} installed, the following recipes are also supported
 
 - [Auto Quern](#auto-quern)
 - [Extruding Machine](#extruding-machine)
 - [Rolling Machine](#rolling-machine)
 
-if you have [ArborFirmaCraft](https://www.curseforge.com/minecraft/mc-mods/arborfirmacraft) installed, the following recipes are also supported
+if you have *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} installed, the following recipes are also supported
 
 - [Tree Tapping](#tree-tapping)
 

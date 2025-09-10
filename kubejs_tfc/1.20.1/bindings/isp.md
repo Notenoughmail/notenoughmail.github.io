@@ -184,13 +184,13 @@ isp.firmaLifeEmptyPan(): ItemStackProviderJS
         - `.waterModifier(modifier: number)`{: .language-kube }: Multiplies the water from the ingredient, defaults to 1
         - `.saturationModifier(modifier: number)`{: .language-kube }: Multiplies the saturation from the ingredient, defaults to 1
 
-<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
+<a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed the following methods are available:
 
 - `.firmaLifeAddPiePan()`{: .language-kube #isp-firmalife-pie-pan-mod }: Adds a `firmalife:add_pie_pan` modifier
 - `.firmaLifeCopyDynamicFood()`{: .language-kube #isp-firmalife-copy-dynamic-food-mod }: Adds a `firmalife:copy_dynamic_food` modifier
 - `.firmaLifeEmptyPan()`{: .language-kube #isp-firmalife-empty-pan-mod }: Adds a `firmalife:empty_pan` modifier
 
-<a id="artisanal"></a>If TFC Artisanal ([MR](https://modrinth.com/mod/tfc-artisanal) [CF](https://www.curseforge.com/minecraft/mc-mods/tfc-artisanal)) is installed the following methods are available:
+<a id="artisanal"></a>If *TFC Artisanal* {% include mr.html link='tfc-artisanal' %} {% include cf.html link='tfc-artisanal' %} is installed the following methods are available:
 
 - `.artisanalCapHeat(max: number)`{: .language-kube #isp-artisanal-cap-heat }: Adds a `artisanal:cap_heat` modifier
 - `.artisanalCopyDynamicFood()`{: .language-kube #isp-artisanal-copy-dynamic-food }: Adds a `artisanal:copy_dynamic_food` modifier

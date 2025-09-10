@@ -29,7 +29,7 @@ In the `tfc.data` event there are methods for:
 - [Climate Ranges](#climate-ranges)
 - [Fauna](#fauna)
 
-There is also support for [FirmaLife](https://modrinth.com/mod/firmalife) and [Beneath](https://github.com/eerussianguy/Beneath/tree/v1.0.3-alpha) custom data types as well
+There is also support for *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} and *Beneath* {% include mr.html link='beneath' %} {% include cf.html link='beneath' %} custom data types as well
 
 - [FirmaLife Greenhouses](#greenhouses)
 - [FirmaLife Plantables](#plantables)
@@ -458,7 +458,7 @@ onEvent('tfc.data', event => {
 
 # Nether Fertilizers
 
-[Beneath](https://github.com/eerussianguy/Beneath/tree/main) (an in-progress nether addon) adds a new set of fertilizer types for the nether
+*Beneath* {% include mr.html link='beneath' %} {% include cf.html link='beneath' %} adds a new set of fertilizer types for the nether
 
 - 1st argument: An item ingredient which the nether fertilizer values will apply to
 - 2nd argument: A string which describes the nether fertilizer types and their values

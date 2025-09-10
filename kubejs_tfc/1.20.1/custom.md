@@ -1109,11 +1109,11 @@ The following types are available:
 - [Glass Bottle](#glass-bottle)
 - [Jug](#jug)
 
-<a id="firmalife-items"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-items"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 
 - [Watering Can](#firmalife-watering-can)
 
-<a id="precision-prospecting-items"></a>If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
+<a id="precision-prospecting-items"></a>If *Precision Prospecting* {% include mr.html link='precision-prospecting' %} {% include cf.html link='precision-prospecting' %} is installed, the following types are also available:
 
 - [Prospector's Hammer](#precision-prospecting-prospector-hammer)
 - [Prospector's Drill](#precision-prospecting-prospector-drill)

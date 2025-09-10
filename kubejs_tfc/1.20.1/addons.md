@@ -56,7 +56,7 @@ KubeJS TFC supports its
 
 ## TFC Casting with Channels
 
-An addon that allows for faster casting of metals with the titular channels, read more about it [on its page](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels)
+An addon that allows for faster casting of metals with the titular channels, read more about it on its [CurseForge](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) page
 
 KubeJS TFC supports its
 

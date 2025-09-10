@@ -138,7 +138,7 @@ Lists and describes the methods available on
     - `transformer: AdjacentTransformLayer`{: .language-kube }: The transformer
     - `seed: long`{: .language-kube }: The seed used by the [`AreaContext`](#layered-area-area-context)'s random
 - `.merge(merger: MergeLayer, otherLayeredArea: LayeredArea, seed: long): @Self LayeredArea`{: .language-kube #layered-area-merge }: Merges this `LayeredArea` with another via the given `Mergelayer`. The params are:
-    - `merger: MergeLayer`{: .language-kube }: A callback which merges the two `LayeredArea` together. Has the following params:
+    - `merger: MergeLayer`{: .language-kube }: A callback which merges the two `LayeredArea`s together. Has the following params:
         - `context: AreaContext`{: .language-kube }: The seeded [`AreaContext`](#layered-area-area-context) at the point
         - `first: Area`{: .language-kube }: The [`Area`](#layered-area-area) from this `LayeredArea`
         - `second: Area`{: .language-kube }: The [`Area`](#layered-area-area) from the other `LayeredArea`
