@@ -67,6 +67,9 @@ code.r {
 code.nb {
     color:#{{ site.colors.builtin }};
 }
+code.o {
+    color:#{{ site.colors.symbol }};
+}
 
 h6.m-link {
     font-size:inherit !important;
@@ -115,7 +118,7 @@ li:has(> :target) {
     }
 }
 
-a > code {
+a:not(.preserve-color) > code {
     color:#{{ site.colors.light-link }};
 }
 
@@ -133,7 +136,7 @@ figure {
     border-radius: 0.25rem;
 }
 
-details {
+details:not(.tags) {
     background: linear-gradient(#27262b, #27262b) padding-box, linear-gradient(90deg, #7d7c7e, transparent) border-box;
     border: 1px solid transparent;
     margin-bottom: 0.25rem;
@@ -148,7 +151,7 @@ details {
     }
 }
 
-details[open] {
+details:not(.tags)[open] {
     summary::marker {
         content: "− ";
         color: red;
@@ -161,4 +164,24 @@ details[open] {
 summary {
     padding-left: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+div.footnotes li:target {
+    background-color:#{{ site.colors.target-highlight }} !important;
+    padding: 0 0.25rem !important;
+}
+
+img.inline {
+    height: 1rem;
+}
+
+a.preserve-color {
+    color: $body-text-color;
+    text-decoration-color: $link-color !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15rem;
+}
+
+a.preserve-color:hover {
+    text-decoration-color: $border-color !important;
 }

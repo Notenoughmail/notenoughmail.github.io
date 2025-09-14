@@ -196,7 +196,7 @@ Adds a modifier with the type defined by the provided string
 
 Adds a modifier defined by the provided json element
 
-If [FirmaLife](https://www.curseforge.com/minecraft/mc-mods/firmalife) is installed the following are also available
+If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed the following are also available
 
 ##### burrito()
 
@@ -218,7 +218,7 @@ Adds a `firmalife:copy_dynamic_food` modifier
 
 Adds a `firmalife:empty_pan` modifier
 
-If [Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed the following are also available
+If *TFC Casting with Channels*' {% include cf.html link='tfc-casting-with-channels' %} is installed the following are also available
 
 ##### conditional(consumer, consumer, *optional consumer*)
 

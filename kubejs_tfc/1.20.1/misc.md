@@ -10,16 +10,26 @@ grand_parent: KubeJS TFC
 
 This page is for features which don't deserve their own page and/or don't fit into another page
 
-- [Recipe Components](#recipe-components)
 - [Configuration](#configuration)
-- [Commands](#commands)
+- [Recipe Components](#recipe-components)
+- [Recipe Input/Output Replacement](#recipe-replacement)
+- [Recipe Filters](#recipe-filters)
+
+## Configuration
+
+In KubeJS's `dev.properties` file there is an option for `debugInfo`, if set to `true`{:.p}, KubeJS TFC will print various debug info to the log
+
+Also in the `dev.properties` file
+
+- `tfc/insertSelfTestsIntoConsole`: If `true`{:.p}, TFC's self test warnings will be inserted into the KubeJS console. Allows for warnings about items/fluids missing tags for proper recipe functionality to appear on world load. Defaults to `true`{:.p}.
+- `tfc/deduplicateConsoleErrors`: If `true`{:.p}, any TFC self test warnings that are inserted into Kube's console will *not* be written to the normal log/console. Only has an effect when `tfc/insertSelfTestsIntoConsole` is `true`{:.p}. Defaults to `true`{:.p}.
 
 ## Recipe Components
 
 KubeJS handles recipes through *recipe schemas*, which are made up of *recipe components*, essentially a mirror to a recipe type's json (de)serialization process. For the most part recipe schemas are made through addons, but KubeJS does have a startup event for registering custom recipe schemas in your scripts.
 
 {: .notice }
-This is *not* meant to be a tutorial on how to use that event, merely an acknowledgement of the recipe components KubeJS TFC adds to the event
+This is *not* meant to be a tutorial on how to use that event, merely an acknowledgement of the recipe components KubeJS TFC adds for use in that event
 
 ### Provided Components
 
@@ -32,106 +42,324 @@ KubeJS TFC adds 6 recipe component types
 - `tfc:alloyPart`: An [AlloyPartComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/AlloyPartComponent.java), used by alloy recipes for their [alloy parts]({% link kubejs_tfc/1.20.1/bindings.md %}#alloy-part)
 - `tfc:blockIngredient`: A [BlockIngredientComponent](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/recipe/component/BlockIngredientComponent.java), used by recipes which support [block ingredients]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient)
 
-## Configuration
+## Recipe Replacement
 
-In KubeJS's `dev.properties` file there is an option for `debugInfo`, if set to `true`{:.p}, KubeJS TFC will print various debug info to the log
+KubejS TFC's [recipe components](#recipe-components) can be replaced via `.replaceInput()`{:.language-kube} and `.replaceOutput()`{:.language-kube} as appropriate
 
-Additionally, in the `dev.properties` file
+{: #recipe-replacement-alloy-part }
 
-- `tfc/insertSelfTestsIntoConsole`: If `true`{:.p}, TFC's self test warnings will be inserted into the KubeJS console. Allows for warnings about items/fluids missing tags for proper recipe functionality to appear on world load. Defaults to `true`{:.p}.
-- `tfc/deduplicateConsoleErrors`: If `true`{:.p}, any TFC self test warnings that are inserted into Kube's console will *not* be written to the normal log/console. Only has an effect when `tfc/insertSelfTestsIntoConsole` is `true`{:.p}. Defaults to `true`{:.p}.
+### AlloyPart
 
-## Commands
+[`AlloyPart`]({% link kubejs_tfc/1.20.1/bindings.md %}#alloy-part)s can be replaced wit the `.replaceInput()`{:.language-kube} method on recipes with an `AlloyPart` as the replacement match and another `AlloyPart` as the input replacement. If the `AlloyPart` used as the input replacement has `keepOriginalBounds`{:.v} as `false`{:.p}, then the bounds will also be changed, instead of just the metal
 
-KubeJS TFC adds several commands used for investigating some of TFC's (and some addons) data. They all require level 3 or higher to use.
+Example:
 
-### List IDs
+```js
+ServerEvents.recipes(event => {
+    let recipe = event.recipes.tfc.alloy(
+        'tfc:copper',
+        [
+            TFC.alloyPart('tfc:rose_gold', 0.2, 0.3),
+            TFC.alloyPart('tfc:steel', 0.1, 0.4)
+        ]
+    )
 
-The `/kubejs_tfc list_ids`{:.language-command} command has a single argument, a data type, all available options will be suggested
+    recipe.replaceInput(TFC.alloyPart('tfc:rose_gold', 0, 0), TFC.alloyPart('red_steel', 0, 0))
+    recipe.repalceInput(TFC.alloyPart('tfc:steel', 0, 0), TFC.alloyPart('tfc:rose_gold', 0.7, 0.8, false))
+})
+```
 
-Using this command will print a list the ids of data files handled by that data type to the chat
+{: #recipe-replacement-block-ingredient }
 
-Example: `/kubejs_tfc list_ids tfc.fuels`{:.language-command}
+### BlockIngredient
 
-### Describe
+[`BlockIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient)s can replaced with the `.replaceInput()`{:.language-kube} method on recipes with a `BlockStatePredicate` as the replacement match and another block ingredient as the input replacement
 
-The `/kubejs_tfc describe`{:.language-command} command has two arguments: a data type and a resource location, the id of the data value to describe
+Example:
 
-Using this command will print a formatted description of the requested data value to the chat
+```js
+ServerEvents.recipes(event => {
+    let recipe = event.recipes.tfc.landslide(
+        'minecraft:deepslate'
+    )
 
-Example: `/kubejs_tfc describe tfc.fuels tfc:coal`{:.language-command}
+    recipe.replaceInput(BlockStatePredicate.of('minecraft:deepslate', TFC.blockIngredient(['minecraft:hay_block', 'minecraft:end_gateway'])))
+})
+```
 
-### Search
+{: #recipe-replacement-fluid-stack-ingredient }
 
-The `/kubejs_tfc search`{:.language-command} command has two arguments: a data type and a resource location, the registry id to search for in the data type
+### FluidStackIngredient
 
-Using the command will print a list of data definitions which apply to the given item/block/fluid/entity type, each entry can be clicked on to describe it via `/kubejs_tfc describe`{:.language-command}
+[`FluidStackIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)s can be replaced with the `.replaceInput()`{:.language-kube} method on recipes with a fluid stack as the replacement match and another FSI as the input replacement
 
-Examples: `/kubejs_tfc search tfc.metals tfc:metal/copper`{:.language-command}, `/kubejs_tfc search tfc.entity_damage_resistances minecraft:creeper`{:.language-command}, `/kubejs_tfc search tfc.fertilizers tfc:powder/wood_ash`{:.language-command}
+Example:
 
-### Print World Settings
+```js
+ServerEvents.recipes(event => {
+    let recipe = event.recipes.tfc.instant_barrel()
+        .outputItem('tfc:food/green_item')
+        .inputFluid(Fluid.of('minecraft:water', 500))
 
-The `/kubejs_tfc print_world_settings`{:.language-command} command has no arguments.
+    recipe.replaceInput(Fluid.of('minecraft:water', 50), TFC.fluidStackIngredient(['minecraft:water', 'minecraft:milk', 'minecraft:lava'], 500))
+})
+```
 
-Using the command will print out the [TFC Settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/) of the current level if its generator is TFC-like (implements TFC's `ChunkGeneratorExtension`).
+{: #recipe-replacement-item-stack-provider }
 
-The rock layer settings will not be printed, due to them usually filling the entirety of the message history itself. Instead, `~~~` will be printed in its place with a click interaction to run the command that [prints rock settings](#print-rock-settings).
+### ItemStackProvider
 
-### Print Rock Settings
+[`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings/isp.md %})s cane be replaced with the `.replaceOutput()`{:.language-kube} method in recipes with either an item or an ISP as the replacement match and an ISP as the input replacement. If an ISP is used as the replacement match, the only ISPs which have all of the modifiers the one used as the match has will match. Additionally, ISPs that have no stack and are used as the replacement match will match any ISP with the correct modifiers, regardless of what item it has
 
-The `/kubejs_tfc print_rock_settings`{:.language-command} command has no arguments.
+Examples:
 
-Using this command will print out the [rock layer settings](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/#rock-layer-settings) of the current level if its generator is TFC-like (implements TFC's `ChunkGeneratorExtension`).
+```js
+ServerEvents.recipes(event => {
+    let recipe = event.recipes.tfc.quern(
+        'minecraft:dirt',
+        'minecraft:stone'
+    )
 
-### Print Chunk Data
+    recipe.replaceOutput('minecraft:dirt', TFC.isp.of('tfc:food/cooked_pork').addheat(500))
 
-The `/kubejs_tfc print_chunk_data`{:.language-command} command has no arguments.
+    recipe = event.recipes.tfc.quern(
+        TFC.isp.of('minecraft:white_wool').addHeat(500),
+        'minecraft:stone'
+    )
 
-Using the command will print out the server [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java) of the current chunk in a somewhat readable format. Only the information available will be printed. That is to say, if the status is `EMPTY`{:.e}, `CLIENT`{:.e}, or `INVALID`{:.e}, no additional information will be printed; and the surface and aquifer heights will only be printed if the status is `FULL`{:.e}.
+    recipe.replaceOutput(TFC.isp.empty().addHeat(0), TFC.isp('minecraft:gravel').copyHeat())
+})
+```
 
-### Tree Solver
+## Recipe Filters
 
-The `/kubejs_tfc tree_solver`{:.language-command} command has five arguments
+KubeJS TFC adds several types of recipe filters for use with its [recipe components](#recipe-components). They can be used by passing an object with a `tfc` key with an object value which itself has a `type` key. The different types are:
 
-- `trunk_size`{:.v}: Either `1`{:.v} or `2`{:.v}, the size of the tree trunk to solve for within the scan area
-- `log_block`{:.m}: The block to use as the log of the tree. Is limited to and will only suggest blocks with TFC's branch direction state property. See the [log block type]({% link kubejs_tfc/1.20.1/custom.md %}#log) for custom logs
-- `leaves_block`{:.s}: The block to use as the leaves of the tree. Is limited to and will only suggest TFC [leaves]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) blocks. See the [leaves block type]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) for custom leaves
-- `from`{:.r}: A block pos, one corner of the scan area. Supports relative positions
-- `to`{:.nb}: A block pos, the other corner of the scan area. Supports relative positions
+- [Is TFC](#recipe-filters-is-tfc)
+- [Has ISPs](#recipe-filters-has-isp)
+- [Block Ingredient](#recipe-filters-block-ingredient)
+- [Fluid Ingredient](#recipe-filters-fluid-stack-ingredient)
+- [Alloy Contents](#recipe-filters-allot-contents)
+- [Alloy Result](#recipe-filters-alloy-result)
+- [ItemStackProvider](#recipe-filters-item-stack-provider)
 
-This command replaces blocks within the world for use in creating tree structures which work with TFC's tree logging mechanic. This is done through the use of marker blocks which are replaced with the correct block and state
+Additionally, these filters can be ANDed together by including them in an array under the `tfc` key
 
-- `minecraft:light_blue_stained_glass`: Marks a root position, or the bottom of a tree[^1]. This is the only block that actually needs to be within the scan area. Must have a `minecraft:brown_stained_glass` immediately above; and for trunk size `2`{:.n}, should be in a two by two pattern
-- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker breadth-first along brown glass. The solver can connect to any log marker in the 3 by 3 by 3 area centered at the current position, though blocks prefer the lowest order connection they can make (order 1: share a face, order 2: share an edge, order 3: share a vertex)
-- `minecraft:green_stained_glass`: Marks where leaves will go.
+{: #recipe-filters-is-tfc }
 
-[^1]: While this is the bottom of a tree, it does not prevent branches 'drooping' to heights lower than that of the root position
+### Is TFC
 
-All root positions within the scan area will will be solved and converted into trees, though errors will occur if a root does not have the same size as the `trunk_size`{:.v} argument
+This filter checks if the recipe is 'TFC-like', or support is handled by KubeJS TFC
 
-<details>
-    <summary>As an example</summary>
-    <figure>
-        <img src="/assets/images/kjs_tfc/tree_solver/pre_solve.png" alt="pre-solve" />
-        <figcaption>A tree template using the marker blocks. The tree solver command is typed in the chat box</figcaption>
-    </figure>
-    <br />
-    <figure>
-        <img src="/assets/images/kjs_tfc/tree_solver/post_solve.png" alt="post-solve" />
-        <figcaption>A tree, as solved from the template in the previous image</figcaption>
-    </figure>
-    <br />
-</details>
-<details>
-    <summary>It can also handle rather strange forms</summary>
-    <figure>
-        <img src="/assets/images/kjs_tfc/tree_solver/pre_solve_dumb.png" alt="pre-solve" />
-        <figcaption>A tree template, though the log markers are in a large brick form</figcaption>
-    </figure>
-    <br />
-    <figure>
-        <img src="/assets/images/kjs_tfc/tree_solver/post_solve_dumb.png" alt="post-solve" />
-        <figcaption>A brick of logs as solved from the template in the previous image. Ostensibly, a tree</figcaption>
-    </figure>
-    <br />
-</details>
+**Type**: `is_tfc`
+
+Example:
+
+```js
+ServerEVents.recieps(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'is_tfc'
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-has-isp }
+
+### Has ISPs
+
+This filter checks if the recipe has any [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings/isp.md %}) arguments
+
+**Type**: `has_isp`
+
+Example:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'has_isp'
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-block-ingredient }
+
+### Block Ingredient
+
+This filter checks if the recipe has a [`BlockIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#block-ingredient) that matches the provided block
+
+**Type**: `block`
+
+Definition:
+
+- `block: Block`{:.language-kube}: The block to check `BlockIngredient`s for
+
+Example:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'block',
+                block: 'tfc:rock/raw/dolomite'
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-fluid-stack-ingredient }
+
+### Fluid Stack Ingredient
+
+This filter checks if the recipe has a [`FluidStackIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) that matches the given `FluidStack`
+
+**Type**: `fluid_stack`
+
+Definition:
+
+- `fluid: FluidStack`{:.language-kube}: The fluid stack to check against the `FluidStackIngreient`. Matches will only be made if the ingredient has an amount greater-than or equal to the fluid stack
+
+Example:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'fluid_stack',
+                fluid: Fluid.of('minecraft:water', 20)
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-alloy-contents }
+
+### Alloy Contents
+
+This filter checks if the recipe has an [`AlloyPart`]({% link kubejs_tfc/1.20.1/bindings.md %}#alloy-part) that with the given metal
+
+**Type**: `alloy_contents`
+
+Definition:
+
+- `contents: String`{:.language-kube}: The metal to match against
+
+Example:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'alloy_contents',
+                contents: 'tfc:copper'
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-alloy-result }
+
+### Alloy Result
+
+This filter checks if the recipe has an alloy result of the given metal
+
+**Type**: `alloy_result`
+
+Definition:
+
+- `result: String`{:.language-kube}: The metal to match against
+
+Example:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'alloy_result',
+                result: 'tfc:rose_gold'
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{: #recipe-filters-item-stack-provider }
+
+### ItemStackProvider
+
+This filter checks if the recipe has an [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings/isp.md %}) with the given item or modifiers
+
+**Type**: `isp`
+
+Definition:
+
+- `output?: boolean`{:.language-kube}: A boolean, if false checks intermediate ISPs instead of output ISPs. Optional, defaults to `true`{:.p}
+- `match?: ItemMatch`{:.language-kube}: An item match, checks the item of the ISP. Optional, if not present does not check the ISP item
+- `modifiers?: (List<String> | String)`{:.language-kube}: A list of item stack modifier types, the ISP must have all of these modifiers to match. Optional
+
+Examples:
+
+```js
+ServerEvents.recipes(event => {
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'isp',
+                modiifers: 'tfc:copy_input'
+            }
+        },
+        r => console.log(r)
+    )
+    event.forEachRecipe(
+        {
+            tfc: {
+                type: 'isp',
+                match: 'tfc:food/cooked_pork',
+                modifiers: [
+                    'tfc:add_heat',
+                    'tfc:add_trait'
+                ]
+            }
+        },
+        r => console.log(r)
+    )
+})
+```
+
+{% comment %}
+
+#### recipe filters is tfc
+
+#### recipe-filters has isp
+
+#### recipe filters block ingredient
+
+#### recipe filters fluid stack ingredient
+
+#### recipe filters allot contents
+
+#### recipe filters alloy result
+
+#### recipe filters item stack provider
+
+{% endcomment %}

@@ -134,7 +134,7 @@ module Rouge
                 )
             end
 
-            # An important regarding inner classes: The aprt before and after the $ will be treated as different 'words'
+            # An important note regarding inner classes: The part before and after the $ will be treated as different 'words'
             # thus they will not be parsed & colored as a single string, so only the part after the $ should be included
             # the $ will be included with the second string and is safe to include here
             def self.enums
@@ -144,7 +144,7 @@ module Rouge
                     Lifecycle GrassModelPart DeadModelVariant NutrientType GearBoxModelType
                     ClutchModelType PshReaction OffsetType NoteBlockInstrument ItemDisplayContext
                     GlassOperation Size Weight PlanterType ChiselMode ForgeRule DyeColor Heat
-                    InteractionResult Type Enum GroundType
+                    InteractionResult Type Enum GroundType $Status $BlockType $ItemType $Tier
                 )
             end
 
@@ -153,11 +153,11 @@ module Rouge
                     Consumer BiConsumer TriConsumer BiFunction TriFunction QuadFunction
                     RockFunction OnItemUseAction Supplier RocksGetter MossGrowingCallback
                     Predicate Noise2D $StateArgumentPredicate $StatePredicate
-                    TemperatureCallback Function
+                    TemperatureCallback Function MergeLayer Noise3D TransformLayer
+                    AdjacentTransformlayer
                 )
             end
 
-            # TODO: Maybe adjust this to be able to handle Blah$Blah as a single word
             def self.id_regex
                 /[\p{L}\p{Nl}$_][\p{Word}]*/io
             end

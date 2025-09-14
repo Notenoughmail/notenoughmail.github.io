@@ -184,11 +184,24 @@ isp.firmaLifeEmptyPan(): ItemStackProviderJS
         - `.waterModifier(modifier: number)`{: .language-kube }: Multiplies the water from the ingredient, defaults to 1
         - `.saturationModifier(modifier: number)`{: .language-kube }: Multiplies the saturation from the ingredient, defaults to 1
 
-<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed the following methods are available:
+<a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed the following methods are available:
 
 - `.firmaLifeAddPiePan()`{: .language-kube #isp-firmalife-pie-pan-mod }: Adds a `firmalife:add_pie_pan` modifier
 - `.firmaLifeCopyDynamicFood()`{: .language-kube #isp-firmalife-copy-dynamic-food-mod }: Adds a `firmalife:copy_dynamic_food` modifier
 - `.firmaLifeEmptyPan()`{: .language-kube #isp-firmalife-empty-pan-mod }: Adds a `firmalife:empty_pan` modifier
+
+<a id="artisanal"></a>If *TFC Artisanal* {% include mr.html link='tfc-artisanal' %} {% include cf.html link='tfc-artisanal' %} is installed the following methods are available:
+
+- `.artisanalCapHeat(max: number)`{: .language-kube #isp-artisanal-cap-heat }: Adds a `artisanal:cap_heat` modifier
+- `.artisanalCopyDynamicFood()`{: .language-kube #isp-artisanal-copy-dynamic-food }: Adds a `artisanal:copy_dynamic_food` modifier
+- `.artisanalCopyDynamicFoodNeverExpires()`{: .language-kube #isp-artisanal-copy-dynamic-food-never-expires }: Adds a `artisanal:copy_dynamic_food_never_expires` modifier
+- `.artisanalEmptyBowl()`{: .language-kube #isp-artisanal-empty-bowl }: Adds a `artisanal:empty_bowl` modifier
+- `.artisanalExtractCannedFood()`{: .language-kube #isp-artisanal-extract-canned-food }: Adds a `artisanal:extract-canned-food` modifier
+- `.artisanalHomogenousIngredients()`{: .language-kube #isp-artisanal-homogenous-ingredients }: Adds a `artisanal:homogenous-ingredients` modifier
+- `.artisanalInheritDecay(decayModifier: number)`{: .language-kube #isp-artisanal-inherit-decay }: Adds a `artisanal:inherit_decay` modifier
+- `.artisanalModifyFluid(fluid: FluidStack)`{: .language-kube #isp-artisanal-modify-fluid }: Adds a `artisanal:modify_fluid` modifier
+- `.artisanalOnlyIfGenericAnimalFat()`{: .language-kube #isp-artisanal-only-if-generic-animal-fat }: Adds a `artisanal:only_if_generic_animal_fat` modifier
+- `.artisanalRemoveButter()`{: .language-kube #isp-artisanal-remove-butter }: Adds a `artisanal:remove_butter` modifier.
 
 ## Examples
 

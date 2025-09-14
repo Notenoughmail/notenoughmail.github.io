@@ -26,12 +26,12 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Sluicing](#sluicing)
 - [Panning](#panning)
 
-<a id="firmalife"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following are also available
+<a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following are also available
 
 - [Greenhouse Type](#firmalife-greenhouse-type)
 - [Planter](#firmalife-planter)
 
-<a id="beneath"></a>If [Beneath](https://modrinth.com/mod/beneath) is installed, the following are also available
+<a id="beneath"></a>If *Beneath* {% include mr.html link='beneath' %} {% include cf.html link='beneath' %} is installed, the following are also available
 
 - [Nether Fertilizer](#beneath-nether-fertilizer)
 - [Lost Page](#beneath-lost-page)

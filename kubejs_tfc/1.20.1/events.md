@@ -935,21 +935,21 @@ In its json definition, the generator definition has the following fields:
 
 - `type` must be `kubejs_tfc:wrapped`
 - `event_key`: The key which the event is fired for. A string.
-- `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are unlikely to be used except for the rock layer settings which can be used in custom rock generation.
+- `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are available in the event via [`.getSettings()`{: .language-kube }](#chunk-data-provider-get-settings ){:.preserve-color}
 - `generator`: A chunk generator.
 
 {: #chunk-data-provider-rule-source }
 
 ### Rock Surface Rule Source
 
-In addition, a custom surface rule source that uses the blocks of the `RockSettings`, as provided via the [rocks callback](#chunk-data-provider-rocks) in the event. This rule source only works with the `kubejs_tfc:wrapped` generator wrapping a `minecraft:noise`[^4] chunk generator
+In addition, a custom surface rule source that uses the blocks of the `RockSettings`, as provided via the [rocks callback](#chunk-data-provider-rocks) in the event, is available. This rule source only works with the `kubejs_tfc:wrapped` generator wrapping a `minecraft:noise`[^4] chunk generator
 
 [^4]: Or any generator type which extends `NoiseBasedChunkGenerator` and overrides `.buildSurface(ChunkAccess,WorldGenerationContext,RandomState,StructureManager,BiomeManager,Registry<Biome>,Blender)`{: .language-kube }
 
 In its json definition, the rule source has the following fields:
 
 - `type` must be `kubejs_tfc:rock`
-- `fallback_state`: A block state. Used when the `RockSettings` at a point could not be found, or the world's chunk generator is not compatible with this rule source
+- `fallback_state`: A [lenient block state](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/common-types/#lenient-blockstate). Used when the `RockSettings` at a point could not be found, or the world's chunk generator is not compatible with this rule source
 - `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specifies which block from the `RockSettings` to use. Optional, defaults to `raw`
 
 {: #chunk-data-provider-rule-source-example }
@@ -960,9 +960,7 @@ In its json definition, the rule source has the following fields:
 {
     "type": "kubejs_tfc:rock",
     "rock_block": "sandstone",
-    "fallback_state": {
-        "Name": "minecraft:sandstone"
-    }
+    "fallback_state": "minecraft:sandstone"
 }
 ```
 
@@ -973,6 +971,8 @@ In its json definition, the rule source has the following fields:
 ```js
 event.getWorldSeed(): number
 event.getNormalNoise(id: ResourceLocation): NormalNoise
+event.getRandomSource(hashedName: ResourceLoaction): RandomSource
+event.getSettings(): Settings
 event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
@@ -981,18 +981,13 @@ event.rocks(getter: RocksGetter): void
 
 - `.getWorldSeed()`{: .language-kube #chunk-data-provider-seed }: Returns the seed of the world the chunk data provider is being applied to
 - `.getNormalNoise(id: ResourceLocation)`{: .language-kube #chunk-data-provider-normal-noise }: Returns the `NormalNoise` defined by the noise parameters at the given id
-- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generatePartial(...)`{: .language-kube } is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
-    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generatePartial(...)`{: .language-kube } should be called here. `.generateFull(...)`{: .language-kube } *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback. The parameters for `.generatePartial(...)`{: .language-kube } are:
-        - `rainfallLayer: LerpFloatLayer`{: .language-kube }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in TFC's climate model to determine the rainfall at a position
-        - `temperatureLayer: LerpFloatLayer`{: .language-kube }: A [LerpFloatLayer]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by TFC's climate model to determine the average temperature at a position
-        - `forestType: ForestType`{: .language-kube }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
-        - `forestWeirdness: number`{: .language-kube }: A number, in the range [0, 1], for the 'weirdness' of forests in the chunk. Used by TFC's forest configured feature
-        - `forestDensity: number`{: .language-kube }: A number, in the range [0, 1], for the density of the forests in the chunk. Used by TFC's forest configured feature
+- `.getRandomSource(hashedName: ResourceLocation)`{: .language-kube #chunk-data-provider-get-random-source }: Creates a thread-unsafe `RandomSource` seeded by the given `ResourceLocation` and the spawn center positions of the generator's TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/Settings.java)
+- `.getSettings()`{: .language-kube #chunk-data-provider-get-settings }: Gets the TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/Settings.java) of the chunk generator
+- `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or [`.generatePartial(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-partial){: .preserve-color } is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
+    - `data: ChunkData`{: .language-kube }: TFC's [`ChunkData`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data). [`.generatePartial(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-partial){: .preserve-color } should be called here. [`.generateFull(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-full){: .preserve-color } *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
-- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-full }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or `.generateFull(...)`{: .language-kube } is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
-    - `data: ChunkData`{: .language-kube }: TFC's [ChunkData](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/chunkdata/ChunkData.java). `.generateFull(...)`{: .language-kube } should be called here and the chunk is guaranteed to have access to the `WORLD_SURFACE_WG`{:.e} and `OCEAN_FLOOR_WG`{:.e} heightmaps during this callback. The parameters for `.generateFull(...)`{: .language-kube } are:
-        - `surfaceHeight: int[256]`{: .language-kube }: An array of integer values of size `256`{:.n} (`16`{:.n} * `16`{:.n}; `BlockPos` resolution) representing the surface height of the world. Value indexes are `x + 16 * z`{: .language-kube } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. This is where the `surfaceY`{:.v} parameter of a `RocksGetter`{:.f} callback is gotten from.
-        - `aquiferSurfaceHeight: int[16]`{: .language-kube }: An array of integer values of size `16`{:.n} (`4`{:.n} * `4`{:.n}; `QuartPos` resolution) representing the height of aquifer surfaces. Only used by [TFCAquifer](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
+- `.full(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-full }: Sets the calculation for the information required to promote the chunks `ChunkData` from `PARTIAL`{:.e} to `FULL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or [`.generateFull(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-full){: .preserve-color } is never called, the data will be promoted with [values matching the `ocean_floor_wg` heightmap for surface heights and 20 less than the quart average of the surface heights](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L37-L57). The parameters are:
+    - `data: ChunkData`{: .language-kube }: TFC's [`ChunkData`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data). [`.generateFull(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-full){: .preserve-color }should be called here and the chunk is guaranteed to have access to the `WORLD_SURFACE_WG`{:.e} and `OCEAN_FLOOR_WG`{:.e} heightmaps during this callback
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for
 - `.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>)`{: .language-kube #chunk-data-provider-aquifer }: Sets the calculation for the `Aquifer` of a given chunk. This aquifer is used by TFC's erosion feature to place subterranean liquids. Accepts a callback with one parameter and a return value. If not set, an aquifer that only fills air will be returned. The parameters are:
     - `chunk: ChunkAccess`{: .language-kube }: The chunk the aquifer is being generated for
@@ -1076,6 +1071,20 @@ The event with matching key
 ```js
 TFCEvents.createChunkDataProvider('nether', event => {
 
+    // Use a LayeredArea for the rocks as noises can be slow when used with the rock rule source
+    const randomSource = event.getRandomSource('nether');
+    const rockLayer = TFC.misc.uniformLayeredArea(randomSource.nextLong());
+    for (let i = 0 ; i < 3 ; i++) {
+        rockLayer.zoom(true, randomSource.nextLong()).smooth(randomSource.nextLong());
+    }
+    for (let i = 0 ; i < 6 ; i++) {
+        rockLayer.zoom(true, randomSource.nextLong());
+    }
+    rockLayer
+        .smooth(randomSource.nextLong())
+        .zoom(true, randomSource.nextLong())
+        .smooth(randomSource.nextLong());
+
     const rain = TFC.misc.lerpFloatLayer(0, 0, 0, 0);
     const tempLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 4621678939469)
         .spread(0.2)
@@ -1086,23 +1095,10 @@ TFCEvents.createChunkDataProvider('nether', event => {
         .terraces(9)
         .affine(6, 12)
         .scaled(6, 18, 0, 1);
-
-    const rockTypeNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 3216548497)
-        .spread(0.061)
-        .scaled(0, 3) // 0: Oceanic; 1: Volcanic; 2: Land; 3: Uplift
-        .map(val => Math.round(val));
-    const rockLayerNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 9774532562233)
-        .spread(0.000697)
-        .scaled(0x80000000, 0x7fffffff) // Effectively acts as a random number generator within the range of Java's int type
-        .map(val => val << 2) // Shift up two bits so the type noise is what is used for rock types instead of the random number
-        .add(rockTypeNoise);
     const rockLayerHeightNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 30121796313692)
         .octaves(6)
         .scaled(12, 34)
         .spread(0.009);
-
-    // Noises defined through json can be gotten through this method
-    const surfaceNoise = event.getNormalNoise('minecraft:surface');
 
     // Precompute the aquifer heights as constants as this is nether and will not realistically change
     var aquifer = [];
@@ -1153,7 +1149,8 @@ TFCEvents.createChunkDataProvider('nether', event => {
         do {
             // A simplified version of what TFC does for its layer depth
             // Of note is the lack of skewing for either the rock layer or the heights
-            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5) + surfaceNoise.getValue(x, 56, z);
+            // And the non-use of the cache
+            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5);
             if (deltaY <= layerHeight) {
                 break;
             }
@@ -1161,7 +1158,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
             layer++;
         } while (deltaY > 0);
 
-        return rockLayers.sampleAtLayer(rockLayerNoise.noise(x, z), layer);
+        return rockLayers.sampleAtLayer(rockLayer.getAt(x, z), layer);
     });
 })
 ```
@@ -1204,8 +1201,8 @@ TFCEvents.registerItemStackModifierConverters(event => {
 
 {% comment %}
 
-#### Chunk Data Provider Rocks
+### Chunk Data Provider Rocks
 
-This comment is here to make VSC shut up because it can't link to synthetic anchors
+### chunk data provider get settings
 
 {% endcomment %}

@@ -29,17 +29,24 @@ This provides access to various objects and methods that can be used throughout 
 
 These are methods which can be accessed directly from the `TFC` object
 
-### Alloy Part
+{: #alloy-part}
+
+### AlloyPart
 
 This defines an object which defines the values used in an [alloy recipe]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)'s input contents
 
 Method signature:
 
 ```js
-TFC.alloyPart(metal: String, min: number, max: number): AlloyPart
+TFC.alloyPart(metal: String, min: number, max: number, keepOriginalBounds?: boolean): AlloyPart
 ```
 
-Creates an `AlloyPart` which can be converted to and from json easily. Only values in the range [0, 1] are valid for the `min` and `max` arguments
+- `metal: String`{:.language-kube}: The metal
+- `min: number`{:.language-kube}: The minimum percent, in the range [0, 1], of the metal
+- `max: number`{:.language-kube}: The maximum percent, in the range [0, 1], of the metal
+- `keepOriginalBounds?: boolean`{:.language-kube}: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement-alloy-part) an alloy part, if the bounds should stay as they were originally in the recipe. Defaults to `true`{:.p}
+
+Creates an `AlloyPart` for use in [alloying recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)
 
 Example:
 
@@ -57,7 +64,9 @@ In json:
 }
 ```
 
-### Block Ingredient
+{: #block-ingredient }
+
+### BlockIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#block-ingredients)!
 
@@ -95,7 +104,9 @@ In json:
 ]
 ```
 
-### Fluid Ingredient
+{: #fluid-ingredient }
+
+### FluidIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-ingredients)!
 
@@ -133,7 +144,9 @@ In json:
 ]
 ```
 
-### Fluid Stack Ingredient
+{: #fluid-stack-ingredient }
+
+### FluidStackIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-stack-ingredients)!
 
@@ -226,3 +239,25 @@ The central place for dealing with TFC's [item stack provider](https://terrafirm
 ### [Miscellaneous]({% link kubejs_tfc/1.20.1/bindings/misc.md %})
 
 A collection of various miscellaneous things that may be used in scripts
+
+{% comment %}
+
+### calendar
+
+### climate
+
+### ingredient
+
+### item stack provider
+
+### miscellaneous
+
+### alloy part
+
+### block ingredient
+
+### fluid ingredient
+
+### fluid stack ingredient
+
+{% endcomment %}

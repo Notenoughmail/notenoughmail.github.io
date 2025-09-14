@@ -41,7 +41,7 @@ The following types are available:
 - [Sapling](#sapling)
 - [Leaves](#leaves)
 
-<a id="firmalife-blocks"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-blocks"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 
 - [Cheese Wheel](#firmalife-cheese-wheel)
 
@@ -58,7 +58,7 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.allowedFluids(fluids: String[])`{: .language-kube #aqueduct-allowed-fluids }: Sets the fluids that the aqueduct may hold
-    - `fluids`: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
+    - `fluids`{:.v}: The registry names of fluids the aqueduct can hold. Two liquids with different namespaces but same paths will not be accepted, `minecraft:empty` will automatically be added
 - `.models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-kube #aqueduct-models }: Sets the model generation of the aqueduct. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
     - `.base()`{: .language-kube }: A boolean. If the model part in operation is for the base
     - `.north()`{: .language-kube }: A boolean. If the model part in operation is the north part
@@ -97,7 +97,6 @@ Inherits the methods of the default block builder
 - `.twig()`{: .language-kube #ground-cover-twig }: Sets the collision shape to that of TFC's twigs and makes the block flammable
 - `.groundCoverModelShape(model: String)`{: .language-kube #ground-cover-model }: Sets the default parent model, defaults to `loose/igneous_intrusive_2`{:.s}
     - This accepts anything added to [kubejs_tfc/models/block/ground_cover/](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.20.1/src/main/resources/assets/kubejs_tfc/models/block/ground_cover)
-- `.notAxisAligned()`{: .language-kube #ground-cover-axis-aligned }: Rotates placed models by 45 degrees. Currently broken, will be fixed in 1.3.3
 - `.collision()`{: .language-kube #ground-cover-collision }: Enables collision for the block
 - `.withPreexistingItem(item: ResourceLocation)`{: .language-kube #ground-cover-preexisting-item }: Sets the 'block item' of the block to be an existing item
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube #ground-cover-extend-props}: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -988,8 +987,10 @@ Inherits the methods of the default block builder
     - `.models(models: BiConsumer<FallenLeafModelType, ModelGenerator>)`{: .language-kube }: Sets the model generation of the fallen leaves block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
         - `.height`{: .language-kube }: A number, the height in pixels of the state
         - `.layers`{: .language-kube }: A number, the `layers` block state property value of the state
+    - `.noDynamicTinting()`{: .language-kube #leaves-no-dynamic-tinting }: Removes seasonal tinting completely
 - `.twig(id: ResourceLocation)`{: .language-kube #leaves-twig }: Sets the twig block to be placed when a natural leaf is broken
 - `.seasonalColors(seasonalColors: boolean)`{: .language-kube #leaves-seasonal-colors}: If the tint of the leaves should change seasonally. Defaults to `true`{:.p}
+- `.noDynamicTinting()`{: .language-kube #leaves-no-dynamic-tinting }: Removes seasonal tinting completely
 
 {: #leaves-example }
 
@@ -1019,6 +1020,7 @@ Inherits the methods of the default block builder
 - `.freshInsideTexture(tex: String)`{: .language-kube #cheese-wheel-fresh-inside }: Sets the inside texture when the cheese is fresh
 - `.agedInsideTexture(tex: String)`{: .language-kube #cheese-wheel-aged-inside }: Sets the inside texture when the cheese is aged
 - `.vintageInsideTexture(tex: String)`{: .language-kube #cheese-wheel-vintage-inside }: Sets the inside texture when the cheese is vintage
+- `.barrelRackModel(model: String)`{: .language-kube #cheese-wheel-barrel-rack-model }: Sets the barrel rack model to use. Defaults to `tfc:block/barrel_rack`
 
 {: #cheese-wheel-example }
 
@@ -1036,6 +1038,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 
 - `.flammable(flammability: number, fireSpreadSpeed: number)`{: .language-kube #extend-props-flammable }: Sets the flammability and fire spread speed of the block
 - `.pathType(pathType: BlockPathTypes)`{: .language-kube #extend-props-path-type }: Sets the block's path type, used by mobs to determine if they may walk over it or not
+- `.adjacentPathType(pathType: BlockPathTypes)`{: .language-kube #extend-props-adjacent-path-types }: Sets the path type the block should 'project' onto adjacent blocks
 - `.enchantPower(f: number)`{: .language-kube #extend-props-enchant-power }: Sets the block's enchant power
 - `.enchantPowerFunction(function: Function<BlockState, Double>)`{: .language-kube #extend-props-enchant-power-function }: Sets the function the block uses to determine its enchant power based on its block state
 - `.noCollision()`{: .language-kube #extend-props-no-collision }: Removes the block's collision
@@ -1106,11 +1109,11 @@ The following types are available:
 - [Glass Bottle](#glass-bottle)
 - [Jug](#jug)
 
-<a id="firmalife-items"></a>If [FirmaLife](https://modrinth.com/mod/firmalife) is installed, the following types are also available:
+<a id="firmalife-items"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 
 - [Watering Can](#firmalife-watering-can)
 
-<a id="precision-prospecting-items"></a>If [Precision Prospecting](https://modrinth.com/mod/precision-prospecting) is installed, the following types are also available:
+<a id="precision-prospecting-items"></a>If *Precision Prospecting* {% include mr.html link='precision-prospecting' %} {% include cf.html link='precision-prospecting' %} is installed, the following types are also available:
 
 - [Prospector's Hammer](#precision-prospecting-prospector-hammer)
 - [Prospector's Drill](#precision-prospecting-prospector-drill)
@@ -1277,7 +1280,7 @@ Inherits the methods of the basic item builder
 - `.fluidTagAccept(fluidTag: String)`{: .language-kube #mold-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_ingot_mold`
 - `.capacity(capacity: Supplier<Integer>)`{: .language-kube #mold-capacity-supplier }: Sets the mB capacity supplier of the mold, defaults to `() => 100`{: .language-kube }
 
-<a id="tfccc"></a>If [TFC Casting with Channels](https://www.curseforge.com/minecraft/mc-mods/tfc-casting-with-channels) is installed, the following method is available
+<a id="tfccc"></a>If *TFC Casting with Channels* {% include cf.html link='tfc-casting-with-channels' %} is installed, the following method is available
 
 - `.tfcccAllowedInMoldTable(model?: String[])`{: .language-kube #mold-tfccc-allowed-in-mold-table }: Allows the mold to be placed in a mold table
     - *Optional 1st parameter*: A list of strings, may be omitted to not automatically generate a model. If present, there should be 14 strings each with 14 characters in them. See one of the [defaults](https://github.com/lJuanGB/TFCCasting/blob/main/src/main/resources/assets/tfcchannelcasting/models/mold/tfc/ceramic/axe_head_mold.json) for an example of how it should look
@@ -1418,9 +1421,10 @@ Inherits the methods of the default item builder
 
 {: #jar-methods }
 
-#### Extra Method
+#### Extra Methods
 
 - `.placedModel(model: String)`{: .language-kube #jar-placed-model }: Sets the model of the jar when placed, defaults to the item's id
+- `.withoutCraftingRemainder()`{: .language-kube #jar-without-crafting-remainder }: Makes it so the jar does not have a crafting remainder
 
 {: #jar-example }
 
