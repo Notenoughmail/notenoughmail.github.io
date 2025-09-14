@@ -136,7 +136,7 @@ figure {
     border-radius: 0.25rem;
 }
 
-details {
+details:not(.tags) {
     background: linear-gradient(#27262b, #27262b) padding-box, linear-gradient(90deg, #7d7c7e, transparent) border-box;
     border: 1px solid transparent;
     margin-bottom: 0.25rem;
@@ -151,7 +151,7 @@ details {
     }
 }
 
-details[open] {
+details:not(.tags)[open] {
     summary::marker {
         content: "− ";
         color: red;

@@ -29,7 +29,9 @@ This provides access to various objects and methods that can be used throughout 
 
 These are methods which can be accessed directly from the `TFC` object
 
-### Alloy Part
+{: #alloy-part}
+
+### AlloyPart
 
 This defines an object which defines the values used in an [alloy recipe]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)'s input contents
 
@@ -42,7 +44,7 @@ TFC.alloyPart(metal: String, min: number, max: number, keepOriginalBounds?: bool
 - `metal: String`{:.language-kube}: The metal
 - `min: number`{:.language-kube}: The minimum percent, in the range [0, 1], of the metal
 - `max: number`{:.language-kube}: The maximum percent, in the range [0, 1], of the metal
-- `keepOriginalBounds?: boolean`{:.language-kube}: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement) an alloy part, if the bounds should be modified. Defaults to `true`{:.p}
+- `keepOriginalBounds?: boolean`{:.language-kube}: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement-alloy-part) an alloy part, if the bounds should stay as they were originally in the recipe. Defaults to `true`{:.p}
 
 Creates an `AlloyPart` for use in [alloying recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)
 
@@ -62,7 +64,9 @@ In json:
 }
 ```
 
-### Block Ingredient
+{: #block-ingredient }
+
+### BlockIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#block-ingredients)!
 
@@ -100,7 +104,9 @@ In json:
 ]
 ```
 
-### Fluid Ingredient
+{: #fluid-ingredient }
+
+### FluidIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-ingredients)!
 
@@ -138,7 +144,9 @@ In json:
 ]
 ```
 
-### Fluid Stack Ingredient
+{: #fluid-stack-ingredient }
+
+### FluidStackIngredient
 
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/common-types/#fluid-stack-ingredients)!
 
@@ -243,5 +251,13 @@ A collection of various miscellaneous things that may be used in scripts
 ### item stack provider
 
 ### miscellaneous
+
+### alloy part
+
+### block ingredient
+
+### fluid ingredient
+
+### fluid stack ingredient
 
 {% endcomment %}

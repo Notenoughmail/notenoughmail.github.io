@@ -162,7 +162,7 @@ The command has the following form:
 
 [^4]: A pair of numbers
 
-This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-z *square* bounded by the `<from>`{:.v} and `<to>`{:.m} positions x and z coordinates. The value of the noise at the sampled position will then be mapped to a y position within the bounds of `<from>`{:.v} and `<to>`{:.m} and white stained glass will be placed at that position. If the value is beyond the bounds of `<output_range>`{:.r}, then red stained glass will be placed at the edge of the y-boundaries instead. If the value is infinite, then lime stained glass will be placed instead. If the value is [`NaN`](https://en.wikipedia.org/wiki/NaN), then purple stained glass will be placed instead.
+This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-z *square* bounded by the `<from>`{:.v} and `<to>`{:.m} positions' x and z coordinates. The value of the noise at the sampled position will then be mapped to a y position within the bounds of `<from>`{:.v} and `<to>`{:.m} and white stained glass will be placed at that position. If the value is beyond the bounds of `<output_range>`{:.r}, then red stained glass will be placed at the edge of the y-boundaries instead. If the value is infinite, then lime stained glass will be placed instead. If the value is [`NaN`](https://en.wikipedia.org/wiki/NaN), then purple stained glass will be placed instead.
 
 ## Inspect 3D Noise
 
@@ -178,3 +178,5 @@ The command has the following form:
 - `<output_range>`{:.r}: A range[^4], the expected range for output values of the noise.
 - `<noise>`{:.nb}: The name of the noise to inspect.
 - `[<y_value>]`{:.o}: A number. If present, the 3D noise is treated as a 2D noise by only sampling it at the given this y-value, and placed in-world as if it were a 2D noise.
+
+This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-y-z *cube* bounded by the `<from>`{:.v} and `<to>`{:.m} positions' x, y, and z coordinates. The value of the noise at the sampled position will then be mapped onto a gradient of stained glass, as described below, and the block will be placed at that position. IF the value is beyond the bounds of `<output_range>`{:.r}, then the positions will be filled with air.
