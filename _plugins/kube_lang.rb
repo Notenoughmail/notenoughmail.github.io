@@ -134,7 +134,7 @@ module Rouge
                 )
             end
 
-            # An important regarding inner classes: The aprt before and after the $ will be treated as different 'words'
+            # An important note regarding inner classes: The part before and after the $ will be treated as different 'words'
             # thus they will not be parsed & colored as a single string, so only the part after the $ should be included
             # the $ will be included with the second string and is safe to include here
             def self.enums
@@ -158,7 +158,6 @@ module Rouge
                 )
             end
 
-            # TODO: Maybe adjust this to be able to handle Blah$Blah as a single word
             def self.id_regex
                 /[\p{L}\p{Nl}$_][\p{Word}]*/io
             end

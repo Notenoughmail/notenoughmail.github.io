@@ -1683,7 +1683,7 @@ ServerEvents.recipes(event => {
 
 Artisanal's distillery recipe type
 
-{ #artisanal-distillery-signature }
+{: #artisanal-distillery-signature }
 
 ### Method Signature
 
@@ -1734,10 +1734,208 @@ ServerEvents.recipes(event => {
 
 ## Artisanal Juicing
 
+Artisanal's juicing recipe type
+
+{: #artisanal-juicing-signature }
+
+### Method Signature
+
+```js
+event.recipes.artisanal.juicing(
+    result: FluidStack,
+    ingredient: Ingredient
+)
+```
+
+- 1st argument: A `FluidStack`, the output of the recipe
+- 2nd argument: An item ingredient, the input item
+
+{: #artisanal-juicing-example }
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.artisanal.juicing(
+        Fluid.of('minecraft:milk', 50),
+        'tfc:food/barley_grain'
+    )
+})
+```
+
 ## Artisanal Only If Flux Makes Limewater Instant Barrel
+
+Artisanal's only if flux makes limewater instant barrel recipe type, an version of [instant barrel recipes](#barrel-instant) which only works if Artisanal's `fluxMakesLimewater` config option is enabled
+
+{: #artisanal-config-barrel-signature }
+
+### Method Signature
+
+```js
+event.recipes.artisanal.only_if_flux_makes_limewater_instant_barrel()
+    // Additional methods
+    .outputItem(outputItem: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: Ingredient)
+    .inputFluid(inputFluid: FluidStackIngredient)
+    .inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)
+    .sound(sound: String)
+```
+
+- `.outputItem(otuputItem: ItemStackProvider)`{: .language-kube #artisanal-config-barrel-output-item }: Accepts an [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider) and sets the recipe's output item, defaults to empty
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube #artisanal-config-barrel-output-fluid }: Accepts a `FluidStack` and sets the recipe's output fluid, defaults to empty
+- `.outputs(outputItem: ItemStackProvider, outputFluif: FluidStack)`{: .language-kube #artisanal-config-barrel-outputs }: A convenience method for setting both outputs, identical to calling `.outputItem(outputItem).outputFluid(outputFluid)`{: .language-kube }
+- `.inputItem(inputItem: Ingredient)`{: .language-kube #artisanal-config-barrel-input-item }: Accepts an item ingredient and sets the recipe's input item, will accept counts greater than 1, defaults to empty
+- `.inputFluid(inputFluid: FluidStackIngredient)`{: .language-kube #artisanal-config-barrel-input-fluid }: Accepts a [`FluidStackIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient) and sets the recipe's input fluid, defaults to empty
+- `.inputs(inputItem: Ingredient, inputFluid: FluidStackIngredient)`{: .language-kube #artisanal-config-barrel-inputs }: A convenience method for setting both inputs, identical to calling `.inputItem(inputItem).inputFluid(inputFluid)`{: .language-kube }
+- `.sound(sound: String)`{: .language-kube #artisanal-config-barrel-sound }: Accepts a string, representing the registry name of a sound event which is played when a recipe finishes, defaults to `minecraft:block.brewing_stand.brew`[^1]
+
+{: .notice #artisanal-config-barrel-notice }
+> An instant barrel recipe must have an input item, input fluid, or both
+>
+> Barrels will not accept fluids that are not tagged `tfc:usable_in_barrel`, make sure that the input/output fluid(s) are tagged as such
+
+{: #artisanal-config-barrel-example }
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.artisanal.only_if_flux_makes_limewater_instant_barrel()
+        .outputs('minecraft:diamond', Fluid.of('minecraft:lava', 50))
+        .sound('minecraft:ambient.cave')
+        .inputFluid(Fluid.of('tfc:limewater', 500))
+})
+```
 
 ## Artisanal Specific No Remainder Damage Shaped Crafting
 
+Artisanal's specific no remainder damage shaped crafting, a version of shaped [damage inputs crafting](#damage-inputs-crafting) which also complete removes the remainders of the specified slot instead of just damaging it
+
+{: #artisanal-specific-no-remainder-damage-shaped-signature }
+
+### Method Signature
+
+```js
+event.recipes.artisanal.specific_no_remainder_damage_shaped(
+    result: ItemStackProvider,
+    pattern: String[],
+    key: Map<Character, Ingredient>,
+    row: number,
+    column: number
+)
+```
+
+- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 2nd argument: The pattern for the crafting grid, spaces can be used to indicate an empty slot
+- 3rd argument: A `Character` to ingredient map, associates the pattern to ingredients
+- 4th argument: A number, the row of the input ingredient to be removed and which the output uses if it is dependent on its inputs
+- 5th argument: A number, the column of the input ingredient to be removed and which the output uses if it is dependent on its inputs
+
+{: #artisanal-specific-no-remainder-damage-shaped-example }
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.artisanal.specific_no_remainder_damage_shaped(
+        'minecraft:stick',
+        [
+            'S S',
+            ' A ',
+            'S S'
+        ],
+        {
+            S: '#tfc:hammers',
+            A: 'minecraft:water_bucket'
+        },
+        1,
+        1
+    )
+})
+```
+
 ## Artisanal Specific no Remainder Shaped Crafting
 
+Artisanal's specific no remainder shaped crafting recipe type, a version of [advanced shaped crafting](#advanced-shaped-crafting) recipes which removes the remainders of the primary ingredient
+
+{: #artisanal-specific-no-remainder-shaped-signature }
+
+### Method Signature
+
+```js
+event.recipes.artisanal.specific_no_remainder_shaped(
+    result: ItemStackProvider,
+    pattern: String[],
+    key: Map<Character, Ingredient>,
+    row: number,
+    column: number
+)
+```
+
+- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 2nd argument: The pattern for the crafting grid, spaces can be used to indicate an empty slot
+- 3rd argument: A `Character` to ingredient map, associates the pattern to ingredients
+- 4th argument: A number, the row of the input ingredient to be removed and which the output uses if it is dependent on its inputs
+- 5th argument: A number, the column of the input ingredient to be removed and which the output uses if it is dependent on its inputs
+
+{: #artisanal-specific-no-remainder-shaped-example }
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.artisanal.specific_no_remainder_shaped(
+        'minecraft:iron_sword',
+        [
+            'SA',
+            'AS'
+        ],
+        {
+            S: 'minecraft:water_bucket',
+            A: 'minecraft:oak_log'
+        },
+        1,
+        1
+    )
+})
+```
+
 ## Artisanal Specific No Remainder Shapeless Crafting
+
+Artisanal's specific no remainder shapeless crafting recipe type, a version of [advanced shapeless crafting](#advanced-shapeless-crafting) recipes which removes the remainders of the primary ingredient
+
+{: #artisanal-specific-no-remainder-shapeless-signature }
+
+### Method Signature
+
+```js
+event.recipes.artisanal.specific_no_remainder_shapeless(
+    result: ItemStackProvider,
+    ingredients: Ingredient[],
+    primaryIngredient?: Ingredient
+)
+```
+
+- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
+- 2nd argument: An array of item ingredients, the inputs of the recipe
+- *Optional 3rd argument*: An item ingredient, which identifies the which slot of the recipe is used as the 'input' if the output is input-dependent and whose remainder will be discarded on crafting
+
+{: #artisanal-specific0no-remainder-shapeless-example }
+
+### Example
+
+```js
+ServerEvents.recipes(event => {
+    event.recipes.artisanal.specific_no_remainder_shapeless(
+        'minecraft:deepslate',
+        [
+            'minecraft:water_bucket',
+            'minecraft:milk_bucket',
+            'minecraft:stone'
+        ],
+        'minecraft:milk_bucket'
+    )
+})
+```

@@ -935,7 +935,7 @@ In its json definition, the generator definition has the following fields:
 
 - `type` must be `kubejs_tfc:wrapped`
 - `event_key`: The key which the event is fired for. A string.
-- `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are unlikely to be used except for the rock layer settings which can be used in custom rock generation.
+- `settings`: Same as `tfc_settings` in [TFC's chunk generator](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/world-preset/). These values are available in the event via [`.getSettings()`{: .language-kube }](#chunk-data-provider-get-settings ){:.preserve-color}
 - `generator`: A chunk generator.
 
 {: #chunk-data-provider-rule-source }
@@ -971,6 +971,8 @@ In its json definition, the rule source has the following fields:
 ```js
 event.getWorldSeed(): number
 event.getNormalNoise(id: ResourceLocation): NormalNoise
+event.getRandomSource(hashedName: ResourceLoaction): RandomSource
+event.getSettings(): Settings
 event.partial(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.full(gen: BiConsumer<ChunkData, ChunkAccess>): void
 event.erosionalAquifer(aquifer: Function<ChunkAccess, Aquifer>): void
@@ -979,6 +981,8 @@ event.rocks(getter: RocksGetter): void
 
 - `.getWorldSeed()`{: .language-kube #chunk-data-provider-seed }: Returns the seed of the world the chunk data provider is being applied to
 - `.getNormalNoise(id: ResourceLocation)`{: .language-kube #chunk-data-provider-normal-noise }: Returns the `NormalNoise` defined by the noise parameters at the given id
+- `.getRandomSource(hashedName: ResourceLocation)`{: .language-kube #chunk-data-provider-get-random-source }: Creates a thread-unsafe `RandomSource` seeded by the given `ResourceLocation` and the spawn center positions of the generator's TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/Settings.java)
+- `.getSettings()`{: .language-kube #chunk-data-provider-get-settings }: Gets the TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/settings/Settings.java) of the chunk generator
 - `.partial(gen: BiConsumer<ChunkData, ChunkAccess>)`{: .language-kube #chunk-data-provider-partial }: Sets the calculation for the information required to promote a chunk's `ChunkData` to `PARTIAL`{:.e}. Accepts a callback with two parameters and no return value. If not set, or [`.generatePartial(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-partial){: .preserve-color } is never called, the chunk data will be [filled with zero values](https://github.com/Notenoughmail/KubeJS-TFC/blob/1.20.1/src/main/java/com/notenoughmail/kubejs_tfc/util/implementation/worldgen/KubeChunkDataGenerator.java#L30-L36). The parameters are:
     - `data: ChunkData`{: .language-kube }: TFC's [`ChunkData`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data). [`.generatePartial(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-partial){: .preserve-color } should be called here. [`.generateFull(...)`{: .language-kube }]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk-data-generate-full){: .preserve-color } *can* be called here, but there is no guarantee that the chunk will have access to heightmaps during this callback
     - `chunk: ChunkAccess`{: .language-kube }: The chunk data is being generated for. **Note**: Heightmap access is not guaranteed during this callback
@@ -1067,6 +1071,20 @@ The event with matching key
 ```js
 TFCEvents.createChunkDataProvider('nether', event => {
 
+    // Use a LayeredArea for the rocks as noises can be slow when used with the rock rule source
+    const randomSource = event.getRandomSource('nether');
+    const rockLayer = TFC.misc.uniformLayeredArea(randomSource.nextLong());
+    for (let i = 0 ; i < 3 ; i++) {
+        rockLayer.zoom(true, randomSource.nextLong()).smooth(randomSource.nextLong());
+    }
+    for (let i = 0 ; i < 6 ; i++) {
+        rockLayer.zoom(true, randomSource.nextLong());
+    }
+    rockLayer
+        .smooth(randomSource.nextLong())
+        .zoom(true, randomSource.nextLong())
+        .smooth(randomSource.nextLong());
+
     const rain = TFC.misc.lerpFloatLayer(0, 0, 0, 0);
     const tempLayer = TFC.misc.newOpenSimplex2D(event.worldSeed + 4621678939469)
         .spread(0.2)
@@ -1077,23 +1095,10 @@ TFCEvents.createChunkDataProvider('nether', event => {
         .terraces(9)
         .affine(6, 12)
         .scaled(6, 18, 0, 1);
-
-    const rockTypeNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 3216548497)
-        .spread(0.061)
-        .scaled(0, 3) // 0: Oceanic; 1: Volcanic; 2: Land; 3: Uplift
-        .map(val => Math.round(val));
-    const rockLayerNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 9774532562233)
-        .spread(0.000697)
-        .scaled(0x80000000, 0x7fffffff) // Effectively acts as a random number generator within the range of Java's int type
-        .map(val => val << 2) // Shift up two bits so the type noise is what is used for rock types instead of the random number
-        .add(rockTypeNoise);
     const rockLayerHeightNoise = TFC.misc.newOpenSimplex2D(event.worldSeed + 30121796313692)
         .octaves(6)
         .scaled(12, 34)
         .spread(0.009);
-
-    // Noises defined through json can be gotten through this method
-    const surfaceNoise = event.getNormalNoise('minecraft:surface');
 
     // Precompute the aquifer heights as constants as this is nether and will not realistically change
     var aquifer = [];
@@ -1144,7 +1149,8 @@ TFCEvents.createChunkDataProvider('nether', event => {
         do {
             // A simplified version of what TFC does for its layer depth
             // Of note is the lack of skewing for either the rock layer or the heights
-            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5) + surfaceNoise.getValue(x, 56, z);
+            // And the non-use of the cache
+            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5);
             if (deltaY <= layerHeight) {
                 break;
             }
@@ -1152,7 +1158,7 @@ TFCEvents.createChunkDataProvider('nether', event => {
             layer++;
         } while (deltaY > 0);
 
-        return rockLayers.sampleAtLayer(rockLayerNoise.noise(x, z), layer);
+        return rockLayers.sampleAtLayer(rockLayer.getAt(x, z), layer);
     });
 })
 ```
@@ -1195,8 +1201,8 @@ TFCEvents.registerItemStackModifierConverters(event => {
 
 {% comment %}
 
-#### Chunk Data Provider Rocks
+### Chunk Data Provider Rocks
 
-This comment is here to make VSC shut up because it can't link to synthetic anchors
+### chunk data provider get settings
 
 {% endcomment %}
