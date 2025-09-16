@@ -4,6 +4,7 @@ title: Commands
 permalink: /kubejs_tfc/1.20.1/commands/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation for the commands added by KubeJS TFC, useful for modpack debugging
 ---
 
 # Commands

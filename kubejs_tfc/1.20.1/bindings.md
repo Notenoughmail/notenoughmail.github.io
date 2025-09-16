@@ -5,6 +5,7 @@ permalink: /kubejs_tfc/1.20.1/bindings/
 parent: 1.20.1
 grand_parent: KubeJS TFC
 has_children: true
+desc: Documentation on the methods available under the `TFC` object in scripts
 ---
 
 # Bindings

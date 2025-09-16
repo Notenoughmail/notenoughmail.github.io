@@ -4,6 +4,7 @@ title: Worldgen
 permalink: /kubejs_tfc/1.20.1/worldgen/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation on how to create some of TFC's [configured features](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/features/) through scripts
 ---
 
 # Worldgen

@@ -4,6 +4,7 @@ layout: page
 permalink: /kubejs_tfc/1.20.1/entities/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation on KubeJS TFC's EntityJS {% include mr.html link='entityjs' %} {% include cf.html link='entityjs' %} compatibility
 ---
 
 # Entities

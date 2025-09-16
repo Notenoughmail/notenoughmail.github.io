@@ -4,6 +4,7 @@ title: Data
 permalink: /kubejs_tfc/1.20.1/data/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation on creating TFC's [data types](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/) through scripts
 ---
 
 # Data

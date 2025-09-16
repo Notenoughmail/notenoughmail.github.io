@@ -4,6 +4,7 @@ title: Miscellaneous Features
 permalink: /kubejs_tfc/1.20.1/misc/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation of KubeJS TFC features which don't fit in another page
 ---
 
 # Miscellaneous Features

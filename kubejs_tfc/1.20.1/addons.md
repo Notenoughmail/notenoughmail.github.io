@@ -5,6 +5,7 @@ permalink: /kubejs_tfc/1.20.1/addons/
 parent: 1.20.1
 grand_parent: KubeJS TFC
 has_children: false
+desc: A directory-like page about the integration provided with several of TFC's addons
 ---
 
 # TFC Addons

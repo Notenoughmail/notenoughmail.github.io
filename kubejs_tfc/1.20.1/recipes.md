@@ -4,6 +4,7 @@ title: Recipes
 permalink: /kubejs_tfc/1.20.1/recipes/
 parent: 1.20.1
 grand_parent: KubeJS TFC
+desc: Documentation on creating TFC recipe through JS
 ---
 
 # Recipes
