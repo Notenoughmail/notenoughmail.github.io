@@ -144,7 +144,7 @@ The editor can be 'initialized' by clicking the button labeled "Create Layer Def
 Additional mapping entries can be added by clicking the button labeled "Add Rock to Layer Mapping" at the bottom.
 
 <details>
-    <summary text-closed="Reveal layer definition previews" text-open="Reveal layer definition previews"></summary>
+    <summary text-closed="Reveal layer definition previews" text-open="Hide layer definition previews"></summary>
     <figure>
         <img src="/assets/images/tfcgv/rock_editor/layer_definitions_edit_0.png" alt="Layer definitions edit" />
         <figcaption></figcaption>
