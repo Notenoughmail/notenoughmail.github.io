@@ -602,7 +602,7 @@ Inherits the methods of the default block builder
 - `.setModel(gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-1 }: Sets the crop's model for all growth stages
 - `.setModel(i: number, gen: Consumer<ModelGenerator>)`{: .language-kube #crop-model-2 }: Sets the crop's model for a specific growth stage
 - `.model(i: number, model: String)`{: .language-kube #crop-model-3 }: Sets the crop's model for a specific growth stage
-- `.texture(texture: String)`{: .language-kube crop-texture-0 }: Sets the crop's `crop`{:.s} texture for all growth stages
+- `.texture(texture: String)`{: .language-kube #crop-texture-0 }: Sets the crop's `crop`{:.s} texture for all growth stages
 - `.textureAt(i: number, id: String, texture: String)`{: .language-kube #crop-texture-1 }: Textures a specific key for the given stage
 - `.textureAt(i: number, texture: String)`{: .language-kube #crop-texture-2 }: Sets the crop's `crop`{:.s} texture for the given growth stage
 - `.textures(textures: JsonObject)`{: .language-kube #crop-textures-0 }: Sets the crop's textures for all growth stages
