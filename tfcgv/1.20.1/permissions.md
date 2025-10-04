@@ -58,7 +58,7 @@ This setting can be set via the `/tfcgenviewer set coords <permission_type>`{:.l
 
 #### climatePermission
 
-If the player has access to this, they may view the *Rainfall* and *Temperature* visualizers
+If the player has access to this, they may view the *Rainfall*, *Temperature*, and *Climate Restricted Features* visualizers
 
 This setting can be set via the `/tfcgenviewer set climate <permission_type>`{:.language-command} command and gotten via `/tfcgenviewer get climate`{:.language-command}
 
