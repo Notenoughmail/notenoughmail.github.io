@@ -33,7 +33,7 @@ Has all of TFC's options
 
 In addition, there are options to set the x and z offset of the preview (centered on (0,0) by default), the visualizer type, spawn overlay toggle, the preview size, and a seed field
 
-- Visualizer Type: Determines what the preview will show, defaults to *Rivers and Mountains*, clicking will toggle through: *Rock Types*, *Rocks*, *Biomes*, *Rainfall*, *Temperature*, *Biome Altitude*, *Inland Height*, and back to *Rivers and Mountains*
+- Visualizer Type: Determines what the preview will show, defaults to *Rivers and Mountains*, clicking will toggle through: *Rock Types*, *Rocks*, *Biomes*, *Rainfall*, *Temperature*, *Climate Restricted Features*, *Biome Altitude*, *Inland Height*, and back to *Rivers and Mountains*
     - Biomes: Colors the preview based on the biome that was sampled at that point
         - {% color 0000dc|▮ %}: Ocean
         - {% color 46a0fa|▮ %}: Ocean Reed
@@ -58,6 +58,7 @@ In addition, there are options to set the x and z offset of the preview (centere
         - {% color 64c864|▮ %}: Plains
     - Rainfall: Overlays the rainfall onto the land, purple is 0mm and dark red is 500mm
     - Temperature: Overlays the temperature onto the land, purple is -20°C and dark red is 30°C
+    - Climate Restricted Features: Display the ranges where certain features will spawn
     - Biome Altitude: Overlays the general height of biomes onto the land, lighter greens means higher altitudes
     - Inland Height: Overlays an approximation of the distance from the coast.
         - Green: Land; lighter is further from the coast
@@ -173,6 +174,6 @@ The information available in the in-world preview can be configured, see the [pe
 ## Demo
 
 {: .notice }
-This video is from before the overhaul of the preview screen in 1.1.0 and lacks several features introduced in later updates
+This video is from before the overhaul of the preview screen in 1.1.0 and lacks features introduced in later updates
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jfreS69Sb-Q?si=SjwpFwlBY_dKuwzF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

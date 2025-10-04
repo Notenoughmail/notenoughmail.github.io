@@ -17,6 +17,7 @@ The colors used for the different visualizer types can be changed via resource p
 - [Biomes](#biomes)
 - [Rainfall](#rainfall)
 - [Temperature](#temperature)
+- [Climate Restricted Features](#climate-restricted-features)
 - [Biome Altitude](#biome-altitude)
 - [Inland Height](#inland-height)
 - [Fill Ocean](#fill-ocean)
@@ -151,6 +152,24 @@ A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewe
 > }
 > ```
 
+## Climate Restricted Features
+
+In order to visualize a placed feature's climate range, it must be in the `tfcgenviewer:visualizable_features` tag and have a [color definition](#color-definition) associated with it. The definitions are located at `assets/<namespace>/tfcgenviewer/features/<path>.json`{:.language-fs} so `minecraft:flower_patch` would be at `assets/minecraft/tfcgenviewer/features/flower_patch.json`{:.language-fs}
+
+{: .comment }
+> `tfc/tfcgenveiwer/features/vein/kaolin_disc.json`{:.language-fs} default
+>
+> ```json
+> {
+>     "color": {
+>         "r": 255,
+>         "g": 114,
+>         "b": 156
+>     },
+>     "key": "tfcgenviewer.feature.kaolin"
+> }
+> ```
+
 ## Biome Altitude
 
 The colors for land in the *Biome Altitude* visualizer are defined in  `assets/tfcgenviewer/tfcgenviewer/colors/biome_altitude/*.json`{:.language-fs}
@@ -199,7 +218,7 @@ The colors for the *Inland Height* visualizer are defined in `assets/tfcgenviewe
 
 ## Fill Ocean
 
-A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/fill_ocean.json`{:.language-fs} that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Biome Altitude*, and *Rivers and Mountains* visualizers
+A [color gradient definition](#color-gradient-definition) at `assets/tfcgenviewer/tfcgenviewer/gradients/fill_ocean.json`{:.language-fs} that defines the gradient of colors used for the ocean in the *Rainfall*, *Temperature*, *Climate Restricted Features*, *Biome Altitude*, and *Rivers and Mountains* visualizers
 
 {: .comment }
 > Default
