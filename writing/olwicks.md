@@ -1,6 +1,6 @@
 ---
 layout: page
-title: (Series) Posit-in-Orbit Olwicks-2
+title: (Series) Port-in-Orbit Olwicks-2
 permalink: /writing/olwicks/
 parent: Progenitology Universe
 grand_parent: Writing
