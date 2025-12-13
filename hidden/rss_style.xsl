@@ -29,6 +29,10 @@ layout: none
                 .main-content ul > li.post-item::before {
                     content: ">";
                 }
+                span.smol {
+                    font-size: 0.8rem;
+                    line-height: 1;
+                }
                 </style>
                 <script src="/assets/js/vendor/lunr.min.js"></script>
                 <script src="/assets/js/just-the-docs.js"></script>
@@ -65,6 +69,27 @@ layout: none
                                         <li class="post-item">
                                             <a class="post-title" href="{guid}"><span><xsl:value-of select="title" /></span></a>
                                             <span class="post-date"><i><xsl:value-of select="simpleDate" /></i></span>
+                                            <br />
+                                            <span class="smol">
+                                                <xsl:for-each select="category">
+                                                    <i><b><xsl:value-of select="." /></b></i>
+                                                    <xsl:choose>
+                                                        <xsl:when test="count(../category) &gt; 2">
+                                                            <xsl:if test="position() &lt; last() - 1">
+                                                                <xsl:text>, </xsl:text>
+                                                            </xsl:if>
+                                                            <xsl:if test="position() = last() - 1">
+                                                                <xsl:text>, and </xsl:text>
+                                                            </xsl:if>
+                                                        </xsl:when>
+                                                        <xsl:when test="count(../category) = 2">
+                                                            <xsl:if test="position() != last()">
+                                                                <xsl:text> and </xsl:text>
+                                                            </xsl:if>
+                                                        </xsl:when>
+                                                    </xsl:choose>
+                                                </xsl:for-each>
+                                            </span>
                                         </li>
                                     </xsl:for-each>
                                 </ul>

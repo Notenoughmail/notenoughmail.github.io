@@ -29,6 +29,7 @@ This series is also part of larger collection of works known as the [Progenitolo
 ## Chronologically
 
 - [Ghost's Lifeline](../ghosts-lifeline)
+- [In Memoria](../in-memoria)
 - [Enter Hoss](../enter-hoss)
 - [Takeoff](../takeoff)
 - [Cloud Watching](../cloud_watching)
