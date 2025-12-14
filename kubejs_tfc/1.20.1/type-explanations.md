@@ -4,7 +4,7 @@ title: Type Explanations
 permalink: /kubejs_tfc/1.20.1/type-explanations/
 parent: 1.20.1
 grand_parent: KubeJS TFC
-desc: Explanations of some of Java types that may be encountered in complex situations
+desc: Explanations of certain Java types that may be encountered in complex situations
 ---
 
 # Type Explanations

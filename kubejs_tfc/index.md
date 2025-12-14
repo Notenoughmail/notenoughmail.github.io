@@ -24,3 +24,7 @@ Version 0.x.x available for 1.18.2 and TFC:TNG 2.x.x
 ## [1.20.1](1.20.1/)
 
 Version 1.x.x available for 1.20.1 and TFC:TNG 3.x.x
+
+## [1.21.1](1.21.1/)
+
+Version 2.x.x avaialble for 1.21.1 and TFC:TNG 4.x.x
