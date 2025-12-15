@@ -55,7 +55,7 @@ TFC has two different types of damage resistance, item and entity
 
 ### Example
 
-```js
+```js-18
 // Gives diamond leggings very high resistance against piercing and a slight weakness against crushing
 onEvent('tfc.data', event => {
     event.addTFCItemDamageResistance('minecraft:diamond_leggings', 'p=1000000, c=-50')
@@ -74,7 +74,7 @@ onEvent('tfc.data', event => {
 
 ### Example
 
-```js
+```js-18
 // Makes land prey slightly strong against crushing damage and weak towards piercing damage
 onEvent('tfc.data', event => {
     event.addTFCEntityDamageResistance('tfc:land_prey', 'c=20, p=-3000')
@@ -87,20 +87,20 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid(s) which this drinkable data will apply to
 - 2nd argument: A consumer with several methods:
-    - `.consumeChance(number)`{: .language-kube }: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
-    - `.thirst(integer)`{: .language-kube }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
-    - `.intoxication(integer)`{: .language-kube }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
-    - `.effect(String, Consumer<EffectData>?)`{: .language-kube }
+    - `.consumeChance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
+    - `.thirst(integer)`{: .language-kube-18 }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
+    - `.intoxication(integer)`{: .language-kube-18 }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
+    - `.effect(String, Consumer<EffectData>?)`{: .language-kube-18 }
         - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
         - *optional 2nd argument*: A consumer with several methods:
-            - `.duration(integer)`{: .language-kube }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
-            - `.amplifier(integer)`{: .language-kube }: Accepts an integer and sets the level of the effect applied, defaults to 0
-            - `.chance(number)`{: .language-kube }: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
+            - `.duration(integer)`{: .language-kube-18 }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
+            - `.amplifier(integer)`{: .language-kube-18 }: Accepts an integer and sets the level of the effect applied, defaults to 0
+            - `.chance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the drinkable, if not provided a name will be automatically generated based on the fluid ingredient
 
 ## Example
 
-```js
+```js-18
 // Makes spring water drinkable, with a consume chance of 0.5, giving 2 thirst, and applying the thirst and glowing effects
 onEvent('tfc.data', event => {
     event.addTFCDrinkable('tfc:spring_water', e => {
@@ -127,7 +127,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Make coarse dirt apply 50% of every fertilizer type
 onEvent('tfc.data', event => {
     event.addTFCFertilizer('minecraft:coarse_dirt', 'n=0.5, p=0.5, k=0.5')
@@ -140,24 +140,24 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: An ingredient, the item(s) the which this food item data will apply to
 - 2nd argument: A consumer with several methods:
-    - `.type(sting)`{: .language-kube }: Accepts either `dynamic` or `dynamic_bowl`, if either of those are provided the values below will be ignored. This is primarily used for meals, see the dynamic foods note [in food data](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#food-items)
-    - `.hunger(integer)`{: .language-kube }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
+    - `.type(sting)`{: .language-kube-18 }: Accepts either `dynamic` or `dynamic_bowl`, if either of those are provided the values below will be ignored. This is primarily used for meals, see the dynamic foods note [in food data](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#food-items)
+    - `.hunger(integer)`{: .language-kube-18 }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
         - A full hunger bar is 20
-    - `.saturation(number)`{: .language-kube }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
-    - `.water(number)`{: .language-kube }: Accepts a number and defines how much water the ingredient restores, defaults to 0
+    - `.saturation(number)`{: .language-kube-18 }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
+    - `.water(number)`{: .language-kube-18 }: Accepts a number and defines how much water the ingredient restores, defaults to 0
         - The player's full water bar is equal to 100
-    - `.decayModifier(number)`{: .language-kube }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
+    - `.decayModifier(number)`{: .language-kube-18 }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
         - A higher value means a faster decay and shorter expiration time
-    - `.grain(number)`{: .language-kube }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
-    - `.fruit(number)`{: .language-kube }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
-    - `.vegetables(number)`{: .language-kube }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
-    - `.protein(number)`{: .language-kube }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
-    - `.dairy(number)`{: .language-kube }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
+    - `.grain(number)`{: .language-kube-18 }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
+    - `.fruit(number)`{: .language-kube-18 }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
+    - `.vegetables(number)`{: .language-kube-18 }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
+    - `.protein(number)`{: .language-kube-18 }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
+    - `.dairy(number)`{: .language-kube-18 }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the food item, if not provided a name will be automatically generated based on the ingredient
 
 ## Example
 
-```js
+```js-18
 // Makes vanilla steak a TFC food item, giving it 20 protein, 2 saturation, and 6 hunger
 onEvent('tfc.data', event => {
     event.addTFCFoodItem('minecraft:cooked_beef', e => {
@@ -179,7 +179,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Makes coal blocks burn at 1800℃ for 1200 ticks
 onEvent('tfc.data', event => {
     event.addTFCFuel('minecraft:coal_block', 1800, 1200)
@@ -198,7 +198,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Gives netherite ingots a heat definition that makes them heat up slower than most materials and able to forge at 1450℃
 onEvent('tfc.data', event => {
     event.addTFCHeat('minecraft:netherite_ingot', 3.05, null, 1450)
@@ -220,7 +220,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Makes dirt huge and heavy
 onEvent('tfc.data', event => {
     event.addTFCItemSize('minecraft:dirt', 's=huge, w=heavy')
@@ -238,7 +238,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Allows all tfc:alcohols to burn in all tfc:lamps for 300 ticks per mB
 onEvent('tfc.data', event => {
     event.addTFCLampFuel('#tfc:alcohols', '#tfc:lamps', 300)
@@ -263,7 +263,7 @@ Alternatively put `settings.dataPackOutput = true` at the top of your script fil
 
 ## Example
 
-```js
+```js-18
 // Makes water melt at 0℃, heat up slowly with iron ingots as the ingot item and gold ingots as the sheet item
 onEvent('tfc.data', event => {
     event.addTFCMetal('minecraft:water', 0, 50, 'minecraft:iron_ingot', 'minecraft:gold_ingot', 0)
@@ -290,7 +290,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Makes cobblestone walls support 1 above them, 1 below them, and three horizontally away from them
 onEvent('tfc.data', event => {
     event.addTFCSupport('minecraft:cobblestone_wall', 1, 1, 3)
@@ -308,7 +308,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Associates dirt with the tfc:blocks/clay/loam loot table when sluiced
 onEvent('tfc.data', event => {
     event.addTFCSluicing('minecraft:dirt', 'tfc:blocks/clay/loam')
@@ -328,7 +328,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ## Example
 
-```js
+```js-18
 // Associates dirt with the tfc:blocks/clay/loam loot table when panned and uses the full quartzite native gold and native gold result models
 onEvent('tfc.data', event => {
     event.addTFCPanning('minecraft:dirt', 'tfc:blocks/clay/loam', ['tfc:item/pan/native_gold/quartzite_full', 'tfc:item/pan/native_gold/result'])
@@ -340,17 +340,17 @@ onEvent('tfc.data', event => {
 See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/custom/#climate-ranges)!
 
 - 1st argument: A consumer with several optional methods
-    - `.minHydration(integer)`{: .language-kube }: Sets the `min_hydration` property, in the range [0,100]
-    - `.maxHydration(integer)`{: .language-kube }: Sets the `max_hydration` property, in the the range [0, 100]
-    - `.hydrationWiggle(integer)`{: .language-kube }: Sets the `hydration_wiggle_range` property
-    - `.minTemperature(integer)`{: .language-kube }: Sets the `min_temperature` property
-    - `.maxTemperature(integer)`{: .language-kube }: Sets the `max_temperature` property
-    - `.temperatureWiggle(integer)`{: .language-kube }: Sets the `temperature_wiggle_range` property
+    - `.minHydration(integer)`{: .language-kube-18 }: Sets the `min_hydration` property, in the range [0,100]
+    - `.maxHydration(integer)`{: .language-kube-18 }: Sets the `max_hydration` property, in the the range [0, 100]
+    - `.hydrationWiggle(integer)`{: .language-kube-18 }: Sets the `hydration_wiggle_range` property
+    - `.minTemperature(integer)`{: .language-kube-18 }: Sets the `min_temperature` property
+    - `.maxTemperature(integer)`{: .language-kube-18 }: Sets the `max_temperature` property
+    - `.temperatureWiggle(integer)`{: .language-kube-18 }: Sets the `temperature_wiggle_range` property
 - 2nd argument: A `ResourceLocation` which defines the name/file of the climate range
 
 ## Example
 
-```js
+```js-18
 // Makes it so barley can grow anywhere between hydration levels of 70 to 75 with a wiggle range of 30
 onEvent('tfc.data', event => {
     event.addTFCClimateRange(climate => {
@@ -367,15 +367,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A consumer with methods matching world generation feature placement [climate consumer](https://github.com/Notenoughmail/KubeJS-TFC/wiki/World-Generation#climateconsumer)
 - 2nd argument: A consumer with several optional methods
-    - `.chance(integer)`{: .language-kube }: Sets the chance (in 1/N chunks) that something will spawn
-    - `.distanceBelowSeaLevel(integer)`{: .language-kube }: Sets the distance below sea level something must spawn under, should only be used for aquatic animals
-    - `.solidGround(boolean)`{: .language-kube }: If true, requires the mob to spawn on a block with the `minecraft:valid_spawn` tag
-    - `.maxBrightness(integer)`{: .language-kube }: Sets the maximum brightness the mob may spawn at
+    - `.chance(integer)`{: .language-kube-18 }: Sets the chance (in 1/N chunks) that something will spawn
+    - `.distanceBelowSeaLevel(integer)`{: .language-kube-18 }: Sets the distance below sea level something must spawn under, should only be used for aquatic animals
+    - `.solidGround(boolean)`{: .language-kube-18 }: If true, requires the mob to spawn on a block with the `minecraft:valid_spawn` tag
+    - `.maxBrightness(integer)`{: .language-kube-18 }: Sets the maximum brightness the mob may spawn at
 - 3rd argument: A `ResourceLocation` which determines the name/file of the fauna definition
 
 ## Example
 
-```js
+```js-18
 /* 
  * Makes it so orcas can spawn in regions
  * - between 3 and 23 degrees Celsius
@@ -407,7 +407,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ## Example
 
-```js
+```js-18
 // Makes green glass a tier 5 greenhouse block, the same as treated wood greenhouses
 onEvent('tfc.data', event => {
     event.addFLGreenhouse('minecraft:green_glass', 5)
@@ -420,28 +420,28 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 - 1st argument: An ingredient, specifying the seed to use
 - 2nd argument: A consumer with several methods
-    - `.planter(String)`{: .language-kube }: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
-    - `.tier(integer)`{: .language-kube }: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
-    - `.stages(integer)`{: .language-kube }: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
+    - `.planter(String)`{: .language-kube-18 }: Accepts a string and sets which planter type may be used, available options are: `quad`, `large`, `hanging`, `trellis`, `bonsai`, and `hydroponic`. Defaults to `quad`
+    - `.tier(integer)`{: .language-kube-18 }: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
+    - `.stages(integer)`{: .language-kube-18 }: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
         - As an example squash has 5 textures that it uses for growing, the stage number is 4
-    - `.extraSeedChance(number)`{: .language-kube }: Accepts a number, in the range [0, 1], sets the chance of getting a second seed back, defaults to 0.5
-    - `.seed(object)`{: .language-kube }: Accepts an item, sets the seed that will be returned when picked
-    - `.crop(object)`{: .language-kube }: Accepts an item, sets the item that is guaranteed to be returned when picked
-    - `.nitrogen()`{: .language-kube }: Sets the nutrient to `nitrogen`
-    - `.phosphorous()`{: .language-kube }: Sets the nutrient to `phosphorous`
-    - `.potassium()`{: .language-kube }: Sets the nutrient to `potassium`
-    - `.texture(String...)`{: .language-kube }: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
+    - `.extraSeedChance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], sets the chance of getting a second seed back, defaults to 0.5
+    - `.seed(object)`{: .language-kube-18 }: Accepts an item, sets the seed that will be returned when picked
+    - `.crop(object)`{: .language-kube-18 }: Accepts an item, sets the item that is guaranteed to be returned when picked
+    - `.nitrogen()`{: .language-kube-18 }: Sets the nutrient to `nitrogen`
+    - `.phosphorous()`{: .language-kube-18 }: Sets the nutrient to `phosphorous`
+    - `.potassium()`{: .language-kube-18 }: Sets the nutrient to `potassium`
+    - `.texture(String...)`{: .language-kube-18 }: Accepts an array of strings corresponding to the textures the planter uses. Rules vary depending on planter:
         - For `large`, `quad`, `hydroponic`, and `hanging`:List the textures in order of growth
         - For `trellis`:List the strings in the order: `growing`, `dry`, `flowering`, `fruiting`
         - For `bonsai`:List the strings in the order: `fruiting`, `dry`, `flowering`, `branch`, `leaves`
-    - `.specials(String...)`{: .language-kube }: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
+    - `.specials(String...)`{: .language-kube-18 }: Accepts an array of strings corresponding to extra textures the planter uses. Rules vary depending on planter:
         - For `hanging`:Specify the fruit texture
         - For everything else this method isn't needed
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the plantable definition, if not provided a name will be automatically generated based on the ingredient
 
 ## Example
 
-```js
+```js-18
 // Makes oak saplings plantable in bonsai planters in a greenhouse tier of 15 or more
 onEvent('tfc.data', event => {
     event.addFLPlantable('minecraft:oak_sapling', e => {
@@ -472,7 +472,7 @@ onEvent('tfc.data', event => {
 
 ## Example
 
-```js
+```js-18
 // Makes crimson fungus apply 70% flame and 20% death
 onEvent('tfc.data', event => {
     event.addBeneathFertilizer('minecraft:crimson_fungus', 'f=0.7, d=0.2')
@@ -571,7 +571,7 @@ Returns a number array representing the nutrient values, in the order `grain`, `
 
 ## Example
 
-```js
+```js-18
 /*
  * @param {Internal.PlayerJS} player
  */

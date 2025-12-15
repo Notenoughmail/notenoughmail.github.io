@@ -35,14 +35,14 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods
-    - `.outer(String)`{: .language-kube }: Accepts a block state and sets the outer layer of the geode
-    - `.middle(String)`{: .language-kube }: Accepts a block state and sets the middle layer of the geode
-    - `.inner(String...)`{: .language-kube }: Accepts an array of weighted block states and sets the inner layer of the geode
+    - `.outer(String)`{: .language-kube-18 }: Accepts a block state and sets the outer layer of the geode
+    - `.middle(String)`{: .language-kube-18 }: Accepts a block state and sets the middle layer of the geode
+    - `.inner(String...)`{: .language-kube-18 }: Accepts an array of weighted block states and sets the inner layer of the geode
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
 
-```js
+```js-18
 // Builds a geode with an outer state of logs in the z direction, middle state of hardened basalt, and inner state of raw quartzite with 6 weight
 // and cut copper with 1 weight. The placement is identical to TFC's default geode placement
 onEvent('tfc.worldgen.data', event => {
@@ -86,7 +86,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 ### Example
 
-```js
+```js-18
 // Builds a boulder which is made of the gravel and cobble corresponding to the type the boulder is in for limestone and shale
 // The placement is identical to TFC's default boulder placement
 onEvent('tfc.worldgen.data', event => {
@@ -113,15 +113,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods:
-    - `.state(String)`{: .language-kube }: Accepts a block state and sets the block to be used. **Note:** must be a [thin spike block](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#thin-spike)
-    - `.radius(integer)`{: .language-kube }: Accepts an integer, in the range [1, 16], and sets the radius which to place spikes in
-    - `.tries(integer)`{: .language-kube }: Accepts an integer and sets how many attempts should be made to place spikes
-    - `.heights(integer, integer)`{: .language-kube }: Accepts two integers, the first setting the minimum height of the spike, and the second the maximum
+    - `.state(String)`{: .language-kube-18 }: Accepts a block state and sets the block to be used. **Note:** must be a [thin spike block](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#thin-spike)
+    - `.radius(integer)`{: .language-kube-18 }: Accepts an integer, in the range [1, 16], and sets the radius which to place spikes in
+    - `.tries(integer)`{: .language-kube-18 }: Accepts an integer and sets how many attempts should be made to place spikes
+    - `.heights(integer, integer)`{: .language-kube-18 }: Accepts two integers, the first setting the minimum height of the spike, and the second the maximum
 - 3rd argument: A [feature placement consumer](#placing-features)
 
 ### Example
 
-```js
+```js-18
 // Builds a thin spike feature using a custom block 'lava_spike'. The placement is identical to TFC's default for calcite
 onEvent('tfc.worldgen.data', event => {
     event.buildTFCThinSpike('thin_spike_test', e => {
@@ -160,36 +160,36 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods:
-    - `.type(String)`{: .language-kube }: Accepts a `cluster`, `disc`, or `pipe` and sets the type of vein this feature will be, defaults to `cluster`
-    - `.rarity(integer)`{: .language-kube }: Accepts an integer and sets the rarity, defaults to 60
+    - `.type(String)`{: .language-kube-18 }: Accepts a `cluster`, `disc`, or `pipe` and sets the type of vein this feature will be, defaults to `cluster`
+    - `.rarity(integer)`{: .language-kube-18 }: Accepts an integer and sets the rarity, defaults to 60
         - **Note:** the rarity is 1 over the provided value, i.e. .rarity(3) would make the vein occur in 1/3 chunks on average
-    - `.size(integer)`{: .language-kube }: Accepts an integer and sets the size, defaults to 8
-    - `.density(number)`{: .language-kube }: Accepts a number, in the range [0, 1], and sets the density of the vein, defaults to 0.2
-    - `.minY(object)`{: .language-kube }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the minimum y level the vein will spawn at
-    - `.maxY(object)`{: .language-kube }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the maximum y level the vein will spawn at
-    - `.indicator(consumer)`{: .language-kube }: Accepts a consumer with several methods:
-        - `.depth(integer)`{: .language-kube }: Accepts an integer and sets the maximum depth below the surface the vein will spawn surface indicators, defaults to 35
-        - `.spread(integer)`{: .language-kube }: Accepts an integer and sets the maximum horizontal distance from a vein that an indicator will spawn, defaults to 15
-        - `.rarity(integer)`{: .language-kube }: Accepts an integer and sets the rarity to spawn indicators, as a fraction of horizontal locations the vein places ore blocks, defaults to 10
-        - `.indicators(String...)`{: .language-kube }: Accepts an array of weighted block states and sets the indicator(s) to use
-    - `.replacementMap(consumer)`{: .language-kube }: Accepts a consumer with a method pair:
-        - `.replace(String...)`{: .language-kube }: A string array representing the list of blocks to replaced with:
-        - `.with(String...)`{: .language-kube }: An array of weighted block states, representing the ores of the vein, this method *must* be attached to a `replace` method
-    - `.salt(integer)`{: .language-kube }: Accepts an integer and sets the salt of the placement algorithm, defaults to the world's seed
-    - `.biomeFilter(String)`{: .language-kube }: Accepts string matching a biome tag and sets the filter for allowed biomes, defaults to allowing all biomes
+    - `.size(integer)`{: .language-kube-18 }: Accepts an integer and sets the size, defaults to 8
+    - `.density(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the density of the vein, defaults to 0.2
+    - `.minY(object)`{: .language-kube-18 }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the minimum y level the vein will spawn at
+    - `.maxY(object)`{: .language-kube-18 }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the maximum y level the vein will spawn at
+    - `.indicator(consumer)`{: .language-kube-18 }: Accepts a consumer with several methods:
+        - `.depth(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum depth below the surface the vein will spawn surface indicators, defaults to 35
+        - `.spread(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum horizontal distance from a vein that an indicator will spawn, defaults to 15
+        - `.rarity(integer)`{: .language-kube-18 }: Accepts an integer and sets the rarity to spawn indicators, as a fraction of horizontal locations the vein places ore blocks, defaults to 10
+        - `.indicators(String...)`{: .language-kube-18 }: Accepts an array of weighted block states and sets the indicator(s) to use
+    - `.replacementMap(consumer)`{: .language-kube-18 }: Accepts a consumer with a method pair:
+        - `.replace(String...)`{: .language-kube-18 }: A string array representing the list of blocks to replaced with:
+        - `.with(String...)`{: .language-kube-18 }: An array of weighted block states, representing the ores of the vein, this method *must* be attached to a `replace` method
+    - `.salt(integer)`{: .language-kube-18 }: Accepts an integer and sets the salt of the placement algorithm, defaults to the world's seed
+    - `.biomeFilter(String)`{: .language-kube-18 }: Accepts string matching a biome tag and sets the filter for allowed biomes, defaults to allowing all biomes
     - If the type is `disc` the following method is also available:
-        - `.height(integer)`{: .language-kube }: Accepts an integer and sets the height of the vein, the size parameter will be interpreted as the radius
+        - `.height(integer)`{: .language-kube-18 }: Accepts an integer and sets the height of the vein, the size parameter will be interpreted as the radius
     - If the type is `pipe` the following methods are also available:
-        - `.radius(integer)`{: .language-kube }: Accepts an integer and sets the radius of the vein, defaults to 3
-        - `.minSkew(integer)`{: .language-kube }: Accepts an integer and sets the minimum skew of the vein, defaults to 0
-        - `.maxSkew(integer)`{: .language-kube }: Accepts an integer and sets the maximum skew of the vein, defaults to 0
-        - `.minSlant(integer)`{: .language-kube }: Accepts an integer and sets the minimum slant of the vein, defaults to 0
-        - `.maxSlant(integer)`{: .language-kube }: Accepts an integer and sets the maximum slant of the vein, defaults to 0
-        - `.sign(number)`{: .language-kube }: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
+        - `.radius(integer)`{: .language-kube-18 }: Accepts an integer and sets the radius of the vein, defaults to 3
+        - `.minSkew(integer)`{: .language-kube-18 }: Accepts an integer and sets the minimum skew of the vein, defaults to 0
+        - `.maxSkew(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum skew of the vein, defaults to 0
+        - `.minSlant(integer)`{: .language-kube-18 }: Accepts an integer and sets the minimum slant of the vein, defaults to 0
+        - `.maxSlant(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum slant of the vein, defaults to 0
+        - `.sign(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
 
 ### Example
 
-```js
+```js-18
 // Builds a vein that places
 //      copper blocks in dacite,
 //      gold and iron blocks in andesite,
@@ -245,13 +245,13 @@ Adds TFC's [climate](https://terrafirmacraft.github.io/Documentation/1.18.x/worl
 
 Accepts a consumer with several methods:
 
-- `.minTemp(number)`{: .language-kube }: Accepts a number and sets the minimum allowed average yearly temperature
-- `.maxTemp(number)`{: .language-kube }: Accepts a number and sets the maximum allowed average yearly temperature
-- `.minRain(number)`{: .language-kube }: Accepts a number and sets the minimum allowed rainfall
-- `.maxRain(number)`{: .language-kube }: Accepts a number and sets the maximum allowed rainfall
-- `.minForest(String)`{: .language-kube }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the minimum required forest density
-- `.maxForest(number)`{: .language-kube }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the maximum required forest density
-- `.fuzzy(boolean)`{: .language-kube }: Accepts a boolean (default false). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges
+- `.minTemp(number)`{: .language-kube-18 }: Accepts a number and sets the minimum allowed average yearly temperature
+- `.maxTemp(number)`{: .language-kube-18 }: Accepts a number and sets the maximum allowed average yearly temperature
+- `.minRain(number)`{: .language-kube-18 }: Accepts a number and sets the minimum allowed rainfall
+- `.maxRain(number)`{: .language-kube-18 }: Accepts a number and sets the maximum allowed rainfall
+- `.minForest(String)`{: .language-kube-18 }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the minimum required forest density
+- `.maxForest(number)`{: .language-kube-18 }: Accepts a [forest type](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#forest-type) and sets the maximum required forest density
+- `.fuzzy(boolean)`{: .language-kube-18 }: Accepts a boolean (default false). If true, the temperature and rainfall requirements will be probabilistic relative to the center point, with maximum density at the exact center, and zero density at the edges
 
 ### .flatEnough(consumer)
 
@@ -259,9 +259,9 @@ Adds TFC's [flat enough](https://terrafirmacraft.github.io/Documentation/1.18.x/
 
 Accepts a consumer with several methods:
 
-- `.flatness(number)`{: .language-kube }: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
-- `.radius(integer)`{: .language-kube }: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
-- `.maxDepth(integer)`{: .language-kube }: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
+- `.flatness(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
+- `.radius(integer)`{: .language-kube-18 }: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
+- `.maxDepth(integer)`{: .language-kube-18 }: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
 
 ### .nearWater(integer)
 
@@ -337,24 +337,24 @@ TFC's world is built around rock layers which can be modified through the modifi
 
 - 1st argument: The resource location of the rock layer you will be adding. Generally advised to use `kubejs` as the namespace as to not overwrite or be overwritten by another mod
 - 2nd argument: A consumer with several methods:
-    - `.raw(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'raw' block type for the rock layer
-    - `.hardened(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'hardened' block type for the rock layer
-    - `.gravel(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'gravel' block type for the rock layer
-    - `.cobble(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'cobble' block type for the rock layer
-    - `.sand(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'sand' block type for the rock layer
-    - `.sandstone(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'sandstone' block type for the rock layer
-    - `.spike(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'spike' block type for the rock layer. This value is optional
+    - `.raw(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'raw' block type for the rock layer
+    - `.hardened(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'hardened' block type for the rock layer
+    - `.gravel(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'gravel' block type for the rock layer
+    - `.cobble(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'cobble' block type for the rock layer
+    - `.sand(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'sand' block type for the rock layer
+    - `.sandstone(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'sandstone' block type for the rock layer
+    - `.spike(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'spike' block type for the rock layer. This value is optional
         - **Note**: The provided block *must* be an instance of [RockSpikeBlock](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#rock-spike) or the game may crash due to lacking the required block states
-    - `.loose(String)`{: .language-kube }: Accepts a string representing the registry name of a block, sets the 'loose' block type for the rock layer. This value is optional
+    - `.loose(String)`{: .language-kube-18 }: Accepts a string representing the registry name of a block, sets the 'loose' block type for the rock layer. This value is optional
         - **Note**: The provided block *must* be an instance of [LooseRockBlock](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#loose-rock) or the game may crash due to lacking the required block states
-    - `.top()`{: .language-kube }: Allows the rock layer to spawn on the top rock layer in the world
-    - `.middle()`{: .language-kube }: Allows the rock layer to spawn on the middle rock layer in the world
-    - `.bottom()`{: .language-kube }: Allows the rock layer to spawn on the bottom rock layer in the world
-    - `.noWarnings()`{: .language-kube }: A utility method which will disable non-critical warnings about the rock layer
+    - `.top()`{: .language-kube-18 }: Allows the rock layer to spawn on the top rock layer in the world
+    - `.middle()`{: .language-kube-18 }: Allows the rock layer to spawn on the middle rock layer in the world
+    - `.bottom()`{: .language-kube-18 }: Allows the rock layer to spawn on the bottom rock layer in the world
+    - `.noWarnings()`{: .language-kube-18 }: A utility method which will disable non-critical warnings about the rock layer
 
 #### Example
 
-```js
+```js-18
 // Adds a default rock layer consisting of vanilla blocks and spawning only in the top rock layer of the world
 onEvent('tfc.rock_settings.register', event => {
     event.addDefaultLayer('kubejs:my_rock_layer', rock => {
@@ -376,7 +376,7 @@ onEvent('tfc.rock_settings.register', event => {
 
 #### Example
 
-```js
+```js-18
 // Removes the chert rock type from the list of available rock layers
 onEvent('tfc.rock_settings.register', event => {
     event.removeDefaultLayer('tfc:chert')
@@ -388,13 +388,13 @@ onEvent('tfc.rock_settings.register', event => {
 - 1st argument: The resource location of the rock layer you will be modifying
     - TFC's layer are `tfc:` + the name of the rock ('andesite', 'basalt', etc.)
 - 2nd argument: A consumer with the same methods as adding a layer and some additional methods:
-    - `.top(boolean)`{: .language-kube }: Accepts a boolean, determines if the layer is allowed to generate in the top rock layer of the world or not
-    - `.middle(boolean)`{: .language-kube }: Accepts a boolean, determines if the layer is allowed to generate in the middle rock layer of the world or not
-    - `.bottom(boolean)`{: .language-kube }: Accepts a boolean, determines if the layer is allowed to generate in the bottom rock layer of the world or not
+    - `.top(boolean)`{: .language-kube-18 }: Accepts a boolean, determines if the layer is allowed to generate in the top rock layer of the world or not
+    - `.middle(boolean)`{: .language-kube-18 }: Accepts a boolean, determines if the layer is allowed to generate in the middle rock layer of the world or not
+    - `.bottom(boolean)`{: .language-kube-18 }: Accepts a boolean, determines if the layer is allowed to generate in the bottom rock layer of the world or not
 
 #### Example
 
-```js
+```js-18
 // Modifies the dacite rock layer to have no spike blocks and pink sand as its sand block
 onEvent('tfc.rock_settings.register', event => {
     event.modifyDefaultLayer('tfc:dacite', rock => {

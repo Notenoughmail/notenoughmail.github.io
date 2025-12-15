@@ -30,7 +30,7 @@ This specifies an ingredient which only accepts food items if they are not rotte
 
 ### Examples
 
-```js
+```js-18
 Ingredient.notRotten() // 1 non-rotten item
 Ingredient.notRotten('5x #tfc:foods/fruits') // 1 non-rotten fruit
 Ingredient.notRotten('#tfc:foods/fruits').withCount(3) // 3 non-rotten fruits
@@ -47,7 +47,7 @@ This specifies an ingredient which only accepts food items if they have a specif
 
 ### Examples
 
-```js
+```js-18
 Ingredient.hasTrait('tfc:salted') // An item with the 'tfc:salted' trait
 Ingredient.hasTrait('tfc:pickled', 'minecraft:cooked_beef') // A steak with the 'tfc:pickled' trait
 ```
@@ -63,7 +63,7 @@ This specifies an ingredient which only accepts food items if they do not have a
 
 ### Examples
 
-```js
+```js-18
 Ingredient.lacksTrait('tfc:preserved') // An item without the 'tfc:preserved' trait
 Ingredient.lacksTrait('tfc:wood_grilled', '#tfc:foods/cooked_meats') // A cooked meat without the 'tfc:wood_grilled' trait
 ```
@@ -79,13 +79,13 @@ This specifies an ingredient which only accepts items if they are heatable and o
 
 ### Extra Methods
 
-- `.minTemp(integer)`{: .language-kube }: Sets the minimum temperature of the ingredient
-- `.maxTemp(integer)`{: .language-kube }: Sets the maximum temperature of the ingredient
-- `.temps(integer, integer)`{: .language-kube }: Sets the minimum and maximum temperatures of the ingredient
+- `.minTemp(integer)`{: .language-kube-18 }: Sets the minimum temperature of the ingredient
+- `.maxTemp(integer)`{: .language-kube-18 }: Sets the maximum temperature of the ingredient
+- `.temps(integer, integer)`{: .language-kube-18 }: Sets the minimum and maximum temperatures of the ingredient
 
 ### Examples
 
-```js
+```js-18
 Ingredient.heatable() // Accepts any item that are heatable
 Ingredient.heatable('tfc:metal/ingot/wrought_iron') // Accepts wrought iron ingots
 Ingredient.heatable('tfc:metal/rod/brass', 200, 900) // Accepts brass rods between 200 and 900 degrees Celsius
@@ -104,7 +104,7 @@ This specifies an ingredient which inverts an existing ingredient
 
 ### Example
 
-```js
+```js-18
 Ingredient.tfcNot(Ingredient.notRotten()) // Accepts any rotten food
 ```
 
@@ -119,11 +119,11 @@ This specifies an item which is expected to contain a fluid
 
 ### Extra Method
 
-- `.withFluidAmount(integer)`{: .language-kube }: Sets the amount of the fluid required, defaults to the amount defined by the fluid stack ingredient itself
+- `.withFluidAmount(integer)`{: .language-kube-18 }: Sets the amount of the fluid required, defaults to the amount defined by the fluid stack ingredient itself
 
 ### Examples
 
-```js
+```js-18
 Ingredient.fluidItem(Fluid.water()) // Any item containing 1000mB of water
 Ingredient.fluidItem(FluidIngredient.of('#tfc:alcohols', 50), 'tfc:ceramic/jug') // A jug containing 50mB of an alcohol
 ```
@@ -134,7 +134,7 @@ These ingredient types can also be swapped between and from regular ingredients
 
 ### Examples
 
-```js
+```js-18
 Ingredient.of('tfc:metal/ingot/wrought_iron').asHeatable() // The same as ↙
 Ingredient.heatable('tfc:metal/ingot/wrought_iron')
 

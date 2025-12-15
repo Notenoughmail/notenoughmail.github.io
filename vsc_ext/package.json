@@ -1,0 +1,41 @@
+{
+  "name": "kube-langs",
+  "displayName": "Kube Langs",
+  "description": "Derived from https://github.com/mjbvz/vscode-fenced-code-block-grammar-injection-example",
+  "version": "0.0.1",
+  "publisher": "NotEnoughMail",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Notenoughmail/notenoughmail.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Notenoughmail/notenoughmail.github.io/issues"
+  },
+  "engines": {
+    "vscode": "^1.8.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "kube-injection"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "kube-injection",
+        "scopeName": "markdown.kube.codeblock",
+        "path": "./syntaxes/codeblock.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.kube": "javascript"
+        }
+      }
+    ]
+  },
+  "dependencies": {  }
+}

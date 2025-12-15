@@ -88,7 +88,7 @@ This page can be safely ignored :)
 
 Kube Lang Parser Test
 
-```kube
+```kube-20
 event.describe(param: Function<NoteBlockInstrument, number>): @Nullable boolean
 
 ServerEvents.recipes(event => {
@@ -120,16 +120,16 @@ declare class TemperatureCallback {
 }
 ```
 
-`woah: Clazz`{: .language-kube }
+`woah: Clazz`{: .language-kube-20 }
 
-`.huh(): Woah`{: .language-kube }
+`.huh(): Woah`{: .language-kube-20 }
 
-- `event: Threat`{: .language-kube }
-- `return: Harm`{: .language-kube }
+- `event: Threat`{: .language-kube-20 }
+- `return: Harm`{: .language-kube-20 }
 
-`"Inline strings".split('i').join("Denmark")`{: .language-kube }
+`"Inline strings".split('i').join("Denmark")`{: .language-kube-20 }
 
-`SpawnPlacements$Type.ON_GROUND`{: .language-kube }
+`SpawnPlacements$Type.ON_GROUND`{: .language-kube-20 }
 
 Command lang parser test
 
@@ -157,21 +157,21 @@ FS lang parser test
 
 `/template/<path_to>/folder/`{: .language-fs }
 
-`/multiple_<opt|ions>.allowed`{:.language-fs}
+`/multiple_<opt|ions>.allowed`{: .language-fs }
 
-`/dangling/end`{:.language-fs}
+`/dangling/end`{: .language-fs }
 
-`star/*.template`{:.language-fs}
+`star/*.template`{: .language-fs }
 
-`<options/with|slashes>/home.txt`{:.language-fs}
+`<options/with|slashes>/home.txt`{: .language-fs }
 
-`/<many|many...|so many|options>_are.valid`{:.language-fs}
+`/<many|many...|so many|options>_are.valid`{: .language-fs }
 
-`/<nested<tempalates>>/might.work`{:.language-fs}
+`/<nested<tempalates>>/might.work`{: .language-fs }
 
-`/<one|<two/four|six/eight>|five>/`{:.language-fs}
+`/<one|<two/four|six/eight>|five>/`{: .language-fs }
 
-`should/.error`{:.language-fs}
+`should/.error`{: .language-fs }
 
 Color Tag Test
 
@@ -183,4 +183,4 @@ Color Tag Test
 
 Link color preservation
 
-[`.test()`{:.language-kube}](#three-hashes){:.preserve-color}
+[`.test()`{: .language-kube-20 }](#three-hashes){:.preserve-color}

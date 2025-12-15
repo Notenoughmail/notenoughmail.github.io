@@ -78,6 +78,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - vsc_ext/
 
 post-tags:
   olwicks:

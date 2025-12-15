@@ -31,47 +31,46 @@ module Rouge
                 title "Kube-20"
                 desc "Kube enhanced JS for MC 1.20.1"
 
-                tag "kube"
-                aliases "kube-20", "js", "javascript" # override the default JS parser for legacy reasons
+                tag "kube-20"
+                aliases "js-20"
 
                 def initialize(opts={})
                     super([
+                        # Vanilla
                         "SpawnPlacements$Type",
-                        "Punishment",
-                        "AqueductModelPart",
-                        "SpikeModelPart",
-                        "LampModelType",
+                        # TFC
+                        "ChunkData$Status", "GroundType", "NutrientType",
+                        "GlassOperation",   "ChiselMode", "ForgeRule",
+                        "Metal$BlockType",  "Metal$Tier", "Metal$ItemType",
                         "Lifecycle",
-                        "GrassModelPart",
-                        "DeadModelVariant",
-                        "NutrientType",
-                        "GearBoxModelType",
-                        "ClutchModelType",
-                        "GlassOperation",
-                        "PlanterType",
-                        "ChiselMode",
-                        "ForgeRule",
-                        "InteractionResult", # Is this an enum in 1.21?
-                        "Type", # What was this???
-                        "GroundType",
-                        "ChunkData$Status",
-                        "Metal$BlockType",
-                        "Metal$ItemType",
-                        "Metal$Tier"
+                        # KubeJS TFC
+                        "AqueductModelPart", "SpikeModelPart", "LampModelType",
+                        "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
+                        "GearBoxModelType",  "CropType",
+                        # Addons
+                        "Punishment",
+                        "PlanterType"
                     ], [
-                        "RockFunction",
-                        "OnItemUseAction",
-                        "RocksGetter",
-                        "MossGrowingCallback",
-                        "Noise2D",
-                        "Noise3D",
-                        "BlockBehaviour$StateArgumentPredicate",
-                        "BlockBehaviour$StatePredicate",
-                        "TemperatureCallback",
-                        "MergeLayer",
-                        "TransformLayer",
-                        "AdjacentTransformlayer"
+                        # Vanilla
+                        "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
+                        # TFC
+                        "OnItemUseAction", "Noise2D", "Noise3D",
+                        # KubeJS TFC
+                        "RocksGetter", "MossGrowingCallback", "TemperatureCallback",
+                        "MergeLayer",  "TransformLayer",      "AdjacentTransformlayer"
                     ], opts)
+                end
+            end
+
+            class MC18 < Kube
+                title "Kube-18"
+                desc "Kube enhanced JS for MC 1.18.2"
+
+                tag "kube-18"
+                aliases "js-18"
+
+                def initialize(opts={})
+                    super([], [], opts)
                 end
             end
 
@@ -79,32 +78,21 @@ module Rouge
                 super(opts)
                 e = Set.new enums
                 @enums = e.merge [
-                    "Direction",
-                    "DyeColor",
-                    "Enum",
-                    "Size",
-                    "Weight",
-                    "Month",
-                    "Heightmap$Types",
-                    "PushReaction",
-                    "OffsetType",
-                    "NoteBlockInstrument",
-                    "ItemDisplayContext",
-                    "ForestType",
-                    "ProspectResult",
-                    "Heat"
+                    # Vanilla enums
+                    "NoteBlockInstrument", "DyeColor",   "Heightmap$Types",
+                    "InteractionResult",   "OffsetType", "PushReaction",
+                    "ItemDisplayContext",  "Direction",
+                    # TFC enums
+                    "Heat", "Month",  "ForestType",
+                    "Size", "Weight", "PropsectResult",
+                    # Java enums
+                    "Enum"
                 ]
                 f = Set.new funcs
                 @functional_interfaces = f.merge [
-                    "Consumer",
-                    "BiConsumer",
-                    "TriConsumer",
-                    "Function",
-                    "BiFunction",
-                    "TriFunction",
-                    "QuadFunction",
-                    "Supplier",
-                    "Predicate"
+                    "Consumer", "BiConsumer", "TriConsumer",
+                    "Function", "BiFunction", "TriFunction", "QuadFunction",
+                    "Supplier", "Predicate"
                 ]
             end
 

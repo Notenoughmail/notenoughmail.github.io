@@ -9,7 +9,7 @@ has+toc: false
 
 # 1.21.1
 
-{% assign pages = site.pages | where: "grand_parent", "KubeJS TFC" | where: "parent", "1.21.1" %}
+{% assign pages = site.pages | where: "grand_parent", "KubeJS TFC" | where: "parent", "1.21.1" | sort: "title" %}
 
 {% for page in pages %}
 

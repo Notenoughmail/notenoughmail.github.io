@@ -42,7 +42,7 @@ This event goes in the `server_scripts` folder.
 {: .notice #general-notice }
 > Much of TFC's world generation configuration is done through [tags](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/tags/)
 >
-> Use the `ServerEvents.tag("worldgen/placed_feature", event => {})`{: .language-kube } event to add/remove entries from the correct tag
+> Use the `ServerEvents.tag("worldgen/placed_feature", event => {})`{: .language-kube-20 } event to add/remove entries from the correct tag
 >
 > Each example has a demonstration of this that uses the appropriate tag for the type it corresponds to
 
@@ -56,7 +56,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.geode(
     name: String,
     outer: String,
@@ -76,7 +76,7 @@ event.geode(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.geode('example_geode', 'minecraft:oak_log[axis=z]', 'tfc:rock/hardened/basalt', ['6 tfc:rock/raw/quartzite', 'minecraft:cut_copper'], placement => {
         placement.tfcBiome()
@@ -111,7 +111,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.boulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -123,7 +123,7 @@ event.boulder(name: String, states: BoulderState[], placement: Consumer<PlacedFe
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.boulder('ae2:example_boulder', [
         event.boulderState('tfc:rock/raw/dacite', ['ae2:skystone', 'ae2:polished_skystone'])
@@ -151,7 +151,7 @@ Creates a `tfc:baby_boulder` configured feature and matching placed feature
 
 ### Method Signature
 
-```js
+```js-20
 event.babyBoulder(name: String, states: BoulderState[], placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -163,7 +163,7 @@ event.babyBoulder(name: String, states: BoulderState[], placement: Consumer<Plac
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.babyBoulder('example_baby_boulder', [
         event.boulderState('tfc:rock/raw/dolomite', ['minecraft:dirt', 'minecraft:gold_block'])
@@ -191,7 +191,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.thinSpike(
     name: String,
     state: String,
@@ -214,7 +214,7 @@ event.thinSpike(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.thinSpike('example_thin_spike', 'kubejs:my_thin_spike', 8, 2, 10, placement => {
         placement.jsonPlacement({
@@ -251,7 +251,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.clusterVein(
     name: String,
     replacementMap: BlockToWeightedBlockStateMapEntry[],
@@ -267,7 +267,7 @@ event.clusterVein(
 
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube-20 } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -279,7 +279,7 @@ event.clusterVein(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.clusterVein(
         'example_cluster_vein', [
@@ -306,7 +306,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.pipeVein(
     name: String,
     replacementMap: BlockToWeightedBlockStateMapEntry[],
@@ -328,7 +328,7 @@ event.pipeVein(
 
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
-- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube } chunks
+- 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube-20 } chunks
 - 4th argument: A number, in the range [0, 1], defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
@@ -346,7 +346,7 @@ event.pipeVein(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.pipeVein(
         'example_pipe_vein', [
@@ -373,7 +373,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.discVein(
     name :string,
     replacementMap: BlockToWeightedBlockStateMapEntry[],
@@ -403,7 +403,7 @@ event.discVein(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.discVein(
         'example_disc_vein', [
@@ -428,7 +428,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.ifThen(name: String, if: String, then: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -447,7 +447,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.soilDisc(
     name: String,
     replacementMap: BlockToBlockStateMapEntry[],
@@ -471,7 +471,7 @@ event.soilDisc(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.soilDisc('example_soil_disc', [
         event.blockToBlockState('tfc:dirt/loam', 'kubejs:dirt')
@@ -498,7 +498,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.hotSpring(
     name: String,
     wallState: @Nullable String,
@@ -524,7 +524,7 @@ event.hotSpring(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.hotSpring('example_hot_Spring', 'minecraft:deepslate', 'minecraft:lava', 8, true, [
         event.blockToBlockState('tfc:rock/raw/dacite', 'tfc:rock/hardened/phyllite')
@@ -549,7 +549,7 @@ Notably used by TFC for its wild crops in tandem with [random patch](#random-pat
 
 ### Method Signature
 
-```js
+```js-20
 event.simpleBlockState(name: String, blockState: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -561,7 +561,7 @@ event.simpleBlockState(name: String, blockState: String, placement: Consumer<Pla
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.simpleBlockState('example_crop_placement', 'kubejs:example_crop', placement => {
         placement.heightMap('world_surface_wg')
@@ -596,7 +596,7 @@ Creates a `minecraft:random_patch` configured feature
 
 ### Method Signature
 
-```js
+```js-20
 event.randomPatch(
     name: String,
     tries: @Nullable number,
@@ -618,7 +618,7 @@ event.randomPatch(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.randomPatch('example_crop_patch', 30, 15, 10, 'kubejs_tfc:example_crop_placement', placement => {
         placement.rarityFilter(80)
@@ -652,7 +652,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.tallWildCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -664,7 +664,7 @@ event.tallWildCrop(name: String, block: String, placement: Consumer<PlacedFeatur
 
 Creates a `tfc:spreading_crop` configured feature and matching placed feature
 
-```js
+```js-20
 event.spreadingCrop(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -682,7 +682,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.spreadingBush(name: String, block: String, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -700,7 +700,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.fissure(
     name: String,
     wallState: @Nullable String,
@@ -732,7 +732,7 @@ event.fissure(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.fissure(
         'example_fissure',
@@ -776,7 +776,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.forest(
     name: String,
     entriesTag: String,
@@ -796,7 +796,7 @@ event.forest(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.forest(
         'example_forest',
@@ -824,7 +824,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.forestEntry(
     name: String,
     climate: Consumer<ClimateModifer>,
@@ -857,10 +857,10 @@ event.forestEntry(
 - 9th argument: A string, the id of a configured feature to place for dead trees
 - 10th argument: A string, the id of a configured feature to place for old growth trees. May be `null`{:.p} to not have old growth trees
 - 11th argument: A string, the id of a configured feature to place for krummholz. May be `null`{:.p} to not have krummholz
-- 12th argument: A number, the chance, as `1 / N`{: .language-kube }, a tree will be old growth. May be `null`{:.p} to default to `6`{:.n}
-- 13th argument: A number, the chance, as `1 / N`{: .language-kube }, an old growth tree will be placed in non-old-growth forests. May be `null`{:.p} to default to `200`{:.n}
-- 14th argument: A number, the chance, in `1 / N`{: .language-kube } chunks, a fallen tree will spawn. May be `null`{:.p} to default to `14`{:.n}
-- 15th argument: A number, the chance, as `1 /N`{: .language-kube }, a tree will be a dead tree on place. May be `null`{:.p} to default to `75`
+- 12th argument: A number, the chance, as `1 / N`{: .language-kube-20 }, a tree will be old growth. May be `null`{:.p} to default to `6`{:.n}
+- 13th argument: A number, the chance, as `1 / N`{: .language-kube-20 }, an old growth tree will be placed in non-old-growth forests. May be `null`{:.p} to default to `200`{:.n}
+- 14th argument: A number, the chance, in `1 / N`{: .language-kube-20 } chunks, a fallen tree will spawn. May be `null`{:.p} to default to `14`{:.n}
+- 15th argument: A number, the chance, as `1 /N`{: .language-kube-20 }, a tree will be a dead tree on place. May be `null`{:.p} to default to `75`
 - 16th argument: A boolean, if the placement height should use the world surface instead of ocean floor. May be `null`{:.p} to default to `false`{:.p} (ocean floor)
 - 17th argument: A [feature placement consumer](#feature-placement)
 
@@ -868,7 +868,7 @@ event.forestEntry(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.forestEntry(
         'example_forest_entry',
@@ -904,7 +904,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.overlayTree(
     name: String,
     baseStructure: String,
@@ -930,7 +930,7 @@ event.overlayTree(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.overlayTree(
         'example_tree',
@@ -955,7 +955,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.randomTree(
     name: String,
     structure: String[],
@@ -977,7 +977,7 @@ event.randomTree(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.randomTree(
         'willow_replica',
@@ -1007,7 +1007,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/world
 
 ### Method Signature
 
-```js
+```js-20
 event.stackedTree(
     name: String,
     layers: TreeLayer[],
@@ -1029,7 +1029,7 @@ event.stackedTree(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.stackedTree(
         'example_stacked_tree',
@@ -1053,7 +1053,7 @@ Creates a `tfc:krummholz` configured feature and matching placed feature
 
 ### Method Signature
 
-```js
+```js-20
 event.krummholz(
     name: String,
     block: String,
@@ -1075,7 +1075,7 @@ event.krummholz(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.worldgenData(event => {
     event.krummholz(
         'example_krummholz',
@@ -1096,7 +1096,7 @@ Creates a configured feature of the given type using the given config
 
 ### Method Signature
 
-```js
+```js-20
 event.generic(name: String, type: String, featureConfig: JsonObject, placement: Consumer<PlacedFeatureProperties>)
 ```
 
@@ -1113,7 +1113,7 @@ This defines an entry to a boulder feature's `state` value
 
 ### Method Signature
 
-```js
+```js-20
 event.boulderState(rock: String, blockStates: String[])
 ```
 
@@ -1130,7 +1130,7 @@ This defines an entry to a blocks to weighted blockstates map
 
 ### Method Signature
 
-```js
+```js-20
 event.blockToWeightedBlockState(replace: String[], with: String[])
 ```
 
@@ -1147,7 +1147,7 @@ This defines an entry to a block to blockstate map
 
 ### Method Signature
 
-```js
+```js-20
 event.blockToBlockState(block: String, state: String)
 ```
 
@@ -1162,7 +1162,7 @@ Hot springs and fissures may have additional decorations around them, this is us
 
 ### Method Signature
 
-```js
+```js-20
 event.fissureDecoration(
     replacementMap: BlockToWeightedBlockStateMapEntry[],
     rarity: number,
@@ -1174,7 +1174,7 @@ event.fissureDecoration(
 - 1st argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), the additional ores that should spawn around the fissure
 - 2nd argument: A number, the rarity of blocks being replaced
 - 3rd argument: A number, the radius around the fissure that blocks should be replaced
-- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-kube }
+- 4th argument: A number, the number of blocks that should be placed, actual amount will be `count / rarity`{: .language-kube-20 }
 
 ## Forest Types Map Entry
 
@@ -1186,7 +1186,7 @@ For an example, see the [forest](#forest-example) example
 
 ### Method Signature
 
-```js
+```js-20
 event.forestTypesMapEntry(
     type: ForestType,
     treeCount: @Nullable IntProvider,
@@ -1200,13 +1200,13 @@ event.forestTypesMapEntry(
 ```
 
 - 1st argument: A `ForestType`{:.e}, the key in the map. May be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
-- 2nd argument: An `IntProvider`, how many trees should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
-- 3rd argument: An `IntProvider`, how much ground cover should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
+- 2nd argument: An `IntProvider`, how many trees should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube-20 }
+- 3rd argument: An `IntProvider`, how much ground cover should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube-20 }
 - 4th argument: A number, in the range [0, 1], per chunk, that forests will spawn. May be `null`{:.p} to default to `1`{:.n}
 - 5th argument: An `IntProvider`, how many bushes will try to spawn. May be `null`{:.p} to not have bushes
 - 6th argument: A boolean, if old growth trees will randomly spawn among existing tree. May be `null`{:.p} to default to `false`{:.p}
 - 7th argument: A boolean, if old growth trees spawn in this forest type. May be `null`{:.p} to default to `false`{:.p}
-- 8th argument: A `IntProvider`, how many leaf piles to place. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube }
+- 8th argument: A `IntProvider`, how many leaf piles to place. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube-20 }
 
 ## Trunk
 
@@ -1220,7 +1220,7 @@ For an example, see the [stacked tree](#stacked-tree-example) example
 
 ### Method Signature
 
-```js
+```js-20
 event.trunk(
     state: String,
     minHeight: number,
@@ -1246,7 +1246,7 @@ For an example, see the [stacked tree](#stacked-tree-example) example
 
 ### Method Signature
 
-```js
+```js-20
 event.treePlacement(
     width: number,
     height: number,
@@ -1270,7 +1270,7 @@ For an example, see the [random tree](#random-tree-example) example
 
 ### Method Signature
 
-```js
+```js-20
 event.root(
     blocks: BlockToWeightedBlockStateMapEntry[],
     width: @Nullable number,
@@ -1298,7 +1298,7 @@ Used to provide a variety of structures to create a stacked appearance
 
 ### Method Signature
 
-```js
+```js-20
 event.treelayer(
     templates: String[],
     minCount: number,
@@ -1320,7 +1320,7 @@ Defines the vein's indicator
 
 Method signature:
 
-```js
+```js-20
 vein.indicator(depth: number, rarity: number, undergroundRarity: number, undergroundCount: number, indicators: String[])
 ```
 
@@ -1336,7 +1336,7 @@ Determines the `project` value of the vein
 
 Method signature:
 
-```js
+```js-20
 vein.project(b: boolean)
 ```
 
@@ -1348,7 +1348,7 @@ Determines the `project_offset` value of the vein
 
 Method signature:
 
-```js
+```js-20
 vein.projectOffset(b: boolean)
 ```
 
@@ -1360,7 +1360,7 @@ Determines the `biomes` values of the vein
 
 Method signature:
 
-```js
+```js-20
 vein.biomes(biomeTag: String)
 ```
 
@@ -1372,7 +1372,7 @@ Determines the `near_lava` value of the vein
 
 Method signature:
 
-```js
+```js-20
 vein.nearLava(b: boolean)
 ```
 
@@ -1388,7 +1388,7 @@ Adds a placement of the provided type with no arguments
 
 Method signature:
 
-```js
+```js-20
 placement.simplePlacement(type: String)
 ```
 
@@ -1400,7 +1400,7 @@ Adds the provided json object as a placement modifier
 
 Method signature:
 
-```js
+```js-20
 placement.jsonPlacement(json: JsonObject)
 ```
 
@@ -1412,7 +1412,7 @@ Adds a placement modifier of type `tfc:biome`
 
 Method Signature:
 
-```js
+```js-20
 placement.tfcBiome()
 ```
 
@@ -1422,18 +1422,18 @@ Adds a placement modifier of type `tfc:climate`
 
 Method signature:
 
-```js
+```js-20
 placement.climate(climate: Consumer<ClimateModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.minRain(f: number)`{: .language-kube #climate-placement-min-rain }: Accepts a number, sets the minimum rainfall
-    - `.maxRain(f: number)`{: .language-kube #climate-placement-max-rain }: Accepts a number, sets the maximum rainfall
-    - `.minTemp(f: number)`{: .language-kube #climate-placement-min-temp }: Accepts a number, sets the minimum temperature
-    - `.maxTemp(f: number)`{: .language-kube #climate-placement-max-temp }: Accepts a number, sets the maximum temperature
-    - `.minForest(forest: String)`{: .language-kube #climate-placement-min-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the minimum forest level
-    - `.maxForest(forest: String)`{: .language-kube #climate-placement-max-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the maximum forest level
-    - `.fuzzy(b: boolean)`{: .language-kube #climate-placement-fuzzy }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
+    - `.minRain(f: number)`{: .language-kube-20 #climate-placement-min-rain }: Accepts a number, sets the minimum rainfall
+    - `.maxRain(f: number)`{: .language-kube-20 #climate-placement-max-rain }: Accepts a number, sets the maximum rainfall
+    - `.minTemp(f: number)`{: .language-kube-20 #climate-placement-min-temp }: Accepts a number, sets the minimum temperature
+    - `.maxTemp(f: number)`{: .language-kube-20 #climate-placement-max-temp }: Accepts a number, sets the maximum temperature
+    - `.minForest(forest: String)`{: .language-kube-20 #climate-placement-min-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the minimum forest level
+    - `.maxForest(forest: String)`{: .language-kube-20 #climate-placement-max-forest }: Accepts `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, and `old_growth`{:.e}, sets the maximum forest level
+    - `.fuzzy(b: boolean)`{: .language-kube-20 #climate-placement-fuzzy }: Accepts a boolean, determines if the temperature and rainfall calculations should be probabilistic relative to the center point
 
 ### Flatness
 
@@ -1441,14 +1441,14 @@ Adds a placement modifier of type `tfc:flat_enough`
 
 Method signature:
 
-```js
+```js-20
 placement.flatEnough(flatness: Consumer<FlatnessModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.flatness(f: number)`{: .language-kube #flat-placement-flatness }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
-    - `.radius(i: number)`{: .language-kube #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
-    - `.maxDepth(i: number)`{: .language-kube #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
+    - `.flatness(f: number)`{: .language-kube-20 #flat-placement-flatness }: Accepts a number, in the range [0, 1], sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
+    - `.radius(i: number)`{: .language-kube-20 #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
+    - `.maxDepth(i: number)`{: .language-kube-20 #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
 
 ### Near Water
 
@@ -1456,7 +1456,7 @@ Adds a placement modifier of type `tfc:near_water`
 
 Method signature:
 
-```js
+```js-20
 placement.nearWater(radius: number)
 ```
 
@@ -1468,7 +1468,7 @@ Adds a placement modifier of type `tfc:shallow_water`
 
 Method Signature:
 
-```js
+```js-20
 placement.shallowWater(depth: number)
 ```
 
@@ -1480,7 +1480,7 @@ Adds a placement modifier of type `tfc:underground`
 
 Method signature:
 
-```js
+```js-20
 placement.underground()
 ```
 
@@ -1490,7 +1490,7 @@ Adds a placement modifier of type `tfc:volcano`
 
 Method signature:
 
-```js
+```js-20
 placement.volcano(center: boolean, distance: number)
 ```
 
@@ -1503,7 +1503,7 @@ Adds a placement modifier of type `minecraft:in_square`
 
 Method signature:
 
-```js
+```js-20
 placement.inSquare()
 ```
 
@@ -1513,7 +1513,7 @@ Adds a placement modifier of type `minecraft:rarity_filter`
 
 Method signature:
 
-```js
+```js-20
 placement.rarityFilter(chance: number)
 ```
 
@@ -1525,7 +1525,7 @@ Adds a placement modifier of type `minecraft:heightmap`
 
 Method signature:
 
-```js
+```js-20
 placement.heightMap(heightMap: String)
 ```
 

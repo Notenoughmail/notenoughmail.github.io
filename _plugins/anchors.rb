@@ -8,10 +8,14 @@ module Jekyll
         @callout_regexs ||= make_callout_regexs
       end
 
+      def language_identifiers
+        @language_identifiers ||= "(?:(?:js|javascript|kube)(?:-(?:18|20|21))?)"
+      end
+
       def code_regexs
         @code_regexs ||= [
-          /\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid="(.+?)"\>.+?\<\/code\>/,
-          /(\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid=".+?"\>.+?\<\/code\>)/
+          /\<code\sclass="language-#{language_identifiers}\shighlighter-rouge"\sid="(.+?)"\>.+?\<\/code\>/,
+          /(\<code\sclass="language-#{language_identifiers}\shighlighter-rouge"\sid=".+?"\>.+?\<\/code\>)/
         ]
       end
 

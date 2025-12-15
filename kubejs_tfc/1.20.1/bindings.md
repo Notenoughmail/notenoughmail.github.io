@@ -38,20 +38,20 @@ This defines an object which defines the values used in an [alloy recipe]({% lin
 
 Method signature:
 
-```js
+```js-20
 TFC.alloyPart(metal: String, min: number, max: number, keepOriginalBounds?: boolean): AlloyPart
 ```
 
-- `metal: String`{:.language-kube}: The metal
-- `min: number`{:.language-kube}: The minimum percent, in the range [0, 1], of the metal
-- `max: number`{:.language-kube}: The maximum percent, in the range [0, 1], of the metal
-- `keepOriginalBounds?: boolean`{:.language-kube}: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement-alloy-part) an alloy part, if the bounds should stay as they were originally in the recipe. Defaults to `true`{:.p}
+- `metal: String`{: .language-kube-20 }: The metal
+- `min: number`{: .language-kube-20 }: The minimum percent, in the range [0, 1], of the metal
+- `max: number`{: .language-kube-20 }: The maximum percent, in the range [0, 1], of the metal
+- `keepOriginalBounds?: boolean`{: .language-kube-20 }: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement-alloy-part) an alloy part, if the bounds should stay as they were originally in the recipe. Defaults to `true`{:.p}
 
 Creates an `AlloyPart` for use in [alloying recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)
 
 Example:
 
-```js
+```js-20
 TFC.alloyPart('tfc:steel', 0.1, 0.5)
 ```
 
@@ -73,7 +73,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signature:
 
-```js
+```js-20
 TFC.blockIngredient(blockIngredient: (String | Block | BlockState | TagKey<Block> | Regex | List<(String | Block | BlockState | tagKey<Block> | Regex)> | BlockIngredient)): BlockIngredient
 ```
 
@@ -81,7 +81,7 @@ Creates a `BlockIngredient` representing the blocks/tags given. If provided a st
 
 Examples:
 
-```js
+```js-20
 TFC.blockIngredient('minecraft:dirt')
 TFC.blockIngredient(['tfc:rock/cobble/dacite', '#forge:stones'])
 ```
@@ -113,7 +113,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signature:
 
-```js
+```js-20
 TFC.fluidIngredient(fluidIngredient: (String | Fluid | TagKey<Fluid> | FluidStackJS | Regex | List<(String | Fluid | TagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient)): FluidIngredient
 ```
 
@@ -121,7 +121,7 @@ Creates a `FluidIngredient` representing the fluids/tags given. If provided a st
 
 Examples:
 
-```js
+```js-20
 TFC.fluidIngredient('minecraft:water')
 TFC.fluidIngredient(['minecraft:lava', '#tfc:usable_in_ingot_mold'])
 ```
@@ -153,7 +153,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/commo
 
 Method signatures:
 
-```js
+```js-20
 TFC.fluidStackIngredient(fluidIngredient: FluidIngredient, amount: number): FluidStackIngredient
 TFC.fluidStackIngredient(fluidStackIngredient: (String | Fluid | TagKey<fluid> | FluidStackJS | Regex | List<(String | Fluid | tagKey<Fluid> | FluidStackJS | Regex)> | FluidIngredient | FluidStackIngredient)): FluidStackIngredient
 ```
@@ -162,7 +162,7 @@ Creates a `FluidStackIngredient` representing the fluids/tags given with the pro
 
 Examples:
 
-```js
+```js-20
 TFC.fluidStackIngredient('minecraft:water', 10)
 TFC.fluidStackIngredient(Fluid.of('minecraft:lava', 30))
 TFC.fluidStackIngredient(['minecraft:water', '#minecraft:lava'], 3)

@@ -77,7 +77,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // copper, rose gold, and black steel mix to become steel
 event.recipes.tfc.alloy('tfc:steel', [
     ['tfc:copper', 0.2, 0.3],
@@ -97,12 +97,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.tier(int)`{: .language-kube }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
-- `.combineForgingBonus()`{: .language-kube }: Sets the `combine_forging_bonus` property to `true`
+- `.tier(int)`{: .language-kube-18 }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
+- `.combineForgingBonus()`{: .language-kube-18 }: Sets the `combine_forging_bonus` property to `true`
 
 ### Example
 
-```js
+```js-18
 
 // weld together black bronze and bismuth bronze ingots to get two bronze ingots
 event.recipes.tfc.welding('2x tfc:metal/ingot/bronze', ['tfc:metal/ingot/black_bronze', 'tfc:metal/ingot/bismuth_bronze']).tier(2)
@@ -118,12 +118,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.tier(int)`{: .language-kube }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
-- `.applyBonus()`{: .language-kube }: Sets the `apply_forging_bonus` property to `true`
+- `.tier(int)`{: .language-kube-18 }: Makes it so the recipe can only be performed on an anvil equal to or greater than the tier provided, defaults to -1
+- `.applyBonus()`{: .language-kube-18 }: Sets the `apply_forging_bonus` property to `true`
 
 ### Example
 
-```js
+```js-18
 // work a bismuth bronze rod into a bronze ingot with an added modifier of 4000 heat and applying a bonus
 event.recipes.tfc.anvil(ItemStackProvider.of('tfc:metal/ingot/bronze', {type:'tfc:add_heat', temperature:4000}), 'tfc:metal/rod/bismuth_bronze', ['draw_not_last', 'shrink_any']).applyBonus()
 ```
@@ -138,11 +138,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(String)`{: .language-kube }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(String)`{: .language-kube-18 }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Example
 
-```js
+```js-18
 // combine 50mB of water and 5mB of zinc to make 50mB of milk
 event.recipes.tfc.barrel_instant_fluid(Fluid.of('minecraft:milk', 50), FluidStackIngredient.water(50), Fluid.of('tfc:metal/zinc', 5))
 ```
@@ -157,11 +157,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.sound(String)`{: .language-kube }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.sound(String)`{: .language-kube-18 }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
 
 ### Examples
 
-```js
+```js-18
 // get 5 oak logs for every 2 diamond blocks and 200mB of anything in the tfc:sterling_silver fluid tag
 event.recipes.tfc.barrel_instant('5x minecraft:oak_log', '2x minecraft:diamond_block', FluidStackIngredient.of('#tfc:sterling_silver', 200))
 // get 3 diamond blocks and 20mB of corn whiskey for every 3 dark oak logs and 1000mB of water
@@ -178,13 +178,13 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.sound(String)`{: .language-kube }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
-- `.onSeal(item stack provider)`{: .language-kube }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
-- `.onUnseal(item stack provider)`{: .language-kube }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
+- `.sound(String)`{: .language-kube-18 }: A string, representing the registry name of a sound event, which is played when the recipe finishes, defaults to `minecraft:block.brewing_stand.brew`
+- `.onSeal(item stack provider)`{: .language-kube-18 }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_seal` property to an equal item stack provider
+- `.onUnseal(item stack provider)`{: .language-kube-18 }: An object representing an [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), sets the `on_unseal` property to an equal item stack provider
 
 ### Example
 
-```js
+```js-18
 // get 20mB of milk and 3 oak logs when 3 oak logs and 200mB of water are sealed together for 200 ticks
 event.recipes.tfc.barrel_sealed([Fluid.of('minecraft:milk', 20), '3x minecraft:oak_log'], [Fluid.of('minecraft:water', 200), '3x minecraft:oak_log'], 200)
 ```
@@ -203,7 +203,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // 1mB of zinc for 1mB of bismuth bronze catalyzed by a bucket
 event.recipes.tfc.blast_furnace(Fluid.of('tfc:metal/bismuth_bronze', 1), Fluid.of('tfc:metal/zinc', 1), 'minecraft:bucket')
 ```
@@ -219,7 +219,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // 2mB of bismuth bronze becomes an oak log when catalyzed by a bucket for 20 ticks
 event.recipes.tfc.bloomery('minecraft:oak_log', Fluid.of('tfc:metal/bismuth_bronze', 2), 'minecraft:bucket', 20)
 ```
@@ -235,7 +235,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // 100mB of sterling silver in a saw head mold produces an oak log; the mold has a 50% chance of breaking
 event.recipes.tfc.casting('minecraft:oak_log', 'tfc:ceramic/saw_head_mold', FluidStackIngredient.of('#tfc:sterling_silver', 100), 0.5)
 ```
@@ -250,12 +250,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.extraDrop(item stack provider)`{: .language-kube }: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) specifying an item to be dropped upon chiseling
-- `.itemIngredients(ingredients...)`{: .language-kube }: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
+- `.extraDrop(item stack provider)`{: .language-kube-18 }: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider) specifying an item to be dropped upon chiseling
+- `.itemIngredients(ingredients...)`{: .language-kube-18 }: A list of ingredients specifying the chisel, ingredients must be in the `tfc:chisels` tag
 
 ### Example
 
-```js
+```js-18
 // get five brass rods and a diamond block when chiseling a sapling in slab mode using either a copper or blue steel chisel
 event.recipes.tfc.chisel('minecraft:diamond_block', '#minecraft:saplings', 'slab').extraDrop('5x tfc:metal/rod/brass').itemIngredients('tfc:metal/chisel/copper', 'tfc:metal/chisel/blue_steel')
 ```
@@ -271,7 +271,7 @@ See the [collapse](https://terrafirmacraft.github.io/Documentation/1.18.x/data/r
 
 ### Examples
 
-```js
+```js-18
 // a gold block collapse into a diamond block
 event.recipes.tfc.collapse('minecraft:diamond_block', 'minecraft:gold_block')
 // a log collapse into itself, preserving its block state
@@ -294,11 +294,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.useDurability()`{: .language-kube }: sets the `use_durability` property to true
+- `.useDurability()`{: .language-kube-18 }: sets the `use_durability` property to true
 
 ### Examples
 
-```js
+```js-18
 // get 50mB of water when a clay block is raised to 50℃
 event.recipes.tfc.heating(Fluid.of('minecraft:water', 50), 'minecraft:clay', 50)
 //get nothing when fire clay is raised to 50℃
@@ -314,11 +314,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`{: .language-kube }: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-kube-18 }: Sets the `outside_slot_required` property to false
 
 ### Examples
 
-```js
+```js-18
 // get a large prepared hide for removing a single square
 event.recipes.tfc.clay_knapping('tfc:large_prepared_hide', ['XXX', 'X X', 'XXX'])
 // get a large prepared hide for having an 'I' shaped are of fire clay, ignoring the area around it
@@ -337,11 +337,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.inProgressTexture(String)`{: .language-kube }: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
+- `.inProgressTexture(String)`{: .language-kube-18 }: The texture used in the loom when rendering this recipe, defaults to `minecraft:block/white_wool`
 
 ### Example
 
-```js
+```js-18
 // get one oak log from one oak plank after working the loom fifty times
 event.recipes.tfc.loom('minecraft:oak_log', 'minecraft:oak_planks', 50)
 ```
@@ -361,7 +361,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // boil 60mB of water and a cornflower at 50℃ for 20 ticks and get 50mB of light blue dye
 event.recipes.tfc.pot(Fluid.of('tfc:light_blue_dye', 50), [Fluid.of('minecraft:water', 60), 'minecraft:cornflower'], 20, 50)
 ```
@@ -375,7 +375,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // grind one bone meal into 3 bones
 event.recipes.tfc.quern('3x minecraft:bone', 'minecraft:bone_meal')
 ```
@@ -390,11 +390,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`{: .language-kube }: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-kube-18 }: Sets the `outside_slot_required` property to false
 
 ### Example
 
-```js
+```js-18
 // knap sedimentary rocks into large prepared hide
 event.recipes.tfc.rock_knapping('tfc:large_prepared_hide', ['XX', 'XX', 'XX'], '#tfc:sedimentary_rock')
 ```
@@ -408,12 +408,12 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Extra Methods
 
-- `.inputTexture(String)`{: .language-kube }: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
-- `.outputTexture(String)`{: .language-kube }: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
+- `.inputTexture(String)`{: .language-kube-18 }: Sets the `input_texture` property, defaults to 'tfc:item/hide/large/soaked'
+- `.outputTexture(String)`{: .language-kube-18 }: Sets the `output_texture` property, defaults to 'tfc:item/hide/large/scraped'
 
 ### Example
 
-```js
+```js-18
 // scrape a rose gold double sheet into 5 oak logs
 event.recipes.tfc.scraping('5x minecraft:oak_log', 'tfc:metal/double_sheet/rose_gold')
 ```
@@ -434,7 +434,7 @@ Advanced Shaped Crafting inherits any extra methods which vanilla/KubeJS shaped 
 
 ### Example
 
-```js
+```js-18
 // Craft a hammer and a copper ingot together to get two copper rods with the same heat as the copper ingot
 event.recipes.tfc.advanced_shaped_crafting(ItemProvider.of('2x tfc:metal/rod/copper').copyHeat(), [
   'A', 
@@ -454,7 +454,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // Craft a knife, two fruits, and three breads together to get a vanilla porkchop
 // For the purposes of this example assume the porkchop has a food definition with type 'dynamic'
 // And that the recipe is also wrapped in a damage inputs shapeless recipe so the knife is damaged
@@ -496,7 +496,7 @@ Damage inputs shaped crafting inherits any extra methods which vanilla/KubeJS sh
 
 ### Examples
 
-```js
+```js-18
 // The crafting recipe of a chest but a saw in the center
 
 // First syntax style
@@ -534,7 +534,7 @@ The second matches the syntax of KubeJS's default shapeless crafting recipes, se
 
 ### Examples
 
-```js
+```js-18
 // Craft a hammer and a bone to get 5 bone meal
 
 // First syntax style
@@ -559,7 +559,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // Get an oak log as an extra product of crafting two bones together to get a piece of coal
 event.recipes.tfc.extra_products_shaped_crafting('minecraft:oak_log', event.shaped('minecraft:coal', [
   'A',
@@ -578,7 +578,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 ### Example
 
-```js
+```js-18
 // Get an oak log as an extra product of crafting three sticks together to get a diamond block
 event.recipes.tfc.extra_products_shapeless_crafting('minecraft:oak_log', event.shapeless('minecraft:diamond_block', [
   '3x minecraft:stick'
@@ -592,7 +592,7 @@ event.recipes.tfc.extra_products_shapeless_crafting('minecraft:oak_log', event.s
 
 ### Example
 
-```js
+```js-18
 // Dry a log into sticks
 event.recipes.firmalife.drying('4x minecraft:stick', '#minecraft:logs')
 ```
@@ -604,7 +604,7 @@ event.recipes.firmalife.drying('4x minecraft:stick', '#minecraft:logs')
 
 ### Example
 
-```js
+```js-18
 // Smoke raw beef into cooked beef
 event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
 ```
@@ -620,7 +620,7 @@ event.recipes.firmalife.smoking('minecraft:cooked_beef', 'minecraft:raw_beef')
 
 ### Example
 
-```js
+```js-18
 // Mix 1000mB of water and 3 bone meal to get 1 glue and 50mB of limewater
 event.recipes.firmalife.mixing_bowl(['tfc:glue', Fluid.of('tfc:limewater', 50)], ['3x minecraft:bone_meal', Fluid.water()])
 ```
@@ -632,11 +632,11 @@ event.recipes.firmalife.mixing_bowl(['tfc:glue', Fluid.of('tfc:limewater', 50)],
 
 ### Extra Method
 
-- `.outsideSlotNotRequired()`{: .language-kube }: Sets the `outside_slot_required` property to false
+- `.outsideSlotNotRequired()`{: .language-kube-18 }: Sets the `outside_slot_required` property to false
 
 ### Examples
 
-```js
+```js-18
 // get a pumpkin seed by removing a two by one area
 event.recipes.firmalife.pumpkin_knapping('minecraft:pumpkin_seed', ['X X', 'X X'])
 ```
@@ -650,7 +650,7 @@ event.recipes.firmalife.pumpkin_knapping('minecraft:pumpkin_seed', ['X X', 'X X'
 
 ### Example
 
-```js
+```js-18
 // Bake hardened andesite for 2000 ticks at 15℃ into andesite cobble 
 event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/andesite', 2000, 15);
 ```
@@ -668,11 +668,11 @@ event.recipes.firmalife.oven('tfc:rock/cobble/andesite', 'tfc:rock/hardened/ande
 
 ### Extra Methods
 
-- `.jar(object)`{: .language-kube }: An item stack. Only used for operations that produce `firmalife:fruity_fluid` in conjunction with the jarring station.
+- `.jar(object)`{: .language-kube-18 }: An item stack. Only used for operations that produce `firmalife:fruity_fluid` in conjunction with the jarring station.
 
 ### Example
 
-```js
+```js-18
 // Boil an oak log for 8000 ticks and get 30mB of water
 event.recipes.firmalife.vat(Fluid.water(30), 'minecraft:oak_log', 8000)
 ```
@@ -684,7 +684,7 @@ event.recipes.firmalife.vat(Fluid.water(30), 'minecraft:oak_log', 8000)
 
 ### Example
 
-```js
+```js-18
 // Grind one bone meal into 3 bones
 event.recipes.rosia.auto_quern('3x minecraft:bone', 'minecraft:bone_meal')
 ```
@@ -696,7 +696,7 @@ event.recipes.rosia.auto_quern('3x minecraft:bone', 'minecraft:bone_meal')
 
 ### Example
 
-```js
+```js-18
 // Extrude a bismuth ingot into a dirt block
 event.recipes.rosia.extruding_machine('minecraft:dirt', 'tfc:metal/ingot/bismuth')
 ```
@@ -708,7 +708,7 @@ event.recipes.rosia.extruding_machine('minecraft:dirt', 'tfc:metal/ingot/bismuth
 
 ### Example
 
-```js
+```js-18
 // Roll a dirt block into 5 oak logs
 event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 ```
@@ -723,14 +723,14 @@ event.recipes.rosia.rolling_machine('5x minecraft:oak_log', 'minecraft:dirt')
 
 ### Extra Methods
 
-- `.minTemp(number)`{: .language-kube }: Sets the minimum ambient temperature the recipe can be completed at, defaults to -50°C
-- `.maxTemp(number)`{: .language-kube }: Sets the maximum ambient temperature the recipe can be completed at, defaults to 50°C
-- `.requiresNatural(boolean)`{: .language-kube }: See 3rd argument above
-- `.onlyInSpring(boolean)`{: .language-kube }: Determines if the recipe can only be completed during spring, defaults to false
-- `.onlyInSpring()`{: .language-kube }: equivalent to `.onlyInSpring(true)`
+- `.minTemp(number)`{: .language-kube-18 }: Sets the minimum ambient temperature the recipe can be completed at, defaults to -50°C
+- `.maxTemp(number)`{: .language-kube-18 }: Sets the maximum ambient temperature the recipe can be completed at, defaults to 50°C
+- `.requiresNatural(boolean)`{: .language-kube-18 }: See 3rd argument above
+- `.onlyInSpring(boolean)`{: .language-kube-18 }: Determines if the recipe can only be completed during spring, defaults to false
+- `.onlyInSpring()`{: .language-kube-18 }: equivalent to `.onlyInSpring(true)`
 
 ### Example
 
-```js
+```js-18
 event.recipes.afc.tree_tapping(Fluid.of('minecraft:milk', 5), 'minecraft;stone', false).minTemp(3).maxTemp(18)
 ```

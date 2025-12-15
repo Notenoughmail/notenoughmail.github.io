@@ -30,7 +30,7 @@ Block ingredients only have one method available:
 
 This accepts a list of strings or regular expressions and creates a block ingredient
 
-```js
+```js-18
 // returns block ingredient which accepts either an oak log or a dark oak log
 BlockIngredient.of(['minecraft:oak_log', 'minecraft:dark_oak_sapling'])
 ```
@@ -51,7 +51,7 @@ A fluid stack ingredient is a list of strings representing a fluid, or if prepen
 
 This accepts a list of strings or regular expressions and optionally an integer and creates a fluid stack ingredient
 
-```js
+```js-18
 // returns fluid stack ingredient which represents 1000mB of light blue dye
 FluidStackIngredient.of('tfc:light_blue_dye')
 // returns fluid stack ingredient which represents 20mB of lime or green dye
@@ -62,7 +62,7 @@ FluidIngredient.of(['tfc:lime_dye', 'tfc:green_dye'], 20)
 
 Creates a fluid stack ingredient representing water, optionally add an integer to specify the amount in mB
 
-```js
+```js-18
 // returns a fluid stack ingredient representing 1000mB of water
 FluidIngredient.water()
 // returns a fluid stack ingredient representing 50mB of water
@@ -73,7 +73,7 @@ FluidIngredient.water(50)
 
 Creates a fluid stack ingredient representing the `forge:water` fluid tag, optionally add an integer to specify the amount in mB
 
-```js
+```js-18
 // returns a fluid stack ingredient representing 1000mB of forge:water
 FluidStackIngredient.forgeWater()
 // returns a fluid stack ingredient representing 40mB of forge:water
@@ -96,7 +96,7 @@ An item stack provider consists of an item stack and a list of modifiers which c
 
 This accepts an item stack in json or string form, a modifier list in json array form, or an item stack in json or string form and a modifier list in string, json object, or json array form. If given only a json array it will provide a modifier list with no item stack, this is not recommended to do. If providing both an item stack and modifier list, the modifier list must be the second argument
 
-```js
+```js-18
 // returns an item stack provider for one steak with the tfc:copy_food modifier applied
 // These examples are equivalent
 ItemStackProvider.of('minecraft:steak', {type:'tfc:copy_food'})
@@ -146,25 +146,25 @@ Adds a [meal](https://terrafirmacraft.github.io/Documentation/1.18.x/data/item-s
 
 The first argument is a consumer and is the same as the one used to define a [food item](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Data#food-items), however the available methods are here for convenience
 
-- `.hunger(integer)`{: .language-kube }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
+- `.hunger(integer)`{: .language-kube-18 }: Accepts an integer and defines how much hunger the ingredient restores, defaults to 4
     - The player's full hunger bar is equal to 20
-- `.saturation(number)`{: .language-kube }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
-- `.water(number)`{: .language-kube }: Accepts a number and defines how much water the ingredient restores, defaults to 0
+- `.saturation(number)`{: .language-kube-18 }: Accepts a number and defines how much saturation the ingredient restores, defaults to 0
+- `.water(number)`{: .language-kube-18 }: Accepts a number and defines how much water the ingredient restores, defaults to 0
     - The player's full water bar is equal to 100
-- `.decayModifier(number)`{: .language-kube }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
+- `.decayModifier(number)`{: .language-kube-18 }: Accepts a number and defines how quickly the ingredient decays, defaults to 1
     - A higher value means a faster decay and shorter expiration time
-- `.grain(number)`{: .language-kube }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
-- `.fruit(number)`{: .language-kube }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
-- `.vegetables(number)`{: .language-kube }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
-- `.protein(number)`{: .language-kube }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
-- `.dairy(number)`{: .language-kube }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
+- `.grain(number)`{: .language-kube-18 }: Accepts a number and defines how much of the grain nutrient the ingredient provides, defaults to 0
+- `.fruit(number)`{: .language-kube-18 }: Accepts a number and defines how much of the fruit nutrient the ingredient provides, defaults to 0
+- `.vegetables(number)`{: .language-kube-18 }: Accepts a number and defines how much of the vegetables nutrient the ingredient provides, defaults to 0
+- `.protein(number)`{: .language-kube-18 }: Accepts a number and defines how much of the protein nutrient the ingredient provides, defaults to 0
+- `.dairy(number)`{: .language-kube-18 }: Accepts a number and defines how much of the dairy nutrient the ingredient provides, defaults to 0
 
 The second argument is an optional array of portion consumers which have four optional methods available
 
-- `.ingredient(ingredient)`{: .language-kube }: Accepts an ingredient, sets the ingredient to be used for this portion, if not specified this will match all foods
-- `.nutrientModifier(number)`{: .language-kube }: Accepts a number and multiplies the nutrition from the food of this portion, defaults to 1.0
-- `.waterModifier(number)`{: .language-kube }: Accepts a number and multiples the water from the food of this portion, defaults to 1.0
-- `.saturationModifier(number)`{: .language-kube }: Accepts a number and multiples the saturation from the food of this portion, defaults to 1.0
+- `.ingredient(ingredient)`{: .language-kube-18 }: Accepts an ingredient, sets the ingredient to be used for this portion, if not specified this will match all foods
+- `.nutrientModifier(number)`{: .language-kube-18 }: Accepts a number and multiplies the nutrition from the food of this portion, defaults to 1.0
+- `.waterModifier(number)`{: .language-kube-18 }: Accepts a number and multiples the water from the food of this portion, defaults to 1.0
+- `.saturationModifier(number)`{: .language-kube-18 }: Accepts a number and multiples the saturation from the food of this portion, defaults to 1.0
 
 For an example of usage see the advanced shapeless crafting recipe [example](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Recipes#advanced-shapeless-crafting)
 
@@ -226,12 +226,12 @@ Adds a `tfcchannelcasting:conditional` modifier
 
 The first consumer has several methods
 
-- `.type(String)`{: .language-kube }: Sets the type of condition, may either be `has_trait` or `date_range`
-- `.trait(String)`{: .language-kube }: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
-- `.minDay(integer)`{: .language-kube }: Sets the minimum day of the month the conditional looks for, only applicable for the `date_range` type
-- `.maxDay(integer)`{: .language-kube }: Sets the maximum day of the month the conditional looks for, only applicable for the `date_range` type
-- `.minMonth(integer)`{: .language-kube }: Sets the minimum month of the year the conditional looks for, only applicable for the `date_range` type
-- `.maxMonth(integer)`{: .language-kube }: Sets the maximum month of the year the conditional looks for, only applicable for the `date_range` type
+- `.type(String)`{: .language-kube-18 }: Sets the type of condition, may either be `has_trait` or `date_range`
+- `.trait(String)`{: .language-kube-18 }: Specifies the trait the conditional looks for, only applicable for the `has_trait` type
+- `.minDay(integer)`{: .language-kube-18 }: Sets the minimum day of the month the conditional looks for, only applicable for the `date_range` type
+- `.maxDay(integer)`{: .language-kube-18 }: Sets the maximum day of the month the conditional looks for, only applicable for the `date_range` type
+- `.minMonth(integer)`{: .language-kube-18 }: Sets the minimum month of the year the conditional looks for, only applicable for the `date_range` type
+- `.maxMonth(integer)`{: .language-kube-18 }: Sets the maximum month of the year the conditional looks for, only applicable for the `date_range` type
 
 The second consumer will accept any item stack provider modifiers, these will be applied to the item if the conditional passes
 
