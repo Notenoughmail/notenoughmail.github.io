@@ -114,7 +114,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
 - 1st argument: A string, the name of the feature, if no namespace is provided, it will default to `kubejs_tfc`
 - 2nd argument: A consumer with several methods:
     - `.state(String)`{: .language-kube-18 }: Accepts a block state and sets the block to be used. **Note:** must be a [thin spike block](https://github.com/Notenoughmail/KubeJS-TFC/wiki/Items-and-Blocks#thin-spike)
-    - `.radius(integer)`{: .language-kube-18 }: Accepts an integer, in the range [1, 16], and sets the radius which to place spikes in
+    - `.radius(integer)`{: .language-kube-18 }: Accepts an integer, {% in_range 1,16 %}, and sets the radius which to place spikes in
     - `.tries(integer)`{: .language-kube-18 }: Accepts an integer and sets how many attempts should be made to place spikes
     - `.heights(integer, integer)`{: .language-kube-18 }: Accepts two integers, the first setting the minimum height of the spike, and the second the maximum
 - 3rd argument: A [feature placement consumer](#placing-features)
@@ -164,7 +164,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
     - `.rarity(integer)`{: .language-kube-18 }: Accepts an integer and sets the rarity, defaults to 60
         - **Note:** the rarity is 1 over the provided value, i.e. .rarity(3) would make the vein occur in 1/3 chunks on average
     - `.size(integer)`{: .language-kube-18 }: Accepts an integer and sets the size, defaults to 8
-    - `.density(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the density of the vein, defaults to 0.2
+    - `.density(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}, and sets the density of the vein, defaults to 0.2
     - `.minY(object)`{: .language-kube-18 }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the minimum y level the vein will spawn at
     - `.maxY(object)`{: .language-kube-18 }: Accepts either a [vertical anchor](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/common-types/#vertical-anchor) json object or an integer, which will be treated as an absolute vertical anchor. Sets the maximum y level the vein will spawn at
     - `.indicator(consumer)`{: .language-kube-18 }: Accepts a consumer with several methods:
@@ -185,7 +185,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/world
         - `.maxSkew(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum skew of the vein, defaults to 0
         - `.minSlant(integer)`{: .language-kube-18 }: Accepts an integer and sets the minimum slant of the vein, defaults to 0
         - `.maxSlant(integer)`{: .language-kube-18 }: Accepts an integer and sets the maximum slant of the vein, defaults to 0
-        - `.sign(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the sign of the slant, defaults to 0.5
+        - `.sign(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}, and sets the sign of the slant, defaults to 0.5
 
 ### Example
 
@@ -259,7 +259,7 @@ Adds TFC's [flat enough](https://terrafirmacraft.github.io/Documentation/1.18.x/
 
 Accepts a consumer with several methods:
 
-- `.flatness(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1]. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
+- `.flatness(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}. It describes the how many solid blocks, as a percentage the surrounding area must contain. Defaults to 0.5
 - `.radius(integer)`{: .language-kube-18 }: Accepts an integer and sets the radius around the initial position that the area is checked for solid blocks, defaults to 2
 - `.maxDepth(integer)`{: .language-kube-18 }: Accepts an integer and sets how deep from the original position the decorator should try and search, defaults to 4
 
@@ -286,7 +286,7 @@ Adds TFC's [volcano](https://terrafirmacraft.github.io/Documentation/1.18.x/worl
 Accepts:
 
 - An optional boolean which if true will place the feature at the exact center of any volcanoes, defaults to false
-- A number, in the range [0, 1], representing the distance from the center of a volcano that this position must be in order to generate. 1 is the maximum radius of the volcano
+- A number, {% in_range 0,1 %}, representing the distance from the center of a volcano that this position must be in order to generate. 1 is the maximum radius of the volcano
 
 ### .inSquare()
 

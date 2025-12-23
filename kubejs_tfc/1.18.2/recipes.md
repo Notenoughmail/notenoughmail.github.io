@@ -72,8 +72,8 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 1st argument: A string representing the registry name of a metal
 - 2nd argument: A list of contents, each containing three variables:
     - A string representing the registry name of the required metal
-    - A number, in the range [0, 1], representing the minimum portion needed in the mixture
-    - A number, in the range [0, 1], representing the maximum portion needed in the mixture
+    - A number, {% in_range 0,1 %}, representing the minimum portion needed in the mixture
+    - A number, {% in_range 0,1 %}, representing the maximum portion needed in the mixture
 
 ### Example
 
@@ -231,7 +231,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 - 1st argument: An [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient, this only matches the mold item itself
 - 3rd argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient)
-- *optional 4th argument*: A number, in the range [0, 1], representing the chance that the mold will break upon completion of this recipe
+- *optional 4th argument*: A number, {% in_range 0,1 %}, representing the chance that the mold will break upon completion of this recipe
 
 ### Example
 

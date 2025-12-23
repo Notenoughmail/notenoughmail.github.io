@@ -184,3 +184,11 @@ Color Tag Test
 Link color preservation
 
 [`.test()`{: .language-kube-20 }](#three-hashes){:.preserve-color}
+
+Range Tag Test
+
+{% range 3,7 %}
+
+{% range 4,9,) %}
+
+{% in_range 3,6 %}

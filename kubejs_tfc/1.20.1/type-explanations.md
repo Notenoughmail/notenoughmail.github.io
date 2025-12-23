@@ -24,11 +24,11 @@ Lists and describes the methods available on
 
 - `.noise(x: double, z: double): Noise2D`{: .language-kube-20 #noise2d-noise }: Gets the value of the noise at the given x-z point
 - `.octaves(octaves: int): Noise2D`{: .language-kube-20 #noise2d-octaves }: Applies an octave function to the noise, overlaying weaker, more spread copies of the noise on top of itself
-- `.ridged(): Noise2D`{: .language-kube-20 #noise2d-ridged }: Creates a ridged noise using absolute values. Expects the noise's value to be in the range [-1, 1]
+- `.ridged(): Noise2D`{: .language-kube-20 #noise2d-ridged }: Creates a ridged noise using absolute values. Expects the noise's value to be {% in_range -1,1 %}
 - `.abs(): Noise2D`{: .language-kube-20 #noise2d-abs }: Takes the absolute value of the function
-- `.terraces(levels: int): Noise2D`{: .language-kube-20 #noise2d-terraces }: Creates 'terraces' by taking the nearest level and rounding. Expects the noise's value to be in the range [-1, 1]
+- `.terraces(levels: int): Noise2D`{: .language-kube-20 #noise2d-terraces }: Creates 'terraces' by taking the nearest level and rounding. Expects the noise's value to be {% in_range -1,1 %}
 - `.spread(scaleFactor: double): Noise2D`{: .language-kube-20 #noise2d-spread }: Scales the input dimension of the noise by the given scale factor
-- `.scaled(min: double, max: double): Noise2D`{: .language-kube-20 #noise2d-spread-2 }: Maps the output value, expected to be in the range [-1, 1], to the given min and max values
+- `.scaled(min: double, max: double): Noise2D`{: .language-kube-20 #noise2d-spread-2 }: Maps the output value, expected to be {% in_range -1,1 %}, to the given min and max values
 - `.scaled(oldMin: double, oldMax: double, min: double, max: double): Noise2D`{: .language-kube-20 #noise2d-spread-4 }: Re-scales the output of the noise to a new range
 - `.affine(scale: double, shift: double): Noise2D`{: .language-kube-20 #noise2d-affine }: Scales then shifts the noise output
 - `.warped(warp: OpenSimplex2D): Noise2D`{: .language-kube-20 #noise2d-warp }: Uses the `FastNoiseLite` of the simplex noise to domain warp this noise
@@ -64,7 +64,7 @@ Lists and describes the methods available on
 - `.noise(x: double, y: double, z: double): Noise3D`{: .language-kube-20 #noise3d-noise }: Gets the value of noise at the give x-y-z point
 - `.octaves(octaves: int): Noise3D`{: .language-kube-20 #noise3d-octaves }: Applies an octave function to this noise, overlaying weaker, more spread out copies of the noise on top of itself
 - `.spread(scaleFactor: double): Noise3D`{: .language-kube-20 #noise3d-spread }: Scales the input dimensions of the noise by the given scale factor
-- `.scaled(min: double, max: double): Noise3D`{: .language-kube-20 #noise3d-scaled-2 }: Maps the output value, expected to be in the range [-1, 1], to the given min and max values
+- `.scaled(min: double, max: double): Noise3D`{: .language-kube-20 #noise3d-scaled-2 }: Maps the output value, expected to be {% in_range -1,1 %}, to the given min and max values
 - `.scaled(oldMin: double, oldMax: double, min: double, max: double): Noise3D`{: .language-kube-20 #noise3d-scaled-4 }: Re-scales the output of the noise to a new range
 - `.warped(warp: OpenSimplex3D): Noise3D`{: .language-kube-20 #noise3d-warp }: Uses the `FastNoiseLite` of the simplex noise to domain warp this noise
 - `.transposeXZ(): Noise3D`{: .language-kube-20 #noise3d-transpose-x-z }: Swaps the x and z axes
@@ -112,10 +112,10 @@ Lists and describes the methods available on
     - `rainfallLayer: LerpFloatLayer`{: .language-kube-20 }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Using in climate models to determine the rainfall at a position
     - `temperatureLayer: LerpFloatLayer`{: .language-kube-20 }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by climate models to determine the average temperature at a position
     - `forestType: ForestType`{: .language-kube-20 }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
-    - `forestWeirdness: float`{: .language-kube-20 }: The forest 'weirdness' of the chunk, in the range [0, 1]. Used by TFC's forest configured feature
-    - `forestDensity: float`{: .language-kube-20 }: The forest density of the chunk, in the range [0, 1]. Used by TFC's forest configured feature
+    - `forestWeirdness: float`{: .language-kube-20 }: The forest 'weirdness' of the chunk, {% in_range 0,1 %}. Used by TFC's forest configured feature
+    - `forestDensity: float`{: .language-kube-20 }: The forest density of the chunk, {% in_range 0,1 %}. Used by TFC's forest configured feature
 - `.generateFull(...): void`{: .language-kube-20 #chunk-data-generate-full }: Promotes the chunk data from `PARTIAL`{:.e} to `FULL`{:.e} and fills in the chunk's surface and aquifer heights. Has two parameters, in order they are:
-    - `surfaceHeight: int[256]`{: .language-kube-20 }: An array of integer values of size `256`{:.n}[^1] representing the surface height of the world. Values indexes are `x + 16 * z`{: .language-kube-20 } where `x` and `z` are the local x and z coordinates within the chunk and are in the range [0, 15]. For custom chunk data providers, this is where the `surfaceY`{:.v} parameter of the `RocksGetter`{:.f} [callback]({% link kubejs_tfc/1.20.1/events.md %}#chunk-data-provider-rocks) is gotten from
+    - `surfaceHeight: int[256]`{: .language-kube-20 }: An array of integer values of size `256`{:.n}[^1] representing the surface height of the world. Values indexes are `x + 16 * z`{: .language-kube-20 } where `x` and `z` are the local x and z coordinates within the chunk and are {% in_range 0,15 %}. For custom chunk data providers, this is where the `surfaceY`{:.v} parameter of the `RocksGetter`{:.f} [callback]({% link kubejs_tfc/1.20.1/events.md %}#chunk-data-provider-rocks) is gotten from
     - `aquiferSurfaceHeight: int[16]`{: .language-kube-20 }: An array of integer values of size `16`{:.n}[^2] representing the height of aquifer surfaces. Only used by [`TFCAquifer`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
 
 [^1]: `16`{:.n} * `16`{:.n}; `BlockPos` resolution
@@ -233,7 +233,7 @@ A `NamedRegistryWood` is an easy way to access the blocks associated with a wood
 - `.barkColor(): MapColor`{: .language-kube-20 #named-reg-wood-bark-color }: Get the map color of the barks of the wood
 - `.tree(): TFCTreeGrower`{: .language-kube-20 #named-reg-wood-tree }: Get the [`TFCTreeGrower`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/feature/tree/TFCTreeGrower.java) of the wood
 - `.daysToGrow(): number`{: .language-kube-20 #named-reg-wood-}: Gets the number of days it takes for the wood's sapling to grow
-- `.autumnIndex(): number`{: .language-kube-20 #named-reg-wood-autumn-index }: Get the vertical coordinate, in the range [0, 255], on the `foliage_fall` colormap for this wood's leaves
+- `.autumnIndex(): number`{: .language-kube-20 #named-reg-wood-autumn-index }: Get the vertical coordinate, {% in_range 0,255 %}, on the `foliage_fall` colormap for this wood's leaves
 - `.getBlock(type: Wood$BlockType): @Nullable Supplier<Block>`{: .language-kube-20 #named-reg-wood-get-block }: Get a possibly null supplier for the block of the given type. Accepts `log`{:.e}, `stripped_log`{:.e}, `wood`{:.e}, `stripped_wood`{:.e}, `leaveas`{:.e}, `planks`{:.e}, `sapling`{:.e}, `potted_sapling`{:.e}, `bookshelf`{:.e}, `door`{:.e}, `trapdoor`{:.e}, `fence`{:.e}, `log_fence`{:.e}, `fence_gate`{:.e}, `button`{:.e}, `pressure_plate`{:.e}, `slab`{:.e}, `stairs`{:.e}, `too_rack`{:.e}, `twig`{:.e}, `fallen_leaves`{:.e}, `vertical_support`{:.e}, `horizontal_support`{:.e}, `workbench`{:.e}, `trapped_chest`{:.e}, `chest`{:.e}, `loom`{:.e}, `sluice`{:.e}, `sign`{:.e}, `wall_sign`{:.e}, `barrel`{:.e}, `lectern`{:.e}, `scribing_table`{:.e}, `sewing_table`{:.e}, `jar_shelf`{:.e}, `axle`{:.e}, `bladed_axle`{:.e}, `encased_axle`{:.e}, `clutch`{:.e}, `gear_box`{:.e}, `windmill`{:.e}, or `water_wheel`{:.e}
 - `.getBlockSet(): BlockSetType`{: .language-kube-20 #named-reg-get-block-set }: Get the vanilla `BlockSetType` of the wood
 - `.getVanillaWoodType(): WoodType`{: .language-kube-20 #named-reg-get-vanilla-wood-type }: Get the vanilla wood type of the wood

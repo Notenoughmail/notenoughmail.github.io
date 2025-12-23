@@ -67,11 +67,11 @@ event.climateRange(
 ```
 
 - 1st argument: A consumer with several additional methods:
-    - `.minHydration(i: number)`{: .language-kube-20 #climate-min-hydro }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to `0`{:.n}
-    - `.maxHydration(i: number)`{: .language-kube-20 #climate-max-hydro }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to `100`{:.n}
+    - `.minHydration(i: number)`{: .language-kube-20 #climate-min-hydro }: Accepts a number, {% in_range 0,100 %}, specifying the minimum hydration, defaults to `0`{:.n}
+    - `.maxHydration(i: number)`{: .language-kube-20 #climate-max-hydro }: Accepts a number, {% in_range 0,100 %}, specifying the maximum hydration, defaults to `100`{:.n}
     - `.hydrationWiggle(i: number)`{: .language-kube-20 #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
-    - `.minTemperature(f: number)`{: .language-kube-20 #climate-min-temp }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to `-100`{:.n}
-    - `.maxTemperature(f: number)`{: .language-kube-20 #climate-max-temp }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to `100`{:.n}
+    - `.minTemperature(f: number)`{: .language-kube-20 #climate-min-temp }: Accepts a number, {% in_range -100,100 %}, specifying the minimum temperature, defaults to `-100`{:.n}
+    - `.maxTemperature(f: number)`{: .language-kube-20 #climate-max-temp }: Accepts a number, {% in_range -100,100 %}, specifying the maximum temperature, defaults to `100`{:.n}
     - `.temperatureWiggle(f: number)`{: .language-kube-20 #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
@@ -154,13 +154,13 @@ event.drinkable(
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.consumeChance(f: number)`{: .language-kube-20 #drinkable-consume-chance }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
-    - `.thirst(i: number)`{: .language-kube-20 #drinkable-thirst }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
+    - `.consumeChance(f: number)`{: .language-kube-20 #drinkable-consume-chance }: Accepts a number, {% in_range 0,1 %}, and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
+    - `.thirst(i: number)`{: .language-kube-20 #drinkable-thirst }: Accepts a number, {% in_range 0,100 %}, the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
     - `.intoxication(i: number)`{: .language-kube-20 #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
     - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-kube-20 #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
         - `.duration(i: number)`{: .language-kube-20 }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
         - `.amplifier(i: number)`{: .language-kube-20 }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
-        - `.chance(f: number)`{: .language-kube-20 }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
+        - `.chance(f: number)`{: .language-kube-20 }: Accepts a number, {% in_range 0,1 %}, specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
     - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube-20 #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
@@ -678,7 +678,7 @@ event.firmalifePlantable(
 - 2nd argument: The planter type to use, may be `quad`{:.e}, `large`{:.e}, `hanging`{:.e}, `trellis`{:.e}, `bonsai`{:.e}, or `hydroponic`{:.e}, may be `null`{:.p} to default to `quad`{:.e}
 - 3rd argument: The minimum greenhouse tier needed for the plant to grow, defaults to `0`{:.n}
 - 4th argument: How many stages the planter has, one less than the number of textures the planter must cycle through, may be `null`{:.p} for `trellis`{:.e}, and `bonsai`{:.e} planter types
-- 5th argument: A number, in the range [0, 1], determines the chance of getting an extra seed stack back when harvesting, may be `null`{:.p} to default to `0.5`{:.n}
+- 5th argument: A number, {% in_range 0,1 %}, determines the chance of getting an extra seed stack back when harvesting, may be `null`{:.p} to default to `0.5`{:.n}
 - 6th argument: An item stack, the seed item returned when harvested, may be `null`{:.p} to not drop a seed item
 - 7th argument: An item stack, the product of the crop
 - 8th argument: A `NutrientType`{:.e}, the nutrient the crop consumes, may be `nitrogen`{:.e}, `phosphorous`{:.e}, or `potassium`{:.e}, may be `null`{:.e} to default to `nitrogen`{:.e}
@@ -733,11 +733,11 @@ event.beneathNetherFertilizer(
 ```
 
 - 1st argument: An item ingredient, the items this definition applies to
-- 2nd argument: A number, in the range [0, 1], sets the `death`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 3rd argument: A number, in the range [0, 1], sets the `destruction`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 4th argument: A number, in the range [0, 1], sets the `decay`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 5th argument: A number, in the range [0, 1], sets the `sorrow`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 6th argument: A number, in the range [0, 1], sets the `flame`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying the value
+- 2nd argument: A number, {% in_range 0,1 %}, sets the `death`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 3rd argument: A number, {% in_range 0,1 %}, sets the `destruction`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 4th argument: A number, {% in_range 0,1 %}, sets the `decay`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 5th argument: A number, {% in_range 0,1 %}, sets the `sorrow`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 6th argument: A number, {% in_range 0,1 %}, sets the `flame`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying the value
 - *optional 7th argument*: A `ResourceLocation`, the name of the nether fertilizer definition
 
 ### Example

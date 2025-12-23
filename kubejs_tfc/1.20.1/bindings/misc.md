@@ -395,7 +395,7 @@ TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 
 ### Get Hydration
 
-Returns a number, in the range [0, 100], an expression of how hydrated soil at the position would be
+Returns a number, {% in_range 0,100 %}, an expression of how hydrated soil at the position would be
 
 ```js-20
 TFC.misc.getHydration(level: LevelAccessor, pos: BlockPos): number

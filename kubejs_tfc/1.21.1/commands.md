@@ -19,15 +19,14 @@ There are commands for:
 - [Printing the TFC world settings of the current level](#print-world-settings)
 - [Printing the TFC rock settings of the current level](#print-rock-settings)
 - [Printing the TFC `ChunkData` in the player's current chunk](#print-chunk-data)
-- ['Solving' a tree template for use in TFC tree structures & congiured features](#tree-solver)
+- ['Solving' a tree template for use in TFC tree structures & configured features](#tree-solver)
 - [Inspecting `Noise2D` objects](#inspect-2d-noise)
-
 - [Inspecting `Noise3D` objects](#inspect-3d-noise)
 - [Reloading KubeJS TFC's config](#reload-kubejs-tfc-config)
 
 ## List IDs
 
-Prints a list of data entries handled by a data type. Each entry can be clicked to [describe](#describe) it. The entries are printed in alphabentical order in a paginated view. The gold arrows below the list of entries can be used to see the previous and next pages
+Prints a list of data entries handled by a data type. Each entry can be clicked to [describe](#describe) it. The entries are printed in alphabetical order in a paginated view. The gold arrows below the list of entries can be used to see the previous and next pages
 
 The command has the following form:
 
@@ -42,11 +41,11 @@ An example: `/kubejs_tfc list_ids tfc:fuel 2`{: .language-command }
 
 Prints an overview of the data contained in a data entry.
 
-The command hs the following form:
+The command has the following form:
 
 `/kubejs_tfc describe <data_type> <id>`{: .language-command }
 
-- `<data_type>`{:.v}: The data type to retieve the entry from. All data types will be suggested
+- `<data_type>`{:.v}: The data type to retrieve the entry from. All data types will be suggested
 - `<id>`{:.m}: The id of the entry to describe. The ids of all entries handled by the data type will be suggested
 
 An example: `/kubejs_tfc describe tfc:fuel tfc:coal`{: .language-command }
@@ -60,11 +59,11 @@ The command has the following form:
 `/kubejs_tfc search <data_type> <value>`{: .language-command }
 
 - `<data_type>`{:.v}: The data type to retrieve the list from. All searchable data types will be suggested
-- `<value>`{:.m}: The registry id of the item/block/fluid/entity type that has a data entry in the data type. All objcts with an associated data entry will be suggested
+- `<value>`{:.m}: The registry id of the item/block/fluid/entity type that has a data entry in the data type. All objects with an associated data entry will be suggested
 
 Examples:
 
-- `/kubejs_tfc search tfc:fluid_heat tfc:metal/copper`{; .langauge-command }
+- `/kubejs_tfc search tfc:fluid_heat tfc:metal/copper`{; .language-command }
 - `/kubejs_tfc search tfc:entity_damage_resistance minecraft:creeper`{; .language-command }
 - `/kubejs_tfc search tfc:fertilizer tfc:powder/wood_ash`{: .language-command }
 
@@ -98,12 +97,12 @@ The command has the following form:
 
 ## Tree Solver
 
-Converts one or more in-world tree templates into trees which properly interact with TFC's logging mecahanic, primarily intended for easily making tree structures for [forests]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest)
+Converts one or more in-world tree templates into trees which properly interact with TFC's logging mechanic, primarily intended for easily making tree structures for [forests]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest)
 
-This command replaces template blocks in-world with the selected log and leaves blocks in the correct blcok state. There are three template blocks:
+This command replaces template blocks in-world with the selected log and leaves blocks in the correct block state. There are three template blocks:
 
 - `minecraft:light_blue_stained_glass`: Marks a root position, or the 'origin' of a tree. This is the only block *required* to be within the scan area. Must have a `minecraft:brown_stained_glass` block immediately above it; and for a `<trunk_size>`{:.v} of `2`{:.v}, it should be in a two by two pattern
-- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker(s) breadth-first along this block. The solver will connect to ant log marker in the 3 by 3 by 3 area centered at the current postion, though the lowest order[^2] connection that is valid will be used
+- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker(s) breadth-first along this block. The solver will connect to ant log marker in the 3 by 3 by 3 area centered at the current position, though the lowest order[^2] connection that is valid will be used
 - `minecraft:green_stained_glass`: Marks a leaf position. Markers beyond the decay range of the leaves block will *not* be replaced
 
 [^2]: Order 1: share a face, order 2: share an edge, order 3: share a vertex
@@ -117,7 +116,7 @@ The command has the following form:
 - `<trunk_size>`{:.v}: An integer, either `1`{:.v} or `2`{:.v}, the trunk size of the templates to solve
 - `<log_block>`{:.m}: A block. Is limited to and will only suggest blocks with TFC's branch direction property. See the [log block type]({% link kubejs_tfc/1.21.1/blocks.md %}#log) for custom logs
 - `<leaves_block>`{:.s}: A block. Is limited to and will only suggest blocks TFC leaves blocks. See the [leaves block type]({% link kubejs_tfc/1.21.1/blocks.md %}#leaves) for custom leaves
-- `<from>`{:.r}: A block position, one corner fo the scan area. Supports relative positions
+- `<from>`{:.r}: A block position, one corner of the scan area. Supports relative positions
 - `<to>`{:.nb}: A block position, the other corner of the scan area. Supports relative positions
 
 <details>
@@ -155,15 +154,15 @@ The command has the following form:
 
 `/kubejs_tfc inspect_2d_noise <from> <to> <input_range> <output_range> <noise>`{: .language-command }
 
-- `<from>`{:.v}: A block position, one corner of the dispaly area. Supports relative positions
-- `<to>`{:.m}: A block position, the other corner of the display area. Supports relative posiitons
+- `<from>`{:.v}: A block position, one corner of the display area. Supports relative positions
+- `<to>`{:.m}: A block position, the other corner of the display area. Supports relative positions
 - `<input_range>`{:.s}: A range[^3], the range which the noise will be samples over for the x and z axes
 - `<output_range>`{:.r}: A range[^3], the expected range for output values of the noise
 - `<noise>`{:.nb}: The name of the noise to inspect
 
 [^3]: A pair of numbers
 
-This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-z *square*bounded by the `<from>`{:.v} and `<to>`{:.m} positions' x and z coordiantes. The value of the noise at the sampled position will then be mapped to a y-position within the bounds of `<from>`{:.v} and `<to>`{:.m} and white stained glass will be placed at that position. If the value is beyond beyond the bounds of `<output_range>`{:.r}, the red stained glass will be placed at the edge of the y-boundaries instead. If the value is infinite, then lime stained glass will be palced instead. If the value is [`Nan`](https://en.wikipedia.org/wiki/NaN), then purple stained glass will be placed instead.
+This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-z *square*bounded by the `<from>`{:.v} and `<to>`{:.m} positions' x and z coordinates. The value of the noise at the sampled position will then be mapped to a y-position within the bounds of `<from>`{:.v} and `<to>`{:.m} and white stained glass will be placed at that position. If the value is beyond beyond the bounds of `<output_range>`{:.r}, the red stained glass will be placed at the edge of the y-boundaries instead. If the value is infinite, then lime stained glass will be placed instead. If the value is [`Nan`](https://en.wikipedia.org/wiki/NaN), then purple stained glass will be placed instead.
 
 ## Inspect 3D Noise
 
@@ -182,7 +181,7 @@ The command has the following form:
 
 This command fills space in-world by sampling the noise over the `<input_range>`{:.s} in the largest x-y-z *cube* bounded by the `<from>`{:.v} and `<to>`{:.m} positions. The value of the noise at the sampled position will then be mapped onto a gradient of stained glass, as described below, and the block will be placed at that position. If the value is beyond the bounds of `<output_range>`{:.r}, then the position will be filled with air
 
-The gradient, from lowest to hightest, is represented as:
+The gradient, from lowest to highest, is represented as:
 
 - {% color F0F0F0|▮ %} White Stained Glass
 - {% color D88198|▮ %} Pink Stained Glass

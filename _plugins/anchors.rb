@@ -41,6 +41,7 @@ module Jekyll
               return make_anchor(str, m[1], 'm-link')
             rescue => e
               puts "Did you include single quotes in a inline code block?"
+              puts str
               raise e
             end
           }
@@ -58,6 +59,7 @@ module Jekyll
               return make_anchor(str, m[2], 'callout')
             rescue => e
               puts "Did you include single quotes in a callout?"
+              puts str
               raise e
             end
           }

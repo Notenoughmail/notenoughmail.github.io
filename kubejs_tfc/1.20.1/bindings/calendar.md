@@ -59,8 +59,8 @@ TFC.calendar.getTimeDelta(ticks: number, daysInMonth: number): MutableComponent
 - `.getHourOfDay(time: number)`{: .language-kube-20 #hour-of-day }: Returns the hour of the day for the given tick
 - `.getDayOfMonth(time: number, daysInMonth: number)`{: .language-kube-20 #day-of-month }: Returns the day of the month for the given tick and number of days in a month
 - `.getMonthOfYear(time: number, daysInMonth: number)`{: .language-kube-20 #month-of-year }: Returns the month of the year for the given tick and number of days in a month
-- `.getFractionOfMonth(time: number, daysInMonth: number)`{: .language-kube-20 #fraction-of-month }: Returns the fraction, in the range [0, 1], of the month for the given tick and number of days in a month
-- `.getFractionOfYear(time: number, daysInMonth: number)`{: .language-kube-20 #fraction-of-year }: Returns the fraction, in the range [0, 1], of the year for the given tick and number of days in a month
+- `.getFractionOfMonth(time: number, daysInMonth: number)`{: .language-kube-20 #fraction-of-month }: Returns the fraction, {% in_range 0,1 %}, of the month for the given tick and number of days in a month
+- `.getFractionOfYear(time: number, daysInMonth: number)`{: .language-kube-20 #fraction-of-year }: Returns the fraction, {% in_range 0,1 %}, of the year for the given tick and number of days in a month
 - `.getTimeAndDate(time: number, daysInMonth: number)`{: .language-kube-20 #time-and-date-0 }: Returns a `MutableComponent` describing the date and time from the given number of ticks and days in a month
 - `.getTimeAndDate(hour: number, minute: number, month: Month, day: number, years: number)`{: .language-kube-20 #.m-link #-1 }: Returns a `MutableComponent` describing the date and time from the given hour, minute, month, day, and year
 - `.getTimeDelta(ticks: number, daysInMonth: number)`{: .language-kube-20 #time-delta }: Returns a `MutableComponent` describing the time delta of the given number of ticks and days in a month
@@ -108,10 +108,10 @@ cal.getTimeDelta(ticks: number): MutableComponent
 - `.getTotalCalendarMonths()`{: .language-kube-20 #calendar-total-calendar-months }: Returns the total number of months passed since Jan 1, 1000
 - `.getTotalYears()`{: .language-kube-20 #calendar-total-years }: Returns the total number of years passed
 - `.getTotalCalendarYears()`{: .language-kube-20 #calendar-total-calendar-years }: Returns the total number of years passed since Jan 1, 1000
-- `.getCalendarDayTime()`{: .language-kube-20 #calendar-day-time }: Returns the time of day, in the range [0, 24000), should match `Level#getDayTime()`
+- `.getCalendarDayTime()`{: .language-kube-20 #calendar-day-time }: Returns the time of day, {% in_range 0,24000,) %}, should match `Level#getDayTime()`
 - `.getCalendarDayOfMonth()`{: .language-kube-20 #calendar-day-of-month }: Returns the day of the month from the calendar time
-- `.getCalendarFractionOfMonth()`{: .language-kube-20 #calendar-fraction-of-month }: Returns the progress, in the range [0, 1] through the month from the calendar time
-- `.getCalendarFractionOfYear()`{: .language-kube-20 #calendar-fraction-of-year }: Returns the progress through the year, in the range [0, 1] from the calendar time, where Jan 1 = 0
+- `.getCalendarFractionOfMonth()`{: .language-kube-20 #calendar-fraction-of-month }: Returns the progress, {% in_range 0,1 %} through the month from the calendar time
+- `.getCalendarFractionOfYear()`{: .language-kube-20 #calendar-fraction-of-year }: Returns the progress through the year, {% in_range 0,1 %} from the calendar time, where Jan 1 = 0
 - `.getCalendarDayOfYear()`{: .language-kube-20 #calendar-day-of-year }: Returns a `MutableComponent` describing the current day of the week from the calendar time
 - `.getCalendarMonthOfYear()`{: .language-kube-20 #calendar-month-of-year }: Returns the month of the year from the calendar time
 - `.getCalendarTicksInMonth()`{: .language-kube-20 #calendar-ticks-in-month }: Returns the total number of ticks in a month

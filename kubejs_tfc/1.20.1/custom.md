@@ -216,10 +216,10 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.dripChance(f: number)`{: .language-kube-20 #thin-spike-drip-chance }: Sets the chance, in the range [0, 1], the block will drip per tick
+- `.dripChance(f: number)`{: .language-kube-20 #thin-spike-drip-chance }: Sets the chance, {% in_range 0,1 %}, the block will drip per tick
 - `.dripTemp(f: number)`{: .language-kube-20 #thin-spike-drip-temp }: Sets the temperature at which the block must be above to begin dripping
 - `.melts()`{: .language-kube-20 #thin-spike-melts }: makes the block melt under certain conditions
-- `.meltChance(f: number)`{: .language-kube-20 #thin-spike-melt-chance}: Sets the chance, in the range [0, 1], that the block will melt per random tick
+- `.meltChance(f: number)`{: .language-kube-20 #thin-spike-melt-chance}: Sets the chance, {% in_range 0,1 %}, that the block will melt per random tick
 - `.meltTemp(f: number)`{: .language-kube-20 #thin-spike-melt-temp }: Sets the temperature above which the block can melt
 - `.dripParticle(particle: String)`{: .language-kube-20 #thin-spike-drip-particle }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to `null`{:,p}
 - `.meltFluid(fluid: FluidStack)`{: .language-kube-20 #thin-spike-melt-fluid }: The fluid that the block melts into
@@ -381,7 +381,7 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.lightLevel(i: number)`{: .language-kube-20 #lamp-light-level }: Accepts a number, in the range [1, 15], sets the light level the lamp gives off when lit, defaults to `15`
+- `.lightLevel(i: number)`{: .language-kube-20 #lamp-light-level }: Accepts a number, {% in_range 1,15 %}, sets the light level the lamp gives off when lit, defaults to `15`
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 #lamp-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.models(models: BiConsumer<LampModelType, ModelGenerator>)`{: .language-kube-20 #lamp-models }: Sets the model generation of the lamp. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
     - `on`: A boolean. If the model type represents a lit state
@@ -982,7 +982,7 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.autumnIndex(i: number)`{: .language-kube-20 #leaves-autumn-index }: Sets the vertical coordinate, in the range [0, 255], on TFC's `foliage_fall` colormap for leaves. Defaults to `0`{:.n}
+- `.autumnIndex(i: number)`{: .language-kube-20 #leaves-autumn-index }: Sets the vertical coordinate, {% in_range 0,255 %}, on TFC's `foliage_fall` colormap for leaves. Defaults to `0`{:.n}
 - `.fallenLeaves(fallenLeaves: @Nullable Consumer<FallenLeavesBlockBuidler>)`{: .language-kube-20 #leaves-fallen }: Sets the properties of the fallen leaves block. May pass null to not have a fallen leaves block
     - The consumer has the same methods as the default block builder and:
     - `.models(models: BiConsumer<FallenLeafModelType, ModelGenerator>)`{: .language-kube-20 }: Sets the model generation of the fallen leaves block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
@@ -1048,7 +1048,7 @@ Some of TFC's blocks have extended properties which allow the block properties o
 - `.speedFactor(f: number)`{: .language-kube-20 #extend-props-speed-factor }: Sets the speed factor of the block
 - `.jumpFactor(f: number)`{: .language-kube-20 #extend-props-jump-factor }: Sets the jump factor of the block
 - `.sound(sound: SoundType)`{: .language-kube-20 #extend-props-sound }: Sets the sound type the block uses
-- `.lightLevel(lightLevel: Function<BlockState, number>)`{: .language-kube-20 #extend-props-light-level }: Sets the light level, in the range [0, 15], of the block, as a function of its state
+- `.lightLevel(lightLevel: Function<BlockState, number>)`{: .language-kube-20 #extend-props-light-level }: Sets the light level, {% in_range 0,15 %}, of the block, as a function of its state
 - `.strength(destroyTime: number, explosionResistance: number)`{: .language-kube-20 #extend-props-strength-0 }: Sets the destroy time and explosion resistance of the block
 - `.instabreak()`{: .language-kube-20 #extend-props-instabreak }: Makes the block instabreak
 - `.strength(f: number)`{: .language-kube-20 #extend-props-strength-1 }: Sets the destroy time and explosion resistance of the block
@@ -1540,8 +1540,8 @@ Inherits the methods of the basic item builder
 - `.filledDisplayName(c: Component)`{: .language-kube-20 #glass-bottle-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacity(i: number)`{: .language-kube-20 #glass-bottle-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
 - `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-kube-20 #glass-bottle-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-kube-20 }
-- `.breakChance(chance: number)`{: .language-kube-20 #glass-bottle-break-chance }: Sets the break chance, in the range [0, 1], of the bottle
-- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-kube-20 #glass-bottle-break-chance-supplier }: Sets the break chance, in the range [0, 1], supplier of the bottle
+- `.breakChance(chance: number)`{: .language-kube-20 #glass-bottle-break-chance }: Sets the break chance, {% in_range 0,1 %}, of the bottle
+- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-kube-20 #glass-bottle-break-chance-supplier }: Sets the break chance, {% in_range 0,1 %}, supplier of the bottle
 - `.fluidTagAccept(tag: String)`{: .language-kube-20 #glass-bottle-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 
 {: #glass-bottle-example }

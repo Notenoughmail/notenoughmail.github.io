@@ -20,7 +20,7 @@ module Rouge
 
                 def initialize(opts={})
                     super([
-
+                        "ForestSubType"
                     ], [
 
                     ], opts)
@@ -39,10 +39,9 @@ module Rouge
                         # Vanilla
                         "SpawnPlacements$Type",
                         # TFC
-                        "ChunkData$Status", "GroundType", "NutrientType",
-                        "GlassOperation",   "ChiselMode", "ForgeRule",
-                        "Metal$BlockType",  "Metal$Tier", "Metal$ItemType",
-                        "Lifecycle",
+                        "Metal$ItemType",  "GroundType", "NutrientType",
+                        "GlassOperation",  "ChiselMode", "ForgeRule",
+                        "Metal$BlockType", "Metal$Tier", "Lifecycle",
                         # KubeJS TFC
                         "AqueductModelPart", "SpikeModelPart", "LampModelType",
                         "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
@@ -85,6 +84,7 @@ module Rouge
                     # TFC enums
                     "Heat", "Month",  "ForestType",
                     "Size", "Weight", "PropsectResult",
+                    "Season", "ChunkData$Status",
                     # Java enums
                     "Enum"
                 ]

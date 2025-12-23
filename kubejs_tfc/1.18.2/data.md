@@ -87,15 +87,15 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.18.x/data/
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid(s) which this drinkable data will apply to
 - 2nd argument: A consumer with several methods:
-    - `.consumeChance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the chance a fluid block will be consumed, defaults to 0
-    - `.thirst(integer)`{: .language-kube-18 }: Accepts an integer, in the range [0, 100], and sets how much thirst is consumed per 25mB drank, defaults to 0
+    - `.consumeChance(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}, and sets the chance a fluid block will be consumed, defaults to 0
+    - `.thirst(integer)`{: .language-kube-18 }: Accepts an integer, {% in_range 0,100 %}, and sets how much thirst is consumed per 25mB drank, defaults to 0
     - `.intoxication(integer)`{: .language-kube-18 }: Accepts an integer, and sets the number of ticks a player will be intoxicated for, per 25mB drank, defaults to 0
     - `.effect(String, Consumer<EffectData>?)`{: .language-kube-18 }
         - 1st argument: A string representing an effect that will be applied to the player when drinking. A full list of available effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
         - *optional 2nd argument*: A consumer with several methods:
             - `.duration(integer)`{: .language-kube-18 }: Accepts an integer and sets the number of ticks the effects will be applied for, defaults to 20
             - `.amplifier(integer)`{: .language-kube-18 }: Accepts an integer and sets the level of the effect applied, defaults to 0
-            - `.chance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], and sets the chance the effect will be applied per 25mB drank, defaults to 1
+            - `.chance(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}, and sets the chance the effect will be applied per 25mB drank, defaults to 1
 - *optional 3rd argument*: A `ResourceLocation` which determines the name/file of the drinkable, if not provided a name will be automatically generated based on the fluid ingredient
 
 ## Example
@@ -424,7 +424,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
     - `.tier(integer)`{: .language-kube-18 }: Accepts an integer and sets the minimum tier [greenhouse](#greenhouses) needed, defaults to 0
     - `.stages(integer)`{: .language-kube-18 }: Accepts an integer, should be one less than the number of textures the planter will cycle through as it grows. Does not need to be specified for `trellis` or `bonsai` planters
         - As an example squash has 5 textures that it uses for growing, the stage number is 4
-    - `.extraSeedChance(number)`{: .language-kube-18 }: Accepts a number, in the range [0, 1], sets the chance of getting a second seed back, defaults to 0.5
+    - `.extraSeedChance(number)`{: .language-kube-18 }: Accepts a number, {% in_range 0,1 %}, sets the chance of getting a second seed back, defaults to 0.5
     - `.seed(object)`{: .language-kube-18 }: Accepts an item, sets the seed that will be returned when picked
     - `.crop(object)`{: .language-kube-18 }: Accepts an item, sets the item that is guaranteed to be returned when picked
     - `.nitrogen()`{: .language-kube-18 }: Sets the nutrient to `nitrogen`
@@ -563,7 +563,7 @@ Returns the average nutrition of the player
 
 ## getNutrient(Nutrient)
 
-Returns the nutrient value in the range [0, 1]. accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
+Returns the nutrient value {% in_range 0,1 %}. accepts `grain`, `fruit`, `vegetables`, `protein`, and `dairy`
 
 ## getNutrients()
 

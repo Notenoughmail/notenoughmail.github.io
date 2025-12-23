@@ -4,7 +4,365 @@ title: Type Explanations
 permalink: /kubejs_tfc/1.21.1/type-explanations/
 parent: 1.21.1
 grand_parent: KubeJS TFC
-desc: Explanations of certain Java types that may be encountered in complex situations
+desc: Explanations of certain Java types that may be encountered in various simple and complex situations
 ---
 
 # Type Explanations
+
+There are several Java types which can be encountered fairly frequently in the docs or are too complex to describe in-line along with other, perhaps more pertinent, information. Those are collected here
+
+- [The `ForestType`{:.e} enum](#forest-type-enum){:.preserve-colors}
+- [The `Month`{:.e} enum](#month-enum){:.preserve-colors}
+
+{: #forest-type-enum }
+
+## `ForestType`{:.e} Enum
+
+There are 29 forest types, each with values for
+
+- The type/category
+- The numeric density, {% in_range 0,4 %}
+- The number of trees to place per chunk
+- The number of groundcover objects to place per chunk
+- The number of leaf piles to place per chunk
+- The number of bushes to place per chunk
+- The maximum number of tree types in a [forest entry]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry) that can spawn
+- The chance per chunk, {% in_range 0,1 %}, a tree will be placed in a [forest entry]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry)
+- The maximum number of [forest entries]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry) alternatives that may be dropped when placing a [forest]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest)
+
+- `grassland`{: .e #forest-type-grassland }; ordinal `0`{:.n}
+    - Type: `none`{:.e}
+    - Density: `0`{:.n}
+    - Trees: `0`{:.n}
+    - Groundcover: `0`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: `0`{:.n}
+    - Tree types: `2`{:.n}
+    - Chance: `0`{:.n}
+    - Alternatives: `0`{:.n}
+- `clearing`{: .e #forest-type-clearing }; ordinal `1`{:.n}
+    - All values are the same as `grassland`{:.e}
+- `shrubland`{: .e #forest-type-shrubland }; ordinal `2`{:.n}
+    - Type: `none`{:.e}
+    - Density: `0`{:.n}
+    - Trees: `0`{:.n}
+    - Groundcover: `10`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 2,7 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `sparse`{: .e #forest-type-sparse }; ordinal `3`{:.n}
+    - Type: `none`{:.e}
+    - Density: `0`{:.n}
+    - Trees: `2`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 0,2 %}
+    - Tree types: `2`{:.n}
+    - Chance: `0.08`{:.n}
+    - Alternatives: `0`{:.n}
+- `savanna_monoculture`{: .e #forest-type-savanna-monoculture }; ordinal `4`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `3`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 0,2 %}
+    - Tree types: `1`{:.n}
+    - Chance: `0.55`{:.n}
+    - Alternatives: `0`{:.n}
+- `savanna_diverse`{: .e #forest-type-savanna-diverse }; ordinal `5`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `3`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 0,2 %}
+    - Tree types: `2`{:.n}
+    - Chance: `0.65`{:.n}
+    - Alternatives: `0`{:.n}
+- `savanna_alternative`{: .e #forest-type-savanna-alternative }; ordinal `6`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `3`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 0,2 %}
+    - Tree types: `3`{:.n}
+    - Chance: `0.4`{:.n}
+    - Alternatives: `2`{:.n}
+- `savanna_shrub_monoculture`{: .e #forest-type-savanna-shrub-monoculture }; ordinal `7`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `1`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 3,6 %}
+    - Tree types: `1`{:.n}
+    - Chance: `0.9`{:.n}
+    - Alternatives: `0`{:.n}
+- `savanna_shrub_diverse`{: .e #forest-type-savanna-shrub-diverse }; ordinal `8`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `1`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 3,6 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `savanna_shrub_alternative`{: .e #forest-type-savanna-shrub-alternative }; ordinal `9`{:.n}
+    - Type: `savanna`{:.e}
+    - Density: `1`{:.n}
+    - Trees: `1`{:.n}
+    - Groundcover: `6`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 3,6 %}
+    - Tree types: `3`{:.n}
+    - Chance: `0.8`{:.n}
+    - Alternatives: `2`{:.n}
+- `primary_monoculture`{: .e #forest-type-primary-monoculture }; ordinal `10`{:.n}
+    - Type: `primary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: `0`{:.n}
+    - Tree types: `1`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `primary_diverse`{: .e #forest-type-primary-diverse }; ordinal `11`{:.n}
+    - Type: `primary`{:.e}
+    - Density: `4`{:.n}
+    - Trees: `7`{:.n}
+    - Groundcover: `40`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,3 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `primary_alternative`{: .e #forest-type-primary-alternative }; ordinal `12`{:.n}
+    - Type: `primary`{:.e}
+    - Density: `7`{:.n}
+    - Trees: `40`{:.n}
+    - Groundcover: `40`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,3 %}
+    - Tree types: `3`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `2`{:.n}
+- `secondary_monoculture`{: .e #forest-type-secondary-monoculture }; ordinal `13`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 1,2 %}
+    - Tree types: `1`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_monoculture_tall`{: .e #forest-type-secondary-monoculture-tall }; ordinal `14`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 1,2 %}
+    - Tree types: `1`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_diverse`{: .e #forest-type-secondary-diverse }; ordinal `15`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 1,2 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_bamboo`{: .e #forest-type-secondary-bamboo }; ordinal `16`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `1`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,1 %}
+    - Tree types: `2`{:.n}
+    - Chance: `0.3`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_diverse_tall`{: .e #forest-type-secondary-diverse-tall }; ordinal `17`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 1,2 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_dense`{: .e #forest-type-secondary-dense }; ordinal `18`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `4`{:.n}
+    - Trees: `7`{:.n}
+    - Groundcover: `40`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: `3`{:.n}
+    - Tree Types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_dense_tall`{: .e #forest-type-secondary-dense-tall }; ordinal `19`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `4`{:.n}
+    - Trees: `7`{:.n}
+    - Groundcover: `40`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: `3`{:.n}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `secondary_alternative`{: .e #forest-type-secondary-alternative }; ordinal `20`{:.n}
+    - Type: `secondary`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 1,2 %}
+    - Tree types: `3`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `2`{:.n}
+- `edge_monoculture`{: .e #forest-type-edge-monoculture }; ordinal `21`{:.n}
+    - Type: `edge`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `2`{:.n}
+    - Groundcover: `10`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,1 %}
+    - Tree types: `1`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `edge_diverse`{: .e #forest-type-edge-diverse }; ordinal `22`{:.n}
+    - Type: `edge`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `2`{:.n}
+    - Groundcover: `10`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,1 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `edge_alternative`{: .e #forest-type-edge-alternative }; ordinal `23`{:.n}
+    - Type: `edge`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `2`{:.n}
+    - Groundcover: `2`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,1 %}
+    - Tree types: `3`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `2`{:.n}
+- `edge_bamboo`{: .e #forest-type-edge-bamboo }; ordinal `24`{:.n}
+    - Type: `edge`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `1`{:.n}
+    - Groundcover: `10`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,1 %}
+    - Tree types: `1`{:.n}
+    - Chance: `0.7`{:.n}
+    - Alternatives: `0`{:.n}
+- `dead_monoculture`{: .e #forest-type-dead-monoculture }; ordinal `25`{:.n}
+    - Type: `dead`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 2,4 %}
+    - Tree types: `1`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `dead_diverse`{: .e #forest-type-dead-diverse }; ordinal `26`{:.n}
+    - Type: `dead`{:.e}
+    - Density: `2`{:.n}
+    - Trees: `5`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: `0`{:.n}
+    - Bushes: {% range 2,4 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+- `dead_alternative`{: .e #forest-type-dead-alternative }; ordinal `27`{:.n}
+    - Type: `dead`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `4`{:.n}
+    - Groundcover: `40`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 0,3 %}
+    - Tree types: `3`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `2`{:.n}
+- `dead_bamboo`{: .e #forest-type-dead-bamboo }; ordinal `28`{:.n}
+    - Type: `dead`{:.e}
+    - Density: `3`{:.n}
+    - Trees: `4`{:.n}
+    - Groundcover: `25`{:.n}
+    - Leaf piles: {% range 0,1 %}
+    - Bushes: {% range 2,4 %}
+    - Tree types: `2`{:.n}
+    - Chance: `1`{:.n}
+    - Alternatives: `0`{:.n}
+
+{: #month-enum }
+
+## `Month`{:.e} Enum
+
+If you didn't know, there are 12 months. Each month has values for
+
+- The Northern hemisphere temperature modifier, {% in_range -1,1 %}
+- The season
+
+- `january`{: .e #month-january }; ordinal `0`{:.n}
+    - Modifier: `-1`{:.n}
+    - Season: `winter`{:.e}
+- `february`{: .e #month-february }; ordinal `1`{:.n}
+    - Modifier: `-0.866`{:.n}
+    - Season: `winter`{:.e}
+- `march`{: .e #month-march }; ordinal `2`{:.n}
+    - Modifier" `-0.5`{:.n}
+    - Season: `spring`{:.e}
+- `april`{: .e #month-april }; ordinal `3`{:.n}
+    - Modifier: `0`{:.n}
+    - Season: `spring`{:.e}
+- `may`{: .e #month-may }; ordinal `4`{:.n}
+    - Modifier: `0.5`{:.n}
+    - Season: `spring`{:.e}
+- `june`{: .e #month-june }; ordinal `5`{:.n}
+    - Modifier: `0.866`{:.n}
+    - Season: `summer`{:.e}
+- `july`{: .e #month-july }; ordinal `6`{:.n}
+    - Modifier: `1`{:.n}
+    - Season: `summer`{:.e}
+- `august`{: .e #month-august }; ordinal `7`{:.n}
+    - Modifier: `0.866`{:.n}
+    - Season: `summer`{:.e}
+- `september`{: .e #month-september }; ordinal `8`{:.n}
+    - Modifier: `0.5`{:.n}
+    - Season: `fall`{:.e}
+- `october`{: .e #month-october }; ordinal `9`{:.n}
+    - Modifier: `0`{:.n}
+    - Season: `fall`{:.e}
+- `november`{: .e #month-november }; ordinal `10`{:.n}
+    - Modifier: `-0.5`{:.n}
+    - Season: `fall`{:.e}
+- `december`{: .e #month-december }; ordinal `11`{:.n}
+    - Modifier: `-0.866`{:.n}
+    - Season: `fall`{:.e}
+
+{% comment %}
+
+### forest type enum
+
+### month enum
+
+{% endcomment %}

@@ -22,6 +22,7 @@ KubeJS TFC adds several JS events for use in scripts
 - [Create Chunk Data Provider](#create-chunk-data-provider)
 - [Default World Settings](#default-world-settings)
 - [Register Interactions](#register-interactions)
+- [Prospect Representatives](#prospect-representatives)
 - [Fauna Spawns](#fauna-spawns)
 - [Custom Nutrition](#custom-nutrition)
 - [Placed Item Models](#placed-item-models)
@@ -62,7 +63,7 @@ The product of this event my be either an `ItemStack` of a `FluidStack`, not bot
 
 ## Register Interactions
 
-## Propsect Representatives
+## Prospect Representatives
 
 ## Fauna Spawns
 
