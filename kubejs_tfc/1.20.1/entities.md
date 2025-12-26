@@ -45,7 +45,7 @@ Inherits the methods of animal builders
     - `.animalName(name: String)`{: .language-kube-20 }: Sets the name of the mammal in the config file
     - `.daysToAdult(i: number)`{: .language-kube-20 }: Sets the number of days the mammal will take to reach adulthood
     - `.uses(i: number)`{: .language-kube-20 }: Sets the number of uses the mammal has
-    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_range 0,1 %}, that an adult mammal may be brought up to
+    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_unit %}, that an adult mammal may be brought up to
     - `.eastRottenFood(eats: boolean)`{: .language-kube-20 }: Sets if the animal will eat rotten food
 - `.foodTag(tag: String)`{: .language-kube-20 #mammal-food-tag }: Sets the item tag the mammal will consider food
 - `.sounds(ambient: String, death: String, hurt: String, step: String, attack: @Nullable String, sleep: @Nullable String)`{: .language-kube-20 #mammal-sounds }: Accepts the registry ids of and sets the sound events the entity uses, `attack`{:.v}, and `sleep`{:.v} may be `null`{:.p}
@@ -76,7 +76,7 @@ Inherits the methods of animal builders
     - `.animalName(name: String)`{: .language-kube-20 }: Sets the name of the animal in the config file
     - `.daysToAdult(i: number)`{: .language-kube-20 }: Sets the number of days the animal will take to reach adulthood
     - `.uses(i: number)`{: .language-kube-20 }: Sets the number of uses the animal has
-    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_range 0,1 %}, that an adult animal may be brought up to
+    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_unit %}, that an adult animal may be brought up to
     - `.eastRottenFood(eats: boolean)`{: .language-kube-20 }: Sets if the animal will eat rotten food
 - `.foodTag(tag: String)`{: .language-kube-20 #oviparous-food-tag }: Sets the item tag the mammal will consider food
 - `.sounds(ambient: String, death: String, hurt: String, step: String, attack: @Nullable String, sleep: @Nullable String)`{: .language-kube-20 }: Accepts the registry ids of and sets the sound events the entity uses, `attack`{:.v}, and `sleep`{:.v} may be `null`{:.p}
@@ -107,11 +107,11 @@ Inherits the methods of animal builders
 
 - `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`{: .language-kube-20 #wooly-configs }: Sets the default values of the type's config
     - `.ticksToProduce(i: number)`{: .language-kube-20 }: Sets the number of ticks the animal will take to create produce
-    - `.produceFamiliarity(d: number)`{: .language-kube-20 }: Sets the familiarity, {% in_range 0,1 %}, that is required for the animal to have its product harvested
+    - `.produceFamiliarity(d: number)`{: .language-kube-20 }: Sets the familiarity, {% in_unit %}, that is required for the animal to have its product harvested
     - `.animalName(name: String)`{: .language-kube-20 }: Sets the name of the animal in the config file
     - `.daysToAdult(i: number)`{: .language-kube-20 }: Sets the number of days the animal will take to reach adulthood
     - `.uses(i: number)`{: .language-kube-20 }: Sets the number of uses the animal has
-    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_range 0,1 %}, that an adult animal may be brought up to
+    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_unit %}, that an adult animal may be brought up to
     - `.eastRottenFood(eats: boolean)`{: .language-kube-20 }: Sets if the animal will eat rotten food
 - `.foodTag(tag: String)`{: .language-kube-20 #wooly-food-tag }: Sets the item tag the mammal will consider food
 - `.sounds(ambient: String, death: String, hurt: String, step: String, attack: @Nullable String, sleep: @Nullable String)`{: .language-kube-20 #wooly-sounds }: Accepts the registry ids of and sets the sound events the entity uses, `attack`{:.v}, and `sleep`{:.v} may be `null`{:.p}
@@ -137,11 +137,11 @@ Inherits the methods of animal builders
 
 - `.configs(configBuilder: Consumer<ProducingConfigBuilder>)`{: .language-kube-20 #dairy-configs }: Sets the default values of the type's config
     - `.ticksToProduce(i: number)`{: .language-kube-20 }: Sets the number of ticks the animal will take to create produce
-    - `.produceFamiliarity(d: number)`{: .language-kube-20 }: Sets the familiarity, {% in_range 0,1 %}, that is required for the animal to have its product harvested
+    - `.produceFamiliarity(d: number)`{: .language-kube-20 }: Sets the familiarity, {% in_unit %}, that is required for the animal to have its product harvested
     - `.animalName(name: String)`{: .language-kube-20 }: Sets the name of the animal in the config file
     - `.daysToAdult(i: number)`{: .language-kube-20 }: Sets the number of days the animal will take to reach adulthood
     - `.uses(i: number)`{: .language-kube-20 }: Sets the number of uses the animal has
-    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_range 0,1 %}, that an adult animal may be brought up to
+    - `.maxFamiliarity(d: number)`{: .language-kube-20 }: Sets the maximum familiarity, {% in_unit %}, that an adult animal may be brought up to
     - `.eastRottenFood(eats: boolean)`{: .language-kube-20 }: Sets if the animal will eat rotten food
 - `.foodTag(tag: String)`{: .language-kube-20 #diary-food-tag }: Sets the item tag the mammal will consider food
 - `.sounds(ambient: String, death: String, hurt: String, step: String, attack: @Nullable String, sleep: @Nullabe String)`{: .language-kube-20 #dairy-sounds }: Accepts the registry ids of and sets the sound events the entity uses, `attack`{:.v}, and `sleep`{:.v} may be `null`{:.p}

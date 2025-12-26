@@ -11,14 +11,17 @@ desc: Explanations of certain Java types that may be encountered in various simp
 
 There are several Java types which can be encountered fairly frequently in the docs or are too complex to describe in-line along with other, perhaps more pertinent, information. Those are collected here
 
-- [The `ForestType`{:.e} enum](#forest-type-enum){:.preserve-colors}
-- [The `Month`{:.e} enum](#month-enum){:.preserve-colors}
+- [ItemSackProviders](#itemstackprovider)
+- [The `ForestType`{:.e} enum](#forest-type-enum){:.preserve-color}
+- [The `Month`{:.e} enum](#month-enum){:.preserve-color}
+
+## ItemStackProvider
 
 {: #forest-type-enum }
 
 ## `ForestType`{:.e} Enum
 
-There are 29 forest types, each with values for
+There are 29 [forest types](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/chunkdata/ForestType.java), each with values for
 
 - The type/category
 - The numeric density, {% in_range 0,4 %}
@@ -27,7 +30,7 @@ There are 29 forest types, each with values for
 - The number of leaf piles to place per chunk
 - The number of bushes to place per chunk
 - The maximum number of tree types in a [forest entry]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry) that can spawn
-- The chance per chunk, {% in_range 0,1 %}, a tree will be placed in a [forest entry]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry)
+- The chance per chunk, {% in_unit %}, a tree will be placed in a [forest entry]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry)
 - The maximum number of [forest entries]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest-entry) alternatives that may be dropped when placing a [forest]({% link kubejs_tfc/1.21.1/worldgen.md %}#forest)
 
 - `grassland`{: .e #forest-type-grassland }; ordinal `0`{:.n}
@@ -47,7 +50,7 @@ There are 29 forest types, each with values for
     - Density: `0`{:.n}
     - Trees: `0`{:.n}
     - Groundcover: `10`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: {% range 2,7 %}
     - Tree types: `2`{:.n}
     - Chance: `1`{:.n}
@@ -127,7 +130,7 @@ There are 29 forest types, each with values for
     - Density: `3`{:.n}
     - Trees: `5`{:.n}
     - Groundcover: `25`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: `0`{:.n}
     - Tree types: `1`{:.n}
     - Chance: `1`{:.n}
@@ -137,7 +140,7 @@ There are 29 forest types, each with values for
     - Density: `4`{:.n}
     - Trees: `7`{:.n}
     - Groundcover: `40`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: {% range 0,3 %}
     - Tree types: `2`{:.n}
     - Chance: `1`{:.n}
@@ -147,7 +150,7 @@ There are 29 forest types, each with values for
     - Density: `7`{:.n}
     - Trees: `40`{:.n}
     - Groundcover: `40`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: {% range 0,3 %}
     - Tree types: `3`{:.n}
     - Chance: `1`{:.n}
@@ -187,8 +190,8 @@ There are 29 forest types, each with values for
     - Density: `3`{:.n}
     - Trees: `1`{:.n}
     - Groundcover: `25`{:.n}
-    - Leaf piles: {% range 0,1 %}
-    - Bushes: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
+    - Bushes: {% range_unit %}
     - Tree types: `2`{:.n}
     - Chance: `0.3`{:.n}
     - Alternatives: `0`{:.n}
@@ -207,7 +210,7 @@ There are 29 forest types, each with values for
     - Density: `4`{:.n}
     - Trees: `7`{:.n}
     - Groundcover: `40`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: `3`{:.n}
     - Tree Types: `2`{:.n}
     - Chance: `1`{:.n}
@@ -217,7 +220,7 @@ There are 29 forest types, each with values for
     - Density: `4`{:.n}
     - Trees: `7`{:.n}
     - Groundcover: `40`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: `3`{:.n}
     - Tree types: `2`{:.n}
     - Chance: `1`{:.n}
@@ -237,8 +240,8 @@ There are 29 forest types, each with values for
     - Density: `2`{:.n}
     - Trees: `2`{:.n}
     - Groundcover: `10`{:.n}
-    - Leaf piles: {% range 0,1 %}
-    - Bushes: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
+    - Bushes: {% range_unit %}
     - Tree types: `1`{:.n}
     - Chance: `1`{:.n}
     - Alternatives: `0`{:.n}
@@ -247,8 +250,8 @@ There are 29 forest types, each with values for
     - Density: `2`{:.n}
     - Trees: `2`{:.n}
     - Groundcover: `10`{:.n}
-    - Leaf piles: {% range 0,1 %}
-    - Bushes: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
+    - Bushes: {% range_unit %}
     - Tree types: `2`{:.n}
     - Chance: `1`{:.n}
     - Alternatives: `0`{:.n}
@@ -257,8 +260,8 @@ There are 29 forest types, each with values for
     - Density: `2`{:.n}
     - Trees: `2`{:.n}
     - Groundcover: `2`{:.n}
-    - Leaf piles: {% range 0,1 %}
-    - Bushes: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
+    - Bushes: {% range_unit %}
     - Tree types: `3`{:.n}
     - Chance: `1`{:.n}
     - Alternatives: `2`{:.n}
@@ -267,8 +270,8 @@ There are 29 forest types, each with values for
     - Density: `2`{:.n}
     - Trees: `1`{:.n}
     - Groundcover: `10`{:.n}
-    - Leaf piles: {% range 0,1 %}
-    - Bushes: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
+    - Bushes: {% range_unit %}
     - Tree types: `1`{:.n}
     - Chance: `0.7`{:.n}
     - Alternatives: `0`{:.n}
@@ -297,7 +300,7 @@ There are 29 forest types, each with values for
     - Density: `3`{:.n}
     - Trees: `4`{:.n}
     - Groundcover: `40`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: {% range 0,3 %}
     - Tree types: `3`{:.n}
     - Chance: `1`{:.n}
@@ -307,7 +310,7 @@ There are 29 forest types, each with values for
     - Density: `3`{:.n}
     - Trees: `4`{:.n}
     - Groundcover: `25`{:.n}
-    - Leaf piles: {% range 0,1 %}
+    - Leaf piles: {% range_unit %}
     - Bushes: {% range 2,4 %}
     - Tree types: `2`{:.n}
     - Chance: `1`{:.n}
@@ -317,7 +320,7 @@ There are 29 forest types, each with values for
 
 ## `Month`{:.e} Enum
 
-If you didn't know, there are 12 months. Each month has values for
+If you didn't know, there are 12 [months](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/util/calendar/Month.java). Each month has values for
 
 - The Northern hemisphere temperature modifier, {% in_range -1,1 %}
 - The season

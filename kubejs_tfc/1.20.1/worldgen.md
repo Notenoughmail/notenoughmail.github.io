@@ -268,7 +268,7 @@ event.clusterVein(
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube-20 } chunks
-- 4th argument: A number, {% in_range 0,1 %}, defines the density of the vein
+- 4th argument: A number, {% in_unit %}, defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
 - 7th argument: A number, the size of the vein
@@ -329,7 +329,7 @@ event.pipeVein(
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in `1/N`{: .language-kube-20 } chunks
-- 4th argument: A number, {% in_range 0,1 %}, defines the density of the vein
+- 4th argument: A number, {% in_unit %}, defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
 - 7th argument: A number, the height of the vein
@@ -338,7 +338,7 @@ event.pipeVein(
 - 10th argument: A number, the maximum skew of the vein
 - 11th argument: A number, the minimum slant of the vein
 - 12th argument: A number, the maximum slant of the vein
-- 13th argument: A number, {% in_range 0,1 %}, the sign of the vein
+- 13th argument: A number, {% in_unit %}, the sign of the vein
 - 14th argument: A [vein properties consumer](#vein-properties)
 - 15th argument: A [feature placement consumer](#feature-placement)
 
@@ -391,7 +391,7 @@ event.discVein(
 - 1st argument: A string, the name of the configured feature; if no namespace is set, defaults to `kubejs_tfc`
 - 2nd argument: A list of [blocks to weighted block states](#blocks-to-block-states-replacement-entry), defines the replacement map of the vein
 - 3rd argument: A number, defines the rarity of the vein in 1/N chunks
-- 4th argument: A number, {% in_range 0,1 %}, defines the density of the vein
+- 4th argument: A number, {% in_unit %}, defines the density of the vein
 - 5th argument: A number, the minimum y level the vein can spawn at
 - 6th argument: A number, the maximum y level the vein can spawn at
 - 7th argument: A number, the size of the vein
@@ -464,7 +464,7 @@ event.soilDisc(
 - 3rd argument: A number, the minimum radius of the disc
 - 4th argument: A number, the maximum radius of the disc
 - 5th argument: A number, the height of the disc
-- 6th argument: A number, {% in_range 0,1 %}, specifies the probability that any given block in the disc will place, may be `null`{:.p} to specify the default value of `1`{:.n}
+- 6th argument: A number, {% in_unit %}, specifies the probability that any given block in the disc will place, may be `null`{:.p} to specify the default value of `1`{:.n}
 - 7th argument: A [feature placement consumer](#feature-placement)
 
 {:# soil-disc-example }
@@ -921,7 +921,7 @@ event.overlayTree(
 - 2nd argument: A string, the id of a structure. The base structure to place
 - 3rd argument: A string, the id of a structure. The overlay structure to place
 - 4th argument: A [trunk](#trunk). The trunk below the structure. May be `null`{:.p}
-- 5th argument: A number, {% in_range 0,1 %}, the percentage of the overlay structure that will be placed. may be `null`{:.p} to default to `0.5`{:.n}
+- 5th argument: A number, {% in_unit %}, the percentage of the overlay structure that will be placed. may be `null`{:.p} to default to `0.5`{:.n}
 - 6th argument: A [tree placement](#tree-placement)
 - 7th argument: A [root](#root), may be `null`{:.p}
 - 8th argument: A [feature placement consumer](#feature-placement)
@@ -1202,7 +1202,7 @@ event.forestTypesMapEntry(
 - 1st argument: A `ForestType`{:.e}, the key in the map. May be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
 - 2nd argument: An `IntProvider`, how many trees should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube-20 }
 - 3rd argument: An `IntProvider`, how much ground cover should spawn. May be `null`{:.p} to default to `[ 0, 0 ]`{: .language-kube-20 }
-- 4th argument: A number, {% in_range 0,1 %}, per chunk, that forests will spawn. May be `null`{:.p} to default to `1`{:.n}
+- 4th argument: A number, {% in_unit %}, per chunk, that forests will spawn. May be `null`{:.p} to default to `1`{:.n}
 - 5th argument: An `IntProvider`, how many bushes will try to spawn. May be `null`{:.p} to not have bushes
 - 6th argument: A boolean, if old growth trees will randomly spawn among existing tree. May be `null`{:.p} to default to `false`{:.p}
 - 7th argument: A boolean, if old growth trees spawn in this forest type. May be `null`{:.p} to default to `false`{:.p}
@@ -1285,7 +1285,7 @@ event.root(
 - 2nd argument: A number, the horizontal distance to attempt to place roots. May be `null`{:.p} to default to `4`{:.n}
 - 3rd argument: A number, the vertical distance to attempt to place roots. May be `null`{:.p} to default to `3`{:.n}
 - 4th argument: A number, how many attempts should be made to place roots. May be `null`{:.p} to default to `5`{:.n}
-- 5th argument: A number, the chance, {% in_range 0,1 %}, for extra roots to be placed. May be `null`{:.p}
+- 5th argument: A number, the chance, {% in_unit %}, for extra roots to be placed. May be `null`{:.p}
 - 6th argument: A boolean, if roots must be placed. May be `null`{:.p} to default to `false`{:.p}
 
 ## Tree layer
@@ -1446,7 +1446,7 @@ placement.flatEnough(flatness: Consumer<FlatnessModifier>)
 ```
 
 - 1st argument: A consumer with several methods:
-    - `.flatness(f: number)`{: .language-kube-20 #flat-placement-flatness }: Accepts a number, {% in_range 0,1 %}, sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
+    - `.flatness(f: number)`{: .language-kube-20 #flat-placement-flatness }: Accepts a number, {% in_unit %}, sets the required flatness of the surrounding area, defaults to `0.5`{:.n}
     - `.radius(i: number)`{: .language-kube-20 #flat-placement-radius }: Accepts a number, sets the radius around the initial position the area is checked for flatness, defaults to `2`{:.n}
     - `.maxDepth(i: number)`{: .language-kube-20 #flat-placement-max-depth }: Accepts a number, sets how deep from the initial position the modifier should search, defaults to `4`{:.n}
 
@@ -1495,7 +1495,7 @@ placement.volcano(center: boolean, distance: number)
 ```
 
 - 1st argument: A boolean, if true the feature will be placed at the exact center of the volcano and disregard the `distance`{:.v} parameter
-- 2nd argument: A number, {% in_range 0,1 %}, sets the distance from the center of the volcano the feature needs to generate
+- 2nd argument: A number, {% in_unit %}, sets the distance from the center of the volcano the feature needs to generate
 
 ### In Square
 

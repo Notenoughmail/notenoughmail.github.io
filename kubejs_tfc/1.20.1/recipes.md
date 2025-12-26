@@ -160,12 +160,12 @@ event.recipes.tfc.anvil(
 
 - 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
-- 3rd argument: An array of up to 3 `ForgeRule`{:.e}s, see the main page for a full list
+- 3rd argument: An array of one to three `ForgeRule`{:.e}s, see the main page for a full list
 
 <span></span>
 
-- `.tier(tier:number)`{: .language-kube-20 #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
-- `.bonus(applyBnus: boolean)`{: .language-kube-20 #anvil-working-bonus }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
+- `.tier(tier: number)`{: .language-kube-20 #anvil-working-tier }: Accepts a number and sets the minimum anvil tier the recipe can be performed on, defaults to `-1`{:.n}
+- `.bonus(applyBonus: boolean)`{: .language-kube-20 #anvil-working-bonus }: Accepts a boolean and sets if the recipe will apply a forging bonus, defaults to `false`{:.p}
 
 {: #working-example }
 
@@ -416,7 +416,7 @@ event.recipes.tfc.casting(
 - 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the output of the recipe
 - 2nd argument: An item ingredient, used to match the mold item
 - 3rd argument: A [`FluidStackIngredient`]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-stack-ingredient)
-- 4th argument: A number {% in_range 0,1 %}, the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
+- 4th argument: A number, {% in_unit %}, the probability that the mold will break upon completion of the recipe, a higher number means a higher chance
 
 {: .notice #casting-notice }
 > All input fluids for the recipe must have the appropriate fluid tag in order for the mold item to accept them, typically this is either `tfc:usable_in_ingot_mold` or `tfc:usable_in_tool_head_mold`
@@ -563,7 +563,7 @@ event.recipes.tfc.heating(ingredient: Ingredient, temperature: number)
 - `.resultFluid(resultFluid: FluidStack)`{: .language-kube-20 #heating-result-fluid }: Accepts a `FluidStack` and sets the result fluid of the recipe, defaults to empty
 - `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-20 #heating-results }: A convenience method for setting both results, identical to calling `.resultItem(resultItem).resultFluid(resultFluid)`{: .language-kube-20 }
 - `.useDurability(useDurability: number)`{: .language-kube-20 #heating-use-durability }: Accepts a boolean, determines if the recipe should consider the durability of the item when melting into a fluid
-- `.chance(chance: number)`{: .language-kube-20 #heating-chance }: Accepts a number, {% in_range 0,1 %}, sets the chance of the item output
+- `.chance(chance: number)`{: .language-kube-20 #heating-chance }: Accepts a number, {% in_unit %}, sets the chance of the item output
 
 {: .notice #heating-notice }
 > The ingredient needs to have an [item heat]({% link kubejs_tfc/1.20.1/data.md %}#item-heats) added to it

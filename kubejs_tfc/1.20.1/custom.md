@@ -216,10 +216,10 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.dripChance(f: number)`{: .language-kube-20 #thin-spike-drip-chance }: Sets the chance, {% in_range 0,1 %}, the block will drip per tick
+- `.dripChance(f: number)`{: .language-kube-20 #thin-spike-drip-chance }: Sets the chance, {% in_unit %}, the block will drip per tick
 - `.dripTemp(f: number)`{: .language-kube-20 #thin-spike-drip-temp }: Sets the temperature at which the block must be above to begin dripping
 - `.melts()`{: .language-kube-20 #thin-spike-melts }: makes the block melt under certain conditions
-- `.meltChance(f: number)`{: .language-kube-20 #thin-spike-melt-chance}: Sets the chance, {% in_range 0,1 %}, that the block will melt per random tick
+- `.meltChance(f: number)`{: .language-kube-20 #thin-spike-melt-chance}: Sets the chance, {% in_unit %}, that the block will melt per random tick
 - `.meltTemp(f: number)`{: .language-kube-20 #thin-spike-melt-temp }: Sets the temperature above which the block can melt
 - `.dripParticle(particle: String)`{: .language-kube-20 #thin-spike-drip-particle }: The registry name of a particle, the particle that will drip from the block. May be null to make the spike not drip. Defaults to `null`{:,p}
 - `.meltFluid(fluid: FluidStack)`{: .language-kube-20 #thin-spike-melt-fluid }: The fluid that the block melts into
@@ -1540,8 +1540,8 @@ Inherits the methods of the basic item builder
 - `.filledDisplayName(c: Component)`{: .language-kube-20 #glass-bottle-filled-display-name }: Accepts a text component, sets the display name when the object has a fluid in it, will be overridden by an entry in a lang file if it exists
 - `.capacity(i: number)`{: .language-kube-20 #glass-bottle-capacity }: Sets the mB capacity of the item, defaults to `100`{:.n}
 - `.capacitySupplier(capacity: Supplier<Integer>)`{: .language-kube-20 #glass-bottle-capacity-supplier }: Sets the mB supplier capacity of the item, defaults to `() => 100`{: .language-kube-20 }
-- `.breakChance(chance: number)`{: .language-kube-20 #glass-bottle-break-chance }: Sets the break chance, {% in_range 0,1 %}, of the bottle
-- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-kube-20 #glass-bottle-break-chance-supplier }: Sets the break chance, {% in_range 0,1 %}, supplier of the bottle
+- `.breakChance(chance: number)`{: .language-kube-20 #glass-bottle-break-chance }: Sets the break chance, {% in_unit %}, of the bottle
+- `.breakChanceSupplier(chance: Supplier<Double>)`{: .language-kube-20 #glass-bottle-break-chance-supplier }: Sets the break chance, {% in_unit %}, supplier of the bottle
 - `.fluidTagAccept(tag: String)`{: .language-kube-20 #glass-bottle-fluid-tag-accept }: Sets the fluid tag that the item accepts, defaults to `tfc:usable_in_jug`
 
 {: #glass-bottle-example }

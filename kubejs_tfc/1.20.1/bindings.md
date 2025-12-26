@@ -43,8 +43,8 @@ TFC.alloyPart(metal: String, min: number, max: number, keepOriginalBounds?: bool
 ```
 
 - `metal: String`{: .language-kube-20 }: The metal
-- `min: number`{: .language-kube-20 }: The minimum percent, {% in_range 0,1 %}, of the metal
-- `max: number`{: .language-kube-20 }: The maximum percent, {% in_range 0,1 %}, of the metal
+- `min: number`{: .language-kube-20 }: The minimum percent, {% in_unit %}, of the metal
+- `max: number`{: .language-kube-20 }: The maximum percent, {% in_unit %}, of the metal
 - `keepOriginalBounds?: boolean`{: .language-kube-20 }: When [replacing]({% link kubejs_tfc/1.20.1/misc.md %}#recipe-replacement-alloy-part) an alloy part, if the bounds should stay as they were originally in the recipe. Defaults to `true`{:.p}
 
 Creates an `AlloyPart` for use in [alloying recipes]({% link kubejs_tfc/1.20.1/recipes.md %}#alloy)

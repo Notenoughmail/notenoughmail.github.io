@@ -190,7 +190,7 @@ The register method of the event has the following arguments:
     - `.getTemperatureScale()`{: .language-kube-20 #climate-reg-temp-scale }: Returns the temperature scale of the level, defaults to `20000`{:.n} if the level does not have a TFC-like generator
     - `.getRainfallScale()`{: .language-kube-20 #climate-reg-rain-scale }: Returns the rainfall scale of the level, defaults to `20000`{:.n} if the level does not have a TFC-like generator
     - `.getClimateSeed()`{: .language-kube-20 #climate-reg-seed }: Returns the climate seed being used
-    - `.vector(x: number, z: number)`{: .language-kube-20 #climate-reg-vector }: Creates a new wind vector with the provided x and z components. Each component should be {% in_range 0,1 %}
+    - `.vector(x: number, z: number)`{: .language-kube-20 #climate-reg-vector }: Creates a new wind vector with the provided x and z components. Each component should be {% in_unit %}
     - `.setCurrentTemperatureCalculation(calc: QuadFunction<LevelReader, BlockPos, number, number, number>)`{: .language-kube-20 #climate-reg-current-temp-calc }: Sets how the model will determine the current temperature at a given temperature and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-kube-20 }: The level
         - `pos: BlockPos`{: .language-kube-20 }: The position
@@ -209,17 +209,17 @@ The register method of the event has the following arguments:
         - `level: LevelReader`{: .language-kube-20 }: The level
         - `pos: BlockPos`{: .language-kube-20 }: The position
         - `calendarTicks: number`{: .language-kube-20 }: The calendar tick the calculation is being made at; and
-        - `return: number`{: .language-kube-20 }: A number, {% in_range 0,1 %}, should be returned in the callback, a multiplier on the view distance
+        - `return: number`{: .language-kube-20 }: A number, {% in_unit %}, should be returned in the callback, a multiplier on the view distance
     - `.setWaterFog(calc: TriFunction<LevelReader, BlockPos, number, number>)`{: .language-kube-20 #climate-reg-water-fog }: Sets how the model will determine the fogginess at a given position and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-kube-20 }: The level
         - `pos: BlockPos`{: .language-kube-20 }: The position
         - `calendarTicks: number`{: .language-kube-20 }: The calendar tick the calculation is being made at; and
-        - `return: number`{: .language-kube-20 }: A number, {% in_range 0,1 %}, should be returned in the callback, a multiplier on the view distance
+        - `return: number`{: .language-kube-20 }: A number, {% in_unit %}, should be returned in the callback, a multiplier on the view distance
     - `.setWindVector(calc: TriFunction<Level, BlockPos, number, Vec2>)`{: .language-kube-20 #climate-reg-wind }: Sets how the model will determine the wind strength at a given position and time, accepts a callback with the following values:
         - `level: LevelReader`{: .language-kube-20 }: The level
         - `pos: BlockPos`{: .language-kube-20 }: The position
         - `calendarTicks: number`{: .language-kube-20 }: The calendar tick the calculation is being made at; and
-        - `return: Vec2`{: .language-kube-20 }: A 2D vector, representing the strength and direction of wind, each component should be {% in_range 0,1 %}. Vectors can be made through the `.vector(x: number, z: number)`{: .language-kube-20 } method described above
+        - `return: Vec2`{: .language-kube-20 }: A 2D vector, representing the strength and direction of wind, each component should be {% in_unit %}. Vectors can be made through the `.vector(x: number, z: number)`{: .language-kube-20 } method described above
     - `.setOnWorldLoad(calc: Consumer<ServerLevel>)`{: .language-kube-20 #climate-reg-world-load }: Sets the model's behavior when the world is loaded, accepts a consumer of a `ServerLevel`
     - `.setOnChunkLoad(calc: TriConsumer<WorldgenLevel, ChunkAccess, ChunkData>)`{: .language-kube-20 #climate-reg-chunk-load }: Sets the model's behavior on chunk load, accepts a callback with the following values:
         - `level: WorldGenLevel`{: .language-kube-20 }: The level

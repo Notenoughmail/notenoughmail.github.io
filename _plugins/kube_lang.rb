@@ -20,7 +20,7 @@ module Rouge
 
                 def initialize(opts={})
                     super([
-                        "ForestSubType"
+                        "ForestSubType", "BonusBehavior"
                     ], [
 
                     ], opts)
@@ -40,8 +40,8 @@ module Rouge
                         "SpawnPlacements$Type",
                         # TFC
                         "Metal$ItemType",  "GroundType", "NutrientType",
-                        "GlassOperation",  "ChiselMode", "ForgeRule",
-                        "Metal$BlockType", "Metal$Tier", "Lifecycle",
+                        "GlassOperation",  "ChiselMode", "Lifecycle",
+                        "Metal$BlockType", "Metal$Tier", 
                         # KubeJS TFC
                         "AqueductModelPart", "SpikeModelPart", "LampModelType",
                         "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
@@ -53,10 +53,9 @@ module Rouge
                         # Vanilla
                         "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
                         # TFC
-                        "OnItemUseAction", "Noise2D", "Noise3D",
+                        "OnItemUseAction",
                         # KubeJS TFC
-                        "RocksGetter", "MossGrowingCallback", "TemperatureCallback",
-                        "MergeLayer",  "TransformLayer",      "AdjacentTransformlayer"
+                        "RocksGetter", "MossGrowingCallback", "TemperatureCallback"
                     ], opts)
                 end
             end
@@ -82,9 +81,9 @@ module Rouge
                     "InteractionResult",   "OffsetType", "PushReaction",
                     "ItemDisplayContext",  "Direction",
                     # TFC enums
-                    "Heat", "Month",  "ForestType",
-                    "Size", "Weight", "PropsectResult",
-                    "Season", "ChunkData$Status",
+                    "Month",  "ForestType", "Heat",
+                    "Weight", "Size",       "PropsectResult",
+                    "Season", "ForgeRule",  "ChunkData$Status",
                     # Java enums
                     "Enum"
                 ]
@@ -92,7 +91,9 @@ module Rouge
                 @functional_interfaces = f.merge [
                     "Consumer", "BiConsumer", "TriConsumer",
                     "Function", "BiFunction", "TriFunction", "QuadFunction",
-                    "Supplier", "Predicate"
+                    "Supplier", "Predicate",
+                    "Noise2D",  "Noise3D",
+                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer"
                 ]
             end
 
