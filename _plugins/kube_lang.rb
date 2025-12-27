@@ -20,9 +20,9 @@ module Rouge
 
                 def initialize(opts={})
                     super([
-                        "ForestSubType", "BonusBehavior"
+                        "ForestSubType", "BonusBehavior", "StackModifierContext"
                     ], [
-
+                        "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction"
                     ], opts)
                 end
             end
@@ -91,7 +91,7 @@ module Rouge
                 @functional_interfaces = f.merge [
                     "Consumer", "BiConsumer", "TriConsumer",
                     "Function", "BiFunction", "TriFunction", "QuadFunction",
-                    "Supplier", "Predicate",
+                    "Supplier", "Predicate", "BiPredicate"
                     "Noise2D",  "Noise3D",
                     "MergeLayer", "TransformLayer", "AdjacentTransformlayer"
                 ]
