@@ -587,17 +587,18 @@ Add a support
 
 ```js-21
 event.support(
-    support: Support,
+    ingredient: BlockIngredient,
+    range: SupportRange,
     id?: ResourceLocation
 )
 ```
 
-- 1st argument: The support definition, a map of parameters to values
-    - `ingredient: BlockIngredient`{:.language-kube-21}: The blocks the support applies to
-    - `supportUp?: int`{:.language-kube-21}: The number of blocks above the support that are supported, defaults to `0`{:.n}
-    - `supportDown?: int`{:.language-kube-21}: The number of blocks below the support that are supported, defaults to `0`{:.n}
-    - `supportHorizontal?: int`{:.language-kube-21}: The number of blocks away that are supported, defaults to `0`{:.n}
-- *Optional 2nd argument*: A `ResourceLocation`, the id of the support
+- 1st argument: A block ingredient, the blocks the support applies to
+- 2nd argument: The support range, a map of parameters to values
+    - `up?: int`{:.language-kube-21}: The number of blocks above the support that are supported, defaults to `0`{:.n}
+    - `down?: int`{:.language-kube-21}: The number of blocks below the support that are supported, defaults to `0`{:.n}
+    - `horizontal?: int`{:.language-kube-21}: The number of blocks away that are supported, defaults to `0`{:.n}
+- *Optional 3rd argument*: A `ResourceLocation`, the id of the support
 
 {: #support-example }
 
@@ -605,11 +606,14 @@ event.support(
 
 ```js-21
 TFCEvents.data(event => {
-    event.support({
-        ingredient: '#kubejs:wacky_supports',
-        supportUp: 6,
-        supportHorizontal: 2
-    })
+    event.support(
+        '#kubejs:wacky_supports'
+        {
+            up: 6,
+            horizontal: 2
+        },
+        'kubejs:wacky_support'
+    )
 })
 ```
 

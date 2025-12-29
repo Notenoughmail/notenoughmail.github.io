@@ -40,6 +40,8 @@ The following recipe types are supported by KubeJS TFC
 
 - [Tapping](#afc-tapping)
 
+{% capture isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% endcapture %}
+
 ## Alloy
 
 For alloying metals in a crucible
@@ -104,16 +106,10 @@ event.recipes.tfc.anvil(
     .applyBonus(applyBonus?: boolean)
 ```
 
-- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider), the result of the recipe
+- 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, the recipe input
 - 3rd argument: A list of one to three [`ForgeRule`{:.e}s](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/common/component/forge/ForgeRule.java){:.preserve-color}, the last steps that must be taken.
-    <details class="plain"><summary style="margin-bottom:0rem;">Reveal/hide list of valid rules</summary>
-    {% assign rules = "hit_any,hit_not_last,hit_last,hit_second_last,hit_third_last,draw_any,draw_last,draw_not_last,draw_second_last,draw_third_last,punch_any,punch_last,punch_not_last,punch_second_last,punch_third_last,bend_any,bend_last,bend_not_last,bend_second_last,bend_third_last,upset_any,upset_last,upset_not_last,upset_second_last,upset_third_last,shrink_any,shrink_last,shrink_not_last,shrink_second_last,shrink_third_last" | split: "," %}
-    <ul style="margin-top:0rem;">
-    {% for rule in rules %}
-    <li><code class="e">{{ rule }}</code></li>
-    {% endfor %}
-    </ul></details>
+    {% include enum_list.html summary='Reveal/hide list of valid rules' values='hit_any,hit_not_last,hit_last,hit_second_last,hit_third_last,draw_any,draw_last,draw_not_last,draw_second_last,draw_third_last,punch_any,punch_last,punch_not_last,punch_second_last,punch_third_last,bend_any,bend_last,bend_not_last,bend_second_last,bend_third_last,upset_any,upset_last,upset_not_last,upset_second_last,upset_third_last,shrink_any,shrink_last,shrink_not_last,shrink_second_last,shrink_third_last' %}
 
 <span></span>
 
@@ -166,7 +162,7 @@ event.recipes.tfc.casting(
 )
 ```
 
-- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider), the result of the recipe
+- 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, the mold item to pour the fluid into
 - 3rd argument: A `SizedFluidIngredient`, the fluid to cast
 - *Optional 4th argument*: A number, {% in_unit %}, the probability the mold will break when extracting the casted object, defaults to `1`{:.n}
@@ -215,7 +211,7 @@ event.recipes.tfc.loom(
 )
 ```
 
-- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider), the result of the recipe
+- 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, the recipe input
 - 3rd argument: A number, how many times the loom needs to be clicked to finish the recipe
 - 4th argument: A `ResourceLocation`, the id of a texture to display on the loom while performing the recipe
@@ -256,7 +252,7 @@ event.recipes.tfc.quern(
 )
 ```
 
-- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider), the result of the recipe
+- 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, the recipe input
 
 {: #quern-example }
@@ -296,7 +292,7 @@ event.recipes.tfc.welding(
     .bonusBehavior(bonus: BonusBehavior)
 ```
 
-- 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider), the result of the recipe
+- 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, one of the items welded
 - 3rd argument: An item ingredient, one of the items welded
 

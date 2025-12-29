@@ -20,7 +20,7 @@ module Rouge
 
                 def initialize(opts={})
                     super([
-                        "ForestSubType", "BonusBehavior", "StackModifierContext"
+                        "ForestSubType", "BonusBehavior", "StackModifierContext", "ArmorItem$Type"
                     ], [
                         "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction"
                     ], opts)
@@ -41,7 +41,7 @@ module Rouge
                         # TFC
                         "Metal$ItemType",  "GroundType", "NutrientType",
                         "GlassOperation",  "ChiselMode", "Lifecycle",
-                        "Metal$BlockType", "Metal$Tier", 
+                        "Metal$Tier", 
                         # KubeJS TFC
                         "AqueductModelPart", "SpikeModelPart", "LampModelType",
                         "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
@@ -79,11 +79,13 @@ module Rouge
                     # Vanilla enums
                     "NoteBlockInstrument", "DyeColor",   "Heightmap$Types",
                     "InteractionResult",   "OffsetType", "PushReaction",
-                    "ItemDisplayContext",  "Direction",
+                    "ItemDisplayContext",  "Direction",  "Rarity",
                     # TFC enums
                     "Month",  "ForestType", "Heat",
                     "Weight", "Size",       "PropsectResult",
                     "Season", "ForgeRule",  "ChunkData$Status",
+                    "Wood$BlockType", "Metal$BlockType", "Rock$BlockType",
+                    "RockDisplayCategory", "RockCategory",
                     # Java enums
                     "Enum"
                 ]
@@ -91,9 +93,9 @@ module Rouge
                 @functional_interfaces = f.merge [
                     "Consumer", "BiConsumer", "TriConsumer",
                     "Function", "BiFunction", "TriFunction", "QuadFunction",
-                    "Supplier", "Predicate", "BiPredicate"
+                    "Supplier", "Predicate", "BiPredicate",
                     "Noise2D",  "Noise3D",
-                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer"
+                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer"
                 ]
             end
 
@@ -250,7 +252,7 @@ module Rouge
                     push :expr_start
                 end
 
-                rule %r/(class)((?:\s|\\\s)+)/ do
+                rule %r/(class|instanceof)((?:\s|\\\s)+)/ do
                     groups Keyword::Declaration, Text
                     push :classname
                 end
@@ -275,7 +277,7 @@ module Rouge
                 rule %r/[{}]/, Punctuation, :statement
 
                 # By this point labels & object declarations have been checked
-                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                rule %r/(#{id})(\s*)((?:\.\.\.)?\??:)/ do |m|
                     if m[1].eql?('return') # Special case for descriptions of callback return values
                         groups Keyword, Text, Punctuation
                     else
@@ -397,10 +399,10 @@ module Rouge
             end
 
             state :variables do
-                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                rule %r/(#{id})(\s*)((?:\.\.\.)?\??:)/ do |m|
                     # Realistically, variable declarations should not happen within an object declaration
                     # Unless the declaration is for a map...
-                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & shpoping a varibles state would generalize much better
+                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & poping a varibles state would generalize much better
                     if m[3].eql?(":") && in_state?(:object)
                         groups Name::Attribute, Text, Punctuation
                         goto :expr_start 

@@ -113,3 +113,10 @@ colors:
   light-link: 82b5fa
   comment: d68e63
   func: 8bffce
+
+collections_dir: collections
+
+# It seems where: doesn't work with collection arrays...
+
+collections:
+  - fragments

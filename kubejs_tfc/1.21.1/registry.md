@@ -69,7 +69,7 @@ The registry for climate model types is `tfc:climate_model`
 ### Methods
 
 {% capture calendar %}[calendar]({% link kubejs_tfc/1.21.1/bindings/calendar.md %}){% endcapture %}
-{% capture model %}[`ClimateModel`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/util/climate/ClimateModel.java){% endcapture %}
+{% capture model %}[`ClimateModel`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#climate-model){% endcapture %}
 {% capture timeless %}[`TimelessClimateValueFunction`{:.f}](#climate-model-type-timeless-value-function){:.preserve-color}{% endcapture %}
 {% capture climate %}[`ClimateValueFunction`{:.f}](#climate-model-type-value-function){:.preserve-color}{% endcapture %}
 
@@ -207,7 +207,7 @@ StartupEvents.registry('tfc:glass_operation', event => {
 
 ## Item Stack Modifier
 
-Item stack modifiers are used by [`ItemStackProvider`s]({% link kubejs_tfc/1.21.1/type-explanations.md %}#itemstackprovider) to modify a stack, typically at the completion of a recipe
+Item stack modifiers are used by [`ItemStackProvider`s]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider) to modify a stack, typically at the completion of a recipe
 
 The registry for item stack modifiers is `tfc:item_stack_modifiers`
 
@@ -240,6 +240,7 @@ StartupEvents.registry('tfc:item_stack_modifiers', event => {
                     'cheese_mod:cheese': input.get('cheese_mod:cheese')
                 })
             }
+            return stack
         })
 })
 ```

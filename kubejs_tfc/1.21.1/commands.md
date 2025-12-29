@@ -148,7 +148,7 @@ The command has the following form:
 
 ## Inspect 2D Noise
 
-Displays the selected registered [`Noise2D`{: .language-kube-21 }]({% link kubejs_tfc/1.21.1/type-explanations.md %}#noise2d) in-world with the given parameters. In order to inspect a noise, it must be [registered]({% link kubejs_tfc/1.21.1/bindings/noise.md %}#noise-inspection-registration)
+Displays the selected registered [`Noise2D`{: .language-kube-21 }]({% link kubejs_tfc/1.21.1/type-explanations.md %}#noise-2d) in-world with the given parameters. In order to inspect a noise, it must be [registered]({% link kubejs_tfc/1.21.1/bindings/noise.md %}#inspect-2d)
 
 The command has the following form:
 
@@ -166,7 +166,7 @@ This command fills space in-world by sampling the noise over the `<input_range>`
 
 ## Inspect 3D Noise
 
-Displays the selected registered [`Noise3D`{: .language-kube-21 }]({% link kubejs_tfc/1.21.1/type-explanations.md %}#noise3d) in-world with the given parameters. In order to inspect a noise, it must be [registered]({% link kubejs_tfc/1.21.1/bindings/noise.md %}#noise-inspection-registration)
+Displays the selected registered [`Noise3D`{: .language-kube-21 }]({% link kubejs_tfc/1.21.1/type-explanations.md %}#noise-3d) in-world with the given parameters. In order to inspect a noise, it must be [registered]({% link kubejs_tfc/1.21.1/bindings/noise.md %}#inspect-3d)
 
 The command has the following form:
 
