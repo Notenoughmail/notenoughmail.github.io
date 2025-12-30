@@ -18,7 +18,7 @@ event-sort:
 
 KubeJS TFC adds several JS events for use in scripts
 
-{% assign events = site.fragments | multi_where: 'cat', page.fragment-filter | multi_sort: page.event-sort  %}
+{% assign events = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.event-sort  %}
 
 {% for event in events %}
 
@@ -32,6 +32,6 @@ KubeJS TFC adds several JS events for use in scripts
 
 ## {{ event.title }}
 
-{{ event.content }}
+{{ event.clean }}
 
 {% endfor %}

@@ -37,7 +37,8 @@ declare class NoiseBindings {
 {% capture d3 %}[`Noise3D`{:.f}]({% link kubejs_tfc/1.21.1/type-explanations.md %}#noise-3d){:.preserve-color}{% endcapture %}
 
 - `.openSimplex2D(seed: int)`{: .language-kube-21 #open-simplex-2d }: Creates a new `OpenSimplex2D` object, an implementation of {{ d2 }} using the OpenSimplex noise function
-- `.openSimplex3D(seed: int)`{: .language-kube-21 #open-simplex-3d }: Creates a new `OpenSimplex3D` object, an implementation of {{ d3 }} using the OpenSimplex noise function
+- `.openSimplex3D(seed: int)`{: .language-kube-21 #open-simplex-3d }: Creates a new `OpenSimplex3D` object, an implementation of {{ d3 }} using the OpenSimplex noise function. It has one additional method to `Noise3D`{:.f}:
+    - `.amplitude(): number`{:.language-kube-21}: Gets the amplitude of the noise
 - `.cellular2D(seed: int)`{: .language-kube-21 #cellular-2d }: Creates a new `Cellular2D` object, an implementation of {{ d2 }} specialized to have polygonal blobs of constant value, instead of smooth, continuous values. It has additional methods
     - `.then(func: Function<Cell, number>): Noise2D`{:.language-kube-21}: Converts a `Cell` to a value via a function
     - `.cell(x: number, y: number): Cell`{:.language-kube-21}: Gets the `Cell` at the given x-y point, where `Cell` is an object with the methods

@@ -15,7 +15,7 @@ fragment-filter:
 
 There are several Java types which can be encountered fairly frequently in the docs or are too complex to describe in-line along with other, perhaps more pertinent, information. Those are collected here
 
-{% assign sections = site.fragments | multi_where: 'cat', page.fragment-filter | sort: 's' %}
+{% assign sections = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 's' %}
 
 {% for section in sections %}
 
@@ -29,6 +29,6 @@ There are several Java types which can be encountered fairly frequently in the d
 
 ## {{ section.title | render_liquid }}
 
-{{ section.content }}
+{{ section.clean }}
 
 {% endfor %}

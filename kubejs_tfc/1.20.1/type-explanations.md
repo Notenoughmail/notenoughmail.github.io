@@ -109,7 +109,7 @@ Lists and describes the methods available on
 - `.getForestDensity(): float`{: .language-kube-20 #chunk-data-get-forest-density }: Get the chunk's forest density value
 - `.status(): ChunkData$Status`{: .language-kube-20 #chunk-data-status }: Gets the `Status`{:.e} of the chunk data
 - `.generatePartial(...): void`{: .language-kube-20 #chunk-data-generate-partial }: Promotes the chunk data to `PARTIAL`{:.e} from `EMPTY`{:.e} and fills in the temperature, rainfall, and forest values of the chunk. Has five parameters, in order they are:
-    - `rainfallLayer: LerpFloatLayer`{: .language-kube-20 }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Using in climate models to determine the rainfall at a position
+    - `rainfallLayer: LerpFloatLayer`{: .language-kube-20 }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average rainfall at the corners of the chunk. Used in climate models to determine the rainfall at a position
     - `temperatureLayer: LerpFloatLayer`{: .language-kube-20 }: A [`LerpFloatLayer`]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#lerp-float-layer) of the yearly average temperature at the corners of the chunk. Used by climate models to determine the average temperature at a position
     - `forestType: ForestType`{: .language-kube-20 }: The forest type of the chunk, may be `none`{:.e}, `sparse`{:.e}, `edge`{:.e}, `normal`{:.e}, or `old_growth`{:.e}
     - `forestWeirdness: float`{: .language-kube-20 }: The forest 'weirdness' of the chunk, {% in_unit %}. Used by TFC's forest configured feature
@@ -135,10 +135,10 @@ Lists and describes the methods available on
 - `.transform(transformer: TransformLayer, seed: long): @Self LayeredArea`{: .language-kube-20 #layered-area-transform }: Applies an arbitrary [`TransformLayer`](#layered-area-transform-layer) to the area. The params are:
     - `transformer: TransformLayer`{: .language-kube-20 }: The transformer
     - `seed: long`{: .language-kube-20 }: The seed used by the [`AreaContext`](#layered-area-area-context)'s random
-- `.adjacentTransform(transformer: AdjacentTransformLayer, seed: long): @Self LayeredArea`{: .language-kube-20 #layered-area-adjacent-transform }: Applies an arbitrary `TransformLayer` that has [access to neighboring values](#layered-area-adjacent-transform-layer). The params are:
+- `.adjacentTransform(transformer: AdjacentTransformLayer, seed: long): @Self LayeredArea`{: .language-kube-20 #layered-area-adjacent-transform }: Applies an arbitrary `TransformLayer`{:.f} that has [access to neighboring values](#layered-area-adjacent-transform-layer). The params are:
     - `transformer: AdjacentTransformLayer`{: .language-kube-20 }: The transformer
     - `seed: long`{: .language-kube-20 }: The seed used by the [`AreaContext`](#layered-area-area-context)'s random
-- `.merge(merger: MergeLayer, otherLayeredArea: LayeredArea, seed: long): @Self LayeredArea`{: .language-kube-20 #layered-area-merge }: Merges this `LayeredArea` with another via the given `Mergelayer`. The params are:
+- `.merge(merger: MergeLayer, otherLayeredArea: LayeredArea, seed: long): @Self LayeredArea`{: .language-kube-20 #layered-area-merge }: Merges this `LayeredArea` with another via the given `Mergelayer`{:.f}. The params are:
     - `merger: MergeLayer`{: .language-kube-20 }: A callback which merges the two `LayeredArea`s together. Has the following params:
         - `context: AreaContext`{: .language-kube-20 }: The seeded [`AreaContext`](#layered-area-area-context) at the point
         - `first: Area`{: .language-kube-20 }: The [`Area`](#layered-area-area) from this `LayeredArea`
@@ -147,7 +147,7 @@ Lists and describes the methods available on
         - `z: int`{: .language-kube-20 }: The z position being queried
         - `return: int`{: .language-kube-20 }: The return value
     - `otherLayeredArea: LayeredArea`{: .language-kube-20 }: The `LayeredArea` to merge with this one
-    - `seed: long`{: .language-kube-20 }: The seed by the [`AreaContext`](#layered-area-area-context)'s random
+    - `seed: long`{: .language-kube-20 }: The seed used by the [`AreaContext`](#layered-area-area-context)'s random
 
 {: #layered-area-source-layer }
 

@@ -215,15 +215,19 @@ The registry for item stack modifiers is `tfc:item_stack_modifiers`
 
 ### Methods
 
-- `.applicator(applicator: TriFunction<ItemStack, ItemStack, StackModifierContext, ItemStack>)`{: .language-kube-21 #item-stack-modifier-applicator }: Sets the behavior of the modifier, accepts a callback with the params
+- `.applicator(applicator: BiFunction<ItemStack, StackModifierContext, ItemStack>)`{: .language-kube-21 #item-stack-modifier-applicator }: Sets the behavior of the modifier, accepts a callback with the params
+    - `stack: ItemStack`{:.language-kube-21}: The original output stack, my be freely modified
+    - `context: StackModifierContext`{:.language-kube-21}: The context under which the modifier is being applied, may be either `default`{:.e} or `no_random_chance`{:.e}
+    - `return: ItemStack`{:.language-kube-21}: The modified output item stack
+- `.applicatorWithInput(applicator: TriFunction<ItemStack, ItemStack, StackModifierContext, ItemStack>)`{: .language-kube-21 #item-stack-modifier-applicator-with-input }: Sets the behavior of the modifier, accepts a callback with the params
     - `stack: ItemStack`{:.language-kube-21}: The original output stack, may be freely modified
     - `input: ItemStack`{:.language-kube-21}: The input stack, should not be modified in any way
-    - `context: StackModifierContext`{:.language-kube-21}: The context under which the modifier is being evaluated, may be either `default`{:.e} or `no_random_chance`{:.e}
+    - `context: StackModifierContext`{:.language-kube-21}: The context under which the modifier is being applies, may be either `default`{:.e} or `no_random_chance`{:.e}
     - `return: ItemStack`{:.language-kube-21}: The modified output item stack
 - `.applicatorWithInventory(applicator: QuadFunction<ItemStack, ItemStack, StackModifierContext, Iterable<ItemStack>, ItemStacl>)`{: .language-kube-21 #item-stack-modifier-applicator-with-inventory}: Sets the behavior of the modifier, accepts a callback with the params
     - `stack: ItemStack`{:.language-kube-21}: The original output stack, may be freely modified
     - `input: ItemStack`{:.language-kube-21}: The input stack, should not be modified in any way
-    - `context: StackModifierContext`{:.language-kube-21}: The context under which the modifier is being evaluated, may be either `default`{:.e} or `no_random_chance`{:.e}
+    - `context: StackModifierContext`{:.language-kube-21}: The context under which the modifier is being applied, may be either `default`{:.e} or `no_random_chance`{:.e}
     - `inventory: Iterable<ItemStack>`{:.language-kube-21}: An [iterable](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Iterable.html) view of the inventory's items
     - `return: ItemStack`{:.language-kube-21}: The modified output item stack
 
@@ -234,7 +238,7 @@ The registry for item stack modifiers is `tfc:item_stack_modifiers`
 ```js-21
 StartupEvents.registry('tfc:item_stack_modifiers', event => {
     event.create('copy_cheese')
-        .applicator((stack, input, ctx) => {
+        .applicatorWithInput((stack, input, ctx) => {
             if (input.has('cheese_mod:cheese')) {
                 stack.patch({
                     'cheese_mod:cheese': input.get('cheese_mod:cheese')

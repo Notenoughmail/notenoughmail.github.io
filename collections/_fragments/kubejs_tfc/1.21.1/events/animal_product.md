@@ -17,8 +17,8 @@ The product of this event my be either an `ItemStack` of a `FluidStack`, not bot
 
 {: #animal-product-methods }
 
-### Methods
+## Methods
 
 {: #animal-product-example }
 
-### Example
+## Example

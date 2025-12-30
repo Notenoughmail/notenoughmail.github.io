@@ -49,7 +49,23 @@ module Jekyll
     end
 
     def clean_fragments(input)
-      # Hoist headings down a level, normalize footnotes
+      Liquid::StandardFilters::InputIterator.new(input).each { |f|
+        content = f['output']
+        anchor = f['anchor']
+
+        f['clean'] = content.gsub(/\<h(?:[2-6]).+?\<\/h(?:[2-6])\>/) { |str|
+          # Hoist headings down a level, purely so the markdown linter stops complaining
+          str.match(/\<h([2-6])(.+?)\<\/h(?:[2-6])\>/) { |m|
+            size = (m[1].to_i + 1).to_s
+            '<h' + size + m[2] + '</h' + size + '>'
+          }
+        }.gsub(/(?:id|href)="#?(?:fn|fnref):/) { |str|
+          # Make footnotes unique per-fragment
+          str.match(/(id|href)="(#?)(fn|fnref):/) { |m|
+            m[1] + '="' + + m[2] + anchor + "-" + m[3] + ':'
+          }
+        }
+      }
       input
     end
 
