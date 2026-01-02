@@ -200,3 +200,12 @@ a.preserve-color:hover {
 li p:only-child {
     margin: 0.25em 0;
 }
+
+p:has(#back-to-top), p:has(#edit-this-page) {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+hr:has(+ footer) {
+    margin-bottom: 0.25rem;
+}

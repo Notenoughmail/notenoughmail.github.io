@@ -39,8 +39,8 @@ declare class CalendarBindings {
 ```
 
 - `.getCalendar(_?: (LevelReader | boolean | Entity | BlockEntity))`{: .language-kube-21 #get-calendar }: Gets the server or client [`ICalendar`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#icalendar) from the given object
-- `.getTimeAndDate(calendarTick: int, daysInMonth: int)`{: .language-kube-21 #get-time-and-date }: Creates a formatted text object that describes the given timestamp's date and time in `HH:MM month day year` format
-- `.getDayTime(calendarTick: int)`{: .language-kube-21 #get-day-time }: Creates a formatted text object that describes the timestamp in `HH:MM` form
+- `.getTimeAndDate(calendarTick: int, daysInMonth: int)`{: .language-kube-21 #get-time-and-date }: Creates a formatted text object that describes the given calendar tick's date and time in `HH:MM month DD, YYY` format
+- `.getDayTime(calendarTick: int)`{: .language-kube-21 #get-day-time }: Creates a formatted text object that describes the calendar tick in `HH:MM` form
 - `.getTimeDelta(calendarTicks: int, daysInMonth: int)`{: .language-kube-21 #get-time-delta }: Creates a formatted text object describing the amount of time the calendar ticks value represents
-- `.getTotalCalendarDays(calendarTick: int)`{: .language-kube-21 #get-total-calendar-days }: Returns the number of calendar days which have passed since the start of the world at the given timestamp
-- `.getMonthOfYear(calendarTick: int, daysInMonth: int)`{: .language-kube-21 #get-month-of-year }: Gets the month at the given calendar timestamp
+- `.getTotalCalendarDays(calendarTick: int)`{: .language-kube-21 #get-total-calendar-days }: Returns the number of calendar days which have passed since the start of the world at the given calendar tick
+- `.getMonthOfYear(calendarTick: int, daysInMonth: int)`{: .language-kube-21 #get-month-of-year }: Gets the month at the given calendar tick

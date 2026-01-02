@@ -18,6 +18,14 @@ Lists and describes the methods available on
 - [NamedRegistryMetal](#namedregistrymetal)
 - [NamedRegistryWood](#namedregistrywood)
 
+{: .related #types-note }
+> Throughout the docs on this page (and elsewhere for the mod) you may notice some odd type declarations/specifications for JavaScript. This primarily stems from the fact JS/TS types do not perfectly align with Java's type system and a prioritization of displaying the correct Java type over a valid TS type. The most pertinent example is the usage of the Java primitive types `int`{:.p}, `long`{:.p}, `float`{:.p}, and `double`{:.p} instead of JavaScript's `number`{:.p} type
+>
+> Another thing of note regarding types, is some additional colors for specific categories of Java types with special behavior
+>
+> - Types colored `#{{ site.colors.enum }}`{:.e} are Java enums which have a defined set of values. They can be wrapped from JavaScript as either a case-insensitive string of a value's name or its ordinal
+> - Types colored `#{{ site.colors.func }}`{:.f} are Java functional interfaces. They can be wrapped from javascript as a function or callback with the appropriate arguments. See the [Rhino docs](https://rhino.github.io/tutorials/scripting_java/#javascript-functions-as-java-interfaces), any moderately sized modpack, or many of the examples here for examples of this
+
 ## Noise2D
 
 [`Noise2D`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.20.x/src/main/java/net/dries007/tfc/world/noise/Noise2D.java) is TFC's base type for noise functions with two dimensions. It has the following methods:

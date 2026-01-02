@@ -30,10 +30,10 @@ cat:
 - `.getAverageSeaLevelTemp(x: int, z: int)`{: .language-kube-21 #chunk-data-get-average-sea-level-temp-1 }: Get the average sea-level temperature at the given position
 - `.getForestType(): ForestType`{: .language-kube-21 #chunk-data-get-forest-type }: Get the [`ForestType`{:.e}](#forest-type-enum){:.preserve-color} of the chunk
 - `.status(): ChunkData$Status`{: .language-kube-21 #chunk-data-status }: Get the `Status`{:.e} of the chunk
-- `.lastRandomTick(): int`{: .language-kube-21 #chunk-data-last-random-tick }: The last calendar timestamp the chunk was random ticked in
+- `.lastRandomTick(): int`{: .language-kube-21 #chunk-data-last-random-tick }: The last [calendar timestamp](#icalendar-get-timestamp) the chunk was random ticked in
 - `.setLastRandomTick(chunk: ChunkAccess, lastRandomTick: int): void`{: .language-kube-21 #chunk-data-set-last-random-tick }: Sets the last random tick of the chunk
     - `chunk: ChunkAccess`{:.language-kube-21}: The chunk the data is for, required to mark it as unsaved and sync the data to clients
-    - `lastRandomTick: int`{:.language-kube-21}: The calendar timestamp at which the chunk was last randomly ticked
+    - `lastRandomTick: int`{:.language-kube-21}: The calendar tick at which the chunk was last randomly ticked
 - `.getNextSnowPos(chunkPos: ChunkPos): BlockPos`{: .language-kube-21 #chunk-data-get-next-snow-pos }: Get the next position that will be snowed on in the chunk, the y-coordinate will always be 0
 - `.iterateSnowPos(chunk: ChunkAccess): void`{: .language-kube-21 #chunk-data-iterate-snow-pos }: Moves the chunk to the next snow pos and marks the chunk as unsaved
 - `.generatePartial(rainfallLayer: LerpFloatLayer, rainVarianceLayer: LerpFLoatLayer, baseGroundwaterLayer: LerpFloatLayer, temperatureLayer: LerpFloatLayer, forestType: ForestType): void`{: .language-kube-21 #chunk-data-generate-partial }: Promotes the chunk data from `empty`{:.e} to `partial`{:.e} status by setting some of its properties
@@ -55,7 +55,7 @@ cat:
 
 ## `RockData`
 
-`RockData` is a component of `ChunkData` focusing on rock-related methods
+`RockData` is a component of `ChunkData` focusing on rock-related information
 
 - `.getSurfaceRock(x: int, z: int): RockSettings`{: .language-kube-21 #chunk-data-rock-data-get-surface-rock }: Get the 'surface' (`y` = `0`{:.n}) [`RockSettings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/settings/RockSettings.java)
 - `.getRock(pos: BlockPos): RockSettings`{: .language-kube-21 #chunk-data-rock-data-get-rock-0 }: Get the [`RockSettings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/settings/RockSettings.java) at the position
@@ -68,5 +68,7 @@ cat:
 ## forest type enum
 
 ## chunk data modify base groundwater
+
+## icalendar-get-timestamp
 
 {% endcomment %}

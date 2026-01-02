@@ -27,7 +27,7 @@ safe: false
 
 # Build settings
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs@v0.10.0
+remote_theme: just-the-docs/just-the-docs@v0.10.2
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
@@ -37,6 +37,14 @@ github_repo: "notenoughmail.github.io"
 color_scheme: default
 
 favicon_ico: "/assets/favicon.ico"
+
+back_to_top: true
+back_to_top_text: '↑ Back to Top'
+gh_edit_link_text: 'View page on GitHub'
+gh_edit_link: true
+gh_edit_repository: 'https://github.com/Notenoughmail/notenoughmail.github.io'
+gh_edit_branch: 'main'
+gh_edit_view_mode: 'blob'
 
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
@@ -115,8 +123,6 @@ colors:
   func: 8bffce
 
 collections_dir: collections
-
-# It seems where: doesn't work with collection arrays...
 
 collections:
   - fragments

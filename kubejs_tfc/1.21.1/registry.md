@@ -77,7 +77,7 @@ The registry for climate model types is `tfc:climate_model`
     - `model: ClimateModel`{:.language-kube-21}: The {{ model }} the wind is being calculated for
     - `level: Level`{:.language-kube-21}: The level wind is being calculated for
     - `pos: BlockPos`{:.language-kube-21}: The position the wind is being calculated for
-    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} timestamp at which wind is being calculated at
+    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} tick at which wind is being calculated at
     - `daysInMonth: int`{:.language-kube-21}: The number of days in a month
     - `wind: Function<number, number, Vec2>`{:.language-kube-21}: A helper function to create a `Vec2` without reflection. Use `.blow(x: float, z: float)`{:.language-kube-21} to do so
     - `return: Vec2`{:.language-kube-21}: The calculated horizontal wind vector
@@ -86,13 +86,13 @@ The registry for climate model types is `tfc:climate_model`
 - `.averageTemperature(temp: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-average-temperature }: Sets the average temperature calculation of the model. Accepts a {{ timeless }} which returns the average temperature, in °C, at the position
 - `.averageRainfall(rain: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-average-rain }: Sets the average rainfall calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range 0,Infinity,) %}
 - `.rainVariance(variance: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-rain-variance }: Sets the rain variance calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range -1,1 %}
-- `.thunder(thunder: BiPredicate<ClimateModel, int>)`{: .language-kube-21 #climate-model-type-thunder }: Sets the calculation for if its currently raining at a calendar timestamp, given it is raining. Accepts a callback with the params
+- `.thunder(thunder: BiPredicate<ClimateModel, int>)`{: .language-kube-21 #climate-model-type-thunder }: Sets the calculation for if its currently raining at a calendar tick, given it is raining. Accepts a callback with the params
     - `model: ClimateModel`{:.language-kube-21}: The {{ model }} the calculation is for
-    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} timestamp being evaluated at
-    - `return: boolean`{:.language-kube-21}: If it is thundering at the timestamp
+    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} tick being evaluated at
+    - `return: boolean`{:.language-kube-21}: If it is thundering at the tick
 - `.rainIntensity(intensity: BiFunction<ClimateModel, int, number>)`{: .language-kube-21 #climate-model-type-rain-intensity }: Sets the calculation for the rain intensity. Accepts a callback with the parameters
     - `model: ClimateModel`{:.language-kube-21}: The {{ model }} the calculation is for
-    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} timestamp being evaluated at
+    - `calendarTick: int`{:.language-kube-21}: The {{ calendar }} tick being evaluated at
     - `return: number`{:.language-kube-21}: The intensity, typically {% in_unit %}, but may be greater to indicate extreme rain intensity or negative to indicate it is not raining
 - `.instantaneousTemperature(temp: ClimateValueFunction)`{: .language-kube-21 #climate-model-type-instantaneous-temperature }: Sets the calculation for the instantaneous temperature of the model, accepts a {{ climate }}
 - `.instantaneousRainfall(rain: ClimateValueFunction)`{: .language-kube-21 #climate-model-type-instantaneous-rainfall }: Sets the calculation for the instantaneous rainfall of the model, accepts a {{ climate }}
@@ -118,7 +118,7 @@ A callback with the following parameters
 - `model: ClimateModel`{:.language-kube-21}: The {{ model }} the value is being calculated for
 - `level: LevelReader`{:.language-kube-21}: The level the value is being calculated in
 - `pos: BlockPos`{:.language-kube-21}: The position the value is being calculated at
-- `calendarTick: int`{:.language-kube-21}: The {{ calendar }} timestamp at which the value is being calculated at
+- `calendarTick: int`{:.language-kube-21}: The {{ calendar }} tick at which the value is being calculated at
 - `daysInMonth: int`{:.language-kube-21}: The number of days in a month
 - `return: number`{:.language-kube-21}: The calculated value
 

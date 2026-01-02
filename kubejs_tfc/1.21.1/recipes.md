@@ -137,13 +137,229 @@ ServerEvents.recipes(event => {
 
 ## Instant Barrel
 
+For performing item/fluid mixing in barrels instantly
+
+{: #instant-barrel-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.instant_barrel(
+    inputFluid: SizedFluidIngredient
+)
+    // Additional methods
+    .outputItem(outputItem: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: SizedIngredient)
+    .sound(sound: Holder<SoundEvent>)
+```
+
+- 1st argument: A `SizedFluidIngredient`, the input fluid
+
+<span></span>
+
+- `.outputItem(outputItem: ItemStackProvider)`{: .language-kube-21 #instant-barrel-output-item }: Accepts an {{ isp }}, the optional item output of the recipe
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-output_fluid }: Accepts a `FluidStack`, the optional fluid output of the recipe
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-outputs }: Accepts an {{ isp }} and a `FluidStack`, the optional outputs of the recipe
+
+- `.inputItem(inputItem: SizedIngredient)`{: .language-kube-21 #instant-barrel-input-item }: Accepts a sized item ingredient, the optional item input of the recipe
+- `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #instant-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
+
+[^1]: A list of available sound events can be gotten by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
+
+{: .related #instant-barrel-alias-notice }
+> The recipe method presented here is an alias for the 'official' recipe type, `.tfc.barrel_instant(...)`{:.language-kube-21}. Both may be used in place of the other as they have the same methods and semantics
+
+{: #instant-barrel-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.instant_barrel(
+        Fluid.sizedIngredeintOf('minecraft:water', 50)
+    )
+    .outputs('minecraft:dirt', Fluid.of('minecraft:milk', 1))
+})
+```
+
 ## Instant Fluid Barrel
+
+For performing fluid/fluid mixing in barrels instantly
+
+{: #instant-fluid-barrel-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.instant_fluid_barrel(
+    primaryFluid: SizedFluidIngredient,
+    addedFluid: SizedFluidIngredient
+)
+    // Additional methods
+    .outputFluid(outputFluid: FluidStack)
+    .sound(soud: Holder<SoundEvent>)
+```
+
+- 1st argument: A sized fluid ingredient, the fluid in the barrel's tank
+- 2nd argument: A sized fluid ingredient, the fluid added to the `priamryFluid`{:.v} by a fluid container item
+
+<span></span>
+
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-fluid-barrel-output-fluid }: Accepts a `FluidStack`, the result of the recipe
+- `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #instant-fluid-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
+
+{: .related #instant-fluid-barrel-alias-notice }
+> The recipe method presented here is an alias for the 'official' recipe type, `.tfc.barrel_instant_fluid(...)`{:.language-kube-21}. Both may be used in place of each other as they have the same methods and semantics
+
+{: #instant-fluid-barrel-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.instant_fluid_barrel(
+        Fluid.of('minecraft:water', 20),
+        Fluid.of('minecraft:milk', 10)
+    )
+    .outputFluid(Fluid.of('minecraft:lava', 50))
+})
+```
 
 ## Sealed Barrel
 
+For performing fluid/item mixing in sealed barrels
+
+{: #sealed-barrel-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.sealed_barrel(
+    inputFluid: SizedFluidIngredient,
+    duration: int
+)
+    // Additional methods
+    .outputItem(outputItem: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .otuputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: SizedIngredient)
+    .sound(sound: Holder<SoundEvent>)
+    .onSeal(onSeal: ItemStackProvider)
+    .onUnseal(onUnseal: ItemStackProvider)
+    .seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)
+```
+
+- 1st argument: A sized fluid ingredient, the fluid input of the recipe
+- 2nd argument: An integer number, the sealed duration of the recipe. May be `-1`{:.n} to have an indefinite seal time
+
+<span></span>
+
+- `.outputItem(outputItem: ItemStackProvider)`{: .language-kube-21 #sealed-barrel-output-item }: Accepts an {{ isp }}, the optional item output of the recipe
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-output_fluid }: Accepts a `FluidStack`, the optional fluid output of the recipe
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-outputs }: Accepts an {{ isp }} and a `FluidStack`, the optional outputs of the recipe
+
+- `.inputItem(inputItem: SizedIngredient)`{: .language-kube-21 #sealed-barrel-input-item }: Accepts a sized item ingredient, the optional item input of the recipe
+- `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #sealed-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
+- `.onSeal(onSeal: ItemStackProvider)`{: .language-kube-21 #sealed-barrel-on-seal }: Accepts an {{ isp }}, the provider to apply to the stack when the barrel is sealed
+- `.onUnseal(onUnseal: ItemStackProvider)`{: .language-kube-21 #sealed-barrel-on-unseal }: Accepts an {{ isp }}, the provider to apply to the stack when the barrel is unsealed
+- `.seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)`{: .language-kube-21 #sealed-barrel-seal }: Accepts a pair of {{ isp }}s, the providers to apply to the stack when sealing and unsealing the barrel
+
+{: .related #sealed-barrel-alias-notice }
+> The recipe method present here is an alias for the 'official' recipe type, `.tfc.barrel_sealed(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same methods and semantics
+
+{: #sealed-barrel-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.sealed_barrel(
+        Fluid.of('minecraft:milk', 100),
+        -1
+    )
+    .inputItem(TFC.ingredeint.notRotten())
+    .seal(TFC.isp.copyInputStack().addTrait('kubejs:milk'), TFC.isp.copyInputStack().removeTrait('kubejs:milk'))
+})
+```
+
 ## Blast Furnace
 
+For recipes performed in the blast furnace multiblock
+
+{: #blast-furnace-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.blast_furnace(
+    result: FluidStack,
+    catalyst: Ingredient,
+    fluid: SizedFluidIngredeint
+)
+```
+
+- 1st argument: A `FluidStack`, the result of the recipe
+- 2nd argument: An item ingredient, the catalyst of the recipe. One required per amount of `fluid`{:.v} ingredient
+- 3rd argument: A sized fluid ingredient, the fluid input of the recipe
+
+{: .notice #blast-furnace-fluid-notice }
+> While the recipe uses a `SizedFluidIngredient`, the actual blast furnace requires items which [melt](#heating) into the valid fluid(s)
+
+{: #blast-furnace-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.blast_furnace(
+        FLuid.of('tfc:metal/copper', 20),
+        '#C:flowers',
+        Fluid.of('tfc:metal/bismuth', 30)
+    )
+})
+```
+
 ## Bloomery
+
+For recipes performed in the bloomery multiblock
+
+{: #bloomery-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.bloomery(
+    result: ItemStackProvider,
+    catalyst: SizedIngredient,
+    fluid: SizedFluidIngredeint,
+    duration: int
+)
+```
+
+- 1st argument: An {{ isp }}, the result of the recipe
+- 2nd argument: A sized item ingredient, the catalyst item of the recipe
+- 3rd argument: A sized fluid ingredient, the input fluid of the recipe
+- 4th argument: An integer number, {% in_range 0,Infinity,) %}, the number of ticks the recipe takes
+
+{: .notice #bloomery-fluid-notice }
+> While the recipe uses a `SizedFluidIngredient`, the actual bloomery requires items which [melt](#heating) into the valid fluid(s)
+
+{: #bloomery-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.bloomery(
+        'kubejs:unworked_copper_piece',
+        Item.of('tfc:powder/flux', 5),
+        Fluid.of('tfc:metal/copper', 300),
+        10500
+    )
+})
+```
 
 ## Casting
 
@@ -184,11 +400,180 @@ ServerEvents.recipes(event => {
 
 ## Chisel
 
+For chiseling blocks in-world using a chisel item
+
+{: #chisel-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.chisel(
+    result: BlockState,
+    ingredient: BlockIngredient,
+    mode: Holder<ChiselMode>,
+    itemOutput?: ItemStackProvider
+)
+    // Additional methods
+    .itemOutput(itemOutput: ItemStackProvider)
+    .extraDrop(itemOutput: ItemStackProvider)
+```
+
+{% capture bing %}[block ingredient]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient){% endcapture %}
+
+- 1st argument: A block state, the base result of chiseling, may be tweaked by the `mode`{:.v}
+- 2nd argument: A {{ bing }}, the input block(s) of the recipe
+- 3rd argument: The id of a chisel mode. A full list of available modes can be seen by running the command `/kubejs dump_registry tfc:chisel_mode`{:.language-command}. Custom modes can be [registered]({% link kubejs_tfc/1.21.1/registry.md %}#chisel-mode) via scripts
+- *Optional 4th argument*: An {{ isp }}, an additional item given to the player upon chiseling
+
+<span></span>
+
+- `.itemOutput(itemOutput: ItemStackProvider)`{: .language-kube-21 #chisel-item-output }: Accepts an {{ isp }}, the additional item given to the player upon chiseling
+- `.extraDrop(itemOutput: ItemStackProvider)`{: .language-kube-21 #chisel-extra-crop }: An alias of [`.itemOutput(...)`{:.language-kube-21}](#chisel-item-output){:.preserve-color}
+
+{: #chisel-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.chisel(
+        'minecraft:oak_log[axis=z]',
+        [ 'minecraft:dirt', 'minecraft:oak_planks' ],
+        'tfc:smooth'
+    )
+})
+```
+
 ## Collapse
+
+For blocks that collapse as a result of unsafe mining practices
+
+{: #collapse-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.collapse(
+    result?: BlockState,
+    ingredient: BlockIngredient
+)
+```
+
+- *Optional 1st argument*: A block state, the result of the recipe. If not present, the block collapses to itself
+- 2nd argument: A {{ bing }}, the block that will collapse
+
+{: .notice #collapse-tag-notice }
+> In order to collapse, a block *must* have the `tfc:can_collapse` tag. Additionally, for blocks that simply collapse to themself, it is sufficient for them to have that tag as TFC has a builtin recipe (which is checked *after* all other collapse recipes) that covers that case
+>
+> Also be aware of the related `tfc:can_start_collapse` and `tfc:can_trigger_collapse` block tags
+
+{: #collapse-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.collapse(
+        'minecraft:gold_block',
+        'minecraft:iron_block'
+    )
+})
+```
 
 ## Glassworking
 
+For working glass on a blowpipe
+
+{: #glassworking-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.glassworking(
+    result: ItemStackProvider,
+    batch: Ingredient,
+    operations: List<Holder<GlassOperation>>
+)
+```
+
+- 1st argument: An {{ isp }}, the result of the recipe
+- 2nd argument: An item ingredient, the initial batch item added to the blowpipe
+- 3rd argument: A list of glass operation ids. A full list of available operations can be seen by running the command `/kubejs dump_registry tfc:glass_operation`{:.language-command} in-game. Custom operations can be [registered]({% link kubejs_tfc/1.21.1/registry.md %}#glass-operation) via scripts
+
+{: #glass-operation-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.glassworking(
+        'kubejs:glass_trinket',
+        'tfc:silica_glass_batch',
+        [
+            'tfc:pinch',
+            'tfc:gold',
+            'tfc:blow',
+            'tfc:pyrite'
+        ]
+    )
+})
+```
+
 ## Heating
+
+For heating items in firepits, crucibles, pit kilns, etc.
+
+{: #heating-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.heating(
+    ingredient: Ingredient,
+    temperature: number
+)
+    // Additional methods
+    .itemOutput(resultItem: ItemStackProvider)
+    .fluidOutput(resultFluid: FluidStack)
+    .outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)
+    .resultItem(resultItem: ItemStackProvider)
+    .fluidResult(fluidResult: FluidStack)
+    .results(resultItem: ItemStackProvider, resultFluid: FludiStack)
+    .useDurability(useDurability?: boolean)
+```
+
+- 1st argument: An item ingredient, the item being heated
+- 2nd argument: A number, {% in_range 0,Infinity,) %}, the temperature (°C) the item needs to reach for the recipe to complete
+
+<span></span>
+
+- `.itemOutput(resultItem: ItemStackProvider)`{: .language-kube-21 #heating-item-output }: Accepts an {{ isp }}, the item result of heating
+- `.fluidOutput(fluidResult: FluidStack)`{: .language-kube-21 #heating-fluid-output }: Accepts a `FluidStack`, the fluid result of heating
+- `.outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-21 #heating-outputs }: Accepts an {{ isp }} and a `FludiStack`, the item and fluid results of the recipe
+- `.resultItem(resultItem: ItemStackProvider)`{: .language-kube-21 #heating-result-item }: An alias of [`.itemOutput(...)`{;.language-kube-21}](#heating-item-output){:.preserve-color}
+- `.resultFluid(resultFluid: FluidStack)`{: .language-kube-21 #heating-result-fluid }: An alias of [`.fluidOutput(...)`{:.language-kube-21}](#heating-fluid-output){:.preserve-color}
+- `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-21 #heating-results }: An alias of [`.outputs(...)`](#heating-outputs){:.preserve-color}
+- `.useDurability(useDurability?: boolean)`{: .language-kube-21 #heating-use-durability }: Accepts a boolean, if the recipe should scale the fluid output by the input's durability. Defaults to `false`{:.p} and calling with no args will set to `true`{:.p}
+
+{: .notice #heating-heat-notice }
+> In order for the recipe to work, the ingredient must have an [item heat]({% link kubejs_tfc/1.21.1/data.md %}#heat)
+>
+> If the recipe has a fluid result, the fluid must have a matching [fluid heat]({% link kubejs/1.21.1/data.md %}#fluid-heat) to work with crucibles
+
+{: #heating-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.heating(
+        'minecraft:iron_axe',
+        1500
+    )
+    .outputFluid(Fluid.of('tfc:metal/cast_iron', 100))
+    .useDurability()
+})
+```
 
 ## Knapping
 
@@ -324,3 +709,15 @@ ServerEvents.recipes(event => {
 ## Advanced Shapeless Crafting
 
 ## AFC Tapping
+
+{% comment %}
+
+### chisel item output
+
+### heating item output
+
+### heating fluid output
+
+### heating outputs
+
+{% endcomment %}

@@ -1,7 +1,7 @@
 ---
 layout: none
 s: noise_2d
-title: '`Noise3D`{:.f}'
+title: '`Noise2D`{:.f}'
 preserve-color: true
 anchor: noise-2d
 cat:

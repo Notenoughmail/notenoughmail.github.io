@@ -116,5 +116,5 @@ cal.getTimeDelta(ticks: number): MutableComponent
 - `.getCalendarMonthOfYear()`{: .language-kube-20 #calendar-month-of-year }: Returns the month of the year from the calendar time
 - `.getCalendarTicksInMonth()`{: .language-kube-20 #calendar-ticks-in-month }: Returns the total number of ticks in a month
 - `.getCalendarTicksInYear()`{: .language-kube-20 #calendar-ticks-in-year }: Returns the total number of ticks in a year
-- `.getCalendarTimeAndDate()`{: .language-kube-20 #calendar-time-and-date }: Returns a `MutableComponent` describing the current timestamp formatted like: `00:00 January 1, 1000` in base TFC
+- `.getCalendarTimeAndDate()`{: .language-kube-20 #calendar-time-and-date }: Returns a `MutableComponent` describing the current calendar tick formatted like: `00:00 January 1, 1000` in base TFC
 - `.getTimeDelta(ticks: number)`{: .language-kube-20 #calendar-time-delta }: Returns a `MutableComponent` describing the time delta of the provided number of ticks

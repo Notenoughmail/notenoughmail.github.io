@@ -106,7 +106,7 @@ declare class DataBindings {
     - `.hasTrait(stack: ItemStack, Holder<FoodTrait>)`{: .language-kube-21 #food-has-trait }: If the stack has the given food trait
     - `.isRotten(stack: ItemStack)`{: .language-kube-21 #food-is-rotten }: If the stack is rotten
     - `.setRotten(stack: ItemStack)`{: .language-kube-21 #food-set-rotten }: Set the given stack as rotten
-    - `.setCreationDate(stack: ItemStack, calendarTick: int)`{: .language-kube-21 #food-set-creation-date }: Sets the stack's creation date to the given calendar timestamp
+    - `.setCreationDate(stack: ItemStack, calendarTick: int)`{: .language-kube-21 #food-set-creation-date }: Sets the stack's creation date to the given calendar tick
     - `.setTransientNonDecaying(stack: ItemStack)`{: .language-kube-21 #food-set-transient-non-decaying }: Sets the stack as non-decaying, transiently. This effect will not be carried through stack copying
     - `.setNonDecaying(stack: ItemStack, invisible: boolean)`{: .language-kube-21 #food-set-non-decaying }: Sets the stack as non-decaying, optionally including a tooltip on the stack
 - `.support`{: .language-kube-21 #support }: Gets a sub-binding focusing on the support and collapse mechanics
@@ -141,7 +141,7 @@ declare class DataBindings {
 - `.getHeatLevel(temperature: number)`{: .language-kube-21 #get-heat-level }: Get the `Heat`{:.e} associated with the given temperature, or `null`{:.p} if less than zero
 - `.getSize(stack: ItemStack)`{: .language-kube-21 #get-size }: Gets the `Size`{:.e} of the stack
 - `.getWeight(stack: ItemStack)`{: .language-kube-21 #get-weight }: Gets the `Weight`{:.e} of the stack
-- `.getFarmlandHydrationLevel(level: Level, pos: BlockPos, calendarTick?: int)`{: .language-kube-21 #get-farmland-hydration-level }: Gets the farmland hydration, {% in_range 0,100 %}, at the given position and, optionally, at a specific calendar timestamp
+- `.getFarmlandHydrationLevel(level: Level, pos: BlockPos, calendarTick?: int)`{: .language-kube-21 #get-farmland-hydration-level }: Gets the farmland hydration, {% in_range 0,100 %}, at the given position and, optionally, at a specific calendar tick
 - `.getFluidHeat(fluid: Fluid)`{: .language-kube-21 #get-fluid-heat }: Gets the [fluid heat](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/util/data/FluidHeat.java) of a fluid if present
 - `.getLampFuel(fluid: Fluid, state: BlockState)`{: .language-kube-21 #get-lamp-fuel }: Gets the [lamp fuel](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/util/data/LampFuel.java) for the fluid and state if present
 - `.getDrinkable(fluid: Fluid)`{: .language-kube-21 #get-drinkable }: Gets the [drinkable data](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/util/data/Drinkable.java) of a fluid if present
