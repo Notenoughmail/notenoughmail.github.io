@@ -155,13 +155,13 @@ event.recipes.tfc.instant_barrel(
     .sound(sound: Holder<SoundEvent>)
 ```
 
-- 1st argument: A `SizedFluidIngredient`, the input fluid
+- 1st argument: A sized fluid ingredient, the input fluid
 
 <span></span>
 
 - `.outputItem(outputItem: ItemStackProvider)`{: .language-kube-21 #instant-barrel-output-item }: Accepts an {{ isp }}, the optional item output of the recipe
-- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-output_fluid }: Accepts a `FluidStack`, the optional fluid output of the recipe
-- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-outputs }: Accepts an {{ isp }} and a `FluidStack`, the optional outputs of the recipe
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-output_fluid }: Accepts a fluid stack, the optional fluid output of the recipe
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #instant-barrel-outputs }: Accepts an {{ isp }} and a fluid stack, the optional outputs of the recipe
 
 - `.inputItem(inputItem: SizedIngredient)`{: .language-kube-21 #instant-barrel-input-item }: Accepts a sized item ingredient, the optional item input of the recipe
 - `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #instant-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
@@ -207,7 +207,7 @@ event.recipes.tfc.instant_fluid_barrel(
 
 <span></span>
 
-- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-fluid-barrel-output-fluid }: Accepts a `FluidStack`, the result of the recipe
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #instant-fluid-barrel-output-fluid }: Accepts a fluid stack, the result of the recipe
 - `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #instant-fluid-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
 
 {: .related #instant-fluid-barrel-alias-notice }
@@ -257,8 +257,8 @@ event.recipes.tfc.sealed_barrel(
 <span></span>
 
 - `.outputItem(outputItem: ItemStackProvider)`{: .language-kube-21 #sealed-barrel-output-item }: Accepts an {{ isp }}, the optional item output of the recipe
-- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-output_fluid }: Accepts a `FluidStack`, the optional fluid output of the recipe
-- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-outputs }: Accepts an {{ isp }} and a `FluidStack`, the optional outputs of the recipe
+- `.outputFluid(outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-output_fluid }: Accepts a fluid stack, the optional fluid output of the recipe
+- `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #sealed-barrel-outputs }: Accepts an {{ isp }} and a fluid stack, the optional outputs of the recipe
 
 - `.inputItem(inputItem: SizedIngredient)`{: .language-kube-21 #sealed-barrel-input-item }: Accepts a sized item ingredient, the optional item input of the recipe
 - `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #sealed-barrel-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
@@ -300,7 +300,7 @@ event.recipes.tfc.blast_furnace(
 )
 ```
 
-- 1st argument: A `FluidStack`, the result of the recipe
+- 1st argument: A fluid stack, the result of the recipe
 - 2nd argument: An item ingredient, the catalyst of the recipe. One required per amount of `fluid`{:.v} ingredient
 - 3rd argument: A sized fluid ingredient, the fluid input of the recipe
 
@@ -315,7 +315,7 @@ event.recipes.tfc.blast_furnace(
 ServerEvents.recipes(event => {
     event.recipes.tfc.blast_furnace(
         FLuid.of('tfc:metal/copper', 20),
-        '#C:flowers',
+        '#minecraft:flowers',
         Fluid.of('tfc:metal/bismuth', 30)
     )
 })
@@ -380,7 +380,7 @@ event.recipes.tfc.casting(
 
 - 1st argument: An {{ isp }}, the result of the recipe
 - 2nd argument: An item ingredient, the mold item to pour the fluid into
-- 3rd argument: A `SizedFluidIngredient`, the fluid to cast
+- 3rd argument: A sized fluid ingredient, the fluid to cast
 - *Optional 4th argument*: A number, {% in_unit %}, the probability the mold will break when extracting the casted object, defaults to `1`{:.n}
 
 {: #casting-example }
@@ -548,8 +548,8 @@ event.recipes.tfc.heating(
 <span></span>
 
 - `.itemOutput(resultItem: ItemStackProvider)`{: .language-kube-21 #heating-item-output }: Accepts an {{ isp }}, the item result of heating
-- `.fluidOutput(fluidResult: FluidStack)`{: .language-kube-21 #heating-fluid-output }: Accepts a `FluidStack`, the fluid result of heating
-- `.outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-21 #heating-outputs }: Accepts an {{ isp }} and a `FludiStack`, the item and fluid results of the recipe
+- `.fluidOutput(fluidResult: FluidStack)`{: .language-kube-21 #heating-fluid-output }: Accepts a fluid stack, the fluid result of heating
+- `.outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-21 #heating-outputs }: Accepts an {{ isp }} and a fluid stack, the item and fluid results of the recipe
 - `.resultItem(resultItem: ItemStackProvider)`{: .language-kube-21 #heating-result-item }: An alias of [`.itemOutput(...)`{;.language-kube-21}](#heating-item-output){:.preserve-color}
 - `.resultFluid(resultFluid: FluidStack)`{: .language-kube-21 #heating-result-fluid }: An alias of [`.fluidOutput(...)`{:.language-kube-21}](#heating-fluid-output){:.preserve-color}
 - `.results(resultItem: ItemStackProvider, resultFluid: FluidStack)`{: .language-kube-21 #heating-results }: An alias of [`.outputs(...)`](#heating-outputs){:.preserve-color}
@@ -577,7 +577,83 @@ ServerEvents.recipes(event => {
 
 ## Knapping
 
+For knapping recipes, performed by right-clicking the input ingredient in the air and 'shaping' a 5 x 5 grid
+
+{: #knapping-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.knapping(
+    result: ItemStack,
+    knappingType: ResouceLocation,
+    pattern: List<String>
+)
+    // Additional methods
+    .ingredient(ingredient: Ingredient)
+    .defaultOn(defaultOn?: boolean)
+```
+
+- 1st argument: An item stack, the out put of the recipe
+- 2nd argument: A `ResourceLocation`, the id of a [knapping type]({% link kubejs_tfc/1.21.1/data.md %}#knapping-type), the knapping behavior definition
+- 3rd argument: A list of strings, the knapping pattern. The list may have between 1 and 5 strings, all rows must have the same length, and each row may be between 1 and 5 characters long. In the pattern, spaces mean the square must be clicked off/deactivated
+
+<span></span>
+
+- `.ingredient(ingredient: Ingredient)`{: .language-kube-21 #knapping-ingredient }: An item ingredient, specifies a specific sub-set of the knapping type's ingredient to use
+- `.defaultOn(defaultOn?: boolean)`{: .language-kube-21 #knapping-default-on }: Optionally accepts a boolean, if the values outside of the defined pattern should be active or deactivated to match with non 5 x 5 patterns. Defaults to `false`{:.p}. Sets to `true`{:.p} if no value is passed to the function
+
+{: #knapping-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.knapping(
+        'minecraft:obsidian',
+        'tfc:clay',
+        [
+            'X X',
+            ' X ',
+            'X X'
+        ]
+    )
+})
+```
+
 ## Landslide
+
+For blocks that landslide automatically due to not being 'supported' by surrounding blocks
+
+{: #landslide-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.landslide(
+    result?: BlockState,
+    ingredient: BlockIngredient
+)
+```
+
+- *Optional 1st argument*: A block state, the result of the recipe. If not present, the block landslides to itself
+- 2nd argument: A {{ bing }}, the block that will landslide
+
+{: .notice #landslide-tag-notice }
+> In order to collapse, a block *must* have the `tfc:can_landslide` tag. Additionally, for blocks that simply landslide to themself, it is sufficient for them to have that tag as TFC has a builtin recipe (which is checked *after* all other collapse recipes) that covers that case
+
+{: #landslide-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.lanslide(
+        'minecraft:grass_block',
+        'minecraft:dirt'
+    )
+})
+```
 
 ## Loom
 
@@ -618,9 +694,144 @@ ServerEvents.recipes(event => {
 
 ## Pot
 
+For basic pot recipes
+
+{: #pot-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.pot(
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number
+)
+    // Additional methods
+    .fluidOutput(fluidOutput: FluidStack)
+    .itemOutput(itemOutput: List<ItemStackProvider>)
+    .outputs(itemOutput: List<ItemStackProvider>, fluidOutput: FluidStack)
+    .usesAllFluids(usesAllFluids: boolean)
+```
+
+- 1st argument: A list of up to 5 item ingredients, the recipe inputs
+- 2nd argument: A sized fluid ingredient, the fluid input of the recipe
+- 3rd argument: A non-negative integer number, the number of ticks the pot must be boiling for
+- 4th argument: A non-negative number, the temperature (°C) the pot must reach to be boiling
+
+<span></span>
+
+- `.fluidOutput(fluidOutput: FluidStack)`{: .language-kube-21 #pot-fluid-output }: Accepts a fluid stack, the fluid result of the recipe
+- `.itemOutput(itemOutput: List<ItemStackProvider>)`{: .language-kube-21 #pot-item-output }: Accepts a list of {{ isp }}s, the item results of the recipe. The given list *must* be the same length as the `ingredients`{:.v} list
+- `.outputs(itemOutput: List<ItemStackProvider>, fluidOutput: FluidStack)`{: .language-kube-21 #pot-outputs }: Accepts a list of {{ isp }}s and a fluid stack
+- `.usesAllFluids(usesAllFluids: boolean)`{: .language-kube-21 #pot-uses-all-fluids }: Accepts a boolean, if the entirety of the fluid in the pot should be used. Defaults to `true`{:.p}
+
+{: #pot-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.pot(
+        [ '#minecraft:flowers' ],
+        Fluid.water(1000),
+        50,
+        110
+    )
+    .outputs('minecraft:bread', Fluid.of('minecraft:milk', 20))
+})
+```
+
 ## Jam Pot
 
+For pot recipes that require the pot to be clicked with empty jars and items tagged `tfc:foods/empty_jars_with_lid` to get their outputs
+
+{: #jam-pot-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.jam_pot(
+    unsealedResult: ItemStack,
+    sealedResult: ItemStack,
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number,
+    texture: ResourceLocation
+)
+```
+
+- 1st argument: An item stack, the stack to give the player when they click the pot with an empty jar after the recipe completes
+- 2nd argument: A item stack, the stack to give the player when they click the pot with an item tagged `tfc:foods/empty_jars_with_lid` after the recipe completes
+- 3rd argument: A list of up to 5 item ingredients, the item inputs of the recipe
+- 4th argument: A sized fluid ingredient, the fluid input of the recipe
+- 5th argument: A non-negative integer number, the number of ticks the pot must be boiling for
+- 6th argument: A non-negative number, the temperature (°C) the pot must reach to be boiling
+- 7th argument: A `ResourceLocation`, the id of a texture to display in the pot after completion of the recipe
+
+{: .notice #jam-pot-alias-notice }
+> The recipe method present here is an alias for the 'official' recipe type, `.tfc.pot_jam(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same semantics
+
+{: #jam-pot-example }
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.jam_pot(
+        'minecraft:red_wool',
+        'minecraft:red_concrete',
+        [
+            'minecraft:red_concrete_powder'
+        ],
+        Fluid.water(100),
+        1,
+        50,
+        'minecraft:block/green_wool'
+    )
+})
+```
+
 ## Soup Pot
+
+For pot recipes which require the pot to be clicked with items tagged `tfc:soup_bowls` to get an output
+
+{: #soup-pot-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.soup_pot(
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number
+)
+```
+
+- 1st argument: A list of up to 5 item ingredients, the item inputs of the recipe
+- 2nd argument: A sized fluid ingredient, the fluid input of the recipe
+- 3rd argument: A non-negative integer number, the number of ticks the pot must be boiling for
+- 4th argument: A non-negative number, the temperature (°C) the pot must reach to start boiling
+
+{: .related #soup-pot-alias-notice }
+> The recipe method present here is an alias for the 'official' recipe type, `.tfc.pot_soup(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same semantics
+
+{: #soup-pot-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.soup_pot(
+        [
+            'minecraft:wheat'
+        ],
+        Fluid.water(20),
+        2,
+        94
+    )
+})
+```
 
 ## Quern
 
@@ -656,7 +867,80 @@ ServerEvents.recipes(event => {
 
 ## Scraping
 
+For scraping items on the open face of a log with a knife
+
+{: #scraping-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.scraping(
+    result: ItemStackProvider,
+    ingredient: Ingredient,
+    outputTexture: ResourceLocation,
+    inputTexture: ResouceLocation,
+    resultItem?: ItemStackProvider
+)
+    // Additional methods
+    .resultItem(resultItem: ItemStackProvider)
+    .extraDrop(resultItem: ItemStackProvider)
+```
+
+- 1st argument: An {{ isp }}, the primary result of the recipe
+- 2nd argument: An item ingredient, the item that will be scraped
+- 3rd argument: A texture id, the texture to show in spots that have been scraped
+- 4th argument: A texture id, the texture to shoe in spots that have not been scraped
+- *Optional 5th argument*: An {{ isp }}, an additional item to drop upon completion of the recipe
+
+<span></span>
+
+- `.resultItem(resultItem: ItemStackProvider)`{: .language-kube-21 #scraping-result-item }: Accepts an {{ isp }}, the additional item to drop upon completion of the recipe
+- `.extraDrop(resultItem: ItemStackProvider)`{: .language-kube-21 #scraping-extra-drop }: A simple alias to [`.resultItem(...)`{:.language-kube-21}](#scraping-result-item){:.preserve-color} meant to disambiguate `resultItem`{:.v} from `result`{:.v}
+
 ## Sewing
+
+For sewing items in a sewing table
+
+{: #sewing-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.sewing(
+    result: ItemStack,
+    stitches: List<String>,
+    squares: List<String>
+)
+```
+
+- 1st argument: An item stack, the result of the recipe
+- 2nd argument: A list of strings, the stitch pattern in the sewing table. The list must have 5 values, each 9 characters long. A space character indicates no stitch at that position
+- 3rd argument: A list of strings, the fabric square pattern in the sewing table. The list must have 4 values, each 8 characters long. Acceptable characters are ` `, `B`, and `W` for empty, burlap, and wool respectively
+
+{: #sewing-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.sewing(
+        'minecraft:cobblestone',
+        [
+            '## ### ##',
+            '# #   # #',
+            ' # ### # ',
+            '# #   # #',
+            '## ### ##'
+        ],
+        [
+            ' BBWWBB ',
+            'BBW  WBB',
+            'W  BB  W',
+            '  WBBW  '
+        ]
+    )
+})
+```
 
 ## Welding
 
@@ -706,9 +990,137 @@ ServerEvents.recipes(event => {
 
 ## Advanced Shaped Crafting
 
+For shaped crafting recipes which have an {{ isp }} result
+
+{: #shaped-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.shaped(
+    result: ItemStackProvider,
+    pattern: List<String>,
+    key: Map<char, Ingredient>
+)
+    // Additional methods
+    .remainder(remainder: ItemStackProvider)
+    .showNotification(showNotification: boolean)
+    .inputRow(inputRow: int)
+    .inputColumn(inputColumn: int)
+    .inputPosition(inputRow: int, inputColumn: int)
+    .noNotification()
+```
+
+- 1st argument: An {{ isp }}, the recipe result
+- 2nd argument: A list of string, the recipe pattern
+- 3rd argument: A `char`{:.p} to ingredient map, specifying the ingredients in the pattern
+
+<span></span>
+
+- `.remainder(remainder: ItemStackProvider)`{: .language-kube-21 #shaped-remainder }: Accepts an {{ isp }}, the provider to apply to all inputs with the same item as the primary input
+- `.showNotification(showNotification: boolean)`{: .language-kube-21 #shaped-show-notification }: If the player should receive a toast when they unlock the recipe. Defaults to `true`{:.p}
+- `.inputRow(inputRow: int)`{: .language-kube-21 #shaped-input-row }: Accepts a non-negative integer number, the row index the primary ingredient is located. Defaults to `0`{:.n}
+- `.inputColumn(inputColumn: int)`{: .language-kube-21 #shaped-input-column }: Accepts a non-negative integer number, the column index the primary ingredient is located. Defaults to `0`{:.n}
+- `.inputPosition(inputRow: int, inputColumn: int)`{: .language-kube-21 #shaped-input-position }: Accepts two non-negative integer numbers, the row and column index of the primary ingredient
+- `.noNotification()`{: .language-kube-21 #shaped-no-notification }: Disables the player receiving a toast about unlocking the recipe
+
+{: .related #shaped-alias-notice }
+> The recipe method present here is an alias for the 'official' recipe type, `.tfc.advanced_shaped_crafting(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same methods and semantics
+
+{: #shaped-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.shaped(
+        'minecraft:obsidian',
+        [
+            'SA'
+        ],
+        {
+            S: 'minecraft:lava_bucket',
+            A: 'minecraft:water_bucket'
+        }
+    )
+    .remainder(TFC.isp.empty())
+})
+```
+
 ## Advanced Shapeless Crafting
 
+For shapeless crafting recipes which have an {{ isp }} result
+
+{: #shapeless-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.tfc.shapeless(
+    result: ItemStackProvider,
+    ingredients: List<Ingredient>,
+    primaryIngredient: Ingredient,
+    remainder?: ItemStackProvider
+)
+```
+
+- 1st argument: An {{ isp }}, the recipe result
+- 2nd argument: A list of item ingredients, the recipe inputs. May not be empty
+- 3rd argument: An item ingredient, the primary ingredient of the recipe
+- *Optional 4th argument*: An {{ isp }}, the provider to apply to all inputs with the same item as the primary input
+
+{: .related #shapeless-alias-notice }
+> The recipe method present here is an alias for the 'official' recipe type, `.tfc.advanced_shapeless_crafting(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same semantics
+
+{: #shapeless-example }
+
+### Example
+
+```js-21
+ServerEvents.recipes(event => {
+    event.recipes.tfc.shapeless(
+        'minecraft:blue_glazed_terracotta',
+        [
+            'minecraft:blue_concrete',
+            TFC.ingredient.fluidContents(Fluid.lava(50))
+        ],
+        TFC.ingredient.fluidContents(Fluid.lava(50)),
+        TFC.isp.copyInputStack().addHeat(500)
+    )
+})
+```
+
 ## AFC Tapping
+
+For tapping trees for fluid
+
+{: #afc-tapping-signature }
+
+### Method Signature
+
+```js-21
+event.recipes.afc.tree_tapping(
+    resultFluid: FluidStack,
+    inputBlock: BlockIngredient
+)
+    // Additional methods
+    .requiresNaturalLog(requiresNaturalLog: boolean)
+    .springOnly(springOnly?: boolean)
+    .minTemp(minimumTemperature: number)
+    .maxTemp(maximumTemperature: number)
+    .tempRange(minimumTemperature: number, maximumtemperature: number)
+```
+
+- 1st argument: A fluid stack, the result of the recipe
+- 2nd argument: A {{ bing }}, the block being tapped
+
+<span></span>
+
+- `.requiresNaturalLog(requiresNaturalLog: boolean)`{: .language-kube-21 #afc-tapping-requires-natural-log }: Accepts a boolean, if the block being tapped must have TFC's `branch_direction` block state and its value is not `none`{:.e}. Defaults to `true`{:.p}
+- `.springOnly(springOnly?: boolean)`{: .language-kube-21 #afc-tapping-spring-only }: Accepts a boolean, if the recipe may only be completed in the spring. Defaults to `false`{:.p}. Sets to `true`{:.p} if no value is passed to the function
+- `.minTemp(minimumTemperature: number)`{: .language-kube-21 #afc-tapping-min-temp }: Accepts a number, the minimum temperature (°C) the recipe can be performed in
+- `.maxTemp(maximumTemperature: number)`{: .language-kube-21 #afc-tapping-max-temp }: Accepts a number, the maximum temperature (°C) the recipe can be performed in
+- `.tempRange(minimumTemperature: number, maximumTemperature: number)`{: .language-kube-21 #afc-tapping-temp-range }: Accepts two numbers, the minimum and maximum temperature (°C) the recipe can be performed in
 
 {% comment %}
 
@@ -719,5 +1131,7 @@ ServerEvents.recipes(event => {
 ### heating fluid output
 
 ### heating outputs
+
+### scraping result item
 
 {% endcomment %}

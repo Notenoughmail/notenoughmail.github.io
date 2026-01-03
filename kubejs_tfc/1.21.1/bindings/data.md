@@ -34,6 +34,7 @@ declare class DataBindings {
         setCreationDate(stack: ItemStack, calendarTick: int): ItemStack
         setTransientNonDecaying(stack: ItemStack): ItemStack
         setnonDecaying(stack: ItemStack, invisible: boolean): ItemStack
+        setBowl(stack: ItemStack, bowlStack: ItemStack): void
     }
 
     support: instanceof SupportBindings {
@@ -109,6 +110,7 @@ declare class DataBindings {
     - `.setCreationDate(stack: ItemStack, calendarTick: int)`{: .language-kube-21 #food-set-creation-date }: Sets the stack's creation date to the given calendar tick
     - `.setTransientNonDecaying(stack: ItemStack)`{: .language-kube-21 #food-set-transient-non-decaying }: Sets the stack as non-decaying, transiently. This effect will not be carried through stack copying
     - `.setNonDecaying(stack: ItemStack, invisible: boolean)`{: .language-kube-21 #food-set-non-decaying }: Sets the stack as non-decaying, optionally including a tooltip on the stack
+    - `.setBowl(stack: ItemStack, bowlStack: ItemStack)`{: .language-kube-21 #food-set-bowl }: Sets the `tfc:bowl` component of the `stack`{:.v} as the `bowlStack`{:.v}
 - `.support`{: .language-kube-21 #support }: Gets a sub-binding focusing on the support and collapse mechanics
     - `.canStartCollapse(level: LevelAccessor, pos: BlockPos)`{: .language-kube-21 #support-can-start-collapse }: If the given position can start a collapse
     - `.tryStartCollapse(level: Level, pos: BlockPos)`{: .language-kube-21 #support-try-start-collapse }: Attempts to start a collapse at het he given position, returns `true`{:.p} if any blocks collapsed

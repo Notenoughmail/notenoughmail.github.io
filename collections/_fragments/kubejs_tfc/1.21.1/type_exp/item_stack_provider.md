@@ -21,6 +21,7 @@ Providers have several methods by which they can be used and modified
 - `.getStack(input: ItemStack): ItemStack`{: .language-kube-21 #isp-get-stack-0 }: Get the output stack of the provider, for the given input stack. **Note**: The presence of `CopyInputModifier`s may cause the resultant stack to have the same stack size as the input, if that is not desired use [`.getSingleStack(ItemStack)`{:.language-kube-21}](#isp-get-single-stack){:.preserve-color}
 - `.getStack(input: ItemStack, context: StackModifierContext): ItemStack`{: .language-kube-21 #isp-get-stack-1 }: Get the output stack of the provider, for the given input stack and context. The context may be either `default`{:.e} or `no_random_chance`{:.e} and the note in [`.getStack(ItemStack)`{:.language-kube-21}](#isp-get-stack-0){:.preserve-color} also applies
 - `.dependsOnInput(): boolean`{: .language-kube-21 #isp-depends-on-input }: If any of the provider's modifiers depend on the input stack
+- `.isEmpty(): boolean`{: .language-kube-21 #isp-is-empty }: If the provider has no modifiers and its stack is empty
 - `.toJson(): JsonElement`{: .language-kube-21 #isp-to-json }: Serializes the provider to json
 - `.toNBT(): Tag`{: .language-kube-21 #isp-to-nbt }: Serializes the provider to nbt
 - `.copy(): ItemStackProvider`{: .language-kube-21 #isp-copy }: Copies the provider with a mutable modifier list

@@ -177,7 +177,7 @@ module Rouge
                     as async await break case catch continue debugger default default delete
                     do else export finally from for if import in instanceof new of
                     return super switch this throw try typeof void while yield
-                    number boolean int float long double integer console
+                    number boolean int float long double integer console char byte short
                 )
             end
 
