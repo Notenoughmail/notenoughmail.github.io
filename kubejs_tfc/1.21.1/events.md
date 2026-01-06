@@ -22,7 +22,7 @@ KubeJS TFC adds several JS events for use in scripts
 
 {% for event in events %}
 
-- [{{ event.title }}]({{ event.anchor }}) -- `{% if event.type == 'common' %}client_scripts` & `server{% else %}{{ event.type }}{% endif %}_scripts`
+- [{{ event.title }}](#{{ event.anchor }}) -- `{% if event.type == 'common' %}client_scripts` & `server{% else %}{{ event.type }}{% endif %}_scripts`
 
 {% endfor %}
 

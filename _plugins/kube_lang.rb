@@ -20,9 +20,18 @@ module Rouge
 
                 def initialize(opts={})
                     super([
-                        "ForestSubType", "BonusBehavior", "StackModifierContext", "ArmorItem$Type"
+                        # TFC
+                        "ForestSubType", "BonusBehavior", "StackModifierContext",
+                        # Vanilla
+                        "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
+                        # KubeJS TFC
+                        "AqueductModelPart", "GearBoxModelType", "ClutchModelType",
+                        "GrassModelPart", "PebbleCount"
                     ], [
-                        "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction"
+                        # KubeJS TFC
+                        "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction",
+                        # KubeJS
+                        "ItemPredicate"
                     ], opts)
                 end
             end
@@ -50,8 +59,6 @@ module Rouge
                         "Punishment",
                         "PlanterType"
                     ], [
-                        # Vanilla
-                        "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
                         # TFC
                         "OnItemUseAction",
                         # KubeJS TFC
@@ -91,10 +98,15 @@ module Rouge
                 ]
                 f = Set.new funcs
                 @functional_interfaces = f.merge [
+                    # Java
                     "Consumer", "BiConsumer", "TriConsumer",
                     "Function", "BiFunction", "TriFunction", "QuadFunction",
                     "Supplier", "Predicate", "BiPredicate",
+                    # Vanilla
+                    "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
+                    # TFC
                     "Noise2D",  "Noise3D",
+                    # KubeJS TFC
                     "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer"
                 ]
             end

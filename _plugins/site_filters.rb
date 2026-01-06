@@ -69,6 +69,15 @@ module Jekyll
       input
     end
 
+    def get_or_default(input, get, default)
+      g = input[get]
+      if !g.nil?
+        g
+      else
+        input[default]
+      end
+    end
+
     def to_console(input)
       puts input
       input

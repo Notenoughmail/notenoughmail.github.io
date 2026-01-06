@@ -202,7 +202,7 @@ The gradient, from lowest to highest, is represented as:
 
 ## Reload KubeJS TFC Config
 
-Reloads and prints the KubeJS TFC config
+Reloads and prints the [KubeJS TFC config]({% link kubejs_tfc/1.21.1/misc.md %}#configuration)
 
 The command has the following form:
 

@@ -251,6 +251,36 @@ StartupEvents.registry('tfc:item_stack_modifiers', event => {
 
 ## Spring Water
 
+A fluid registry type
+
+**Type**: `tfc:spring`
+
+Creates a fluid which emits steam and bubble particles and heals the player when inside it
+
+Inherits all the methods of the base fluid builder
+
+{: #spring-water-methods }
+
+### Extra Methods
+
+- `.bubbleParticle(particle: @Nullable Holder<ParticleType<?>>)`{: .language-kube-21 #spring-water-bubble-particle }: Set the bubble particle options of the fluid via the id of a particle type or `null`{:.p} to indicate the fluid has no bubble particles
+- `.fullBubbleParticle(bubble: Supplier<ParticleOptions>)`{: .language-kube-21 #spring-water-full-bubble-particle }: Set the bubble particle options of the fluid
+- `.steamParticle(particle: @Nullable Holder<ParticleType<?>>)`{: .language-kube-21 #spring-water-steam-particle }: Set the steam particle options of the fluid via the id of a particle type of `null`{:.p} to indicate the fluid has no steam particles
+- `.fullSteamParticle(steam: Supplier<ParticleOptions>)`{: .language-kube-21 #spring-water-full-steam-particle }: Set the steam particle options of the fluid
+- `.healingAmount(healing: number)`{: .language-kube-21 #spring-water-healing-amount }: Set the health the fluid restores while a living entity is in it, defaults to `0.08`{:.n}
+
+{: #spring-water-example }
+
+### Example
+
+```js-21
+StartupEvents.registry('fluid', event => {
+    event.create('spring', 'tfc:spring')
+        .bubbleParticle(null)
+        .healingAmount(5)
+})
+```
+
 {% comment %}
 
 ### climate model type timeless value function

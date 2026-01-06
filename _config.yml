@@ -38,13 +38,8 @@ color_scheme: default
 
 favicon_ico: "/assets/favicon.ico"
 
-back_to_top: true
 back_to_top_text: '↑ Back to Top'
-gh_edit_link_text: 'View page on GitHub'
-gh_edit_link: true
-gh_edit_repository: 'https://github.com/Notenoughmail/notenoughmail.github.io'
-gh_edit_branch: 'main'
-gh_edit_view_mode: 'blob'
+gh_view_text: 'View page on GitHub'
 
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io

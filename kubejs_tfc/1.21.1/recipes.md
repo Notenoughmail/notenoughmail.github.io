@@ -558,7 +558,7 @@ event.recipes.tfc.heating(
 {: .notice #heating-heat-notice }
 > In order for the recipe to work, the ingredient must have an [item heat]({% link kubejs_tfc/1.21.1/data.md %}#heat)
 >
-> If the recipe has a fluid result, the fluid must have a matching [fluid heat]({% link kubejs/1.21.1/data.md %}#fluid-heat) to work with crucibles
+> If the recipe has a fluid result, the fluid must have a matching [fluid heat]({% link kubejs_tfc/1.21.1/data.md %}#fluid-heat) to work with crucibles
 
 {: #heating-example }
 
