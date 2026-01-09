@@ -63,8 +63,8 @@ The command has the following form:
 
 Examples:
 
-- `/kubejs_tfc search tfc:fluid_heat tfc:metal/copper`{; .language-command }
-- `/kubejs_tfc search tfc:entity_damage_resistance minecraft:creeper`{; .language-command }
+- `/kubejs_tfc search tfc:fluid_heat tfc:metal/copper`{: .language-command }
+- `/kubejs_tfc search tfc:entity_damage_resistance minecraft:creeper`{: .language-command }
 - `/kubejs_tfc search tfc:fertilizer tfc:powder/wood_ash`{: .language-command }
 
 ## Print World Settings

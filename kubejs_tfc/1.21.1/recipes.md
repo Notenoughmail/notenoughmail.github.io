@@ -36,7 +36,7 @@ The following recipe types are supported by KubeJS TFC
 - [Advanced Shaped Crafting](#advanced-shaped-crafting)
 - [Advanced Shapeless Crafting](#advanced-shapeless-crafting)
 
-<a id="arborfirmacraft"></a> If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported
+<a id="arborfirmacraft"></a>If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported
 
 - [Tapping](#afc-tapping)
 

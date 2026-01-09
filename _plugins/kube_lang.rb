@@ -25,8 +25,11 @@ module Rouge
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
                         # KubeJS TFC
-                        "AqueductModelPart", "GearBoxModelType", "ClutchModelType",
-                        "GrassModelPart", "PebbleCount"
+                        "AqueductModelPart", "ClutchModelType", "PebbleCount",
+                        "GearBoxModelType", "GrassModelPart", "LampModelType",
+                        "FallenLeavesModelType", "SpikeModelType",
+                        # Addons
+                        "ProspectorType"
                     ], [
                         # KubeJS TFC
                         "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction",
@@ -242,6 +245,7 @@ module Rouge
                 rule %r([-<>+*%&|\^/!=]=?), Operator, :expr_start
                 rule %r/[(\[,]/, Punctuation, :expr_start
                 rule %r/;/, Punctuation, :statement
+                # TODO: Mixin a function check here that checks for leading .
                 rule %r/[)\].]/, Punctuation
 
                 rule %r/`/ do
@@ -297,6 +301,12 @@ module Rouge
                     end
                 end
 
+                rule %r/[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?/, Num::Float
+                rule %r/0x[0-9a-fA-F]+/i, Num::Hex
+                rule %r/0o[0-7][0-7_]*/i, Num::Oct
+                rule %r/0b[01][01_]*/i, Num::Bin
+                rule %r/[0-9]+/, Num::Integer
+
                 rule id do |m|
                     if self.class.keywords.include? m[0]
                         token Keyword
@@ -318,12 +328,6 @@ module Rouge
                         token Name::Other
                     end
                 end
-
-                rule %r/[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?/, Num::Float
-                rule %r/0x[0-9a-fA-F]+/i, Num::Hex
-                rule %r/0o[0-7][0-7_]*/i, Num::Oct
-                rule %r/0b[01][01_]*/i, Num::Bin
-                rule %r/[0-9]+/, Num::Integer
 
                 rule %r/"/, Str::Delimiter, :dq
                 rule %r/'/, Str::Delimiter, :sq

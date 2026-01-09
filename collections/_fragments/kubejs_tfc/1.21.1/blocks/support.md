@@ -6,6 +6,12 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
+example:
+    - .connectionModel('kubejs:block/metal_connection')
+    - .extendedProperties(props => props.flammableLikeLogs())
+    - .horizontal(horizontal => {
+    - "    horizontal.extendedProperties(props => props.flammableLikePlanks())"
+    - '})'
 ---
 
 Creates a new support block

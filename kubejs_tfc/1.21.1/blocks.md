@@ -198,11 +198,11 @@ StartupEvents.registry('block', event => {
         })
         .rightClick(e => {
             let { player } = e
-            let { attachments } = e.block.entity
+            let { inv } = e.block.entity.attachments
             if (!player.shiftKeyDown) {
-                player.openInventoryGUI(attachments['inv'], event.block.blockState.block.name)
+                player.openInventoryGUI(inv, event.block.blockState.block.name)
             } else {
-                attachments['inv'].toggleSeal()
+                inv.toggleSeal()
             }
         })
 })
@@ -272,7 +272,7 @@ StartupEvents.registry('block', event => {
             be.attach('cal', 'tfc:calendar_tracking', [], {})
         })
         .rightClick(e => {
-            e.block.entity.attachments['cal'].set();
+            e.block.entity.attachments['cal'].set()
         })
 })
 ```

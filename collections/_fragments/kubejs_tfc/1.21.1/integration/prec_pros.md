@@ -11,4 +11,4 @@ A fairly self-evident mod from the name. Read more about it on its [Modrinth](ht
 
 KubeJS TFC Supports its
 
-- [Items]({% link kubejs_tfc/1.21.1/items.md %}#prec-pros-prospecting-item)
+- [Items]({% link kubejs_tfc/1.21.1/items.md %}#prec-pros)

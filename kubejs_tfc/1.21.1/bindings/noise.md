@@ -42,13 +42,14 @@ declare class NoiseBindings {
 - `.cellular2D(seed: int)`{: .language-kube-21 #cellular-2d }: Creates a new `Cellular2D` object, an implementation of {{ d2 }} specialized to have polygonal blobs of constant value, instead of smooth, continuous values. It has additional methods
     - `.then(func: Function<Cell, number>): Noise2D`{:.language-kube-21}: Converts a `Cell` to a value via a function
     - `.cell(x: number, y: number): Cell`{:.language-kube-21}: Gets the `Cell` at the given x-y point, where `Cell` is an object with the methods
-        - `.x(): number`{:.language-kube-21}: The x 'coordinate' of the center of the cell
-        - `.y(): number`{:.language-kube-21}: The y 'coordinate' of the center of the cell
-        - `.cx(): int`{:.language-kube-21}: The x 'coordinate' of the cell
-        - `.cy(): int`{:.language-kube-21}: The y 'coordinate' of the cell
-        - `.f1(): number`{:.language-kube-21}: The normalized distance from the center of the cell
-        - `.f2(): number`{:.language-kube-21}: The normalized distance from the center of an edge of the cell
-        - `.noise(): number`{:.language-kube-21}: The noise value of the cell
+        - `.x(): number`{:.language-kube-21}: The x 'coordinate' of the cell center. Not tied to game coordinates
+        - `.y(): number`{:.language-kube-21}: The y 'coordinate' of the cell center. Not tied to game coordinates
+        - `.cx(): int`{:.language-kube-21}: The x 'coordinate' of nearest cell center
+        - `.cy(): int`{:.language-kube-21}: The y 'coordinate' of nearest cell center
+        - `.f1(): number`{:.language-kube-21}: The distance to (x, y)
+        - `.f2(): number`{:.language-kube-21}: The distance to (cx, cy)
+        - `.noise(): number`{:.language-kube-21}: The noise value of the cell, {% in_unit %}
+        - `.angle(): number`{:.language-kube-21}: The diamond angle to the cell center, {% in_range 0,4 %} where `4`{:.n} is 360°
 - `.cellular3D(seed: int)`{: .language-kube-21 #cellular-3d }: Creates a new `Cellular3D` object, an implementation of {{ d3 }} specialized to have polyhedral blobs of constant value, instead of smooth, continuous values. It has an additional method
     - `.cell(x: number, y: number, z: number): Cell`{:.language-kube-21}: Gets the `Cell` at the given x-y-z point, where `Cell` is an object with the methods
         - `.x(): number`{:.language-kube-21}: The x 'coordinate' of the cell
