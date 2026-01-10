@@ -234,7 +234,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 event.fertilizer(
     ingredient: Ingredient,
     nitrogen: @Nullable number,
-    hosphorus: @Nullable number,
+    posphorus: @Nullable number,
     potassium: @Nullable number,
     name?: ResourceLocation
 )

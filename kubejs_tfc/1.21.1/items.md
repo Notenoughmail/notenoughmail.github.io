@@ -25,7 +25,7 @@ KubeJS TFC allows for the create of some of TFC's item types
 
 <a id="prec-pros"></a>If *Precision Prospecting* {% include mr.html link='' %} {% include cf.html link='' %} is installed, the following item type is supported
 
-- [Prospector](#prec-pros-prospector)
+- [Prospector](#prec-pros-prospector) -- `precisionprospecting:prospector`
 
 ---
 
@@ -70,7 +70,7 @@ Inherits the methods of the [chisel item builder](#chisel)
 
 - `.builtinType(type: ProspectorType)`{: .language-kube-21 #prec-pros-prospector-builtin-type }: Set the radii, displacement, and prospect tag of the prospector based on a preset. Accepts `pros_hammer`{:.e}, `pros_drill`{:.e}, or `min_pros`{:.e}
 - `.level(level: int)`{: .language-kube-21 #prec-pros-prospector-level }: Set the integer level of the prospector, determines the chance the prospector reports a false negative. The chance is calculated from the level as `0.3 - level * (0.3 / 5)`{:.language-kube-21} where `level` is clamped to the range {% range 0,5 %}
-- `.prospectTag('tag: TagKey<Block>)`{: .language-kube-21 #prec-pros-prospector-prospect-tag }: Set the tag the prospector will scan for
+- `.prospectTag(tag: TagKey<Block>)`{: .language-kube-21 #prec-pros-prospector-prospect-tag }: Set the tag the prospector will scan for
 - `.coolDown(c: int)`{: .language-kube-21 #prec-pros-prospector-cool-down }: Set the cool down of the prospector
 - `.primaryRadius(radius: int)`{: .language-kube-21 #prec-pros-prospector-primary-radius }: Set the primary scanning radius of the prospector, defaults to `12`{:.n}
 - `.primaryRadiusSupplier(radius: Supplier<int>)`{: .language-kube-21 #prec-pros-prospector-primary-radius-supplier }: Set the primary scanning radius of the prospector as a supplier, defaults to `() => 12`{:.language-kube-21}

@@ -930,7 +930,7 @@ When used with a specific chunk generator type, this event allows for custom gen
 
 ### Chunk Generator
 
-Due to how TFC's chunk data works, this functionality is inherently tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped` which will wrap any arbitrary chunk generator and imitate its function while providing TFC's additional values.
+Due to how TFC's chunk data works, this functionality is inherently tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped`, which will wrap any arbitrary chunk generator and imitate its function while providing TFC's additional values.
 
 In its json definition, the generator definition has the following fields:
 

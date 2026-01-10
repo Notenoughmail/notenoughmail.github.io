@@ -22,6 +22,7 @@ module Rouge
                     super([
                         # TFC
                         "ForestSubType", "BonusBehavior", "StackModifierContext",
+                        "Nutrient",
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
                         # KubeJS TFC
@@ -283,7 +284,7 @@ module Rouge
 
                 # See https://github.com/rouge-ruby/rouge/pull/1938
                 rule %r/(#{id})[ \t]*(?=(\(.*\)))/m do |m|
-                    if self.class.keywords.include?(m[1])
+                    if self.class.keywords.include?(m[1]) || self.class.declarations.include?(m[1])
                         token Keyword
                     else
                         token Name::Function

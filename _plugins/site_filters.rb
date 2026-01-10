@@ -78,6 +78,14 @@ module Jekyll
       end
     end
 
+    def script_type(input)
+      if input.eql?('common')
+        'client_scripts` & `server_scripts'
+      else
+        input + '_scripts'
+      end
+    end
+
     def to_console(input)
       puts input
       input
