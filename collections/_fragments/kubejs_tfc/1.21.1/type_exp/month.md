@@ -1,5 +1,4 @@
 ---
-layout: none
 s: month
 title: '`Month`{:.e} Enum'
 preserve-color: true

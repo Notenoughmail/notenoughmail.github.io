@@ -1,5 +1,4 @@
 ---
-layout: none
 s: icalendar
 title: '`ICalendar`'
 anchor: icalendar

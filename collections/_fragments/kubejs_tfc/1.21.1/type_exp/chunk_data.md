@@ -1,5 +1,4 @@
 ---
-layout: none
 s: chunk_data
 title: '`ChunkData`'
 anchor: chunk-data

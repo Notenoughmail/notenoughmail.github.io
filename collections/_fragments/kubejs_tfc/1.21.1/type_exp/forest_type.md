@@ -1,5 +1,4 @@
 ---
-layout: none
 s: forest_type
 title: '`ForestType`{:.e} Enum'
 preserve-color: true

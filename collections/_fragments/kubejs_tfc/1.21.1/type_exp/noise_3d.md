@@ -1,5 +1,4 @@
 ---
-layout: none
 s: noise_3d
 title: '`Noise3D`{:.f}'
 preserve-color: true

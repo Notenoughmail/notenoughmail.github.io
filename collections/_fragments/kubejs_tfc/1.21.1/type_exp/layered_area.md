@@ -1,5 +1,4 @@
 ---
-layout: none
 s: layered_area
 title: '`LayeredArea`'
 anchor: layered-area

@@ -1,5 +1,4 @@
 ---
-layout: none
 s: item_stack_provider
 title: '`ItemStackProvider`'
 anchor: item-stack-provider

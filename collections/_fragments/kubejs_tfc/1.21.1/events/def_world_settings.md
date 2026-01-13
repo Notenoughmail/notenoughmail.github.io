@@ -66,11 +66,11 @@ Allows for editing the default values of the TFC chunk generator at world creati
 - `.setSpawnCenterZ(z: int): void`{: .language-kube-21 #{{ page.anchor }}-set-spawn-center-z }: Set the z-coordinate of the spawn center
 - `.getSpawnCenterZ(): int`{: .language-kube-21 #{{ page.anchor }}-get-spawn-center-z }: Get, with the current settings, the z-coordinate of the spawn center
 - `.setSpawnCenter(x: int, z: int): void`{: .language-kube-21 #{{ page.anchor }}-set-spawn-center }: Set the spawn center position
-- `.setTemperatureScale(scale: int): void`{: .language-kube-21 #{{ page.anchor }}-set-temperature-scale }: Set the temperature scale, the distance from pole-to-pole, of the world
+- `.setTemperatureScale(scale: int): void`{: .language-kube-21 #{{ page.anchor }}-set-temperature-scale }: Set the temperature scale, the distance from the polar to equatorial region, of the world
 - `.getTemperatureScale(): int`{: .language-kube-21 #{{ page.anchor }}-get-temperature-scale }: Get, with the current settings, the temperature scale
 - `.setTemperatureConstant(constant: number): void`{: .language-kube-21 #{{ page.anchor }}-set-temperature-constant }: Set the temperature constant of the world, the base temperature to use if the temperature scale is `0`{:.n}
 - `.getTemperatureConstant(): number`{: .language-kube-21 #{{ page.anchor }}-get-temperature-constant }: Get, with the current settings, the temperature constant
-- `.setRainfallScale(scale: int): void`{: .language-kube-21 #{{ page.anchor }}-set-rainfall-scale }: Set the rainfall scale, the distance from pole-to-pole, of the world
+- `.setRainfallScale(scale: int): void`{: .language-kube-21 #{{ page.anchor }}-set-rainfall-scale }: Set the rainfall scale, the distance from peak to peak, of the world
 - `.getRainfallScale(): int`{: .language-kube-21 #{{ page.anchor }}-get-rainfall-scale }: Get, with the current settings, the rainfall scale
 - `.setRainfallConstant(constant: number): void`{: .language-kube-21 #{{ page.anchor }}-set-rainfall-constant }: Set the rainfall constant of the world, the base rainfall to use if the rainfall scale is `0`{:.n}
 - `.getRainfallConstant(): number`{: .language-kube-21 #{{ page.anchor }}-get-rainfall-constant }: Get, with the current settings, the rainfall constant
