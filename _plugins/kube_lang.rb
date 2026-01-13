@@ -91,7 +91,7 @@ module Rouge
                     "InteractionResult",   "OffsetType", "PushReaction",
                     "ItemDisplayContext",  "Direction",  "Rarity",
                     # TFC enums
-                    "Month",  "ForestType", "Heat", "Lifecycle"
+                    "Month",  "ForestType", "Heat", "Lifecycle",
                     "Weight", "Size",       "PropsectResult",
                     "Season", "ForgeRule",  "ChunkData$Status",
                     "Wood$BlockType", "Metal$BlockType", "Rock$BlockType",
