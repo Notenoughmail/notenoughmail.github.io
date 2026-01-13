@@ -4,7 +4,7 @@ title: Mod Integration
 permalink: /kubejs_tfc/1.21.1/integration/
 parent: 1.21.1
 grand_parent: KubeJS TFC
-desc: Descriptions and links to integration with other, non-TFc, mods
+desc: Descriptions and links to integration with other, non-TFC, mods
 fragment-filter:
     - kubejs_tfc
     - 1.21.1

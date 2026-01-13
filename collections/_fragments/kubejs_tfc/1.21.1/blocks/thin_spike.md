@@ -1,6 +1,7 @@
 ---
 title: Thin Spike
 anchor: thin-spike
+group: _
 type: tfc:thin_spike
 name: thin_spike
 cat:

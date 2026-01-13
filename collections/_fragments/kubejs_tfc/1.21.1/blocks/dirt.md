@@ -1,6 +1,7 @@
 ---
 title: Dirt
 anchor: dirt
+group: _
 type: tfc:dirt
 cat:
     - kubejs_tfc

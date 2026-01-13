@@ -1,6 +1,7 @@
 ---
 title: Sapling
 anchor: sapling
+group: _
 type: tfc:sapling
 name: coral_sapling
 cat:

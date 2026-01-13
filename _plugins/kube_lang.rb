@@ -55,8 +55,7 @@ module Rouge
                         "SpawnPlacements$Type",
                         # TFC
                         "Metal$ItemType",  "GroundType", "NutrientType",
-                        "GlassOperation",  "ChiselMode", "Lifecycle",
-                        "Metal$Tier", 
+                        "GlassOperation",  "ChiselMode", "Metal$Tier", 
                         # KubeJS TFC
                         "AqueductModelPart", "SpikeModelPart", "LampModelType",
                         "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
@@ -92,7 +91,7 @@ module Rouge
                     "InteractionResult",   "OffsetType", "PushReaction",
                     "ItemDisplayContext",  "Direction",  "Rarity",
                     # TFC enums
-                    "Month",  "ForestType", "Heat",
+                    "Month",  "ForestType", "Heat", "Lifecycle"
                     "Weight", "Size",       "PropsectResult",
                     "Season", "ForgeRule",  "ChunkData$Status",
                     "Wood$BlockType", "Metal$BlockType", "Rock$BlockType",

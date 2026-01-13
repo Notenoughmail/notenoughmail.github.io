@@ -1,6 +1,7 @@
 ---
 title: Log
 anchor: log
+group: _
 type: tfc:log
 cat:
     - kubejs_tfc

@@ -1,6 +1,7 @@
 ---
 title: Support
 anchor: support
+group: _
 type: tfc:support
 cat:
     - kubejs_tfc

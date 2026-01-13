@@ -1,6 +1,7 @@
 ---
 title: Axle
 anchor: axle
+group: _
 type: tfc:axle
 cat:
     - kubejs_tfc

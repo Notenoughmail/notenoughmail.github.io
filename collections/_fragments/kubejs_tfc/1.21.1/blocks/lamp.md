@@ -1,6 +1,7 @@
 ---
 title: Lamp
 anchor: lamp
+group: _
 type: tfc:lamp
 cat:
     - kubejs_tfc

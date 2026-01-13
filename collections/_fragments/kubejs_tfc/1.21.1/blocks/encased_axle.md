@@ -1,6 +1,7 @@
 ---
 title: Encased Axle
 anchor: encased-axle
+group: _
 name: encased
 type: tfc:encased-axle
 cat:

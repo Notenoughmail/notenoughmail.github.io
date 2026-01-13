@@ -1,6 +1,7 @@
 ---
 title: Anvil
 anchor: anvil
+group: _
 type: tfc:anvil
 cat:
     - kubejs_tfc

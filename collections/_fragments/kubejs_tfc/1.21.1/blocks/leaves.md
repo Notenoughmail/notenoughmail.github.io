@@ -1,6 +1,7 @@
 ---
 title: Leaves
 anchor: leaves
+group: _
 type: tfc:leaves
 cat:
     - kubejs_tfc

@@ -1,6 +1,7 @@
 ---
 title: Groundcover
 anchor: groundcover
+group: _
 type: tfc:groundcover
 cat:
     - kubejs_tfc

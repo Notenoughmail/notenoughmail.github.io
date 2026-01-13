@@ -1,6 +1,7 @@
 ---
 title: Rock Spike
 anchor: rock-spike
+group: _
 name: rock_spike
 type: tfc:rock_spike
 cat:

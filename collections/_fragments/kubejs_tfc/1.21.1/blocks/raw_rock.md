@@ -1,6 +1,7 @@
 ---
 title: Raw Rock
 anchor: raw-rock
+group: _
 name: raw_rock
 type: tfc:raw_rock
 cat:

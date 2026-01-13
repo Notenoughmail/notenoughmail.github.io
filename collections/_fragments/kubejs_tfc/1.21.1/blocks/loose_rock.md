@@ -1,6 +1,7 @@
 ---
 title: Loose Rock
 anchor: loose-rock
+group: _
 name: loose_rock
 type: tfc:loose_rock
 cat:

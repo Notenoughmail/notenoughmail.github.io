@@ -9,13 +9,16 @@ fragment-filter:
     - kubejs_tfc
     - 1.21.1
     - block
+fragment-sort:
+    - group
+    - title
 ---
 
 # Custom Blocks
 
 KubeJS TFC allows for the creation of some of TFC's block types
 
-{% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'title' %}
+{% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.fragment-sort %}
 
 {% for block in blocks %}
 

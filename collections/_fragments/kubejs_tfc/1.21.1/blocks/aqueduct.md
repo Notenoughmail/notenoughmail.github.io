@@ -1,6 +1,7 @@
 ---
 title: Aqueduct
 anchor: aqueduct
+group: _
 type: tfc:aqueduct
 cat:
     - kubejs_tfc
