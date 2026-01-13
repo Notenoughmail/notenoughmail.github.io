@@ -326,7 +326,7 @@ ServerEvents.recipes(event => {
         {
             tfc: {
                 type: 'isp',
-                modiifers: 'tfc:copy_input'
+                modifiers: 'tfc:copy_input'
             }
         },
         r => console.log(r)

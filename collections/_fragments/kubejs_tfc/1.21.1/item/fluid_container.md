@@ -18,10 +18,10 @@ Creates a new fluid container item
 
 Inherits the methods of the [jug item builder](#jug)
 
-{: #fluid-container-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.placeInWorld(place: boolean)`{: .language-kube-21 #fluid-container-place-in-world }: Set if the container can place fluids in-world, defaults to `false`{:.p}
-- `.placeSources(place: boolean)`{: .language-kube-21 #fluid-container-place-sources }: Set if the container can place source blocks in-world, defaults to `false`{:.p}
-- `.placeSourcesSupplier(place: Supplier<boolean>)`{: .language-kube-21 #fluid-container-place-sources-supplier }: Set if the container can place source blocks in-world via a supplier, defaults to `() => false`{:.language-kube-21}
+- `.placeInWorld(place: boolean)`{: .language-kube-21 #{{ page.anchor }}-place-in-world }: Set if the container can place fluids in-world, defaults to `false`{:.p}
+- `.placeSources(place: boolean)`{: .language-kube-21 #{{ page.anchor }}-place-sources }: Set if the container can place source blocks in-world, defaults to `false`{:.p}
+- `.placeSourcesSupplier(place: Supplier<boolean>)`{: .language-kube-21 #{{ page.anchor }}-place-sources-supplier }: Set if the container can place source blocks in-world via a supplier, defaults to `() => false`{:.language-kube-21}

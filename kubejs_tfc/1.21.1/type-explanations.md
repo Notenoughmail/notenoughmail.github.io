@@ -30,7 +30,7 @@ There are several Java types which can be encountered fairly frequently in the d
 >
 > In addition to the primitive type shenanigans, there are some additional colors for specific categories of Java types with special behavior
 >
-> - Types colored `#{{ site.colors.enum }}`{:.e} are Java enums which have a defined set values. They can be wrapped from JavaScript as either a case-insensitive string of a value's name or its ordinal
+> - Types colored `#{{ site.colors.enum }}`{:.e} are Java enums which have a defined set of values. They can be wrapped from JavaScript as either a case-insensitive string of a value's name or its ordinal
 > - Types colored `#{{ site.colors.func }}`{:.f} are Java functional interfaces. They can be wrapped from JavaScript as a function or callback with the appropriate arguments. See the [Rhino docs](https://rhino.github.io/tutorials/scripting_java/#javascript-functions-as-java-interfaces), any moderately sized modpack, or many of the examples here for examples of this
 
 {% for section in sections %}

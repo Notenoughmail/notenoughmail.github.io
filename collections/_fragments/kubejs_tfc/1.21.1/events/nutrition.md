@@ -43,14 +43,14 @@ example:
 
 This event fires whenever a player joins the world on both the client and server side so that their nutrition calculator may be changed
 
-{: #custom-nutrition-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Methods
 
-- `.getPlayer(): Player`{: .language-kube-21 #custom-nutrition-get-player }: Get the player the nutrition is for
-- `.classForJavaAdapter(): Object`{: .language-kube-21 #custom-nutrition-class-for-java-adapter }: Get a `INutritionData` class wrapper that can be used with `JavaAdapter` to create new instances
-- `getFactory(): BiFunction<number, number, T extends INutritionData>`{: .language-kube-21 #custom-nutrition-get-factory }: Get the current nutrition factory for the player. Has a single method, `.create(defaultNutritionValue: number, defaultDairyNutritionValue: number): T extends INutritionData`{:.language-kube-21}
-- `.setFactory(factory: BiFunction<number, number, INutritionData>)`{: .language-kube-21 #custom-nutrition-set-factory }: Set the nutrition factory for the player. Accepts a callback with the params
+- `.getPlayer(): Player`{: .language-kube-21 #{{ page.anchor }}-get-player }: Get the player the nutrition is for
+- `.classForJavaAdapter(): Object`{: .language-kube-21 #{{ page.anchor }}-class-for-java-adapter }: Get a `INutritionData` class wrapper that can be used with `JavaAdapter` to create new instances
+- `getFactory(): BiFunction<number, number, T extends INutritionData>`{: .language-kube-21 #{{ page.anchor }}-get-factory }: Get the current nutrition factory for the player. Has a single method, `.create(defaultNutritionValue: number, defaultDairyNutritionValue: number): T extends INutritionData`{:.language-kube-21}
+- `.setFactory(factory: BiFunction<number, number, INutritionData>)`{: .language-kube-21 #{{ page.anchor }}-set-factory }: Set the nutrition factory for the player. Accepts a callback with the params
     - `defaultNutritionValue: number`{:.language-kube-21}: The default value for the non-dairy nutrients
     - `defaultDairyNutritionValue: number`{:.language-kube-21}: The default value for the dairy nutrient
     - `return: INutritionData`{:.language-kube-21}: The nutrition data, can be made using `JavaAdapter`. Has the following methods that must be implemented

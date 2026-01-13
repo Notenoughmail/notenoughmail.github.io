@@ -17,11 +17,11 @@ Creates a new rock spike block
 
 Inherits the methods of the default block builder
 
-{: #rock-spike-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.models(models: BiConsumer<SpikeModelType, ModelGenerator>)`{: .language-kube-21 #rock-spike-models }: Set the model generation of the rock spike. Accepts a callback with two parameters, the second being a model generator and the first having the methods
+- `.models(models: BiConsumer<SpikeModelType, ModelGenerator>)`{: .language-kube-21 #{{ page.anchor }}-models }: Set the model generation of the rock spike. Accepts a callback with two parameters, the second being a model generator and the first having the methods
     - `.base(): boolean`{:.language-kube-21}: If the model is for the base state
     - `.middle(): boolean`{:.language-kube-21}: If the model is for the middle state
     - `.tip(): boolean`{:.language-kube-21}: If the model is for the tip state

@@ -14,8 +14,8 @@ Creates a new item which can perform a glassworking [operation]({% link kubejs_t
 
 Inherits the methods of the default item builder
 
-{: #glassworking-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Method
 
-- `.operation(operation: Holder<GlassOperation>)`{: .language-kube-21 #glassworking-operation }: Set the operation the item performs. A full list of available operations can be obtained by running the command `/kubejs dump_registries tfc:glass_operation`{:.language-command} in-game
+- `.operation(operation: Holder<GlassOperation>)`{: .language-kube-21 #{{ page.anchor }}-operation }: Set the operation the item performs. A full list of available operations can be obtained by running the command `/kubejs dump_registries tfc:glass_operation`{:.language-command} in-game

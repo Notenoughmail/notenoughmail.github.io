@@ -46,8 +46,8 @@ declare class NoiseBindings {
         - `.y(): number`{:.language-kube-21}: The y 'coordinate' of the cell center. Not tied to game coordinates
         - `.cx(): int`{:.language-kube-21}: The x 'coordinate' of nearest cell center
         - `.cy(): int`{:.language-kube-21}: The y 'coordinate' of nearest cell center
-        - `.f1(): number`{:.language-kube-21}: The distance to (x, y)
-        - `.f2(): number`{:.language-kube-21}: The distance to (cx, cy)
+        - `.f1(): number`{:.language-kube-21}: The distance to {% range c,x,() %}
+        - `.f2(): number`{:.language-kube-21}: The distance to {% range cx,cy,() %}
         - `.noise(): number`{:.language-kube-21}: The noise value of the cell, {% in_unit %}
         - `.angle(): number`{:.language-kube-21}: The diamond angle to the cell center, {% in_range 0,4 %} where `4`{:.n} is 360°
 - `.cellular3D(seed: int)`{: .language-kube-21 #cellular-3d }: Creates a new `Cellular3D` object, an implementation of {{ d3 }} specialized to have polyhedral blobs of constant value, instead of smooth, continuous values. It has an additional method

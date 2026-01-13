@@ -119,9 +119,9 @@ event.lowerLimit(size: Size, allowsEqual?: boolean): void
 event.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean): void
 ```
 
-- `.limit(size: Size, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-0 }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.limit(size: Size, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-0 }: Limits the entire container to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual`{:.v} determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 - `.limit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-1 }: Limits the specified slot index range to the specified size, requiring any items in it to be smaller than the provided size. `allowsEqual`{:.v} determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
-- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-2 }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual` determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
+- `.lowerLimit(size: Size, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-2 }: Limits the entire container to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual`{:.v} determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 - `.lowerLimit(size: Size, min: number, max: number, allowsEqual?: boolean)`{: .language-kube-20 #inv-limit-3 }: Limits the specified slot index range to the specified size, requiring any items in it to be larger than the provided size. `allowsEqual`{:.v} determines if a size of `small`{:.e} will accept items with a size of `small`{:.e}, defaults to `true`{:.p}
 
 Allowed size values: `tiny`{:.e}, `very_small`{:.e}, `small`{:.e}, `normal`{:.e}, `large`{:.e}, `very_large`{:.e}, and `huge`{:.e}
@@ -530,7 +530,7 @@ event.getPos(): BlockPos
 // replicates TFC's behavior with regular fire blocks
 TFCEvents.douseFire(event => {
     if (event.block.id == 'kubejs:my_burning_block') {
-        level.removeBlock(event.block.pos, false)
+        event.level.removeBlock(event.block.pos, false)
         event.cancel();
     }
 })

@@ -16,8 +16,8 @@ Creates a new tool item which can perform a glassworking [operation]({% link kub
 
 Inherits the methods of the [tool item builder](#tool)
 
-{: #glassworking-tool-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Method
 
-- `.operation(operation: holder<GlassOperation>)`{: .language-kube-21 #glassworking-tool-glass-operation }: Set the operation the tool performs, defaults to `tfc:saw`. A full list of available operations can be obtained by running the command `/kubejs dump_registry tfc:glass_operation` in-game
+- `.operation(operation: holder<GlassOperation>)`{: .language-kube-21 #{{ page.anchor }}-glass-operation }: Set the operation the tool performs, defaults to `tfc:saw`. A full list of available operations can be obtained by running the command `/kubejs dump_registry tfc:glass_operation` in-game

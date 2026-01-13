@@ -9,25 +9,25 @@ cat:
     - type_exp
 ---
 
-{% capture transform %}[`TransformLayer`{:.f}](#layered-area-transform-layer){:.preserve-color}{% endcapture %}
+{% capture transform %}[`TransformLayer`{:.f}](#{{ page.anchor }}-transform-layer){:.preserve-color}{% endcapture %}
 
 `LayeredArea` is a specialized version of TFC's `Area`, an `AreaSource` overlaid with multiple {{ transform }}s which can be though of as a pseudo-[`Noise2D`{:.f}](#noise-2d){:.preserve-color}, designed to be easily [made]({% link kubejs_tfc/1.21.1/bindings/worldgen.md %}), edited, and used in scripts. It has the following methods:
 
-{% capture a_ctx %}[`AreaContext`](#layered-area-area-context){% endcapture %}
-{% capture area %}[`Area`](#layered-area-area){% endcapture %}
+{% capture a_ctx %}[`AreaContext`](#{{ page.anchor }}-area-context){% endcapture %}
+{% capture area %}[`Area`](#{{ page.anchor }}-area){% endcapture %}
 
-- `.getAt(x: int, z: int): int`{: .language-kube-21 #layered-area-get-at }: Gets the value at the given x-z point
-- `.zoom(fuzzy: boolean, seed: int): @Self LayeredArea`{: .language-kube-21 #layered-area-zoom }: Applies a zoom layer to the area, effectively doubling the 'resolution' of the area. The params are:
+- `.getAt(x: int, z: int): int`{: .language-kube-21 #{{ page.anchor }}-get-at }: Gets the value at the given x-z point
+- `.zoom(fuzzy: boolean, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-zoom }: Applies a zoom layer to the area, effectively doubling the 'resolution' of the area. The params are:
     - `fuzzy: boolean`{:.language-kube-21}: If the zooming function should apply a smoothing/dither-like operation along value boundaries
     - `seed: int`{:.langauage-kube-21}: The seed for the {{ a_ctx }}'s random
-- `.smooth(seed: int): @Self LayeredArea`{: .language-kube-21 #layered-area-smooth }: Applies a smoothing layer to the area. The param is the seed used by the {{ a_ctx }}'s random
-- `.transform(transformer: TransformLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #layered-area-transform }: Applies an arbitrary {{ transform }} to the area. The params are:
+- `.smooth(seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-smooth }: Applies a smoothing layer to the area. The param is the seed used by the {{ a_ctx }}'s random
+- `.transform(transformer: TransformLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-transform }: Applies an arbitrary {{ transform }} to the area. The params are:
     - `transformer: TransformLayer`{:.langauge-kube-21}: The transformer
     - `seed: int`{:.language-kube-21}: The seed used by the {{ a_ctx }}'s random
-- `.adjacentTransform(transformer: AdjacentTransformerLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #layered-area-adjacent-transform }: Applies an arbitrary `Transformlayer`{:.f} that has [access to neighboring values](#layered-area-adjacent-transform-layer). The params are:
+- `.adjacentTransform(transformer: AdjacentTransformerLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-adjacent-transform }: Applies an arbitrary `Transformlayer`{:.f} that has [access to neighboring values](#{{ page.anchor }}-adjacent-transform-layer). The params are:
     - `transformer: AdjacentTransformLayer`{:.language-kube-21}: The transformer
     - `seed: int`{:.language-kube-21}: The seed used by the {{ a_ctx }}'s random
-- `.merge(merge: MergeLayer, otherLayeredArea: LayeredArea, seed: int): @Self LayeredArea`{: .language-kube-21 #layered-area-merge }: Merges the `LayeredArea` with another via the given `MergeLayer`{:.f}. The params are:
+- `.merge(merge: MergeLayer, otherLayeredArea: LayeredArea, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-merge }: Merges the `LayeredArea` with another via the given `MergeLayer`{:.f}. The params are:
     - `merger: MergeLayer`{:.language-kube-21}: A callback which merges the two `LayeredArea`s together. Has the following params:
         - `context: AreaContext`{:.language-kube-21}: The seeded {{ a_ctx }} at the point
         - `first: Area`{:.language-kube-21}: The {{ area }} from the `LayeredArea` being merged into
@@ -38,9 +38,9 @@ cat:
     - `otherLayeredArea: LayeredArea`{:.language-kube-21}: The `LayeredArea` to merge with this one
     - `seed: int`{:.language-kube-21}: The seed used by the {{ a_ctx }}'s random
 
-{% capture layered %}[`LayeredArea`](#layered-area){% endcapture %}
+{% capture layered %}[`LayeredArea`](#{{ page.anchor }}){% endcapture %}
 
-{: #layered-area-source-layer }
+{: #{{ page.anchor }}-source-layer }
 
 ## `SourceLayer`{:.f}
 
@@ -51,7 +51,7 @@ cat:
 - `z: int`{:.language-kube-21}: The z position being queried
 - `return: int`{:.language-kube-21}: The return value
 
-{: #layered-area-transform-layer }
+{: #{{ page.anchor }}-transform-layer }
 
 ## `TransformLayer`{:.f}
 
@@ -63,7 +63,7 @@ cat:
 - `z: int`{:.language-kube-21}: The z position being queried
 - `return: int`{:.language-kube-21}: The return value
 
-{: #layered-area-adjacent-transform-layer }
+{: #{{ page.anchor }}-adjacent-transform-layer }
 
 ## `AdjacentTransformLayer`{:.f}
 
@@ -88,7 +88,7 @@ cat:
 - `.choose(first: int, second: int, third: int, fourth: int): int`{:.language-kube-21}: Makes a random choice between the four given values
 - `.choose(choices: int[]): int`{:.language-kube-21}: Makes a random choice from the given values
 
-{: #layered-area-are }
+{: #{{ page.anchor }}-are }
 
 ## `Area`
 
@@ -98,16 +98,6 @@ cat:
 
 {% comment %}
 
-## layered area transform layer
-
 ## noise 2d
-
-## layered area area context
-
-## layered area area
-
-## layered area adjacent transform layer
-
-## layered area
 
 {% endcomment %}

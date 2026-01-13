@@ -57,13 +57,13 @@ Lists and describes the methods available on
 
 - `.then(func: Function<Cell, double>): Noise2D`{: .language-kube-20 #cellular2d-then }: Converts the `Cell` to value via a function
 - `.cell(x: double, z: double): Cell`{: .language-kube-20 #cellular2d-cell }: Gets the `Cell` at the given x-z point. `Cell` is an object with the following methods
-    - `.x()`{: .language-kube-20 }: The x 'coordinate' of the center of this cell
-    - `.y()`{: .language-kube-20 }: The y 'coordinate' of the center of this cell
-    - `.cx()`{: .language-kube-20 }: The x 'coordinate' of this cell
-    - `.cy()`{: .language-kube-20 }: The y 'coordinate' of this cell
-    - `.f1()`{: .language-kube-20 }: The normalized distance from the center of a cell
-    - `.f2()`{: .language-kube-20 }: The normalized distance from the center of a edge of a cell
-    - `.noise()`{: .language-kube-20 }: The noise value of the cell
+    - `.x()`{: .language-kube-20 }: The x 'coordinate' of the cell center. Not tied to game coordinates
+    - `.y()`{: .language-kube-20 }: The y 'coordinate' of the cell center. Not tied to game coordinates
+    - `.cx()`{: .language-kube-20 }: The x 'coordinate' of the nearest cell center
+    - `.cy()`{: .language-kube-20 }: The y 'coordinate' of the nearest cell center
+    - `.f1()`{: .language-kube-20 }: The distance to {% range x,y,() %}
+    - `.f2()`{: .language-kube-20 }: The distance to {% range cx,cy,() %}
+    - `.noise()`{: .language-kube-20 }: The noise value of the cell, {% in_unit %}
 
 ## Noise3D
 

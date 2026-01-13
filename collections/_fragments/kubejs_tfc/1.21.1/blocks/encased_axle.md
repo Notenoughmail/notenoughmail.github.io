@@ -17,8 +17,8 @@ Creates a new encased axle block
 
 Inherits the methods of the default block builder
 
-{: #encased-axle-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Method
 
-- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #encased-axle-extended-properties }: Set the [extended-properties](#extended-properties) of the encased axle
+- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #{{ page.anchor }}-extended-properties }: Set the [extended-properties](#extended-properties) of the encased axle

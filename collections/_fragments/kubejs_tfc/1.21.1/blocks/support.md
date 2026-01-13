@@ -18,12 +18,18 @@ Creates a new support block
 
 Inherits the methods of the default block builder
 
-{: #support-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.connectionModel(model: ResourceLocation)`{: .language-kube-21 #support-connection-model }: Set the model to use for sideways connections
-- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-21 #support-horizontal }: Set the properties of the horizontal support block. Accepts a consumer with the methods
+- `.connectionModel(model: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-connection-model }: Set the model to use for sideways connections
+- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-horizontal }: Set the properties of the horizontal support block. Accepts a consumer with the methods
     - `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{:.language-kube-21}: Set the [extended properties](#extended-properties) of the horizontal support
     - All those of the default block builder
-- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #support-extended-properties }: Set the [extended properties](#extended-properties) of the support
+- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #{{ page.anchor }}-extended-properties }: Set the [extended properties](#extended-properties) of the support
+
+{% comment %}
+
+## extended properties
+
+{% endcomment %}

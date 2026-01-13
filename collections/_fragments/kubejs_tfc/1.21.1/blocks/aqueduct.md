@@ -20,14 +20,14 @@ Creates a new aqueduct block
 
 Inherits the methods of the default block builder
 
-{: #aqueduct-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-kube-21 #aqueduct-models }: Set the model generation of the aqueduct. Accepts a callback with two parameters, the second being a model generator and the first having the methods
+- `.models(models: BiConsumer<AqueductModelPart, ModelGenerator>)`{: .language-kube-21 #{{ page.anchor }}-models }: Set the model generation of the aqueduct. Accepts a callback with two parameters, the second being a model generator and the first having the methods
     - `.base(): boolean`{:.language-kube-21}: If the model part is the base part
     - `.north(): boolean`{:.language-kube-21}: If the model part is the north part
     - `.south(): boolean`{:.language-kube-21}: If the model part is the south part
     - `.east(): boolean`{:.language-kube-21}: If the model part is the east part
     - `.west(): boolean`{:.language-kube-21}: If the model part is the west part
-- `.allowedFluids(fluids: ResourceLocation[])`{: .language-kube-21 #aqueduct-allowed-fluids }: Set the fluids the aqueduct may contain
+- `.allowedFluids(fluids: ResourceLocation[])`{: .language-kube-21 #{{ page.anchor }}-allowed-fluids }: Set the fluids the aqueduct may contain

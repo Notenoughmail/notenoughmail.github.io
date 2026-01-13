@@ -17,11 +17,11 @@ Creates a new TFC fishing rod item
 
 Inherits the methods of the default item builder
 
-{: #fishing-rod-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.fishingStrength(f: number)`{: .language-kube-21 #fishing-rod-fishing-strength }: Set the strength of the fishing rod, defaults to `1`{:.n}
-- `.castModel(model: ResourceLocation)`{: .language-kube-21 #fishing-rod-cast-model }: Set the model to use while the rod is cast, defaults to `minecraft:item/fishing_rod/cast`
-- `.smallBait()`{: .language-kube-21 #fishing-rod-small-bait }: Allow the rod to accept small bait by adding it to the `tfc:holds_small_fishing_bait` tag
-- `.largeBait()`{: .language-kube-21 #fishing-rod-large-bait }: Allow the rod to accept large bait by adding it to the `tfc:holds_large_fishing_bait` tag
+- `.fishingStrength(f: number)`{: .language-kube-21 #{{ page.anchor }}-fishing-strength }: Set the strength of the fishing rod, defaults to `1`{:.n}
+- `.castModel(model: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-cast-model }: Set the model to use while the rod is cast, defaults to `minecraft:item/fishing_rod/cast`
+- `.smallBait()`{: .language-kube-21 #{{ page.anchor }}-small-bait }: Allow the rod to accept small bait by adding it to the `tfc:holds_small_fishing_bait` tag
+- `.largeBait()`{: .language-kube-21 #{{ page.anchor }}-large-bait }: Allow the rod to accept large bait by adding it to the `tfc:holds_large_fishing_bait` tag

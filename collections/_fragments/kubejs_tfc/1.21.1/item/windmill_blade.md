@@ -15,9 +15,9 @@ Creates a new windmill blade item
 
 Inherits the methods of the default item builder
 
-{: #windmill-blade-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.bladeColor(color: @Nullable KubeColor)`{: .language-kube-21 #windmill-blade-blade-color }: Set the blade color, defaults to `0xFFFFFF`{:.n}. Translucency is not supported
-- `.bladeTexture(texture: ResourceLocation)`{: .language-kube-21 #windmill-blade-blade-texture }: Set the texture of the blade. Defaults to `tfc:entity/misc/windmill_blade`
+- `.bladeColor(color: @Nullable KubeColor)`{: .language-kube-21 #{{ page.anchor }}-blade-color }: Set the blade color, defaults to `0xFFFFFF`{:.n}. Translucency is not supported
+- `.bladeTexture(texture: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-blade-texture }: Set the texture of the blade. Defaults to `tfc:entity/misc/windmill_blade`

@@ -18,9 +18,9 @@ Creates a new generic tool item
 
 Inherits the methods of the [chisel item builder](#chisel)
 
-{: #tool-methods }
+{: #{{ page.anchor }}-methods }
 
 ## Extra Methods
 
-- `.mineableBlocksTag(blockTag: TagKey<Block>)`{: .language-kube-21 #tool-mineable-blocks-tag }: Set the block tag the tool is effective against
-- `.knife()`{: .language-kube-21 #tool-knife }: Set the mineable block tag to `tfc:mineable_with_knife` and add the tool to the `tfc:tools/knife` tag
+- `.mineableBlocksTag(blockTag: TagKey<Block>)`{: .language-kube-21 #{{ page.anchor }}-mineable-blocks-tag }: Set the block tag the tool is effective against
+- `.knife()`{: .language-kube-21 #{{ page.anchor }}-knife }: Set the mineable block tag to `tfc:mineable_with_knife` and add the tool to the `tfc:tools/knife` tag

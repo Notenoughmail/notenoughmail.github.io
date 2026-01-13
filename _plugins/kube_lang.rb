@@ -22,7 +22,7 @@ module Rouge
                     super([
                         # TFC
                         "ForestSubType", "BonusBehavior", "StackModifierContext",
-                        "Nutrient",
+                        "Nutrient", "InteractionManager$Target",
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
                         # KubeJS TFC
@@ -35,7 +35,9 @@ module Rouge
                         # KubeJS TFC
                         "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction",
                         # KubeJS
-                        "ItemPredicate"
+                        "ItemPredicate",
+                        # Vanilla
+                        "SpawnPlacementType"
                     ], opts)
                 end
             end
@@ -63,10 +65,8 @@ module Rouge
                         "Punishment",
                         "PlanterType"
                     ], [
-                        # TFC
-                        "OnItemUseAction",
                         # KubeJS TFC
-                        "RocksGetter", "MossGrowingCallback", "TemperatureCallback"
+                        "MossGrowingCallback", "TemperatureCallback"
                     ], opts)
                 end
             end
@@ -109,9 +109,10 @@ module Rouge
                     # Vanilla
                     "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
                     # TFC
-                    "Noise2D",  "Noise3D",
+                    "Noise2D",  "Noise3D", "OnItemUseAction",
                     # KubeJS TFC
-                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer"
+                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer",
+                    "RocksGetter"
                 ]
             end
 
