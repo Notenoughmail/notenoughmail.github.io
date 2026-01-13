@@ -50,15 +50,15 @@ For the example below, the textures would be:
 
 #### Example
 
-```js
+```js-18
 event.create('my_mold', 'tfc:mold')
 ```
 
 #### Extra Methods
 
-- `.capacity(integer)`{: .language-kube }: Accepts an integer, sets the capacity, in mB, of the mold. Defaults to 100
-- `.fluidTagAccept(String)`{: .language-kube }: Accepts a string, determines which fluids are allowed in the mold. Defaults to `tfc:usable_in_ingot_mold`
-- `.allowedInMoldTable()`{: .language-kube }: Allows the mold to be put into *TFC Casting with Channels*' {% include cf.html link='tfc-casting-with-channels' %} mold tables if the mod is installed. The model for the mold is not made automatically, but its path is `kubejs_tfc/models/item/` + the path of the regular mold
+- `.capacity(integer)`{: .language-kube-18 }: Accepts an integer, sets the capacity, in mB, of the mold. Defaults to 100
+- `.fluidTagAccept(String)`{: .language-kube-18 }: Accepts a string, determines which fluids are allowed in the mold. Defaults to `tfc:usable_in_ingot_mold`
+- `.allowedInMoldTable()`{: .language-kube-18 }: Allows the mold to be put into *TFC Casting with Channels*' {% include cf.html link='tfc-casting-with-channels' %} mold tables if the mod is installed. The model for the mold is not made automatically, but its path is `kubejs_tfc/models/item/` + the path of the regular mold
 
 ### Chisel
 
@@ -70,7 +70,7 @@ The chisel is a tiered item, so all the properties which apply to swords, axes, 
 
 #### Example
 
-```js
+```js-18
 event.create('my_chisel', 'tfc:chisel')
 ```
 
@@ -82,7 +82,7 @@ The mace is a tiered item, so all the properties which apply to swords, axes, et
 
 #### Example
 
-```js
+```js-18
 event.create('my_mace', 'tfc:mace')
 ```
 
@@ -96,7 +96,7 @@ The propick is a tiered item, so all the properties which apply to swords, axes,
 
 #### Example
 
-```js
+```js-18
 event.create('my_propick', 'tfc:propick')
 ```
 
@@ -108,13 +108,13 @@ The scythe is a tiered item, so all the properties which apply to swords, axes, 
 
 #### Example
 
-```js
+```js-18
 event.create('my_scythe', 'tfc:scythe')
 ```
 
 #### Extra Method
 
-- `.mineableBlocksTag(String)`{: .language-kube }: Determines which blocks the scythe breaks best. Defaults to `tfc:mineable_with_scythe`
+- `.mineableBlocksTag(String)`{: .language-kube-18 }: Determines which blocks the scythe breaks best. Defaults to `tfc:mineable_with_scythe`
 
 ### Hoe
 
@@ -126,7 +126,7 @@ The hoe is a tiered item, so all the properties which apply to swords, axes, etc
 
 #### Example
 
-```js
+```js-18
 event.create('my_hoe', 'tfc:hoe')
 ```
 
@@ -148,7 +148,7 @@ For the example below the textures would be
 
 #### Example
 
-```js
+```js-18
 event.create('my_javelin', 'tfc:javelin')
 ```
 
@@ -168,17 +168,17 @@ For the example below the textures would be
 
 #### Example
 
-```js
+```js-18
 event.create('my_container', 'tfc:fluid_container')
 ```
 
 #### Extra Methods
 
-- `.capacity(integer)`{: .language-kube }: Accepts an integer, sets the capacity, in mB, of the item. Defaults to 100
-- `.canPlaceLiquid(boolean)`{: .language-kube }: Accepts a boolean, determines if the item can place liquids in the world. Defaults to false
-- `.canPlaceLiquidSource(boolean)`{: .language-kube }: Accepts a boolean, determines if the item can place liquid source blocks in the world. Defaults to false
-- `.fluidTagAccept(String)`{: .language-kube }: Accepts a string, determines which fluids are allowed in the item. Defaults to `tfc:usable_in_jug`
-- `.filledDisplayName(String)`{: .language-kube }: Accepts a string, sets the display name of the item's filled state. Defaults to `%s ` + the default filled name
+- `.capacity(integer)`{: .language-kube-18 }: Accepts an integer, sets the capacity, in mB, of the item. Defaults to 100
+- `.canPlaceLiquid(boolean)`{: .language-kube-18 }: Accepts a boolean, determines if the item can place liquids in the world. Defaults to false
+- `.canPlaceLiquidSource(boolean)`{: .language-kube-18 }: Accepts a boolean, determines if the item can place liquid source blocks in the world. Defaults to false
+- `.fluidTagAccept(String)`{: .language-kube-18 }: Accepts a string, determines which fluids are allowed in the item. Defaults to `tfc:usable_in_jug`
+- `.filledDisplayName(String)`{: .language-kube-18 }: Accepts a string, sets the display name of the item's filled state. Defaults to `%s ` + the default filled name
     - **Note**: the `%s` represents where in the name the contained fluid should appear. In the above example the default would give 'Whiskey My Container', but putting `My %s Container` in this method would give 'My Whiskey Container'
 
 ### Tool
@@ -191,15 +191,15 @@ This is a tiered item, so all the methods that apply to shovels/picks/axes apply
 
 #### Example
 
-```js
+```js-18
 event.create('my_tool', 'tfc:tool').knife()
 ```
 
 #### Extra Methods
 
-- `.mineableBlocksTag(String)`{: .language-kube }: Determines which blocks the tool breaks best. Defaults to `tfc:mineable_with_knife`
-- `.knife()`{: .language-kube }: Equivalent to `.mineableBlocksTag('tfc:mineable_with_knife').tag('tfc:knives')`
-- `.hammer()`{: .language-kube }: Equivalent to `.mineableBlocksTag('tfc:mineable_with_hammer').tag('tfc:hammers')`
+- `.mineableBlocksTag(String)`{: .language-kube-18 }: Determines which blocks the tool breaks best. Defaults to `tfc:mineable_with_knife`
+- `.knife()`{: .language-kube-18 }: Equivalent to `.mineableBlocksTag('tfc:mineable_with_knife').tag('tfc:knives')`
+- `.hammer()`{: .language-kube-18 }: Equivalent to `.mineableBlocksTag('tfc:mineable_with_hammer').tag('tfc:hammers')`
 
 ## Custom Blocks
 
@@ -220,7 +220,7 @@ This inherits the methods of the default block
 
 #### Example
 
-```js
+```js-18
 event.create('my_aqueduct', 'tfc:aqueduct')
 ```
 
@@ -230,14 +230,14 @@ This creates a new loose rock block with three states which can be changed by cl
 
 #### Extra Methods
 
-- `.notAxisAligned()`{: .language-kube }: Rotates all the placed models by 45 degrees
-- `.collision()`{: .language-kube }: Enables collision for the block
+- `.notAxisAligned()`{: .language-kube-18 }: Rotates all the placed models by 45 degrees
+- `.collision()`{: .language-kube-18 }: Enables collision for the block
 
 This also inherits the methods of the default block builder
 
 #### Example
 
-```js
+```js-18
 event.create('my_loose_rock', 'tfc:loose_rock')
 ```
 
@@ -247,9 +247,9 @@ This creates a new ground cover block
 
 #### Extra Methods
 
-- `.ore()`{: .language-kube }: Sets the collision shape to that of TFC's ores
-- `.twig()`{: .language-kube }: Sets the collision shape to that of TFC's twigs and makes the block flammable
-- `.groundCoverModel(String)`{: .language-kube }: Sets the default model shape, defaults to 'boulder'. A list of available options:
+- `.ore()`{: .language-kube-18 }: Sets the collision shape to that of TFC's ores
+- `.twig()`{: .language-kube-18 }: Sets the collision shape to that of TFC's twigs and makes the block flammable
+- `.groundCoverModel(String)`{: .language-kube-18 }: Sets the default model shape, defaults to 'boulder'. A list of available options:
     - 'bismuthinite',
     - 'bone',
     - 'boulder',
@@ -280,14 +280,14 @@ This creates a new ground cover block
     - 'tetrahedrite',
     - 'twig', and
     - anything added to [kubejs_tfc/models/block/groundcover](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.18.2/src/main/resources/assets/kubejs_tfc/models/block/groundcover)
-- `.notAxisAligned()`{: .language-kube }: Rotates all the placed models by 45 degrees
-- `.collision()`{: .language-kube }: Enables collision for the block
+- `.notAxisAligned()`{: .language-kube-18 }: Rotates all the placed models by 45 degrees
+- `.collision()`{: .language-kube-18 }: Enables collision for the block
 
 This also inherits the methods of the default block builder
 
 #### Example
 
-```js
+```js-18
 event.create('my_ore_ground_cover', 'tfc:groundcover').ore().groundCoverModel('pebble').notAxisAligned()
 ```
 
@@ -297,21 +297,21 @@ This creates a new rock spike block builder
 
 #### Extra Methods
 
-- `.allowCycling()`{: .language-kube }: Allows the player to change the state of the block with an empty hand
-- `.cycleItem(String)`{: .language-kube }: Allows the player to toggle the state of the block with the specified item in hand
-- `.cycleTag(String)`{: .language-kube }: Allows the player to toggle the state of the block with the specified item tag in hand
-- `.dontUpdateWhenCycling()`{: .language-kube }: Makes it so block updates aren't emitted when the player changes the state.
+- `.allowCycling()`{: .language-kube-18 }: Allows the player to change the state of the block with an empty hand
+- `.cycleItem(String)`{: .language-kube-18 }: Allows the player to toggle the state of the block with the specified item in hand
+- `.cycleTag(String)`{: .language-kube-18 }: Allows the player to toggle the state of the block with the specified item tag in hand
+- `.dontUpdateWhenCycling()`{: .language-kube-18 }: Makes it so block updates aren't emitted when the player changes the state.
     - **Note: There may be unexpected issues regarding blocks randomly updating if this is used. This is available as cycling a rock spike to a smaller size would case the one above it to pop off. Observers still detect the player changing the state.**
-- `.middleBox(number, number, number, number, number, number, boolean)`{: .language-kube }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the middle state
-- `.middleBox(number, number, number, number, number, number)`{: .language-kube }: The same as the default `.box(number, number, number, number, number, number)` but applies to the middle state
-- `.tipBox(number, number, number, number, number, number, boolean)`{: .language-kube }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the tip state
-- `.tipBox(number, number, number, number, number, number)`{: .language-kube }: The same as the default `.box(number, number, number, number, number, number)` but applies to the tip state
+- `.middleBox(number, number, number, number, number, number, boolean)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the middle state
+- `.middleBox(number, number, number, number, number, number)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number, number)` but applies to the middle state
+- `.tipBox(number, number, number, number, number, number, boolean)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the tip state
+- `.tipBox(number, number, number, number, number, number)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number, number)` but applies to the tip state
 
 This also inherits the methods of the default block builder
 
 #### Example
 
-```js
+```js-18
 event.create('my_rock_spike', 'tfc:rock_spike').cycleItem('minecraft:stick')
 ```
 
@@ -321,23 +321,23 @@ This creates a new thin spike block
 
 #### Extra Methods
 
-- `.drips()`{: .language-kube }: Makes it so the block will drip
-- `.dripChance(number)`{: .language-kube }: Sets the chance the block will drip each tick, defaults to 0.15
-- `.dripTemp(number)`{: .language-kube }: Sets the temperature which the environment must be above for the block to drip, defaults to 0
-- `.melts()`{: .language-kube }: Makes it so the block will melt, also makes it so the block random ticks
-- `.meltChance(number)`{: .language-kube }: Sets the chance the block will melt each random tick
-- `.meltTemp(number)`{: .language-kube }: Sets the temperature which the environment must be for the block to be able to melt, defaults to 4
-- `.dripParticle(String)`{: .language-kube }: Sets the particle which will drip from the block, defaults to 'minecraft:dripping_dripstone_water'
-- `.meltFluid(FluidStackJS)`{: .language-kube }: Sets the fluid stack which will be inserted into a fluid capable block below the block when it melts, defaults to 100mB of water
-- `.tipModel(String)`{: .language-kube }: Sets the model which the tip state will use
-- `.tipBox(number, number, number, number, number, number, boolean)`{: .language-kube }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the tip state
-- `.tipBox(number, number, number, number, number, number)`{: .language-kube }: The same as the default `.box(number, number, number, number, number, number)` but applies to the tip state
+- `.drips()`{: .language-kube-18 }: Makes it so the block will drip
+- `.dripChance(number)`{: .language-kube-18 }: Sets the chance the block will drip each tick, defaults to 0.15
+- `.dripTemp(number)`{: .language-kube-18 }: Sets the temperature which the environment must be above for the block to drip, defaults to 0
+- `.melts()`{: .language-kube-18 }: Makes it so the block will melt, also makes it so the block random ticks
+- `.meltChance(number)`{: .language-kube-18 }: Sets the chance the block will melt each random tick
+- `.meltTemp(number)`{: .language-kube-18 }: Sets the temperature which the environment must be for the block to be able to melt, defaults to 4
+- `.dripParticle(String)`{: .language-kube-18 }: Sets the particle which will drip from the block, defaults to 'minecraft:dripping_dripstone_water'
+- `.meltFluid(FluidStackJS)`{: .language-kube-18 }: Sets the fluid stack which will be inserted into a fluid capable block below the block when it melts, defaults to 100mB of water
+- `.tipModel(String)`{: .language-kube-18 }: Sets the model which the tip state will use
+- `.tipBox(number, number, number, number, number, number, boolean)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number. number, boolean)` but applies to the tip state
+- `.tipBox(number, number, number, number, number, number)`{: .language-kube-18 }: The same as the default `.box(number, number, number, number, number, number)` but applies to the tip state
 
 This also inherits the methods of the default block builder
 
 #### Example
 
-```js
+```js-18
 event.create('my_lava_spike', 'tfc:thin_spike').drips().dripTemp(-30).dripChance(0.5).dripParticle("falling_dripstone_lava").melts().meltFluid(Fluid.lava()).meltChance(0.24)
 ```
 
@@ -351,7 +351,7 @@ These are effected by TFC's mossy spreading configs
 
 #### Examples
 
-```js
+```js-18
 event.create('my_moss_spreading_block', 'tfc:moss_spreading_block')
 event.create('my_moss_spreading_stair', 'tfc:moss_spreading_stair')
 event.create('my_moss_spreading_slab', 'tfc:moss_spreading_slab')
@@ -370,13 +370,13 @@ There are four type of moss spreading blocks: full block, stair, slab, and wall
 
 This has two methods
 
-- `.mossyBlock(String)`{: .language-kube }: Accepts a string, sets the block this block will convert to when 'mossed'
-- `.mossyConversion(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
+- `.mossyBlock(String)`{: .language-kube-18 }: Accepts a string, sets the block this block will convert to when 'mossed'
+- `.mossyConversion(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
     - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
 
 ##### Example
 
-```js
+```js-18
 event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossBlock('kubejs:my_moss_spreading_block')
 ```
 
@@ -384,14 +384,14 @@ event.create('my_moss_growing_block', 'tfc:moss_growing_block').mossBlock('kubej
 
 This has two methods
 
-- `.mossyStair(String)`{: .language-kube }: Accepts a string, sets the block this block will convert to when 'mossed'. Defaults to oak stairs
+- `.mossyStair(String)`{: .language-kube-18 }: Accepts a string, sets the block this block will convert to when 'mossed'. Defaults to oak stairs
     - **Note**: The provided block *must* be a stair block
-- `.mossyConversion(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
+- `.mossyConversion(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
     - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
 
 ##### Example
 
-```js
+```js-18
 event.create('my_moss_growing_stair', 'tfc:moss_growing_stair').mossyStair('kubejs:my_moss_spreading_stair')
 ```
 
@@ -399,17 +399,17 @@ event.create('my_moss_growing_stair', 'tfc:moss_growing_stair').mossyStair('kube
 
 This has four methods
 
-- `.mossySlab(String)`{: .language-kube }: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to oak slabs
+- `.mossySlab(String)`{: .language-kube-18 }: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to oak slabs
     - **Note**: The provided block *must* be a slab block
-- `.mossyConversionFull(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'double' state
+- `.mossyConversionFull(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'double' state
     - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos.above()), ☕Fluids.WATER))`
-- `.mossyConversionHalf(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top' or 'bottom' state
+- `.mossyConversionHalf(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top' or 'bottom' state
     - Defaults to `(container, needsWater) => (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
-- `.mossyConversion(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top', 'bottom', or 'double' state
+- `.mossyConversion(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block when in the 'top', 'bottom', or 'double' state
 
 ##### Example
 
-```js
+```js-18
 event.create('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:my_moss_spreading_slab')
 ```
 
@@ -417,14 +417,14 @@ event.create('my_moss_growing_slab', 'tfc:moss_growing_slab').mossySlab('kubejs:
 
 This has two methods
 
-- `.mossyWall(String)`{: .language-kube }: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to cobblestone walls
+- `.mossyWall(String)`{: .language-kube-18 }: Accepts a string, sets the block this block will convert to when 'mossed', Defaults to cobblestone walls
     - **Note**: The provided block *must* be a wall block
-- `.mossyConversion(callback)`{: .language-kube }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
+- `.mossyConversion(callback)`{: .language-kube-18 }: Accepts a [Moss Growing Callback](#moss-growing-callback), sets the callback used when trying to convert to the mossy block
     - Defaults to `(container, needsWater) -> (!needsWater || ☕FluidHelpers.isSame(container.minecraftLevel.getFluidState(container.pos), ☕Fluids.WATER))`
 
 ##### Example
 
-```js
+```js-18
 event.create('my_moss_growing_wall', 'tfc:moss_growing_wall').mossyWall('kubejs:my_moss_spreading_wall')
 ```
 
@@ -438,7 +438,7 @@ You are given two variables: a block container, and a boolean which is always tr
 
 ##### Examples
 
-```js
+```js-18
 // Returns true if the block's y value is greater than 60
 (container, needsWater) => {
     return container.pos.y > 60;
@@ -459,11 +459,11 @@ This is a simple block which emits gravel-like particles when not supported and 
 
 #### Extra Method
 
-- `.naturallySupported(boolean)`{: .language-kube }: Sets the `naturallySupported` property, defaults to false
+- `.naturallySupported(boolean)`{: .language-kube-18 }: Sets the `naturallySupported` property, defaults to false
 
 #### Examples
 
-```js
+```js-18
 event.create('my_raw_rock', 'tfc:raw_rock')
 event.create('my_hardened_rock', 'tfc:raw_rock').naturallySupported(true)
 ```
@@ -504,16 +504,16 @@ KubeJS TFC also adds predefined tool and armor tiers for your use
 
 KubeJS TFC adds a couple of methods to liquid builders relating to their in-world LiquidBlock
 
-- `.hotWaterBlock()`{: .language-kube }: Sets the fluid builder's fluid block to a HotWaterBlock, the fluid block used for spring water
-- `.bubbleParticle(String)`{: .language-kube }: Accepts a string representing the registry location of a particle, sets the 'bubble' particle of the liquid's block, defaults to `minecraft:bubble`
-- `.steamParticle(String)`{: .language-kube }: Accepts a string representing the registry location of a particle, sets the 'steam particle' of the liquid's block, defaults to `tfc:steam`
-- `.setHealAmount(number)`{: .language-kube }: Accepts a number, sets the amount of half hearts the living entity is healed by when in the liquid, defaults to `0.08`
-- `.noBubbles()`{: .language-kube }: Makes it so the liquid block doesn't give off 'bubble' particles
-- `.noSteam()`{: .language-kube }: Makes it so the liquid block doesn't give off 'steam' particles
+- `.hotWaterBlock()`{: .language-kube-18 }: Sets the fluid builder's fluid block to a HotWaterBlock, the fluid block used for spring water
+- `.bubbleParticle(String)`{: .language-kube-18 }: Accepts a string representing the registry location of a particle, sets the 'bubble' particle of the liquid's block, defaults to `minecraft:bubble`
+- `.steamParticle(String)`{: .language-kube-18 }: Accepts a string representing the registry location of a particle, sets the 'steam particle' of the liquid's block, defaults to `tfc:steam`
+- `.setHealAmount(number)`{: .language-kube-18 }: Accepts a number, sets the amount of half hearts the living entity is healed by when in the liquid, defaults to `0.08`
+- `.noBubbles()`{: .language-kube-18 }: Makes it so the liquid block doesn't give off 'bubble' particles
+- `.noSteam()`{: .language-kube-18 }: Makes it so the liquid block doesn't give off 'steam' particles
 
 ### Example
 
-```js
+```js-18
 // Makes a new fluid that heals entities in it at around twice as quick as vanilla spring water
 onEvent('fluid.registry', event => {
      event.create('my_healing_fluid').hotWaterBlock().setHealAmount(0.15)

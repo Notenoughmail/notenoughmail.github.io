@@ -23,7 +23,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.fluid(delegate?: Ingredient, fluid: FluidStackIngredient): Ingredient
 ```
 
@@ -34,7 +34,7 @@ Creates an ingredient of type `tfc:fluid_item` with the fluid ingredient defined
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.fluid('#tfc:molds', TFC.fluidStackIngredient(['minecraft:water', '#minecraft:lava'], 50))
 TFC.ingredient.fluid(TFC.fluidStackIngredient('tfc:metal/zinc', 40))
 ```
@@ -79,7 +79,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.hasTrait(delegate?: Ingredient, trait: String): Ingredient
 ```
 
@@ -90,7 +90,7 @@ Creates an ingredient of type `tfc:has_trait` with the trait defined by the `tra
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.hasTrait('#tfc:fruits', 'tfc:brined')
 TFC.ingredient.hasTrait('tfc:in_vinegar')
 ```
@@ -120,7 +120,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.heatable(delegate?: Ingredient, min: @Nullable number, max: @Nullable number): Ingredient
 ```
 
@@ -132,7 +132,7 @@ Creates an ingredient of type `tfc:heatable` with the minimum and maximum temper
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.heatable('minecraft:iron_ingot', null, 673)
 TFC.ingredient.heatable(750, 895)
 ```
@@ -163,7 +163,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.lacksTrait(delegate?: Ingredient, trait: String): Ingredient
 ```
 
@@ -174,7 +174,7 @@ Creates an ingredient of type `tfc:lacks_trait` with the trait defined by the `t
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.lacksTrait('tfc:food/green_apple', 'tfc:brined')
 TFC.ingredient.lacksTrait('tfc:burnt')
 ```
@@ -204,7 +204,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.not(delegate?: Ingredient): Ingredient
 ```
 
@@ -214,7 +214,7 @@ Creates an ingredient of type `tfc:not` with the ingredient defined by the `dele
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.not('#minecraft:flowers')
 TFC.ingredient.not()
 ```
@@ -242,7 +242,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/ingre
 
 ### Method Signature
 
-```js
+```js-20
 TFC.ingredient.notRotten(delegate?: Ingredient): Ingredient
 ```
 
@@ -252,7 +252,7 @@ Creates an ingredient of type `tfc:not_rotten` with the ingredient defined by th
 
 ### Examples
 
-```js
+```js-20
 TFC.ingredient.notRotten('minecraft:cooked_porkchop')
 TFC.ingredient.notRotten()
 ```

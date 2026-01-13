@@ -8,10 +8,14 @@ module Jekyll
         @callout_regexs ||= make_callout_regexs
       end
 
+      def language_identifiers
+        @language_identifiers ||= "(?:(?:js|javascript|kube)(?:-(?:18|20|21))?)"
+      end
+
       def code_regexs
         @code_regexs ||= [
-          /\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid="(.+?)"\>.+?\<\/code\>/,
-          /(\<code\sclass="language-(?:javascript|kube)\shighlighter-rouge"\sid=".+?"\>.+?\<\/code\>)/
+          /\<code\sclass="language-#{language_identifiers}\shighlighter-rouge"\sid="(.+?)"\>.+?\<\/code\>/,
+          /(\<code\sclass="language-#{language_identifiers}\shighlighter-rouge"\sid=".+?"\>.+?\<\/code\>)/
         ]
       end
 
@@ -37,6 +41,7 @@ module Jekyll
               return make_anchor(str, m[1], 'm-link')
             rescue => e
               puts "Did you include single quotes in a inline code block?"
+              puts str
               raise e
             end
           }
@@ -54,6 +59,7 @@ module Jekyll
               return make_anchor(str, m[2], 'callout')
             rescue => e
               puts "Did you include single quotes in a callout?"
+              puts str
               raise e
             end
           }

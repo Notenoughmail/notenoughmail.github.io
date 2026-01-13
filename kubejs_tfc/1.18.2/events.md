@@ -58,7 +58,7 @@ This is available through a new startup event, `tfc.limit_container_size`, with 
 
 ## Examples
 
-```js
+```js-18
 onEvent('tfc.limit_container_size', event => {
     // Limits the hopper to only have normal or smaller item sizes
     event.limitContainerSize('minecraft:hopper', 'normal')
@@ -75,34 +75,34 @@ TFC implements local temperature and rainfall, this is done through the use of c
 
 ## Consumer
 
-- `.setCurrentTemperatureCalculation(callback)`{: .language-kube }: Sets the calculation for current temperature at a position. The callback provides:
+- `.setCurrentTemperatureCalculation(callback)`{: .language-kube-18 }: Sets the calculation for current temperature at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A `Long`, the calendar ticks
     - An `Integer`, the number of days in a month
     - And expects a number
-- `.setAverageTemperatureCalculation(callback)`{: .language-kube }: Sets the calculation for the average temperature at a position. The callback provides:
+- `.setAverageTemperatureCalculation(callback)`{: .language-kube-18 }: Sets the calculation for the average temperature at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - And expects a number
-- `.setAverageRainfallCalculation(callback)`{: .language-kube }: Sets the calculation for the average rainfall at a position. The callback provides:
+- `.setAverageRainfallCalculation(callback)`{: .language-kube-18 }: Sets the calculation for the average rainfall at a position. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - And expects a number between 0 and 500
-- `.setAirFog(callback)`{: .language-kube }: Sets the fogginess at a position and time. The callback provides:
+- `.setAirFog(callback)`{: .language-kube-18 }: Sets the fogginess at a position and time. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A `Long`, the calendar ticks
     - And expects a number between 0 and 1
-- `.setWaterFog(callback)`{: .language-kube }: Sets the water fogginess at a position and time. The callback provides:
+- `.setWaterFog(callback)`{: .language-kube-18 }: Sets the water fogginess at a position and time. The callback provides:
     - A `LevelReader`, the level
     - A `BlockPos`, the position
     - A`Long`, the calendar ticks
     - And expects a number between 0 and 1
-- `.getClimateSeed()`{: .language-kube }: Returns the climate seed, a number based on the level's seed
-- `.getNewNoise()`{: .language-kube }: Returns an OpenSimplex2D noise generator.
-- `.getTemperatureSettings()`{: .language-kube }: Returns the level's temperature [climate settings](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/#climate-settings), or the default if none
-- `.getRainfallSettings()`{: .language-kube }: Returns the level's rainfall climate settings, or default if none
+- `.getClimateSeed()`{: .language-kube-18 }: Returns the climate seed, a number based on the level's seed
+- `.getNewNoise()`{: .language-kube-18 }: Returns an OpenSimplex2D noise generator.
+- `.getTemperatureSettings()`{: .language-kube-18 }: Returns the level's temperature [climate settings](https://terrafirmacraft.github.io/Documentation/1.18.x/worldgen/dimension/#climate-settings), or the default if none
+- `.getRainfallSettings()`{: .language-kube-18 }: Returns the level's rainfall climate settings, or default if none
 - `averageTemperature`:Returns a reference to the model's average temperature calculation, use `getValue(LevelReader, BlockPos)` to get its value
 - `averageRainfall`:Returns a reference to the model's average rainfall calculation, use `getValue(LevelReader, BlockPos)` to get its value
 - `currentTemperature`:Returns a reference to the model's current temperature calculation, use `getValue(LevelReader, BlockPos, Long, Int) to get its value
@@ -111,16 +111,16 @@ TFC implements local temperature and rainfall, this is done through the use of c
 
 If registering an advanced model the following are also available
 
-- `.setOnWorldLoad(callback)`{: .language-kube }: Sets what should be done upon the world loading. The callback provides:
+- `.setOnWorldLoad(callback)`{: .language-kube-18 }: Sets what should be done upon the world loading. The callback provides:
     - A `ServerLevel`, the level
-- `.setOnChunkLoad(callback)`{: .language-kube }: Sets what should be done upon a chunk loading, by default this is only called during world generation and TFC's update climate command. The callback provides:
+- `.setOnChunkLoad(callback)`{: .language-kube-18 }: Sets what should be done upon a chunk loading, by default this is only called during world generation and TFC's update climate command. The callback provides:
     - A `WorldGenLevel`, the level
     - A `ChunkAccess`, the chunk
     - A `ChunkData`, the chunk's TFC data
 
 ## Examples
 
-```js
+```js-18
 onEvent('tfc.climate_model.register', event => {
     event.registerClimateModel('kubejs:my_model', model => {
         model.setAverageTemperatureCalculation((level, pos) => {
@@ -164,7 +164,7 @@ Sets the climate model to use for the associated level. This will accept the nam
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.climate_model.select', event => {
     event.getLevel()
     event.getModel()
@@ -218,7 +218,7 @@ Returns the ServerJS of the level, may be null
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.start_fire', event => {
     if (event.getBlock().getCanSeeLight() && event.getFireResult() === FireResult.IF_FAILED) {
          console.info(event.getFireResult())
@@ -262,7 +262,7 @@ Returns the ProspectResult of the event
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.prospect', event => {
     event.getPlayer().addItemCooldown(event.getPlayer().getInventory().get(event.getPlayer().getSelectedSlot()).getItem(), 2000)
 })
@@ -290,7 +290,7 @@ Returns the BlockContainerJS of the block broken
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.logging', event => {
     if (event.getAxe().hasTag('kubejs:logging_deny_list')) {
          event.cancel()
@@ -370,7 +370,7 @@ Returns the ServerJS of the level
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.animal_product', event => {
     if (event.getAnimalProperties().getGender() === AnimalGender.FEMALE) {
          event.cancel()
@@ -408,7 +408,7 @@ Returns true if the collapse is fake
 
 ## Example
 
-```js
+```js-18
 onEvent('tfc.collapse', event -> {
     event.secondaryPositions.forEach(pos => {
          event.level.minecraftLevel.playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1.0, 1.0)

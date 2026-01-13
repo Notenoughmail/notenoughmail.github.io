@@ -16,7 +16,7 @@ These are available under the `TFC.climate` field
 
 ## Method Signatures
 
-```js
+```js-20
 TFC.climate.getModel(o: any): @Nullable ClimateModel
 TFC.climate.getName(model: ClimateModel): ResourceLocation
 TFC.climate.getCurrentTemperature(level: Level, pos: BlockPos): number
@@ -29,20 +29,20 @@ TFC.climate.getWindVector(level: Level, pos: BlockPos): number
 TFC.climate.isWarmEnoughToRain(level: Level, pos: BlockPos): Vec2
 ```
 
-- `.getModel(o: any)`{: .language-kube #get-model }: Attempts to get a climate model from the provided object, will return null if it cannot do so
-- `.getName(model: ClimateModel)`{: .language-kube #get-name}: Returns the name of the provided climate model
-- `.getCurrentTemperature(level: Level, pos: BlockPos)`{: .language-kube #get-current-temp }: Returns the current temperature at the given level and position
-- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`{: .language-kube #get-temp }: Returns the temperature at the given level, position, and calendar tick
-- `.getAverageTemperature(level: Level, pos: BlockPos)`{: .language-kube #get-avg-temp }: Returns the yearly average temperature at the given level and position
-- `.getAverageRainfall(level: Level, pos: BlockPos)`{: .language-kube #get-rain}: Returns the yearly average temperature at the given level and position
-- `.getFogginess(level: Level, pos: BlockPos)`{: .language-kube #get-fog }: Returns the current air fog value at the given level and position
-- `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-kube #get-water-fog }: Returns the current water fog value at the given level and position
-- `.getWindVector(level: Level, pos: BlockPos)`{: .language-kube #get-wind }: Returns the current `Vec2` wend vector at the given level and position
-- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-kube #warm-enough-to-rain }: Returns `true`{:.p} if it is currently warm enough to rain at the given level and position
+- `.getModel(o: any)`{: .language-kube-20 #get-model }: Attempts to get a climate model from the provided object, will return null if it cannot do so
+- `.getName(model: ClimateModel)`{: .language-kube-20 #get-name}: Returns the name of the provided climate model
+- `.getCurrentTemperature(level: Level, pos: BlockPos)`{: .language-kube-20 #get-current-temp }: Returns the current temperature at the given level and position
+- `.getTemperature(level: Level, pos: BlockPos, calendarTicks: number)`{: .language-kube-20 #get-temp }: Returns the temperature at the given level, position, and calendar tick
+- `.getAverageTemperature(level: Level, pos: BlockPos)`{: .language-kube-20 #get-avg-temp }: Returns the yearly average temperature at the given level and position
+- `.getAverageRainfall(level: Level, pos: BlockPos)`{: .language-kube-20 #get-rain}: Returns the yearly average temperature at the given level and position
+- `.getFogginess(level: Level, pos: BlockPos)`{: .language-kube-20 #get-fog }: Returns the current air fog value at the given level and position
+- `.getWaterFogginess(level: Level, pos: BlockPos)`{: .language-kube-20 #get-water-fog }: Returns the current water fog value at the given level and position
+- `.getWindVector(level: Level, pos: BlockPos)`{: .language-kube-20 #get-wind }: Returns the current `Vec2` wend vector at the given level and position
+- `.isWarmEnoughToRain(level: Level, pos: BlockPos)`{: .language-kube-20 #warm-enough-to-rain }: Returns `true`{:.p} if it is currently warm enough to rain at the given level and position
 
 ## Example
 
-```js
+```js-20
 PlayerEvents.tick(event => {
     if (event.level.gameTime % 20 < 1) {
         if (TFC.climate.getCurrentTemperature(event.level, event.player.blockPosition()) > 40) {

@@ -26,7 +26,7 @@ A string to `RegistryRock` map of all of TFC's rock types
 
 ### Example
 
-```js
+```js-20
 TFC.misc.rock.get('dacite')
 ```
 
@@ -36,7 +36,7 @@ A string to [`NamedRegistryWood`]({% link kubejs_tfc/1.20.1/type-explanations.md
 
 ### Example
 
-```js
+```js-20
 TFC.misc.wood.get('oak')
 ```
 
@@ -46,7 +46,7 @@ A string to [`NamedRegistryMetal`]({% link kubejs_tfc/1.20.1/type-explanations.m
 
 ### Example
 
-```js
+```js-20
 TFC.misc.metal.get('bronze')
 ```
 
@@ -58,13 +58,13 @@ Gets the `IHeat` of a given item stack, may be null
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getHeat(stack: ItemStack): @Nullable IHeat
 ```
 
 Example:
 
-```js
+```js-20
 TFC.misc.getHeat('tfc:metal/ingot/cast_iron').getWeldingTemperature()
 ```
 
@@ -74,13 +74,13 @@ Returns true if the given item stack has an `IHeat`
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.hasHeat(stack: ItemStack): boolean
 ```
 
 Example:
 
-```js
+```js-20
 TFC.misc.hasHeat('tfc:powder/sulfur')
 ```
 
@@ -88,7 +88,7 @@ TFC.misc.hasHeat('tfc:powder/sulfur')
 
 Gets the `Heat` of the given temperature (°C), will be null for temperatures less than 1°C
 
-```js
+```js-20
 TFC.misc.getHeatLevel(96)
 ```
 
@@ -98,7 +98,7 @@ A string to `Heat` map of all of TFC's heat levels
 
 Example:
 
-```js
+```js-20
 TFC.misc.heatLevels.get('orange')
 ```
 
@@ -110,13 +110,13 @@ Gets the `IFood` of the given stack, may be null
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getFood(stack: ItemStack): @Nullable IFood
 ```
 
 Example:
 
-```js
+```js-20
 TFC.misc.getFood('tfc:food/red_apple').getDecayDateModifier()
 ```
 
@@ -126,13 +126,13 @@ Returns true if the given item stack has an `IFood`
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.hasFood(stack: ItemStack): boolean
 ```
 
 Example:
 
-```js
+```js-20
 TFC.misc.hasFood('minecraft:dirt')
 ```
 
@@ -142,7 +142,7 @@ Makes the provided stack rotten if possible and returns it
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.setRotten(stack: ItemStack): ItemStack
 ```
 
@@ -152,7 +152,7 @@ Makes it so the provided stack never expires
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.setNeverExpires(stack: ItemStack): void
 ```
 
@@ -162,13 +162,13 @@ Retrieves the food trait with the given registry name or null if not found
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getFoodTrait(id: String): FoodTrait
 ```
 
 Example:
 
-```js
+```js-20
 TFC.misc.getFoodTrait('kubejs:my_food_trait')
 ```
 
@@ -178,7 +178,7 @@ Returns the id of the given food trait
 
 Method Signature
 
-```js
+```js-20
 TFC.misc.getFoodTraitId(trait: FoodTrait): String
 ```
 
@@ -188,7 +188,7 @@ Applies the given trait to the stack, modifying it
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.applyFoodTrait(stack: ItemStack, trait: ResourceLocation): void
 ```
 
@@ -198,7 +198,7 @@ Removes the given trait to the stack, modifying it
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.removeFoodTrait(stack: ItemStack, trait: ResourceLocation): void
 ```
 
@@ -210,7 +210,7 @@ Returns the `Size` of the given item stack
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getSize(stack: ItemStack): Size
 ```
 
@@ -220,7 +220,7 @@ Returns the `Weight` if the given item stack
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getWeight(stack: ItemStack): Weight
 ```
 
@@ -232,12 +232,12 @@ Returns true if the given level and position can start a collapse
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.canStartCollapse(level: LevelAccessor, pos: BlockPos): boolean
 ```
 
-- `level: LevelAccessor`{: .language-kube }: The level being checked
-- `pos: BlockPos`{: .language-kube }: The block pos being checked
+- `level: LevelAccessor`{: .language-kube-20 }: The level being checked
+- `pos: BlockPos`{: .language-kube-20 }: The block pos being checked
 
 ### Try Collapse
 
@@ -245,12 +245,12 @@ Attempts to cause a collapse at the given level and position, returns false if n
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.tryCollapse(level: Level, pos: BlockPos): boolean
 ```
 
-- `level: Level`{: .language-kube }: The level where the collapse is trying to be created
-- `pos: BlockPos`{: .language-kube }: The center of where the collapse is trying to be created
+- `level: Level`{: .language-kube-20 }: The level where the collapse is trying to be created
+- `pos: BlockPos`{: .language-kube-20 }: The center of where the collapse is trying to be created
 
 ### Force Collapse
 
@@ -258,12 +258,12 @@ Forces a collapse to happen at a position, returns true if any blocks started co
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.forceCollapse(level: Level, pos: BlockPos): boolean
 ```
 
-- `level: Level`{: .language-kube }: The level where the collapse will occur
-- `pos: BlockPos`{: .language-kube }: The center of the collapse
+- `level: Level`{: .language-kube-20 }: The level where the collapse will occur
+- `pos: BlockPos`{: .language-kube-20 }: The center of the collapse
 
 ### Find Unsupported Positions
 
@@ -271,23 +271,23 @@ Finds all positions in the given area that are unsupported
 
 Methods Signatures:
 
-```js
+```js-20
 TFC.misc.findUnsupportedPositions(level: BlockGetter, from_: BlockPos, to: BlockPos): Set<BlockPos>
 ```
 
-- `level: BlockGetter`{: .language-kube }: The level to check in
-- `from_: BlockPos`{: .language-kube }: The minimum corner to check
-- `to: BlockPos`{: .language-kube }: The maximum corner to check
+- `level: BlockGetter`{: .language-kube-20 }: The level to check in
+- `from_: BlockPos`{: .language-kube-20 }: The minimum corner to check
+- `to: BlockPos`{: .language-kube-20 }: The maximum corner to check
 
-```js
+```js-20
 TFC.misc.findUnsupportedPositions(level: BlockGetter, center: BlockPos, horizontal: number, up: number, down: number): Set<BlockPos>
 ```
 
-- `level: BlockGetter`{: .language-kube }: The level to check in
-- `center: BlockPos`{: .language-kube }: The center position to check
-- `horizontal: number`{: .language-kube }: The number of blocks around the center to check horizontally
-- `up: number`{: .language-kube }: The number of blocks to check above the center
-- `down: number`{: .language-kube }: The number of blocks to check below the center
+- `level: BlockGetter`{: .language-kube-20 }: The level to check in
+- `center: BlockPos`{: .language-kube-20 }: The center position to check
+- `horizontal: number`{: .language-kube-20 }: The number of blocks around the center to check horizontally
+- `up: number`{: .language-kube-20 }: The number of blocks to check above the center
+- `down: number`{: .language-kube-20 }: The number of blocks to check below the center
 
 ### Is Supported
 
@@ -295,7 +295,7 @@ Returns true if the position is supported
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.isSupported(level: BlockGetter, pos: BlockPos): boolean
 ```
 
@@ -307,7 +307,7 @@ Returns an iterable of all positions that could possibly be supported around the
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getMaximumSupportedAreaAround(minPoint: BlockPos, maxPoint: BlockPos): Iterable<BlockPos>
 ```
 
@@ -317,7 +317,7 @@ Returns the `SupportRange` that is used as a maximum for checking if an area is 
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getSupportCheckRange(): SupportRange
 ```
 
@@ -327,7 +327,7 @@ Gets the support from the block, or null if it is not a supporting block
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.getSupport(state: BlockState): @Nullable Support
 TFC.misc.getSupport(level: BlockGetter, pos:BlockPos): @Nullable Support
 ```
@@ -340,12 +340,12 @@ Gets TFC's [`ChunkData`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#chunk
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getChunkData(level: LevelReader, pos: BlockPos): ChunkData
 ```
 
-- `level: LevelReader`{: .language-kube }: The level to get the data from
-- `pos: BlockPos`{: .language-kube }: The position to get the data from
+- `level: LevelReader`{: .language-kube-20 }: The level to get the data from
+- `pos: BlockPos`{: .language-kube-20 }: The position to get the data from
 
 ### Rock Data
 
@@ -353,12 +353,12 @@ Get's TFC's `RockData` for the given level and position, may be null
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getRockData(level: LevelReader, pos: BlockPos): @Nullable RockData
 ```
 
-- `level: LevelReader`{: .language-kube }: The level to get the data from
-- `pos: BlockPos`{: .language-kube }: The position to get the data from
+- `level: LevelReader`{: .language-kube-20 }: The level to get the data from
+- `pos: BlockPos`{: .language-kube-20 }: The position to get the data from
 
 ### Rock Settings
 
@@ -366,19 +366,19 @@ Gets TFC's `RockSettings`, a collection of blocks that define a rock layer, see 
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.getRockSettings(level: LevelReader, pos: BlockPos): @Nullable RockSettings
 ```
 
-- `level: LevelReader`{: .language-kube }: The level to get the settings from
-- `pos: BlockPos`{: .language-kube }: The position to get the settings from
+- `level: LevelReader`{: .language-kube-20 }: The level to get the settings from
+- `pos: BlockPos`{: .language-kube-20 }: The position to get the settings from
 
-```js
+```js-20
 TFC.misc.getRockSettings(level: LevelAccessor, block: Block): @Nullable RockSettings
 ```
 
-- `level: LevelAccessor`{: .language-kube }: The level to check in
-- `block: Block`{: .language-kube }: The block to check
+- `level: LevelAccessor`{: .language-kube-20 }: The level to check in
+- `block: Block`{: .language-kube-20 }: The block to check
 
 ### Forest Type
 
@@ -386,36 +386,36 @@ Gets TFC's `ForestType`{:.e} for the given level and position
 
 Method Signature:
 
-```js
+```js-20
 TFC.misc.getForestType(level: LevelReader, pos: BlockPos): ForestType
 ```
 
-- `level: LevelReader`{: .language-kube }: The level to get the forest type from
-- `pos: BlockPos`{: .language-kube }: The position to get the forest type from
+- `level: LevelReader`{: .language-kube-20 }: The level to get the forest type from
+- `pos: BlockPos`{: .language-kube-20 }: The position to get the forest type from
 
 ### Get Hydration
 
-Returns a number, in the range [0, 100], an expression of how hydrated soil at the position would be
+Returns a number, {% in_range 0,100 %}, an expression of how hydrated soil at the position would be
 
-```js
+```js-20
 TFC.misc.getHydration(level: LevelAccessor, pos: BlockPos): number
 ```
 
-- `level: LevelAccessor`{: .language-kube }: The level to get the hydration level from
-- `pos: BlockPos`{: .language-kube }: The position to get the hydration level from
+- `level: LevelAccessor`{: .language-kube-20 }: The level to get the hydration level from
+- `pos: BlockPos`{: .language-kube-20 }: The position to get the hydration level from
 
 ### Lerp Float Layer
 
 Returns a `LerpFloatLayer`, an interpolated square of numbers which are known at corners and interpolated between for intermediate values
 
-```js
+```js-20
 TFC.misc.lerpFloatLayer(value00: number, value01: number, value10: number, value11: number): LerpFloatLayer
 ```
 
-- `value00: number`{: .language-kube }: The value at the [low x, low z] corner
-- `value01: number`{: .language-kube }: The value at the [low x, high z] corner
-- `value10: number`{: .language-kube }: The value at the [high x, low z] corner
-- `value11: number`{: .language-kube }: The value at the [high x, high z] corner
+- `value00: number`{: .language-kube-20 }: The value at the [low x, low z] corner
+- `value01: number`{: .language-kube-20 }: The value at the [low x, high z] corner
+- `value10: number`{: .language-kube-20 }: The value at the [high x, low z] corner
+- `value11: number`{: .language-kube-20 }: The value at the [high x, high z] corner
 
 ## Noise Utils
 
@@ -425,12 +425,12 @@ TFC uses open simplex noise, a type of [noise]({% link kubejs_tfc/1.20.1/type-ex
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.newOpenSimplex2D(seed: number): OpenSimplex2D
 TFC.misc.newOpenSimplex3D(seed: number): OpenSimplex3D
 ```
 
-- `seed: number`{: .language-kube }: The seed for the noise's algorithm
+- `seed: number`{: .language-kube-20 }: The seed for the noise's algorithm
 
 ### Cellular Noise
 
@@ -438,7 +438,7 @@ Cellular noises are [noises]({% link kubejs_tfc/1.20.1/type-explanations.md %}#n
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.cellular2D(seed: number): Cellular2D
 TFC.misc.cellular2D(seed: number): Cellular3D
 ```
@@ -449,7 +449,7 @@ FastNoiseLite is a [MIT Noise Library](https://github.com/Auburn/FastNoiseLite) 
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.fnl(seed: number): FastNoiseLite
 TFC.misc.fnl2Noise2D(fnl: FastNoiseLite): Noise2D
 TFC.misc.fnl2Noise3D(fnl: FastNoiseLite): Noise3D
@@ -461,7 +461,7 @@ These methods convert a JS callback to a full [noise]({% link kubejs_tfc/1.20.1/
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.customNoise2D(noise: Noise2D): Noise2D
 TFC.misc.customNoise3D(noise: Noise3D): Noise3D
 ```
@@ -472,7 +472,7 @@ These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.m
 
 Method Signatures
 
-```js
+```js-20
 TFC.misc.register2DNoiseForInspection(name: String, noise: Noise2D): void
 TFC.misc.register3DNoiseForInspection(name: String, noise: Noise3D): void
 ```
@@ -481,7 +481,7 @@ TFC.misc.register3DNoiseForInspection(name: String, noise: Noise3D): void
 
 These methods create a [`LayeredArea`]({% link kubejs_tfc/1.20.1/type-explanations.md %}#layered-area)
 
-```js
+```js-20
 TFC.misc.layeredAreaFromNoise(noise: Noise2D, rounder?: DoubleToIntFunction, seed: number): LayeredArea
 TFC.misc.layeredArea(source: SourceLayer, seed: number): LayeredArea
 TFC.misc.uniformLayeredArea(seed: number): LayeredArea
@@ -493,17 +493,17 @@ TFC uses [metaballs](https://en.wikipedia.org/wiki/Metaballs) for its generation
 
 Method Signatures:
 
-```js
+```js-20
 TFC.misc.newMetaballs2D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number): metaballs2D
 TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number, minSize: number, maxSize: number, radius: number): Metaballs3D
 ```
 
-- `random: RandomSource`{: .language-kube }: The random source used by the metaballs to create variance between instances
-- `minBalls: number`{: .language-kube }: The minimum number of individual balls
-- `maxBalls: number`{: .language-kube }: The maximum number of individual balls
-- `minSize: number`{: .language-kube }: The minimum size of the metaballs
-- `maxSize: number`{: .language-kube }: The maximum size of the metaballs
-- `radius: number`{: .language-kube }: The maximum radius of an individual ball
+- `random: RandomSource`{: .language-kube-20 }: The random source used by the metaballs to create variance between instances
+- `minBalls: number`{: .language-kube-20 }: The minimum number of individual balls
+- `maxBalls: number`{: .language-kube-20 }: The maximum number of individual balls
+- `minSize: number`{: .language-kube-20 }: The minimum size of the metaballs
+- `maxSize: number`{: .language-kube-20 }: The maximum size of the metaballs
+- `radius: number`{: .language-kube-20 }: The maximum radius of an individual ball
 
 ## Metal Utils
 
@@ -511,7 +511,7 @@ TFC.misc.newMetaballs3D(random: RandomSource, minBalls: number, maxBalls: number
 
 Returns the `Metal` associated with the given fluid, may be null
 
-```js
+```js-20
 TFC.misc.getMetal(fluid: Fluid): Metal
 ```
 
@@ -519,7 +519,7 @@ TFC.misc.getMetal(fluid: Fluid): Metal
 
 Returns the first `Metal` whose ingots match the given stack, may be null
 
-```js
+```js-20
 TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
 ```
 
@@ -527,7 +527,7 @@ TFC.misc.getMetalFromIngot(ingot: ItemStack): Metal
 
 Returns the first `Metal` whose sheets match the given stack, may be null
 
-```js
+```js-20
 TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
 ```
 
@@ -537,7 +537,7 @@ TFC.misc.getMetalFromSheet(stack: ItemStack): Metal
 
 Gets the first `LampFuel` that matches the given fluid and blockstate, may be null
 
-```js
+```js-20
 TFC.misc.getLampFuel(fluid: Fluid, state: BlockState): LampFuel
 ```
 
@@ -545,7 +545,7 @@ TFC.misc.getLampFuel(fluid: Fluid, state: BlockState): LampFuel
 
 Gets the first `Drinkable` that matches the given fluid, may be null
 
-```js
+```js-20
 TFC.misc.getDrinkable(fluid: Fluid): Drinkable
 ```
 
@@ -553,7 +553,7 @@ TFC.misc.getDrinkable(fluid: Fluid): Drinkable
 
 Gets the first `Fertilizer` that matches the given stack, may be null
 
-```js
+```js-20
 TFC.misc.getFertilizer(stack ItemStack): Fertilizer
 ```
 
@@ -561,7 +561,7 @@ TFC.misc.getFertilizer(stack ItemStack): Fertilizer
 
 Gets the first `Fuel` that matches the given stack, may be null
 
-```js
+```js-20
 TFC.misc.getFuel(stack: ItemStack): Fuel
 ```
 
@@ -569,7 +569,7 @@ TFC.misc.getFuel(stack: ItemStack): Fuel
 
 Gets the first `Pannable` that matches the given block state, may be null
 
-```js
+```js-20
 TFC.misc.getPannable(state: BlockState): Pannable
 ```
 
@@ -577,6 +577,6 @@ TFC.misc.getPannable(state: BlockState): Pannable
 
 Gets the first `Sluiceable` that matches the given item, may be null
 
-```js
+```js-20
 TFC.misc.getSluiceable(stack: ItemStack): Sluiceable
 ```

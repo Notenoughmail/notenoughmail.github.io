@@ -37,7 +37,7 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Nether Fertilizer](#beneath-nether-fertilizer)
 - [Lost Page](#beneath-lost-page)
 
-This event goes in the `server_evetns` folder.
+This event goes in the `server_events` folder.
 
 Additionally, the ability to access and manipulate some of TFC's non-datapack accessible data TFC adds to the player is accessible form a `Player` object in scripts. See [Attached TFC Data](#attached-tfc-data) for specifics
 
@@ -46,7 +46,7 @@ Additionally, the ability to access and manipulate some of TFC's non-datapack ac
 >
 > This refers to the directory location of the virtual json file, for instance if, for a entity resistance, you gave it the name `kubejs:fish_get_pierced`, the resulting file would act as if it had been placed in `data/kubejs/tfc/entity_damage_resistances/fish_get_pierced.json`{:.language-fs}, the `tfc/<dataType>`{:.language-fs} folders do not need to be provided
 >
-> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-kube } value
+> If no name is provided, one will be automatically generated with the namespace `kubejs_tfc` and, unless otherwise noted, a path matching a base 16 hash of the (usually) 1st argument's `.toString()`{: .language-kube-20 } value
 >
 > Additionally, for definitions that use ingredients, if there are multiple definitions that have the same valid item/block/fluid, then there is no guarantee your custom definition will take precedence. This can be fixed by overriding the existing definition or modifying the tag that is used for it
 
@@ -59,7 +59,7 @@ Climate ranges cannot be added through this, only existing, registered ones can 
 
 ### Method Signature
 
-```js
+```js-20
 event.climateRange(
     climateRange: Consumer<BuildClimateRangeData>,
     name: ResourceLocation
@@ -67,17 +67,17 @@ event.climateRange(
 ```
 
 - 1st argument: A consumer with several additional methods:
-    - `.minHydration(i: number)`{: .language-kube #climate-min-hydro }: Accepts a number, in the range [0, 100], specifying the minimum hydration, defaults to `0`{:.n}
-    - `.maxHydration(i: number)`{: .language-kube #climate-max-hydro }: Accepts a number, in the range [0, 100], specifying the maximum hydration, defaults to `100`{:.n}
-    - `.hydrationWiggle(i: number)`{: .language-kube #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
-    - `.minTemperature(f: number)`{: .language-kube #climate-min-temp }: Accepts a number, in the range [-100, 100], specifying the minimum temperature, defaults to `-100`{:.n}
-    - `.maxTemperature(f: number)`{: .language-kube #climate-max-temp }: Accepts a number, in the range [-100, 100], specifying the maximum temperature, defaults to `100`{:.n}
-    - `.temperatureWiggle(f: number)`{: .language-kube #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
+    - `.minHydration(i: number)`{: .language-kube-20 #climate-min-hydro }: Accepts a number, {% in_range 0,100 %}, specifying the minimum hydration, defaults to `0`{:.n}
+    - `.maxHydration(i: number)`{: .language-kube-20 #climate-max-hydro }: Accepts a number, {% in_range 0,100 %}, specifying the maximum hydration, defaults to `100`{:.n}
+    - `.hydrationWiggle(i: number)`{: .language-kube-20 #climate-hydro-wiggle }: Accepts a number, specifying the wiggle range for hydration when consulting wiggliness is enabled, defaults to `0`{:.n}
+    - `.minTemperature(f: number)`{: .language-kube-20 #climate-min-temp }: Accepts a number, {% in_range -100,100 %}, specifying the minimum temperature, defaults to `-100`{:.n}
+    - `.maxTemperature(f: number)`{: .language-kube-20 #climate-max-temp }: Accepts a number, {% in_range -100,100 %}, specifying the maximum temperature, defaults to `100`{:.n}
+    - `.temperatureWiggle(f: number)`{: .language-kube-20 #climate-temp-wiggle }: Accepts a number specifying the wiggle range for temperature when consulting wiggliness is enabled, defaults to `0`{:.n}
 - 2nd argument: A `ResourceLocation`, the name of the climate range
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.climateRange(climate => {
         climate.maxHydration(45)
@@ -93,7 +93,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signatures
 
-```js
+```js-20
 event.itemDamageResistance(
     ingredient: Ingredient,
     piercing: @Nullable number,
@@ -120,7 +120,7 @@ event.entityDamageResistance(
 
 ### Examples
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.itemDamageResistance(
         'minecraft:iron_helmet',
@@ -144,7 +144,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.drinkable(
     fluidIngredient: FluidIngredient,
     drinkableData: Consumer<BuildDrinkableData>,
@@ -154,21 +154,21 @@ event.drinkable(
 
 - 1st argument: A [fluid ingredient]({% link kubejs_tfc/1.20.1/bindings.md %}#fluid-ingredient) which defines which fluids the drinkable applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.consumeChance(f: number)`{: .language-kube #drinkable-consume-chance }: Accepts a number, in the range [0, 1], and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
-    - `.thirst(i: number)`{: .language-kube #drinkable-thirst }: Accepts a number, in the range [0, 100], the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
-    - `.intoxication(i: number)`{: .language-kube #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
-    - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-kube #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
-        - `.duration(i: number)`{: .language-kube }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
-        - `.amplifier(i: number)`{: .language-kube }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
-        - `.chance(f: number)`{: .language-kube }: Accepts a number, in the range [0, 1], specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
-    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
+    - `.consumeChance(f: number)`{: .language-kube-20 #drinkable-consume-chance }: Accepts a number, {% in_unit %}, and sets the chance that a source block will be removed when drank from, defaults to `0`{:.n}
+    - `.thirst(i: number)`{: .language-kube-20 #drinkable-thirst }: Accepts a number, {% in_range 0,100 %}, the amount of thirst the drinkable consumes per 25mB drank, defaults to `0`{:.n}
+    - `.intoxication(i: number)`{: .language-kube-20 #drinkable-intoxication }: Accepts a number, ≥ 0, and sets the number of ticks the player will be intoxicated for per 25mB drank, defaults to `0`{:.n}
+    - `.effect(effect: String, effectData?: Consumer<BuildEffectData>)`{: .language-kube-20 #drinkable-effect }: Accepts a string, the name of the effect[^1] to be applied, and an optional consumer with several additional methods:
+        - `.duration(i: number)`{: .language-kube-20 }: Accepts a number specifying the number of ticks the effect is applied for, defaults to `20`{:.n}
+        - `.amplifier(i: number)`{: .language-kube-20 }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
+        - `.chance(f: number)`{: .language-kube-20 }: Accepts a number, {% in_unit %}, specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
+    - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube-20 #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.drinkable('minecraft:lava', data => {
         data.thirst(25)
@@ -195,7 +195,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.fauna(
     climateData: Consumer<PlacedFeatureProperties$Climate>,
     faunaData: Consumer<BuildFaunaData>,
@@ -205,15 +205,15 @@ event.fauna(
 
 - 1st argument: A consumer with methods matching those of the placed feature [climate decorator]({% link kubejs_tfc/1.20.1/worldgen.md %}#climate)
 - 2nd argument: A consumer with several additional methods:
-    - `.chance(i: number)`{: .language-kube #fauna-chance }: Accepts a number, sets the chance in `1/N`{: .language-kube } chunks that something will spawn, defaults to `1`{:.n}
-    - `.distanceBelowSeaLevel(i: number)`{: .language-kube #fauna-distance-below-sea-level }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
-    - `.solidGround(b: boolean)`{: .language-kube #fauna-solid-ground }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`{:.p}
-    - `.maxBrightness(i: number)`{: .language-kube #fauna-max-brightness }: Accepts a number, sets the maximum light level the mob may spawn in
+    - `.chance(i: number)`{: .language-kube-20 #fauna-chance }: Accepts a number, sets the chance in `1/N`{: .language-kube-20 } chunks that something will spawn, defaults to `1`{:.n}
+    - `.distanceBelowSeaLevel(i: number)`{: .language-kube-20 #fauna-distance-below-sea-level }: Accepts a number, sets the distance below sea level something must spawn, should only be set for underwater creatures
+    - `.solidGround(b: boolean)`{: .language-kube-20 #fauna-solid-ground }: Accepts a boolean, determines if the mob is required to spawn on a block tagged `minecraft:valid_spawn`, defaults to `false`{:.p}
+    - `.maxBrightness(i: number)`{: .language-kube-20 #fauna-max-brightness }: Accepts a number, sets the maximum light level the mob may spawn in
 - 3rd argument: A `ResourceLocation`, the name of the fauna
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.fauna(climate => {
         climate.minTemp(90)
@@ -230,11 +230,11 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.fertilizer(
     ingredient: Ingredient,
     nitrogen: @Nullable number,
-    hosphorus: @Nullable number,
+    posphorus: @Nullable number,
     potassium: @Nullable number,
     name?: ResourceLocation
 )
@@ -248,7 +248,7 @@ event.fertilizer(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.fertilizer(
         'minecraft:rooted_dirt',
@@ -269,7 +269,7 @@ Items with food data still require vanilla's food properties in order for the ga
 
 ### Method Signature
 
-```js
+```js-20
 event.foodItem(
     ingredient: Ingredient,
     foodItemData: Consumer<BuildFoodItemData>,
@@ -279,21 +279,21 @@ event.foodItem(
 
 - 1st argument: An item ingredient, the items to which the food item definition applies to
 - 2nd argument: A consumer with several additional methods:
-    - `.type(type: String)`{: .language-kube #food-item-type }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
-    - `.hunger(i: number)`{: .language-kube #food-item-hunger }: Accepts a number, sets how much hunger the food restores, defaults to `4`{:.n}. A full hunger bar is `20`{:.n}
-    - `.saturation(f: number)`{: .language-kube #food-item-saturation }: Accepts a number, sets how much saturation the food restores, defaults to `0`{:.n}
-    - `.water(f: number)`{: .language-kube #food-item-water }: Accepts a number, sets how much water the food restores, defaults to `0`{:.n}. A full water bar is equal to `100`{:.n}
-    - `.decayModifier(f: number)`{: .language-kube #food-item-decay-mod }: Accepts a number, sets how quickly the food decays, defaults to `1`{:.n}. A higher number indicates a faster decay rate
-    - `.grain(f: number)`{: .language-kube #food-item-grain }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to `0`{:.n}
-    - `.fruit(f: number)`{: .language-kube #food-item-fruit }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to `0`{:.n}
-    - `.vegetables(f: number)`{: .language-kube #food-item-veg }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to `0`{:.n}
-    - `.protein(f: number)`{: .language-kube #food-item-protein }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to `0`{:.n}
-    - `.dairy(f: number)`{: .language-kube #food-item-dairy }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to `0`{:.n}
+    - `.type(type: String)`{: .language-kube-20 #food-item-type }: Accepts a string, sets the food definition to be a special type, accepts either `dynamic` or `dynamic_bowl`. See the main page for specifications on what this is used for. If this is set, other values should not be set
+    - `.hunger(i: number)`{: .language-kube-20 #food-item-hunger }: Accepts a number, sets how much hunger the food restores, defaults to `4`{:.n}. A full hunger bar is `20`{:.n}
+    - `.saturation(f: number)`{: .language-kube-20 #food-item-saturation }: Accepts a number, sets how much saturation the food restores, defaults to `0`{:.n}
+    - `.water(f: number)`{: .language-kube-20 #food-item-water }: Accepts a number, sets how much water the food restores, defaults to `0`{:.n}. A full water bar is equal to `100`{:.n}
+    - `.decayModifier(f: number)`{: .language-kube-20 #food-item-decay-mod }: Accepts a number, sets how quickly the food decays, defaults to `1`{:.n}. A higher number indicates a faster decay rate
+    - `.grain(f: number)`{: .language-kube-20 #food-item-grain }: Accepts a number, sets the amount of grain nutrient the food restores, defaults to `0`{:.n}
+    - `.fruit(f: number)`{: .language-kube-20 #food-item-fruit }: Accepts a number, sets the amount of fruit nutrient the food restores, defaults to `0`{:.n}
+    - `.vegetables(f: number)`{: .language-kube-20 #food-item-veg }: Accepts a number, sets the amount of vegetable nutrient the food restores, defaults to `0`{:.n}
+    - `.protein(f: number)`{: .language-kube-20 #food-item-protein }: Accepts a number, sets the amount of protein nutrient the food restores, defaults to `0`{:.n}
+    - `.dairy(f: number)`{: .language-kube-20 #food-item-dairy }: Accepts a number, sets the amount of dairy nutrient the food restores, defaults to `0`{:.n}
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the food definition
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.foodItem('minecraft:cooked_porkchop', food => {
         food.hunger(3)
@@ -309,7 +309,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.fuel(
     ingredient: Ingredient,
     temperature: number,
@@ -327,7 +327,7 @@ event.fuel(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.fuel('minecraft:coal_block', 1575, 3500, 0.95)
 })
@@ -339,7 +339,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.itemHeat(
     ingredient: Ingredient,
     heatCapacity: number,
@@ -357,7 +357,7 @@ event.itemHeat(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.itemHeat('minecraft:netherite_ingot', 0.7, null, 1700)
 })
@@ -369,7 +369,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.itemSize(
     ingredient: Ingredient,
     size: @Nullable Size,
@@ -385,7 +385,7 @@ event.itemSize(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.itemSize('minecraft:gold_ingot', 'huge', 'very_heavy')
 })
@@ -402,7 +402,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.knappingType(
     ingredient: Ingredient,
     ingredientCount: number,
@@ -430,7 +430,7 @@ event.knappingType(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.knappingType(
         'minecraft:deepslate',
@@ -452,7 +452,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.lampFuel(
     fluidIngredient: FluidIngredient,
     blockIngredient: BlockIngredient,
@@ -468,7 +468,7 @@ event.lampFuel(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.lampFuel('tfc:salt_water', '#tfc:lamps', 1)
 })
@@ -480,7 +480,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.metal(
     fluid: Fluid,
     meltTemperature: number,
@@ -516,7 +516,7 @@ event.metal(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.metal(
         'minecraft:lava',
@@ -537,7 +537,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.support(
     blockIngredient: BlockIngredient,
     up: number,
@@ -555,7 +555,7 @@ event.support(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.support('minecraft:cobblestone_wall', 3, 4, 10)
 })
@@ -567,7 +567,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.sluicing(
     ingredient: Ingredient,
     lootTable: String,
@@ -581,7 +581,7 @@ event.sluicing(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.sluicing('minecraft:rooted_dirt', 'kubejs:roots')
 })
@@ -593,7 +593,7 @@ See the [main page](https://terrafirmacraft.github.io/Documentation/1.20.x/custo
 
 ### Method Signature
 
-```js
+```js-20
 event.panning(
     blockIngredient: BlockIngredient,
     lootTable: String,
@@ -609,7 +609,7 @@ event.panning(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.panning(
         'minecraft:gravel',
@@ -628,7 +628,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```js
+```js-20
 event.firmalifeGreenhouseType(
     ingredient: BlockIngredient,
     tier: number,
@@ -646,7 +646,7 @@ event.firmalifeGreenhouseType(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.firmalifeGreenhouseType('#kubejs:greenhouse_glass', 7)
 })
@@ -658,7 +658,7 @@ See the [main page](https://github.com/eerussianguy/firmalife/wiki/Datapack-Docu
 
 ### Method Signature
 
-```js
+```js-20
 event.firmalifePlantable(
     ingredient: Ingredient,
     planterType: @Nullable PlanterType,
@@ -678,7 +678,7 @@ event.firmalifePlantable(
 - 2nd argument: The planter type to use, may be `quad`{:.e}, `large`{:.e}, `hanging`{:.e}, `trellis`{:.e}, `bonsai`{:.e}, or `hydroponic`{:.e}, may be `null`{:.p} to default to `quad`{:.e}
 - 3rd argument: The minimum greenhouse tier needed for the plant to grow, defaults to `0`{:.n}
 - 4th argument: How many stages the planter has, one less than the number of textures the planter must cycle through, may be `null`{:.p} for `trellis`{:.e}, and `bonsai`{:.e} planter types
-- 5th argument: A number, in the range [0, 1], determines the chance of getting an extra seed stack back when harvesting, may be `null`{:.p} to default to `0.5`{:.n}
+- 5th argument: A number, {% in_unit %}, determines the chance of getting an extra seed stack back when harvesting, may be `null`{:.p} to default to `0.5`{:.n}
 - 6th argument: An item stack, the seed item returned when harvested, may be `null`{:.p} to not drop a seed item
 - 7th argument: An item stack, the product of the crop
 - 8th argument: A `NutrientType`{:.e}, the nutrient the crop consumes, may be `nitrogen`{:.e}, `phosphorous`{:.e}, or `potassium`{:.e}, may be `null`{:.e} to default to `nitrogen`{:.e}
@@ -691,7 +691,7 @@ event.firmalifePlantable(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.firmalifePlantable(
         'minecraft:beetroot_seeds',
@@ -720,7 +720,7 @@ Defines a new nether fertilizer
 
 ### Method Signature
 
-```js
+```js-20
 event.beneathNetherFertilizer(
     ingredient: Ingredient,
     death: @Nullable number,
@@ -733,16 +733,16 @@ event.beneathNetherFertilizer(
 ```
 
 - 1st argument: An item ingredient, the items this definition applies to
-- 2nd argument: A number, in the range [0, 1], sets the `death`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 3rd argument: A number, in the range [0, 1], sets the `destruction`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 4th argument: A number, in the range [0, 1], sets the `decay`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 5th argument: A number, in the range [0, 1], sets the `sorrow`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
-- 6th argument: A number, in the range [0, 1], sets the `flame`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying the value
+- 2nd argument: A number, {% in_unit %}, sets the `death`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 3rd argument: A number, {% in_unit %}, sets the `destruction`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 4th argument: A number, {% in_unit %}, sets the `decay`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 5th argument: A number, {% in_unit %}, sets the `sorrow`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying a value
+- 6th argument: A number, {% in_unit %}, sets the `flame`{:.v} value of the fertilizer, may be `null`{:.p} to omit specifying the value
 - *optional 7th argument*: A `ResourceLocation`, the name of the nether fertilizer definition
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.beneathNetherFertilizer(
         'minecraft:nether_wart',
@@ -762,7 +762,7 @@ Defines a new lost page ritual, added to the pool of possible rituals that may b
 
 ### Method Definition
 
-```js
+```js-20
 event.beneathLostPage(
     ingredient: Ingredient,
     reward: Item,
@@ -792,7 +792,7 @@ event.beneathLostPage(
 
 ### Example
 
-```js
+```js-20
 TFCEvents.data(event => {
     event.beneathLostPage(
         '#forge:cobblestone',
@@ -820,13 +820,13 @@ TFCEvents.data(event => {
 
 ## Attached TFC data
 
-In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `.getData()`{: .language-kube } method which returns a `Map<String, Object>`{: .language-kube }. TFC's data can be accessed through `tfc:player_data`
+In order to add nutrition, the chisel mode, and a few other things TFC attaches some extra data to the player. This can be accessed through a `Player` object through the `.getData()`{: .language-kube-20 } method which returns a `Map<String, Object>`{: .language-kube-20 }. TFC's data can be accessed through `tfc:player_data`
 
 There are several methods to access and modify the state of TFC's additional data
 
 ### Method Signatures
 
-```js
+```js-20
 data.getChiselMode(): ChiselMode
 data.setChiselMode(mode: ChiselMode): void
 data.getIntoxicatedTicks(): number
@@ -850,31 +850,31 @@ data.getNutrient(nutrient: NutrientType): number
 data.getNutrients(): number[]
 ```
 
-- `.getChiselMode()`{: .language-kube #player-data-chisel }: Returns the player's current `ChiselMode`{:.e}, will be either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
-- `.setChiselMode(mode: ChiselMode)`{: .language-kube #player-data-set-chisel }: Sets the player's current chisel mode, will accept `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
-- `.getIntoxicatedTicks()`{: .language-kube #player-data-intoxication-ticks }: Returns the number of ticks the player is intoxicated for
-- `.addIntoxicatedTicks(ticks: number)`{: .language-kube #player-data-add-intoxication-ticks }: Adds to the player's intoxicated ticks
-- `.getLastDrinkTick()`{: .language-kube #player-data-last-drink-tick }: Returns the last tick the player drank something
-- `.setLastDrinkTick(tick: number)`{: .language-kube #player-data-set-last-drink-tick }: Sets the last tick the player drank something
-- `.playerEat(item: ItemStack)`{: .language-kube #player-data-eat }: Makes the player eat the provided `ItemStack`
-- `.getFoodLevel()`{: .language-kube #player-data-food-level }: Returns the player's current food level
-- `.setFoodLevel(i: number)`{: .language-kube #player-data-set-food-level }: Sets the player's current food level
-- `.needsFood()`{: .language-kube #player-data-needs-food }: Returns true if the player needs food
-- `.addExhaustion(f: number)`{: .language-kube #player-data-add-exhaustion }: Adds the given exhaustion to the player
-- `.getSaturationLevel()`{: .language-kube #player-data-saturation-level }: Returns the player's saturation level
-- `.setSaturationLevel(f: number)`{: .language-kube #player-data-set-saturation-level }: Sets the player's saturation level
-- `.getThirstModifier()`{: .language-kube #player-data-thirst-modifier }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
-- `.getThirstContributionFromTemperature()`{: .language-kube #player-data-thirst-contribution-temp }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
-- `.getThirst()`{: .language-kube #player-data-thirst }: Returns the player's thirst
-- `.setThirst(f: number)`{: .language-kube #player-data-set-thirst }: Sets the player's thirst
-- `.addThirst(f: number)`{: .language-kube #player-data-add-thirst }: Adds the provided thirst the the player's thirst
-- `.getAverageNutrition()`{: .language-kube #player-data-avg-nutrition }: Returns the average nutrition level of the player
-- `.getNutrient(nutrient: NutrientType)`{: .language-kube #player-data-nutrient }: Returns the player's nutrition level for the given nutrient, accepts `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
-- `.getNutrients()`{: .language-kube #player-data-nutrients }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, `dairy`{:.e}
+- `.getChiselMode()`{: .language-kube-20 #player-data-chisel }: Returns the player's current `ChiselMode`{:.e}, will be either `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.setChiselMode(mode: ChiselMode)`{: .language-kube-20 #player-data-set-chisel }: Sets the player's current chisel mode, will accept `smooth`{:.e}, `stair`{:.e}, or `slab`{:.e}
+- `.getIntoxicatedTicks()`{: .language-kube-20 #player-data-intoxication-ticks }: Returns the number of ticks the player is intoxicated for
+- `.addIntoxicatedTicks(ticks: number)`{: .language-kube-20 #player-data-add-intoxication-ticks }: Adds to the player's intoxicated ticks
+- `.getLastDrinkTick()`{: .language-kube-20 #player-data-last-drink-tick }: Returns the last tick the player drank something
+- `.setLastDrinkTick(tick: number)`{: .language-kube-20 #player-data-set-last-drink-tick }: Sets the last tick the player drank something
+- `.playerEat(item: ItemStack)`{: .language-kube-20 #player-data-eat }: Makes the player eat the provided `ItemStack`
+- `.getFoodLevel()`{: .language-kube-20 #player-data-food-level }: Returns the player's current food level
+- `.setFoodLevel(i: number)`{: .language-kube-20 #player-data-set-food-level }: Sets the player's current food level
+- `.needsFood()`{: .language-kube-20 #player-data-needs-food }: Returns true if the player needs food
+- `.addExhaustion(f: number)`{: .language-kube-20 #player-data-add-exhaustion }: Adds the given exhaustion to the player
+- `.getSaturationLevel()`{: .language-kube-20 #player-data-saturation-level }: Returns the player's saturation level
+- `.setSaturationLevel(f: number)`{: .language-kube-20 #player-data-set-saturation-level }: Sets the player's saturation level
+- `.getThirstModifier()`{: .language-kube-20 #player-data-thirst-modifier }: Returns the player's total thirst loss per tick, on a scale of [0, 100]
+- `.getThirstContributionFromTemperature()`{: .language-kube-20 #player-data-thirst-contribution-temp }: Returns the player's total thirst lost per tick from ambient temperature in addition to regular loss
+- `.getThirst()`{: .language-kube-20 #player-data-thirst }: Returns the player's thirst
+- `.setThirst(f: number)`{: .language-kube-20 #player-data-set-thirst }: Sets the player's thirst
+- `.addThirst(f: number)`{: .language-kube-20 #player-data-add-thirst }: Adds the provided thirst the the player's thirst
+- `.getAverageNutrition()`{: .language-kube-20 #player-data-avg-nutrition }: Returns the average nutrition level of the player
+- `.getNutrient(nutrient: NutrientType)`{: .language-kube-20 #player-data-nutrient }: Returns the player's nutrition level for the given nutrient, accepts `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
+- `.getNutrients()`{: .language-kube-20 #player-data-nutrients }: Returns an array of 5 numbers, corresponding to each nutrient in the order `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, `dairy`{:.e}
 
 ### Example
 
-```js
+```js-20
 /*
  * @ param {Internal.Player} player
  */

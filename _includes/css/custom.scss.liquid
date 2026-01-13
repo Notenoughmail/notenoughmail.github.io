@@ -136,7 +136,11 @@ figure {
     border-radius: 0.25rem;
 }
 
-details:not(.tags) {
+details {
+    transition: height 0.5s;
+}
+
+details:not(.tags):not(.plain) {
     background: linear-gradient(#27262b, #27262b) padding-box, linear-gradient(90deg, #7d7c7e, transparent) border-box;
     border: 1px solid transparent;
     margin-bottom: 0.25rem;
@@ -151,7 +155,7 @@ details:not(.tags) {
     }
 }
 
-details:not(.tags)[open] {
+details:not(.tags):not(.plain)[open] {
     summary::marker {
         content: "− ";
         color: red;
@@ -184,4 +188,28 @@ a.preserve-color {
 
 a.preserve-color:hover {
     text-decoration-color: $border-color !important;
+}
+
+.main-content h4 {
+    text-transform: none!important;
+    font-weight: 500!important;
+    font-size: 1rem!important;
+    letter-spacing: inherit!important;
+}
+
+li p:only-child {
+    margin: 0.25em 0;
+}
+
+p:has(#back-to-top), p:has(#edit-this-page) {
+    margin-bottom: 0.1rem;
+    margin-top: 0;
+}
+
+hr:has(+ footer) {
+    margin-bottom: 0.25rem;
+}
+
+pre.highlight {
+    line-height: 1.2;
 }

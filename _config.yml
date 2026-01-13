@@ -27,7 +27,7 @@ safe: false
 
 # Build settings
 markdown: kramdown
-remote_theme: just-the-docs/just-the-docs@v0.10.0
+remote_theme: just-the-docs/just-the-docs@v0.10.2
 
 repo: "https://github.com/Notenoughmail/notenoughmail.github.io"
 github_user: "Notenoughmail"
@@ -37,6 +37,9 @@ github_repo: "notenoughmail.github.io"
 color_scheme: default
 
 favicon_ico: "/assets/favicon.ico"
+
+back_to_top_text: '↑ Back to Top'
+gh_view_text: 'View page on GitHub'
 
 aux_links:
   GitHub: https://github.com/Notenoughmail/notenoughmail.github.io
@@ -78,6 +81,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - vsc_ext/
 
 post-tags:
   olwicks:
@@ -108,7 +112,12 @@ colors:
   string: a3eea0
   params: 28e5e5
   target-highlight: 4a0068
-  object-key: c1a226
+  object-key: ff7d7d
   light-link: 82b5fa
   comment: d68e63
   func: 8bffce
+
+collections_dir: collections
+
+collections:
+  - fragments

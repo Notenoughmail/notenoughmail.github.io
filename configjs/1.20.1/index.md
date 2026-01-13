@@ -15,7 +15,7 @@ parent: ConfigJS
 
 ConfigJS adds a single binding to scripts, the `ConfigJS` object which has only one method:
 
-```js
+```js-20
 declare class ConfigJS {
     getOtherValueFromEnumConfig(configValue: ForgeConfigSpec$EnumValue<T>, name: String): T
 }
@@ -25,7 +25,7 @@ This returns the enum constant, if it exists, from the enum config's enum class
 
 ### Example
 
-```js
+```js-20
 ConfigJS.getOtherValueFromEnumConfig(global.selector, 'supreme')
 ```
 
@@ -33,7 +33,7 @@ ConfigJS.getOtherValueFromEnumConfig(global.selector, 'supreme')
 
 ConfigJS adds three startup events, `ConfigsEvent.common`, `ConfigsEvent.server`, and `ConfigsEvent.client` they define a config of the associated type and have the same methods as each other
 
-```js
+```js-20
 event.setName(name: String): ConfigEventJS
 event.pop(i?: number): ConfigEventJS
 event.push(path: String): ConfigEventJS
@@ -51,58 +51,58 @@ event.stringValue(name: String, defaultValue: String, allowedValues: String[]): 
 event.stringListValue(name: String, defaultValues: String[], validator: Predicate<String>): ForgeConfigSpec$ConfigValue<List<? extends String>>
 ```
 
-- `.setName(name: String)`{: .language-kube }: Sets the name of the config file, defaults to `configjs-<configType>`
-- `.pop(i?: number)`{: .language-kube }: Moves the active section to be edited left by the specified number of tabs, defaults to `1`
-- `.push(path: String)`{: .language-kube }: Adds a section to the config with the given name and moves the active section right by one
-- `.swap(path: String)`{: .language-kube }: Pops the active section by 1 and pushes the given path as the active section
-- `.comment(comments...: String[])`{: .language-kube }: Adds the given strings as comments to the file, each new string is a new line
+- `.setName(name: String)`{: .language-kube-20 }: Sets the name of the config file, defaults to `configjs-<configType>`
+- `.pop(i?: number)`{: .language-kube-20 }: Moves the active section to be edited left by the specified number of tabs, defaults to `1`
+- `.push(path: String)`{: .language-kube-20 }: Adds a section to the config with the given name and moves the active section right by one
+- `.swap(path: String)`{: .language-kube-20 }: Pops the active section by 1 and pushes the given path as the active section
+- `.comment(comments...: String[])`{: .language-kube-20 }: Adds the given strings as comments to the file, each new string is a new line
 
 The following options actually define a config value, and return an instance of a `ForgeConfigSpec$ConfigValue<?>`, it is strongly recommended to use the `global` binding to use the values throughout your scripts, a demonstration can be seen in the example
 
-- `.intValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube }: Defines a new integer config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValue: number`{: .language-kube }: The default values of the option, must be between the minimum and maximum values specified
-    - `min: number`{: .language-kube }: The minimum value the config option may be, inclusive
-    - `max: number`{: .language-kube }: The maximum values the config option may be, inclusive
-- `.longValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube }: Defines a new long config option
-    - `name: String`{: .language-kube }: The name of the config option
+- `.intValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube-20 }: Defines a new integer config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValue: number`{: .language-kube-20 }: The default values of the option, must be between the minimum and maximum values specified
+    - `min: number`{: .language-kube-20 }: The minimum value the config option may be, inclusive
+    - `max: number`{: .language-kube-20 }: The maximum values the config option may be, inclusive
+- `.longValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube-20 }: Defines a new long config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
     - `defaultValue: number`: The default values of the option, must be between the minimum and maximum values specified
-    - `min: number`{: .language-kube }: The minimum value the config option may be, inclusive
-    - `max: number`{: .language-kube }: The maximum values the config option may be, inclusive
-- `.doubleValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube }: Defines a new double config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValue: number`{: .language-kube }: The default values of the option, must be between the minimum and maximum values specified
-    - `min: number`{: .language-kube }: The minimum value the config option may be, inclusive
-    - `max: number`{: .language-kube }: The maximum values the config option may be, inclusive
-- `.booleanValue(name: String, defaultValue: boolean)`{: .language-kube }: Defines a new boolean config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValue: boolean`{: .language-kube }: The default value of the option
-- `.enumValue(name: String, defaultValue: String, enumValues: String[])`{: .language-kube }: Defines a new enum config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValue: String`{: .language-kube }: The default enum value for the config, should be included in `enumValues`
-    - `enumValues: String[]`{: .language-kube }: The list of allowed values for the config option
-- `.enumValue(name: String, defaultValue: T extends Enum<T>)`{: .language-kube }: Defines a new enum config option from the class of the given enum value
-    - `name: String`{: .language-kube }: The name of the config option
+    - `min: number`{: .language-kube-20 }: The minimum value the config option may be, inclusive
+    - `max: number`{: .language-kube-20 }: The maximum values the config option may be, inclusive
+- `.doubleValue(name: String, defaultValue: number, min: number, max: number)`{: .language-kube-20 }: Defines a new double config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValue: number`{: .language-kube-20 }: The default values of the option, must be between the minimum and maximum values specified
+    - `min: number`{: .language-kube-20 }: The minimum value the config option may be, inclusive
+    - `max: number`{: .language-kube-20 }: The maximum values the config option may be, inclusive
+- `.booleanValue(name: String, defaultValue: boolean)`{: .language-kube-20 }: Defines a new boolean config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValue: boolean`{: .language-kube-20 }: The default value of the option
+- `.enumValue(name: String, defaultValue: String, enumValues: String[])`{: .language-kube-20 }: Defines a new enum config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValue: String`{: .language-kube-20 }: The default enum value for the config, should be included in `enumValues`
+    - `enumValues: String[]`{: .language-kube-20 }: The list of allowed values for the config option
+- `.enumValue(name: String, defaultValue: T extends Enum<T>)`{: .language-kube-20 }: Defines a new enum config option from the class of the given enum value
+    - `name: String`{: .language-kube-20 }: The name of the config option
     - `defaultValue: T`: An enum value
-- `.stringValue(name: String, defaultValue: String)`{: .language-kube }: Defines a new string config option, accepts any non-empty string
-    - `name: String`{: .language-kube }: The name of the config option
+- `.stringValue(name: String, defaultValue: String)`{: .language-kube-20 }: Defines a new string config option, accepts any non-empty string
+    - `name: String`{: .language-kube-20 }: The name of the config option
     - `defaultValue: String`: The default value for the config
-- `.stringValueWithPredicate(name: String, defaultValue: String, validator: Predicate<String>)`{: .language-kube }: Defines a new string config option
+- `.stringValueWithPredicate(name: String, defaultValue: String, validator: Predicate<String>)`{: .language-kube-20 }: Defines a new string config option
     - `name: String`: The name of the config option
     - `defaultValue: String`: The default value for the config
-    - `validator: Predicate<String>`{: .language-kube }: A callback that gives a string and expects a boolean to be returned, determines what config values are valid, should permit the default value
-- `.stringValue(name: String, defaultValue: String, allowedValues: String[])`{: .language-kube }: Defines a new string config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValue: String`{: .language-kube }: The default value for the config option
-    - `allowedValues: String[]`{: .language-kube }: The values that are valid for this config option. should include the default value
-- `.stringListValue(name: String, defaultValues: String[], validator: Predicate<String>)`{: .language-kube }: Defines a new string list config option
-    - `name: String`{: .language-kube }: The name of the config option
-    - `defaultValues: String[]`{: .language-kube }: The default values of the config option
-    - `validator: Predicate<String>`{: .language-kube }: The validator of the elements of the config's elements, should permit the default values
+    - `validator: Predicate<String>`{: .language-kube-20 }: A callback that gives a string and expects a boolean to be returned, determines what config values are valid, should permit the default value
+- `.stringValue(name: String, defaultValue: String, allowedValues: String[])`{: .language-kube-20 }: Defines a new string config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValue: String`{: .language-kube-20 }: The default value for the config option
+    - `allowedValues: String[]`{: .language-kube-20 }: The values that are valid for this config option. should include the default value
+- `.stringListValue(name: String, defaultValues: String[], validator: Predicate<String>)`{: .language-kube-20 }: Defines a new string list config option
+    - `name: String`{: .language-kube-20 }: The name of the config option
+    - `defaultValues: String[]`{: .language-kube-20 }: The default values of the config option
+    - `validator: Predicate<String>`{: .language-kube-20 }: The validator of the elements of the config's elements, should permit the default values
 
 ### Example
 
-```js
+```js-20
 ConfigsEvent.common(event => {
     event.setName('My Very Cool Config File')
     event.push('debug')

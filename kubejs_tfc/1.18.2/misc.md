@@ -425,7 +425,7 @@ In the `recipes` event KubeJS has `replaceInput` and `replaceOutput` methods whi
 
 #### Example
 
-```js
+```js-18
 onEvent('recipes', event => {
     event.tfcReplaceFluidInput('minecraft:water', 'minecraft:lava')
 })
@@ -440,7 +440,7 @@ onEvent('recipes', event => {
 
 #### Example
 
-```js
+```js-18
 onEvent('recipes', event => {
     event.tfcReplaceFluidOutput('tfc:blue_dye', 'minecraft:water')
 })
@@ -455,7 +455,7 @@ onEvent('recipes', event => {
 
 #### Example
 
-```js
+```js-18
 onEvent('recipes', event => {
     event.tfcReplaceBlockInput(/tfc:rock\/cobble\/.+/, 'minecraft:cobblestone')
 })
@@ -472,7 +472,7 @@ Keep in mind it is unlikely this method will be able to replace items tack provi
 
 #### Example
 
-```js
+```js-18
 onEvent('recipes', event => {
     event.tfcReplaceItemStackProvider('tfc:raw_iron_bloom', 'minecraft:iron_ingot')
 })
@@ -489,7 +489,7 @@ Used for the extra outputs of extra products shaped/shapeless crafting
 
 #### Example
 
-```js
+```js-18
 onEvent('recipes', event => {
     event.tfcReplaceExtraItem('tfc:straw', 'minecraft:music_disc_stal')
 })
@@ -506,7 +506,7 @@ Recipe filters filter recipes based on certain properties they have, the tfc spe
 - 1st argument: A block ingredient, the block ingredient input to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
-```js
+```js-18
 TFCRecipeFilter.blockIngredient('tfc:rock/cobblestone/andesite')
 ```
 
@@ -515,7 +515,7 @@ TFCRecipeFilter.blockIngredient('tfc:rock/cobblestone/andesite')
 - 1st argument: A fluid stack, the fluid output to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
-```js
+```js-18
 TFCRecipeFilter.fluidOutput('tfc:salt_water')
 ```
 
@@ -524,7 +524,7 @@ TFCRecipeFilter.fluidOutput('tfc:salt_water')
 - 1st argument: A [fluid stack ingredient]({% link kubejs_tfc/1.18.2/wrappers.md %}#fluid-stack-ingredient), the fluid ingredient to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
-```js
+```js-18
 TFCRecipeFilter.fluidInput('#tfc:milks')
 ```
 
@@ -533,7 +533,7 @@ TFCRecipeFilter.fluidInput('#tfc:milks')
 - 1st argument: A [item stack provider]({% link kubejs_tfc/1.18.2/wrappers.md %}#item-stack-provider), the item stack provider to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
-```js
+```js-18
 TFCRecipeFilter.itemProvider('tfc:metal/chain/bismuth_bronze',)
 ```
 
@@ -542,7 +542,7 @@ TFCRecipeFilter.itemProvider('tfc:metal/chain/bismuth_bronze',)
 - 1st argument: An item , the item to look for in recipes
 - *optional 2nd argument*: A boolean, determines if the filter should be exact, defaults to false
 
-```js
+```js-18
 TFCRecipeFilter.extraItem('tfc:straw')
 ```
 
@@ -558,7 +558,7 @@ Represents the fire result of a [StartFireEvent]({% link kubejs_tfc/1.18.2/event
 - `ALWAYS`: Guarantees a fire block will be placed
 - `NEVER`: Forbids a fire block from being placed
 
-```js
+```js-18
 FireResult.ALWAYS
 ```
 
@@ -573,7 +573,7 @@ Represents the strength of a StartFireEvent, it currently has two values:
     - The fire starting may have been secondary behavior or a side effect (mis-clicks)
     - Destructive fire starting behaviors should not be attempted
 
-```js
+```js-18
 FireStrength.WEAK
 ```
 
@@ -587,7 +587,7 @@ Represents the age of an animal, it has three values:
 - `ADULT`
 - `OLD`
 
-```js
+```js-18
 AnimalAge.OLD
 ```
 
@@ -598,7 +598,7 @@ Represents the gender of an animal, it has two values:
 - `MALE`
 - `FEMALE`
 
-```js
+```js-18
 AnimalGender.MALE
 ```
 
@@ -606,17 +606,17 @@ AnimalGender.MALE
 
 A collection of helpful methods when dealing with climate models
 
-- `.getModel(Object)`{: .language-kube }: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
-- `.getName(ClimateModel)`{: .language-kube }: Will retrieve the name of the provided climate model
-- `.getCurrentTemperature(BlockContainerJS)`{: .language-kube }: RReturns the temperature at the specified block at that moment
-- `.getTemperature(BlockContainerJS, Long)`{: .language-kube }: RReturns the temperature at the specified block at he provided calendar tick
-- `.getAverageTemperature(BlockContainerJS)`{: .language-kube }: RReturns the average temperature at the specified block
-- `.getAverageRainfall(BlockContainerJS)`{: .language-kube }: Returns the average rainfall at the specified block
-- `.getFogginess(BlockContainerJS)`{: .language-kube }: Returns the fogginess at the specified block
-- `.getWaterFogginess(BlockContainerJS)`{: .language-kube }: Returns the water fogginess at the specified block
-- `.isWarnEnoughToRain(BlockContainerJS)`{: .language-kube }: Returns true if it is warm enough to rain at the specified block
+- `.getModel(Object)`{: .language-kube-18 }: Will try its best to get a ClimateModel form the provided object, else returning the default biome-based model
+- `.getName(ClimateModel)`{: .language-kube-18 }: Will retrieve the name of the provided climate model
+- `.getCurrentTemperature(BlockContainerJS)`{: .language-kube-18 }: RReturns the temperature at the specified block at that moment
+- `.getTemperature(BlockContainerJS, Long)`{: .language-kube-18 }: RReturns the temperature at the specified block at he provided calendar tick
+- `.getAverageTemperature(BlockContainerJS)`{: .language-kube-18 }: RReturns the average temperature at the specified block
+- `.getAverageRainfall(BlockContainerJS)`{: .language-kube-18 }: Returns the average rainfall at the specified block
+- `.getFogginess(BlockContainerJS)`{: .language-kube-18 }: Returns the fogginess at the specified block
+- `.getWaterFogginess(BlockContainerJS)`{: .language-kube-18 }: Returns the water fogginess at the specified block
+- `.isWarnEnoughToRain(BlockContainerJS)`{: .language-kube-18 }: Returns true if it is warm enough to rain at the specified block
 
-```js
+```js-18
 Climate.getModel('kubejs:my_advanced_model')
 ```
 
@@ -639,12 +639,12 @@ Represents the months of the year
 
 Each month also has a few methods:
 
-- `.getTemperatureModifier()`{: .language-kube }: Returns a number that TFC uses to adjust the temperature during a month
-- `.next()`{: .language-kube }: Returns the next month
-- `.isWithin(Month, Month)`{: .language-kube }: Returns true if the month is between the two provided months
-- `.getSeason()`{: .language-kube }: Returns the season the month is in
+- `.getTemperatureModifier()`{: .language-kube-18 }: Returns a number that TFC uses to adjust the temperature during a month
+- `.next()`{: .language-kube-18 }: Returns the next month
+- `.isWithin(Month, Month)`{: .language-kube-18 }: Returns true if the month is between the two provided months
+- `.getSeason()`{: .language-kube-18 }: Returns the season the month is in
 
-```js
+```js-18
 Month.JULY.next()
 ```
 
@@ -659,10 +659,10 @@ Represents the seasons of the year
 
 Each season also has a few methods:
 
-- `.next()`{: .language-kube }: Returns the next season
-- `.previous()`{: .language-kube }: Returns the previous season
+- `.next()`{: .language-kube-18 }: Returns the next season
+- `.previous()`{: .language-kube-18 }: Returns the previous season
 
-```js
+```js-18
 Season.FALL.next()
 ```
 
@@ -670,56 +670,56 @@ Season.FALL.next()
 
 A collection of methods for getting information about the calendar. Methods with 'calendar' in their name are synced with the daylight cycle and should not be used to save time stamps as they may go backwards
 
-- `.getCalendarTicksInMonth(Integer)`{: .language-kube }: Returns how many ticks are in a month based upon the provided number of days in a month
-- `.getCalendarTicksInYear(Integer)`{: .language-kube }: Returns how many ticks are in a year based upon the provided number of days in a month
-- `.getTotalMinutes(number)`{: .language-kube }: Returns how many in-game minutes are in the number of provided time
-- `.getTotalHours(number)`{: .language-kube }: Returns how many in-game hours are in the number of provided time
-- `.getTotalDays(number)`{: .language-kube }: Returns how many in-game days are in the number of provided time
-- `.getTotalMonths(number, Integer)`{: .language-kube }: Returns how many in-game months are in the number of provided time for the provided number of days in a month
-- `.getTotalYears(number, Integer)`{: .language-kube }: Returns how many in-game years are in the number of provided time for the provided number of days in a month
-- `.getMinuteOfHour(number)`{: .language-kube }: Returns the minute of the hour, [0, 59] of the provided time
-- `.getHourOfDay(number)`{: .language-kube }: Returns the hour of the day, [0, 23], of the provided time
-- `.getDayOfMonth(number, Integer)`{: .language-kube }: Returns the day of the month of the provided time for the provided number of days in a month
-- `.getFractionOfMonth(number, Integer)`{: .language-kube }: Returns how far through a month, [0, 1], the provided time is for the given number of days in a month
-- `.getFractionOfYear(number, Integer)`{: .language-kube }: Returns how far through a year, [0, 1], the provided time is for the given number of days in a month
-- `.getMonthOfYear(number, Integer)`{: .language-kube }: Returns the month of the provided time for the given number of days in a month
-- `.getTimeAndDate(number, Integer)`{: .language-kube }: Returns a text component displaying text component displaying an exact time stamp of the provided time and number of days in a month
-- `.getTimeAndDat(Integer, Integer, Month, Integer, number)`{: .language-kube }: Returns a text component displaying an exact time stamp of the provided hour, minute, month, day, and year
-- `.getTimeDelta(number, Integer)`{: .language-kube }: Returns a text component displaying the amount of time in hour/day/month/year format for the provided number of ticks and number of days in a month
+- `.getCalendarTicksInMonth(Integer)`{: .language-kube-18 }: Returns how many ticks are in a month based upon the provided number of days in a month
+- `.getCalendarTicksInYear(Integer)`{: .language-kube-18 }: Returns how many ticks are in a year based upon the provided number of days in a month
+- `.getTotalMinutes(number)`{: .language-kube-18 }: Returns how many in-game minutes are in the number of provided time
+- `.getTotalHours(number)`{: .language-kube-18 }: Returns how many in-game hours are in the number of provided time
+- `.getTotalDays(number)`{: .language-kube-18 }: Returns how many in-game days are in the number of provided time
+- `.getTotalMonths(number, Integer)`{: .language-kube-18 }: Returns how many in-game months are in the number of provided time for the provided number of days in a month
+- `.getTotalYears(number, Integer)`{: .language-kube-18 }: Returns how many in-game years are in the number of provided time for the provided number of days in a month
+- `.getMinuteOfHour(number)`{: .language-kube-18 }: Returns the minute of the hour, [0, 59] of the provided time
+- `.getHourOfDay(number)`{: .language-kube-18 }: Returns the hour of the day, [0, 23], of the provided time
+- `.getDayOfMonth(number, Integer)`{: .language-kube-18 }: Returns the day of the month of the provided time for the provided number of days in a month
+- `.getFractionOfMonth(number, Integer)`{: .language-kube-18 }: Returns how far through a month, [0, 1], the provided time is for the given number of days in a month
+- `.getFractionOfYear(number, Integer)`{: .language-kube-18 }: Returns how far through a year, [0, 1], the provided time is for the given number of days in a month
+- `.getMonthOfYear(number, Integer)`{: .language-kube-18 }: Returns the month of the provided time for the given number of days in a month
+- `.getTimeAndDate(number, Integer)`{: .language-kube-18 }: Returns a text component displaying text component displaying an exact time stamp of the provided time and number of days in a month
+- `.getTimeAndDat(Integer, Integer, Month, Integer, number)`{: .language-kube-18 }: Returns a text component displaying an exact time stamp of the provided hour, minute, month, day, and year
+- `.getTimeDelta(number, Integer)`{: .language-kube-18 }: Returns a text component displaying the amount of time in hour/day/month/year format for the provided number of ticks and number of days in a month
 
 The following methods return a Calendar object
 
-- `.getCalendar()`{: .language-kube }: Returns a Calendar, may be the server or client side calendar depending on if the calling location appears to be server or client side
-- `.getCalendar(boolean)`{: .language-kube }: Returns a Calendar. If true returns the client calendar, else the server calendar
-- `.getCalendar(LevelReader)`{: .language-kube }: Returns the provided level's calendar
-- `.getCalendar(LevelJS)`{: .language-kube }: Returns the provided LevelJS's calendar
+- `.getCalendar()`{: .language-kube-18 }: Returns a Calendar, may be the server or client side calendar depending on if the calling location appears to be server or client side
+- `.getCalendar(boolean)`{: .language-kube-18 }: Returns a Calendar. If true returns the client calendar, else the server calendar
+- `.getCalendar(LevelReader)`{: .language-kube-18 }: Returns the provided level's calendar
+- `.getCalendar(LevelJS)`{: .language-kube-18 }: Returns the provided LevelJS's calendar
 
 The calendars have the following methods available
 
-- `.getTicks()`{: .language-kube }: Returns the amount of ticks since the world was created
-- `.getCalendarTicks()`{: .language-kube }: Returns the amount of ticks since Jan 1, 1000
-- `.getCalendarDaysInMonth()`{: .language-kube }: Returns the amount of days in a month
-- `.ticksToCalendarTicks(number)`{: .language-kube }: Returns the calendar tick corresponding to the given tick
-- `.getTotalHours()`{: .language-kube }: Returns the total amount of hours passed
-- `.getTotalCalendarHours()`{: .language-kube }: Returns the total number of hours passed since Jan 1, 1000
-- `.getTotalDays()`{: .language-kube }: Returns the total amount of days passed
-- `.getTotalCalendarDays()`{: .language-kube }: Returns the total amount of days passed since Jan 1, 1000
-- `.getTotalMonths()`{: .language-kube }: Returns the total amount of months passed
-- `.getTotalCalendarMonths()`{: .language-kube }: Returns the total amount of months passed since Jan 1, 1000
-- `.getTotalYears()`{: .language-kube }: Returns the total amount of years passed
-- `.getTotalCalendarYears()`{: .language-kube }: Returns the total amount of years passed since Jan 1, 1000
-- `.getCalendarDayTime()`{: .language-kube }: Returns the equivalent total world time; 0 = 6:00 which is calendar time 6000
-- `.getCalendarDayOfMonth()`{: .language-kube }: Returns the current day of the month
-- `.getCalendarFractionOfMonth()`{: .language-kube }: Returns the progress through the month
-- `.getCalendarFractionOfYear()`{: .language-kube }: Returns the progress though the year
-- `.getCalendarDayOfYear()`{: .language-kube }: Returns a text component displaying the current day of the week
-- `.getCalendarMonthOfYear()`{: .language-kube }: Returns a text component displaying the current month of the year
-- `.getCalendarTicksInMonth()`{: .language-kube }: Returns the number of ticks in a month
-- `.getCalendarTicksInYear()`{: .language-kube }: Returns the number of ticks in a year
-- `.getCalendarTimeAndDate()`{: .language-kube }: Returns a text component displaying an exact time stamp
-- `.getTimeDelta(number)`{: .language-kube }: Returns a text component displaying a length of time based upon the number given
+- `.getTicks()`{: .language-kube-18 }: Returns the amount of ticks since the world was created
+- `.getCalendarTicks()`{: .language-kube-18 }: Returns the amount of ticks since Jan 1, 1000
+- `.getCalendarDaysInMonth()`{: .language-kube-18 }: Returns the amount of days in a month
+- `.ticksToCalendarTicks(number)`{: .language-kube-18 }: Returns the calendar tick corresponding to the given tick
+- `.getTotalHours()`{: .language-kube-18 }: Returns the total amount of hours passed
+- `.getTotalCalendarHours()`{: .language-kube-18 }: Returns the total number of hours passed since Jan 1, 1000
+- `.getTotalDays()`{: .language-kube-18 }: Returns the total amount of days passed
+- `.getTotalCalendarDays()`{: .language-kube-18 }: Returns the total amount of days passed since Jan 1, 1000
+- `.getTotalMonths()`{: .language-kube-18 }: Returns the total amount of months passed
+- `.getTotalCalendarMonths()`{: .language-kube-18 }: Returns the total amount of months passed since Jan 1, 1000
+- `.getTotalYears()`{: .language-kube-18 }: Returns the total amount of years passed
+- `.getTotalCalendarYears()`{: .language-kube-18 }: Returns the total amount of years passed since Jan 1, 1000
+- `.getCalendarDayTime()`{: .language-kube-18 }: Returns the equivalent total world time; 0 = 6:00 which is calendar time 6000
+- `.getCalendarDayOfMonth()`{: .language-kube-18 }: Returns the current day of the month
+- `.getCalendarFractionOfMonth()`{: .language-kube-18 }: Returns the progress through the month
+- `.getCalendarFractionOfYear()`{: .language-kube-18 }: Returns the progress though the year
+- `.getCalendarDayOfYear()`{: .language-kube-18 }: Returns a text component displaying the current day of the week
+- `.getCalendarMonthOfYear()`{: .language-kube-18 }: Returns a text component displaying the current month of the year
+- `.getCalendarTicksInMonth()`{: .language-kube-18 }: Returns the number of ticks in a month
+- `.getCalendarTicksInYear()`{: .language-kube-18 }: Returns the number of ticks in a year
+- `.getCalendarTimeAndDate()`{: .language-kube-18 }: Returns a text component displaying an exact time stamp
+- `.getTimeDelta(number)`{: .language-kube-18 }: Returns a text component displaying a length of time based upon the number given
 
-```js
+```js-18
 Calendar.getCalendar().getTotalYears()
 ```
 
@@ -737,7 +737,7 @@ This registers a new food trait with s decay modifier given by the number, in th
 
 ### Examples
 
-```js
+```js-18
 onEvent('tfc.food_trait.register', event => {
     // Registers a trait which increases the rate of decay
     event.registerTrait(1.4, 'kubejs:trash')

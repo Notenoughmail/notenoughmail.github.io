@@ -11,13 +11,110 @@ Rouge::Token.token("Enum", 'enum')
 module Rouge
     module Lexers
         class Kube < Rouge::RegexLexer
-            title "Kube"
-            desc "JavaScript, but decent. Called Kube because that's what its used for here"
+            class MC21 < Kube
+                title "Kube-21"
+                desc "Kube enhanced JS for MC 1.21.1"
 
-            tag 'kube'
-            aliases 'kube', 'js', 'javascript' # This overrides Rouge's inbuilt js parser, meaning js can be used for code blocks without losing editor highlighting while having the highlighting of the kube 'language'
-            filenames '*.kube', '*.js',
-            mimetypes('application/javascript', 'text/javascript')
+                tag "kube-21"
+                aliases "js-21"
+
+                def initialize(opts={})
+                    super([
+                        # TFC
+                        "ForestSubType", "BonusBehavior", "StackModifierContext",
+                        "Nutrient", "InteractionManager$Target",
+                        # Vanilla
+                        "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
+                        # KubeJS TFC
+                        "AqueductModelPart", "ClutchModelType", "PebbleCount",
+                        "GearBoxModelType", "GrassModelPart", "LampModelType",
+                        "FallenLeavesModelType", "SpikeModelType",
+                        # Addons
+                        "ProspectorType"
+                    ], [
+                        # KubeJS TFC
+                        "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction",
+                        # KubeJS
+                        "ItemPredicate",
+                        # Vanilla
+                        "SpawnPlacementType"
+                    ], opts)
+                end
+            end
+
+            class MC20 < Kube
+                title "Kube-20"
+                desc "Kube enhanced JS for MC 1.20.1"
+
+                tag "kube-20"
+                aliases "js-20"
+
+                def initialize(opts={})
+                    super([
+                        # Vanilla
+                        "SpawnPlacements$Type",
+                        # TFC
+                        "Metal$ItemType",  "GroundType", "NutrientType",
+                        "GlassOperation",  "ChiselMode", "Lifecycle",
+                        "Metal$Tier", 
+                        # KubeJS TFC
+                        "AqueductModelPart", "SpikeModelPart", "LampModelType",
+                        "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
+                        "GearBoxModelType",  "CropType",
+                        # Addons
+                        "Punishment",
+                        "PlanterType"
+                    ], [
+                        # KubeJS TFC
+                        "MossGrowingCallback", "TemperatureCallback"
+                    ], opts)
+                end
+            end
+
+            class MC18 < Kube
+                title "Kube-18"
+                desc "Kube enhanced JS for MC 1.18.2"
+
+                tag "kube-18"
+                aliases "js-18"
+
+                def initialize(opts={})
+                    super([], [], opts)
+                end
+            end
+
+            def initialize(enums, funcs, opts={})
+                super(opts)
+                e = Set.new enums
+                @enums = e.merge [
+                    # Vanilla enums
+                    "NoteBlockInstrument", "DyeColor",   "Heightmap$Types",
+                    "InteractionResult",   "OffsetType", "PushReaction",
+                    "ItemDisplayContext",  "Direction",  "Rarity",
+                    # TFC enums
+                    "Month",  "ForestType", "Heat",
+                    "Weight", "Size",       "PropsectResult",
+                    "Season", "ForgeRule",  "ChunkData$Status",
+                    "Wood$BlockType", "Metal$BlockType", "Rock$BlockType",
+                    "RockDisplayCategory", "RockCategory",
+                    # Java enums
+                    "Enum"
+                ]
+                f = Set.new funcs
+                @functional_interfaces = f.merge [
+                    # Java
+                    "Consumer", "BiConsumer", "TriConsumer",
+                    "Function", "BiFunction", "TriFunction", "QuadFunction",
+                    "Supplier", "Predicate", "BiPredicate",
+                    # Vanilla
+                    "BlockBehaviour$StateArgumentPredicate", "BlockBehaviour$StatePredicate",
+                    # TFC
+                    "Noise2D",  "Noise3D", "OnItemUseAction",
+                    # KubeJS TFC
+                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer",
+                    "RocksGetter"
+                ]
+            end
 
             state :multiline_comment do
                 rule %r([*]/), Comment::Multiline, :pop!
@@ -97,7 +194,7 @@ module Rouge
                     as async await break case catch continue debugger default default delete
                     do else export finally from for if import in instanceof new of
                     return super switch this throw try typeof void while yield
-                    number boolean int float long double integer console
+                    number boolean int float long double integer console char byte short
                 )
             end
 
@@ -134,32 +231,8 @@ module Rouge
                 )
             end
 
-            # An important note regarding inner classes: The part before and after the $ will be treated as different 'words'
-            # thus they will not be parsed & colored as a single string, so only the part after the $ should be included
-            # the $ will be included with the second string and is safe to include here
-            def self.enums
-                @enums ||= Set.new %w(
-                    Month $Type $Types ForestType ProspectResult
-                    Punishment Direction AqueductModelPart SpikeModelPart LampModelType
-                    Lifecycle GrassModelPart DeadModelVariant NutrientType GearBoxModelType
-                    ClutchModelType PshReaction OffsetType NoteBlockInstrument ItemDisplayContext
-                    GlassOperation Size Weight PlanterType ChiselMode ForgeRule DyeColor Heat
-                    InteractionResult Type Enum GroundType $Status $BlockType $ItemType $Tier
-                )
-            end
-
-            def self.functional_interfaces
-                @functional_interfaces ||= Set.new %w(
-                    Consumer BiConsumer TriConsumer BiFunction TriFunction QuadFunction
-                    RockFunction OnItemUseAction Supplier RocksGetter MossGrowingCallback
-                    Predicate Noise2D $StateArgumentPredicate $StatePredicate
-                    TemperatureCallback Function MergeLayer Noise3D TransformLayer
-                    AdjacentTransformlayer
-                )
-            end
-
             def self.id_regex
-                /[\p{L}\p{Nl}$_][\p{Word}]*/io
+                /\p{Word}*[\p{L}\p{Nl}$_][\p{Word}]*/io
             end
 
             id = self.id_regex
@@ -174,6 +247,7 @@ module Rouge
                 rule %r([-<>+*%&|\^/!=]=?), Operator, :expr_start
                 rule %r/[(\[,]/, Punctuation, :expr_start
                 rule %r/;/, Punctuation, :statement
+                # TODO: Mixin a function check here that checks for leading .
                 rule %r/[)\].]/, Punctuation
 
                 rule %r/`/ do
@@ -196,7 +270,7 @@ module Rouge
                     push :expr_start
                 end
 
-                rule %r/(class)((?:\s|\\\s)+)/ do
+                rule %r/(class|instanceof)((?:\s|\\\s)+)/ do
                     groups Keyword::Declaration, Text
                     push :classname
                 end
@@ -211,7 +285,7 @@ module Rouge
 
                 # See https://github.com/rouge-ruby/rouge/pull/1938
                 rule %r/(#{id})[ \t]*(?=(\(.*\)))/m do |m|
-                    if self.class.keywords.include?(m[1])
+                    if self.class.keywords.include?(m[1]) || self.class.declarations.include?(m[1])
                         token Keyword
                     else
                         token Name::Function
@@ -221,13 +295,19 @@ module Rouge
                 rule %r/[{}]/, Punctuation, :statement
 
                 # By this point labels & object declarations have been checked
-                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                rule %r/(#{id})(\s*)((?:\.\.\.)?\??:)/ do |m|
                     if m[1].eql?('return') # Special case for descriptions of callback return values
                         groups Keyword, Text, Punctuation
                     else
                         groups Keyword::Variable, Text, Punctuation
                     end
                 end
+
+                rule %r/[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?/, Num::Float
+                rule %r/0x[0-9a-fA-F]+/i, Num::Hex
+                rule %r/0o[0-7][0-7_]*/i, Num::Oct
+                rule %r/0b[01][01_]*/i, Num::Bin
+                rule %r/[0-9]+/, Num::Integer
 
                 rule id do |m|
                     if self.class.keywords.include? m[0]
@@ -242,20 +322,14 @@ module Rouge
                         token Keyword::Constant
                     elsif self.class.builtins.include? m[0]
                         token Name::Builtin
-                    elsif self.class.functional_interfaces.include? m[0]
+                    elsif @functional_interfaces.include? m[0]
                         token Name::Function::Magic
-                    elsif self.class.enums.include? m[0]
+                    elsif @enums.include? m[0]
                         token Rouge::Token::Enum
                     else
                         token Name::Other
                     end
                 end
-
-                rule %r/[0-9][0-9]*\.[0-9]+([eE][0-9]+)?[fd]?/, Num::Float
-                rule %r/0x[0-9a-fA-F]+/i, Num::Hex
-                rule %r/0o[0-7][0-7_]*/i, Num::Oct
-                rule %r/0b[01][01_]*/i, Num::Bin
-                rule %r/[0-9]+/, Num::Integer
 
                 rule %r/"/, Str::Delimiter, :dq
                 rule %r/'/, Str::Delimiter, :sq
@@ -343,10 +417,10 @@ module Rouge
             end
 
             state :variables do
-                rule %r/(#{id})(\s*)(\??:)/ do |m|
+                rule %r/(#{id})(\s*)((?:\.\.\.)?\??:)/ do |m|
                     # Realistically, variable declarations should not happen within an object declaration
                     # Unless the declaration is for a map...
-                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & shpoping a varibles state would generalize much better
+                    # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & poping a varibles state would generalize much better
                     if m[3].eql?(":") && in_state?(:object)
                         groups Name::Attribute, Text, Punctuation
                         goto :expr_start 
