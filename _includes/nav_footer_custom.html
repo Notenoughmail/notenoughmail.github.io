@@ -1,4 +1,4 @@
 <footer class="site-footer">
-    <p class="text-small"><a href="#top" id="back-to-top">{{ site.back_to_top_text }}</a> | <a href="{{ site.repo }}/blob/main/{{ page.path }}" id="edit-this-page">{{ site.gh_view_text }}</a></p>
+    <p class="text-small"><a href="#top" id="back-to-top">{{ site.back_to_top_text }}</a> | <a href="{{ site.repo }}/blob/main/{% if page.collection %}{{ site.collections_dir }}/{% endif %}{{ page.path }}" id="edit-this-page">{{ site.gh_view_text }}</a></p>
     This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
 </footer>

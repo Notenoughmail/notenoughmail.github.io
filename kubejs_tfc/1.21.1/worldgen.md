@@ -32,7 +32,7 @@ Worldgen features are primarily done through placed and configured features. Kub
 
 ## {{ feature.title }}
 
-**Type**: `{{ feature.type }}
+**Type**: `{{ feature.type }}`
 
 {{ feature.clean }}
 
