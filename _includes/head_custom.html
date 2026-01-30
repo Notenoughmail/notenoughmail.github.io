@@ -1,6 +1,16 @@
 <link rel="alternate" type="application/rss+xml" title=" » Writing" href="{{ site.url }}/writing/feed.xml" />
 <link rel="alternate" type="application/rss+xml" title=" » Updates" href="{{ site.url }}/feed.xml" />
 
+{% if page.layout == "post" %}
+<style>
+    @media (min-width: 50rem) {
+        .main {
+            max-width: 40rem;
+        }
+    }
+</style>
+{% endif %}
+
 {% if page.extra_header %}
     {% include {{ page.extra_header }}.html %}
 {% endif %}

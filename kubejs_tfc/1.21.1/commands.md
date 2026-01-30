@@ -9,7 +9,7 @@ desc: Commands added by KubeJS TFC, primarily for modpack/script debugging
 
 # Commands
 
-KubeJS TFC adds several commands for debugging TFC-related parts of scripts and information. They all require a permission level of `3` or higher to use
+KubeJS TFC adds several commands for debugging TFC-related parts of scripts and information. They all require a permission level of **3** or higher to use
 
 There are commands for:
 

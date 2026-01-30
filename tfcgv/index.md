@@ -20,3 +20,7 @@ A list of updates can be found on the [updates page](updates/)
 ## [1.20.1](1.20.1/)
 
 Version 1.x.x available for 1.20.1 and TFC:TNG 3.x.x
+
+## [1.21.1](1.21.1/)
+
+Version 2.x.x available for 1.21.1 and TFC:TNG 4.x.x
