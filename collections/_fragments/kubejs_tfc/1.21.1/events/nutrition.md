@@ -62,4 +62,4 @@ This event fires whenever a player joins the world on both the client and server
         - `.onClientUpdate(nutrients: number[5]): void`{:.language-kube-21}: Set the nutrient data, on the client side, from a packet
         - `.addNutrients(data: FoodData, currentHunger: int): void`{:.language-kube-21}: Apply nutrients of a food to the player
         - `.writeToNbt(): Tag`{:.language-kube-21}: Serialize any relevant data for computing nutrition to an NBT tag
-        - `.readFromNbt(nbt: @Nullable Tag): void`{:.language-kube-21}: Read any relevant data for computing nutrition from an NBT tag, the data serialized in `.writeToNbt()``{:.language-kube-21}
+        - `.readFromNbt(nbt: @Nullable Tag): void`{:.language-kube-21}: Read any relevant data for computing nutrition from an NBT tag, the data serialized in `.writeToNbt()`{:.language-kube-21}

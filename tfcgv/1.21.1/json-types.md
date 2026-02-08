@@ -94,7 +94,7 @@ A color gradient definition defines a color gradient, its name, and its tooltips
 
 A gradient converts a value {% in_unit %} into a color, usually by interpolating between specified colors in the linear sRGB color space. It is an object with the following definition
 
-- `type`: One of `"preset"`{:.s}, `"static"`{:.s}, `"from_to"`{:.s}, or `"list"`{:.s}. There are different required fields depending on the type
+- `type`: One of `"preset"`{:.s}, `"dispatch"`{:.s}, `"static"`{:.s}, `"from_to"`{:.s}, or `"list"`{:.s}. There are different required fields depending on the type
     - `preset`: Has one additional field, `preset`, a string, the id of a registered gradient. By default, the available preset gradients are
         - `tfcgenviewer:blue`
         - `tfcgenviewer:green`
@@ -103,6 +103,12 @@ A gradient converts a value {% in_unit %} into a color, usually by interpolating
         - `tfcgenviewer:rainfall`
         - `tfcgenviewer:temperature`
         - `tfcgenviewer:grayscale`
+    - `dispatch`: Has an additional field, `dispatch_type`, a string, the id of a registered dispatch gradient which may have additional fields itself. By default, the available dispatch gradients are
+        - `tfcgenviewer:hue_wheel`: Interpolates color through the hue value of HSV color space. Has 4 additional fields
+            - `offset`: A number, {% in_range -1,1 %}. Offsets the 'origin' of the hue value. Optional
+            - `reverse`: A boolean, if interpolation direction around the wheel should be reversed. Optional
+            - `saturation`: A number, {% in_unit %}. The saturation of the interpolated HSV colors
+            - `value`: A number, {% in_unit %}. The value of the interpolated HSV colors
     - `static`: Has one additional field, `color`, a [color](#color). Creates a static gradient of just the single color
     - `from_to`: Has two additional fields, `from` and `to`, both are [colors](#color), the low and high ends of the gradient
     - `list`: Has one additional field, `colors`, a list of at least three [colors](#color). Creates a gradient interpolating between all the colors provided from low to high
