@@ -35,6 +35,9 @@ module Jekyll
           page.data['permalink'] = link
           page.data['update_post'] = true
           page.data['thin_media'] = true
+          title = page.data['title']
+          page.data['title'] = page.data['version']
+          page.data['net_title'] = title
         end
       end
 
