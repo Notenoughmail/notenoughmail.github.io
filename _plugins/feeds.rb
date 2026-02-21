@@ -20,8 +20,12 @@ module Jekyll
 
           link = '/%s/%s/%s/%s-%s.html' % [
             date.year,
-            date.month,
-            date.mday,
+            (date.month > 9 ?
+                date.month :
+                "0" + date.month.to_s),
+            (date.mday > 9 ?
+                date.mday :
+                "0" + date.mday.to_s),
             gp[:url],
             (page.data['url_version'].nil? ?
                 page.data['version'].to_s.gsub('.', '-') :
