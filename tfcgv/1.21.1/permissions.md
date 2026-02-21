@@ -30,7 +30,9 @@ These also have a three layer permission system
 - A per-player filter: Allows for feature overrides to be implemented on a per-player basis. Takes complete precedence over the global filter if present for a player
 - A global filter: A global filter for ancillary features. Checked last, defaults to disallow for all ancillary features
 
-By default, all permissions are set to deny access (even in single player worlds)
+By default, all permissions are set to deny access except in single player worlds where all visualizer types are allowed by default
+
+The permissions system may also be disabled (and re-enabled) using the `tfcgenviewer disable_permissions` and `/tfcgenviewer enable_permissions` commands
 
 ## Configuration
 
