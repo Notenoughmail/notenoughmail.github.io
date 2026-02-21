@@ -32,7 +32,7 @@ Those were good days
 
 Wow! The place that hosts this site, no way
 
-Maybe GitHub will fully pivot into being a social media with direct messaging capabilities. When that happens I can be found at [Notenoughmail](https://github.com/Notenoughmail) doing who-knows-what, probably making kube-scripts-that-*really*-oughta-be-mods
+Maybe GitHub will fully pivot into being a social media with direct messaging capabilities. When that happens I can be found at [Notenoughmail](https://github.com/Notenoughmail) doing who-knows-what
 
 ## <span style="font-size:0em;">Modrinth & CurseForge</span><a href="https://modrinth.com/user/Notenoughmail"><img src="/assets/images/modrinth.png" alt="Modrinth"></a><a href="https://www.curseforge.com/members/notenoughmail/projects"><img src="/assets/images/curseforge.png" alt="CurseForge"></a>
 
@@ -49,6 +49,6 @@ Want to contact me through email? You can do that at <a href="mailto:roughlyenou
 
 ## <span style="font-size:0em;">YouTube</span><a href="https://www.youtube.com/@justenoughmail"><img src="/assets/images/youtube.png" alt="YouTube"></a>
 
-I do have a youtube, you might've seen used in other parts of the site for videos. I can be found at [Just Enough Mail](https://www.youtube.com/@justenoughmail), though I don't post much of anything
+I do have a youtube, you might've seen used in other parts of the site for videos. I can be found at [Just Enough Mail](https://www.youtube.com/@justenoughmail), though I don't post all that often
 
-[^1]: [Yes, yes, I know, it hurts me too](https://web.archive.org/web/20230526160925/https://cohost.org/cathoderaydude/post/474632-someone-asked-in-the), I'm not not a webdev, but I do try to make my wikis as thorough as I can
+[^1]: [Yes, yes, I know, it hurts me too](https://web.archive.org/web/20221128113222/https://cohost.org/cathoderaydude/post/474632-someone-asked-in-the), I'm not not a webdev, but I do try to make my wikis as thorough as I can

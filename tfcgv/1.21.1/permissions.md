@@ -19,14 +19,18 @@ Visualizer types have a three layer permission system consisting of
 - A global visualizer types filter: A global visualizer type filter. Checked last, defaults to not allowing visualization if unset
 
 A similar permission system also exists for the ancillary visualizer features for
-    - Drawing the spawn region
-    - Being able to export any generated preview images
-    - Being able to see coordinates in the preview screen
+
+- Drawing the spawn region
+- Being able to export any generated preview images
+- Being able to see coordinates in the preview screen
+
 These also have a three layer permission system
 
 - A global deny list: Any ancillary features in this category will not, under any circumstance, be available to use/view
 - A per-player filter: Allows for feature overrides to be implemented on a per-player basis. Takes complete precedence over the global filter if present for a player
 - A global filter: A global filter for ancillary features. Checked last, defaults to disallow for all ancillary features
+
+By default, all permissions are set to deny access (even in single player worlds)
 
 ## Configuration
 

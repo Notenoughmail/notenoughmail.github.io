@@ -21,12 +21,13 @@ Click <a href="/hidden/updates.html#full" target=htmz>here</a> to display the fu
 
 <div id="full"></div>
 
+{% assign updates = site.pages | where: 'update_post', true | sort: 'date' | reverse %}
+
 ## KubeJS TFC Updates
 
 <ul>
-{% assign posts = site.posts | reverse %}
-{% for post in posts %}
-{% if post.kjstfc %}
+{% for post in updates %}
+{% if post.layout == 'kjstfc' %}
 <li><a href="{{ post.url }}">{{post.version | xml_escape}}</a></li>
 {% endif %}
 {% endfor %}
@@ -35,9 +36,8 @@ Click <a href="/hidden/updates.html#full" target=htmz>here</a> to display the fu
 ## Precision Prospecting Updates
 
 <ul>
-{% assign posts = site.posts | reverse %}
-{% for post in posts %}
-{% if post.precpros %}
+{% for post in updates %}
+{% if post.layout == 'precpros' %}
 <li><a href="{{ post.url }}">{{post.version | xml_escape}}</a></li>
 {% endif %}
 {% endfor %}
@@ -46,9 +46,8 @@ Click <a href="/hidden/updates.html#full" target=htmz>here</a> to display the fu
 ## ConfigJS Updates
 
 <ul>
-{% assign posts = site.posts | reverse %}
-{% for post in posts %}
-{% if post.configjs %}
+{% for post in updates %}
+{% if post.layout == 'configjs' %}
 <li><a href="{{ post.url }}">{{post.version | xml_escape}}</a></li>
 {% endif %}
 {% endfor %}
@@ -57,9 +56,8 @@ Click <a href="/hidden/updates.html#full" target=htmz>here</a> to display the fu
 ## TFCGenViewer Updates
 
 <ul>
-{% assign posts = site.posts | reverse %}
-{% for post in posts %}
-{% if post.tfcgv %}
+{% for post in updates %}
+{% if post.layout == 'tfcgv' %}
 <li><a href="{{ post.url }}">{{post.version | xml_escape}}</a></li>
 {% endif %}
 {% endfor %}

@@ -87,13 +87,26 @@ module Jekyll
     end
 
     def to_console(input)
-      puts input
+      puts "%s {%s}" % [ input, input.class ]
       input
     end
 
     def map_console(input, property)
       puts Liquid::StandardFilters::InputIterator.new(input).map { |e| e[property] }
       input
+    end
+
+    def print_sort(input, property)
+      input.map { |i| [i.data[property.to_s], i] }
+        .sort! { |i1, i2|
+          p1 = i1.first
+          p2 = i2.first
+          puts "%s {%s} from %s" % [p1, p1.class, i1]
+          puts "%s {%s} from %s" % [p2, p2.class, i2]
+          puts ''
+          p1 <=> p2
+        }
+        .map!(&:last)
     end
 
     private def compare(a, b)
@@ -106,7 +119,7 @@ module Jekyll
       elsif b.nil?
         -1
       else
-        raise Liquid::ArgumentError, "cannpt sort values of incompatable types"
+        raise Liquid::ArgumentError, "cannot sort values of incompatable types"
       end
     end
   end

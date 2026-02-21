@@ -20,16 +20,16 @@ This series is also part of larger collection of works known as the [Progenitolo
 ## By Post Date
 
 <ul>
-{% assign posts = site.posts | where: "cat", "olwicks" | sort: "date" %}
+{% assign posts = site.pages | where: "writing", "true" | where: "cat", "olwicks" | sort: "date" %}
 {% for post in posts %}
-<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+<li><a href="{{ post.url }}">{{ post.title }}</a>  <time class="publish-date" datetime="{{ post.date | date: '%F' }}">{{ post.date | date: "%B %-d, %Y" }}</time></li>
 {% endfor %}
 </ul>
 
 ## Chronologically
 
 - [Ghost's Lifeline](../ghosts-lifeline)
-- [In Memoria](../in-memoria)
+- [In Memoria](../in-memoria) [First & last scenes]
 - [Enter Hoss](../enter-hoss)
 - [Takeoff](../takeoff)
 - [Cloud Watching](../cloud_watching)

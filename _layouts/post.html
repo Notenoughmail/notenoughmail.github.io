@@ -5,7 +5,7 @@ nav_exclude: false
 ---
 
 <body>
-    {% unless page.tags == empty %}
+    {% if page.tags %}
     <details class="tags">
         <summary>Tags</summary>
         <span style="font-style:small;"><ul>
@@ -14,7 +14,7 @@ nav_exclude: false
             {% endfor %}
         </ul></span>
     </details>
-    {% endunless %}
+    {% endif %}
 </body>
 
 {{ content }}

@@ -2,15 +2,15 @@
 layout: none
 permalink: /writing/feed.xml
 ---
-<?xml version="1.0" encoding="UTF-8"?>{% capture asset_join %}img src="{{ site.url }}/assets/{% endcapture %}{% capture asset_split %}img src="/assets/{% endcapture %}
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/hidden/rss_style.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>NotEnoughMail's Writings</title>
-        <description>Various bits of creative writing and maybe even a blog(?)</description>
+        <description>Various bits of creative writing and other ramblings</description>
         <link>{{ site.url }}</link>
         <atom:link href="{{ site.url }}/writing/feed.xml" rel="self" type="application/rss+xml" />
-        {% assign posts = site.posts | where: "cat", "writing" %}
+        {% assign posts = site.pages | where: "writing", "true" | sort: "date" | reverse %}
         {% for post in posts limit:10 %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
@@ -36,7 +36,7 @@ permalink: /writing/feed.xml
                     </ul></span>
                 </details>
                 {% endunless %}
-                {{ post.content | split: asset_split | join: asset_join }}
+                {{ post.content | xml_escape }}
             {% endcapture %}
             <description>{{ desc | xml_escape }}</description>
             <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
