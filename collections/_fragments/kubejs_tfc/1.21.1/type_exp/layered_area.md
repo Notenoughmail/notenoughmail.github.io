@@ -21,7 +21,7 @@ cat:
     - `seed: int`{:.langauage-kube-21}: The seed for the {{ a_ctx }}'s random
 - `.smooth(seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-smooth }: Applies a smoothing layer to the area. The param is the seed used by the {{ a_ctx }}'s random
 - `.transform(transformer: TransformLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-transform }: Applies an arbitrary {{ transform }} to the area. The params are:
-    - `transformer: TransformLayer`{:.langauge-kube-21}: The transformer
+    - `transformer: TransformLayer`{:.language-kube-21}: The transformer
     - `seed: int`{:.language-kube-21}: The seed used by the {{ a_ctx }}'s random
 - `.adjacentTransform(transformer: AdjacentTransformerLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-adjacent-transform }: Applies an arbitrary `Transformlayer`{:.f} that has [access to neighboring values](#{{ page.anchor }}-adjacent-transform-layer). The params are:
     - `transformer: AdjacentTransformLayer`{:.language-kube-21}: The transformer

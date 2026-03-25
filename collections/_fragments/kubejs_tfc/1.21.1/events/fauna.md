@@ -1,5 +1,6 @@
 ---
 type: startup
+name: faunaSpawns
 title: Fauna Spawns
 anchor: fauna-spawns
 cat:

@@ -60,6 +60,7 @@ module Rouge
                         "AqueductModelPart", "SpikeModelPart", "LampModelType",
                         "DeadModelVariant",  "GrassModelPart", "ClutchModelType",
                         "GearBoxModelType",  "CropType",
+                        "FallenLeafModelType",
                         # Addons
                         "Punishment",
                         "PlanterType"
@@ -110,7 +111,7 @@ module Rouge
                     # TFC
                     "Noise2D",  "Noise3D", "OnItemUseAction",
                     # KubeJS TFC
-                    "MergeLayer", "TransformLayer", "AdjacentTransformlayer", "SourceLayer",
+                    "MergeLayer", "TransformLayer", "AdjacentTransformLayer", "SourceLayer",
                     "RocksGetter"
                 ]
             end

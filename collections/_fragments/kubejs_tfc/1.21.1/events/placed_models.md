@@ -1,6 +1,6 @@
 ---
 type: client
-name: placeItemModels
+name: placedItemModels
 title: Placed Item Models
 anchor: placed-item-model
 cat:

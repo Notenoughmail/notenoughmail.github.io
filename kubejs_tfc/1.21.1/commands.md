@@ -102,7 +102,7 @@ Converts one or more in-world tree templates into trees which properly interact 
 This command replaces template blocks in-world with the selected log and leaves blocks in the correct block state. There are three template blocks:
 
 - `minecraft:light_blue_stained_glass`: Marks a root position, or the 'origin' of a tree. This is the only block *required* to be within the scan area. Must have a `minecraft:brown_stained_glass` block immediately above it; and for a `<trunk_size>`{:.v} of `2`{:.v}, it should be in a two by two pattern
-- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker(s) breadth-first along this block. The solver will connect to ant log marker in the 3 by 3 by 3 area centered at the current position, though the lowest order[^2] connection that is valid will be used
+- `minecraft:brown_stained_glass`: Marks a log position. The solver climbs upwards from the root marker(s) breadth-first along this block. The solver will connect to any log marker in the 3 by 3 by 3 area centered at the current position, though the lowest order[^2] connection that is valid will be used
 - `minecraft:green_stained_glass`: Marks a leaf position. Markers beyond the decay range of the leaves block will *not* be replaced
 
 [^2]: Order 1: share a face, order 2: share an edge, order 3: share a vertex

@@ -32,7 +32,7 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Forest](#forest)
 - [Forest Entry](#forest-entry)
 - [Overlay Tree](#overlay-tree)
-- [Random Tree](#random-patch)
+- [Random Tree](#random-tree)
 - [Stacked Tree](#stacked-tree)
 - [Krummholz](#krummholz)
 - [Generic Features](#generic)
