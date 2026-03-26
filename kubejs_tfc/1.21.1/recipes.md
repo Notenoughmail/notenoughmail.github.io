@@ -122,7 +122,7 @@ event.recipes.tfc.anvil(
 
 ```js-21
 ServerEvents.recipes(event => {
-    event.receipes.tfc.anvil(
+    event.recipes.tfc.anvil(
         'minecraft:iron_bars',
         'minecraft:iron_nugget',
         [
