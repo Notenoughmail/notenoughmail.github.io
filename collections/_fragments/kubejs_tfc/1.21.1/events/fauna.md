@@ -12,12 +12,15 @@ example:
     - event.and('minecraft:cow')
 ---
 
-This event allows for registering a [data driven]({% link kubejs_tfc/1.21.1/data.md %}#fauna) spawn condition of entity types
+This event enables an entity to have [data driven]({% link kubejs_tfc/1.21.1/data.md %}#fauna) spawn conditions that depend on TFC's climatic parameters
 
-{: .warning #{{ page.anchor }}-warning }
+{: .notice #{{ page.anchor }}-warning }
 > This event functions by wrapping the relevant [NeoForge event](https://github.com/neoforged/NeoForge/blob/1.21.1/src/main/java/net/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent.java). Typically, this does not cause issues iff all other mods use the event like they're supposed to. Unfortunately, multiloader mods (and Fabric mods via Connector) are unlikely to use NeoForge's event (or the relevant [Architectury event](https://github.com/architectury/architectury-api/blob/1.21/common/src/main/java/dev/architectury/registry/level/entity/SpawnPlacementsRegistry.java) that delegates to Neo's), leading to startup crashes when using this event for entities from said mods
 >
 > In such cases, please open an issue on the mod's page informing them of the proper way to register spawn placements. If the issue is with a Fabric mod loaded via Connector, a resolution to the issue is unlikely
+
+{: .related #{{ page.anchor }}-biome-spawns }
+> In order to spawn, mobs must also be added to a biome's spawn list. NeoForge provides a [biome modifier type](https://docs.neoforged.net/docs/1.21.1/worldgen/biomemodifier#add-spawns) which can add spawns to biomes.
 
 {: #{{ page.anchor }}-methods }
 
