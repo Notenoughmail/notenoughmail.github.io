@@ -82,6 +82,9 @@ exclude:
   - vendor/ruby/
   - README.md
   - vsc_ext/
+  - _plugins/
+  - .vscode/
+  - .idea/
 
 post-tags:
   olwicks:

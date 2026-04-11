@@ -22,7 +22,7 @@ module Jekyll
       # Multiline for the rare occasion that a full code block is inside a callout
       def make_callout_regexs
         c = Jekyll.sites[0].config['callouts'].keys.map{ |k| k.to_s }.join("|")
-        return [
+        [
           /\<(p|blockquote)\sclass="(?:#{c})"\sid="(.+?)"\>.*?\<\/\1\>/m.freeze,
           /(\<(p|blockquote)\sclass="(?:#{c})"\sid=".+?"\>.*?\<\/\2\>)/m.freeze
         ]
@@ -31,7 +31,7 @@ module Jekyll
       def make_anchor(text, id, clazz)
         anchor = Liquid::Template.parse("{% include anchor.html id='#{id}' clazz='#{clazz}' text='#{text}' %}")
         anchor.registers[:site] = Jekyll.sites[0]
-        return anchor.render()
+        anchor.render
       end
 
       def code(str)
@@ -46,7 +46,7 @@ module Jekyll
             end
           }
         end
-        return str
+        str
       end
 
       def callout(str)
@@ -64,7 +64,7 @@ module Jekyll
             end
           }
         end
-        return str
+        str
       end
 
       def wrap_identified_callouts_and_code_blocks(page)

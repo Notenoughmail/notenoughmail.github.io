@@ -1,5 +1,6 @@
 # VSC decided to suck even more than usual
 .vscode
+.idea
 Gemfile.lock
 _site/
 /.sass-cache

@@ -34,7 +34,7 @@ module Rouge
 
       def next_color()
         if @should_increment_color
-          if @color_index < @colors.count() - 1
+          if @color_index < @colors.count - 1
             @color_index = @color_index + 1
           else
             @color_index = 2
@@ -42,37 +42,37 @@ module Rouge
         end
       end
 
-      def color()
+      def color
         @colors[@color_index]
       end
 
-      def whitespace()
-        next_color()
+      def whitespace
+        next_color
         Text
       end
 
       state :root do
 
         rule /\s+\u200C/ do
-          token whitespace()
+          token whitespace
           @should_increment_color = false
         end
 
         rule /\u200C/ do
-          token whitespace()
+          token whitespace
           @should_increment_color = true
         end
 
         rule /\s+/ do
-          token whitespace()
+          token whitespace
         end
 
         rule /^(\/\w+)(\s)/ do
-          groups color(), whitespace()
+          groups color, whitespace
         end
 
         rule /[^\s\u200C]+/ do
-          token color()
+          token color
         end
 
       end

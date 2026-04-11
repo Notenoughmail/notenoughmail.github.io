@@ -1,6 +1,7 @@
+
 class ColorTag < Liquid::Tag
 
-  def initialize(tagName, content, tokens)
+  def initialize(tag_name, content, tokens)
     super
     content = content.strip.split("|")
     @color = content[0].downcase
@@ -8,7 +9,7 @@ class ColorTag < Liquid::Tag
   end
 
   def render(context)
-    return "<span style=\"color:##{@color};\">#{@text}</span>"
+    "<span style=\"color:##{@color};\">#{@text}</span>"
   end
 
   Liquid::Template.register_tag "color", self

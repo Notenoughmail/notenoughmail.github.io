@@ -1,7 +1,7 @@
 
 class BumpOutBlock < Liquid::Block
 
-  def initialize(tagName, markup, options)
+  def initialize(tag_name, markup, options)
     super
     @type = markup.nil? || markup.empty? ? "p" : markup.strip
   end
@@ -12,7 +12,7 @@ class BumpOutBlock < Liquid::Block
   end
 
   class BumpOutLine < Liquid::Tag
-    def initialize(tagName, text, tokens)
+    def initialize(tag_name, text, tokens)
       super
       content = text.split("|")
       @type = content.length > 1 ? content[0].strip : "span"

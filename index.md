@@ -26,3 +26,5 @@ Occasionally, I might write something, this is an archive for all of that
 ## [Links & Contact](contact/)
 
 If for some reason you want to get in touch or otherwise find me elsewhere on the internet, this page should hopefully be helpful with that
+
+*This site and all its content is proudly AI-free!*
