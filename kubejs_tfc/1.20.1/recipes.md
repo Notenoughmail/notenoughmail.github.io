@@ -116,16 +116,20 @@ event.recipes.tfc.welding(
     result: ItemStackProvider,
     firstInput: Ingredient,
     secondInput: Ingredient,
-    tier?: number,
-    combineForgingBonus?: boolean
+    tier?: number
 )
+    // Additional methods
+    .combineForgingBonus(combineForgingBonus: boolean)
 ```
 
 - 1st argument: An [`ItemStackProvider`]({% link kubejs_tfc/1.20.1/bindings.md %}#item-stack-provider), the result of the recipe
 - 2nd argument: An item ingredient
 - 3rd argument: An item ingredient
 - *Optional 4th argument*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`{:.n}
-- *Optional 5th argument*: A boolean, if the lowest forging bonus of the input stacks should be copied to the result, defaults to `false`{:.p}
+
+<span></span>
+
+- `.combineForgingBonus(combineForgingBonus: boolean)`{: .language-kube-21 #anvil-welding-combine-forging-bonus }: Accepts a boolean and sets if the recipe will copy the lowest forging bonus of the input stacks to the result. Defaults to `false`{:.p}
 
 {: #welding-example }
 
