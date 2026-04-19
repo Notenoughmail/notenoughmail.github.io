@@ -25,6 +25,7 @@ module Rouge
                         "Nutrient", "InteractionManager$Target",
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
+                        "GenerationStep$Decoration", "GenerationStep$Carving",
                         # KubeJS TFC
                         "AqueductModelPart", "ClutchModelType", "PebbleCount",
                         "GearBoxModelType", "GrassModelPart", "LampModelType",

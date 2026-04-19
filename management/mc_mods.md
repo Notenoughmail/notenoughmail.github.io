@@ -26,3 +26,7 @@ A KubeJS addon which allows user to make their own toml config files through scr
 ## [TFCGenViewer](/tfcgv/)
 
 A TFC addon for displaying world generation before and after creating a world
+
+## [WorldJS](/worldjs/)
+
+A KubeJS addon for changing world generation related properties and features

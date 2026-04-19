@@ -4,10 +4,19 @@ require 'liquid'
 module Jekyll
   module SiteFilters
 
-    def render_liquid(input)
+    def render_liquid(input, print = false)
+      if print
+        puts input
+        puts "=====V====="
+      end
       out = Liquid::Template.parse(input)
       out.registers[:site] = @context.registers[:site]
-      out.render
+      r = out.render
+      if print
+        puts r
+        puts "---   ---"
+      end
+      r
     end
 
     def render_markdown(input)
@@ -20,7 +29,7 @@ module Jekyll
       ary = Liquid::StandardFilters::InputIterator.new(input)
       target_values.each do |target_value|
         ary = ary.select do |item|
-          raise "'#{item['title']}' is incompatible with '#{property}' property" if item[property].nil?
+          raise "'#{to_console(item)['title']}' is incompatible with '#{property}' property" if item[property].nil?
 
           item[property].include?(target_value)
         end
@@ -52,11 +61,11 @@ module Jekyll
       end
     end
 
-    def replace_inline(input, map)
+    def replace_inline(input, map, print = false, page = nil)
       map.each do |match, replacement|
         input = input.gsub(
           /\[\[\s*?#{match}\s*?\]\]/,
-          render_replacement(replacement)
+          render_replacement(replacement, print, page)
         )
       end
       input
@@ -64,16 +73,29 @@ module Jekyll
 
     def replace_in_fragments(input, map, print = false)
       out = []
-      m = {}
-      map.each do |k, v|
-        m[k] = render_replacement(v)
+      if print
+        m = {}
+        map.each do |k, v|
+          m[k] = render_replacement(v, true) # render w/out page context
+        end
+        puts "=====w/out page====="
+        puts map
+        puts "=====V====="
+        puts m
+        puts "---   ---"
       end
       Liquid::StandardFilters::InputIterator.new(input).each do |f|
         f = dup(f)
         content = get_content(f, print)
-        puts content if print
-        m.each do |match, replacement|
-          content = content.gsub(/\[\[\s*?#{match}\s*?\]\]/, replacement)
+        if print
+          puts "=====w/ page====="
+          puts content
+        end
+        content = replace_inline(content, map, print, f)
+        if print
+          puts '=====V====='
+          puts content
+          puts "---   ---"
         end
         f['clean'] = content
         out.push(f)
@@ -202,12 +224,21 @@ module Jekyll
       end
     end
 
-    def render_replacement(r)
+    def render_replacement(r, print = false, page = nil)
       render_markdown(
         render_liquid(
           r.to_s.strip
-           .gsub('{{{', '{%')
-           .gsub('}}}', '%}')
+            .gsub('\#', '#')
+            .gsub('{{{', '{%')
+            .gsub('}}}', '%}')
+            .gsub(%r{\[\[\s*?(.+?)\s?\]\]}) do |m|
+              m = m.strip[2...-2].strip
+              if print
+                puts "==> #{m}"
+              end
+              page.nil? ? 'nil' : page[m]
+            end,
+          print
         )
       )
     end

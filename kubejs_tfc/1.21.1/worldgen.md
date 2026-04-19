@@ -36,4 +36,15 @@ Worldgen features are primarily done through placed and configured features. Kub
 
 {{ feature.clean }}
 
+{: #{{ feature.anchor }}-example }
+
+### Example
+
+```js-21
+ServerEVents.registry('minecraft:configured_feature', event => {
+    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', '{{ feature.type }}'){% for ex in feature.example %}
+        {{ ex }}{% endfor %}
+})
+```
+
 {% endfor %}

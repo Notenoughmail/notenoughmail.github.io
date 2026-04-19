@@ -1,15 +1,15 @@
 ---
 layout: page
 title: 1.21.1
-permalink: /kubejs_tfc/1.21.1/
-parent: KubeJS TFC
+permalink: /worldjs/1.21.1/
+parent: WorldJS
 has_children: true
 has_toc: false
 ---
 
 # 1.21.1
 
-{% assign pages = site.pages | where: "grand_parent", "KubeJS TFC" | where: "parent", "1.21.1" | sort: "title" %}
+{% assign pages = site.pages | where: "grand_parent", "WorldJS" | where: "parent", "1.21.1" | sort: "title" %}
 
 {% for page in pages %}
 
