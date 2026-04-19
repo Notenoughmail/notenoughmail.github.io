@@ -22,6 +22,7 @@ There are commands for:
 - ['Solving' a tree template for use in structures](#tree-solver)
 - [Inspecting `Noise2D` objects](#inspect-2d-noise)
 - [Inspecting `Noise3D` objects](#inspect-3d-noise)
+- [Searching for a specific rock type](#search-for-rock)
 
 ## List IDs
 
@@ -200,3 +201,16 @@ The gradient, from lowest to highest, is represented as:
 - {% color 7B2FBE|▮ %} Purple Stained Glass
 - {% color 51301A|▮ %} Brown Stained Glass
 - {% color 1E1B1B|▮ %} Black Stained Glass
+
+## Search for Rock
+
+The search for rock command finds a specified rock block in the world at the surface or a specified elevation
+
+The command has the following form:
+
+`/kubejs_tfc search_for_rock <rock> <radius> <sample_spacing> [<elevation>]`{: .language-command }
+
+- `<rock>`{:.v}: A block, the raw rock block to find
+- `<radius>`{:.m}: A number, the radius, {% in_range 16,5000 %} blocks, to search around the player's position
+- `<sample_spacing>`{:.s}: A number, the spacing, {% in_range 16,,) %} blocks, between each concentric search region
+- `[<elevation>]`{:.r}: A number. If present, the elevation to search at

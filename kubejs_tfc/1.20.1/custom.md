@@ -462,7 +462,7 @@ Inherits the methods of the stationary bush builder
 #### Extra Methods
 
 - `.maxHeight(i: number)`{: .language-kube-20 #spreading-bush-max-height }: Sets the maximum number of blocks the bush may climb, defaults to `3`{:.n}
-- `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-kube-20 #spreading-bush-cane }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
+- `.cane(id?: ResourceLocation, cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-kube-20 #spreading-bush-cane }: Sets the properties of the cane block of this bush. Has the same id as the bush, but with `_cane` appended to the end. Has the same methods as the default block builder and:
     - `.model(lifecycle: Lifecycle, stage: number, modelGenerator: Consumer<ModelGenerator>)`{: .language-kube-20 #cane-bush-model }: Sets the model for the given lifecycle and stage. Stage can be be one of `0`{:.n}, `1`{:.n}, and `2`{:.n}
     - `.models(models: TriConsumer<Lifecycle, number, ModelGenerator>)`{: .language-kube-20 #cane-bush-models }: Sets the model for all lifecycle and stage combinations
     - `.texture(lifecycle: Lifecycle, stage: number, texture: String)`{: .language-kube-20 #cane-bush-texture-0 }: Sets the cane texture for the given lifecycle and stage
@@ -497,7 +497,7 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-kube-20 #dirt-grass }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
+- `.grass(id?: ResourceLocation, grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-kube-20 #dirt-grass }: Sets the properties of the dirt block's grass block. Has the same id as the dirt block but with `_grass` appended to the end. Has the following methods:
     - Those of the default block builder
     - `.uniqueDirtTexture()`{: .language-kube-20 #dirt-grass-unique-texture}: Textures the side of the grass block with a texture path based on the grass block instead of the dirt block
     - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{: .language-kube-20 #dirt-grass-models }: Sets the model generation of the grass block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
@@ -505,12 +505,12 @@ Inherits the methods of the default block builder
         - `side`: A boolean. If the model part in operation represents a side part
         - `top`: A boolean. If the model part in operation represents a top part
         - `bottom`: A boolean. If the model part in operation represents a bottom part
-- `.path(path: Consumer<TFCPathBlockBuilder>)`{: .language-kube-20 #dirt-path }: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
-- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-kube-20 #dirt-farmland }: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
+- `.path(id?: ResourceLocation, path: Consumer<TFCPathBlockBuilder>)`{: .language-kube-20 #dirt-path }: Creates and sets the properties of the dirt block's path bloc. Has the same id as the dirt block but with `_path` appended to the end. Has the same methods as the default block builder
+- `.farmland(id?: ResourceLocation, farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-kube-20 #dirt-farmland }: Creates and sets the properties of the dirt block's farmland block. Has the same id as the dirt block but with `_farmland` appended to the end. Has the following methods:
     - Those of the default block builder
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 #dirt-farmland-extend-properties }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-kube-20 #dirt-rooted }: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
-- `.mud(mud: Consumer<BlockBuilder>)`{: .language-kube-20 #dirt-mud }: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
+- `.rooted(id?: ResourceLocation, rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-kube-20 #dirt-rooted }: Creates and sets the properties of the dirt block's rooted dirt block. Has the same id as the dirt block but with `_rooted` appended to the end. Has the same methods as the default block builder
+- `.mud(id?: ResourceLocation, mud: Consumer<BlockBuilder>)`{: .language-kube-20 #dirt-mud }: Creates and sets the properties of the dirt block's mud block. Has the same id as the dirt block but with `_mud` appended to the end
 
 {: #dirt-example }
 
@@ -588,13 +588,13 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.stages(i: number)`{: .language-kube-20 #crop-stages }: Sets the number of growth stages the block has, should be a number between `1`{:.n} and `12`{:.n}, defaults to `8`{:.n}
-- `.deadBlock(deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-kube-20 #crop-dead }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
+- `.deadBlock(id?: ResourceLocation, deadCrop: Consumer<DeadCropBlockBuilder>)`{: .language-kube-20 #crop-dead }: Sets the properties of the crop's dead block. Accepts a consumer with the same methods as the default block builder and:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<DeadModelVariant, ModelGenerator>)`{: .language-kube-20 }: Sets the model generation for the dead crop. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following methods:
         - `.variant()`{: .language-kube-20 }: A string. The variant key used for the model in the blockstate file
         - `.mature()`{: .language-kube-20 }: A boolean. If the variant in operation represents a mature state
-- `.seedItem(seedItem: Consumer<SeedItemBuilder>)`{: .language-kube-20 #crop-seed-item }: A consumer for setting the properties of the block's seed item
-- `.productItem(productItem: Consumer<ItemBuilder>)`{: .language-kube-20 #crop-product-item-0 }: A consumer for setting the properties of the block's product item
+- `.seedItem(id?: ResourceLocation, seedItem: Consumer<SeedItemBuilder>)`{: .language-kube-20 #crop-seed-item }: A consumer for setting the properties of the block's seed item
+- `.productItem(id?: ResourceLocation, productItem: Consumer<ItemBuilder>)`{: .language-kube-20 #crop-product-item-0 }: A consumer for setting the properties of the block's product item
 - `.existingProductItem(productItem: ResourceLocation)`{: .language-kube-20 #crop-product-item-1 }: Sets the crop's 'product' item to be an existing item, will be prevent the other product item from existing
 - `.nutrient(nutrient: NutrientType)`{: .language-kube-20 #crop-nutrient }: Sets the nutrient the crop consumes, available options are `nitrogen`{:.e}, `phosphorous`{:.e} , and `potassium`{:.e}, defaults to `nitrogen`{:.e}
 - `.textureAll(id: String, texture: String)`{: .language-kube-20 #crop-texture-all }: Sets the crop's texture for the id for all growth stages
@@ -757,7 +757,7 @@ Will not automatically support blocks, use the [support method]({% link kubejs_t
 
 #### Extra methods
 
-- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-20 #support-horizontal }: Allows for editing of the properties of the horizontal block
+- `.horizontal(id?: ResourceLocation, horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-20 #support-horizontal }: Allows for editing of the properties of the horizontal block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 #support-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -813,25 +813,25 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.axleTexture(texture: String)`{: .language-kube-20 #axle-axle-texture}: Sets the texture the axle will be rendered with
-- `.windmill(windmill: Consumer<WindmillBlockBuilder>)`{: .language-kube-20 #axle-windmill }: Sets the properties of the axle's windmill block
+- `.windmill(id?: ResourceLocation, windmill: Consumer<WindmillBlockBuilder>)`{: .language-kube-20 #axle-windmill }: Sets the properties of the axle's windmill block
     - The consumer has the same methods as the default block builder and one additional one:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
-- `.waterWheel(waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-kube-20 #axle-water-wheel }: Creates and sets the properties of the axle's water wheel block
+- `.waterWheel(id?: ResourceLocation, waterWheel: Consumer<WaterWheelBlockBuilder>)`{: .language-kube-20 #axle-water-wheel }: Creates and sets the properties of the axle's water wheel block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.texture(texture: string)`{: .language-kube-20 }: Sets the texture the water wheel will use, the path is relative to the `/textures/entity/water_wheel/`{:.language-fs} subdirectory
     - `.textureRaw(texture: String)`{: .language-kube-20 }: Sets the texture the water wheel will use, the path is relative to the `/textures/`{:.language-fs} subdirectory
-- `.gearBox(gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-kube-20 #axle-gear-box }: Creates and sets the properties of the axle's gear box block
+- `.gearBox(id?: ResourceLocation, gearBox: Consumer<GearBoxBlockBuilder>)`{: .language-kube-20 #axle-gear-box }: Creates and sets the properties of the axle's gear box block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<GearBoxModelType, ModelGenerator>)`{: .language-kube-20 }: Sets the model generation of the gear box. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following method:
         - `.port()`{: .language-kube-20 }: A boolean. If the model type in operation represents a port (open) state
-- `.clutch(clutch: Consumer<ClutchBlockBuilder>)`{: .language-kube-20 #axle-clutch }: Creates and sets the properties of the axle's clutch block
+- `.clutch(id?: ResourceLocation, clutch: Consumer<ClutchBlockBuilder>)`{: .language-kube-20 #axle-clutch }: Creates and sets the properties of the axle's clutch block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
     - `.models(models: BiConsumer<ClutchModelType, ModelGenerator>)`{: .language-kube-20 }: Sets the model generation of the clutch. Accepts a callback with two parameters. The second parameter is a model generator, the first has the following method:
         - `.powered()`{: .language-kube-20 }: A boolean. If the model type in operation represents a powered state
-- `.bladedAxle(bladed: Consumer<BladedAxleBlockBuilder>)`{: .language-kube-20 #axle-bladed-axle }: Creates and sets the properties of the axle's bladed axle block
+- `.bladedAxle(id?: ResourceLocation, bladed: Consumer<BladedAxleBlockBuilder>)`{: .language-kube-20 #axle-bladed-axle }: Creates and sets the properties of the axle's bladed axle block
     - The consumer has the same methods as the default block builder plus:
     - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
 - `.extendedProperties(props: Consumer<ExtendedPropertiesJS>)`{: .language-kube-20 #axle-extend-props }: A consumer, that sets some of TFC's [extended properties](#extended-properties)
@@ -880,7 +880,7 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-kube-20 #log-stripped }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in `null`{:.p} to remove the stripped block
+- `.stripped(id?: ResourceLocation, builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-kube-20 #log-stripped }: Sets the properties of the stripped log variant, consumer has same methods as this block except for this method. May pass in `null`{:.p} to remove the stripped block
 - `.useFullBlockForItemModel()`{: .language-kube-20 #log-full-item-model }: Makes the autogenerated item model use the model of the block instead of a custom texture
 
 {: #log-example }
@@ -909,14 +909,14 @@ Inherits the methods of the default block builder
 
 #### Extra Methods
 
-- `.deadItem(item: @Nullable Consumer<ItemBuidler>)`{: .language-kube-20 #torch-dead-item }: Sets the properties of the dead/unlit item, may be `null`{:.p} to not have a dead/unlit item
+- `.deadItem(id?: ResourceLocation, item: @Nullable Consumer<ItemBuidler>)`{: .language-kube-20 #torch-dead-item }: Sets the properties of the dead/unlit item, may be `null`{:.p} to not have a dead/unlit item
 - `.decayLength(i: number)`{: .language-kube-20 #torch-decay-length }: Sets the time, in calendar ticks, the torch will burn for. Defaults to the value in TFC's server config value for torch burn length
 - `.decayLengthSupplier(length: Supplier<Integer>)`{: .language-kube-20 #torch-decay-length-supplier }: Sets the supplier for the time, in calendar ticks, the torch will burn for. Defaults to using TFC's server config value for torch burn length
 - `.flameParticle(particle: String)`{: .language-kube-20 #torch-flame-particle }: Sets the flame particle of the torch, may be null to not have a flame particle. Defaults to `minecraft:flame`[^1]
 - `.smokeParticle(particle: String)`{: .language-kube-20 #torch-smoke-particle }: Sets the smoke particle of the torch, may be null to not have a smoke particle. Defaults to `minecraft:smoke`[^1]
-- `.dead(dead: Consumer<DeadTorchBuidler>)`{: .language-kube-20 #torch-dead }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
-- `.wall(wall: Consumer<WallTorchBuilder>)`{: .language-kube-20 #torch-wall }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
-- `.deadWall(deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-kube-20 #torch-dead-wall }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
+- `.dead(id?: ResourceLocation, dead: Consumer<DeadTorchBuidler>)`{: .language-kube-20 #torch-dead }: Sets the properties of the dead/unlit block. Accepts a consumer with all the methods of the default block builder
+- `.wallid?: ResourceLocation, (wall: Consumer<WallTorchBuilder>)`{: .language-kube-20 #torch-wall }: Sets the properties of the wall block. Accepts a consumer with the methods of the default block builder
+- `.deadWall(id?: ResourceLocation, deadWall: Consumer<DeadWallTorchBuidler>)`{: .language-kube-20 #torch-dead-wall }: Sets the properties of the dead/unlit wall block. Accepts a consumer with the methods of the default block builder
 - `.deadModel(model: String)`{: .language-kube-20 #torch-dead-model }: Sets the model for the dead block and item
 
 {: #torch-example }
@@ -983,7 +983,7 @@ Inherits the methods of the default block builder
 #### Extra Methods
 
 - `.autumnIndex(i: number)`{: .language-kube-20 #leaves-autumn-index }: Sets the vertical coordinate, {% in_range 0,255 %}, on TFC's `foliage_fall` colormap for leaves. Defaults to `0`{:.n}
-- `.fallenLeaves(fallenLeaves: @Nullable Consumer<FallenLeavesBlockBuidler>)`{: .language-kube-20 #leaves-fallen }: Sets the properties of the fallen leaves block. May pass null to not have a fallen leaves block
+- `.fallenLeaves(id?: ResourceLocation, fallenLeaves: @Nullable Consumer<FallenLeavesBlockBuidler>)`{: .language-kube-20 #leaves-fallen }: Sets the properties of the fallen leaves block. May pass null to not have a fallen leaves block
     - The consumer has the same methods as the default block builder and:
     - `.models(models: BiConsumer<FallenLeafModelType, ModelGenerator>)`{: .language-kube-20 }: Sets the model generation of the fallen leaves block. Accepts a callback with two parameters. The second parameter is a model generator and the first has the following properties:
         - `.height`{: .language-kube-20 }: A number, the height in pixels of the state
@@ -1017,7 +1017,7 @@ Inherits the methods of the default block builder
 
 #### Extra Method
 
-- `.sliceItem(slice: Consumer<ItemBuilder>)`{: .language-kube-20 #cheese-wheel-slice }: Sets the properties of the cheese wheel's slice item
+- `.sliceItem(id?: ResourceLocation, slice: Consumer<ItemBuilder>)`{: .language-kube-20 #cheese-wheel-slice }: Sets the properties of the cheese wheel's slice item
 - `.freshInsideTexture(tex: String)`{: .language-kube-20 #cheese-wheel-fresh-inside }: Sets the inside texture when the cheese is fresh
 - `.agedInsideTexture(tex: String)`{: .language-kube-20 #cheese-wheel-aged-inside }: Sets the inside texture when the cheese is aged
 - `.vintageInsideTexture(tex: String)`{: .language-kube-20 #cheese-wheel-vintage-inside }: Sets the inside texture when the cheese is vintage
