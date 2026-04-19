@@ -116,7 +116,8 @@ event.recipes.tfc.welding(
     result: ItemStackProvider,
     firstInput: Ingredient,
     secondInput: Ingredient,
-    tier?: number
+    tier?: number,
+    combineForgingBonus?: boolean
 )
 ```
 
@@ -124,6 +125,7 @@ event.recipes.tfc.welding(
 - 2nd argument: An item ingredient
 - 3rd argument: An item ingredient
 - *Optional 4th argument*: A number, the minimum tier of anvil the recipe may be completed on, defaults to `-1`{:.n}
+- *Optional 5th argument*: A boolean, if the lowest forging bonus of the input stacks should be copied to the result, defaults to `false`{:.p}
 
 {: #welding-example }
 
