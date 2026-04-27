@@ -19,7 +19,7 @@ example:
     - "    A: 'minecraft:water_bucket'"
     - "}"
 example_add:
-    - ".remainder(TFC.isp.empty()"
+    - ".remainder(TFC.isp.empty())"
 sig:
     - "result: ItemStackProvider,"
     - "pattern: List<String>"

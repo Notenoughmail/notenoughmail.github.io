@@ -30,8 +30,8 @@ module Rouge
                         "AqueductModelPart", "ClutchModelType", "PebbleCount",
                         "GearBoxModelType", "GrassModelPart", "LampModelType",
                         "FallenLeavesModelType", "SpikeModelType",
-                        # Addons
-                        "ProspectorType"
+                        # Other
+                        "ProspectorType",
                     ], [
                         # KubeJS TFC
                         "ChiselBehavior", "WindFunction", "ClimateValueFunction", "TimelessClimateValueFunction",
