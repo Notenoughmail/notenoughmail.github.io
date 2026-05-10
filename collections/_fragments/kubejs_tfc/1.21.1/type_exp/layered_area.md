@@ -18,7 +18,7 @@ cat:
 - `.getAt(x: int, z: int): int`{: .language-kube-21 #{{ page.anchor }}-get-at }: Gets the value at the given x-z point
 - `.zoom(fuzzy: boolean, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-zoom }: Applies a zoom layer to the area, effectively doubling the 'resolution' of the area. The params are:
     - `fuzzy: boolean`{:.language-kube-21}: If the zooming function should apply a smoothing/dither-like operation along value boundaries
-    - `seed: int`{:.langauage-kube-21}: The seed for the {{ a_ctx }}'s random
+    - `seed: int`{:.language-kube-21}: The seed for the {{ a_ctx }}'s random
 - `.smooth(seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-smooth }: Applies a smoothing layer to the area. The param is the seed used by the {{ a_ctx }}'s random
 - `.transform(transformer: TransformLayer, seed: int): @Self LayeredArea`{: .language-kube-21 #{{ page.anchor }}-transform }: Applies an arbitrary {{ transform }} to the area. The params are:
     - `transformer: TransformLayer`{:.language-kube-21}: The transformer

@@ -7,14 +7,14 @@ module Jekyll
     def render_liquid(input, print = false)
       if print
         puts input
-        puts "=====V====="
+        puts '=====V====='
       end
       out = Liquid::Template.parse(input)
       out.registers[:site] = @context.registers[:site]
       r = out.render
       if print
         puts r
-        puts "---   ---"
+        puts '---   ---'
       end
       r
     end
@@ -38,6 +38,8 @@ module Jekyll
     end
 
     def multi_sort(input, properties)
+      raise "Cannot use 'sort' value to sort objects, it causes *many* headaches" if properties.include?('sort')
+
       ary = Liquid::StandardFilters::InputIterator.new(input)
 
       return [] if ary.empty?
@@ -78,24 +80,24 @@ module Jekyll
         map.each do |k, v|
           m[k] = render_replacement(v, true) # render w/out page context
         end
-        puts "=====w/out page====="
+        puts '=====w/out page====='
         puts map
-        puts "=====V====="
+        puts '=====V====='
         puts m
-        puts "---   ---"
+        puts '---   ---'
       end
       Liquid::StandardFilters::InputIterator.new(input).each do |f|
         f = dup(f)
         content = get_content(f, print)
         if print
-          puts "=====w/ page====="
+          puts '=====w/ page====='
           puts content
         end
         content = replace_inline(content, map, print, f)
         if print
           puts '=====V====='
           puts content
-          puts "---   ---"
+          puts '---   ---'
         end
         f['clean'] = content
         out.push(f)
@@ -157,7 +159,7 @@ module Jekyll
 
     def dump_from_context(input)
       puts @context[input].inspect
-      ""
+      ''
     end
 
     def len(input)
@@ -182,6 +184,27 @@ module Jekyll
         .map!(&:last)
     end
 
+    # https://gist.github.com/jbgo/4493822
+    def do_with_stack(input, method, *args)
+      puts "Inspecting stack of #{method}#{args}"
+      $stack_tracing = false
+      trace_out = open("#{method}_trace.txt", 'w')
+
+      set_trace_func proc { |event, file, line, id, _binding, classname|
+        trace_out.puts "#{file}:#{line} #{classname}##{id}" if $stack_tracing && event == 'call'
+      }
+
+      $stack_tracing = true
+      begin
+        @context.invoke(method, input, *args)
+      rescue SystemStackError => e
+        puts "Overflow occurred in #{method}!"
+        raise e
+      ensure
+        $stack_tracing = false
+      end
+    end
+
     def compare(a, b)
       r = a <=> b
 
@@ -200,8 +223,8 @@ module Jekyll
       if doc_drop['copy']
         doc_drop
       else
-        doc = doc_drop.doc
-        dup = Jekyll::Document.new(doc.path, :site => doc.site, :collection => doc.collection)
+        doc = doc_drop.instance_variable_get(:@obj)
+        dup = Document.new(doc.path, :site => doc.site, :collection => doc.collection)
         dup.read
         site = Jekyll.sites[0]
         dup.output = Renderer.new(site, dup, site.site_payload).run
@@ -233,9 +256,7 @@ module Jekyll
             .gsub('}}}', '%}')
             .gsub(%r{\[\[\s*?(.+?)\s?\]\]}) do |m|
               m = m.strip[2...-2].strip
-              if print
-                puts "==> #{m}"
-              end
+              puts "==> #{m}" if print
               page.nil? ? 'nil' : page[m]
             end,
           print
@@ -244,16 +265,6 @@ module Jekyll
     end
 
     private(:compare, :dup, :get_content, :render_replacement)
-  end
-end
-
-module Jekyll
-  module Drops
-    class DocumentDrop
-      def doc
-        @obj
-      end
-    end
   end
 end
 

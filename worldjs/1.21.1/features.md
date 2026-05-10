@@ -11,13 +11,13 @@ fragment-filter:
     - 1.21.1
     - feature
 fragment-sort:
-    - sort
+    - sort_pos
     - title
 ---
 
 # Configured & Placed Features
 
-[Configured features](https://minecraft.wiki/w/Configured_feature) are define what is placed in-world. WorldJS adds the ability to create all of vanilla's configured feature types through KubeJS's `ServerEvents.registry('worldgen/configured_feature', event => {})`{:.language-kube-21} event
+[Configured features](https://minecraft.wiki/w/Configured_feature) define what is placed in-world. WorldJS adds the ability to create all of vanilla's configured feature types through KubeJS's `ServerEvents.registry('worldgen/configured_feature', event => {})`{:.language-kube-21} event
 
 {% map replacements %}
 {% base Inherits the methods of the [no op](#no-op) builder %}
@@ -31,7 +31,7 @@ fragment-sort:
 
 {% endfor %}
 
-[Placed features](https://minecraft.wiki/w/Placed_feature) define the placement restrictions of configured features. They can be made with KubeJS's `ServerEvents.registry('worldgen/placed_feature', event => {})`{:.language-kube-21} event, as described [below](#placed-features)
+[Placed features](https://minecraft.wiki/w/Placed_feature) define the placement conditions of configured features. They can be made with KubeJS's `ServerEvents.registry('worldgen/placed_feature', event => {})`{:.language-kube-21} event, as described [below](#placed-features)
 
 {% for feature in features %}
 
@@ -40,6 +40,8 @@ fragment-sort:
 ## {{ feature.title }}
 
 **Type**: `{{ feature.type }}`
+
+Creates a [minecraft:{{ feature.type }}]({{ feature.wiki_link }}) configured feature
 
 {{ feature.clean }}
 

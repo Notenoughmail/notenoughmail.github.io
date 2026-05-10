@@ -6,7 +6,7 @@ class MapBlock < Liquid::Capture
     @values = {}
   end
 
-  def render_to_output_buffer(context, output)
+  def render_to_output_buffer(context, _output)
     render(context)
   end
 
