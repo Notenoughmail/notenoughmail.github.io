@@ -10,7 +10,7 @@ cat:
 tagline: For working glass on a blowpipe
 example:
     - "'kubejs:glass_trinket',"
-    - "'tfc:silica_glass_batch'"
+    - "'tfc:silica_glass_batch',"
     - '['
     - "    'tfc:pinch',"
     - "    'tfc:gold',"

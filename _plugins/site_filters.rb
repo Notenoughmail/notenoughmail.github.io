@@ -4,19 +4,10 @@ require 'liquid'
 module Jekyll
   module SiteFilters
 
-    def render_liquid(input, print = false)
-      if print
-        puts input
-        puts '=====V====='
-      end
+    def render_liquid(input)
       out = Liquid::Template.parse(input)
       out.registers[:site] = @context.registers[:site]
-      r = out.render
-      if print
-        puts r
-        puts '---   ---'
-      end
-      r
+      out.render
     end
 
     def render_markdown(input)
@@ -64,10 +55,13 @@ module Jekyll
     end
 
     def replace_inline(input, map, print = false, page = nil)
+      puts 'inline___' if print
       map.each do |match, replacement|
+        rendered = render_replacement(replacement, print, page)
+        puts "#{match} ==> #{rendered}" if print
         input = input.gsub(
           /\[\[\s*?#{match}\s*?\]\]/,
-          render_replacement(replacement, print, page)
+          rendered
         )
       end
       input
@@ -248,20 +242,19 @@ module Jekyll
     end
 
     def render_replacement(r, print = false, page = nil)
-      render_markdown(
-        render_liquid(
-          r.to_s.strip
-            .gsub('\#', '#')
-            .gsub('{{{', '{%')
-            .gsub('}}}', '%}')
-            .gsub(%r{\[\[\s*?(.+?)\s?\]\]}) do |m|
-              m = m.strip[2...-2].strip
-              puts "==> #{m}" if print
-              page.nil? ? 'nil' : page[m]
-            end,
-          print
-        )
-      )
+      replaced = r.to_s.strip
+                  .gsub('\#', '#')
+                  .gsub(%r{\[\[\s*?(.+?)\s*?\]\]}) do |m|
+                    m = m.strip[2...-2].strip
+                    puts "==> #{m}" if print
+                    page.nil? ? 'nil' : page[m]
+                  end
+      puts "   (replaced) ==> #{replaced}" if print
+      liquid = render_liquid(replaced)
+      puts "     (liquid) ==> #{liquid}" if print
+      md = render_markdown(liquid)
+      puts "   (markdown) ==> #{md}" if print
+      md
     end
 
     private(:compare, :dup, :get_content, :render_replacement)

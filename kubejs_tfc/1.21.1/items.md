@@ -13,7 +13,7 @@ fragment-filter:
 
 # Custom Items
 
-KubeJS TFC allows for the create of some of TFC's item types
+KubeJS TFC allows for the creation of some of TFC's item types
 
 {% assign items = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
 

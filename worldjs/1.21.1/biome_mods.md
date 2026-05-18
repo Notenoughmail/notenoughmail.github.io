@@ -16,7 +16,7 @@ fragment-filter:
 NeoForge adds the ability to add [biome modifiers](https://docs.neoforged.net/docs/1.21.1/worldgen/biomemodifier) which enables changing biome properties without completely overriding the whole biome definition. WorldJS adds the ability to create the NeoForge provided modifier types via KubeJS's `ServerEvents.registry('neoforge:biome_modifier', event => {...})`{:.language-kube-21} event
 
 {% map replacements %}
-{% biomes `.biomes(biomes: HolderSet<Biome>)`{: .language-kube-21 #[[ anchor ]]-biomes }: Set the biome(s) to be modified} %}
+{% biomes `.biomes(biomes: HolderSet<Biome>)`{: .language-kube-21 #[[ anchor ]]-biomes }: Set the biome(s) to be modified %}
 {% endmap %}
 
 {% assign types = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | sort: 'anchor' %}

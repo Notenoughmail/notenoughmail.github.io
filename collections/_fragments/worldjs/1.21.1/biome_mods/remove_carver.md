@@ -18,4 +18,4 @@ example:
 - [[ biomes ]]
 - `.carvers(carvers: HolderSet<ConfiguredWorldCarver<?>>)`{: .language-kube-21 #{{ page.anchor }}-carvers }: Sets the carver(s) to be removed from the biome(s)
 - `.steps(steps: Set<GenerationStep$Carving>)`{: .language-kube-21 #{{ page.anchor }}-steps }: Sets the carving step(s) to remove the carver(s) from
-    {% include enum_list.html summary='Reveal/hide list of valid carving steps' values='air,liquid' %}
+    {% include enum_list.html summary='Reveal/hide list of carving steps' values='air,liquid' %}

@@ -200,7 +200,7 @@ Range Tag Test
 "I think we should build a new login page" are the words of an imbecile. {% bump_out span %}They are also very [common](https://http.dog/) words it would seem{% endbump_out %}{: .test }So be it, I suppose. Let the rookie try and prove themself, eh? {% bump neat! %}This is not a place of honor... no highly esteemed deed is commemorated here
 
 {% map test_map %}
-{% isp [`ItemStackProvider`]({{{ link kubejs_tfc/1.21.1/type-explanations.md }}}#item-stack-provider) %}
+{% isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% end_isp %}
 {% test neat %}
 {% endmap %}
 

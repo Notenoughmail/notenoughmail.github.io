@@ -19,8 +19,8 @@ fragment-sort:
 The following recipe types are supported by KubeJS TFC
 
 {% map replacements %}
-{% isp [`ItemStackProvider`]({{{ link kubejs_tfc/1.21.1/type-explanations.md }}}#item-stack-provider) %}
-{% bing [`BlockIngredient`]({{{ link kubejs_tfc/1.21.1/bindings/ingredient.md }}}#block-ingredient) %}
+{% isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% end_isp %}
+{% bing %}[`BlockIngredient`]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient){% end_bing %}
 {% endmap %}
 
 {% assign all_recipes = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}

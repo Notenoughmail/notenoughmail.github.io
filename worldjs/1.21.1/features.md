@@ -19,8 +19,18 @@ fragment-sort:
 
 [Configured features](https://minecraft.wiki/w/Configured_feature) define what is placed in-world. WorldJS adds the ability to create all of vanilla's configured feature types through KubeJS's `ServerEvents.registry('worldgen/configured_feature', event => {})`{:.language-kube-21} event
 
+{% capture directions %}{% include enum_list.html summary='Reveal/hide list of directions' values='up,down,east,west,north,south' %}{% endcapture %}
+
 {% map replacements %}
 {% base Inherits the methods of the [no op](#no-op) builder %}
+{% vertical_anchor %}[`VerticalAnchor`]({% link worldjs/1.21.1/wrappers.md %}#vertical-anchor){% end_vertical_anchor %}
+{% block_state_provider %}[`BlockStateProvider`]({% link worldjs/1.21.1/wrappers.md %}#block-state-provider){% end_block_state_provider %}
+{% rule_test [`RuleTest`](https://minecraft.wiki/w/Processor_list?oldid=3572989#Rule_test) %}
+{% struct_proc [`StructureProcessorList`](https://minecraft.wiki/w/Processor_list?oldid=3572989) %}
+{% directions %}<p>{{ directions }}</p>{% end_directions %}
+! This needs to be a link out to the mc wiki or kube wrapper, can't find either
+{% int %}`IntProvider`{% end_int %}
+{% required %}**Must** be set{% end_required %}
 {% endmap %}
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
@@ -43,6 +53,12 @@ fragment-sort:
 
 Creates a [minecraft:{{ feature.type }}]({{ feature.wiki_link }}) configured feature
 
+{% if feature.inherit %}
+
+Inherits the methods of the [{{ feature.inherit-display }}](#{{ feature.inherit }}) builder
+
+{% endif %}
+
 {{ feature.clean }}
 
 {: #{{ feature.anchor }}-example }
@@ -62,7 +78,8 @@ ServerEvents.registry('worldgen/configured-feature', event => {
 
 Placed features can be created using the JS event or via the [`.withPlacement(...)`{:.language-kube-21}](#no-op-with-placement){:.preserve-color} method of a configured feature builder
 
-- `.configuredFeature(feature: Holder$Reference<ConfiguredFeature<?, ?>>)`{: .language-kube-21 #placed-feature-configured-feature }: Sets the configured feature the placed feature will place. Will be ignored if the placed feature was derived from a configured feature builder
+- `.configuredFeature(feature: Holder$Reference<ConfiguredFeature<?, ?>>)`{: .language-kube-21 #placed-feature-configured-feature }: Sets the configured feature the placed feature will place
+    - **Note**: Will be ignored if the placed feature was derived from a configured feature builder
 - `.modifier(modifier: PlacementModifier)`{: .language-kube-21 #placed-feature-modifier }: Add the provided placement modifier
 - `.jsonModifier(json: JsonElement)`{: .language-kube-21 #placed-feature-json-placement }: Add the provided json-defined placement modifier
 - `.modifiers(modifiers: Consumer<PlacedFeatureBuilder$Modifiers>)`{: .language-kube-21 #placed-feature-modifiers-func }: Add pre-defined placement modifiers via [namespaced methods](#placed-feature-modifiers)
@@ -87,7 +104,7 @@ ServerEvents.registry('worldgen/placed_feature', event => {
 ## Placed Feature Modifiers
 
 {% capture vertical_anchor %}[vertical anchor]({% link worldjs/1.21.1/wrappers.md %}#vertical-anchor){% endcapture %}
-{% capture heightmap_types %}{% include enum_list.html summary='Reveal/hide list of valid heightmap types' values='motion_blocking,motion_blocking_no_leaves,ocean_floor,ocean_floor_wg,world_surface,world_surface_wg' %}{% endcapture %}
+{% capture heightmap_types %}{% include enum_list.html summary='Reveal/hide list of heightmap types' values='motion_blocking,motion_blocking_no_leaves,ocean_floor,ocean_floor_wg,world_surface,world_surface_wg' %}{% endcapture %}
 
 Placement modifiers are created and added to placed features through a namespaced system of methods. The namespaces can be retrieved from the `PlacedFeatureBuilder$Modifiers` provided in the callback of [`.modifiers(...)`{:.language-kube-21}](#placed-feature-modifiers-func){:.preserve-color}. All methods available from a namespace return the namespace, allowing for multiple modifiers from the same namespace to be added with minimal friction
 
@@ -103,7 +120,7 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
     - `chance: int`{:.language-kube-21}: The chance the feature will successfully place at a position as `1 / chance`
 - `.carvingMask(carvingStep: GenerationStep$Carving)`{: .language-kube-21 #modifier-carving-mask }: Add a [minecraft:carving_mask](https://minecraft.wiki/w/Placed_feature#carving_mask) modifier
     - `carvingStep: GenerationStep$Carving`{:.language-kube-21}: The carving step volume for which the feature will try to place in. Does not include blocks 'carved' out by noise caves
-        {% include enum_list.html summary='Reveal/hide list of valid carving steps' values='air,liquid' %}
+        {% include enum_list.html summary='Reveal/hide list of carving steps' values='air,liquid' %}
 - `.heightmap(heightmap: Heightmap$Types)`{: .language-kube-21 #modifier-heightmap }: Add a [minecraft:heightmap](https://minecraft.wiki/w/Placed_feature#heightmap) modifier
     - `heightmap: Heightmap$Types`{:.language-kube-21}: The heightmap to place on
         {{ heightmap_types }}
@@ -126,7 +143,7 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
     - `count: IntProvider`{:.language-kube-21}: The count on each layer, {% in_range 0,256 %}
 - `.environmentScan(directionOfSearch: Direction, targetCondition: BlockPredicate, allowedSearchCondition?: BlockPredicate, maxSteps: int)`{: .language-kube-21 #modifier-environment-scan }: Add a [minecraft:environment_scan](https://minecraft.wiki/w/Placed_feature#environment_scan) modifier
     - `directionOfSearch: Direction`{:.language-kube-21}: The direction to search in
-        {% include enum_list.html summary='Reveal/hide list of allowed directions' values='up,down,east,west,north,south' %}
+        {{ directions }}
     - `targetCondition: BlockPredicate`{:.language-kube-21}: The block predicate to search for
     - `allowedSearchCondition?: BlockPredicate`{:.language-kube-21}: The block predicate to validate each step to the `targetCondition`{:.v}. Optional, approves everything if not specified
     - `maxSteps: int`{:.language-kube-21}: the maximum number of blocks, {% in_range 1,32 %}, out from the original position to search for
@@ -160,10 +177,12 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
 
 {% comment %}
 
-# no op
+## no op
 
 ## no op with placement
 
 ## placed feature modifiers func
+
+## random patch
 
 {% endcomment %}

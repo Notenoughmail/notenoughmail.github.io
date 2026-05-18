@@ -1,0 +1,14 @@
+---
+title: No Bonemeal Flower
+anchor: no-bonemeal-flower
+type: no_bonemeal_flower
+wiki_link: https://minecraft.wiki/w/Vegetation?oldid=3566374
+cat:
+    - worldjs
+    - 1.21.1
+    - feature
+example:
+    - // TODO
+inherit: random-patch
+inherit-display: random patch
+---

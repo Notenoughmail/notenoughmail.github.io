@@ -30,7 +30,7 @@ sig_add:
 - 1st argument: An [[ isp ]], the result of the recipe
 - 2nd argument: An item ingredient, the recipe input
 - 3rd argument: A list of one to three [`ForgeRule`{:.e}s](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/common/component/forge/ForgeRule.java){:.preserve-color}, the last steps that must be taken.
-    {% include enum_list.html summary='Reveal/hide list of valid rules' values='hit_any,hit_not_last,hit_last,hit_second_last,hit_third_last,draw_any,draw_last,draw_not_last,draw_second_last,draw_third_last,punch_any,punch_last,punch_not_last,punch_second_last,punch_third_last,bend_any,bend_last,bend_not_last,bend_second_last,bend_third_last,upset_any,upset_last,upset_not_last,upset_second_last,upset_third_last,shrink_any,shrink_last,shrink_not_last,shrink_second_last,shrink_third_last' %}
+    {% include enum_list.html summary='Reveal/hide list of rules' values='hit_any,hit_not_last,hit_last,hit_second_last,hit_third_last,draw_any,draw_last,draw_not_last,draw_second_last,draw_third_last,punch_any,punch_last,punch_not_last,punch_second_last,punch_third_last,bend_any,bend_last,bend_not_last,bend_second_last,bend_third_last,upset_any,upset_last,upset_not_last,upset_second_last,upset_third_last,shrink_any,shrink_last,shrink_not_last,shrink_second_last,shrink_third_last' %}
 
 <span></span>
 
