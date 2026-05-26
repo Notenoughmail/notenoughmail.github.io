@@ -4,6 +4,8 @@ anchor: no-op
 type: no_op
 wiki_link: https://minecraft.wiki/w/No_op?oldid=3283982
 sort_pos: ___
+sprite: BlockSprite
+icon: air
 cat:
     - worldjs
     - 1.21.1

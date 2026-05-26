@@ -134,6 +134,15 @@ module Jekyll
       end
     end
 
+    def get_or_else(input, get, fallback)
+      g = input[get]
+      if !g.nil?
+        g
+      else
+        fallback
+      end
+    end
+
     def script_type(input)
       if input.eql?('common')
         'client_scripts` & `server_scripts'

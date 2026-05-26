@@ -20,5 +20,6 @@ example:
     - Defaults to `4`{:.n}
 - `.holeCount(count: int)`{: .language-kube-21 #{{ page.anchor }}-hole-count }: The required number of air blocks adjacent to the spring
     - The above block is not counted
-    - Default to `1`{:.n}
+    - [[ def_1 ]]
 - `.validBlocks(blocks: HolderSet<Block>)`{: .language-kube-21 #{{ page.anchor }}-valid-blocks }: The blocks the spring requires to generate
+    - Defaults to `[]`

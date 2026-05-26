@@ -4,6 +4,8 @@ anchor: weeping-vines
 type: weeping_vines
 wiki_link: https://minecraft.wiki/w/Weeping_Vines_(feature)?oldid=3544094
 sort_pos: _none_weeping_vines
+sprite: BlockSprite
+icon: weeping-vines-plant
 cat:
     - worldjs
     - 1.21.1

@@ -4,6 +4,8 @@ anchor: kelp
 type: kelp
 wiki_link: https://minecraft.wiki/w/Kelp_(feature)?oldid=3261620
 sort_pos: _none_kelp
+sprite: BlockSprite
+icon: kelp-plant
 cat:
     - worldjs
     - 1.21.1

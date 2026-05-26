@@ -3,6 +3,8 @@ title: Block Column
 anchor: block-column
 type: block_column
 wiki_link: https://minecraft.wiki/w/Cave_Vines_(feature)?oldid=3567831
+sprite: BlockSprite
+icon: lit-cave-vines
 cat:
     - worldjs
     - 1.21.1
@@ -20,5 +22,5 @@ example:
 - `.direction(dir: Direction)`{: .language-kube-21 #{{ page.anchor }}-direction }: The direction the column places in
     [[ directions ]]
     - Defaults to `up`{:.e}
-- `.allowedPlacement(allowed: BlockPredicate)`{: .language-kube-21 #{{ page.anchor }}-allowed-placement }: Validation for each layer of the column
+- `.allowedPlacement(allowed: BlockPredicate)`{: .language-kube-21 #{{ page.anchor }}-allowed-placement }: The [[ block_predicate ]] check for each layer of the column
 - `.prioritizeTip()`{: .language-kube-21 #{{ page.anchor }}-prioritize-tip }: Makes the column remove layers from the start of the column when space is restricted

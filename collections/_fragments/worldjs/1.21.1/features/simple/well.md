@@ -4,6 +4,7 @@ anchor: desert-well
 type: desert_well
 wiki_link: https://minecraft.wiki/w/Desert_Well?oldid=3479173
 sort_pos: _none_desert_well
+icon: desert-well
 cat:
     - worldjs
     - 1.21.1

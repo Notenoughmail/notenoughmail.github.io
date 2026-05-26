@@ -3,6 +3,7 @@ title: Block Pile
 anchor: block-pile
 type: block_pile
 wiki_link: https://minecraft.wiki/w/Pile?oldid=3396789
+icon: hay-bale-pile
 cat:
     - worldjs
     - 1.21.1

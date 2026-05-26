@@ -28,16 +28,20 @@ fragment-sort:
 {% rule_test [`RuleTest`](https://minecraft.wiki/w/Processor_list?oldid=3572989#Rule_test) %}
 {% struct_proc [`StructureProcessorList`](https://minecraft.wiki/w/Processor_list?oldid=3572989) %}
 {% directions %}<p>{{ directions }}</p>{% end_directions %}
-! This needs to be a link out to the mc wiki or kube wrapper, can't find either
+! This needs to be a link out to the mc wiki or kube wrapper docs, can't find either
 {% int %}`IntProvider`{% end_int %}
+{% block_predicate %}[`BlockPredicate`]({% link worldjs/1.21.1/wrappers.md %}#block-predicate){% end_block_predicate %}
 {% required %}**Must** be set{% end_required %}
+{% unit %}Must be {% in_unit %}{% end_unit %}
+{% def_0 %}Defaults to `0`{:.n}{% end_def_0 %}
+{% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
 {% endmap %}
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
 
 {% for feature in features %}
 
-- [{{ feature.title }}](#{{ feature.anchor }})
+- [<img src="https://minecraft.wiki/images/{{ feature | get_or_else: 'sprite', 'EnvSprite' }}_{{ feature | get_or_default: 'icon', 'anchor' }}.png" alt="" class="inline bg" decoding="async" loading="lazy" /> {{ feature.title }}](#{{ feature.anchor }})
 
 {% endfor %}
 
@@ -47,7 +51,7 @@ fragment-sort:
 
 {: #{{ feature.anchor }}}
 
-## {{ feature.title }}
+## <img src="https://minecraft.wiki/images/{{ feature | get_or_else: 'sprite', 'EnvSprite' }}_{{ feature | get_or_default: 'icon', 'anchor' }}.png" alt="" class="inline bg" decoding="async" loading="lazy" /> {{ feature.title }}
 
 **Type**: `{{ feature.type }}`
 

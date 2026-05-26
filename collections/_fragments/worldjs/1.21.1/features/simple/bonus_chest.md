@@ -4,6 +4,8 @@ anchor: bonus-chest
 type: bonus_chest
 wiki_link: https://minecraft.wiki/w/Bonus_Chest?oldid=3555300
 sort_pos: _none_bonus_chest
+icon: chest
+sprite: BlockSprite
 cat:
     - worldjs
     - 1.21.1

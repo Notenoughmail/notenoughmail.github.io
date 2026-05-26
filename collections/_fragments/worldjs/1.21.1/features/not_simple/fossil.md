@@ -22,5 +22,5 @@ example:
 - `.overlayProcessors(processors: Holder$Reference<StructureProcessorList>)`{: .language-kube-21 #{{ page.anchor }}-overlay-processors }: The overlay [[ struct_proc ]] to use
     - [[ required ]]
 - `.maxEmptyCorners(corners: int)`{: .language-kube-21 #{{ page.anchor }}-max-empty-corners }: How many corners may be empty while still allowing the structure to generate
-    - Defaults to `0`{:.n}
     - Must be {% in_range 0,7 %}
+    - [[ def_0 ]]

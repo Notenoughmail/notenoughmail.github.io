@@ -4,6 +4,7 @@ anchor: monster-room
 type: monster_room
 wiki_link: https://minecraft.wiki/w/Monster_Room?oldid=3540064
 sort_pos: _none_monster
+icon: dungeon
 cat:
     - worldjs
     - 1.21.1

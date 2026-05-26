@@ -4,6 +4,7 @@ anchor: coral-mushroom
 type: coral_mushroom
 wiki_link: https://minecraft.wiki/w/Coral_Reef?oldid=3262714
 sort_pos: _none_coral_mushroom
+icon: coral-reef
 cat:
     - worldjs
     - 1.21.1

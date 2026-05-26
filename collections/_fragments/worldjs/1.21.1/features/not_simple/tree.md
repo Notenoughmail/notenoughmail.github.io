@@ -3,6 +3,7 @@ title: Tree
 anchor: tree
 type: tree
 wiki_link: https://minecraft.wiki/w/Tree_definition?oldid=3410916
+icon: oak
 cat:
     - worldjs
     - 1.21.1
