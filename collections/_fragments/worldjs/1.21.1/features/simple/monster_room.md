@@ -3,7 +3,8 @@ title: Monster Room
 anchor: monster-room
 type: monster_room
 wiki_link: https://minecraft.wiki/w/Monster_Room?oldid=3540064
-sort_pos: _none_monster
+sort_pos: a
+group: a
 icon: dungeon
 cat:
     - worldjs

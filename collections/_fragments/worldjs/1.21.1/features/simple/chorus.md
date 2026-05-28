@@ -3,7 +3,8 @@ title: Chorus Plant
 anchor: chorus-plant
 type: chorus_plant
 wiki_link: https://minecraft.wiki/w/Chorus_Plant_(feature)?oldid=3544097
-sort_pos: _none_chorus
+sort_pos: a
+group: a
 cat:
     - worldjs
     - 1.21.1

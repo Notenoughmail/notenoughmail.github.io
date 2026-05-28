@@ -5,6 +5,7 @@ type: underwater_magma
 wiki_link: https://minecraft.wiki/w/Underwater_Magma?oldid=3427727
 sprite: BlockSprite
 icon: magma-block
+sort_pos: u
 cat:
     - worldjs
     - 1.21.1

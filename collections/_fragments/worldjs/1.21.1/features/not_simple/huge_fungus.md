@@ -3,6 +3,7 @@ title: Huge Fungus
 anchor: huge-fungus
 type: huge_fungus
 wiki_link: https://minecraft.wiki/w/Huge_Fungus?oldid=3303420
+sort_pos: h
 cat:
     - worldjs
     - 1.21.1

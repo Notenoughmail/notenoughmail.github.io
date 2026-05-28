@@ -5,6 +5,7 @@ type: twisting_vines
 wiki_link: https://minecraft.wiki/w/Twisting_Vines_(feature)?oldid=3566443
 sprite: BlockSprite
 icon: twisting-vines-plant
+sort_pos: v
 cat:
     - worldjs
     - 1.21.1

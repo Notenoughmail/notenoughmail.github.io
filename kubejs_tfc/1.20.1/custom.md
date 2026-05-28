@@ -15,6 +15,8 @@ KubeJS TFC allows you to create some of TFC's [block](#blocks), [item](#items), 
 
 The following types are available:
 
+<div class="grid-3" markdown="1">
+
 - [Aqueduct](#aqueduct)
 - [Ground Cover](#ground-cover)
 - [Loose Rock](#loose-rock)
@@ -41,6 +43,8 @@ The following types are available:
 - [Torch](#torch)
 - [Sapling](#sapling)
 - [Leaves](#leaves)
+
+</div>
 
 <a id="firmalife-blocks"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 
@@ -1092,6 +1096,8 @@ Some of TFC's blocks have extended properties which allow the block properties o
 
 The following types are available:
 
+{% grid n=3 %}
+
 - [Chisel](#chisel)
 - [Fluid Container](#fluid-container)
 - [Hammer](#hammer)
@@ -1109,6 +1115,8 @@ The following types are available:
 - [Glassworking Tool](#glassworking-tool)
 - [Glass Bottle](#glass-bottle)
 - [Jug](#jug)
+
+</div>
 
 <a id="firmalife-items"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following types are also available:
 

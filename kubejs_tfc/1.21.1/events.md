@@ -20,11 +20,15 @@ KubeJS TFC adds several JS events for use in scripts
 
 {% assign events = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.event-sort  %}
 
+{% grid n=2 %}
+
 {% for event in events %}
 
 - [{{ event.title }}](#{{ event.anchor }}) -- `{{ event.type | script_type }}`
 
 {% endfor %}
+
+</div>
 
 {% for event in events %}
 
@@ -32,7 +36,7 @@ KubeJS TFC adds several JS events for use in scripts
 
 ## {{ event.title }}
 
-**Listener**: `TFCEvents.{{ event.name }}(...)`{:.language-kube-21}
+**Listener**: `TFCEvents.{{ event.name }}({% if event.target-type %}target: {{ event.target-type }},{% endif %}...)`{:.language-kube-21}
 
 {% if event.target-type %}**Target Type**: `{{ event.target-type }}`{:.language-kube-21}{% endif %}
 

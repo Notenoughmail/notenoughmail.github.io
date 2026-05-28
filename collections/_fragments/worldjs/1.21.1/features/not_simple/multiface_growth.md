@@ -5,6 +5,7 @@ type: multiface_growth
 wiki_link: https://minecraft.wiki/w/Sculk_Vein_(feature)?oldid=3566428
 sprite: BlockSprite
 icon: sculk-vein
+sort_pos: m
 cat:
     - worldjs
     - 1.21.1

@@ -3,7 +3,8 @@ title: Vines
 anchor: vines
 type: vines
 wiki_link: https://minecraft.wiki/w/Vines_(feature)?oldid=3484556
-sort_pos: _none_vines
+sort_pos: a
+group: a
 sprite: BlockSprite
 cat:
     - worldjs

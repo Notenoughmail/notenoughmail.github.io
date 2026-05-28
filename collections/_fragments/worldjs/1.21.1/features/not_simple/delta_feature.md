@@ -4,6 +4,7 @@ anchor: delta-feature
 type: delta_feature
 wiki_link: https://minecraft.wiki/w/Delta?oldid=3493371
 icon: delta
+sort_pos: d
 cat:
     - worldjs
     - 1.21.1

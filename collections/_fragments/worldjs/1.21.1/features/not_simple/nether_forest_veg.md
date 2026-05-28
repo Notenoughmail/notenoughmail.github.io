@@ -5,6 +5,7 @@ type: nether_forest_vegetation
 wiki_link: https://minecraft.wiki/w/Nether_Forest_Vegetation?oldid=3547414
 sprite: BlockSprite
 icon: all-nether-roots
+sort_pos: n
 cat:
     - worldjs
     - 1.21.1

@@ -3,6 +3,7 @@ title: End Spike
 anchor: end-spike
 type: end_spike
 wiki_link: https://minecraft.wiki/w/End_Spike?oldid=3566448
+sort_pos: e
 cat:
     - worldjs
     - 1.21.1

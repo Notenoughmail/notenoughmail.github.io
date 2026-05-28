@@ -3,7 +3,8 @@ title: Glowstone Blob
 anchor: glowstone-blob
 type: glowstone_blob
 wiki_link: https://minecraft.wiki/w/Glowstone_Blob?oldid=3526085
-sort_pos: _none_glowstone
+sort_pos: a
+group: a
 cat:
     - worldjs
     - 1.21.1

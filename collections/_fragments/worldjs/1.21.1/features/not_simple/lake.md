@@ -4,6 +4,7 @@ anchor: lake
 type: lake
 wiki_link: https://minecraft.wiki/w/Lava_Lake?oldid=3518200
 icon: lake-lava
+sort_pos: l
 cat:
     - worldjs
     - 1.21.1

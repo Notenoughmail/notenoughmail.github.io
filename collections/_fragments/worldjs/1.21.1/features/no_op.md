@@ -4,6 +4,7 @@ anchor: no-op
 type: no_op
 wiki_link: https://minecraft.wiki/w/No_op?oldid=3283982
 sort_pos: ___
+group: a
 sprite: BlockSprite
 icon: air
 cat:

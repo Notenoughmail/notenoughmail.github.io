@@ -3,6 +3,7 @@ title: Disk
 anchor: disk
 type: disk
 wiki_link: https://minecraft.wiki/w/Disk?oldid=3548744
+sort_pos: d
 cat:
     - worldjs
     - 1.21.1

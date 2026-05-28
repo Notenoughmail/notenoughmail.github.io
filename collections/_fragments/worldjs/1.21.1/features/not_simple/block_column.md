@@ -3,6 +3,7 @@ title: Block Column
 anchor: block-column
 type: block_column
 wiki_link: https://minecraft.wiki/w/Cave_Vines_(feature)?oldid=3567831
+sort_pos: b
 sprite: BlockSprite
 icon: lit-cave-vines
 cat:

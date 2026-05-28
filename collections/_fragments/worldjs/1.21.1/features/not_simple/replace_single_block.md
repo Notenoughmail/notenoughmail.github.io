@@ -5,6 +5,7 @@ type: replace_single_block
 wiki_link: https://minecraft.wiki/w/Replace_single_block?oldid=3249363
 sprite: BlockSprite
 icon: air
+sort_pos: r
 cat:
     - worldjs
     - 1.21.1

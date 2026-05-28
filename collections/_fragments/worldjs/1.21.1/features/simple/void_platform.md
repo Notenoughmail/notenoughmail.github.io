@@ -3,7 +3,8 @@ title: Void Start Platform
 anchor: void-start-platform
 type: void_start_platform
 wiki_link: https://minecraft.wiki/w/Void_Start_Platform?oldid=3378770
-sort_pos: _none_void
+sort_pos: a
+group: a
 icon: cobblestone-platform
 cat:
     - worldjs

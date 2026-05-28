@@ -3,6 +3,7 @@ title: Fossil
 anchor: fossil
 type: fossil
 wiki_link: https://minecraft.wiki/w/Fossil?oldid=3568065
+sort_pos: f
 cat:
     - worldjs
     - 1.21.1

@@ -3,6 +3,7 @@ title: Forest Rock
 anchor: forest-rock
 type: forest_rock
 wiki_link: https://minecraft.wiki/w/Forest_Rock?oldid=3425400
+sort_pos: f
 cat:
     - worldjs
     - 1.21.1

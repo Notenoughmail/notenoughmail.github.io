@@ -21,11 +21,15 @@ NeoForge adds the ability to add [biome modifiers](https://docs.neoforged.net/do
 
 {% assign types = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | sort: 'anchor' %}
 
+{% grid n=3 %}
+
 {% for type in types %}
 
 - [{{ type.title }}](#{{ type.anchor }})
 
 {% endfor %}
+
+</div>
 
 {% for type in types %}
 

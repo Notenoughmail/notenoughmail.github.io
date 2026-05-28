@@ -11,6 +11,7 @@ fragment-filter:
     - 1.21.1
     - feature
 fragment-sort:
+    - group
     - sort_pos
     - title
 ---
@@ -29,7 +30,8 @@ fragment-sort:
 {% struct_proc [`StructureProcessorList`](https://minecraft.wiki/w/Processor_list?oldid=3572989) %}
 {% directions %}<p>{{ directions }}</p>{% end_directions %}
 ! This needs to be a link out to the mc wiki or kube wrapper docs, can't find either
-{% int %}`IntProvider`{% end_int %}
+{% int %}`IntProvider`[^1]{% end_int %}
+{% float %}`FloatProvider`[^1]{% end_float %}
 {% block_predicate %}[`BlockPredicate`]({% link worldjs/1.21.1/wrappers.md %}#block-predicate){% end_block_predicate %}
 {% required %}**Must** be set{% end_required %}
 {% unit %}Must be {% in_unit %}{% end_unit %}
@@ -37,13 +39,19 @@ fragment-sort:
 {% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
 {% endmap %}
 
+[^1]: This should link to the appropriate MC wiki or KubeJS wrapper docs, but I can find neither
+
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+
+{% grid n=3 %}
 
 {% for feature in features %}
 
 - [<img src="https://minecraft.wiki/images/{{ feature | get_or_else: 'sprite', 'EnvSprite' }}_{{ feature | get_or_default: 'icon', 'anchor' }}.png" alt="" class="inline bg" decoding="async" loading="lazy" /> {{ feature.title }}](#{{ feature.anchor }})
 
 {% endfor %}
+
+</div>
 
 [Placed features](https://minecraft.wiki/w/Placed_feature) define the placement conditions of configured features. They can be made with KubeJS's `ServerEvents.registry('worldgen/placed_feature', event => {})`{:.language-kube-21} event, as described [below](#placed-features)
 
@@ -55,7 +63,11 @@ fragment-sort:
 
 **Type**: `{{ feature.type }}`
 
+{% if feature.wiki_link %}
+
 Creates a [minecraft:{{ feature.type }}]({{ feature.wiki_link }}) configured feature
+
+{% endif %}
 
 {% if feature.inherit %}
 
@@ -83,10 +95,11 @@ ServerEvents.registry('worldgen/configured-feature', event => {
 Placed features can be created using the JS event or via the [`.withPlacement(...)`{:.language-kube-21}](#no-op-with-placement){:.preserve-color} method of a configured feature builder
 
 - `.configuredFeature(feature: Holder$Reference<ConfiguredFeature<?, ?>>)`{: .language-kube-21 #placed-feature-configured-feature }: Sets the configured feature the placed feature will place
-    - **Note**: Will be ignored if the placed feature was derived from a configured feature builder
+    - **Note**: Will be ignored if the placed feature is derived from a configured feature builder
 - `.modifier(modifier: PlacementModifier)`{: .language-kube-21 #placed-feature-modifier }: Add the provided placement modifier
 - `.jsonModifier(json: JsonElement)`{: .language-kube-21 #placed-feature-json-placement }: Add the provided json-defined placement modifier
 - `.modifiers(modifiers: Consumer<PlacedFeatureBuilder$Modifiers>)`{: .language-kube-21 #placed-feature-modifiers-func }: Add pre-defined placement modifiers via [namespaced methods](#placed-feature-modifiers)
+- `.tag(tag...: ResourceLocation[])`{: .language-kube-21 #{{ page.anchor }}-tag }: Adds the tag(s) to the placed feature
 
 {: #placed-features-example }
 

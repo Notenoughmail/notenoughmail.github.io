@@ -4,6 +4,7 @@ anchor: replace-blobs
 type: replace_blobs
 wiki_link: https://minecraft.wiki/w/Blob?oldid=3586341
 icon: blob
+sort_pos: r
 cat:
     - worldjs
     - 1.21.1

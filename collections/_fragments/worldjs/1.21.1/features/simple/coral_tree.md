@@ -3,7 +3,8 @@ title: Coral Tree
 anchor: coral-tree
 type: coral_tree
 wiki_link: https://minecraft.wiki/w/Coral_Reef?oldid=3262714
-sort_pos: _none_coral_tree
+sort_pos: a
+group: a
 icon: coral-reef
 cat:
     - worldjs

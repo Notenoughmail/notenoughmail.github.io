@@ -20,11 +20,15 @@ KubeJS TFC allows for the creation of some of TFC's block types
 
 {% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.fragment-sort %}
 
+{% grid n=2 %}
+
 {% for block in blocks %}
 
 - [{{ block.title }}](#{{ block.anchor }}) -- `{{ block.type }}`
 
 {% endfor %}
+
+</div>
 
 It also provides a few block entity attachment types
 

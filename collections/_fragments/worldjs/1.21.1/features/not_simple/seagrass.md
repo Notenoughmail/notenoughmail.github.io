@@ -4,6 +4,7 @@ anchor: seagrass
 type: seagrass
 wiki_link: https://minecraft.wiki/w/Seagrass_(feature)?oldid=3566425
 sprite: BlockSprite
+sort_pos: s
 cat:
     - worldjs
     - 1.21.1

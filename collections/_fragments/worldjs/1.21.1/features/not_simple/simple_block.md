@@ -5,6 +5,7 @@ type: simple_block
 wiki_link: https://minecraft.wiki/w/Simple_block?oldid=3186449
 sprite: BlockSprite
 icon: air
+sort_pos: s
 cat:
     - worldjs
     - 1.21.1

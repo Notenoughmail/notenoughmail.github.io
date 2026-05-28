@@ -230,3 +230,13 @@ pre.highlight {
     width: 40%;
     border-radius: 0.25rem;
 }
+
+.grid ul {
+    --n: inherit;
+    --s: inherit;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max(var(--s),100%/var(--n)),1fr));
+    li {
+        margin: 0 2rem 0 0;
+    }
+}

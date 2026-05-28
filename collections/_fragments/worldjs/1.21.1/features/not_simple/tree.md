@@ -4,6 +4,7 @@ anchor: tree
 type: tree
 wiki_link: https://minecraft.wiki/w/Tree_definition?oldid=3410916
 icon: oak
+sort_pos: t
 cat:
     - worldjs
     - 1.21.1

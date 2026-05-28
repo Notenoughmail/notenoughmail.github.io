@@ -17,11 +17,15 @@ KubeJS TFC allows for the creation of some of TFC's item types
 
 {% assign items = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
 
+{% grid n=2 %}
+
 {% for item in items %}
 
 - [{{ item.title }}](#{{ item.anchor }}) -- `{{ item.type }}`
 
 {% endfor %}
+
+</div>
 
 <a id="prec-pros"></a>If *Precision Prospecting* {% include mr.html link='' %} {% include cf.html link='' %} is installed, the following item type is supported
 

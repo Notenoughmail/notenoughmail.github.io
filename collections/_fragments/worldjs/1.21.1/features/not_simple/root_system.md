@@ -5,6 +5,7 @@ type: root_system
 wiki_link: https://minecraft.wiki/w/Root_System?oldid=3575054
 sprite: BlockSprite
 icon: rooted-dirt
+sort_pos: r
 cat:
     - worldjs
     - 1.21.1

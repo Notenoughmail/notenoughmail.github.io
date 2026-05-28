@@ -13,6 +13,8 @@ KubeJS TFC allows user to easily build some of TFC's world generation [features]
 
 In the `TFCEvents.worldgenData` event there are methods for:
 
+{% grid n=3 %}
+
 - [Geodes](#geodes)
 - [Boulders](#boulders)
 - [Baby Boulders](#baby-boulders)
@@ -36,6 +38,8 @@ In the `TFCEvents.worldgenData` event there are methods for:
 - [Stacked Tree](#stacked-tree)
 - [Krummholz](#krummholz)
 - [Generic Features](#generic)
+
+</div>
 
 This event goes in the `server_scripts` folder.
 

@@ -3,6 +3,7 @@ title: Random Patch
 anchor: random-patch
 type: random_patch
 wiki_link: https://minecraft.wiki/w/Vegetation?oldid=3566374
+sort_pos: r
 cat:
     - worldjs
     - 1.21.1

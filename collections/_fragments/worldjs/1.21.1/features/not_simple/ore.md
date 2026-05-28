@@ -3,6 +3,7 @@ title: Ore
 anchor: ore
 type: ore
 wiki_link: https://minecraft.wiki/w/Ore_(feature)?oldid=3572987
+sort_pos: o
 cat:
     - worldjs
     - 1.21.1

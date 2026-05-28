@@ -3,6 +3,7 @@ title: Spring
 anchor: spring
 type: spring
 wiki_link: https://minecraft.wiki/w/Spring?oldid=3566440
+sort_pos: s
 cat:
     - worldjs
     - 1.21.1

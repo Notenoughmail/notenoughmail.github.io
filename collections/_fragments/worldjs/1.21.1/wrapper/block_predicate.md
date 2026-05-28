@@ -25,7 +25,7 @@ In scripts, they can de defined as
     - Else: A `minecraft:matching_blocks` predicate matching the given block id
 - A list: A `minecraft:all_of` predicate
     - List values are expected to be block predicates (or capable of being wrapped as block predicates) themselves
-- A `boolean` object:
+- A `boolean`{:.p} object:
     - If `true`{:.p}: A `minecraft:true` predicate
     - If `false`{:.p}: A `minecraft:not` predicate wrapping a `minecraft:true` predicate
 - A map:

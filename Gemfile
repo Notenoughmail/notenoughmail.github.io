@@ -11,6 +11,7 @@ group :jekyll_plugins do
   gem "jekyll-commonmark-ghpages", "0.5.1"
   gem "jekyll-watch", "2.2.1"
   gem "rouge"
+  gem 'naturalsort'
 end
 
 gem 'rubocop', group: 'development', require: false

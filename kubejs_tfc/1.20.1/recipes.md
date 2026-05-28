@@ -11,6 +11,8 @@ desc: Documentation on creating TFC recipe through JS
 
 The following recipes are supported by KubeJS TFC:
 
+<div class="grid-3" markdown="1">
+
 - [Alloy](#alloy)
 - [Anvil Welding](#welding)
 - [Anvil Working](#working)
@@ -38,7 +40,11 @@ The following recipes are supported by KubeJS TFC:
 - [Extra Products Crafting](#extra-products-crafting)
 - [No Remainder Crafting](#no-remainder-crafting)
 
+</div>
+
 <a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following recipes are supported:
+
+{% grid n=3 %}
 
 - [Drying](#firmalife-drying)
 - [Smoking](#firmalife-smoking)
@@ -50,11 +56,15 @@ The following recipes are supported by KubeJS TFC:
 - [Bowl Pot](#firmalife-bowl-pot)
 - [Press](#firmalife-press)
 
+</div>
+
 <a id="arborfirmacraft"></a>If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported:
 
 - [Tree Tap](#afc-tree-tap)
 
 <a id="artisanal"></a>If *TFC Artisanal* {% include mr.html link='tfc-artisanal' %} {% include cf.html link='tfc-artisanal' %} is installed, the following recipes are supported:
+
+{% grid n=2 s=20rem %}
 
 - [Scalable Pot](#artisanal-scalable-pot)
 - [Damage and Catalyst Shapeless Crafting](#artisanal-damage-and-catalyst-shapeless-crafting)
@@ -64,6 +74,8 @@ The following recipes are supported by KubeJS TFC:
 - [Specific No Remainder Damage Shaped Crafting](#artisanal-specific-no-remainder-damage-shaped-crafting)
 - [Specific No Remainder Shaped Crafting](#artisanal-specific-no-remainder-shaped-crafting)
 - [Specific No Remainder Shapeless Crafting](#artisanal-specific-no-remainder-shapeless-crafting)
+
+</div>
 
 ## Alloy
 

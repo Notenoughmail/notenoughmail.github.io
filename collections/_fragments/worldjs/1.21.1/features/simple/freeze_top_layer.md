@@ -3,7 +3,8 @@ title: Freeze Top Layer
 anchor: freeze-top-layer
 type: freeze_top_later
 wiki_link: https://minecraft.wiki/w/Freeze_Top_Layer?oldid=3533653
-sort_pos: _none_freeze
+sort_pos: a
+group: a
 cat:
     - worldjs
     - 1.21.1

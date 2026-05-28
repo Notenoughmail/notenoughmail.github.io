@@ -11,6 +11,8 @@ desc: Documentation of KubeJS TFC's events
 
 KubeJS TFC adds several JS events for use in your scripts
 
+{% grid n=3 %}
+
 - [Rock Settings](#rock-settings)
 - [Limiting Containers](#limiting-containers)
 - [Register Climate Model](#register-climate-model)
@@ -31,6 +33,8 @@ KubeJS TFC adds several JS events for use in your scripts
 - [Create Glass Operations](#create-glass-operations)
 - [Create Chunk Data Provider](#create-chunk-data-provider)
 - [Register Item Stack Modifier Converters](#item-stack-modifier-converters)
+
+</div>
 
 ## Rock Settings
 

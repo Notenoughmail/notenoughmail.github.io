@@ -3,6 +3,7 @@ title: Basalt Columns
 anchor: basalt-column
 type: basalt_columns
 wiki_link: https://minecraft.wiki/w/Basalt_Columns?oldid=3460729
+sort_pos: b
 cat:
     - worldjs
     - 1.21.1

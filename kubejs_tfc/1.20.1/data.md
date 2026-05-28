@@ -11,6 +11,8 @@ desc: Documentation on creating TFC's [data types](https://terrafirmacraft.githu
 
 KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacraft.github.io/Documentation/1.20.x/custom/) types in the `TFCEvents.data` event
 
+{% grid n=3 %}
+
 - [Climate Ranges](#climate-ranges)
 - [Damage Resistances](#damage-resistances)
 - [Drinkables](#drinkables)
@@ -26,6 +28,8 @@ KubeJS TFC allows users to easily write TFC's [custom data](https://terrafirmacr
 - [Supports](#supports)
 - [Sluicing](#sluicing)
 - [Panning](#panning)
+
+</div>
 
 <a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following are also available
 

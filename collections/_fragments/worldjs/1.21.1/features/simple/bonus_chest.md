@@ -3,7 +3,8 @@ title: Bonus Chest
 anchor: bonus-chest
 type: bonus_chest
 wiki_link: https://minecraft.wiki/w/Bonus_Chest?oldid=3555300
-sort_pos: _none_bonus_chest
+sort_pos: a
+group: a
 icon: chest
 sprite: BlockSprite
 cat:

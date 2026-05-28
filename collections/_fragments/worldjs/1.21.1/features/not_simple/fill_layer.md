@@ -5,6 +5,7 @@ type: fill_layer
 wiki_link: https://minecraft.wiki/w/Fill_layer?oldid=3078700
 sprite: BlockSprite
 icon: air
+sort_pos: f
 cat:
     - worldjs
     - 1.21.1

@@ -1,5 +1,6 @@
 
 require 'liquid'
+require 'natural_sort'
 
 module Jekyll
   module SiteFilters
@@ -28,7 +29,8 @@ module Jekyll
       ary
     end
 
-    def multi_sort(input, properties)
+    def multi_sort(input, properties, print = false)
+      print = true.to_s.eql?(print.to_s)
       raise "Cannot use 'sort' value to sort objects, it causes *many* headaches" if properties.include?('sort')
 
       ary = Liquid::StandardFilters::InputIterator.new(input)
@@ -37,21 +39,23 @@ module Jekyll
       raise "Cannot sort input #{input}, must be able to handle :[]" unless ary.all? { |e| e.respond_to?(:[]) }
 
       begin
-        ary.sort do |a, b|
-          r = 0
-          i = 0
-          loop do
-            r = compare(a[properties[i]], b[properties[i]])
-            i += 1
-            break if r != 0 || i >= properties.length
-          end
-          r
-        end
+        ary.sort { |a, b| multi_sort_comp(a, b, properties, print) }
       rescue => e
-        puts "Error sorting #{input}"
-        puts e
+        puts "Error sorting #{input}: #{e}"
         raise e
       end
+    end
+
+    def multi_sort_comp(first, second, properties, print)
+      r = i = 0
+      while r == 0 && i < properties.length
+        pa = first[properties[i]]
+        pb = second[properties[i]]
+        r = compare(pa, pb)
+        puts "Comparison of #{pa} with #{pb} yielded #{r}" if print
+        i += 1
+      end
+      r
     end
 
     def replace_inline(input, map, print = false, page = nil)
@@ -169,8 +173,9 @@ module Jekyll
       input.length
     end
 
-    def map_console(input, property)
+    def map_console(input, property, delin = false)
       puts(Liquid::StandardFilters::InputIterator.new(input).map { |e| e[property] })
+      puts "=====" if delin
       input
     end
 
@@ -208,17 +213,17 @@ module Jekyll
       end
     end
 
-    def compare(a, b)
-      r = a <=> b
-
-      if r
-        r
-      elsif a.nil?
+    def compare(first, second)
+      a = first.nil?
+      b = second.nil?
+      if a && b
+        0
+      elsif a
         1
-      elsif b.nil?
+      elsif b
         -1
       else
-        raise Liquid::ArgumentError, 'cannot sort values of incompatible types'
+        NaturalSort::Engine.comparator(first.to_s, second.to_s)
       end
     end
 
@@ -266,7 +271,22 @@ module Jekyll
       md
     end
 
-    private(:compare, :dup, :get_content, :render_replacement)
+    def find(obj, index, properties, overflow = true)
+      max = properties.length - 1
+      p = obj[properties[index]]
+      while p.nil?
+        index += 1
+        p = obj[properties[index]]
+        next unless index == max
+        break unless p.nil?
+        raise "Exceeded max properties for #{obj.inspect} (using [#{properties.join(',')}])" unless overflow
+
+        break
+      end
+      index
+    end
+
+    private(:compare, :dup, :get_content, :render_replacement, :find, :multi_sort_comp)
   end
 end
 

@@ -32,11 +32,15 @@ The following recipe types are supported by KubeJS TFC
 {% afc %}
 {% endlist %}
 
+{% grid n=3 %}
+
 {% for recipe in tfc %}
 
 - [{{ recipe.title }}](#{{ recipe.anchor }})
 
 {% endfor %}
+
+</div>
 
 <a id="arborfirmacraft"></a>If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported
 
