@@ -6,7 +6,8 @@ module Jekyll
       :kjstfc => { :name => 'KubeJS TFC', :url => 'kubejs-tfc' },
       :configjs => { :name => 'ConfigJS', :url => 'configjs' },
       :precpros => { :name => 'Precision Prospecting', :url => 'prec-pros' },
-      :tfcgv => { :name => 'TFCGenViewer', :url => 'tfcgv' }
+      :tfcgv => { :name => 'TFCGenViewer', :url => 'tfcgv' },
+      :worldjs => { :name => 'WorldJS', :url => 'worldjs' }
     }
 
     class << self
@@ -72,6 +73,6 @@ module Jekyll
 end
 
 Jekyll::Hooks.register [:pages], :post_init do |page|
-  Jekyll::Feeds.process_updates(page) if page.path.to_s.end_with?(".md")
+  Jekyll::Feeds.process_updates(page) if page.path.to_s.end_with?('.md')
   Jekyll::Feeds.process_writing(page) if page.path.to_s.end_with?('.md')
 end

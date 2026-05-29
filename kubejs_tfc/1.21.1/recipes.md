@@ -19,8 +19,8 @@ fragment-sort:
 The following recipe types are supported by KubeJS TFC
 
 {% map replacements %}
-{% isp [`ItemStackProvider`]({{{ link kubejs_tfc/1.21.1/type-explanations.md }}}#item-stack-provider) %}
-{% bing [`BlockIngredient`]({{{ link kubejs_tfc/1.21.1/bindings/ingredient.md }}}#block-ingredient) %}
+{% isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% end_isp %}
+{% bing %}[`BlockIngredient`]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient){% end_bing %}
 {% endmap %}
 
 {% assign all_recipes = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
@@ -32,11 +32,15 @@ The following recipe types are supported by KubeJS TFC
 {% afc %}
 {% endlist %}
 
+{% grid n=3 %}
+
 {% for recipe in tfc %}
 
 - [{{ recipe.title }}](#{{ recipe.anchor }})
 
 {% endfor %}
+
+</div>
 
 <a id="arborfirmacraft"></a>If *ArborFirmaCraft* {% include mr.html link='arborfirmacraft-(afc)' %} {% include cf.html link='arborfirmacraft' %} is installed, the following recipes are supported
 

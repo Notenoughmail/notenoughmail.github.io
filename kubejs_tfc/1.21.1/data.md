@@ -11,6 +11,8 @@ desc: Documentation on Creating TFC's data types in scripts
 
 TFC's data types can be created through the `TFCEvents.data` event in the `server_scripts` folder
 
+{% grid n=3 %}
+
 - [Climate Range](#climate-range)
 - [Deposit](#deposit)
 - [Drinkable](#drinkable)
@@ -26,6 +28,8 @@ TFC's data types can be created through the `TFCEvents.data` event in the `serve
 - [Knapping Type](#knapping-type)
 - [Lamp Fuel](#lamp-fuel)
 - [Support](#support)
+
+</div>
 
 {: .notice #general-notice }
 > Most of these methods have an optional final argument which specifies the id of the virtual json file the data will be placed in. For instance, if an id of `fish:get_pierced` was used for an entity damage resistance, the resulting file would effectively be at `data/fish/tfc/entity_damage_restances/get_pierced.json`{: .language-fs }; the `tfc/<data_type>`{: .language-fs } folders do not need to be provided

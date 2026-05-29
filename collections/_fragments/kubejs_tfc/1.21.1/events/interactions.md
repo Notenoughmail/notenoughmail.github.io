@@ -45,7 +45,7 @@ An enum with three values, `air`{:.e}, `blocks`{:.e}, and `both`{:.e}. Determine
 
 ## `OnItemUseAction`{:.f}
 
-`OnItemUseAction`{:.f} is a function interface which can be created via a callback with the params
+`OnItemUseAction`{:.f} is a functional interface which can be created via a callback with the params
 
 - `stack: ItemStack`{:.language-kube-21}: The stack the player used
 - `context: UseOnContext`{:.language-kube-21}: The context of the use event

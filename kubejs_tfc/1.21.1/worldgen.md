@@ -20,11 +20,15 @@ Worldgen features are primarily done through placed and configured features. Kub
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
 
+{% grid n=2 %}
+
 {% for feature in features %}
 
 - [{{ feature.title }}](#{{ feature.anchor }}) -- `{{ feature.type }}`
 
 {% endfor %}
+
+</div>
 
 {% for feature in features %}
 
@@ -35,5 +39,16 @@ Worldgen features are primarily done through placed and configured features. Kub
 **Type**: `{{ feature.type }}`
 
 {{ feature.clean }}
+
+{: #{{ feature.anchor }}-example }
+
+### Example
+
+```js-21
+ServerEVents.registry('minecraft:configured_feature', event => {
+    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', '{{ feature.type }}'){% for ex in feature.example %}
+        {{ ex }}{% endfor %}
+})
+```
 
 {% endfor %}
