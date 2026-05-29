@@ -29,17 +29,15 @@ fragment-sort:
 {% rule_test [`RuleTest`](https://minecraft.wiki/w/Processor_list?oldid=3572989#Rule_test) %}
 {% struct_proc [`StructureProcessorList`](https://minecraft.wiki/w/Processor_list?oldid=3572989) %}
 {% directions %}<p>{{ directions }}</p>{% end_directions %}
-! This needs to be a link out to the mc wiki or kube wrapper docs, can't find either
-{% int %}`IntProvider`[^1]{% end_int %}
-{% float %}`FloatProvider`[^1]{% end_float %}
+! These 2 need to be a link out to the mc wiki or kube wrapper docs, can't find either
+{% int %}`IntProvider`{% end_int %}
+{% float %}`FloatProvider`{% end_float %}
 {% block_predicate %}[`BlockPredicate`]({% link worldjs/1.21.1/wrappers.md %}#block-predicate){% end_block_predicate %}
 {% required %}**Must** be set{% end_required %}
 {% unit %}Must be {% in_unit %}{% end_unit %}
 {% def_0 %}Defaults to `0`{:.n}{% end_def_0 %}
 {% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
 {% endmap %}
-
-[^1]: This should link to the appropriate MC wiki or KubeJS wrapper docs, but I can find neither
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
 

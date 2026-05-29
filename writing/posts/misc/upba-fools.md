@@ -3,6 +3,7 @@ title: Upper Basin Foolishness
 layout: commentary
 date: 2024-04-26 23:34:00 MST
 permalink: /writing/upba-fools
+parent: Writing
 cat: 
     - water
     - politics

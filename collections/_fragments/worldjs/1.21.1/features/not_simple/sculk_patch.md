@@ -5,6 +5,7 @@ type: sculk_patch
 wiki_link: https://minecraft.wiki/w/Sculk_Patch?oldid=3258303
 sprite: BlockSprite
 icon: sculk-vein
+sort_pos: s
 cat:
     - worldjs
     - 1.21.1

@@ -10,7 +10,18 @@ cat:
     - 1.21.1
     - feature
 example:
-    - // TODO
+    - ".size([11, 15])"
+    - ".rimSize([ 1, 3])"
+    - ".rim('minecraft:calcite')"
+    - ".contents('minecraft:lava')"
+    - ".withPlacement('minecraft:delta', p => {"
+    - "    p.modifiers(modifiers => {"
+    - "        let { minecraft } = modifiers"
+    - "        minecraft"
+    - "            .countOnEveryLayer(40)"
+    - "            .biome()"
+    - "    })"
+    - "})"
 ---
 
 [[ base ]]
