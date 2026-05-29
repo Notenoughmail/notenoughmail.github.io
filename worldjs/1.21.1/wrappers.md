@@ -5,6 +5,7 @@ permalink: /worldjs/1.21.1/wrappers/
 parent: 1.21.1
 grand_parent: WorldJS
 has_children: false
+desc: The wrappers for Java types frequently encountered in and handled by WorldJS
 fragment-filter:
     - worldjs
     - 1.21.1

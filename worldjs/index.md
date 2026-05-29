@@ -15,7 +15,7 @@ Available on [Modrinth](https://modrinth.com/mod/worldjs) and [CurseForge](https
 
 Source available on [GitHub](https://github.com/Notenoughmail/WorldJS)
 
-A list of updates cane be found on the [updates page](updates/)
+A list of updates can be found on the [updates page](updates/)
 
 ## [1.21.1](1.21.1/)
 

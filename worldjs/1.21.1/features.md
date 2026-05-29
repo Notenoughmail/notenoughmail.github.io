@@ -6,6 +6,7 @@ parent: 1.21.1
 grand_parent: WorldJS
 has_children: true
 has_toc: false
+desc: All of the configured and placed feature types provided by WorldJS 
 fragment-filter:
     - worldjs
     - 1.21.1
