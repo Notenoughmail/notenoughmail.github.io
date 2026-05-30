@@ -10,7 +10,15 @@ cat:
     - 1.21.1
     - feature
 example: |-
-    // TODO
+    .probability(0.72)
+    .withPlacement(placement => {
+        placement.modifiers(modifiers => {
+            modifiers.minecraft
+                .inSquare()
+                .surfaceWaterDepth(1)
+                .inBiome()
+        })
+    })
 ---
 
 [[ base ]]

@@ -19,7 +19,7 @@ module Jekyll
 
           date = fix_date(page)
 
-          link = "/#{date.year}/#{zero_prefix(date.month)}/#{zero_prefix(date.mday)}/#{gp[:url]}/#{
+          link = "/#{date.year}/#{zero_prefix(date.month)}/#{zero_prefix(date.mday)}/#{gp[:url]}-#{
             if page.data['url_version'].nil?
               page.data['version'].to_s.gsub('.', '-')
             else
