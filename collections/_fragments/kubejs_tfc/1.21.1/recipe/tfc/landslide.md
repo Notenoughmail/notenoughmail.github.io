@@ -8,12 +8,12 @@ cat:
     - 1.21.1
     - recipe
 tagline: For blocks that landslide automatically due to not be supported by surrounding blocks
-example:
-    - "'minecraft:grass_block',"
-    - "'minecraft:dirt'"
-sig:
-    - 'result?: BlockState,'
-    - 'ingredient: BlockIngredient'
+example: |-
+    'minecraft:grass_block',
+    'minecraft:dirt'
+sig: |-
+    result?: BlockState,
+    ingredient: BlockIngredient
 ---
 
 - *Optional 1st argument*: A block state, the result of the recipe. If not present, the block landslides to itself

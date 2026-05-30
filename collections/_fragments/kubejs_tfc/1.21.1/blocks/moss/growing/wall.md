@@ -8,10 +8,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .mossyBlock('minecraft:red_nether_brick_wall')
+example: |-
+    .mossyBlock('minecraft:red_nether_brick_wall')
 ---
 
 Creates a new moss growing wall block
 
-Inherits the methods of the [moss growing block builder](#moss-growing-block)
+[[ moss ]]

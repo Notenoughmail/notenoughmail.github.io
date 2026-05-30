@@ -1,5 +1,5 @@
 ---
-title: Add Cavers
+title: Add Carvers
 anchor: add-legacy-carvers
 type: add_carvers
 name: add_cave_carvers
@@ -7,10 +7,10 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:needs_more_caves')"
-    - ".step('air')"
-    - ".carvers('#kubejs:special_cave_carvers')"
+example: |-
+    .biomes('#kubejs:needs_more_caves')
+    .step('air')
+    .carvers('#kubejs:special_cave_carver')
 ---
 
 - [[ biomes ]]

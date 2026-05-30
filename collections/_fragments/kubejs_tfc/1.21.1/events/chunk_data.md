@@ -9,95 +9,94 @@ cat:
     - 1.21.1
     - event
 target: nether
-example:
-    - ''
-    - '// Use a LayeredArea for the rocks as noises can be slow when used with the rock rule source'
-    - 'const randomSource = event.stableRandomSource()'
-    - '// This rock layer mirrors how TFC does its own rock layer'
-    - 'const rockLayer = TFC.worldgen.uniformLayeredArea(randomSource.nextLong())'
-    - 'for (let i = 0 ; i < 3 ; i++) {'
-    - '    rockLayer'
-    - '        .zoom(true, randomSource.nextLong())'
-    - '        .smooth(randomSource.nextLong())'
-    - '}'
-    - 'for (let i = 0 ; i < 6 ; i++) {'
-    - '    rockLayer.zoom(true, randomSource.nextLong())'
-    - '}'
-    - 'rockLayer'
-    - '    .smooth(randomSource.nextLong())'
-    - '    .zoom(true, randomSource.nextLong())'
-    - '    .smooth(randomSource.nextLong())'
-    - ''
-    - '// Since The nether does not have rain, pre-create an empty float layer to use'
-    - 'const rain = TFC.worldgen.lerpFloatLayer(0, 0, 0, 0)'
-    - 'const tempLayer = TFC.noise.openSimplex2D(event.getWorldSeed() + 7545452354354)'
-    - '    .spread(0.2)'
-    - '    .octaves(3)'
-    - '    scaled(95, 140)'
-    - 'const forestLayer = TFC.noise.openSimplex2D9event.getWorldSeed() + 14694769526)'
-    - '    .spread(0.8)'
-    - '    .terraces(9)'
-    - '    .affine(6, 12)'
-    - '    .scaled(6, 18, 0, 28)'
-    - 'const rockLayerHeightNoise = TFC.noise.openSimplex2D(event.getWorldSeed() + 6315343547)'
-    - '    .octaves(6)'
-    - '    .scaled(12, 34)'
-    - '    .spread(0.009)'
-    - ''
-    - '// Precompute the aquifer heights as a constant since this is the nether'
-    - 'const aquifer = []'
-    - 'var i = 0'
-    - 'while (1 < 16) {'
-    - '    aquifer.push(0)'
-    - '    i++'
-    - '}'
-    - ''
-    - 'event.partial(data => {'
-    - '    let { pos } = data'
-    - '    let { minBlockX: X, minBlockZ: z } = pos'
-    - '    var temp = tempLayer.overChunk(pos)'
-    - '    data.generatePartial('
-    - '        rain,'
-    - '        rain,'
-    - '        rain,'
-    - '        temp,'
-    - '        forestLayer.noise(x, z) // Kube accepts ordinal numbers for enum constants'
-    - '    )'
-    - '})'
-    - ''
-    - 'event.full((data, chunk) => {'
-    - '    var heights = []'
-    - '    // In the nether this will always return 127, but this is'
-    - '    // included as a demonstration of using height maps and'
-    - '    // properly indexing the height values within the array'
-    - '    for (let x = 0 ; x < 16 ; x++) {'
-    - '         for (let z = 0 ; z < 16 ; z++) {'
-    - "             var height = chunk.getHeight('ocean_floor_wg', x, z)"
-    - '             heights[x + 16 * z] = height'
-    - '         }'
-    - '    }'
-    - '    data.generateFull(heights, aquifer)'
-    - '})'
-    - ''
-    - 'event.rocks((x, y, z, surfaceY, cache, rockLayers) => {'
-    - '    var layer = 0'
-    - '    var layerHeight = 0'
-    - '    var deltaY = surfaceY - y'
-    - ''
-    - '    do {'
-    - '        // A simplified version of what TFC does for its layer depth'
-    - '        // Of note is the lack of skewing for either the rock'
-    - '        // layer or the heights and the non-use of the cache'
-    - '        layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5)'
-    - '        if (deltaY <= layerHeight) {'
-    - '            break'
-    - '        }'
-    - '        deltaY -= layerHeight'
-    - '        layer++'
-    - '    } while (deltaY > 0)'
-    - ''
-    - '    return rockLayer.sampleAtLayer(rockLayer.getAt(x, z), layer)'
-    - '})'
+example: |-
+    // Use a LayeredArea for the rocks as noises can be slow when used with the rock rule source
+    const randomSource = event.stableRandomSource()
+    // This rock layer mirrors how TFC does its own rock layer
+    const rockLayer = TFC.worldgen.uniformLayeredArea(randomSource.nextLong())
+    for (let i = 0 ; i < 3 ; i++) {
+        rockLayer
+            .zoom(true, randomSource.nextLong())
+            .smooth(randomSource.nextLong())
+    }
+    for (let i = 0 ; i < 6 ; i++) {
+        rockLayer.zoom(true, randomSource.nextLong())
+    }
+    rockLayer
+        .smooth(randomSource.nextLong())
+        .zoom(true, randomSource.nextLong())
+        .smooth(randomSource.nextLong())
+    
+    // Since The nether does not have rain, pre-create an empty float layer to use
+    const rain = TFC.worldgen.lerpFloatLayer(0, 0, 0, 0)
+    const tempLayer = TFC.noise.openSimplex2D(event.getWorldSeed() + 7545452354354)
+        .spread(0.2)
+        .octaves(3)
+        scaled(95, 140)
+    const forestLayer = TFC.noise.openSimplex2D9event.getWorldSeed() + 14694769526)
+        .spread(0.8)
+        .terraces(9)
+        .affine(6, 12)
+        .scaled(6, 18, 0, 28)
+    const rockLayerHeightNoise = TFC.noise.openSimplex2D(event.getWorldSeed() + 6315343547)
+        .octaves(6)
+        .scaled(12, 34)
+        .spread(0.009)
+    
+    // Precompute the aquifer heights as a constant since this is the nether
+    const aquifer = []
+    var i = 0
+    while (1 < 16) {
+        aquifer.push(0)
+        i++
+    }
+    
+    event.partial(data => {
+        let { pos } = data
+        let { minBlockX: X, minBlockZ: z } = pos
+        var temp = tempLayer.overChunk(pos)
+        data.generatePartial(
+            rain,
+            rain,
+            rain,
+            temp,
+            forestLayer.noise(x, z) // Kube accepts ordinal numbers for enum constants
+        )
+    })
+    
+    event.full((data, chunk) => {
+        var heights = []
+        // In the nether this will always return 127, but this is
+        // included as a demonstration of using height maps and
+        // properly indexing the height values within the array
+        for (let x = 0 ; x < 16 ; x++) {
+             for (let z = 0 ; z < 16 ; z++) {
+                 var height = chunk.getHeight('ocean_floor_wg', x, z)
+                 heights[x + 16 * z] = height
+             }
+        }
+        data.generateFull(heights, aquifer)
+    })
+    
+    event.rocks((x, y, z, surfaceY, cache, rockLayers) => {
+        var layer = 0
+        var layerHeight = 0
+        var deltaY = surfaceY - y
+    
+        do {
+            // A simplified version of what TFC does for its layer depth
+            // Of note is the lack of skewing for either the rock
+            // layer or the heights and the non-use of the cache
+            layerHeight = rockLayerHeightNoise.noise(x >> 5, z >> 5)
+            if (deltaY <= layerHeight) {
+                break
+            }
+            deltaY -= layerHeight
+            layer++
+        } while (deltaY > 0)
+    
+        return rockLayer.sampleAtLayer(rockLayer.getAt(x, z), layer)
+    })
 ---
 
 When used with a specific chunk generator type, this event allows for custom generation of TFC's [`ChunkData`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#chunk-data), permitting [fauna definitions](#fauna-spawns); [climate placement modifiers]({% link kubejs_tfc/1.21.1/worldgen.md %}#climate); TFC's climate based structure modifier; and many other features which are reliant on the chunk generator being TFC-like to function properly with chunk generator's other than TFC's

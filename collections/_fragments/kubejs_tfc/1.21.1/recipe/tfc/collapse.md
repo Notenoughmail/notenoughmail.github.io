@@ -8,12 +8,12 @@ cat:
     - 1.21.1
     - recipe
 tagline: For blocks that collapse as a result of unsafe mining practices
-example:
-    - "'minecraft:gold_block',"
-    - "'minecraft:iron_block'"
-sig:
-    - 'result?: BlockState,'
-    - 'ingredient: BlockIngredient'
+example: |-
+    'minecraft:gold_block',
+    'minecraft:iron_block'
+sig: |-
+    result?: BlockState,
+    ingredient: BlockIngredient
 ---
 
 - *Optional 1st argument*: A block state, the result of the recipe. If not present, the block collapses to itself

@@ -8,23 +8,23 @@ cat:
     - 1.21.1
     - recipe
 tagline: For working items on an anvil
-example:
-    - "'minecraft:iron_bars',"
-    - "'minecraft:iron_nugget',"
-    - '['
-    - "    'hit_any',"
-    - "    'upset_not_last'"
-    - ']'
-example_add:
-    - '.tier(3)'
-    - '.applyBonus()'
-sig:
-    - 'result: ItemStackProvider,'
-    - 'ingredient: Ingredient,'
-    - 'rules: List<ForgeRule>'
-sig_add:
-    - '.tier(tier: int)'
-    - '.applyBonus(applyBonus?: boolean)'
+example: |-
+    'minecraft:iron_bars',
+    'minecraft:iron_nugget',
+    [
+        'hit_any',
+        'upset_not_last'
+    ]
+example_add: |-
+    .tier(3)
+    .applyBonus()
+sig: |-
+    result: ItemStackProvider,
+    ingredient: Ingredient,
+    rules: List<ForgeRule>
+sig_add: |-
+    .tier(tier: int)
+    .applyBonus(applyBonus?: boolean)
 ---
 
 - 1st argument: An [[ isp ]], the result of the recipe

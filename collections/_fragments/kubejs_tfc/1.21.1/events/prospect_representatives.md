@@ -7,9 +7,9 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.register('minecraft:sponge', 'minecraft:wet_sponge')
-    - event.register('minecraft:terracotta', 'minecraft:white_terracotta', 'minecraft:red_terracotta', 'minecraft:lime_terracotta') // etc.
+example: |-
+    event.register('minecraft:sponge', 'minecraft:wet_sponge')
+    event.register('minecraft:terracotta', 'minecraft:white_terracotta', 'minecraft:red_terracotta', 'minecraft:lime_terracotta') // etc.
 ---
 
 TFC's prospecting system allows multiple blocks to be treated as the same for the purposes of counting how many of a block were found. This event allows for the creation of such aliases

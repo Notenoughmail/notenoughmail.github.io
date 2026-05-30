@@ -213,6 +213,10 @@ module Jekyll
       end
     end
 
+    def with_indent(input, indent = 8)
+      input.gsub("\n", "\n#{' ' * indent}")
+    end
+
     def compare(first, second)
       a = first.nil?
       b = second.nil?
@@ -271,22 +275,7 @@ module Jekyll
       md
     end
 
-    def find(obj, index, properties, overflow = true)
-      max = properties.length - 1
-      p = obj[properties[index]]
-      while p.nil?
-        index += 1
-        p = obj[properties[index]]
-        next unless index == max
-        break unless p.nil?
-        raise "Exceeded max properties for #{obj.inspect} (using [#{properties.join(',')}])" unless overflow
-
-        break
-      end
-      index
-    end
-
-    private(:compare, :dup, :get_content, :render_replacement, :find, :multi_sort_comp)
+    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp)
   end
 end
 

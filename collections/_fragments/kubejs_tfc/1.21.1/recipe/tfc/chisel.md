@@ -8,18 +8,18 @@ cat:
     - 1.21.1
     - recipe
 tagline: For chiseling blocks in world using a chisel item
-example:
-    - "'minecraft:oak_log[axis=z]',"
-    - "[ 'minecraft:dirt', 'minecraft:oak_planks' ],"
-    - "'tfc:smooth'"
-sig:
-    - 'result: BlockState,'
-    - 'ingredient: BlockIngredient,'
-    - 'mode: Holder<ChiselMode>,'
-    - 'itemOutput?: ItemStackProvider'
-sig_add:
-    - '.itemOutput(itemOutput: ItemStackProvider)'
-    - '.extraDrop(itemOutput: ItemStackProvider)'
+example: |-
+    'minecraft:oak_log[axis=z]',
+    [ 'minecraft:dirt', 'minecraft:oak_planks' ],
+    'tfc:smooth'
+sig: |-
+    result: BlockState,
+    ingredient: BlockIngredient,
+    mode: Holder<ChiselMode>,
+    itemOutput?: ItemStackProvider
+sig_add: |-
+    .itemOutput(itemOutput: ItemStackProvider)
+    .extraDrop(itemOutput: ItemStackProvider)
 ---
 
 - 1st argument: A block state, the base result of chiseling, may be tweaked by the `mode`{:.v}

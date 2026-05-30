@@ -8,16 +8,16 @@ cat:
     - 1.21.1
     - recipe
 tagline: For casting into mold items
-example:
-    - "'minecraft:gold_ingot',"
-    - "'kubejs:mold',"
-    - "Fluid.of('minecraft:lava', 100),"
-    - "0.95"
-sig:
-    - 'result: ItemStackProvider,'
-    - 'mold: Ingredient,'
-    - 'fluid: SizedFluidIngredient,'
-    - 'breakChance?: number'
+example: |-
+    'minecraft:gold_ingot',
+    'kubejs:mold',
+    Fluid.of('minecraft:lava', 100),
+    0.95
+sig: |-
+    result: ItemStackProvider,
+    mold: Ingredient,
+    fluid: SizedFluidIngredient,
+    breakChance?: number
 ---
 
 - 1st argument: An [[ isp ]], the result of the recipe

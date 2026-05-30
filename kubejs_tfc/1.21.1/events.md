@@ -49,8 +49,8 @@ KubeJS TFC adds several JS events for use in scripts
 ### Example
 
 ```js-21
-TFCEvents.{{ event.name }}({% if event.target %}'{{ event.target }}', {% endif %}event => { {% for ex in event.example %}
-    {{ ex }}{% endfor %}
+TFCEvents.{{ event.name }}({% if event.target %}'{{ event.target }}', {% endif %}event => {
+    {{ event.example | with_indent: 4 }}
 })
 ```
 

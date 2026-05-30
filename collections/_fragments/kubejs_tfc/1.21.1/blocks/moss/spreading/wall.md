@@ -8,10 +8,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .texture('minecraft:block/lime_concrete')
+example: |-
+    .texture('minecraft:block/lime_concrete')
 ---
 
 Creates a new moss spreading wall block
 
-Inherits the methods of the default block builder
+[[ base ]]

@@ -6,8 +6,8 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .texture('tfc:item/metal/chisel/copper')
+example: |-
+    .texture('tfc:item/metal/chisel/copper')
 ---
 
 Creates a new chisel item

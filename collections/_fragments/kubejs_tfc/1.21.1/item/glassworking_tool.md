@@ -7,14 +7,14 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .operation('kubejs:cut')
-    - .knife()
+example: |-
+    .operation('kubejs:cut')
+    .knife()
 ---
 
 Creates a new tool item which can perform a glassworking [operation]({% link kubejs_tfc/1.21.1/registry.md %}glass-operation)
 
-Inherits the methods of the [tool item builder](#tool)
+[[ tool ]]
 
 {: #{{ page.anchor }}-methods }
 

@@ -7,9 +7,9 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:no_zombies')"
-    - ".entityTypes('#kubejs:zombies')"
+example: |-
+    .biomes('#kubejs:no_zombies')
+    .entityTypes('#kubejs:zombies')
 ---
 
 - [[ biomes ]]

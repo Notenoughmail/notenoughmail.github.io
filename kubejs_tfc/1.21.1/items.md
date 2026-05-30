@@ -15,7 +15,13 @@ fragment-filter:
 
 KubeJS TFC allows for the creation of some of TFC's item types
 
-{% assign items = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
+{% map replacements %}
+{% chisel Inherits the methods of the [chisel item builder](#chisel) %}
+{% tool Inherits the methods of the [tool item builder](#tool)%}
+{% jug Inherits the methods of the [jug item builder](#jug) %}
+{% endmap %}
+
+{% assign items = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | replace_in_fragments: replacements | sort: 'anchor' %}
 
 {% grid n=2 %}
 
@@ -49,8 +55,8 @@ KubeJS TFC allows for the creation of some of TFC's item types
 
 ```js-21
 StartupEvents.registry('item', event => {
-    event.create('{{ item | get_or_default: 'name', 'anchor' }}', '{{ item.type }}'){% for ex in item.example %}
-        {{ ex }}{% endfor %}
+    event.create('{{ item | get_or_default: 'name', 'anchor' }}', '{{ item.type }}')
+        {{ item.example | with_indent }}
 })
 ```
 
@@ -102,5 +108,9 @@ StartupEvents.registry('item', event => {
 ## prec pros prospector
 
 ## chisel
+
+## tool
+
+## jug
 
 {% endcomment %}

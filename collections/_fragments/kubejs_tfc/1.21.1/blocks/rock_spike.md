@@ -8,15 +8,15 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .models((type, m) => {
-    - "    if (type.base()) m.parent('minecraft:block/honey_block')"
-    - '})'
+example: |-
+    .models((type, m) => {
+        if (type.base()) m.parent('minecraft:block/honey_block')
+    })
 ---
 
 Creates a new rock spike block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 

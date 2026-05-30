@@ -7,13 +7,13 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:add_skeletons')"
-    - ".entityTypes(["
-    - "    'minecraft:skeleton',"
-    - "    'minecraft:stray'"
-    - "])"
-    - ".cost(12, 0.7)"
+example: |-
+    .biomes('#kubejs:add_skeletons')
+    .entityTypes([
+        'minecraft:skeleton',
+        'minecraft:stray'
+    ])
+    .cost(12, 0.7)
 ---
 
 - [[ biomes ]]

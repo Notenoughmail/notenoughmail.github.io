@@ -7,8 +7,8 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.cutout('minecraft:iron_door', 'minecraft:block/glass')
+example: |-
+    event.cutout('minecraft:iron_door', 'minecraft:block/glass')
 ---
 
 TFC adds the ability to place items in-world via a keybind. By default the item model is displayed, but the ability to override the models used by specific items does exist. This event allows for scripts to define such overrides

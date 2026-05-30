@@ -7,38 +7,38 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.setFactory((defNutrient, defDairy) => {
-    - ''
-    - '    let avgNutrition = defNutrient'
-    - '    let nutrients = ['
-    - '        defNutrient,'
-    - '        defNutrient,'
-    - '        defNutrient,'
-    - '        defNutrient,'
-    - '        defDairy'
-    - '    ]'
-    - ''
-    - '    // Do as you wish...'
-    - '    function applyHunger(hunger) { ... }'
-    - '    function updateNutrition() { ... }'
-    - '    function applyFood(foodData, currentHunger) { ... }'
-    - ''
-    - '    return JavaAdapter(event.classForJavaAdapter(), {'
-    - '        getAverageNutrition: () => avgNutrition,'
-    - '        getNutrient: (nutrient) => nutrients[nutrient.ordinal()],'
-    - '        getNutrients: () => nutrients,'
-    - '        setHungerAndUpdate: (hunger) => {'
-    - '            applyHunger(hunger)'
-    - '            updateNutrition()'
-    - '        },'
-    - '        setHunger: applyHunger,'
-    - '        onClientUpdate: (serverNutrients) => nutrients = serverNutrients,'
-    - '        addNutrients: applyFood,'
-    - '        writeToNbt: () => { ... },'
-    - '        readFromNbt: (nbt) => { ... }'
-    - '    })'
-    - '})'
+example: |-
+    event.setFactory((defNutrient, defDairy) => {
+    
+        let avgNutrition = defNutrient
+        let nutrients = [
+            defNutrient,
+            defNutrient,
+            defNutrient,
+            defNutrient,
+            defDairy
+        ]
+    
+        // Do as you wish...
+        function applyHunger(hunger) { ... }
+        function updateNutrition() { ... }
+        function applyFood(foodData, currentHunger) { ... }
+    
+        return JavaAdapter(event.classForJavaAdapter(), {
+            getAverageNutrition: () => avgNutrition,
+            getNutrient: (nutrient) => nutrients[nutrient.ordinal()],
+            getNutrients: () => nutrients,
+            setHungerAndUpdate: (hunger) => {
+                applyHunger(hunger)
+                updateNutrition()
+            },
+            setHunger: applyHunger,
+            onClientUpdate: (serverNutrients) => nutrients = serverNutrients,
+            addNutrients: applyFood,
+            writeToNbt: () => { ... },
+            readFromNbt: (nbt) => { ... }
+        })
+    })
 ---
 
 This event fires whenever a player joins the world on both the client and server side so that their nutrition calculator may be changed

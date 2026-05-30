@@ -9,14 +9,14 @@ cat:
     - 1.21.1
     - recipe
 tagline: For recipes performed in the blast furnace multiblock
-example:
-    - "Fluid.of('tfc:metal/copper', 20),"
-    - "'#minecraft:flowers',"
-    - "Fluid.of('tfc:metal/bismuth', 30)"
-sig:
-    - 'result: FluidStack,'
-    - 'catalyst: Ingredient,'
-    - 'fluid: SizedFluidIngredient'
+example: |-
+    Fluid.of('tfc:metal/copper', 20),
+    '#minecraft:flowers',
+    Fluid.of('tfc:metal/bismuth', 30)
+sig: |-
+    result: FluidStack,
+    catalyst: Ingredient,
+    fluid: SizedFluidIngredient
 ---
 
 - 1st argument: A fluid stack, the result of the recipe

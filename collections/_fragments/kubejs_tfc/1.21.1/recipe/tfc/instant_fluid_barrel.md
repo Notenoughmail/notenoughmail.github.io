@@ -9,17 +9,17 @@ cat:
     - 1.21.1
     - recipe
 tagline: For performing fluid/fluid mixing in barrels instantly
-example:
-    - "Fluid.of('minecraft:water', 20),"
-    - "Fluid.of('minecraft:milk', 10)"
-example_add:
-    - ".outputFluid(Fluid.of('minecraft:lava', 50))"
-sig:
-    - 'primaryFluid: SizedFluidIngredient,'
-    - 'addedFluid: SizedFluidIngredient'
-sig_add:
-    - '.outputFluid(outputFluid: FluidStack)'
-    - '.sound(sound: Holder<SoundEvent>)'
+example: |-
+    Fluid.of('minecraft:water', 20),
+    Fluid.of('minecraft:milk', 10)
+example_add: |-
+    .outputFluid(Fluid.of('minecraft:lava', 50))
+sig: |-
+    primaryFluid: SizedFluidIngredient,
+    addedFluid: SizedFluidIngredient
+sig_add: |-
+    .outputFluid(outputFluid: FluidStack)
+    .sound(sound: Holder<SoundEvent>)
 ---
 
 - 1st argument: A sized fluid ingredient, the fluid in the barrel's tank

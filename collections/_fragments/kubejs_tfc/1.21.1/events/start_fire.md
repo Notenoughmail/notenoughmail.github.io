@@ -7,13 +7,13 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.isStrong()) {
-    - "    event.getPlayer().notify("
-    - "        Text.warn('Arsonist!'),"
-    - "        Text.of('So you like to play with fire, eh?')"
-    - '    )'
-    - '}'
+example: |-
+    if (event.isStrong()) {
+        event.getPlayer().notify(
+            Text.warn('Arsonist!'),
+            Text.of('So you like to play with fire, eh?')
+        )
+    }
 ---
 
 This event is fired whenever a block is lit on fire and can be cancelled to handle lighting of an external device or source

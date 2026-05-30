@@ -10,10 +10,10 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.jsonModifier({"
-    - "    type: 'cheese_mod:extra_cheesy'"
-    - "}))"
+example: |-
+    .withPlacement(p => p.jsonModifier({
+        type: 'cheese_mod:extra_cheesy'
+    }))
 ---
 
 [[ base ]]

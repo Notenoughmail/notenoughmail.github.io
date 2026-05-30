@@ -9,6 +9,9 @@ fragment-filter:
     - worldjs
     - 1.21.1
     - biome_mod
+fragment-sort:
+    - pos
+    - anchor
 ---
 
 # Biome Modifiers
@@ -19,7 +22,7 @@ NeoForge adds the ability to add [biome modifiers](https://docs.neoforged.net/do
 {% biomes `.biomes(biomes: HolderSet<Biome>)`{: .language-kube-21 #[[ anchor ]]-biomes }: Set the biome(s) to be modified %}
 {% endmap %}
 
-{% assign types = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | sort: 'anchor' %}
+{% assign types = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
 
 {% grid n=3 %}
 
@@ -49,8 +52,8 @@ See the relevant page on the [NeoForge Docs](https://docs.neoforged.net/docs/1.2
 
 ```js-21
 ServerEvents.registry('neoforge:biome_modifier', event => {
-    event.create('{{ type | get_or_default: 'name', 'anchor' }}', '{{ type.type }}'){% for ex in type.example %}
-        {{ ex }}{% endfor %}
+    event.create('{{ type | get_or_default: 'name', 'anchor' }}', '{{ type.type }}')
+        {{ type.example | with_indent }}
 })
 ```
 

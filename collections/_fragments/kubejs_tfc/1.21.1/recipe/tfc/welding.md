@@ -8,19 +8,19 @@ cat:
     - 1.21.1
     - recipe
 tagline: For welding items on an anvil
-example:
-    - "'minecraft:obsidian',"
-    - "'minecraft:water_bucket',"
-    - "'minecraft:lava_bucket'"
-example_add:
-    - ".tier(4)"
-sig:
-    - "result: ItemStackProvider,"
-    - "firstInput: Ingredient,"
-    - "secondInput: Ingredient"
-sig_add:
-    - ".tier(tier: int)"
-    - ".bonusBehavior(bonus: BonusBehavior)"
+example: |-
+    'minecraft:obsidian',
+    'minecraft:water_bucket',
+    'minecraft:lava_bucket'
+example_add: |-
+    .tier(4)
+sig: |-
+    result: ItemStackProvider,
+    firstInput: Ingredient,
+    secondInput: Ingredient
+sig_add: |-
+    .tier(tier: int)
+    .bonusBehavior(bonus: BonusBehavior)
 ---
 
 - 1st argument: An [[ isp ]], the result of the recipe

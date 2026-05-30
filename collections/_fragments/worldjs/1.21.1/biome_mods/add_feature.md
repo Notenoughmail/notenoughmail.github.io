@@ -7,10 +7,10 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:needs_more_flowers')"
-    - ".step('vegetal_decoration')"
-    - ".features('#kubejs:flower_patches')"
+example: |-
+    .biomes('#kubejs:needs_more_flowers')
+    .step('vegetal_decoration')
+    .features('#kubejs:flower_patches')
 ---
 
 - [[ biomes ]]

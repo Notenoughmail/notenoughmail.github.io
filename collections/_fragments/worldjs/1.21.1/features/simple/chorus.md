@@ -9,14 +9,14 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.modifiers(m => {"
-    - "    let { minecraft } = m"
-    - "    minecraft"
-    - "        .biome()"
-    - "        .inSquare()"
-    - "        .rarityFilter(17)"
-    - "}))"
+example: |-
+    .withPlacement(p => p.modifiers(m => {
+        let { minecraft } = m
+        minecraft
+            .biome()
+            .inSquare()
+            .rarityFilter(17)
+    }))
 ---
 
 [[ base ]]

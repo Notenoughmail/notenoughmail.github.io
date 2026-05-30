@@ -8,25 +8,25 @@ cat:
     - 1.21.1
     - recipe
 tagline: For sewing items in a sewing table
-example:
-    - "'minecraft:cobblestone',"
-    - "["
-    - "    '## ### ##',"
-    - "    '# #   # #',"
-    - "    ' # ### # ',"
-    - "    '# #   # #',"
-    - "    '## ### ##'"
-    - "],"
-    - "["
-    - "    ' BBWWBB ',"
-    - "    'BBW  WBB',"
-    - "    'W  BB  W',"
-    - "    '  WBBW  '"
-    - "]"
-sig:
-    - "result: ItemStack,"
-    - "stitches: List<String>"
-    - "squares: List<String>"
+example: |-
+    'minecraft:cobblestone',
+    [
+        '## ### ##',
+        '# #   # #',
+        ' # ### # ',
+        '# #   # #',
+        '## ### ##'
+    ],
+    [
+        ' BBWWBB ',
+        'BBW  WBB',
+        'W  BB  W',
+        '  WBBW  '
+    ]
+sig: |-
+    result: ItemStack,
+    stitches: List<String>
+    squares: List<String>
 ---
 
 - 1st argument: An item stack, the result of the recipe

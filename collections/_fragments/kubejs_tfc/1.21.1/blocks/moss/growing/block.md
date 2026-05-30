@@ -8,13 +8,13 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .mossyBlock('minecraft:mossy_cobblestone')
+example: |-
+    .mossyBlock('minecraft:mossy_cobblestone')
 ---
 
 Creates a new moss growing block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 

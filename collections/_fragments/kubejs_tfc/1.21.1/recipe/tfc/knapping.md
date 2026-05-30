@@ -8,21 +8,21 @@ cat:
     - 1.21.1
     - recipe
 tagline: For knapping recipes, performed by right-clicking the input ingredient in the air and 'shaping' a 5 x 5 grid
-example:
-    - "'minecraft:obsidian',"
-    - "'tfc:clay',"
-    - '['
-    - "    'X X',"
-    - "    ' X ',"
-    - "    'X X',"
-    - ']'
-sig:
-    - 'result: ItemStack,'
-    - 'knappingType: ResourceLocation,'
-    - 'pattern: List<String>'
-sig_add:
-    - '.ingredient(ingredient: Ingredient)'
-    - '.defaultOn(defaultOn?: boolean)'
+example: |-
+    'minecraft:obsidian',
+    'tfc:clay',
+    [
+        'X X',
+        ' X ',
+        'X X',
+    ]
+sig: |-
+    result: ItemStack,
+    knappingType: ResourceLocation,
+    pattern: List<String>
+sig_add: |-
+    .ingredient(ingredient: Ingredient)
+    .defaultOn(defaultOn?: boolean)
 ---
 
 - 1st argument: An item stack, the output of the recipe

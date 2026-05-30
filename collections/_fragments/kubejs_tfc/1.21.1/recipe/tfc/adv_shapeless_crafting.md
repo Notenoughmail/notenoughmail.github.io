@@ -3,25 +3,25 @@ title: Advanced Shapeless Crafting
 anchor: shapeless
 func: shapeless
 mod: tfc
-group: zzz_crafting
+group: z_crafting
 cat:
     - kubejs_tfc
     - 1.21.1
     - recipe
 tagline: For shapeless crafting recipes which have an [[ isp ]] result
-example:
-    - "'minecraft:blue_glazed_terracotta',"
-    - "["
-    - "    'minecraft:blue_concrete',"
-    - "    TFC.ingredient.fluidContents(Fluid.lava(50))"
-    - "],"
-    - "TFC.ingredient.fluidContents(Fluid.lava(50))"
-    - "TFC.isp.copyInputStack().addHeat(500)"
-sig:
-    - "result: ItemStackProvider,"
-    - "ingredients: List<Ingredient>,"
-    - "primaryIngredient: Ingredient,"
-    - "remainder?: ItemStackProvider"
+example: |-
+    'minecraft:blue_glazed_terracotta',
+    [
+        'minecraft:blue_concrete',
+        TFC.ingredient.fluidContents(Fluid.lava(50))
+    ],
+    TFC.ingredient.fluidContents(Fluid.lava(50))
+    TFC.isp.copyInputStack().addHeat(500)
+sig: |-
+    result: ItemStackProvider,
+    ingredients: List<Ingredient>,
+    primaryIngredient: Ingredient,
+    remainder?: ItemStackProvider
 ---
 
 - 1st argument: An [[ isp ]], the recipe result

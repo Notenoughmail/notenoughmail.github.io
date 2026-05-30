@@ -6,11 +6,11 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .filledDisplayName("Big 'ol Jug of %s")
-    - .displayName('Big Jug')
-    - .textures('tfc:item/ceramic/jug_empty', 'tfc:item/ceramic/jug_overlay')
-    - .capacity(5000)
+example: |-
+    .filledDisplayName("Big 'ol Jug of %s")
+    .displayName('Big Jug')
+    .textures('tfc:item/ceramic/jug_empty', 'tfc:item/ceramic/jug_overlay')
+    .capacity(5000)
 ---
 
 Creates a new jug item

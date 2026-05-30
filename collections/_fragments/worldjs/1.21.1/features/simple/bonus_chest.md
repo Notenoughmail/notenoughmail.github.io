@@ -11,12 +11,12 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.modifiers(m => {"
-    - "    m.minecraft"
-    - "        .fixed([[0, 0, 0], [0, 100, 0]])"
-    - "        .horizontalRandomOffset([-8, 8])"
-    - "}))"
+example: |-
+    .withPlacement(p => p.modifiers(m => {
+        m.minecraft
+            .fixed([[0, 0, 0], [0, 100, 0]])
+            .horizontalRandomOffset([-8, 8])
+    }))
 ---
 
 [[ base ]]

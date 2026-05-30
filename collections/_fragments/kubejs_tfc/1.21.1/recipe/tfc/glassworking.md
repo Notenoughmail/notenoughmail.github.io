@@ -8,19 +8,19 @@ cat:
     - 1.21.1
     - recipe
 tagline: For working glass on a blowpipe
-example:
-    - "'kubejs:glass_trinket',"
-    - "'tfc:silica_glass_batch',"
-    - '['
-    - "    'tfc:pinch',"
-    - "    'tfc:gold',"
-    - "    'tfc:blow',"
-    - "    'tfc:pyrite'"
-    - ']'
-sig:
-    - 'result: ItemStackProvider,'
-    - 'batch: Ingredient,'
-    - 'operations: List<Holder<GlassOperation>>'
+example: |-
+    'kubejs:glass_trinket',
+    'tfc:silica_glass_batch',
+    [
+        'tfc:pinch',
+        'tfc:gold',
+        'tfc:blow',
+        'tfc:pyrite'
+    ]
+sig: |-
+    result: ItemStackProvider,
+    batch: Ingredient,
+    operations: List<Holder<GlassOperation>>
 ---
 
 - 1st argument: An [[ isp ]], the result of the recipe

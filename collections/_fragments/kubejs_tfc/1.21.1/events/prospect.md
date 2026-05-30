@@ -7,10 +7,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.getBlock().hasTag('kubejs:super_special_ores')) {
-    - "    event.getPlayer().notify('Congrats!', 'You found some special ore. Enjoy!')"
-    - '}'
+example: |-
+    if (event.getBlock().hasTag('kubejs:super_special_ores')) {
+        event.getPlayer().notify('Congrats!', 'You found some special ore. Enjoy!')
+    }
 ---
 
 This event fires whenever a player uses a Prospector's Pick

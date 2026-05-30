@@ -11,8 +11,8 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement('kubejs:no_op', m => {})"
+example: |-
+    .withPlacement('kubejs:no_op', m => {})
 ---
 
 - `.withPlacement(id?: ResourceLocation, builder: Consumer<PlacedFeatureBuilder>)`{: .language-kube-21 #{{ page.anchor }}-with-placement }: Creates and modifies the placed feature which will place the configured feature

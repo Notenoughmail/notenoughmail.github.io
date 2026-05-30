@@ -7,11 +7,11 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.getState().hasTag('kubejs:remove_on_douse')) {
-    - '    event.getLevel().removeBlock(event.getPos(), false)'
-    - '    event.cancel()'
-    - '}'
+example: |-
+    if (event.getState().hasTag('kubejs:remove_on_douse')) {
+        event.getLevel().removeBlock(event.getPos(), false)
+        event.cancel()
+    }
 ---
 
 This event fires whenever a block is extinguished via the `shovel_douse` item ability or a thrown bottle or water lands. A single dousing action may affect multiple blocks, in such case this event will fire once per block within the dousing [bounds](#{{ page.anchor }}-get-bounds)

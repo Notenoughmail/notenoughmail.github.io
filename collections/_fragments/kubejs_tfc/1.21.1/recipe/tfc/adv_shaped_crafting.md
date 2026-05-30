@@ -3,34 +3,34 @@ title: Advanced Shaped Crafting
 anchor: shaped
 func: shaped
 mod: tfc
-group: zzz_crafting
+group: z_crafting
 cat:
     - kubejs_tfc
     - 1.21.1
     - recipe
 tagline: For crafting recipes which have an [[ isp ]] result
-example:
-    - "'minecraft:obsidian',"
-    - "["
-    - "    'SA'"
-    - "],"
-    - "{"
-    - "    S: 'minecraft:lava_bucket',"
-    - "    A: 'minecraft:water_bucket'"
-    - "}"
-example_add:
-    - ".remainder(TFC.isp.empty())"
-sig:
-    - "result: ItemStackProvider,"
-    - "pattern: List<String>"
-    - "key: Map<char, Ingredient>"
-sig_add:
-    - ".remainder(remainder: ItemStackProvider)"
-    - ".showNotification(showNotification: boolean)"
-    - ".inputRow(inputRow: int)"
-    - ".inputColumn(inputColumn: int)"
-    - ".inputPosition(inputRow: int, inputColumn: int)"
-    - ".noNotification()"
+example: |-
+    'minecraft:obsidian',
+    [
+        'SA'
+    ],
+    {
+        S: 'minecraft:lava_bucket',
+        A: 'minecraft:water_bucket'
+    }
+example_add: |-
+    .remainder(TFC.isp.empty())
+sig: |-
+    result: ItemStackProvider,
+    pattern: List<String>
+    key: Map<char, Ingredient>
+sig_add: |-
+    .remainder(remainder: ItemStackProvider)
+    .showNotification(showNotification: boolean)
+    .inputRow(inputRow: int)
+    .inputColumn(inputColumn: int)
+    .inputPosition(inputRow: int, inputColumn: int)
+    .noNotification()
 ---
 
 - 1st argument: An [[ isp ]], the recipe result

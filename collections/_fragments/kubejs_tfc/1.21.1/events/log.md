@@ -7,10 +7,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.getPos().getY() > 80) {
-    - '    event.cancel()'
-    - '}'
+example: |-
+    if (event.getPos().getY() > 80) {
+        event.cancel()
+    }
 ---
 
 This event fires whenever a natural log block is broken, prompting the tree to be felled

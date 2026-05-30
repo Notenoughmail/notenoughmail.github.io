@@ -8,15 +8,15 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .dripChance(0.2)
-    - .dripTemperature(12)
-    - .dripParticle('minecraft:falling_spore_blossom')
+example: |-
+    .dripChance(0.2)
+    .dripTemperature(12)
+    .dripParticle('minecraft:falling_spore_blossom')
 ---
 
 Creates a new thin spike block
 
-Inherits the methods of default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 

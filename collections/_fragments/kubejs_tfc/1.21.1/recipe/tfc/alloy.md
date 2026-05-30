@@ -8,23 +8,23 @@ cat:
     - 1.21.1
     - recipe
 tagline: For allying metals in a crucible
-example:
-    - "'minecraft:lava'"
-    - '['
-    - '    {'
-    - "        fluid: 'minecraft:water',"
-    - "        min: 0.2,"
-    - "        max: 0.8"
-    - '    },'
-    - '    {'
-    - "        fluid: 'minecraft:milk',"
-    - "        min: 0.2,"
-    - "        max: 0.8"
-    - '    }'
-    - ']'
-sig:
-    - 'result: Fluid,'
-    - 'contents: List<AlloyRange>'
+example: |-
+    'minecraft:lava'
+    [
+        {
+            fluid: 'minecraft:water',
+            min: 0.2,
+            max: 0.8
+        },
+        {
+            fluid: 'minecraft:milk',
+            min: 0.2,
+            max: 0.8
+        }
+    ]
+sig: |-
+    result: Fluid,
+    contents: List<AlloyRange>
 ---
 
 - 1st argument: The resultant fluid

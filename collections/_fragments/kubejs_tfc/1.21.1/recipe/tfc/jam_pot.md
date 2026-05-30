@@ -8,24 +8,24 @@ cat:
     - 1.21.1
     - recipe
 tagline: For pot recipes that require the pot to be clicked with empty jars and items tagged `tfc:foods/empty_jars_with_lid` to get their outputs
-example:
-    - "'minecraft:red_wool',"
-    - "'minecraft:red_concrete',"
-    - "["
-    - "    'minecraft:red_concrete_powder'"
-    - "],"
-    - "Fluid.water(100),"
-    - "1,"
-    - "50,"
-    - "'minecraft:block/green_wool'"
-sig:
-    - "unsealedResult: ItemStack,"
-    - "sealedResult: ItemStack,"
-    - "ingredients: List<Ingredient>,"
-    - "fluidIngredient: SizedFluidIngredient,"
-    - "duration: int,"
-    - "temperature: number,"
-    - "texture: ResourceLocation"
+example: |-
+    'minecraft:red_wool',
+    'minecraft:red_concrete',
+    [
+        'minecraft:red_concrete_powder'
+    ],
+    Fluid.water(100),
+    1,
+    50,
+    'minecraft:block/green_wool'
+sig: |-
+    unsealedResult: ItemStack,
+    sealedResult: ItemStack,
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number,
+    texture: ResourceLocation
 ---
 
 - 1st argument: An item stack, the stack to give the player when they click the pot with an empty jar after the recipe completes

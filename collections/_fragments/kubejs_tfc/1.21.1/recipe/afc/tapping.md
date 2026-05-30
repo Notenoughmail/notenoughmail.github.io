@@ -9,21 +9,21 @@ cat:
     - 1.21.1
     - recipe
 tagline: For tapping trees for fluid
-example:
-    - "Fluid.of('minecraft:milk', 50),"
-    - "'minecraft:oak_log'"
-example_add:
-    - ".requiresNaturalLog(false)"
-    - ".tempRange(12, 60)"
-sig:
-    - "resultFluid: FluidStack,"
-    - "inputBlock: BlockIngredient"
-sig_add:
-    - ".requiresNaturalLog(requiresNaturalLog: boolean)"
-    - ".springOnly(springOnly?: boolean)"
-    - ".mintemp(minimumTemperature: number)"
-    - ".maxTemp(maximumTemperature: number)"
-    - ".tempRange(minimumTemperature: number, maximumTemperature: number)"
+example: |-
+    Fluid.of('minecraft:milk', 50),
+    'minecraft:oak_log'
+example_add: |-
+    .requiresNaturalLog(false)
+    .tempRange(12, 60)
+sig: |-
+    resultFluid: FluidStack,
+    inputBlock: BlockIngredient
+sig_add: |-
+    .requiresNaturalLog(requiresNaturalLog: boolean)
+    .springOnly(springOnly?: boolean)
+    .minTemp(minimumTemperature: number)
+    .maxTemp(maximumTemperature: number)
+    .tempRange(minimumTemperature: number, maximumTemperature: number)
 ---
 
 - 1st argument: A fluid stack, the result of the recipe

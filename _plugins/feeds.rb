@@ -19,19 +19,13 @@ module Jekyll
 
           date = fix_date(page)
 
-          link = '/%s/%s/%s/%s-%s.html' % [
-            date.year,
-            (date.month > 9 ?
-                date.month :
-                "0" + date.month.to_s),
-            (date.mday > 9 ?
-                date.mday :
-                "0" + date.mday.to_s),
-            gp[:url],
-            (page.data['url_version'].nil? ?
-                page.data['version'].to_s.gsub('.', '-') :
-                page.data['url_version'].to_s)
-          ]
+          link = "/#{date.year}/#{zero_prefix(date.month)}/#{zero_prefix(date.mday)}/#{gp[:url]}/#{
+            if page.data['url_version'].nil?
+              page.data['version'].to_s.gsub('.', '-')
+            else
+              page.data['url_version'].to_s
+            end
+          }.html" # .html is included as old posts were originally posted there, and I'd rather not break any links to them
 
           page.data['permalink'] = link
           page.data['update_post'] = true
@@ -40,6 +34,10 @@ module Jekyll
           page.data['title'] = page.data['version']
           page.data['net_title'] = title
         end
+      end
+
+      def zero_prefix(num)
+        num > 9 ? num.to_s : '0' + num.to_s
       end
 
       @@writing_lookups = {
@@ -57,16 +55,16 @@ module Jekyll
       end
 
       def fix_date(page)
-          date_any_type = page.data['date']
-          if date_any_type.is_a? String
-            date_any_type = DateTime.strptime(date_any_type.gsub('MST', '-0700'), "%Y-%m-%d %H:%M:%S %z")
-          elsif date_any_type.is_a? Time
-            date_any_type = date_any_type.to_datetime
-          end
+        date_any_type = page.data['date']
+        if date_any_type.is_a? String
+          date_any_type = DateTime.strptime(date_any_type.gsub('MST', '-0700'), "%Y-%m-%d %H:%M:%S %z")
+        elsif date_any_type.is_a? Time
+          date_any_type = date_any_type.to_datetime
+        end
 
-          page.data['date'] = date_any_type
-          page.data['nav_order'] = date_any_type.to_s
-          date_any_type
+        page.data['date'] = date_any_type
+        page.data['nav_order'] = date_any_type.to_s
+        date_any_type
       end
     end
   end

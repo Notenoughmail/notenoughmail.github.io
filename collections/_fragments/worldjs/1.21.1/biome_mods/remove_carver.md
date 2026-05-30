@@ -7,12 +7,12 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:needs_less_sharp_carvers')"
-    - ".carvers('#kubejs:sharp_carvers')"
-    - ".steps(["
-    - "    'air'"
-    - "])"
+example: |-
+    .biomes('#kubejs:needs_less_sharp_carvers')
+    .carvers('#kubejs:sharp_carvers')
+    .steps([
+        'air'
+    ])
 ---
 
 - [[ biomes ]]

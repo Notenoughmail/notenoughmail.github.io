@@ -7,8 +7,8 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .bladeColor(0x45F977)
+example: |-
+    .bladeColor(0x45F977)
 ---
 
 Creates a new windmill blade item

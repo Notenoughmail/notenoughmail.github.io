@@ -7,12 +7,12 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.getAnimalProperties().getGeneticSize() < 10) {
-    - '    event.cancel()'
-    - '} else if (event.isItemProduct()) {'
-    - "    event.setItemProduct('minecraft:dirt')"
-    - '}'
+example: |-
+    if (event.getAnimalProperties().getGeneticSize() < 10) {
+        event.cancel()
+    } else if (event.isItemProduct()) {
+        event.setItemProduct('minecraft:dirt')
+    }
 ---
 
 This event is fired whenever an animal product is produced: a sheep is sheared, a cow is milked, etc. Cancelling will prevent the default behavior, which is controlled by each entity's implementation. This event does not control if an entity can provide products, only for modifying/blocking them

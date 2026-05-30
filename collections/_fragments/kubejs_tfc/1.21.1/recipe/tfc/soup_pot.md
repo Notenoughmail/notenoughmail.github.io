@@ -9,18 +9,18 @@ cat:
     - 1.21.1
     - recipe
 tagline: For pot recipes which require the pot to be clicked with items tagged `tfc:soup_bowls` to get an output
-example:
-    - "["
-    - "    'minecraft:wheat'"
-    - "],"
-    - "Fluid.water(20),"
-    - "2,"
-    - "94"
-sig:
-    - "ingredients: List<Ingredient>,"
-    - "fluidIngredient: SizedFluidIngredient,"
-    - "duration: int,"
-    - "temperature: number"
+example: |-
+    [
+        'minecraft:wheat'
+    ],
+    Fluid.water(20),
+    2,
+    94
+sig: |-
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number
 ---
 
 - 1st argument: A list of up to 5 item ingredients, the item inputs of the recipe

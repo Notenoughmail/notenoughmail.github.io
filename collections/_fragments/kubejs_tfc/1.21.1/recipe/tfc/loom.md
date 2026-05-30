@@ -8,16 +8,16 @@ cat:
     - 1.21.1
     - recipe
 tagline: For recipes performed on a loom block
-example:
-    - "'minecraft:obsidian',"
-    - "'minecraft:black_wool',"
-    - "20,"
-    - "'minecraft:block/black_concrete'"
-sig:
-    - "result: ItemStackProvider,"
-    - "ingredient: Ingredient,"
-    - "steps: int,"
-    - "texture: ResourceLocation"
+example: |-
+    'minecraft:obsidian',
+    'minecraft:black_wool',
+    20,
+    'minecraft:block/black_concrete'
+sig: |-
+    result: ItemStackProvider,
+    ingredient: Ingredient,
+    steps: int,
+    texture: ResourceLocation
 ---
 
 - 1st argument: An [[ isp ]], the result of the recipe

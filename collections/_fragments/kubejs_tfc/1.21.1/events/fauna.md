@@ -7,9 +7,9 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.replace('minecraft:pig', event.onGround(), 'world_surface_wg')
-    - event.and('minecraft:cow')
+example: |-
+    event.replace('minecraft:pig', event.onGround(), 'world_surface_wg')
+    event.and('minecraft:cow')
 ---
 
 This event enables an entity to have [data driven]({% link kubejs_tfc/1.21.1/data.md %}#fauna) spawn conditions that depend on TFC's climatic parameters

@@ -8,23 +8,23 @@ cat:
     - 1.21.1
     - recipe
 tagline: For heating items in firepits, crucibles, pit kilns, etc.
-example:
-    - "'minecraft:iron_axe',"
-    - '1500'
-example_add:
-    - ".outputFluid(Fluid.of('tfc:metal/cast_iron', 100))"
-    - ".useDurability()"
-sig:
-    - 'ingredient: Ingredient,'
-    - 'temperature: number'
-sig_add:
-    - '.itemOutput(resultItem: ItemStackProvider)'
-    - '.fluidOutput(resultFluid: FluidStack)'
-    - '.outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)'
-    - '.resultItem(resultItem: ItemStackProvider)'
-    - '.resultFluid(fluidResult: FluidStack)'
-    - '.results(resultItem: ItemStackProvider, resultFluid: FluidStack)'
-    - '.useDurability(useDurability?: boolean)'
+example: |-
+    'minecraft:iron_axe',
+    1500
+example_add: |-
+    .outputFluid(Fluid.of('tfc:metal/cast_iron', 100))
+    .useDurability()
+sig: |-
+    ingredient: Ingredient,
+    temperature: number
+sig_add: |-
+    .itemOutput(resultItem: ItemStackProvider)
+    .fluidOutput(resultFluid: FluidStack)
+    .outputs(resultItem: ItemStackProvider, resultFluid: FluidStack)
+    .resultItem(resultItem: ItemStackProvider)
+    .resultFluid(fluidResult: FluidStack)
+    .results(resultItem: ItemStackProvider, resultFluid: FluidStack)
+    .useDurability(useDurability?: boolean)
 ---
 
 - 1st argument: An item ingredient, the item being heated

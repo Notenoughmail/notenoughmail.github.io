@@ -9,10 +9,10 @@ cat:
     - 1.21.1
     - event
 target: minecraft:generic_9x3
-example:
-    - event.limit('small', 0, 9)
-    - event.limit('large', 18, 27)
-    - event.lowerLimit('very_small', false)
+example: |-
+    event.limit('small', 0, 9)
+    event.limit('large', 18, 27)
+    event.lowerLimit('very_small', false)
 ---
 
 TFC has an item size feature which it uses, in its own containers, to limit what items can enter. Via this event, KubeJS TFC allows for this behavior to be replicated with arbitrary containers, with some limitations

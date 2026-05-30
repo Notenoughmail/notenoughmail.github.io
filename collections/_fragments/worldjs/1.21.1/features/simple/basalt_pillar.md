@@ -9,10 +9,10 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.modifiers(m => {"
-    - "    m.minecraft.inSquare()"
-    - "}))"
+example: |-
+    .withPlacement(p => p.modifiers(m => {
+        m.minecraft.inSquare()
+    }))
 ---
 
 [[ base ]]

@@ -7,11 +7,11 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - if (event.dimensionId() == 'minecraft:the_nether') {
-    - "    let model = event.kubeModel('kubejs:hell', 10000, false)"
-    - "    event.setModel(model)"
-    - '}'
+example: |-
+    if (event.dimensionId() == 'minecraft:the_nether') {
+        let model = event.kubeModel('kubejs:hell', 10000, false)
+        event.setModel(model)
+    }
 ---
 
 This event fires during world loading and is used to choose which implementation of [climate model]({% link kubejs_tfc/1.21.1/type-explanations.md %}#climate-model) a level should use

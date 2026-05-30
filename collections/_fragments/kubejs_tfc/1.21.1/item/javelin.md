@@ -6,15 +6,15 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .thrownTexture('tfc:block/metal/smooth/blue_steel')
-    - .thrownDamage(12)
-    - .guiModel('kubejs:item/blue_stick')
+example: |-
+    .thrownTexture('tfc:block/metal/smooth/blue_steel')
+    .thrownDamage(12)
+    .guiModel('kubejs:item/blue_stick')
 ---
 
 Creates a new javelin item
 
-Inherits the methods of the [chisel item builder](#chisel)
+[[ chisel ]]
 
 {: #{{ page.anchor }}-methods }
 

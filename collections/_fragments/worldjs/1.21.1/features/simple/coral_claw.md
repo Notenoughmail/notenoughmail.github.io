@@ -10,10 +10,10 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.modifiers(m => {"
-    - "    m.minecraft.surfaceWaterDepth(12)"
-    - "}))"
+example: |-
+    .withPlacement(p => p.modifiers(m => {
+        m.minecraft.surfaceWaterDepth(12)
+    }))
 ---
 
 [[ base ]]

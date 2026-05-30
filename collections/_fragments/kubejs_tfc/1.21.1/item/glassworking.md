@@ -6,8 +6,8 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .operation('tfc:saw')
+example: |-
+    .operation('tfc:saw')
 ---
 
 Creates a new item which can perform a glassworking [operation]({% link kubejs_tfc/1.21.1/registry.md %}#glass-operation)

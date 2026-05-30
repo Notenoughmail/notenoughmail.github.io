@@ -7,9 +7,9 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:no_lava_lakes')"
-    - ".features('minecraft:lake_lava')"
+example: |-
+    .biomes('#kubejs:no_lava_lakes')
+    .features('minecraft:lake_lava')
 ---
 
 - [[ biomes ]]

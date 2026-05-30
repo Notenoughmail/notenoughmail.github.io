@@ -8,17 +8,17 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .lifecycle('january', 'healthy')
-    - .lifecycle('june', 'fruiting')
-    - .withProduct('minecraft:golden_apple')
-    - .models((lifecycle, stage, m) => {
-    - '})'
+example: |-
+    .lifecycle('january', 'healthy')
+    .lifecycle('june', 'fruiting')
+    .withProduct('minecraft:golden_apple')
+    .models((lifecycle, stage, m) => {
+    })
 ---
 
 Creates a new stationary berry bush block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 
@@ -32,4 +32,4 @@ Inherits the methods of the default block builder
     - `lifecycle: Lifecycle`{:.language-kube-21}: The lifecycle the model is for
     - `stage: int`{:.language-kube-21}: The growth stage of the bush, {% in_range 0,2 %}
     - `model: ModelGenerator`{:.language-kube-21}: The model generator for the lifecycle & stage
-- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #{{ page.anchor }}-extended-properties }: Set the [extended properties](#extended-properties) of the bush
+- [[ props ]]

@@ -8,23 +8,23 @@ cat:
     - 1.21.1
     - recipe
 tagline: For basic pot recipes
-example:
-    - "[ '#minecraft:flowers' ],"
-    - "Fluid.water(1000),"
-    - "50,"
-    - "110"
-example_add:
-    - ".outputs('minecraft:bread', Fluid.of('minecraft:milk', 20))"
-sig:
-    - "ingredients: List<Ingredient>,"
-    - "fluidIngredient: SizedFluidIngredient,"
-    - "duration: int,"
-    - "temperature: number"
-sig_add:
-    - ".fluidOutput(fluidOutput: FluidStack)"
-    - ".itemOutput(itemOutput: List<ItemStackProvider>)"
-    - ".outputs(itemOutput: List<ItemStackProvider?, fluidOutput: FluidStack)"
-    - ".usesAllFluids(usesAllFluids: boolean)"
+example: |-
+    [ '#minecraft:flowers' ],
+    Fluid.water(1000),
+    50,
+    110
+example_add: |-
+    .outputs('minecraft:bread', Fluid.of('minecraft:milk', 20))
+sig: |-
+    ingredients: List<Ingredient>,
+    fluidIngredient: SizedFluidIngredient,
+    duration: int,
+    temperature: number
+sig_add: |-
+    .fluidOutput(fluidOutput: FluidStack)
+    .itemOutput(itemOutput: List<ItemStackProvider>)
+    .outputs(itemOutput: List<ItemStackProvider?, fluidOutput: FluidStack)
+    .usesAllFluids(usesAllFluids: boolean)
 ---
 
 - 1st argument: A list of up to 5 item ingredients, the recipe inputs

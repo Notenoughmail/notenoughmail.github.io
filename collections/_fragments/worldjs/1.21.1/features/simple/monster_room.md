@@ -10,14 +10,14 @@ cat:
     - worldjs
     - 1.21.1
     - feature
-example:
-    - ".withPlacement(p => p.modifiers(m => {"
-    - "    m.minecraft.surfaceRelativeThreshold("
-    - "        'ocean_floor_wg',"
-    - "        -12,"
-    - "        -61"
-    - "    )"
-    - "}))"
+example: |-
+    .withPlacement(p => p.modifiers(m => {
+        m.minecraft.surfaceRelativeThreshold(
+            'ocean_floor_wg',
+            -12,
+            -61
+        )
+    }))
 ---
 
 [[ base ]]

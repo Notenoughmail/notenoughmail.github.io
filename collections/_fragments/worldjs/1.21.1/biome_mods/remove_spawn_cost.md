@@ -7,9 +7,9 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('minecraft:soul_sand_valley')"
-    - ".entityTypes('minecraft:skeleton')"
+example: |-
+    .biomes('minecraft:soul_sand_valley')
+    .entityTypes('minecraft:skeleton')
 ---
 
 - [[ biomes ]]

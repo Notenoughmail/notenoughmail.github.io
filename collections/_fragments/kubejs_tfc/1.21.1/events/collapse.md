@@ -7,10 +7,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.getSecondaryPositions().forEach(pos => {
-    - "    event.getLevel().playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1, 1)"
-    - '})'
+example: |-
+    event.getSecondaryPositions().forEach(pos => {
+        event.getLevel().playSound(null, pos, 'minecraft:block.wood.break', 'blocks', 1, 1)
+    })
 ---
 
 This event fires whenever a collapse, real or fake, occurs

@@ -67,11 +67,11 @@ The following recipe types are supported by KubeJS TFC
 ### Method Signature
 
 ```js-21
-event.recipes.{{ recipe.mod }}.{{ recipe | get_or_default: 'func', 'anchor' }}({% for sig in recipe.sig %}
-    {{ sig }}{% endfor %}
+event.recipes.{{ recipe.mod }}.{{ recipe | get_or_default: 'func', 'anchor' }}(
+    {{ recipe.sig | with_indent: 4 }}
 ){% if recipe.sig_add %}
-    // Additional methods{% for sig in recipe.sig_add %}
-    {{ sig }}{% endfor %}{% endif %}
+    // Additional methods
+    {{ recipe.sig_add | with_indent: 4 }}{% endif %}
 ```
 
 {{ recipe.clean }}
@@ -82,10 +82,10 @@ event.recipes.{{ recipe.mod }}.{{ recipe | get_or_default: 'func', 'anchor' }}({
 
 ```js-21
 ServerEvents.recipes(event => {
-    event.recipes.{{ recipe.mod }}.{{ recipe | get_or_default: 'func', 'anchor' }}({% for ex in recipe.example %}
-        {{ ex }}{% endfor %}
-    ){% if recipe.example_add %}{% for ex in recipe.example_add %}
-    {{ ex }}{% endfor %}{% endif %}
+    event.recipes.{{ recipe.mod }}.{{ recipe | get_or_default: 'func', 'anchor' }}(
+        {{ recipe.example | with_indent }}
+    ){% if recipe.example_add %}
+    {{ recipe.example_add | with_indent: 4 }}{% endif %}
 })
 ```
 

@@ -7,16 +7,16 @@ cat:
     - kubejs-tfc
     - 1.21.1
     - item
-example:
-    - .filledDisplayName('Container of %s')
-    - .textures('kubejs:item/fluid_container', 'kubejs:item/fluid_container_overlay')
-    - .capacity(500)
-    - .allowedFluids('kubejs:non_volatile')
+example: |-
+    .filledDisplayName('Container of %s')
+    .textures('kubejs:item/fluid_container', 'kubejs:item/fluid_container_overlay')
+    .capacity(500)
+    .allowedFluids('kubejs:non_volatile')
 ---
 
 Creates a new fluid container item
 
-Inherits the methods of the [jug item builder](#jug)
+[[ jug ]]
 
 {: #{{ page.anchor }}-methods }
 

@@ -18,7 +18,15 @@ fragment-sort:
 
 KubeJS TFC allows for the creation of some of TFC's block types
 
-{% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.fragment-sort %}
+{% map replacements %}
+{% props %}`.extendedProperties(extendedProperties: Consumer<Extendedproperties>)`{: .language-kube-21 \#[[ anchor ]]-extended-properties }: Set the [extended properties](#extended-properties) of the block{% end_props %}
+{% raw_props %}`.extendedProperties(extendedProperties: Consumer<Extendedproperties>)`{:.language-kube-21}: Set the [extended properties](#extended-properties) of the block{% end_raw_props %}
+{% base %}Inherits the methods of the default block builder{% end_base %}
+{% def %}All those of the default block builder{% end_def %}
+{% moss %}Inherits the methods of the [moss growing block builder](#moss-growing-block){% end_moss %}
+{% endmap %}
+
+{% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
 
 {% grid n=2 %}
 
@@ -55,8 +63,8 @@ It also provides a few block entity attachment types
 
 ```js-21
 StartupEvents.registry('block', event => {
-    event.create('{{ block | get_or_default: 'name', 'anchor' }}', '{{ block.type }}'){% for ex in block.example %}
-        {{ ex }}{% endfor %}
+    event.create('{{ block | get_or_default: 'name', 'anchor' }}', '{{ block.type }}')
+        {{ block.example | with_indent }}
 })
 ```
 
@@ -283,3 +291,9 @@ StartupEvents.registry('block', event => {
         })
 })
 ```
+
+{% comment %}
+
+## moss growing block
+
+{% endcomment %}

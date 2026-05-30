@@ -9,27 +9,27 @@ cat:
     - 1.21.1
     - recipe
 tagline: For performing fluid/item mixing in sealed barrels
-example:
-    - "Fluid.of('minecraft:milk', 100),"
-    - '-1'
-example_add:
-    - '.inputItem(TFC.ingredient.notRotten())'
-    - '.seal('
-    - "    TFC.isp.copyInputStack().addTrait('kubejs:milk'),"
-    - "    TFC.isp.copyInputStack.removeTrait('kubejs:milk')"
-    - ')'
-sig:
-    - 'inputFluid: SizedFluidIngredient,'
-    - 'duration: int'
-sig_add:
-    - '.outputItem(outputItem: ItemStackProvider)'
-    - '.outputFluid(outputFluid: FluidStack)'
-    - '.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)'
-    - '.inputItem(inputItem: SizedIngredient)'
-    - '.sound(sound: Holder<SoundEvent>)'
-    - '.onSeal(onSeal: ItemStackProvider)'
-    - '.onUnseal(onUnseal: ItemStackProvider)'
-    - '.seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)'
+example: |-
+    Fluid.of('minecraft:milk', 100),
+    -1
+example_add: |-
+    .inputItem(TFC.ingredient.notRotten())
+    .seal(
+        TFC.isp.copyInputStack().addTrait('kubejs:milk'),
+        TFC.isp.copyInputStack.removeTrait('kubejs:milk')
+    )
+sig: |-
+    inputFluid: SizedFluidIngredient,
+    duration: int
+sig_add: |-
+    .outputItem(outputItem: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: SizedIngredient)
+    .sound(sound: Holder<SoundEvent>)
+    .onSeal(onSeal: ItemStackProvider)
+    .onUnseal(onUnseal: ItemStackProvider)
+    .seal(onSeal: ItemStackProvider, onUnseal: ItemStackProvider)
 ---
 
 - 1st argument: A sized fluid ingredient, the fluid input of the recipe

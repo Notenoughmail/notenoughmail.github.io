@@ -8,14 +8,14 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .placeableOnSand()
-    - .tree('tfc:coral_mushroom')
+example: |-
+    .placeableOnSand()
+    .tree('tfc:coral_mushroom')
 ---
 
 Creates a new sapling block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 
@@ -33,4 +33,4 @@ Inherits the methods of the default block builder
     - `flowers: @Nullable ResourceLocation`{:.language-kube-21}: The id of a configured feature, the tree to place when there are flowers nearby at growth time
     - `secondaryFlowers: @Nullable ResourceLocation`{:.language-kube-21}: The id of a configured feature, the secondary tree to place when there are flowers nearby at growth time
 - `.tree(tree: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-tree }: Set the tree of the sapling, accepts the id of a configured feature
-- `.extendedProperties(extendedProperties: Consumer<ExtendedProperties>)`{: .language-kube-21 #{{ page.anchor }}-tree }: Set the [extended properties](#extended-properties) of the sapling
+- [[ props ]]

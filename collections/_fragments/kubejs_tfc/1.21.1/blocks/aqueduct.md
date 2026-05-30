@@ -7,19 +7,19 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .allowedFluids([
-    - "    'minecraft:water'"
-    - "    'minecraft:lava'"
-    - "    'kubejs:spring'"
-    - "    'tfc:salt_water'"
-    - "    'tfc:spring_water'"
-    - '])'
+example: |-
+    .allowedFluids([
+        'minecraft:water'
+        'minecraft:lava'
+        'kubejs:spring'
+        'tfc:salt_water'
+        'tfc:spring_water'
+    ])
 ---
 
 Creates a new aqueduct block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 

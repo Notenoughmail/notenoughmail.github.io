@@ -7,14 +7,14 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - event
-example:
-    - event.register('minecraft:diamond', 'blocks', (stack, ctx) => {
-    - "    if (ctx.getLevel().getBlockState(ctx.getClickedPos()).hasTag('kubejs:can_accept_diamonds')) {"
-    - "        ctx.getLevel().setBlockAndUpdate(ctx.getClickedPos(), 'kubejs:diamond_encrusted_block')"
-    - "        return 'success'"
-    - '    }'
-    - "    return 'pass'"
-    - '})'
+example: |-
+    event.register('minecraft:diamond', 'blocks', (stack, ctx) => {
+        if (ctx.getLevel().getBlockState(ctx.getClickedPos()).hasTag('kubejs:can_accept_diamonds')) {
+            ctx.getLevel().setBlockAndUpdate(ctx.getClickedPos(), 'kubejs:diamond_encrusted_block')
+            return 'success'
+        }
+        return 'pass'
+    })
 ---
 
 TFC has a custom system for performing certain interactions with items, most notably knapping and ingot piling. This event exposes the ability to define custom interactions

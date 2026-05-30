@@ -7,26 +7,26 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .textures('kubejs:item/happy_mold_empty', 'kubejs:item/happy_mold_overlay')
-    - .capacity(15)
-    - .allowFluids('kubejs:happy_fluids')
-    - .moldTable([
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'XX  XXXXXX  XX',"
-    - "    'XX  XXXXXX  XX',"
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'X XXXXXXXXXX X',"
-    - "    'X XXXXXXXXXX X',"
-    - "    'XX XXXXXXXX XX',"
-    - "    'XXX  XXXX  XXX',"
-    - "    'XXXXX    XXXXX',"
-    - "    'XXXXXXXXXXXXXX',"
-    - "    'XXXXXXXXXXXXXX'"
-    - '])'
+example: |-
+    .textures('kubejs:item/happy_mold_empty', 'kubejs:item/happy_mold_overlay')
+    .capacity(15)
+    .allowFluids('kubejs:happy_fluids')
+    .moldTable([
+        'XXXXXXXXXXXXXX',
+        'XXXXXXXXXXXXXX',
+        'XXXXXXXXXXXXXX',
+        'XX  XXXXXX  XX',
+        'XX  XXXXXX  XX',
+        'XXXXXXXXXXXXXX',
+        'XXXXXXXXXXXXXX',
+        'X XXXXXXXXXX X',
+        'X XXXXXXXXXX X',
+        'XX XXXXXXXX XX',
+        'XXX  XXXX  XXX',
+        'XXXXX    XXXXX',
+        'XXXXXXXXXXXXXX',
+        'XXXXXXXXXXXXXX'
+    ])
 ---
 
 Creates a new mold item

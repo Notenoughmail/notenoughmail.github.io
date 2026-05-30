@@ -6,17 +6,17 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .mineableBlocksTag('kubejs:ugly_blocks')
-    - .attackDamageBaseline(0.2)
-    - .modifyTier(tier => {
-    - "    tier.setUses(5000)"
-    - '})'
+example: |-
+    .mineableBlocksTag('kubejs:ugly_blocks')
+    .attackDamageBaseline(0.2)
+    .modifyTier(tier => {
+        tier.setUses(5000)
+    })
 ---
 
 Creates a new generic tool item
 
-Inherits the methods of the [chisel item builder](#chisel)
+[[ chisel ]]
 
 {: #{{ page.anchor }}-methods }
 

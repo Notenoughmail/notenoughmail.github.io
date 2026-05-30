@@ -8,14 +8,14 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - block
-example:
-    - .uniqueSideTexture()
-    - .stoneSoundType()
+example: |-
+    .uniqueSideTexture()
+    .stoneSoundType()
 ---
 
 Creates a new raw rock block
 
-Inherits the methods of the default block builder
+[[ base ]]
 
 {: #{{ page.anchor }}-methods }
 

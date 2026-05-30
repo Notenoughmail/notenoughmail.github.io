@@ -6,14 +6,14 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .tripHammerTexture('tfc:block/metal/smooth/red_steel')
-    - .speed(1.5)
+example: |-
+    .tripHammerTexture('tfc:block/metal/smooth/red_steel')
+    .speed(1.5)
 ---
 
 Creates a new hammer item
 
-Inherits the methods of the [chisel item builder](#chisel)
+[[ chisel ]]
 
 {: #{{ page.anchor }}-methods }
 

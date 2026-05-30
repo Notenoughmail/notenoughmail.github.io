@@ -9,18 +9,18 @@ cat:
     - 1.21.1
     - recipe
 tagline: For performing item/fluid mixing in barrels instantly
-example:
-    - "Fluid.sizedIngredientOf('minecraft:water', 50)"
-example_add:
-    - ".outputs('minecraft:dirt', Fluid.of('minecraft:milk', 1))"
-sig:
-    - 'inputFluid: SizedFluidIngredient'
-sig_add:
-    - '.outputItem(outputItem: ItemStackProvider)'
-    - '.outputFluid(outputFluid: FluidStack)'
-    - '.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)'
-    - '.inputItem(inputItem: SizedIngredient)'
-    - '.sound(sound: Holder<SoundEvent>)'
+example: |-
+    Fluid.sizedIngredientOf('minecraft:water', 50)
+example_add: |-
+    .outputs('minecraft:dirt', Fluid.of('minecraft:milk', 1))
+sig: |-
+    inputFluid: SizedFluidIngredient
+sig_add: |-
+    .outputItem(outputItem: ItemStackProvider)
+    .outputFluid(outputFluid: FluidStack)
+    .outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)
+    .inputItem(inputItem: SizedIngredient)
+    .sound(sound: Holder<SoundEvent>)
 ---
 
 - 1st argument: A sized fluid ingredient, the input fluid

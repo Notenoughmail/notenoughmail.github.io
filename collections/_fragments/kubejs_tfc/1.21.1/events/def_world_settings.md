@@ -21,34 +21,34 @@ layers:
     - l:
         - Uplift
         - uplift
-example:
-    - event.finiteContinents()
-    - event.flatBedrock()
-    - event.setTemperatureScale(5000)
-    - event.setRainfallScale(7500)
-    - ''
-    - event.addRock('vanilla', {
-    - "    raw: 'minecraft:stone'"
-    - "    hardened: 'minecraft:deepslate'"
-    - "    gravel: 'minecraft:gravel'"
-    - "    cobble: 'minecraft:cobblestone'"
-    - "    sand: 'minecraft:sand'"
-    - "    sandstone: 'minecraft:sandstone'"
-    - "    mafic: true"
-    - '}, false)'
-    - ''
-    - event.defineLayer('mc_1', {
-    - "    vanilla: 'bottom'"
-    - "    granite: 'diorite'"
-    - '})'
-    - event.defineLayer('mc_2', {
-    - "    vanilla: 'mc_1'"
-    - "    diorite: 'mc_1'"
-    - '})'
-    - ''
-    - event.addUpliftLayer('mc_2')
-    - event.addUpliftLayer('mc_1')
-    - event.addVolcanicLayer('mc_1')
+example: |-
+    event.finiteContinents()
+    event.flatBedrock()
+    event.setTemperatureScale(5000)
+    event.setRainfallScale(7500)
+    
+    event.addRock('vanilla', {
+        raw: 'minecraft:stone'
+        hardened: 'minecraft:deepslate'
+        gravel: 'minecraft:gravel'
+        cobble: 'minecraft:cobblestone'
+        sand: 'minecraft:sand'
+        sandstone: 'minecraft:sandstone'
+        mafic: true
+    }, false)
+    
+    event.defineLayer('mc_1', {
+        vanilla: 'bottom'
+        granite: 'diorite'
+    })
+    event.defineLayer('mc_2', {
+        vanilla: 'mc_1'
+        diorite: 'mc_1'
+    })
+    
+    event.addUpliftLayer('mc_2')
+    event.addUpliftLayer('mc_1')
+    event.addVolcanicLayer('mc_1')
 ---
 
 Allows for editing the default values of the TFC chunk generator at world creation, including editing the rock layers

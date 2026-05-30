@@ -15,8 +15,8 @@ fragment-filter:
 
 Worldgen features are primarily done through placed and configured features. KubeJS TFC adds the ability to make these through builders in the `worldgen/configured_feature` server registry event
 
-{: .unstable #unmerged-pr-warning }
-> This functionality relies on an as-yet [unmerged PR](https://github.com/KubeJS-Mods/KubeJS/pull/1085) to KubeJS to properly function. Until that PR is merged and a version with it is released nothing present on this page will work. As a result, everything on this page is liable to change without a full deprecation cycle
+{: .unstable #imminent-rework }
+> While this functionality currently works (despite being undocumented) with the latest released version of KubeJS, it is being reworked to depend on [WorldJS]({% link worldjs/1.21.1/index.md %}). Said rework may introduce changes to functions and their behavior and as such usage of these features is done at your own risk
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
 
@@ -46,8 +46,8 @@ Worldgen features are primarily done through placed and configured features. Kub
 
 ```js-21
 ServerEVents.registry('minecraft:configured_feature', event => {
-    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', '{{ feature.type }}'){% for ex in feature.example %}
-        {{ ex }}{% endfor %}
+    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', '{{ feature.type }}')
+        {{ feature.example | with_indent }}
 })
 ```
 

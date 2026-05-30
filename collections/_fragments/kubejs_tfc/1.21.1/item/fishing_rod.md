@@ -7,10 +7,10 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .fishingStrength(12)
-    - .texture('minecraft:block/dirt')
-    - .largeBait()
+example: |-
+    .fishingStrength(12)
+    .texture('minecraft:block/dirt')
+    .largeBait()
 ---
 
 Creates a new TFC fishing rod item

@@ -7,22 +7,22 @@ cat:
     - worldjs
     - 1.21.1
     - biome_mod
-example:
-    - ".biomes('#kubejs:needs_more_zombies')"
-    - ".spawns(["
-    - "    {"
-    - "        entityType: 'minecraft:zombie',"
-    - "        weight: 3,"
-    - "        minCount: 1,"
-    - "        maxCount: 5"
-    - "    },"
-    - "    {"
-    - "        entityType: 'minecraft:husk',"
-    - "        weight: 2,"
-    - "        minCount: 2,"
-    - "        maxCount: 3"
-    - "    }"
-    - "])"
+example: |-
+    .biomes('#kubejs:needs_more_zombies')
+    .spawns([
+        {
+            entityType: 'minecraft:zombie',
+            weight: 3,
+            minCount: 1,
+            maxCount: 5
+        },
+        {
+            entityType: 'minecraft:husk',
+            weight: 2,
+            minCount: 2,
+            maxCount: 3
+        }
+    ])
 ---
 
 - [[ biomes ]]

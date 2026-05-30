@@ -7,15 +7,15 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - item
-example:
-    - .breakChance(0.05)
-    - .capacity(120)
-    - .allowedFluids('kubejs:glass_safe')
+example: |-
+    .breakChance(0.05)
+    .capacity(120)
+    .allowedFluids('kubejs:glass_safe')
 ---
 
 Creates a new glass bottle item
 
-Inherits the methods of the [jug item builder](#jug)
+[[ jug ]]
 
 {: #{{ page.anchor }}-methods }
 
