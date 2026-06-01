@@ -27,7 +27,7 @@ In scripts, they can be defined as
             - `'property'`{:.s}: A string, the name of the block property
             - `'values'`{:.s}: An `IntProvider`, the possible values of the block property
             - `'source'`{:.s}: A `BlockStateProvider`, the source state to apply the property value to
-    - If the contains a `'weighted'`{:.s} field, a `minecraft:weighted_state_provider` provider will be made
+    - If the map contains a `'weighted'`{:.s} field, a `minecraft:weighted_state_provider` provider will be made
         - The `weighted` object is expected to be a list of block state provider [[ weighted_value ]]s
 
 Other values will be attempted to be parsed as a `BlockState` and if successful, a `minecraft:simple_state_provider` will be made, else an error will be emitted

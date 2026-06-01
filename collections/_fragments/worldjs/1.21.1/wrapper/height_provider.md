@@ -19,7 +19,7 @@ In scripts, they can be defined as
             - `'min'`{:.s}: A [[ vertical_anchor ]], the minimum height
             - `'max'`{:.s}: A [[ vertical_anchor ]], the maximum height
     - If the map contains a `'constant'`{:.s} field, a `minecraft:constant` height provider will be created
-        - The `constant` object will be parsed as a [[ vertical anchor ]], the height
+        - The `constant` object will be parsed as a [[ vertical_anchor ]], the height
     - If the map contains a `'trapezoid'`{:.s} field, a `minecraft:trapezoid` height provider will be created
         - The `trapezoid` object is expected to be a map with the following fields
             - `'min'`{:.s}: A [[ vertical_anchor ]], the minimum height
@@ -34,7 +34,7 @@ In scripts, they can be defined as
             - `'max'`{:.s}: A [[ vertical_anchor ]], the maximum height
             - `'inner'`{:.s}: An `int`{:.p}, the inner value
             - Optional, defaults to `1`{:.n}
-            - `'extreme'`{:.s}: A `boolean`{.p}, if the height provider should instead be a `minecraft:very_biased_to_bottom` height provider
+            - `'extreme'`{:.s}: A `boolean`{:.p}, if the height provider should instead be a `minecraft:very_biased_to_bottom` height provider
                 - Optional, defaults to `false`{:.p}
 - A list: A `minecraft:weighted_list` height provider
     - List values are expected to be height provider [[ weighted_value ]]s
