@@ -28,21 +28,21 @@ example: |-
     event.setRainfallScale(7500)
     
     event.addRock('vanilla', {
-        raw: 'minecraft:stone'
-        hardened: 'minecraft:deepslate'
-        gravel: 'minecraft:gravel'
-        cobble: 'minecraft:cobblestone'
-        sand: 'minecraft:sand'
-        sandstone: 'minecraft:sandstone'
+        raw: 'minecraft:stone',
+        hardened: 'minecraft:deepslate',
+        gravel: 'minecraft:gravel',
+        cobble: 'minecraft:cobblestone',
+        sand: 'minecraft:sand',
+        sandstone: 'minecraft:sandstone',
         mafic: true
     }, false)
     
     event.defineLayer('mc_1', {
-        vanilla: 'bottom'
+        vanilla: 'bottom',
         granite: 'diorite'
     })
     event.defineLayer('mc_2', {
-        vanilla: 'mc_1'
+        vanilla: 'mc_1',
         diorite: 'mc_1'
     })
     
