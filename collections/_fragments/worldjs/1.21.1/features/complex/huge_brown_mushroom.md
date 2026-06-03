@@ -5,12 +5,22 @@ type: huge_brown_mushroom
 wiki_link: https://minecraft.wiki/w/Huge_Mushroom?oldid=3378093
 icon: huge-mushroom
 sort_pos: hm
+name: 'kubejs:moonlit_brown_mushroom'
 cat:
     - worldjs
     - 1.21.1
     - feature
 example: |-
-    // TODO
+    .capProvider([
+        { weight: 14, value: 'minecraft:brown_mushroom_block' },
+        'minecraft:pearlescent_froglight'
+    ])
+    .stemProvider([
+        { weight: 10, value: 'minecraft:mushroom_stem' },
+        'minecraft:stripped_birch_wood'
+    ])
+    .withPlacement(placement => {}) // See the weighted random selector example
+    // Kindly provided by Liopyu
 ---
 
 [[ base ]]

@@ -6,12 +6,18 @@ name: random_select
 sprite: BlockSprite
 icon: air
 sort_pos: s_r
+name: 'kubejs:moonlit_mushrooms'
 cat:
     - worldjs
     - 1.21.1
     - feature
 example: |-
-    // TODO
+    .features([
+        { weight: 3, value: 'kubejs:moonlit_brown_mushroom' },
+        { weight: 2, value: 'kubejs:moonlit_red_mushroom' }
+    ])
+    .withPlacement(placement => {}) // See the vegetation patch example
+    // Kindly provided by Liopyu
 ---
 
 Creates a `worldjs:weighted_random_selector` configured feature

@@ -2,15 +2,15 @@
 title: Add Features
 anchor: add-features
 type: add_features
-name: add_flowers
+name: add_moonlit_sanctuaries
 cat:
     - worldjs
     - 1.21.1
     - biome_mod
 example: |-
-    .biomes('#kubejs:needs_more_flowers')
+    .biomes('#minecraft:is_forest')
     .step('vegetal_decoration')
-    .features('#kubejs:flower_patches')
+    .features('#kubejs:worldgen/moonlit_sanctuaries')
 ---
 
 - [[ biomes ]]

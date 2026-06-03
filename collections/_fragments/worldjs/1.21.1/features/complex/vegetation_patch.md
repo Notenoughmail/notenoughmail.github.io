@@ -6,12 +6,37 @@ wiki_link: https://minecraft.wiki/w/Vegetation_Patch?oldid=3575534
 sprite: BlockSprite
 icon: moss-block
 sort_pos: v
+name: 'kubejs:moonlit_sanctuary'
 cat:
     - worldjs
     - 1.21.1
     - feature
 example: |-
-    // TODO
+    .replaceableBlocks('minecraft:dirt')
+    .groundState([
+        { weight: 14, value: 'minecraft:moss_blocks' },
+        { weight: 4, value: 'minecraft:rooted_dirt' },
+        { weight: 3. value: 'minecraft:podzol' },
+        { weight: 2, value: 'minecraft:coarse_dirt' }
+    ])
+    .vegetationFeature('kubejs:moonlit_mushrooms')
+    .depth([1, 2])
+    .verticalRange(4)
+    .vegetationChance(0.45)
+    .xzRadius([5, 6])
+    .extraEdgeColumnChance(0.45)
+    .withPlacement(placement => {
+        placement.tag('kubejs:worldgen/moonlit_sanctuaries') // See the add features biome modifier example
+            .modifiers(modifiers => {
+                let { minecraft } = modifiers
+                minecraft
+                    .rarityFilter(10)
+                    .inSquare()
+                    .heightMap('motion_blocking_no_leaves')
+                    .biome()
+            })
+    })
+    // Kindly provided by Liopyu
 ---
 
 [[ base ]]

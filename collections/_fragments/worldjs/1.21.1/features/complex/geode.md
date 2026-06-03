@@ -4,13 +4,59 @@ anchor: geode
 type: geode
 wiki_link: https://minecraft.wiki/w/Amethyst_Geode?oldid=3554330
 icon: amethyst-geode
+name: 'kubejs:void_amethyst_geode'
 sort_pos: g
 cat:
     - worldjs
     - 1.21.1
     - feature
 example: |-
-    // TODO
+    .blocks({
+        innerLayer: [
+            { weight: 8, value: 'minecraft:amethyst_block' },
+            { weight: 2, value: 'minecraft:obsidian' },
+            'minecraft;crying_obsidian'
+        ],
+        alternativeInnerLayer: 'minecraft:budding_amethyst',
+        middleLayer: [
+            { weight: 3, value: 'minecraft:calcite' },
+            'minecraft:smooth_basalt'
+        ],
+        outerLayer: [
+            { weight: 5, value: 'minecraft:smooth_basalt' },
+            { weight: 4, value: 'minecraft:obsidian' },
+            'minecraft:crying_obsidian'
+        ]
+    })
+    .layers({
+        filling: 1,
+        innerLayer: 1.6,
+        middleLayer: 2.4,
+        outerLayer: 3.2
+    })
+    .crack({
+        generateChance: 0.55,
+        baseSize: 1.6,
+        pointOffset: 3.2
+    })
+    .usePotentialPlacementsChance(0.32)
+    .useAlternativeLayer0Chance(0.12)
+    .outerWallDistance([3, 5])
+    .distributionPoints([2, 4])
+    .minGenOffset(-8)
+    .maxGenOffset(8)
+    .withPlacement(placement => {
+        placement.tag('kubejs:worldgen/void_amethyst_geode')
+            .modifiers(modifiers => {
+                let { minecraft } = modifiers
+                minecraft
+                    .rarityFilter(28)
+                    .inSquare()
+                    .uniformHeightRange(-48, 48)
+                    .biome()
+            })
+    })
+    // Kindly provided by Liopyu
 ---
 
 [[ base ]]
@@ -27,7 +73,7 @@ example: |-
     - `outerLayer?: BlockStateProvider`{:.language-kube-21}: The [[ block_state_provider ]] of the outer layer
         - Defaults to `minecraft:smooth_basalt`
     - `innerPlacements?: List<BlockState>`{:.language-kube-21}: The blocks to place adjacent to the alternative inner layer blocks
-        - Defaults to `['minecraft:small_amethyst_bud', 'minecraft:medium_amethyst_bud', 'minecraft:large_amethyst_bud', 'minecraft:amethyst_cluster']`
+        - Defaults to `['minecraft:small_amethyst_bud', 'minecraft:medium_amethyst_bud', 'minecraft:large_amethyst_bud', 'minecraft:amethyst_cluster']`{:.language-kube-21}
         - **Must** *not* be empty
     - `cannotReplace?: TagKey<Block>`{:.language-kube-21}: The tag id of blocks which the geode cannot replace
         - Defaults to `minecraft:feature_cannot_replace`
