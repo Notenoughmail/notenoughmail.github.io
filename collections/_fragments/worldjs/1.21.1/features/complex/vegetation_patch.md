@@ -16,7 +16,7 @@ example: |-
     .groundState([
         { weight: 14, value: 'minecraft:moss_blocks' },
         { weight: 4, value: 'minecraft:rooted_dirt' },
-        { weight: 3. value: 'minecraft:podzol' },
+        { weight: 3, value: 'minecraft:podzol' },
         { weight: 2, value: 'minecraft:coarse_dirt' }
     ])
     .vegetationFeature('kubejs:moonlit_mushrooms')

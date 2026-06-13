@@ -103,6 +103,7 @@ A gradient converts a value {% in_unit %} into a color, usually by interpolating
         - `tfcgenviewer:rainfall`
         - `tfcgenviewer:temperature`
         - `tfcgenviewer:grayscale`
+        - `tfcgenviewer:dark_blue`
     - `dispatch`: Has an additional field, `dispatch_type`, a string, the id of a registered dispatch gradient which may have additional fields itself. By default, the available dispatch gradients are
         - `tfcgenviewer:hue_wheel`: Interpolates color through the hue value of HSV color space. Has 4 additional fields
             - `offset`: A number, {% in_range -1,1 %}. Offsets the 'origin' of the hue value. Optional

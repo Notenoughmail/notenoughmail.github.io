@@ -33,7 +33,7 @@ In scripts, they can be defined as
             - `'min'`{:.s}: A [[ vertical_anchor ]], the minimum height
             - `'max'`{:.s}: A [[ vertical_anchor ]], the maximum height
             - `'inner'`{:.s}: An `int`{:.p}, the inner value
-            - Optional, defaults to `1`{:.n}
+                - Optional, defaults to `1`{:.n}
             - `'extreme'`{:.s}: A `boolean`{:.p}, if the height provider should instead be a `minecraft:very_biased_to_bottom` height provider
                 - Optional, defaults to `false`{:.p}
 - A list: A `minecraft:weighted_list` height provider
