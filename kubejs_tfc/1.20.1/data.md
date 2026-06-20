@@ -166,6 +166,7 @@ event.drinkable(
         - `.amplifier(i: number)`{: .language-kube-20 }: Accepts a number specifying the level of the potion effect applied, defaults to `0`{:.n}
         - `.chance(f: number)`{: .language-kube-20 }: Accepts a number, {% in_unit %}, specifying the chance the effect will be applied per 25mB drank, defaults to `1`{:.n}
     - `.food(foodData: Consumer<BuildFoodItemData>)`{: .language-kube-20 #drinkable-food }: Accepts a consumer with the same methods as the one in [food items](#food-items)
+    - `.mayDrinkWhenFull(b: boolean)`{: .language-kube-20 #drinkable-may-drink-when-full }: If the drinkable can be drunk while at full thirst
 - *Optional 3rd argument*: A `ResourceLocation`, the name of the drinkable
 
 [^1]: A full list of all effects can be attained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game

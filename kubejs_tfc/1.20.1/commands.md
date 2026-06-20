@@ -116,8 +116,8 @@ The command has the following form:
 `/kubejs_tfc tree_solver <trunk_size> <log_block> <leaves_block> <from> <to>`{:.language-command}
 
 - `<trunk_size>`{:.v}: An integer, either `1`{:.v} or `2`{:.v}, the trunk size of the templates to solve
-- `<log_block>`{:.m}: A block. Is limited to and will only suggest blocks with TFC's branch direction property. See the [log block type]({% link kubejs_tfc/1.20.1/custom.md %}#log) for custom logs
-- `<leaves_block>`{:.s}: A block. Is limited to and will only suggest TFC leaves blocks. See the [leaves block type]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) for custom leaves
+- `<log_block>`{:.m}: A block state. Is limited to and will only suggest blocks with TFC's branch direction property. See the [log block type]({% link kubejs_tfc/1.20.1/custom.md %}#log) for custom logs
+- `<leaves_block>`{:.s}: A block state. Is limited to and will only suggest TFC leaves blocks. See the [leaves block type]({% link kubejs_tfc/1.20.1/custom.md %}#leaves) for custom leaves
 - `<from>`{:.r}: A block position, one corner of the scan area. Supports relative positions
 - `<to>`{:.nb}: A block position, the other corner of the scan area. Supports relative positions
 
