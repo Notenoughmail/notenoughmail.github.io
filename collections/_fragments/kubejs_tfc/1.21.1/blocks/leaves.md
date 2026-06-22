@@ -25,7 +25,7 @@ Creates a new TFC leaf block
 
 ## Extra Methods
 
-- `.fallenLeaves(fallenLeaves: @Nullable Consumer<FallenleavesBlockBuidler>)`{: .language-kube-21 #{{ page.anchor }}-fallen-leaves }: Set the properties of the fallen leaves associated with the leaves. `null`{:.p} is accepted to have to fallen leaves. Accepts a consumer with the following methods
+- `.fallenLeaves(id?: ResourceLocation, fallenLeaves: @Nullable Consumer<FallenleavesBlockBuidler>)`{: .language-kube-21 #{{ page.anchor }}-fallen-leaves }: Set the properties of the fallen leaves associated with the leaves. `null`{:.p} is accepted to have to fallen leaves. Accepts a consumer with the following methods
     - `.models(models: BiConsumer<FallenLeavesModelType, ModelGenerator>)`{:.language-kube-21}: Set the model generation of the fallen leaves block. Accepts a callback with two parameters, the second being a model generator and the first having the following fields
         - `.layers: int`{:.language-kube-21}: How many layers the model is for, {% in_range 1,8 %}
         - `.parentModel: ResourceLocation`{:.language-kube-21}: The default parent model for the model

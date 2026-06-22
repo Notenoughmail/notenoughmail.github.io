@@ -12,6 +12,9 @@ example: |-
     .models((type, m) => {
         if (type.base()) m.parent('minecraft:block/honey_block')
     })
+    .anchor('anchor', anchor => {
+        anchor.texture('tfc:block/alabaster/polished/red')
+    })
 ---
 
 Creates a new rock spike block
@@ -26,3 +29,6 @@ Creates a new rock spike block
     - `.base(): boolean`{:.language-kube-21}: If the model is for the base state
     - `.middle(): boolean`{:.language-kube-21}: If the model is for the middle state
     - `.tip(): boolean`{:.language-kube-21}: If the model is for the tip state
+- `.anchor(id?: ResourceLocation, anchor: Consumer<RopeRockAnchorBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-anchor }: Set the properties of the spike's rope anchor block. Accepts a consumer with the following methods:
+    - [[ raw_props ]]
+    - [[ def ]]

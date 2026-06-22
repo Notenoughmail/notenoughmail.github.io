@@ -89,6 +89,8 @@ ServerEvents.registry('worldgen/configured-feature', event => {
 
 {% endfor %}
 
+---
+
 ## Placed Features
 
 Placed features can be created using the JS event or via the [`.withPlacement(...)`{:.language-kube-21}](#no-op-with-placement){:.preserve-color} method of a configured feature builder

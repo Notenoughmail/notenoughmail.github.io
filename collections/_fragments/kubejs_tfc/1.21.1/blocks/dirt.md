@@ -22,16 +22,16 @@ Inherits the methods of the default block builder
 
 ## Extra Methods
 
-- `.grass(grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-grass }: Set the properties of the dirt's grass block. Accepts a consumer with the methods
+- `.grass(id?: ResourceLocation, grass: Consumer<ConnectedGrassBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-grass }: Set the properties of the dirt's grass block. Accepts a consumer with the methods
     - `.models(models: BiConsumer<GrassModelPart, ModelGenerator>)`{:.language-kube-21}: Set the model generation of the grass block. Accepts a callback with two arguments, the second being a model generator and the first being an object with four accessible fields
         - `.snowy: boolean`{:.language-kube-21}: If the model is for a snowy state
         - `.side: boolean`{:.language-kube-21}: If the model is for the side of the grass block
         - `.top: boolean`{:.language-kube-21}: If the model is for the top of the grass block
         - `.bottom: boolean`{:.language-kube-21}: If the model is for the bottom of the grass block
     - [[ def ]]
-- `.path(path: Consumer<TFCPathBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-path }: Create and set the properties of the path block associated with the dirt block. Accepts a consumer with the same methods as the base block builder
-- `.farmland(farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-farmland }: Create and set the properties of the farmland block associated with the dirt block. Accepts a consumer with the methods
+- `.path(id?: ResourceLocation, path: Consumer<TFCPathBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-path }: Create and set the properties of the path block associated with the dirt block. Accepts a consumer with the same methods as the base block builder
+- `.farmland(id?: ResourceLocation, farmland: Consumer<TFCFarmlandBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-farmland }: Create and set the properties of the farmland block associated with the dirt block. Accepts a consumer with the methods
     - [[ raw_props ]]
     - [[ def ]]
-- `.rooted(rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-rooted }: Set the properties of the dirt's rooted dirt block. Accepts a consumer with the same methods as the default block builder
-- `.mud(mud: Consumer<BlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-mud }: Set the properties of the dirt's mud block. Accepts a consumer with the same methods as the default block builder
+- `.rooted(id?: ResourceLocation, rooted: Consumer<TFCRootedDirtBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-rooted }: Set the properties of the dirt's rooted dirt block. Accepts a consumer with the same methods as the default block builder
+- `.mud(id?: ResourceLocation, mud: Consumer<BlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-mud }: Set the properties of the dirt's mud block. Accepts a consumer with the same methods as the default block builder

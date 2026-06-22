@@ -14,6 +14,7 @@ Providers have several methods by which they can be used and modified
 
 - `.stack(): ItemStack`{: .language-kube-21 #{{ page.anchor }}-stack }: Get the base output `ItemStack` of the provider
 - `.modifiers(): List<ItemStackModifier>`{: .language-kube-21 #{{ page.anchor }}-modifiers }: Get the provider's list of modifiers
+- `.prettyPrint(): String`{: .language-kube-21 #{{ page.anchor }}-pretty-print }: Similar to `.toString()`{:.language-kube-21} but includes the class name of enum-based modifiers
 - `.getSingleStack(input: ItemStack): ItemStack`{: .language-kube-21 #{{ page.anchor }}-get-single-stack }: Get the output stack of the provider, for the given input stack, assuming the input is a single item
 - `.getSingleStackDisplayOnly(input: ItemStack): ItemStack`{: .language-kube-21 #{{ page.anchor }}-get-single-stack-display-only }: [`.getSingleStack(ItemStack)`{:.language-kube-21}](#{{ page.anchor }}-get-single-stack){:.preserve-color} but for display-only (`no_random_chance`{:.e}) contexts
 - `.getEmptyStack(): ItemStack`{: .language-kube-21 #{{ page.anchor }}-get-empty-stack }: Get the output stack of the provider, without taking the input stack into consideration

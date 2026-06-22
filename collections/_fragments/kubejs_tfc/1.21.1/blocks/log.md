@@ -22,7 +22,7 @@ Creates a new log block
 
 ## Extra Methods
 
-- `.stripped(builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-stripped }: Set the properties of the the log's stripped variant, or remove the stripped variant by passing `null`{:.p}. Accepts a consumer with the following methods
+- `.stripped(id?: ResourceLocation, builder: @Nullable Consumer<LogBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-stripped }: Set the properties of the the log's stripped variant, or remove the stripped variant by passing `null`{:.p}. Accepts a consumer with the following methods
     - `.useFullBlockForItemModel()`{:.language-kube-21}: Set the item model generation to parent from the block model
     - [[ raw_props ]]
     - [[ def ]]

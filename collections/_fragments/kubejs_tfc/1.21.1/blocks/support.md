@@ -24,7 +24,7 @@ Creates a new support block
 ## Extra Methods
 
 - `.connectionModel(model: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-connection-model }: Set the model to use for sideways connections
-- `.horizontal(horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-horizontal }: Set the properties of the horizontal support block. Accepts a consumer with the methods
+- `.horizontal(id?: ResourceLocation, horizontalSupport: Consumer<HorizontalSupportBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-horizontal }: Set the properties of the horizontal support block. Accepts a consumer with the methods
     - [[ raw_props ]]
     - [[ def ]]
 - [[ props ]]

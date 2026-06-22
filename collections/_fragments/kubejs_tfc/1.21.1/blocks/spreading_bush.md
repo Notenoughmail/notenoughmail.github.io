@@ -23,7 +23,7 @@ Inherits the methods of the [stationary berry bush builder](#stationary-berry-bu
 
 ## Extra Methods
 
-- `.cane(cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-cane }: Set the properties of the cane bush block. Accepts a consumer with the methods
+- `.cane(id?: ResourceLocation, cane: Consumer<SpreadingCaneBlockBuilder>)`{: .language-kube-21 #{{ page.anchor }}-cane }: Set the properties of the cane bush block. Accepts a consumer with the methods
     - `.model(lifecycle: Lifecycle, stage: int, modelGenerator: Consumer<ModelGenerator>)`{:.language-kube-21}: Set the model for a given lifecycle and growth stage
     - `.models(models: TriConsumer<Lifecycle, int, ModelGenerator>)`{:.language-kube-21}: Set the model generation for all lifecycle and growth stages via a callback with the params
         - `lifecycle: Lifecycle`{:.language-kube-21}: The lifecycle the model is for
