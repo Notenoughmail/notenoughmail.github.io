@@ -8,7 +8,11 @@ desc: Documentation on how to create some of TFC's configured features
 fragment-filter:
     - kubejs_tfc
     - 1.21.1
-    - worldgen
+    - conf_feature
+fragment-sort:
+    - group
+    - sort_pos
+    - title
 ---
 
 # Worldgen
@@ -21,13 +25,25 @@ Worldgen features are primarily done through placed and configured features. Kub
 {: .unstable #configured features }
 > While TFC's configured feature types are currently implemented, they are undocumented until I have the time and energy to dedicate to documenting them. Until such time, their builders may have breaking changes as they are evaluated when writing their docs
 
-{% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | sort: 'anchor' %}
+{% map replacements %}
+{% base %}Inherits the methods of the [no op]({% link worldjs/1.21.1/features.md %}#no-op) builder{% end_base %}
+{% required %}**Must** be set{% end_required %}
+{% unit %}Must be {% in_unit %}{% end_unit %}
+{% def_0 %}Defaults to `0`{:.n}{% end_def_0 %}
+{% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
+{% def_f %}Defaults to `false`{:.p}{% end_def_f %}
+{% def_t %}Defaults to `true`{:.p}{% end_def_t %}
+{% pos %}Must be {% in_range 1,,) %}{% end_pos %}
+{% weight %}[`WeightedValue`]({% link worldjs/1.21.1/wrappers.md %}#weighted-value){% end_weight %}
+{% endmap %}
 
-{% grid n=2 %}
+{% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+
+{% grid n=3 %}
 
 {% for feature in features %}
 
-- [{{ feature.title }}](#{{ feature.anchor }}) -- `{{ feature.type }}`
+- [{{ feature.title }}](#{{ feature.anchor }})
 
 {% endfor %}
 
@@ -41,7 +57,15 @@ KubeJS TFC also adds a [`tfc` namespace](#placed-feature-modifiers) to the [modi
 
 ## {{ feature.title }}
 
-**Type**: `{{ feature.type }}`
+**Type**: `tfc:{{ feature.type }}`
+
+Creates a {% if feature.wiki_link %}[tfc:{{ feature.type }}]({{ feature.wiki_link }}){% else %}`tfc:{{ feature.type }}`{% endif %} configured feature
+
+{% if feature.inherit %}
+
+Inherits the methods of the [{{ feature.inherit-display }}]({{ feature.inherit | render_liquid }}) builder
+
+{% endif %}
 
 {{ feature.clean }}
 
@@ -51,7 +75,7 @@ KubeJS TFC also adds a [`tfc` namespace](#placed-feature-modifiers) to the [modi
 
 ```js-21
 ServerEVents.registry('minecraft:configured_feature', event => {
-    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', '{{ feature.type }}')
+    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', 'tfc:{{ feature.type }}')
         {{ feature.example | with_indent }}
 })
 ```
