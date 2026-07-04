@@ -22,6 +22,6 @@ example: |-
 - `.height(h: int)`{: .language-kube-21 #{{ page.anchor }}-height }: The height of the disc
     - Must be {% in_range 0,256 %}
     - Defaults to `2`{:.n}
-- `.integrity(i: float)`{: .language-kube-21 #{{ page.anchor }}-integrity }: The portion of the disc's area that is replaced
+- `.integrity(i: number)`{: .language-kube-21 #{{ page.anchor }}-integrity }: The portion of the disc's area that is replaced
     - [[ unit ]]
     - [[ def_1 ]]

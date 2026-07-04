@@ -40,7 +40,7 @@ example: |-
 - `.wetness(provider: FloatProvider)`{: .language-kube-21 #{{ page.anchor }}-wetness }: The chance of also placing a pool as a [[ float ]]
     - Must be {% in_range 0,2 %}
     - [[ required ]]
-- `.chanceOfDripstoneColumnAtMaxDistanceFromCenter(chance: float)`{: .language-kube-21 #{{ page.anchor }}-chance-of-dripstone-column-at-max-distance-from-center }: The chance there is a column at the maximum distance from the center
+- `.chanceOfDripstoneColumnAtMaxDistanceFromCenter(chance: number)`{: .language-kube-21 #{{ page.anchor }}-chance-of-dripstone-column-at-max-distance-from-center }: The chance there is a column at the maximum distance from the center
     - [[ unit ]]
     - [[ def_0 ]]
 - `.maxDistanceFromEdgeAffectingChanceOfDripstoneColumn(dist: int)`{: .language-kube-21 #{{ page.anchor }}-max-distance-from-edge-affecting-chance-of-dripstone-column }: The maximum distance form the center that can influence the chance of the column placing

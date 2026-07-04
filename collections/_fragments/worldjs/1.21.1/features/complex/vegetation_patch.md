@@ -53,17 +53,17 @@ example: |-
 - `.depth(depth: IntProvider)`{: .language-kube-21 #{{ page.anchor }}-depth }: An [[ int ]] describing the amount of blocks that should be replaced
     - Must be {% in_range 1,128 %}
     - [[ required ]]
-- `.extraBottomBlockChance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-extra-bottom-block-chance }: The chance to add an extra block to the height
+- `.extraBottomBlockChance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-extra-bottom-block-chance }: The chance to add an extra block to the height
     - [[ unit ]]
     - [[ def_0 ]]
 - `.verticalRange(range: int)`{: .language-kube-21 #{{ page.anchor }}-vertical-range }: The y radius in which the column should search for available placement
     - Must be {% in_range 1,256 %}
     - [[ def_1 ]]
-- `.vegetationChance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-vegetation-chance }: The chance of placing the [vegetation feature](#{{ page.anchor }}-vegetation-feature) on finding a valid position
+- `.vegetationChance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-vegetation-chance }: The chance of placing the [vegetation feature](#{{ page.anchor }}-vegetation-feature) on finding a valid position
     - [[ unit ]]
     - [[ def_0 ]]
 - `.xzRadius(radius: IntProvider)`{: .language-kube-21 #{{ page.anchor }}-x-z-radius }: The horizontal radius to search for valid positions
     - [[ required ]]
-- `.extraEdgeColumnChance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-extra-edge-column-chance }: The chance to add an extra search position next to the initial rectangle
+- `.extraEdgeColumnChance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-extra-edge-column-chance }: The chance to add an extra search position next to the initial rectangle
     - [[ unit ]]
     - [[ def_0 ]]

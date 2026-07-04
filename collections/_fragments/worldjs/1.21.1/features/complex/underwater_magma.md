@@ -22,6 +22,6 @@ example: |-
 - `.placementRadiusAroundFloor(radius: int)`{: .language-kube-21 #{{ page.anchor }}-placement-radius-around-floor }: The radius around the selected position to potentially place magma
     - Must be {% in_range 0,64 %}
     - [[ def_0 ]]
-- `.placementProbabilityPerValidPosition(probability: float)`{: .language-kube-21 #{{ page.anchor }}-placement-probability-per-valid-position }: The probability of a magma block being placed at any given selected position
+- `.placementProbabilityPerValidPosition(probability: number)`{: .language-kube-21 #{{ page.anchor }}-placement-probability-per-valid-position }: The probability of a magma block being placed at any given selected position
     - [[ unit ]]
     - [[ def_0 ]]

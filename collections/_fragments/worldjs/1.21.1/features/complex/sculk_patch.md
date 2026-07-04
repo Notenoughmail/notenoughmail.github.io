@@ -33,6 +33,6 @@ example: |-
     - [[ def_0 ]]
 - `.extraRareGrowths(provider: IntProvider)`{: .language-kube-21 #{{ page.anchor }}-extra-rare-growths }: The number of extra shriekers to generate as an [[ int ]]
     - [[ required ]]
-- `.catalystChance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-catalyst-chance }: The chance of generating a catalyst
+- `.catalystChance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-catalyst-chance }: The chance of generating a catalyst
     - [[ unit ]]
     - [[ def_0 ]]

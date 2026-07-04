@@ -35,6 +35,7 @@ Worldgen features are primarily done through placed and configured features. Kub
 {% def_t %}Defaults to `true`{:.p}{% end_def_t %}
 {% pos %}Must be {% in_range 1,,) %}{% end_pos %}
 {% weight %}[`WeightedValue`]({% link worldjs/1.21.1/wrappers.md %}#weighted-value){% end_weight %}
+{% cluster %}Inherits the methods of the [cluster vein](#cluster-vein) builder{% end_cluster %}
 {% endmap %}
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
@@ -166,3 +167,9 @@ KubeJS TFC adds the following [placement modifiers]({% link worldjs/1.21.1/featu
         - `maxEasing?: number`{:.language-kube-21}: The maximum easing value, {% in_unit %}. Optional, defaults to `1`{:.n}
         - `hashMin?: number`{:.language-kube-21}: The minimum hash value, {% in_unit %}. Optional, defaults to `0`{:.n}
         - `hashMax?: number`{:.language-kube-21}: The maximum hash value, {% in_unit %}. Optional, defaults to `1`{:.n}
+
+{% comment %}
+
+## cluster vein
+
+{% endcomment %}
