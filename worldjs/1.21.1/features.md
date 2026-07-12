@@ -311,7 +311,7 @@ function canReplace(state, forceIntoGround) {
 
 // Define a configured & placed feature which use the custom feature type
 ServerEvents.registry('worldgen/configured_feature', event => {
-    event.create('evil_spikes', 'kubejs:eveil_spikes')
+    event.create('evil_spikes', 'kubejs:evil_spikes')
         .withPlacement(p => p.modifiers(m => {
             let { minecraft } = m
             minecraft
