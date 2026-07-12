@@ -197,16 +197,16 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
 
 ## Custom Feature Types
 
-Custom feature types can be creating using the `StartupEvents.registry('worldgen/feature', e => {})`{:.langauge-kube-21} event
+Custom feature types can be creating using the `StartupEvents.registry('worldgen/feature', e => {})`{:.language-kube-21} event
 
-Each feature type created via the default builder will have a corresponding builder type (with the same id as the feature type is register with) added to the `ServerEvents.registry('worldgen/configured_feature', e => {})`{:.langauge-kube-21} event for easy creation. The builder type will inherit the methods of the [no op](#no-op) builder
+Each feature type created via the default builder will have a corresponding builder type added to the `ServerEvents.registry('worldgen/configured_feature', e => {})`{:.language-kube-21} event for easy creation. The new builder type will inherit the methods of the [no op](#no-op) builder and will have the same type id as the id the custom feature was registered with
 
-- `.placeFunction(function: KubeFeaturePlaceFunction)`: The placement function which defines how and where the feature places blocks. Accepts a callback with the params:
-    - `level: WorldgenLevel`{:.langauge-kube-21}: The level in which the feature is being placed
-    - `chunkGenerator: ChunkGenerator`{:.langauge-kube-21}: The chunk generator the feature is being placed by
-    - `random: RandomSource`{:.langauge-kube-21}: A source of random values
-    - `origin: BlockPos`{:.langauge-kube-21}: The position the feature is being placed at *after* modifications by placement modifiers
-    - `return: boolean`{:.langauge-kube-21}: `true`{:.p} if the feature successfully placed, else `false`{:.p}
+- `.placeFunction(function: KubeFeaturePlaceFunction)`{: .language-kube-21 #custom-feature-type-place-function }: The placement function which defines how and where the feature places blocks. Accepts a callback with the params:
+    - `level: WorldgenLevel`{:.language-kube-21}: The level in which the feature is being placed
+    - `chunkGenerator: ChunkGenerator`{:.language-kube-21}: The chunk generator the feature is being placed by
+    - `random: RandomSource`{:.language-kube-21}: A source of random values
+    - `origin: BlockPos`{:.language-kube-21}: The position the feature is being placed at *after* modifications by placement modifiers
+    - `return: boolean`{:.language-kube-21}: `true`{:.p} if the feature successfully placed, else `false`{:.p}
 
 {: #custom-feature-type-example }
 
@@ -237,7 +237,7 @@ StartupEvents.registry('worldgen/feature', event => {
             for (let y = -buriedDepth; y < height; y++) {
                 let buried = y < 0
                 let t = buried ? 0.0 : height == 1 ? 1.0 : y / (height - 1)
-                let buriedT = buried && buriedDepth > 0 ? -y / buriedDepth : 0.0
+                let buriedT = buried && buriedDepth > 0 ? (-y / buriedDepth) : 0.0
                 let mainRadius = Math.max(tipRadius, baseRadius * Math.pow(1.0 - t, taperCurve) + tipRadius * t)
                 let radius = buried ? Math.max(tipRadius, baseRadius * (1.0 - buriedT * 0.45)) : mainRadius
                 let curlT = t <= 0.5 ? 0.0 : (t - 0.5) * 2.0
