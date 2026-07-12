@@ -38,7 +38,9 @@ module Rouge
                         # KubeJS
                         "ItemPredicate",
                         # Vanilla
-                        "SpawnPlacementType"
+                        "SpawnPlacementType",
+                        # WorldJS
+                        "KubeFeaturePlaceFunction"
                     ], opts)
                 end
             end

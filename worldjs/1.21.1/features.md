@@ -54,6 +54,8 @@ fragment-sort:
 
 [Placed features](https://minecraft.wiki/w/Placed_feature) define the placement conditions of configured features. They can be made with KubeJS's `ServerEvents.registry('worldgen/placed_feature', event => {})`{:.language-kube-21} event, as described [below](#placed-features)
 
+WorldJS also adds the ability to define [custom feature types](#custom-feature-types)
+
 {% for feature in features %}
 
 {: #{{ feature.anchor }}}
@@ -192,6 +194,142 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
     - `maxInclusive: VerticalAnchor`{:.language-kube-21}: A {{ vertical_anchor }}, the upper placement bound
 - `.constantHeightRange(height: VerticalAnchor)`{: .language-kube-21 #modifier-constant-height-range }: Add a [minecraft:height_range](https://minecraft.wiki/w/Placed_feature#height_range) modifier that places the feature at the exact height given
     - `height: VerticalAnchor`{:.language-kube-21}: A {{ vertical_anchor }}, the height to place at
+
+## Custom Feature Types
+
+Custom feature types can be creating using the `StartupEvents.registry('worldgen/feature', e => {})`{:.langauge-kube-21} event
+
+Each feature type created via the default builder will have a corresponding builder type (with the same id as the feature type is register with) added to the `ServerEvents.registry('worldgen/configured_feature', e => {})`{:.langauge-kube-21} event for easy creation. The builder type will inherit the methods of the [no op](#no-op) builder
+
+- `.placeFunction(function: KubeFeaturePlaceFunction)`: The placement function which defines how and where the feature places blocks. Accepts a callback with the params:
+    - `level: WorldgenLevel`{:.langauge-kube-21}: The level in which the feature is being placed
+    - `chunkGenerator: ChunkGenerator`{:.langauge-kube-21}: The chunk generator the feature is being placed by
+    - `random: RandomSource`{:.langauge-kube-21}: A source of random values
+    - `origin: BlockPos`{:.langauge-kube-21}: The position the feature is being placed at *after* modifications by placement modifiers
+    - `return: boolean`{:.langauge-kube-21}: `true`{:.p} if the feature successfully placed, else `false`{:.p}
+
+{: #custom-feature-type-example }
+
+### Example
+
+```js-21
+StartupEvents.registry('worldgen/feature', event => {
+    event.create('evil_spikes')
+        .placeFunction((level, chunkGenerator, random, origin) => {
+            random = random.forkPositional().at(origin)
+            let height = 18 + random.nextInt(27)
+            let baseRadius = 5.5
+            let tipRadius = 0.35
+            let maxTilt = 5.0
+            let bend = 1.2
+            let curl = 7.0
+            let buriedDepth = 10
+            let taperCurve = 1.25
+            let surfaceNoise = 0.85
+            let accentChance = 0.08
+            let tiltX = (random.nextDouble() * 2.0 - 1.0) * maxTilt
+            let tiltZ = (random.nextDouble() * 2.0 - 1.0) * maxTilt
+            let bendPhase = random.nextDouble() * Math.PI * 2.0
+            let noiseSeed = random.nextLong()
+            let placed = false
+            let pos = origin.mutable()
+
+            for (let y = -buriedDepth; y < height; y++) {
+                let buried = y < 0
+                let t = buried ? 0.0 : height == 1 ? 1.0 : y / (height - 1)
+                let buriedT = buried && buriedDepth > 0 ? -y / buriedDepth : 0.0
+                let mainRadius = Math.max(tipRadius, baseRadius * Math.pow(1.0 - t, taperCurve) + tipRadius * t)
+                let radius = buried ? Math.max(tipRadius, baseRadius * (1.0 - buriedT * 0.45)) : mainRadius
+                let curlT = t <= 0.5 ? 0.0 : (t - 0.5) * 2.0
+                let curlRadius = curl * curlT * curlT
+                let curlAngle = bendPhase + curlT * Math.PI * 1.35
+                let centerX = origin.getX() + tiltX * t + Math.sin(t * Math.PI + bendPhase) * bend + Math.cos(curlAngle) * curlRadius
+                let centerZ = origin.getZ() + tiltZ * t + Math.cos(t * Math.PI + bendPhase) * bend + Math.sin(curlAngle) * curlRadius
+                let blockY = origin.getY() + y
+                pos.setY(blockY)
+
+                if (blockY <= level.getMinBuildHeight() || blockY >= level.getMaxBuildHeight()) {
+                    continue
+                }
+
+                let minX = Math.floor(centerX - radius)
+                let maxX = Math.ceil(centerX + radius)
+                let minZ = Math.floor(centerZ - radius)
+                let maxZ = Math.ceil(centerZ + radius)
+
+                for (let x = minX; x <= maxX; x++) {
+                    pos.setX(x)
+                    for (let z = minZ; z <= maxZ; z++) {
+                        pos.setZ(z)
+                        let dx = x + 0.5 - centerX
+                        let dz = z + 0.5 - centerZ
+                        let edgeNoise = (noise(x, blockY, z, noiseSeed) - 0.5) * surfaceNoise
+                        if (dx * dx + dz * dz > (radius + edgeNoise) * (radius + edgeNoise)) {
+                            continue
+                        }
+
+                        if (!canReplace(level.getBlockState(pos), buried || y <= 2)) {
+                            continue
+                        }
+
+                        let accent = random.nextFloat() < accentChance && (radius < baseRadius * 0.45 || random.nextFloat() < 0.35)
+                        level.setBlock(pos, chooseSpikeState(random, accent).defaultBlockState(), 2)
+                        placed = true
+                    }
+                }
+            }
+
+            return placed
+            // Kindly provided by Liopyu
+        })
+})
+
+function chooseSpikeState(random, accent) {
+    let roll = random.nextInt(accent ? 13 : 27)
+
+    if (accent) {
+        if (roll < 7) return Blocks.CRYING_OBSIDIAN
+        if (roll < 12) return Blocks.BLACKSTONE
+        return Blocks.DIAMOND_ORE
+    }
+
+    if (roll < 14) return Blocks.OBSIDIAN
+    if (roll < 23) return Blocks.BLACKSTONE
+    if (roll < 26) return Blocks.CRYING_OBSIDIAN
+    return Blocks.DIAMOND_ORE
+}
+
+function noise(x, y, z, seed) {
+    let value = Math.sin(x * 12.9898 + y * 78.233 + z * 37.719 + Number(seed) * 0.000001) * 43758.5453
+    return value - Math.floor(value)
+}
+
+function canReplace(state, forceIntoGround) {
+    if (state.is(Blocks.BEDROCK)) return false
+    return forceIntoGround || state.isAir() || state.canBeReplaced()
+}
+
+// Define a configured & placed feature which use the custom feature type
+ServerEvents.registry('worldgen/configured_feature', event => {
+    event.create('evil_spikes', 'kubejs:eveil_spikes')
+        .withPlacement(p => p.modifiers(m => {
+            let { minecraft } = m
+            minecraft
+                .rarityFilter(12)
+                .inSquare()
+                .heightmap('ocean_floor_wg')
+                .biome()
+        }))
+})
+
+// Add features to biomes
+ServerEvents.registry('neoforge:biome_modifier', event => {
+    event.create('add_evil_spikes', 'add_features')
+        .biomes('#c:is_overworld')
+        .step('surface_structures')
+        .features('kubejs:evil_spikes')
+})
+```
 
 {% comment %}
 
