@@ -13,41 +13,41 @@ example: |-
 ---
 
 - `.climate(placement: ClimatePlacement)`{: .language-kube-21 #{{ page.anchor }}-climate }: The climatic conditions this forest entry can spawn in. Can be made as an object with the fields
-    - `minTemp?: float`{:.langauge-kube-21}: The minimum temperature
+    - `minTemp?: number`{:.language-kube-21}: The minimum temperature
         - [[ n_inf ]]
-    - `maxTemp?: float`{:.langauge-kube-21}: The maximum temperature
+    - `maxTemp?: number`{:.language-kube-21}: The maximum temperature
         - [[ p_inf ]]
-    - `minGroundwater?: float`{:.langauge-kube-21}: The minimum groundwater value
+    - `minGroundwater?: number`{:.language-kube-21}: The minimum groundwater value
         - [[ n_inf ]]
-    - `maxGroundwater?: float`{:.langauge-kube-21}: The maximum groundwater value
+    - `maxGroundwater?: number`{:.language-kube-21}: The maximum groundwater value
         - [[ p_inf ]]
-    - `minRainVariance?: float`{:.langauge-kube-21}: The minimum rain variance
-        - Defaults to `-1`{:language-kube-21}
-    - `maxRainVariance?: float`{:.langauge-kube-21}: The maximum rain variance
+    - `minRainVariance?: number`{:.language-kube-21}: The minimum rain variance
+        - Defaults to `-1`{:.language-kube-21}
+    - `maxRainVariance?: number`{:.language-kube-21}: The maximum rain variance
         - [[ def_1 ]]
-    - `absoluteRainVariance?: boolean`{:.langauge-kube-21}: If the sign of the rain variance at a location should be ignored when checking ranges
+    - `absoluteRainVariance?: boolean`{:.language-kube-21}: If the sign of the rain variance at a location should be ignored when checking ranges
         - [[ def_f ]]
-    - `fuzzy?: boolean`{:.langauge-kube-21}: If climate values should be evaluated fuzzily
+    - `fuzzy?: boolean`{:.language-kube-21}: If climate values should be evaluated fuzzily
         - [[ def_f ]]
-    - `ignoreRivers?: boolean`{:.langauge-kube-21}: If climate values should be influenced before river influence
+    - `ignoreRivers?: boolean`{:.language-kube-21}: If climate values should be influenced before river influence
         - [[ def_f ]]
-    - `minForestDensity?: int`{:.langauge-kube-21}: The minimum forest density
+    - `minForestDensity?: int`{:.language-kube-21}: The minimum forest density
         - [[ non_neg ]]
         - [[ def_0 ]]
-    - `maxForestDensity?: int`{:.langauge-kube-21}: The maximum forest density
+    - `maxForestDensity?: int`{:.language-kube-21}: The maximum forest density
         - [[ non_neg ]]
         - Defaults to `4`{:.n}
-    - `minElevation?: int`{:.langauge-kube-21}: The minimum elevation
+    - `minElevation?: int`{:.language-kube-21}: The minimum elevation
         - Defaults to `-64`{:.n}
-    - `maxElevation?: int`{:.langauge-kube-21}: The maximum elevation
+    - `maxElevation?: int`{:.language-kube-21}: The maximum elevation
         - Defaults to `320`{:.n}
-    - `forestTypes?: List<ForestType>`{:.langauge-kube-21}: The [forest types]({% link kubejs_tfc/1.21.1/type-explanations.md %}#forest-type-enum) the entry may spawn in. Will spawn in all types if empty or unset
+    - `forestTypes?: List<ForestType>`{:.language-kube-21}: The [forest types]({% link kubejs_tfc/1.21.1/type-explanations.md %}#forest-type-enum) the entry may spawn in. Will spawn in all types if empty or unset
         - Defaults to `[]`
 - `.bush(log: BlockState, leaves: BlockState)`{: .language-kube-21 #{{ page.anchor }}-bush }: The bush blocks
 - `.fallen(log: BlockState, leaves: BlockState)`{: .language-kube-21 #{{ page.anchor }}-fallen }: The fallen tree blocks
     - The `log`{:.v} block must be TFC's `natural` and the vanilla `axis` state properties. See the [log builder]({% link kubejs_tfc/1.21.1/blocks.md %}#log)
     - The `leaves`{:.v} block must have TFC's `layers` state property. See the [fallen leaves builder]({% link kubejs_tfc/1.21.1/blocks.md %}#leaves-fallen-leaves)
-- `.groundcover(cover: List<WeightedValue<BlockState>>)`{: .language-kube-21 #{{ page.anchor }}-groundcover }: The groundcover present in the forest as [[ weighted ]]s
+- `.groundcover(cover: List<WeightedValue<BlockState>>)`{: .language-kube-21 #{{ page.anchor }}-groundcover }: The groundcover present in the forest as [[ weight ]]s
 - `.trees(normal: Holder<ConfiguredFeature<?, ?>>, dead: Holder<ConfiguredFeature<?, ?>>)`{: .language-kube-21 #{{ page.anchor }}-trees }: The living and dead tree configured features to place in the forest
     - [[ required ]]
 - `.oldGrowthTree(old: Holder<ConfiguredFeature<?, ?>>)`{: .language-kube-21 #{{ page.anchor }}-old-growth-tree }: The configured feature to place for old growth trees
@@ -68,6 +68,7 @@ example: |-
     - Defaults to `75`{:.n}
 - `.floating(floating: boolean)`{: .language-kube-21 #{{ page.anchor }}-floating }: If trees are allowed to float when placing
     - [[ def_f ]]
+- `.addToDefaultForest()`{: .language-kube-21 #{{ page.anchor }}-add-to-default-forest }: Add the entry to the `tfc:forest_trees` tag, which is used by TFC's forest feature for its entries
 
 {% comment %}
 

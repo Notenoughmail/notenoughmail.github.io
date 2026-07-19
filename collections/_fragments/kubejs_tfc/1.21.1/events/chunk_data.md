@@ -32,7 +32,7 @@ example: |-
     const tempLayer = TFC.noise.openSimplex2D(event.getWorldSeed() + 7545452354354)
         .spread(0.2)
         .octaves(3)
-        scaled(95, 140)
+        .scaled(95, 140)
     const forestLayer = TFC.noise.openSimplex2D9event.getWorldSeed() + 14694769526)
         .spread(0.8)
         .terraces(9)
@@ -53,7 +53,7 @@ example: |-
     
     event.partial(data => {
         let { pos } = data
-        let { minBlockX: X, minBlockZ: z } = pos
+        let { minBlockX: x, minBlockZ: z } = pos
         var temp = tempLayer.overChunk(pos)
         data.generatePartial(
             rain,
@@ -181,7 +181,7 @@ In its json, the rule source has the following fields
 
 - `type` must be `kubejs_tfc:rock`
 - `fallback_state`: A [lenient block state](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/common-types/#lenient-blockstate). Used when the `RockSettings` at a position could not be found or the chunk generator is not compatible with this rule source
-- `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specified which block from the `RockSettings` to use. Optional, defaults to `raw`
+- `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specifies which block from the `RockSettings` to use. Optional, defaults to `raw`
 
 {: #{{ page.anchor }}-surface-rule-source-example }
 

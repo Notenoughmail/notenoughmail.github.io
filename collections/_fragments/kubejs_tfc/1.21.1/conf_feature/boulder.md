@@ -3,7 +3,7 @@ title: Boulder
 anchor: boulder
 type: boulder
 wiki_link: https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/features/#boulder
-sort_pos: b
+sort_pos: b_a
 cat:
     - kubejs_tfc
     - 1.21.1

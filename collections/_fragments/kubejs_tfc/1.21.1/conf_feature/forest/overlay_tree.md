@@ -15,42 +15,42 @@ example: |-
 [[ base ]]
 
 - `.trunk(trunk: TrunkConfig)`{: .language-kube-21 #{{ page.anchor }}-trunk }: The trunk properties. Can be made as an object with the following fields
-    - `state: BlockState`{:.langauge-kube-21}: The trunk block to place
+    - `state: BlockState`{:.language-kube-21}: The trunk block to place
         - Defaults to `'minecraft:air'`{:.s}
-    - `minHeight?: int`{:.langauge-kube-21}: The minimum height of the trunk
+    - `minHeight?: int`{:.language-kube-21}: The minimum height of the trunk
         - Must be <= `maxHeight`{:.v}
         - [[ def_0 ]]
-    - `maxHeight?: int`{:.langauge-kube-21}: The maximum height of the trunk
+    - `maxHeight?: int`{:.language-kube-21}: The maximum height of the trunk
         - Must be >= `minHeight`{:.v}
         - Defaults to `2`{:.n}
-    - `wide?: boolean`{:.langauge-kube-21}: If the trunk should be 2x2
+    - `wide?: boolean`{:.language-kube-21}: If the trunk should be 2x2
         - [[ def_f ]]
 - `.roots(roots: TreeRootBuilder)`{: .language-kube-21 #{{ page.anchor }}-roots }: The root system properties. Can be made as an object with the fields
-    - `blocks: Map<Block, List<WeightedValue<BlockState>>>`{:.langauge-kube-21}: The blocks to place, mapping from the surface blocks to the [[ weighted ]] states to place
+    - `blocks: Map<Block, List<WeightedValue<BlockState>>>`{:.language-kube-21}: The blocks to place, mapping from the surface blocks to the [[ weight ]] states to place
         - [[ required ]]
-    - `width?: int`{:.langauge-kube-21}: The maximum horizontal distance the roots can place
+    - `width?: int`{:.language-kube-21}: The maximum horizontal distance the roots can place
         - [[ pos ]]
         - Defaults to `4`{:.n}
-    - `height?: int`{:.langauge-kube-21}: The maximum vertical distance below the surface the roots can place
+    - `height?: int`{:.language-kube-21}: The maximum vertical distance below the surface the roots can place
         - [[ pos ]]
         - Defaults to `3`{:.n}
-    - `tries?: int`{:.langauge-kube-21}: The number of times to attempt to place each root
+    - `tries?: int`{:.language-kube-21}: The number of times to attempt to place each root
         - [[ pos ]]
         - Defaults to `5`{:.n}
-    - `skewChance?: float`{:.langauge-kube-21}: The chance a root position is skewed downwards
+    - `skewChance?: number`{:.language-kube-21}: The chance a root position is skewed downwards
         - Defaults to `NaN`{:.n}
-    - `required?: bool`{:.langauge-kube-21}: If the tree requires the roots to place in order to place
+    - `required?: bool`{:.language-kube-21}: If the tree requires the roots to place in order to place
         - [[ def_f ]]
 - `.treePlacement(placement: TreePlacementConfig)`{: .language-kube-21 #{{ page.anchor }}-tree-placement }: The tree placement properties. Can be made as an object with the fields
-    - `width?: int`{:.langauge-kube-21}: The width of ground clearance needed
+    - `width?: int`{:.language-kube-21}: The width of ground clearance needed
         - Defaults to `5`{:.n}
-    - `height?: int`{:.langauge-kube-21}: The height of ground clearance needed
+    - `height?: int`{:.language-kube-21}: The height of ground clearance needed
         - Defaults to `3`{:.n}
-    - `groundType?: GroundType`{:.langauge-kube-21}: The type of ground the tree can spawn on
+    - `groundType?: GroundType`{:.language-kube-21}: The type of ground the tree can spawn on
         {% include enum_list.html summary='Reveal/hide list of ground types' values='normal,sand,shallow_water,submerged,shallow_allow_saltwater,submerged_allow_saltwater,floating' %}
         - Defaults to `normal`{:.e}
 - `.structures(base: ResourceLocation, overlay: ResourceLocation)`{: .language-kube-21 #{{ page.anchor }}-structures }: The base and overlay structures of the trees. Ids of structures located at `data/<namespace>/structures/<path>.nbt`
     - Defaults to `'tfc:white_cedar/base'`{:.s} and `'tfc:white_cedar/overlay'`{:.s}
-- `.overlayIntegrity(integrity: float)`{: .language-kube-21 #{{ page.anchor }}-overlay-integrity }: The integrity of the overlay structure, how much of it is actually placed
+- `.overlayIntegrity(integrity: number)`{: .language-kube-21 #{{ page.anchor }}-overlay-integrity }: The integrity of the overlay structure, how much of it is actually placed
     - Defaults to `0.5`{:.n}
     - [[ unit ]]

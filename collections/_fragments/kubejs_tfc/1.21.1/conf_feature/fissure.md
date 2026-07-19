@@ -40,7 +40,7 @@ example: |-
     - `count?: int`{:.language-kube-21}: The number of blocks to replace. the true number of replaced blocks will be `count / rarity`{:.language-kube-21}
         - [[ pos ]]
         - [[ def_1 ]]
-    - `states: Map<Block, List<WeightedValue<BlockState>>>`{:.language-kube-21}: A mapping of blocks to the decoration states as [[ weighted ]]s
+    - `states: Map<Block, List<WeightedValue<BlockState>>>`{:.language-kube-21}: A mapping of blocks to the decoration states as [[ weight ]]s
         - [[ required ]]
 - `.anchor(anchor: VerticalAnchor)`{: .language-kube-21 #{{ page.anchor }}-anchor }: The height of the fissure origin as a [[ vertical_anchor ]]
     - Defaults to `{ above_bottom: 16 }`{:.language-kube-21}

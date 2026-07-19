@@ -22,9 +22,6 @@ fragment-sort:
 
 Worldgen features are primarily done through placed and configured features. KubeJS TFC adds the ability to make these through builders in the `worldgen/configured_feature` server registry event
 
-{: .unstable #configured features }
-> While TFC's configured feature types are currently implemented, they are undocumented until I have the time and energy to dedicate to documenting them. Until such time, their builders may have breaking changes as they are evaluated when writing their docs
-
 {% map replacements %}
 {% base %}Inherits the methods of the [no op]({% link worldjs/1.21.1/features.md %}#no-op) builder{% end_base %}
 {% required %}**Must** be set{% end_required %}
@@ -37,7 +34,7 @@ Worldgen features are primarily done through placed and configured features. Kub
 {% non_neg %}Must be {% in_range 0,,) %}{% end_non_neg %}
 {% weight %}[`WeightedValue`]({% link worldjs/1.21.1/wrappers.md %}#weighted-value){% end_weight %}
 {% cluster %}Inherits the methods of the [cluster vein](#cluster-vein) builder{% end_cluster %}
-{% n_inf %}Defaults to `-Infinity`{:.n}{% end_n_inf %}
+{% n_inf %}Defaults to `-Infinity`{:.language-kube-21}{% end_n_inf %}
 {% p_inf %}Defaults to `Infinity`{:.n}{% end_p_inf %}
 {% endmap %}
 

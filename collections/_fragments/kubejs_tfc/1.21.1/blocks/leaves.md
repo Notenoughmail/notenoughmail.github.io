@@ -35,6 +35,11 @@ Creates a new TFC leaf block
     - [[ raw_props]]
     - [[ def ]]
 - `.twig(twig: Holder<Block>)`{: .language-kube-21 #{{ page.anchor }}-twig }: Set the twig block to place when the leaves are broken
+- `.conifer()`{: .language-kube-21 #{{ page.anchor }}-conifer }: Marks the leaves block as being a conifer when using [dynamic models](#{{ page.anchor }}-dynamic-model)
+- `.flowerOffset(offset: number)`{: .language-kube-21 #{{ page.anchor }}-flower-offset }: The fractional offset through the warm season where block will bloom when using [dynamic models](#{{ page.anchor }}-dynamic-model)
+- `.dynamicModel(models: BiConsumer<DynamicLeafType, ModelGenerator>)`{: .language-kube-21 #{{ page.anchor }}-dynamic-model }: Set the model generation of the block, with different models being used depending on the season. Accepts a callback with two parameters
+    - `modelType: DynamicLeafType`{:.language-kube-21}: The leaf type to generate for. Has a `.type: String`{:.language-kube-21}: field which will be one of `'dense_leaves'`{:.s}, `'sparse_leaves'`{:.s}, `'bare'`{:.s}, or `'blooming'`{:.s}
+    - `generator: ModelGenerator`{:.language-kube-21}: The model generator for that leaf type
 - `.autumnIndex(index: int)`{: .language-kube-21 #{{ page.anchor }}-autumn-index }: Set the vertical coordinate, {% in_range 0,255 %} on TFC's `foliage_fall` colormap the leaves use for dynamic tinting
 - `.seasonalColors()`{: .language-kube-21 #{{ page.anchor }}-seasonal-colors }: Make the dynamic tinting of the leaves change with the seasons
 - `.noDynamicTinting()`{: .language-kube-21 #{{ page.anchor }}-no-dynamic-tinting }: remove all dynamic tinting that is applied to the leaves by default

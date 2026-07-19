@@ -7,7 +7,7 @@ sort_pos: f_k
 cat:
     - kubejs_tfc
     - 1.21.1
-    - conf_features
+    - conf_feature
 example: |-
     // TODO
 ---

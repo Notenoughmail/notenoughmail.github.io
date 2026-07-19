@@ -3,7 +3,7 @@ title: Pipe Vein
 anchor: pipe-vein
 type: pipe_vein
 wiki_link: https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/features/veins/#pipe-vein
-group: v_p
+sort_pos: v_p
 cat:
     - kubejs_tfc
     - 1.21.1
@@ -23,7 +23,7 @@ example: |-
     - [[ pos ]]
     - Defaults to `3`{:.n}
 - `.skew(min: int, max: int)`{: .language-kube-21 #{{ page.anchor }}-skew }: The skew range
-    - Defaults to `-1`{:.langauge-kube-21} and `0`{:.n}
+    - Defaults to `-1`{:.language-kube-21} and `0`{:.n}
 - `.slant(min: int, max: int)`{: .language-kube-21 #{{ page.anchor }}-slant }: The slant range
     - Defaults to `-1`{:.language-kube-21} and `0`{:.n}
 - `.sign(s: number)`{: .language-kube-21 #{{ page.anchor }}-sign }: The sign of the slant

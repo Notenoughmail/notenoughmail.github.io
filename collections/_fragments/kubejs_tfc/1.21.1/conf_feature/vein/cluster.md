@@ -14,7 +14,7 @@ example: |-
 
 [[ base ]]
 
-- `.replacementStates(states: Map<Block, List<WeightedValue<BlockState>>>)`{: .language-kube-21 #{{ page.anchor }}-replacement-states }: A mapping of blocks to the ore states as [[ weighted ]]s
+- `.replacementStates(states: Map<Block, List<WeightedValue<BlockState>>>)`{: .language-kube-21 #{{ page.anchor }}-replacement-states }: A mapping of blocks to the ore states as [[ weight ]]s
     - [[ required ]]
 - `.rarity(r: int)`{: .language-kube-21 #{{ page.anchor }}-rarity }: How often the vein will place, approximately once per `r`{:.v} chunks
     - [[ pos ]]
@@ -35,17 +35,17 @@ example: |-
 - `.seed(seed: int)`{: .language-kube-21 #{{ page.anchor }}-seed }: The seed of the vein
     - Defaults to a random 64-bit integer seeded by the hash of the vein's id
 - `.indicator(indicator: IndicatorBuilder)`{: .language-kube-21 #{{ page.anchor }}-indicator }: Properties for the indicator blocks placed on the ground near the vein. Can be made as an object with the following fields
-    - `depth?: int`{:.langauge-kube-21}: The maximum depth below the surface the vein will place indicators
+    - `depth?: int`{:.language-kube-21}: The maximum depth below the surface the vein will place indicators
         - [[ pos ]]
         - [[ def_1 ]]
-    - `rarity?: int`{:.langauge-kube-21}: The rarity to place indicators, as a fraction of the horizontal locations the vein places ore blocks
+    - `rarity?: int`{:.language-kube-21}: The rarity to place indicators, as a fraction of the horizontal locations the vein places ore blocks
         - [[ def_1 ]]
-    - `undergroundRarity?: int`{:.langauge-kube-21}: The rarity to place indicators underground when the vein is too deep to place on the surface, as a fraction of the horizontal locations the vein places ore blocks
+    - `undergroundRarity?: int`{:.language-kube-21}: The rarity to place indicators underground when the vein is too deep to place on the surface, as a fraction of the horizontal locations the vein places ore blocks
         - [[ pos ]]
         - [[ def_1 ]]
-    - `undergroundCount?: int`{:.langauge-kube-21}: The number of times to attempt to place an underground indicator in a given location
+    - `undergroundCount?: int`{:.language-kube-21}: The number of times to attempt to place an underground indicator in a given location
         - [[ def_1 ]]
-    - `states: List<WeightedValue<BlockState>>`{:.langauge-kube-21}: The indicator states to place, as [[ weighted ]]s
+    - `states: List<WeightedValue<BlockState>>`{:.language-kube-21}: The indicator states to place, as [[ weight ]]s
         - [[ required ]]
 - `.size(s: int)`{: .language-kube-21 #{{ page.anchor }}-size }: The size of the vein
     - [[ pos ]]
