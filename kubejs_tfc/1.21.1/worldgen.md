@@ -34,8 +34,11 @@ Worldgen features are primarily done through placed and configured features. Kub
 {% def_f %}Defaults to `false`{:.p}{% end_def_f %}
 {% def_t %}Defaults to `true`{:.p}{% end_def_t %}
 {% pos %}Must be {% in_range 1,,) %}{% end_pos %}
+{% non_neg %}Must be {% in_range 0,,) %}{% end_non_neg %}
 {% weight %}[`WeightedValue`]({% link worldjs/1.21.1/wrappers.md %}#weighted-value){% end_weight %}
 {% cluster %}Inherits the methods of the [cluster vein](#cluster-vein) builder{% end_cluster %}
+{% n_inf %}Defaults to `-Infinity`{:.n}{% end_n_inf %}
+{% p_inf %}Defaults to `Infinity`{:.n}{% end_p_inf %}
 {% endmap %}
 
 {% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
@@ -76,7 +79,7 @@ Inherits the methods of the [{{ feature.inherit-display }}]({{ feature.inherit |
 
 ```js-21
 ServerEVents.registry('minecraft:configured_feature', event => {
-    event.create('{{ feature | get_or_default: 'name', 'anchor' }}', 'tfc:{{ feature.type }}')
+    event.create('{{ feature | get_or_default: 'name', 'type' }}', 'tfc:{{ feature.type }}')
         {{ feature.example | with_indent }}
 })
 ```

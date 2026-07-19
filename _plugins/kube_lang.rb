@@ -23,6 +23,7 @@ module Rouge
                         # TFC
                         "ForestSubType", "BonusBehavior", "StackModifierContext",
                         "Nutrient", "InteractionManager$Target",
+                        "GroundType",
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
                         "GenerationStep$Decoration", "GenerationStep$Carving", "CaveSurface",
