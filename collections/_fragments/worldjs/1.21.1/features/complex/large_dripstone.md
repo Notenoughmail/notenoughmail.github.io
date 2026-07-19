@@ -26,7 +26,7 @@ example: |-
     - A higher scale means a higher height
     - Must be {% in_range 0,20 %}
     - [[ required ]]
-- `.maxColumnRadiusToCaveHeightRatio(ratio: float)`{: .language-kube-21 #{{ page.anchor }}-max-column-radius-to-cave-height-ratio }: The maximum radius between the column radius and the cave height
+- `.maxColumnRadiusToCaveHeightRatio(ratio: number)`{: .language-kube-21 #{{ page.anchor }}-max-column-radius-to-cave-height-ratio }: The maximum radius between the column radius and the cave height
     - Must be {% in_range 0.1,1 %}
     - Defaults to `0.1`{:.n}
 - `.stalactiteBluntness(provider: FloatProvider)`{: .language-kube-21 #{{ page.anchor }}-stalactite-bluntness }: The bluntness/truncation of stalactites as a [[ float ]]
@@ -43,6 +43,6 @@ example: |-
 - `.minRadiusForWind(radius: int)`{: .language-kube-21 #{{ page.anchor }}-min-radius-for-wind }: The minimum column radius for wind to cause an inclination
     - Must be {% in_range 0,100 %}
     - [[ required ]]
-- `.minBluntnessForWind(bluntness: float)`{: .language-kube-21 #{{ page.anchor }}-min-bluntness-for-wind }: The minimum bluntness value wind to cause an inclination
+- `.minBluntnessForWind(bluntness: number)`{: .language-kube-21 #{{ page.anchor }}-min-bluntness-for-wind }: The minimum bluntness value wind to cause an inclination
     - Must be {% in_range 0,5 %}
     - [[ def_0 ]]

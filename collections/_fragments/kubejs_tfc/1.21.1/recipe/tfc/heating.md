@@ -28,7 +28,7 @@ sig_add: |-
 ---
 
 - 1st argument: An item ingredient, the item being heated
-- 2nd argument: A number, {% in_range 0,Infinity,) %}, the temperature (°C) the item needs to reach for the recipe to complete
+- 2nd argument: A number, {% in_range 0,,) %}, the temperature (°C) the item needs to reach for the recipe to complete
 
 <span></span>
 

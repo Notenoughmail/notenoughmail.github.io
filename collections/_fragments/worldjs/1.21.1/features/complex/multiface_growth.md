@@ -25,7 +25,7 @@ example: |-
 - `.canPlaceOnFloor()`{: .language-kube-21 #{{ page.anchor }}-can-place-on-floor }: Allow the feature to place on floors
 - `.canPlaceOnCeiling()`{: .language-kube-21 #{{ page.anchor }}-can-place-on-ceiling }: Allow the feature to place on ceilings
 - `.canPlaceOnWall()`{: .language-kube-21 #{{ page.anchor }}-can-place-on-wall }: Allow the feature to place on walls
-- `.chanceOfSpreading(chance: float)`{: .language-kube-21 #{{ page.anchor }}-chance-of-spreading }: The chance the feature can spread
+- `.chanceOfSpreading(chance: number)`{: .language-kube-21 #{{ page.anchor }}-chance-of-spreading }: The chance the feature can spread
     - [[ unit ]]
     - [[ def_0 ]]
 - `.canBePlacedOn(blocks: HolderSet<Block>)`{: .language-kube-21 #{{ page.anchor }}-can-be-place-on }: The block(s) the placed block can be placed on

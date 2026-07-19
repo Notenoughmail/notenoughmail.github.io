@@ -84,7 +84,7 @@ The registry for climate model types is `tfc:climate_model`
 - `.fog(fog: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-fog }: Sets the fog calculation of the model, accepts a {{ timeless }}. The returned value will be clamped to {% range_unit %}
 - `.calendarFog(fog: ClimateValueFunction)`{: .language-kube-21 #climate-model-type-calendar-fog }: Sets the fog calculation of the model, accepts a {{ climate }}. The returned value will be clamped to {% range_unit %}
 - `.averageTemperature(temp: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-average-temperature }: Sets the average temperature calculation of the model. Accepts a {{ timeless }} which returns the average temperature, in °C, at the position
-- `.averageRainfall(rain: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-average-rain }: Sets the average rainfall calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range 0,Infinity,) %}
+- `.averageRainfall(rain: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-average-rain }: Sets the average rainfall calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range 0,,) %}
 - `.rainVariance(variance: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-rain-variance }: Sets the rain variance calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range -1,1 %}
 - `.thunder(thunder: BiPredicate<ClimateModel, int>)`{: .language-kube-21 #climate-model-type-thunder }: Sets the calculation for if its currently raining at a calendar tick, given it is raining. Accepts a callback with the params
     - `model: ClimateModel`{:.language-kube-21}: The {{ model }} the calculation is for
@@ -96,7 +96,7 @@ The registry for climate model types is `tfc:climate_model`
     - `return: number`{:.language-kube-21}: The intensity, typically {% in_unit %}, but may be greater to indicate extreme rain intensity or negative to indicate it is not raining
 - `.instantaneousTemperature(temp: ClimateValueFunction)`{: .language-kube-21 #climate-model-type-instantaneous-temperature }: Sets the calculation for the instantaneous temperature of the model, accepts a {{ climate }}
 - `.instantaneousRainfall(rain: ClimateValueFunction)`{: .language-kube-21 #climate-model-type-instantaneous-rainfall }: Sets the calculation for the instantaneous rainfall of the model, accepts a {{ climate }}
-- `.baseGroundwater(groundwater: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-base-groundwater }: Sets the groundwater calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range 0,Infinity,) %}
+- `.baseGroundwater(groundwater: TimelessClimateValueFunction)`{: .language-kube-21 #climate-model-type-base-groundwater }: Sets the groundwater calculation of the model, accepts a {{ timeless }}. Returned values will be clamped to {% range 0,,) %}
 
 {: #climate-model-type-timeless-value-function}
 

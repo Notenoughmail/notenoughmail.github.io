@@ -33,6 +33,7 @@ declare class DataBindings {
         setRotten(stack: ItemStack): ItemStack
         setCreationDate(stack: ItemStack, calendarTick: int): ItemStack
         setTransientNonDecaying(stack: ItemStack): ItemStack
+        setRecipeTransientNonDecaying(stack: ItemStack): ItemStack
         setnonDecaying(stack: ItemStack, invisible: boolean): ItemStack
         setBowl(stack: ItemStack, bowlStack: ItemStack): void
     }
@@ -109,6 +110,7 @@ declare class DataBindings {
     - `.setRotten(stack: ItemStack)`{: .language-kube-21 #food-set-rotten }: Set the given stack as rotten
     - `.setCreationDate(stack: ItemStack, calendarTick: int)`{: .language-kube-21 #food-set-creation-date }: Sets the stack's creation date to the given calendar tick
     - `.setTransientNonDecaying(stack: ItemStack)`{: .language-kube-21 #food-set-transient-non-decaying }: Sets the stack as non-decaying, transiently. This effect will not be carried through stack copying
+    - `.setRecipeTransientNonDecaying(stack: ItemStack)`{: .language-kube-21 #food-set-recipe-transient-non-decaying }: Sets the stack as non-decaying, transiently. This effect be carried over only a single stack copy. Intended for use with non-TFC recipes to have outputs with reasonable creation dates
     - `.setNonDecaying(stack: ItemStack, invisible: boolean)`{: .language-kube-21 #food-set-non-decaying }: Sets the stack as non-decaying, optionally including a tooltip on the stack
     - `.setBowl(stack: ItemStack, bowlStack: ItemStack)`{: .language-kube-21 #food-set-bowl }: Sets the `tfc:bowl` component of the `stack`{:.v} as the `bowlStack`{:.v}
 - `.support`{: .language-kube-21 #support }: Gets a sub-binding focusing on the support and collapse mechanics

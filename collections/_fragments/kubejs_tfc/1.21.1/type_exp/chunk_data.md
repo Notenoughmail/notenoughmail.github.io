@@ -8,7 +8,7 @@ cat:
     - type_exp
 ---
 
-`ChunkData` is TFC's additional data it attaches to chunks during world generation for use during after world generation. It has the following methods available
+`ChunkData` is TFC's additional data it attaches to chunks during world generation for use during and after world generation. It has the following methods available
 
 {% capture lerp %}[`LerpFloatLayer`]({% link kubejs_tfc/1.21.1/bindings/worldgen.md %}#lerp-flaot-layer){% endcapture %}
 
@@ -42,8 +42,8 @@ cat:
     - `temperatureLayer: LerpFloatLayer`{:.language-kube-21}: A {{ lerp }} of the average temperature at the corners of the chunk. Used by the default climate model for average seal-level temperatures
     - `forestType: ForestType`{:.language-kube-21}: The [`ForestType`{:.e}](#forest-type-enum){:.preserve-color} of the chunk
 - `.generateFull(surfaceHeight: int[256], aquiferSurfaceHeight: int[16]): void`{: .language-kube-21 #{{ page.anchor }}-generate-full }: Promotes the chunk data from `partial`{:.e} to `full`{:.e} by setting the surface heights
-    - `surfaceHeight: int[256]`{:.language-kube-21}: An array of integer values of size `256`{:.n}[^2] representing the surface height of the world. Values are indexed as `x + 16 * z`{:.language-kube-21} where `x` and `z` are the local x and z coordinates within the chunk and are {% in_range 0,15 %}. For custom chunk data providers, this is where the `surfaceY`{:.v} parameters of the `RocksGetter`{:.f} [callback]({% link kubejs_tfc/1.21.1/events.md %}#{{ page.anchor }}-provider-rocks) is gotten from
-    - `aquiferSurfaceHeights[16]`{:.language-kube-21}: An array of integer values of size `16`{:.n}[^1] representing the height of aquifer surfaces. Only used by [`TFCAquifer`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
+    - `surfaceHeight: int[256]`{:.language-kube-21}: An array of integer values of size `256`{:.n}[^2] representing the surface height of the world. Values are indexed as `x + 16 * z`{:.language-kube-21} where `x` and `z` are the local x and z coordinates within the chunk and are {% in_range 0,15 %}. For custom chunk data providers, this is where the `surfaceY`{:.v} parameters of the `RocksGetter`{:.f} [callback]({% link kubejs_tfc/1.21.1/events.md %}#create-chunk-data-provider-rocks) is gotten from
+    - `aquiferSurfaceHeights: int[16]`{:.language-kube-21}: An array of integer values of size `16`{:.n}[^1] representing the height of aquifer surfaces. Only used by [`TFCAquifer`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java)s
 - `.modifyBaseGroundwater(surfaceHeight: int[256]): void`{: .language-kube-21 #{{ page.anchor }}-modify-base-groundwater }: Tweaks the chunks base groundwater layer according to the surface height
 - `.modifyBaseGroundwaterPoint(height: int, startingWater: number): number`{: .language-kube-21 #{{ page.anchor }}-modify-base-groundwater-point }: Modifies an individual groundwater point, used by [`.modifyBaseGroundwater(int,number)`{:.language-kube-21}](#{{ page.anchor }}-modify-base-groundwater){:.preserve-color}
 

@@ -23,13 +23,14 @@ module Rouge
                         # TFC
                         "ForestSubType", "BonusBehavior", "StackModifierContext",
                         "Nutrient", "InteractionManager$Target",
+                        "GroundType",
                         # Vanilla
                         "ArmorItem$Type", "PathType", "BlockBehaviour$OffsetType",
                         "GenerationStep$Decoration", "GenerationStep$Carving", "CaveSurface",
                         # KubeJS TFC
                         "AqueductModelPart", "ClutchModelType", "PebbleCount",
                         "GearBoxModelType", "GrassModelPart", "LampModelType",
-                        "FallenLeavesModelType", "SpikeModelType",
+                        "FallenLeavesModelType", "SpikeModelType", "DynamicLeafType",
                         # Other
                         "ProspectorType",
                     ], [
@@ -216,7 +217,11 @@ module Rouge
             end
 
             def self.constants
-                @constants ||= Set.new %w(true false null NaN Infinty undefined)
+                @constants ||= Set.new %w(true false null undefined)
+            end
+
+            def self.numbers
+                @numbers ||= Set.new %w(NaN Infinity)
             end
 
             def self.builtins
@@ -325,6 +330,8 @@ module Rouge
                         token Keyword::Constant
                     elsif self.class.builtins.include? m[0]
                         token Name::Builtin
+                    elsif self.class.numbers.include? m[0]
+                        token Literal::Number::Other
                     elsif @functional_interfaces.include? m[0]
                         token Name::Function::Magic
                     elsif @enums.include? m[0]
@@ -426,7 +433,7 @@ module Rouge
                     # TODO: Currently this deals with the one situation of variables in an object declaration, but pushing & poping a varibles state would generalize much better
                     if m[3].eql?(":") && in_state?(:object)
                         groups Name::Attribute, Text, Punctuation
-                        goto :expr_start 
+                        goto :expr_start
                     else
                         groups Keyword::Variable, Text, Punctuation
                     end

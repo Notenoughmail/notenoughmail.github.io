@@ -23,6 +23,6 @@ example: |-
 
 [[ base ]]
 
-- `.probability(probability: float)`{: .language-kube-21 #{{ page.anchor }}-probability }: The chance a podzol disk spawns under the bamboo stalk
+- `.probability(probability: number)`{: .language-kube-21 #{{ page.anchor }}-probability }: The chance a podzol disk spawns under the bamboo stalk
     - [[ unit ]]
     - [[ def_1 ]]

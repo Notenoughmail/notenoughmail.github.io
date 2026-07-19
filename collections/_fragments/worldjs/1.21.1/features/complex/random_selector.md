@@ -16,7 +16,7 @@ example: |-
 
 [[ base ]]
 
-- `.withFeature(feature: Holder$Reference<PlacedFeature>, chance: float)`{: .language-kube-21 #{{ page.anchor }}-with-feature }: Adds the weighted feature to the list of possible features
+- `.withFeature(feature: Holder$Reference<PlacedFeature>, chance: number)`{: .language-kube-21 #{{ page.anchor }}-with-feature }: Adds the weighted feature to the list of possible features
     - `feature: Holder$Reference<PlacedFeature>`{:.language-kube-21}: the id of the feature to place
     - `chance: float`{:.language-kube-21}: The chance, {% in_unit %}, the `feature`{:.v} is placed
     - **Note**: Feature chances are evaluated sequentially and the first to place will be the *only* feature to place

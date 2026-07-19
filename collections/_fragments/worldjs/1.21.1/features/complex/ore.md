@@ -20,6 +20,6 @@ example: |-
 - `.size(size: int)`{: .language-kube-21 #{{ page.anchor }}-size }: The size of the ore vein
     - Must be {% in_range 0,64 %}
     - [[ def_0 ]]
-- `.discardChanceOnAirExposure(chance: float)`{: .language-kube-21 #{{ page.anchor }}-discard-chance-on-air-exposure }: The chance the whole ore blob is discarded if any of its blocks neighbor air
+- `.discardChanceOnAirExposure(chance: number)`{: .language-kube-21 #{{ page.anchor }}-discard-chance-on-air-exposure }: The chance the whole ore blob is discarded if any of its blocks neighbor air
     - [[ unit ]]
     - [[ def_0 ]]

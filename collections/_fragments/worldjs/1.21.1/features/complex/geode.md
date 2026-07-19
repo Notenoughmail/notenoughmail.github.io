@@ -101,10 +101,10 @@ example: |-
         - Must be {% in_range 0,10 %}
         - Defaults to `2`{:.n}
     - Defaults to all of the above defaults
-- `.usePotentialPlacementsChance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-use-potential-placements-chance }: The probability of placing an inner placement block next to an inner layer block
+- `.usePotentialPlacementsChance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-use-potential-placements-chance }: The probability of placing an inner placement block next to an inner layer block
     - [[ unit ]]
     - Defaults to `0.35`{:.n}
-- `.useAlternativeLayer0Chance(chance: float)`{: .language-kube-21 #{{ page.anchor }}-use-alternative-layer-0-chance }: The chance to place an alternative inner place block instead of a regular inner layer block
+- `.useAlternativeLayer0Chance(chance: number)`{: .language-kube-21 #{{ page.anchor }}-use-alternative-layer-0-chance }: The chance to place an alternative inner place block instead of a regular inner layer block
     - [[ unit ]]
     - [[ def_0 ]]
 - `.outerWallDistance(provider: IntProvider)`{: .language-kube-21 #{{ page.anchor }}-outer-wall-distance }: The [[ int ]] offset on each coordinate of the center from the feature start
@@ -120,7 +120,7 @@ example: |-
     - Defaults to `-16`{:.n}
 - `.maxGenOffset(int: offset)`{: .language-kube-21 #{{ page.anchor }}-max-gen-offset }: The maximum Chebyshev distance between a geode block and the center
     - Defaults to `16`{:.n}
-- `.noiseMultiplier(multiplier: float)`{: .language-kube-21 #{{ page.anchor }}-noise-multiplier }: The noise multiplier
+- `.noiseMultiplier(multiplier: number)`{: .language-kube-21 #{{ page.anchor }}-noise-multiplier }: The noise multiplier
     - [[ unit ]]
     - Defaults to `0.05`{:.n}
 - `.invalidBlocksThreshold(blocks: int)`{: .language-kube-21 #{{ page.anchor }}-invalid-blocks-threshold }: The threshold for invalid blocks

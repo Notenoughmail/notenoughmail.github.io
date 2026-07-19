@@ -15,6 +15,6 @@ example: |-
 
 [[ base ]]
 
-- `.probability(probability: float)`{: .language-kube-21 #{{ page.anchor }}-probability }: Probability of using tall seagrass instead of regular seagrass
+- `.probability(probability: number)`{: .language-kube-21 #{{ page.anchor }}-probability }: Probability of using tall seagrass instead of regular seagrass
     - [[ unit ]]
     - [[ def_1 ]]
