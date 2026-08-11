@@ -131,7 +131,7 @@ StartupEvents.registry('tfc:climate_model', event => {
     event.create('hell')
         .wind((model, level, pos, calendarTick, daysInMonth, wind) => {
             let dir = calendarTick / 1000
-            return wind.blow(Math.sin(dir), Math.cos(dir)).scaled(Math.cos(dir) * 100)
+            return wind.blow(Math.sin(dir), Math.cos(dir)).scale(Math.cos(dir) * 100)
         })
         .thunder((model, calendarTick) => true)
         .rainIntensity((model, calendarTick) => 2)
@@ -139,7 +139,7 @@ StartupEvents.registry('tfc:climate_model', event => {
             return pos.y > 20 ? 88 : 92
         })
         .instantaneousTemperature((model, level, pos, calendarTicks, daysInMonth) => {
-            let yearlength = daysInMonth * 12 * 24000
+            let yearLength = daysInMonth * 12 * 24000
             let yearPortion = (calendarTicks % yearLength) / yearLength
             // +/- 7 degrees dependent on progress through year
             let currentDeviation = Math.cos(yearPortion * 2 * Math.PI) * 7
