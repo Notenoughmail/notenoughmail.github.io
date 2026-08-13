@@ -17,9 +17,9 @@ module Jekyll
       ).convert(input.to_s.strip).strip[3...-4]
     end
 
-    def multi_where(input, property, target_values)
+    def multi_where(input, property, *target_values)
       ary = Liquid::StandardFilters::InputIterator.new(input)
-      target_values.each do |target_value|
+      flatten_array(target_values).each do |target_value|
         ary = ary.select do |item|
           raise "'#{to_console(item)['title']}' is incompatible with '#{property}' property" if item[property].nil?
 
@@ -275,7 +275,17 @@ module Jekyll
       md
     end
 
-    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp)
+    def flatten_array(arr)
+      if arr.is_a?(Array)
+        flattened = []
+        arr.each { |e| flattened.push(*flatten_array(e)) }
+        flattened
+      else
+        [arr]
+      end
+    end
+
+    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp, :flatten_array)
   end
 end
 
