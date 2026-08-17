@@ -10,7 +10,7 @@ cat:
 {% capture range %}Must be {% in_range -2,2 %}{% endcapture %}
 {% capture def %}Defaults to `0`{:.n}{% endcapture %}
 
-Uses the world's noise router to [determine biome](https://minecraft.wiki/w/Dimension_definition#multi_noise) positions
+Uses the world's noise router to [determine biome](https://minecraft.wiki/w/Dimension_definition?oldid=3716645#multi_noise) positions
 
 *One of the following **must** be set. If both are set, the preset will take precedence over the custom parameters*
 

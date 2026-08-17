@@ -11,8 +11,10 @@ desc: Creating world presets, dimension types, biomes, and noise generator setti
 
 # {{ page.title }}
 
+{% capture required %}**Must** be set{% endcapture %}
+
 {% map replacements %}
-{% required %}**Must** be set{% end_required %}
+{% required %}{{ required }}{% end_required %}
 {% endmap %}
 
 - [World Preset](#world-preset)
@@ -249,5 +251,191 @@ ServerEvents.registry('dimension_type', event => {
 ```
 
 ## Noise Generator Settings
+
+{% capture n %}noise-generator-settings-{% endcapture %}
+{% capture df %}[`DensityFunction`]({% link worldjs/1.21.1/wrappers.md %}#density-function){% endcapture %}
+
+[Noise generator settings](https://minecraft.wiki/w/Noise_settings?oldid=3691431) define the parameters used for the shape of terrain in [noise-based](#chunk-generator-noise) chunk generators. WorldJS adds the ability to create noise generator settings through KubeJS's `ServerEvents.registry('worldgen/noise_settings', event => {})`{:.language-kube-21} event via the default (no type id) builder
+
+- `.noiseSettings(minY: int, height: int, horizontalSize: int, verticalSize: int)`{: .language-kube-21 #{{ n }}noise-settings }: The world settings
+    - `minY: int`{:.language-kube-21}: The minimum y coordinate where terrain will generate
+        - Must be {% in_range -2032,2031 %}
+        - Must be divisible by `16`{:.n}
+        - Defaults to `-64`{:.language-kube-21}
+    - `height: int`{:.language-kube-21}: The total height where terrain will generate
+        - Must be {% in_range 0,4064 %}
+        - Must be divisible by `16`{:.n}
+        - `height`{:.v} plus `minY`{:.v} may not exceed `2032`{:.n}
+        - Defaults to `384`{:.n}
+    - `horizontalSize: int`{:.language-kube-21}: The horizontal size of the noise
+        - Must be {% in_range 1,4 %}
+        - Defaults to `1`{:.n}
+    - `verticalSize: int`{:.language-kube-21}: The vertical size of the noise
+        - Must be {% in_range 1,4 %}
+        - Defaults to `2`{:.n}
+- `.defaults(block: BlockState, fluid: BlockState)`{: .language-kube-21 #{{ n }}defaults }: The default block and fluid of the world
+    - `block: BlockState`{:.language-kube-21}: The default block used for terrain
+    - `fluid: BlockState`{:.language-kube-21}: The default block used for seas and lakes
+    - {{ required }}
+- `.noiseRouter(router: NoiseRouter)`{: .language-kube-21 #{{ n }}noise-router }: The density functions used for [generation parameters](https://minecraft.wiki/w/Noise_router?oldid=2780412). Can be made as an object with the following params:
+    - `barrierNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for separation of aquifers and open areas in caves
+        - {{ required }}
+    - `fluidLevelFloodednessNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for the probability of generating fluids in a cave for aquifers
+        - Values will be clamped to {% range -1,1 %}
+        - {{ required }}
+    - `fluidLevelSpreadNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for the height of the liquid surface at a horizontal position
+        - {{ required }}
+    - `lavaNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for if an aquifer should use lava instead
+        - The threshold is `0.3`{:.n}
+        - {{ required }}
+    - `temperature: DensityFunction`{:.language-kube-21}: The {{ df }} for the temperature value used in biome placement
+        - {{ required }}
+    - `vegetation: DensityFunction`{:.language-kube-21}: The {{ df }} for the humidity value used in biome placement
+        - {{ required }}
+    - `continents: DensityFunction`{:.language-kube-21}: The {{ df }} for the continentalness value used in biome placement
+        - {{ required }}
+    - `erosion: DensityFunction`{:.language-kube-21}: The {{ df }} for the erosion values used in biome and aquifer placement
+        - {{ required }}
+    - `depth: DensityFunction`{:.language-kube-21}: The {{ df }} for the depth values used in biome and aquifer placement
+        - {{ required }}
+    - `ridges: DensityFunction`{:.language-kube-21}: The {{ df }} for the weirdness values in biome placement
+        - {{ required }}
+    - `initialDensityWithoutJaggedness: DensityFunction`{:.language-kube-21}: The {{ df }} for used for the initial terrain height for world generation
+        - {{ required }}
+    - `finalDesnity: DensityFunction`{:.language-kube-21}: The {{ df }} for determining if air or a [default block](#{{ n }}defaults) is placed
+        - If positive, a block that can be replaced by the [surface rule]({{ n }}surface-rule). Otherwise, an air block where aquifers can generate
+        - {{ required }}
+    - `veinToggle: DensityFunction`{:.language-kube-21}: The {{ df }} for special, large ore veins
+        - If greater than `0`{:.n} the vein is copper
+        - If less than or equal to `0`{:.n} the vein is iron
+        - {{ required }}
+    - `veinRidged: DensityFunction`{:.language-kube-21}: The {{ df }} for which blocks are part of a vein
+        - If greater than or equal to `0`{:.n}, the block is not part of a vein
+        - If less than `0`{:.n}, the block is either the vein's stone or ore block
+        - {{ required }}
+    - `veinGap: DensityFunction`{:.language-kube-21}: The {{ df }} for determining which blocks in a vein are ore blocks
+        - {{ required }}
+    - {{ required }}
+- `.surfaceRule(source: RuleSource)`{: .language-kube-21 #{{ n }}surface-rule }: The [surface rule source]({% link worldjs/1.21.1/wrappers.md %}#surface rule source) for the terrain's blocks
+    - {{ required }}
+- `.addSpawnTarget(builder: Consumer<ParameterEntry>)`{: .language-kube-21 #{{ n }}add-spawn-target }: Add a climate parameter point for where the player is allowed to spawn. The consumer has the methods available on [`ParameterEntry`s of noise biome sources](#biome-source-multi-noise-climate-parameter-entry)
+- `.seaLevel(seaLevel: int)`{: .language-kube-21 #{{ n }}sea-level }: The (world generation) sea level
+- `.disableMobGeneration()`{: .language-kube-21 #{{ n }}disable-mob-generation }: Disables mob generation on chunk load
+- `.disableAquifers()`{: .language-kube-21 #{{ n }}disable-aquifers }: Disables the generation of aquifers
+- `.disableOreVeins()`{: .language-kube-21 #{{ n }}disable-ore-veins }: Disables the generation of special ore veins
+- `.useLegacyRandomSource()`{: .language-kube-21 #{{ n }}use-legacy-random-source }: Use the pre-1.18 random number generator
+
+{: #noise-generator-settings-example }
+
+### Example
+
+```js
+ServerEvents.registry('worldgen/noise_settings', event => {
+    event.create('noisy')
+        .defaults('minecraft:pink_glazed_terracotta', 'minecraft:lava')
+        .noiseRouter({
+            barrierNoise: {
+                noise: {
+                    noise: 'minecraft:aquifer_barrier',
+                    xz_scale: 1,
+                    y_scale: 1
+                }
+            },
+            fluidLevelFloodednessNoise: {
+                noise: {
+                    noise: 'minecraft:aquifer_fluid_level_floodedness',
+                    xz_scale: 1,
+                    y_scale: 1
+                }
+            },
+            fluidLevelSpreadNoise: {
+                noise: {
+                    noise: 'minecraft:aquifer_fluid_level_spread',
+                    xz_scale: 1,
+                    y_scale: 1
+                }
+            },
+            lavaNoise: {
+                noise: {
+                    noise: 'minecraft:aquifer_lava',
+                    xz_scale: 1,
+                    y_scale: 1
+                }
+            },
+            temperature: {
+                cube: {
+                    squeeze: {
+                        mul: {
+                            first: 0.1,
+                            second: {
+                                noise: {
+                                    noise: 'minecraft:temperature',
+                                    xz_scale: 0.13,
+                                    y_scale: 1
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            vegetation: 2,
+            continents: {
+                beardifier: {}
+            },
+            erosion: {
+                end_islands: {}
+            },
+            depth: -2,
+            ridges: {
+                square: {
+                    y_clamped_gradient: {
+                        from_y: -64,
+                        to_y: 320,
+                        from_value: -3.68,
+                        to_value: 1.49
+                    }
+                }
+            },
+            initialDensityWithoutJaggedness: 5,
+            finalDensity: 5.1,
+            veinToggle: 0,
+            veinRidged: 0,
+            veinGap: 0
+        })
+        .disableOreVeins()
+        .seaLevel(92)
+        .surfaceRule([
+            {
+                condition: {
+                    if_true: {
+                        noise_threshold: {
+                            noise: 'minecraft:surface',
+                            min_threshold: 0.2,
+                            max_threshold: 0.8
+                        }
+                    },
+                    then_run: 'badlands'
+                }
+            },
+            {
+                condition: {
+                    if_true: {
+                        y_above: {
+                            anchor: 120,
+                            surface_depth_multiplier: 1
+                        }
+                    },
+                    then_run: 'minecraft:lime_stained_glass'
+                }
+            },
+            'minecraft:pink_glazed_terracotta'
+        ])
+        .addSpawnTarget(builder =>
+            builder.humidity(2)
+                .temperature(-0.1, 0.1)
+                .depth(-2)
+        )
+})
+```
 
 ## Biome

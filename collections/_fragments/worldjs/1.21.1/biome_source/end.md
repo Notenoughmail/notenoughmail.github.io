@@ -7,6 +7,6 @@ cat:
     - biome_source
 ---
 
-The biome source used for [the End](https://minecraft.wiki/w/Dimension_definition#the_end)
+The biome source used for [the End](https://minecraft.wiki/w/Dimension_definition?oldid=3716645#the_end)
 
 *Has no methods available*
