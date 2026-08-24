@@ -11,7 +11,8 @@ cat:
 
 In scripts, they can be defined as
 
-- A single number: An `absolute` anchor at the given y-level
+- A `VerticalAnchor` object: itself
+- A `number`{:.p}: An `absolute` anchor at the given y-level
 - A string:
     - If `'bottom'`{:.s}: An `above_bottom` anchor with a value of `0`{:.n}
     - If `'top'`{:.s}: A `below_top` anchor with a value of `0`{:.n}

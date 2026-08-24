@@ -11,7 +11,8 @@ cat:
 
 In scripts, they can be defined as
 
-- A single number: A `minecraft:constant` height provider with an `absolute` [[ vertical_anchor ]] of the given y-level
+- A `HeightProvider` object: itself
+- A `number`{:.p}: A `minecraft:constant` height provider with an `absolute` [[ vertical_anchor ]] of the given y-level
 - A map:
     - If the map contains a `'type'`{:.s} field, the map is parsed as if it were defined in json, using the specification linked above
     - If the map contains a `'uniform'`{:.s} field, a `minecraft:uniform` height provider will be created

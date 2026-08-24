@@ -12,9 +12,11 @@ desc: Creating world presets, dimension types, biomes, and noise generator setti
 # {{ page.title }}
 
 {% capture required %}**Must** be set{% endcapture %}
+{% capture def_0 %}Defaults to `0`{:.n}{% endcapture %}
 
 {% map replacements %}
 {% required %}{{ required }}{% end_required %}
+{% def_0 %}{{ def_0 }}{% end_def_0 %}
 {% endmap %}
 
 - [World Preset](#world-preset)
@@ -223,7 +225,7 @@ ServerEvents.registry('worldgen/world_preset', event => {
     - Controls the cloud height, sky type, ambient light, and light map behaviors
     - Defaults to `'minecraft:overworld'`{:.s}
 - `.ambientLight(ambientLight: number)`{: .language-kube-21 #{{ d }}ambient-light }: How much ambient light the dimension has. `0`{:.n} follows the light level and `1`{:.n} has no ambient lighting
-    - Defaults to `0`{:.n}
+    - {{ def_0 }}
 - `.monsterSpawnLightTest(test: IntProvider)`{: .language-kube-21 #{{ d }}monster-spawn-light-test }: The weather-affected maximum light allowed when a mob spawns
     - Must be {% in_range 0,15 %}
     - Defaults to {% range 0,7 %}
@@ -253,7 +255,7 @@ ServerEvents.registry('dimension_type', event => {
 ## Noise Generator Settings
 
 {% capture n %}noise-generator-settings-{% endcapture %}
-{% capture df %}[`DensityFunction`]({% link worldjs/1.21.1/wrappers.md %}#density-function){% endcapture %}
+{% capture density %}[`DensityFunction`]({% link worldjs/1.21.1/wrappers.md %}#density-function){% endcapture %}
 
 [Noise generator settings](https://minecraft.wiki/w/Noise_settings?oldid=3691431) define the parameters used for the shape of terrain in [noise-based](#chunk-generator-noise) chunk generators. WorldJS adds the ability to create noise generator settings through KubeJS's `ServerEvents.registry('worldgen/noise_settings', event => {})`{:.language-kube-21} event via the default (no type id) builder
 
@@ -278,42 +280,42 @@ ServerEvents.registry('dimension_type', event => {
     - `fluid: BlockState`{:.language-kube-21}: The default block used for seas and lakes
     - {{ required }}
 - `.noiseRouter(router: NoiseRouter)`{: .language-kube-21 #{{ n }}noise-router }: The density functions used for [generation parameters](https://minecraft.wiki/w/Noise_router?oldid=2780412). Can be made as an object with the following params:
-    - `barrierNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for separation of aquifers and open areas in caves
+    - `barrierNoise: DensityFunction`{:.language-kube-21}: The {{ density }} for separation of aquifers and open areas in caves
         - {{ required }}
-    - `fluidLevelFloodednessNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for the probability of generating fluids in a cave for aquifers
+    - `fluidLevelFloodednessNoise: DensityFunction`{:.language-kube-21}: The {{ density }} for the probability of generating fluids in a cave for aquifers
         - Values will be clamped to {% range -1,1 %}
         - {{ required }}
-    - `fluidLevelSpreadNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for the height of the liquid surface at a horizontal position
+    - `fluidLevelSpreadNoise: DensityFunction`{:.language-kube-21}: The {{ density }} for the height of the liquid surface at a horizontal position
         - {{ required }}
-    - `lavaNoise: DensityFunction`{:.language-kube-21}: The {{ df }} for if an aquifer should use lava instead
+    - `lavaNoise: DensityFunction`{:.language-kube-21}: The {{ density }} for if an aquifer should use lava instead
         - The threshold is `0.3`{:.n}
         - {{ required }}
-    - `temperature: DensityFunction`{:.language-kube-21}: The {{ df }} for the temperature value used in biome placement
+    - `temperature: DensityFunction`{:.language-kube-21}: The {{ density }} for the temperature value used in biome placement
         - {{ required }}
-    - `vegetation: DensityFunction`{:.language-kube-21}: The {{ df }} for the humidity value used in biome placement
+    - `vegetation: DensityFunction`{:.language-kube-21}: The {{ density }} for the humidity value used in biome placement
         - {{ required }}
-    - `continents: DensityFunction`{:.language-kube-21}: The {{ df }} for the continentalness value used in biome placement
+    - `continents: DensityFunction`{:.language-kube-21}: The {{ density }} for the continentalness value used in biome placement
         - {{ required }}
-    - `erosion: DensityFunction`{:.language-kube-21}: The {{ df }} for the erosion values used in biome and aquifer placement
+    - `erosion: DensityFunction`{:.language-kube-21}: The {{ density }} for the erosion values used in biome and aquifer placement
         - {{ required }}
-    - `depth: DensityFunction`{:.language-kube-21}: The {{ df }} for the depth values used in biome and aquifer placement
+    - `depth: DensityFunction`{:.language-kube-21}: The {{ density }} for the depth values used in biome and aquifer placement
         - {{ required }}
-    - `ridges: DensityFunction`{:.language-kube-21}: The {{ df }} for the weirdness values in biome placement
+    - `ridges: DensityFunction`{:.language-kube-21}: The {{ density }} for the weirdness values in biome placement
         - {{ required }}
-    - `initialDensityWithoutJaggedness: DensityFunction`{:.language-kube-21}: The {{ df }} for used for the initial terrain height for world generation
+    - `initialDensityWithoutJaggedness: DensityFunction`{:.language-kube-21}: The {{ density }} for used for the initial terrain height for world generation
         - {{ required }}
-    - `finalDesnity: DensityFunction`{:.language-kube-21}: The {{ df }} for determining if air or a [default block](#{{ n }}defaults) is placed
+    - `finalDesnity: DensityFunction`{:.language-kube-21}: The {{ density }} for determining if air or a [default block](#{{ n }}defaults) is placed
         - If positive, a block that can be replaced by the [surface rule]({{ n }}surface-rule). Otherwise, an air block where aquifers can generate
         - {{ required }}
-    - `veinToggle: DensityFunction`{:.language-kube-21}: The {{ df }} for special, large ore veins
+    - `veinToggle: DensityFunction`{:.language-kube-21}: The {{ density }} for special, large ore veins
         - If greater than `0`{:.n} the vein is copper
         - If less than or equal to `0`{:.n} the vein is iron
         - {{ required }}
-    - `veinRidged: DensityFunction`{:.language-kube-21}: The {{ df }} for which blocks are part of a vein
+    - `veinRidged: DensityFunction`{:.language-kube-21}: The {{ density }} for which blocks are part of a vein
         - If greater than or equal to `0`{:.n}, the block is not part of a vein
         - If less than `0`{:.n}, the block is either the vein's stone or ore block
         - {{ required }}
-    - `veinGap: DensityFunction`{:.language-kube-21}: The {{ df }} for determining which blocks in a vein are ore blocks
+    - `veinGap: DensityFunction`{:.language-kube-21}: The {{ density }} for determining which blocks in a vein are ore blocks
         - {{ required }}
     - {{ required }}
 - `.surfaceRule(source: RuleSource)`{: .language-kube-21 #{{ n }}surface-rule }: The [surface rule source]({% link worldjs/1.21.1/wrappers.md %}#surface rule source) for the terrain's blocks
@@ -439,3 +441,107 @@ ServerEvents.registry('worldgen/noise_settings', event => {
 ```
 
 ## Biome
+
+[Biomes](https://minecraft.wiki/w/Biome_definition?oldid=2731942) define the environment of a location in the world. WorldJS adds the ability to create new biomes through KubeJS's `ServerEvents.registry('worldgen/biome', event => {})`{:.language-kube-21} event via the default (no type id) builder
+
+{% capture b %}biome-{% endcapture %}
+
+- `.temperature(temp: number)`{: .language-kube-21 #{{ b }}temperature }: Controls the grass/foliage color and height-adjusted temperature. Not related to the `temperature`{:.v} of [noise generators](#noise-generator-settings)
+    - {{ def_0 }}
+- `.downfall(downfall: number)`{: .language-kube-21 #{{ b }}downfall }: Controls the grass/foliage color
+    - {{ def_0 }}
+- `.fogColor(color: KubeColor)`{: .language-kube-21 #{{ b }}fog-color }: The color used for fog
+    - {{ def_0 }}
+- `.waterColor(color: KubeColor)`{: .language-kube-21 #{{ b }}water-color }: The color used for water blocks and cauldrons
+    - {{ def_0 }}
+- `.waterFogColor(color: KubeColor)`{: .language-kube-21 #{{ b }}water-fog-color }: The color used for water fog
+    - {{ def_0 }}
+- `.skyColor(color: KubeColor)`{: .language-kube-21 #{{ b }}sky-color }: The color used for the sky
+    - {{ def_0 }}
+- `.foliageColor(color: KubeColor)`{: .language-kube-21 #{{ b }}foliage-color }: The color used for leaves and vines
+    - If not set, a color derived from the [`temperature`{:.v}](#{{ b }}temperature){:.preserve-color} and [`downfall`{:.v}](#{{ b }}downfall){:.preserve-color} is used
+- `.grassColor(color: KubeColor)`{: .language-kube-21 #{{ b }}grass-color }: The color used for grass blocks, short and tall grass, (tall) ferns, and sugarcane
+    - If not set, a color derived from the [`temperature`{:.v}](#{{ b }}temperature){:.preserve-color} and [`downfall`{:.v}](#{{ b }}downfall){:.preserve-color} is used
+- `.grassColorModifier(modifier: GrassColorModifier)`{: .language-kube-21 #{{ b }}grass-color-modifier }: A modifier to apply to the grass color
+    {% include enum_list.html summary='Reveal/hide valid grass color modifiers' values='none,dark_forest,swamp' %}
+    Mods may add additional values
+    - Defaults to `none`{:.e}
+- `.particle(particleOptions: ParticleOptions, probability: number)`{: .language-kube-21 #{{ b }}particle }: The ambient particle of the biome
+    - `particleOptions: ParticleOptions`{:.language-kube-21}: The particle to spawn
+    - `probability: number`{:.language-kube-21}: How often the particle spawns
+- `.ambientSound(sound: Holder$Reference<SoundEvent>)`{: .language-kube-21 #{{ b }}ambient-sound }: The ambient sound
+- `.moodSound(sound: Holder$Reference<SoundEvent>, tickDelay: int, blockSearchExtent: int, offset: number)`{: .language-kube-21 #{{ b }}mood-sound }: The [mood](https://minecraft.wiki/w/Ambience#Mood_algorithm) properties
+    - `sound: Holder$Reference<SoundEvent>`{:.language-kube-21}: The mood sound
+    - `tickDelay: int`{:.language-kube-21}: The minimum delay between two plays
+    - `blockSearchExtent: int`{:.language-kube-21}: The range at which the mood algorithm can check
+    - `offset: number`{:.language-kube-21}: How far the sound source should be from the player
+- `.additionsSound(sound: Holder$Reference<SoundEvent>, tickChance: double)`{: .language-kube-21 #{{ b }}additions-sound }: Settings for additions sound
+    - `sound: Holder$Reference<SoundEvent>`{:.language-kube-21}: The sound to play
+    - `tickChance: number`{:.language-kube-21}: The chance the sound will play each tick
+- `.music(sound: Holder$Reference<SoundEvent>, minDelay: int, maxDelay: int, replaceCurrentMusic: boolean)`{: .language-kube-21 #{{ b }}music }: Specific music that should play in the biome
+    - `sound: Holder$Refence<SoundEvent>`{:.language-kube-21}: The music sound
+    - `minDelay: int`{:.language-kube-21}: The minimum delay between two music tracks
+    - `maxDelay: int`{:.language-kube-21}: The maximum delay between two music tracks
+    - `replaceCurrentMusic: boolean`{:.language-kube-21}: If currently playing music should be replaced
+- `.temperatureModifier(modifier: TemperatureModifier)`{: .language-kube-21 #{{ b }}temperature-modifier }: Modifier for the temperature before calculating the height adjusted temperature
+    {% include enum_list.html summary='Reveal/hide valid temperature modifiers' values='none,frozen' %}
+    - Defaults to `none`{:.e}
+- `.withoutPrecipitation()`{: .language-kube-21 #{{ b }}without-precipitation }: Disables precipitation in the biome
+- `.carving(carvingStep: GenerationStep$Carving, carver: HolderSet<ConfiguredWorldCarver<?>>)`{: .language-kube-21 #{{ b }}carving }: The world carvers to use in the given carving step
+    - `carvingStep: GenerationStep$Carving`{:.language-kube-21}: The carving step
+        {% include enum_list.html summary='Reveal/hide valid carving steps' values='air,liquid' %}
+    - `carver: HolderSet<ConfiguredWorldCarver<?>>`{:.language-kube-21}: The carvers that will carve during the given `carvingStep`{:.v}
+- `.features(step: GenerationStep$Decoration, feature: HolderSet<PlacedFeature>)`{: .language-kube-21 #{{ b }}features }: The placed features to place in the given decoration step
+    - `step: GenerationStep$Decoration`{:.language-kube-21}: The decoration step to place `feature`{:.v} in
+        {% include enum_list.html summary='Reveal/hide valid decoration steps' values='raw_generation,lakes,local_modifications,underground_structures,surface_structures,strongholds,underground_ores,underground_decoration,fluid_springs,vegetal_decoration,top_layer_modification' %}
+    - `feature: HolderSet<PlacedFeature>`{:.language-kube-21}: The placed features that will be placed during the decoration `step`{:.v}
+- `.addSpawn(category: MobCategory, type: EntityType<?>, weight: int, minCount: int, maxCount: int)`{: .language-kube-21 #{{ b }}add-spawn }: Add a mob spawn
+    - `category: MobCategory`{:.language-kube-21}: The category of the spawn
+        {% include enum_list.html summary='Reveal/hide valid mob categories' values='monster,creature,ambient,axolotls,underground_water_creature,water_creature,water_ambient,misc' %}
+    - `type: EntityType<?>`{:.language-kube-21}: The entity type to spawn
+    - `weight: int`{:.language-kube-21}: How often the mob should spawn. Higher values means more spawns
+    - `minCount: int`{:.language-kube-21}: The minimum number of the mob to spawn
+    - `maxCount: int`{:.language-kube-21}: The maximum number of the mob to spawn
+- `.addMobCharge(type: EntityType<?>, charge: number, energyBudget: number)`{: .language-kube-21 #{{ b }}add-mob-charge }: Add a spawn cost for an entity
+    - `type: EntityType<?>`{:.language-kube-21}: The entity type to add a spawn cost for
+    - `charge: number`{:.language-kube-21}: The charge of the mob
+    - `energyBudget: number`{:.language-kube-21}: The mob's maximum potential
+- `.creatureSpawnProbability(probability: number)`{: .language-kube-21 #{{ b }}creature-spawn-probability }: The probability of creatures being spawned during world generation
+    - Must be {% in_range 0,0.9999999 %}
+    - Defaults to `0.1`{:.n}
+
+{: #biome-example %}
+
+### Example
+
+```js-21
+ServerEvents.registry('worldgen/biome', event => {
+    event.create('juice')
+        .temperature(0.4)
+        .downfall(2)
+        .fogColor('#e83581')
+        .waterColor('#e83581')
+        .waterFogColor('#e83581')
+        .skyColor('#e23aac')
+        .foliageColor('#e9c034')
+        .grassColor('#8662bb')
+        .ambientSound('kubejs:juice/ambient')
+        .moodSound('kubejs:juice/mood', 200, 4, 1.4)
+        .additionsSound('kubejs:juice/additions', 0.2)
+        .music('kubejs:juice/music', 200, 500, true)
+        .carving('air', '#kubejs:silly_straws')
+        .features('lakes', '#kubejs:juice_pools')
+        .features('underground_ores', '#kubejs:gushers')
+        .features('fluid_springs', '#kubejs:soda_machines')
+        .features('underground_structures', ['kubejs:juice_dungeon'])
+        .addSpawn('water_ambient', 'juice_mod:juice_fish', 100, 5, 17)
+})
+```
+
+{% comment %}
+
+## chunk generator noise
+
+## biome source multi noise climate parameter entry
+
+{% endcomment %}
