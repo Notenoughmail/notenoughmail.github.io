@@ -83,7 +83,7 @@ Inherits the methods of the [{{ feature.inherit-display }}](#{{ feature.inherit 
 ### Example
 
 ```js-21
-ServerEvents.registry('worldgen/configured-feature', event => {
+ServerEvents.registry('worldgen/configured_feature', event => {
     event.create('{{ feature | get_or_default: 'name', 'type' }}', '{{ feature.type }}')
         {{ feature.example | with_indent }}
 })
