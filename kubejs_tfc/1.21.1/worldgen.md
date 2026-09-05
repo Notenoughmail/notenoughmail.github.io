@@ -5,14 +5,6 @@ permalink: /kubejs_tfc/1.21.1/worldgen/
 parent: 1.21.1
 grand_parent: KubeJS TFC
 desc: Documentation on how to create some of TFC's configured features
-fragment-filter:
-    - kubejs_tfc
-    - 1.21.1
-    - conf_feature
-fragment-sort:
-    - group
-    - sort_pos
-    - title
 ---
 
 # Worldgen
@@ -38,7 +30,7 @@ Worldgen features are primarily done through placed and configured features. Kub
 {% p_inf %}Defaults to `Infinity`{:.n}{% end_p_inf %}
 {% endmap %}
 
-{% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+{% assign features = site | fragments_replace: replacements, 'kubejs_tfc', '1.21.1', 'conf_feature' | multi_sort: 'group', 'sort_pos', 'title' %}
 
 {% grid n=3 %}
 

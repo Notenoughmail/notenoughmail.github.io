@@ -17,6 +17,29 @@ module Jekyll
       ).convert(input.to_s.strip).strip[3...-4]
     end
 
+    def render_full(input)
+      render_markdown(render_liquid(input))
+    end
+
+    def render_missed_footnotes(input, print = false)
+      input.gsub(/\[\^.+?\]/) do |str|
+        p(str, 'raw', print)
+        p("<span markdown=\"1\" class=\"footnote-replacement-wrapper\">#{str}</span>", 'wrapped', print)
+      end
+    end
+
+    def fragments(site, *target_values)
+      clean_fragments(_fragments(site, target_values))
+    end
+
+    def fragments_replace(site, replacements, *target_values)
+      clean_fragments(replace_in_fragments(_fragments(site, target_values), replacements))
+    end
+
+    def _fragments(site, *target_values)
+      multi_where(site['fragments'], 'cat', target_values)
+    end
+
     def multi_where(input, property, *target_values)
       ary = Liquid::StandardFilters::InputIterator.new(input)
       flatten_array(target_values).each do |target_value|
@@ -29,7 +52,15 @@ module Jekyll
       ary
     end
 
-    def multi_sort(input, properties, print = false)
+    def multi_sort(input, *properties)
+      _multi_sort(input, flatten_array(properties), false)
+    end
+
+    def multi_sort_print(input, *properties)
+      _multi_sort(input, flatten_array(properties), true)
+    end
+
+    def _multi_sort(input, properties, print)
       print = true.to_s.eql?(print.to_s)
       raise "Cannot use 'sort' value to sort objects, it causes *many* headaches" if properties.include?('sort')
 
@@ -48,7 +79,7 @@ module Jekyll
 
     def multi_sort_comp(first, second, properties, print)
       r = i = 0
-      while r == 0 && i < properties.length
+      while r.zero? && i < properties.length
         pa = first[properties[i]]
         pb = second[properties[i]]
         r = compare(pa, pb)
@@ -175,21 +206,21 @@ module Jekyll
 
     def map_console(input, property, delin = false)
       puts(Liquid::StandardFilters::InputIterator.new(input).map { |e| e[property] })
-      puts "=====" if delin
+      puts '=====' if delin
       input
     end
 
     def print_sort(input, property)
       input.map { |i| [i.data[property.to_s], i] }
-        .sort! do |i1, i2|
-          p1 = i1.first
-          p2 = i2.first
-          puts "#{p1} {#{p1.class}} from #{i1}"
-          puts "#{p2} {#{p2.class}} from #{i2}"
-          puts ''
-          p1 <=> p2
-        end
-        .map!(&:last)
+           .sort! do |i1, i2|
+             p1 = i1.first
+             p2 = i2.first
+             puts "#{p1} {#{p1.class}} from #{i1}"
+             puts "#{p2} {#{p2.class}} from #{i2}"
+             puts ''
+             p1 <=> p2
+           end
+           .map!(&:last)
     end
 
     # https://gist.github.com/jbgo/4493822
@@ -262,7 +293,7 @@ module Jekyll
     def render_replacement(r, print = false, page = nil)
       replaced = r.to_s.strip
                   .gsub('\#', '#')
-                  .gsub(%r{\[\[\s*?(.+?)\s*?\]\]}) do |m|
+                  .gsub(/\[\[\s*?(.+?)\s*?\]\]/) do |m|
                     m = m.strip[2...-2].strip
                     puts "==> #{m}" if print
                     page.nil? ? 'nil' : page[m]
@@ -285,7 +316,12 @@ module Jekyll
       end
     end
 
-    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp, :flatten_array)
+    def p(val, desc, print)
+      puts "#{desc}: (#{val.class}) #{val}" if print
+      val
+    end
+
+    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp, :flatten_array, :p)
   end
 end
 

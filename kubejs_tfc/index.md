@@ -5,6 +5,8 @@ permalink: /kubejs_tfc/
 has_children: true
 parent: Minecraft Mods
 has_toc: false
+tagline: KubeJS integration for TFC, featuring support for recipes, custom data, and more
+icon: kjstfc
 ---
 
 # KubeJS TFC

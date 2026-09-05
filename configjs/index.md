@@ -5,6 +5,8 @@ permalink: /configjs/
 has_children: true
 parent: Minecraft Mods
 has_toc: false
+tagline: A KubeJS addon which allows user to make their own toml config files through scripts
+icon: cjs
 ---
 
 # ConfigJS

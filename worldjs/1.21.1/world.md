@@ -150,7 +150,7 @@ ServerEvents.registry('worldgen/world_preset', event => {
 {% chunk_gen %}
 {% endlist %}
 
-{% assign gens = site.fragments | multi_where: 'cat', 'worldjs', '1.21.1', 'chunk_gen' | replace_in_fragments: replacements | clean_fragments | sort: 'title' %}
+{% assign gens = site | fragments_replace: replacements, 'worldjs', '1.21.1', 'chunk_gen' | sort: 'title' %}
 
 {% for gen in gens %}
 
@@ -170,7 +170,7 @@ ServerEvents.registry('worldgen/world_preset', event => {
 
 ### Biome Sources
 
-{% assign biome_sources = site.fragments | multi_where: 'cat', 'worldjs', '1.21.1', 'biome_source' | replace_in_fragments: replacements | clean_fragments | sort: 'title' %}
+{% assign biome_sources = site | fragments_replace: replacements, 'worldjs', '1.21.1', 'biome_source' | sort: 'title' %}
 
 {% for source in biome_sources %}
 

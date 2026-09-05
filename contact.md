@@ -51,4 +51,4 @@ Want to contact me through email? You can do that at <a href="mailto:roughlyenou
 
 I do have a youtube, you might've seen used in other parts of the site for videos. I can be found at [Just Enough Mail](https://www.youtube.com/@justenoughmail), though I don't post all that often
 
-[^1]: [Yes, yes, I know, it hurts me too](https://web.archive.org/web/20221128113222/https://cohost.org/cathoderaydude/post/474632-someone-asked-in-the), I'm not not a webdev, but I do try to make my wikis as thorough as I can
+[^1]: [Yes, yes, I know, it hurts me too](https://web.archive.org/web/20221128113222/https://cohost.org/cathoderaydude/post/474632-someone-asked-in-the), I'm not a webdev, but I do try to make my wikis as thorough as I can

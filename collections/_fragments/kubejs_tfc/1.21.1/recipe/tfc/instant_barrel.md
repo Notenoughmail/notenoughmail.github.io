@@ -32,9 +32,7 @@ sig_add: |-
 - `.outputs(outputItem: ItemStackProvider, outputFluid: FluidStack)`{: .language-kube-21 #{{ page.anchor }}-outputs }: Accepts an [[ isp ]] and a fluid stack, the optional outputs of the recipe
 
 - `.inputItem(inputItem: SizedIngredient)`{: .language-kube-21 #{{ page.anchor }}-input-item }: Accepts a sized item ingredient, the optional item input of the recipe
-- `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #{{ page.anchor }}-sound }: Accepts the id of a sound event[^1], the sound that plays when the recipe performs
-
-[^1]: A list of available sound events can be gotten by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
+- `.sound(sound: Holder<SoundEvent>)`{: .language-kube-21 #{{ page.anchor }}-sound }: Accepts the id of a sound event[[ fn_sound ]], the sound that plays when the recipe performs
 
 {: .related #{{ page.anchor }}-alias-notice }
 > The recipe method presented here is an alias for the 'official' recipe type, `.tfc.barrel_instant(...)`{:.language-kube-21}. Both may be used in place of the other as they have the same methods and semantics

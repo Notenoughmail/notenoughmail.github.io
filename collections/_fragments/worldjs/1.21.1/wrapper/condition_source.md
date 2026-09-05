@@ -32,7 +32,7 @@ In scripts, they can be defined as
         - The `vertical_gradient` object is expected to be a map with the following fields
             - `'random_name'`{:.s}: A string
             - `'true_at_and_below'`{:.s}: A [[ vertical_anchor ]], the condition will always pass at and below this height
-            - `'false_at_and_above'`{:.s}: A [[ vertical_gradient ]], the condition will always pass at and above this height
+            - `'false_at_and_above'`{:.s}: A [[ vertical_anchor ]], the condition will always pass at and above this height
     - If the map contains a `'y_above'`{:.s} field, a `minecraft:y_above` condition source will be created
         - The `y_above` object is expected to be a map with the following fields
             - `'add_stone_depth'`{:.s}: A `boolean`{:.p}, If the distance to the surface above should be added

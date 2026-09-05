@@ -6,15 +6,7 @@ parent: 1.21.1
 grand_parent: WorldJS
 has_children: false
 has_toc: false
-desc: All of the configured and placed feature types provided by WorldJS 
-fragment-filter:
-    - worldjs
-    - 1.21.1
-    - feature
-fragment-sort:
-    - group
-    - sort_pos
-    - title
+desc: All of the configured and placed feature types provided by WorldJS
 ---
 
 # Configured & Placed Features
@@ -40,7 +32,7 @@ fragment-sort:
 {% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
 {% endmap %}
 
-{% assign features = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+{% assign features = site | fragments_replace: replacements, 'worldjs', '1.21.1', 'feature' | multi_sort: 'group', 'sort_pos', 'title' %}
 
 {% grid n=3 %}
 
@@ -183,7 +175,7 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
 - `.surfaceWaterDepth(maxWaterDepth: int)`{: .language-kube-21 #modifier-surface-water-depth }: Add a [minecraft:surface_water_depth_filter](https://minecraft.wiki/w/Placed_feature#surface_water_depth_filter) modifier
     - `maxWaterDepth: int`{:.language-kube-21}: The maximum depth of water under which the feature can be placed
 - `.blockPredicate(predicate: BlockPredicate)`{: .language-kube-21 #modifier-block-predicate }: Add a [minecraft:block_predicate_filter](https://minecraft.wiki/w/Placed_feature#block_predicate_filter) modifier
-    - `predicate: BlockPredicate`{:.language-kube-21}: The validator for a placing at a position
+    - `predicate: BlockPredicate`{:.language-kube-21}: The [`BlockPredicate`]({% link worldjs/1.21.1/wrappers.md %}#block-predicate) for a validating placement at a position
 - `.heightRange(height: HeightProvider)`{: .language-kube-21 #modifier-height-range }: Add a [minecraft:height_range](https://minecraft.wiki/w/Placed_feature#height_range) modifier
     - `height: HeightProvider`{:.language-kube-21}: The [height range]({% link worldjs/1.21.1/wrappers.md %}#height-provider) over which the feature can place
 - `.uniformHeightRange(minInclusive: VerticalAnchor, maxInclusive: VerticalAnchor)`{: .language-kube-21 #modifier-uniform-height-range }: Add a [minecraft:height_range](https://minecraft.wiki/w/Placed_feature#height_range) modifier that has a uniform chance of placing anywhere in the bounds

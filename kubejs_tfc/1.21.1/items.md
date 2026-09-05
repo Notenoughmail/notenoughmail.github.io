@@ -5,10 +5,6 @@ permalink: /kubejs_tfc/1.21.1/items/
 parent: 1.21.1
 grand_parent: KubeJS TFC
 desc: Custom item types
-fragment-filter:
-    - kubejs_tfc
-    - 1.21.1
-    - item
 ---
 
 # Custom Items
@@ -21,7 +17,7 @@ KubeJS TFC allows for the creation of some of TFC's item types
 {% jug Inherits the methods of the [jug item builder](#jug) %}
 {% endmap %}
 
-{% assign items = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | replace_in_fragments: replacements | sort: 'anchor' %}
+{% assign items = site | fragments_replace: replacements, 'kubejs_tfc', '1.21.1', 'item' | sort: 'anchor' %}
 
 {% grid n=2 %}
 

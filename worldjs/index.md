@@ -5,6 +5,8 @@ permalink: /worldjs/
 has_children: true
 parent: Minecraft Mods
 has_toc: false
+tagline: A KubeJS addon for changing world generation related properties and features
+icon: wjs
 ---
 
 # WorldJS
