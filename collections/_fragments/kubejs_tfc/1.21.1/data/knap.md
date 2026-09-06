@@ -35,7 +35,7 @@ example: |-
     - `icon: ItemStack`{:.language-kube-21}: The item to use as the category icon in recipe viewers
     - `amountToConsume: int`{:.language-kube-21}: How many items of input to consume when performing a recipe
         - **Note**: This is *technically* optional, but defaults to `0`{:.n}. In the next version the size of `inputItem`{:.v} will be the default
-    - `consumeAfterComplete?: boolean`{:.language-kube-21}: If the items should only be consumed after the recipe completes
+    - `consumeAfterComplete?: boolean`{:.language-kube-21}: If the input items should only be consumed after the recipe completes
         - Defaults to `false`{:.p}
     - `hasOffTexture?: boolean`{:.language-kube-21}: If the knapping screen should display a second texture for tiles that are off
         - Defaults to `false`{:.p}

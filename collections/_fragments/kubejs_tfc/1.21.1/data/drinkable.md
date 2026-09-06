@@ -44,7 +44,7 @@ example: |-
     - `mayDrinkWhenFull?: boolean`{:.language-kube-21}: If the player can drink with a full thirst bar
         - Defaults to `false`{:.p}
     - `food?: FoodData`{:.language-kube-21}: Additional food and nutrient data, the same as the [`food`{:.v} properties of food definitions]([[ food_data_properties ]]){:.preserve-color}
-    - `effects?: List<Effect>`{:.language-kube-21}: A list of effects to apply, an effect can be specified as a map of
+    - `effects?: List<Effect>`{:.language-kube-21}: A list of effects to apply, a map of parameters to values
         - `type: Holder<MobEffect>`{:.language-kube-21}: The effect to apply[[ fn_mob_effect ]]
         - `duration: int`{:.language-kube-21}: How many ticks the effect should be active for
         - `amplifier?: int`{:.language-kube-21}: The level of the effect

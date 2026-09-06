@@ -331,7 +331,7 @@ ServerEvents.registry('dimension_type', event => {
 
 ### Example
 
-```js
+```js-21
 ServerEvents.registry('worldgen/noise_settings', event => {
     event.create('noisy')
         .defaults('minecraft:pink_glazed_terracotta', 'minecraft:lava')
