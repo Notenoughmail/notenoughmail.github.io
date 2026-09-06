@@ -6,10 +6,6 @@ parent: 1.21.1
 grand_parent: WorldJS
 has_children: false
 desc: The wrappers for Java types frequently encountered in and handled by WorldJS
-fragment-filter:
-    - worldjs
-    - 1.21.1
-    - wrapper
 ---
 
 # Type Wrappers
@@ -20,7 +16,7 @@ fragment-filter:
 {% weighted_value [weighted value](#weighted-value) %}
 {% endmap %}
 
-{% assign wrappers = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | sort: 'title' %}
+{% assign wrappers = site | fragments_replace: replacements, 'worldjs', '1.21.1', 'wrapper' | sort: 'title' %}
 
 {% for wrapper in wrappers %}
 

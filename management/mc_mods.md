@@ -11,22 +11,14 @@ has_toc: false
 
 Documentation for my various mods
 
-## [KubeJS TFC](/kubejs_tfc/)
+{% assign pages = site.pages | where: 'parent', 'Minecraft Mods' | sort: 'title' %}
 
-KubeJS integration for TFC, featuring support for recipes, custom data, and more
+{% for page in pages %}
 
-## [Precision Prospecting](/precpros/)
+{: #{{ page.title | slugify }} }
 
-An Addon for TFC:TNG which adds new prospecting tools with different ranges
+## [<img src="/assets/icon/mod/{{ page.icon }}.png" aria-hidden="true" class="inline"> {{ page.title }}]({{ page.permalink }})
 
-## [ConfigJS](/configjs/)
+{{ page.tagline }}
 
-A KubeJS addon which allows user to make their own toml config files through scripts
-
-## [TFCGenViewer](/tfcgv/)
-
-A TFC addon for displaying world generation before and after creating a world
-
-## [WorldJS](/worldjs/)
-
-A KubeJS addon for changing world generation related properties and features
+{% endfor %}

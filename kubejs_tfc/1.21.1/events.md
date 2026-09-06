@@ -5,20 +5,13 @@ permalink: /kubejs_tfc/1.21.1/events/
 parent: 1.21.1
 grand_parent: KubeJS TFC
 desc: Documentation of KubeJS TFC's events
-fragment-filter:
-    - kubejs_tfc
-    - 1.21.1
-    - event
-event-sort:
-    - type
-    - anchor
 ---
 
 # Events
 
 KubeJS TFC adds several JS events for use in scripts
 
-{% assign events = site.fragments | multi_where: 'cat', page.fragment-filter | clean_fragments | multi_sort: page.event-sort  %}
+{% assign events = site | fragments: 'kubejs_tfc', '1.21.1', 'event' | multi_sort: 'type', 'anchor'  %}
 
 {% grid n=2 %}
 

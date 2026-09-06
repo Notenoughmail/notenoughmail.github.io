@@ -5,13 +5,6 @@ permalink: /worldjs/1.21.1/biome-modifiers/
 parent: 1.21.1
 grand_parent: WorldJS
 desc: Biome modifier builder types
-fragment-filter:
-    - worldjs
-    - 1.21.1
-    - biome_mod
-fragment-sort:
-    - pos
-    - anchor
 ---
 
 # Biome Modifiers
@@ -22,7 +15,7 @@ NeoForge adds the ability to add [biome modifiers](https://docs.neoforged.net/do
 {% biomes `.biomes(biomes: HolderSet<Biome>)`{: .language-kube-21 #[[ anchor ]]-biomes }: Set the biome(s) to be modified %}
 {% endmap %}
 
-{% assign types = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+{% assign types = site | fragments_replace: replacements, 'worldjs', '1.21.1', 'biome_mod' | multi_sort: 'pos', 'anchor' %}
 
 {% grid n=3 %}
 

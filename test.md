@@ -202,7 +202,10 @@ Range Tag Test
 {% map test_map %}
 {% isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% end_isp %}
 {% test neat %}
+{% 2 [^2] %}
 {% endmap %}
+
+[^2]: Neat
 
 {% list test_list %}
 {% woaw %}
@@ -213,5 +216,5 @@ Range Tag Test
 
 {% assign fragment_replace_test = site.fragments | where: 'test', 'test' | replace_in_fragments: test_map %}
 {% for t in fragment_replace_test %}
-{{ t.clean }}
+{{ t.clean | render_missed_footnotes }}
 {% endfor %}

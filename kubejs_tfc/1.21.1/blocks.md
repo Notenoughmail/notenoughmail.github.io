@@ -5,13 +5,6 @@ permalink: /kubejs_tfc/1.21.1/blocks/
 parent: 1.21.1
 grand_parent: KubeJS TFC
 desc: Custom block types
-fragment-filter:
-    - kubejs_tfc
-    - 1.21.1
-    - block
-fragment-sort:
-    - group
-    - title
 ---
 
 # Custom Blocks
@@ -24,9 +17,12 @@ KubeJS TFC allows for the creation of some of TFC's block types
 {% base %}Inherits the methods of the default block builder{% end_base %}
 {% def %}All those of the default block builder{% end_def %}
 {% moss %}Inherits the methods of the [moss growing block builder](#moss-growing-block){% end_moss %}
+{% fn_particle [^1] %}
 {% endmap %}
 
-{% assign blocks = site.fragments | multi_where: 'cat', page.fragment-filter | replace_in_fragments: replacements | clean_fragments | multi_sort: page.fragment-sort %}
+[^1]: A full list of particle types can be obtained by running the command `/kubejs dump_registry minecraft:particle_type`{:.language-command} in-game. Though do note that not all of them provide a `ParticleOptions`
+
+{% assign blocks = site | fragments_replace: replacements, 'kubejs_tfc', '1.21.1', 'block' | multi_sort: 'group', 'title' %}
 
 {% grid n=2 %}
 
@@ -55,7 +51,7 @@ It also provides a few block entity attachment types
 
 **Type**: `{{ block.type }}`
 
-{{ block.clean }}
+{{ block.clean | render_missed_footnotes }}
 
 {: #{{ block.anchor }}-example }
 

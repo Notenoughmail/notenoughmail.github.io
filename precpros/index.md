@@ -5,6 +5,8 @@ permalink: /precpros/
 has_children: true
 parent: Minecraft Mods
 has_toc: false
+tagline: An Addon for TFC:TNG which adds new prospecting tools with different ranges
+icon: precpros
 ---
 
 # Precision Prospecting

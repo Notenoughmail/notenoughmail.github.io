@@ -5,6 +5,8 @@ permalink: /tfcgv/
 has_children: true
 parent: Minecraft Mods
 has_toc: false
+tagline: A TFC addon for displaying world generation before and after creating a world
+icon: tfcgv
 ---
 
 # TFCGenViewer

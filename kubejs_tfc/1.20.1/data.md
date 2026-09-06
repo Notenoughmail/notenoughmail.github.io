@@ -425,7 +425,7 @@ event.knappingType(
 - 2nd argument: A number, the minimum number of items matching the ingredient that must be held in order open the knapping menu
 - 3rd argument: A number, the number of items that gets used by a recipe
 - 4th argument: A string, the registry name of a sound event that plays when knapping occurs[^2]
-- 5th argument: A boolean, determines if the inputs should be consumed when the first square is clicked or when the result is removed
+- 5th argument: A boolean, if the input items should only be consumed after the recipe completes
 - 6th argument: A boolean, if true, a clicked spot will show a different texture rather than nothing
 - 7th argument: A boolean, determines if the screen should spawn small particles when clicking buttons
 - 8th argument: An `ItemStack`, the icon item for the JEI recipe category
