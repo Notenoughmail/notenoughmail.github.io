@@ -23,6 +23,8 @@ The `/kubejs/config/tfc.json`{:.language-fs} file of your installation contains 
 - `deduplicate_self_test_warnings`: If TFC's self test warnings should be removed from the MC log. Defaults to `true`{:.p}
 - `deduplicate_data_manager_warnings`: If data manager warnings should be removed from the MC log. Defaults to `true`{:.p}
 
+Additionally, if you are using KubeJS TFC in a development environment and would like validate that all registered `DataManagers` have a corresponding `DataType` registered, `systemProperty('kubejs_tfc/assert_all_data_managers_have_data_types', 'true')` can be added to your run config in Gradle
+
 ## Recipe Schemas
 
 KubeJS primarily handles recipe additions through *recipe schemas*, which are mostly made up of *recipe components*, effectively a mirror to a recipe type's codec. It is possible to add new schemas through datapacks

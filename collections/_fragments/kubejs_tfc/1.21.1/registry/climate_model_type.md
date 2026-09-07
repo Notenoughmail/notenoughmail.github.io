@@ -5,7 +5,7 @@ cat:
     - kubejs_tfc
     - 1.21.1
     - reg
-desc: Climate models define the temperature, rainfall, and other climatic factors of a world. They are created and [added]({% link kubejs_tfc/1.21.1/events.md %}#selected-climate-model) to a level at world-start, but must have a registered type. KubeJS TFC adds the ability to create types and easily create models from them
+desc: Climate models define the temperature, rainfall, and other climatic factors of a world. They are created and [added]({% link kubejs_tfc/1.21.1/events.md %}#select-climate-model) to a level at world-start, but must have a registered type. KubeJS TFC adds the ability to create types and easily create models from them
 reg: 'tfc:climate_model'
 name: hell
 example: |-

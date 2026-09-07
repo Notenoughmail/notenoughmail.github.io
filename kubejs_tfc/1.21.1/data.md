@@ -10,21 +10,21 @@ desc: Documentation on Creating TFC's data types in scripts
 # Data
 
 {% map replacements %}
-{% fn_mob_effect [^1] %}
+{% fn_mob_effect [^mob-effect] %}
 {% food_data_properties %}#food-data-properties{% end_food_data_properties %}
 {% def_0 %}Defaults to `0`{:.n}{% end_def_0 %}
 {% def_1 %}Defaults to `1`{:.n}{% end_def_1 %}
 {% n_inf %}`-Infinity`{:.language-kube-21}{% end_n_inf %}
 {% p_inf %}`Infinity`{:.n}{% end_p_inf %}
 {% unit %}Must be {% in_unit %}{% end_unit %}
-{% fn_temps [^2] %}
-{% fn_sound [^3] %}
+{% fn_temps [^temperatures] %}
+{% fn_sound [^sound] %}
 {% bing %}{% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient{% end_bing %}
 {% endmap %}
 
-[^1]: A full list of mob effects can be obtained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
-[^2]: In TFC, the forging and welding temperatures of an item are typically 60% and 80% of its melting temperature
-[^3]: A full list of all sound events can be obtained by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
+[^mob-effect]: A full list of mob effects can be obtained by running the command `/kubejs dump_registry minecraft:mob_effect`{:.language-command} in-game
+[^temperatures]: In TFC, the forging and welding temperatures of an item are typically 60% and 80% of its melting temperature
+[^sound]: A full list of all sound events can be obtained by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
 
 {% assign data = site | fragments_replace: replacements, 'kubejs_tfc', '1.21.1', 'data' | prioritize_nil: 'multi_sort', 'group', 'anchor' %}
 

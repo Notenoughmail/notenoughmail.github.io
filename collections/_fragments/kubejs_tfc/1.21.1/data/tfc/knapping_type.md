@@ -12,7 +12,7 @@ sig: |-
         inputItem: SizedIngredient,
         clickSound: Holder<SoundEvent>,
         icon: ItemStack,
-        amountToConsume: int,
+        amountToConsume?: int,
         consumeAfterComplete?: boolean,
         hasOffTexture?: boolean,
         spansParticles?: boolean
@@ -33,8 +33,8 @@ example: |-
     - `inputItem: SizedIngredient`{:.language-kube-21}: The input for the knapping type
     - `clickSound: Holder<SoundEvent>`{:.language-kube-21}: The sound to play when knapping[[ fn_sound ]]
     - `icon: ItemStack`{:.language-kube-21}: The item to use as the category icon in recipe viewers
-    - `amountToConsume: int`{:.language-kube-21}: How many items of input to consume when performing a recipe
-        - **Note**: This is *technically* optional, but defaults to `0`{:.n}. In the next version the size of `inputItem`{:.v} will be the default
+    - `amountToConsume?: int`{:.language-kube-21}: How many items of input to consume when performing a recipe
+        - Defaults to the count of `inputItem`{:.v}
     - `consumeAfterComplete?: boolean`{:.language-kube-21}: If the input items should only be consumed after the recipe completes
         - Defaults to `false`{:.p}
     - `hasOffTexture?: boolean`{:.language-kube-21}: If the knapping screen should display a second texture for tiles that are off

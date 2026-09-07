@@ -22,9 +22,9 @@ This event fires during world loading and is used to choose which implementation
 
 - `.getLevel(): ServerLevel`{: .language-kube-21 #{{ page.anchor }}-get-level }: Get the level the model is being chosen for
 - `.dimensionId(): ResourceLocation`{: .language-kube-21 #{{ page.anchor }}-dimension-id }: Get dimension id of the level
-- `.getWorldSettings(): @Nullable Settings`{: .language-kube-21 #{{ page.anchor }}-get-world-settings }: Get the TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/settings/Settings.java) of the world if it has a TFc-like generator, else `null`{:.p}
+- `.getWorldSettings(): @Nullable Settings`{: .language-kube-21 #{{ page.anchor }}-get-world-settings }: Get the TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/settings/Settings.java) of the world if it has a TFC-like generator, else `null`{:.p}
 - `.getModel(): ClimateModel`{: .language-kube-21 #{{ page.anchor }}-get-model }: Get the model that will currently be applied to the level
-- `.kubeModel(id: ResourceLocation, hemisphereScale: number, supportsRain: boolean): @Nullable ClimateModel`{: .language-kube-21 #{{ page.anchor }}-kube-model-0 }: Create a climate model based on a climate model type [registered through scripts]({% link kubejs_tfc/1.21.1/registry.md %}#cliamte-model-type)
+- `.kubeModel(id: ResourceLocation, hemisphereScale: number, supportsRain: boolean): @Nullable ClimateModel`{: .language-kube-21 #{{ page.anchor }}-kube-model-0 }: Create a [climate model]({% link kubejs_tfc/1.21.1/type-explanations.md %}#climate-model) based on a climate model type [registered through scripts]({% link kubejs_tfc/1.21.1/registry.md %}#climate-model-type). Returns `null`{:.p} if no model type with the given `id`{:.v} was registered via scripts
     - `id: ResourceLocation`{:.language-kube-21}: The id of the registered climate model type
     - `hemisphereScale: number`{:.language-kube-21}: The hemisphere scale of the model to create
     - `supportsRain: boolean`{:.language-kube-21}: If the model should support rain

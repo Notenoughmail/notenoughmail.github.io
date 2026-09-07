@@ -27,15 +27,7 @@ example: |-
     event.setTemperatureScale(5000)
     event.setRainfallScale(7500)
     
-    event.addRock('vanilla', {
-        raw: 'minecraft:stone',
-        hardened: 'minecraft:deepslate',
-        gravel: 'minecraft:gravel',
-        cobble: 'minecraft:cobblestone',
-        sand: 'minecraft:sand',
-        sandstone: 'minecraft:sandstone',
-        mafic: true
-    }, false)
+    event.addRock('vanilla', 'kubejs:vanilla', false)
     
     event.defineLayer('mc_1', {
         vanilla: 'bottom',
@@ -80,20 +72,9 @@ Allows for editing the default values of the TFC chunk generator at world creati
 - `.getGrassDensity(): number`{: .language-kube-21 #{{ page.anchor }}-get-grass-density }: Get, with the current settings, the grass density of the world
 - `.finiteContinents(finite?: boolean): void`{: .language-kube-21 #{{ page.anchor }}-finite-continents }: Set if the world should only generate a finite number of continents, defaults to `false`{:.p}. Calling without any arguments sets to `true`{:.p}
 - `.getFiniteContinents(): boolean`{: .language-kube-21 #{{ page.anchor }}-get-finite-continents }: If, with the current settings, the world should only generate a finite number of continents
-- `.addRock(name: String, rock: RockSettings, bottom: boolean): void`{: .language-kube-21 #{{ page.anchor }}-add-rock }: Add the given `rock`{:.v} to the generator's pool of available rocks
+- `.addRock(name: String, rock: Holder$Reference<RockSettings>, bottom: boolean): void`{: .language-kube-21 #{{ page.anchor }}-add-rock }: Add the given `rock`{:.v} to the generator's pool of available rocks
     - `name: String`{:.language-kube-21}: The name the rock can be referenced by
-    - `rock: RockSettings`{:.language-kube-21}: The `RockSettings` to add, can be created as a map of parameters to values
-        - `raw: Block`{:.language-kube-21}: The raw rock block
-        - `hardened: Block`{:.language-kube-21}: The hardened rock block
-        - `gravel: Block`{:.language-kube-21}: The gravel block
-        - `cobble: Block`{:.language-kube-21}: The cobble block
-        - `sand: Block`{:.language-kube-21}: The sand block
-        - `sandstone: Block`{:.language-kube-21}: The sandstone block
-        - `spike?: Block`{:.language-kube-21}: The spike block. Optional
-        - `loose?: Block`{:.language-kube-21}: The loose pebble block. Optional
-        - `mossyLoose?: Block`{:.language-kube-21}: The mossy loose pebble block. Optional
-        - `karst?: boolean`{:.language-kube-21}: If the rock has karst surface rocks. Optional, defaults to `false`{:p}
-        - `mafic?: boolean`{:.language-kube-21}: If the rock is considered mafic. Optional, defaults to `false`{:.p}
+    - `rock: Holder$Reference<RockSettings>`{:.language-kube-21}: The id of a [registered `RockSettings`]({% link kubejs_tfc/1.21.1/registry.md %}#rock-setting) to reference
     - `bottom: boolean`{:.language-kube-21}: If the `rock`{:.v} should be added to the `bottom` pseudo-layer
 - `.getRock(name: String): @Nullable RockSettings`{: .language-kube-21 #{{ page.anchor }}-get-rock }: Get the named `RockSettings`
 - `.getRockNames(): Set<String>`{: .language-kube-21 #{{ page.anchor }}-get-rock-names }: Get a collection of the names of all rocks in the generator's pool of available rocks
