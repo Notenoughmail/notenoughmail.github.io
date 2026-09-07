@@ -46,6 +46,7 @@ KubeJS TFC adds several component types
     - `width`: An integer, the width of each pattern row
     - `height`: An integer, the number of pattern rows
 - `kubejs_tfc:block_state`: A variation of the default block state component that will properly parse inline block states from json
+- `tfc:food_data`: A [`FoodData`]({% link kubejs_tfc/1.21.1/data.md %}#food)
 
 {: #recipe-functions }
 

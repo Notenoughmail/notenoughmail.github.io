@@ -5,6 +5,8 @@ require 'natural_sort'
 module Jekyll
   module SiteFilters
 
+    $nil_compare_prioritized = false
+
     def render_liquid(input)
       out = Liquid::Template.parse(input)
       out.registers[:site] = @context.registers[:site]
@@ -38,6 +40,12 @@ module Jekyll
 
     def _fragments(site, *target_values)
       multi_where(site['fragments'], 'cat', target_values)
+    end
+
+    def absent(input, property)
+      Liquid::StandardFilters::InputIterator.new(input).select do |item|
+        item[property].nil?
+      end
     end
 
     def multi_where(input, property, *target_values)
@@ -162,28 +170,16 @@ module Jekyll
 
     def get_or_default(input, get, default)
       g = input[get]
-      if !g.nil?
-        g
-      else
-        input[default]
-      end
+      g.nil? ? input[default] : g
     end
 
     def get_or_else(input, get, fallback)
       g = input[get]
-      if !g.nil?
-        g
-      else
-        fallback
-      end
+      g.nil? ? fallback : g
     end
 
     def script_type(input)
-      if input.eql?('common')
-        'client_scripts` & `server_scripts'
-      else
-        "#{input}_scripts"
-      end
+      input.eql?('common') ? 'client_scripts` & `server_scripts' : "#{input}_scripts"
     end
 
     def to_console(input)
@@ -254,12 +250,19 @@ module Jekyll
       if a && b
         0
       elsif a
-        1
+        $nil_compare_prioritized ? -1 : 1
       elsif b
-        -1
+        $nil_compare_prioritized ? 1 : -1
       else
         NaturalSort::Engine.comparator(first.to_s, second.to_s)
       end
+    end
+
+    def prioritize_nil(input, method, *args)
+      $nil_compare_prioritized = true
+      ret = @context.invoke(method, input, *args)
+      $nil_compare_prioritized = false
+      ret
     end
 
     def dup(doc_drop)

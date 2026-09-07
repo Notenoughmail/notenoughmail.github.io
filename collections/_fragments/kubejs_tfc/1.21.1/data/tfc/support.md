@@ -23,7 +23,7 @@ example: |-
     'kubejs:wacky_support'
 ---
 
-- 1st argument: A [`BlockIngredient`]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient), the blocks the support applies to
+- 1st argument: A [`BlockIngredient`]([[ bing ]]), the blocks the support applies to
 - 2nd argument: The support range, a map of parameters to values
     - `up?: int`{:.language-kube-21}: The number of blocks above the support that are supported
         - [[ def_0 ]]
