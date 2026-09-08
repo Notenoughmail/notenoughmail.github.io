@@ -15,6 +15,6 @@ has_toc: false
 
 ## [{{ page.title }}]({{ page.url }})
 
-{{ page.desc | render_liquid  }}
+{{ page.desc | render_full  }}
 
 {% endfor %}

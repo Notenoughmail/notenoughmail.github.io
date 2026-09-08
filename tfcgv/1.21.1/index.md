@@ -18,6 +18,6 @@ The docs for the 1.21.1 version are still work-in-progress, updates will happen 
 
 ## [{{ page.title }}]({{ page.url }})
 
-{{ page.desc | render_liquid }}
+{{ page.desc | render_full }}
 
 {% endfor %}

@@ -56,7 +56,7 @@ Creates a {% if feature.wiki_link %}[tfc:{{ feature.type }}]({{ feature.wiki_lin
 
 {% if feature.inherit %}
 
-Inherits the methods of the [{{ feature.inherit-display }}]({{ feature.inherit | render_liquid }}) builder
+Inherits the methods of the [{{ feature.inherit-display }}]({{ feature.inherit | render_full }}) builder
 
 {% endif %}
 

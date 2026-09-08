@@ -1,5 +1,5 @@
 ---
-title: AFC Tapping
+title: Tapping
 anchor: afc-tapping
 func: tree_tapping
 mod: afc
@@ -31,8 +31,11 @@ sig_add: |-
 
 <span></span>
 
-- `.requiresNaturalLog(requiresNaturalLog: boolean)`{: .language-kube-21 #{{ page.anchor }}-requires-natural-log }: Accepts a boolean, if the block being tapped must have TFC's `branch_direction` block state and its value is not `none`{:.e}. Defaults to `true`{:.p}
-- `.springOnly(springOnly?: boolean)`{: .language-kube-21 #{{ page.anchor }}-spring-only }: Accepts a boolean, if the recipe may only be completed in the spring. Defaults to `false`{:.p}. Sets to `true`{:.p} if no value is passed to the function
-- `.minTemp(minimumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-min-temp }: Accepts a number, the minimum temperature (°C) the recipe can be performed in
-- `.maxTemp(maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-max-temp }: Accepts a number, the maximum temperature (°C) the recipe can be performed in
-- `.tempRange(minimumTemperature: number, maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-temp-range }: Accepts two numbers, the minimum and maximum temperature (°C) the recipe can be performed in
+- `.requiresNaturalLog(requiresNaturalLog: boolean)`{: .language-kube-21 #{{ page.anchor }}-requires-natural-log }: Accepts a boolean, if the block being tapped must have TFC's `branch_direction` block state and its value is not `none`{:.e}
+    - Defaults to `true`{:.p}
+- `.springOnly(springOnly?: boolean)`{: .language-kube-21 #{{ page.anchor }}-spring-only }: Accepts a boolean, if the recipe may only be completed in the spring
+    - Defaults to `false`{:.p}
+    - Sets to `true`{:.p} if no value is passed to the function
+- `.minTemp(minimumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-min-temp }: Accepts a number, the minimum temperature (in °C) the recipe can be performed in
+- `.maxTemp(maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-max-temp }: Accepts a number, the maximum temperature (in °C) the recipe can be performed in
+- `.tempRange(minimumTemperature: number, maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-temp-range }: Accepts two numbers, the minimum and maximum temperature (in °C) the recipe can be performed in

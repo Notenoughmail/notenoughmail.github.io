@@ -17,7 +17,7 @@ All non-event objects and utilities provided by KubeJS TFC are categorized into 
 
 ## [{{ page.title }}]({{ page.url }})
 
-{{ page.desc | render_liquid }}
+{{ page.desc | render_full }}
 
 Accessed as `TFC.{{ page.field }}`
 
