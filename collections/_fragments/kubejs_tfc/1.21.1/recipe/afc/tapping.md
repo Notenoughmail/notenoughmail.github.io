@@ -36,6 +36,6 @@ sig_add: |-
 - `.springOnly(springOnly?: boolean)`{: .language-kube-21 #{{ page.anchor }}-spring-only }: Accepts a boolean, if the recipe may only be completed in the spring
     - Defaults to `false`{:.p}
     - Sets to `true`{:.p} if no value is passed to the function
-- `.minTemp(minimumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-min-temp }: Accepts a number, the minimum temperature (in °C) the recipe can be performed in
-- `.maxTemp(maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-max-temp }: Accepts a number, the maximum temperature (in °C) the recipe can be performed in
-- `.tempRange(minimumTemperature: number, maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-temp-range }: Accepts two numbers, the minimum and maximum temperature (in °C) the recipe can be performed in
+- `.minTemp(minimumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-min-temp }: Accepts a number, the minimum temperature (°C) the recipe can be performed in
+- `.maxTemp(maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-max-temp }: Accepts a number, the maximum temperature (°C) the recipe can be performed in
+- `.tempRange(minimumTemperature: number, maximumTemperature: number)`{: .language-kube-21 #{{ page.anchor }}-temp-range }: Accepts two numbers, the minimum and maximum temperature (°C) the recipe can be performed in

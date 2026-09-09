@@ -1,21 +1,19 @@
 ---
-title: Soup Pot
-anchor: soup-pot
-func: soup_pot
-mod: tfc
-group: p
+title: Stinky Soup
+anchor: firmalife-stinky-soup
+func: stinky_soup
+mod: firmalife
+group: s
 cat:
     - kubejs_tfc
     - 1.21.1
     - recipe
-tagline: For pot recipes which require the pot to be clicked with items tagged `tfc:soup_bowls` to get an output
+tagline: For [soup](#soup-pot) recipes that produce a foul soup
 example: |-
-    [
-        'minecraft:wheat'
-    ],
-    Fluid.water(20),
-    2,
-    94
+    [ '#minecraft:flowers' ],
+    Fluid.of('minecraft:water', 50),
+    5,
+    5
 sig: |-
     ingredients: List<Ingredient>,
     fluidIngredient: SizedFluidIngredient,
@@ -27,6 +25,3 @@ sig: |-
 - 2nd argument: A sized fluid ingredient, the fluid input of the recipe
 - 3rd argument: A non-negative integer number, the number of ticks the pot must be boiling for
 - 4th argument: A non-negative number, the temperature (°C) the pot must reach to start boiling
-
-{: .related #{{ page.anchor }}-alias-notice }
-> The recipe method present here is an alias for the 'official' recipe type, `.tfc.pot_soup(...)`{:.language-kube-21}. Both may be used in placed of each other as they have the same semantics

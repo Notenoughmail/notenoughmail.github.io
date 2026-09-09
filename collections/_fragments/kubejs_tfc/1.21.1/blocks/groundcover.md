@@ -23,6 +23,7 @@ Creates a new groundcover block
 - `.ore()`{: .language-kube-21 #{{ page.anchor }}-ore }: Gives the block the same bounding/hit box as ore pieces
 - `.twig()`{: .language-kube-21 #{{ page.anchor }}-twig }: Gives the block the same bounding/hit box as twigs
 - `.groundcoverModelShape(shape: String)`{: .language-kube-21 #{{ page.anchor }}-groundcover-model-shape }: Set the parent model to `kubejs_tfc:block/groundcover/<shape>`{:.language-fs}
+    - See the available options [on GitHub](https://github.com/Notenoughmail/KubeJS-TFC/tree/1.21.1/src/generated/resources/assets/kubejs_tfc/models/block/groundcover)
 - `.collision()`{: .language-kube-21 #{{ page.anchor }}-collision }: Set the block as having collision
 - `.withPreexistingItem(item: Holder<Item>)`{: .language-kube-21 #{{ page.anchor }}-with-preexisting-item }: Set the block item and clone item of the block to the given item
 - [[ props ]]
