@@ -1,4 +1,5 @@
 
+# TODO: Make this a block instead of a tag
 class GridTag < Liquid::Tag
 
   Syntax = /\s*?(n=\d+?)?(?:\s(s=\d+?r?em))?\s*?/o.freeze

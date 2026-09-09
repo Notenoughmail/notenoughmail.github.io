@@ -10,7 +10,7 @@ field: worldgen
 
 # {{ page.title }}
 
-{{ page.desc | render_liquid }}
+{{ page.desc | render_full }}
 
 ```js-21
 declare class WorldgenBindings {

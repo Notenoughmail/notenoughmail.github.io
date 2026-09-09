@@ -27,6 +27,6 @@ example: |-
 
 - 1st argument: The lamp fuel data, a map of parameters to values
     - `fluid: FluidIngredient`{:.language-kube-21}: The fluids the fuel applies to
-    - `lamps: BlockIngredient`{:.language-kube-21}: The [blocks]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient) the fuel is valid for
+    - `lamps: BlockIngredient`{:.language-kube-21}: The [blocks]([[ bing ]]) the fuel is valid for
     - `burnRate: int`{:.language-kube-21}: The burn rate, in ticks / mB, of the fuel
 - *Optional 2nd argument*: A `ResourceLocation`, the id of the fuel

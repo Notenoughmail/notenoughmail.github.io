@@ -14,7 +14,11 @@ sig: |-
             water?: number,
             saturation?: number,
             intoxication?: int,
-            nutrients?: number[5],
+            grain?: number,
+            fruit?: number,
+            vegetables?: number,
+            protein?: number
+            dairy?: number,
             decayModifier?: number
         },
         edible?: boolean
@@ -42,8 +46,16 @@ example: |-
             - [[ def_0 ]]
         - `intoxication?: int`{:.language-kube-21}: The number of ticks of intoxication to add to the player
             - [[ def_0 ]]
-        - `nutrients?: number[5]`{:.language-kube-21}: The nutrient amounts to add to the player, ordered as `grain`{:.e}, `fruit`{:.e}, `vegetables`{:.e}, `protein`{:.e}, and `dairy`{:.e}
-            - Defaults to values of `0`{:.n} for all nutrients
+        - `grain?: number`{:.language-kube-21}: The amount of grain nutrient to add to the player
+            - [[ def_0 ]]
+        - `fruit?: number`{:.language-kube-21}: The amount of fruit nutrient to add to the player
+            - [[ def_0 ]]
+        - `vegetables?: number`{:.language-kube-21}: The amount of vegetables nutrient to add to the player
+            - [[ def_0 ]]
+        - `protein?: number`{:.language-kube-21}: The amount of protein nutrient to add to the player
+            - [[ def_0 ]]
+        - `dairy?: number`{:.language-kube-21}: The amount of dairy nutrient to add to the player
+            - [[ def_0 ]]
         - `decayModifier?: number`{:.language-kube-21}: The decay modifier to apply, a higher value means a quicker decay
             - [[ def_0 ]]
     - `edible?: boolean`{:.language-kube-21}: If the food is edible

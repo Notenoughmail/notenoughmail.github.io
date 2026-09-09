@@ -15,7 +15,7 @@ There are several Java types which can be encountered fairly frequently in the d
 
 {% for section in sections %}
 
-- [{{ section.title | render_liquid }}](#{{ section.anchor }}){% if section.preserve-color %}{: .preserve-color }{% endif %}
+- [{{ section.title | render_full }}](#{{ section.anchor }}){% if section.preserve-color %}{: .preserve-color }{% endif %}
 
 {% endfor %}
 
@@ -35,7 +35,7 @@ There are several Java types which can be encountered fairly frequently in the d
 
 {: #{{ section.anchor }} }
 
-## {{ section.title | render_liquid }}
+## {{ section.title | render_full }}
 
 {{ section.clean }}
 

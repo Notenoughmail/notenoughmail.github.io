@@ -14,18 +14,20 @@ The following recipe types are supported by KubeJS TFC
 {% map replacements %}
 {% isp %}[`ItemStackProvider`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#item-stack-provider){% end_isp %}
 {% bing %}[`BlockIngredient`]({% link kubejs_tfc/1.21.1/bindings/ingredient.md %}#block-ingredient){% end_bing %}
-{% fn_sound [^1] %}
+{% fn_sound [^sound] %}
 {% endmap %}
 
-[^1]: A list of available sound events can be gotten by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
+[^sound]: A list of available sound events can be gotten by running the command `/kubejs dump_registry minecraft:sound_event`{:.language-command} in-game
 
 {% assign all_recipes = site | fragments_replace: replacements, 'kubejs_tfc', '1.21.1', 'recipe' | multi_sort: 'group', 'title' %}
 {% assign tfc = all_recipes | where: 'mod', 'tfc' %}
 {% assign afc = all_recipes | where: 'mod', 'afc' %}
+{% assign firmalife = all_recipes | where: 'mod', 'firmalife' %}
 
 {% list mods %}
 {% tfc %}
 {% afc %}
+{% firmalife %}
 {% endlist %}
 
 {% grid n=3 %}
@@ -46,6 +48,17 @@ The following recipe types are supported by KubeJS TFC
 
 {% endfor %}
 
+<a id="firmalife"></a>If *FirmaLife* {% include mr.html link='firmalife' %} {% include cf.html link='firmalife' %} is installed, the following recipes are supported
+
+{% grid n=3 %}
+{% for recipe in firmalife %}
+
+- [{{ recipe.title }}](#{{ recipe.anchor }})
+
+{% endfor %}
+
+</div>
+
 {% for mod in mods %}
 
 {% assign mod_recipes = mod | extract_from_context %}
@@ -56,7 +69,7 @@ The following recipe types are supported by KubeJS TFC
 
 ## {{ recipe.title }}
 
-{{ recipe.tagline | replace_inline: replacements | render_liquid }}
+{{ recipe.tagline | replace_inline: replacements | render_full }}
 
 {: #{{ recipe.anchor }}-signature }
 

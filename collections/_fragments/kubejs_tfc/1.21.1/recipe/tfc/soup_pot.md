@@ -3,7 +3,7 @@ title: Soup Pot
 anchor: soup-pot
 func: soup_pot
 mod: tfc
-group: pot_soup
+group: p
 cat:
     - kubejs_tfc
     - 1.21.1

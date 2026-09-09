@@ -38,7 +38,7 @@ Calendars have several methods from which time information can be gotten
 - `.getTimeAndDate(): MutabelComponent`{: .language-kube-21 #{{ page.anchor }}-get-time-and-date }: Get a text component displaying the current time and date in `HH:MM month DD, YYYY` form
 - `.getDayTime(): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-day-time }: Get a text component displaying the current time in `HH:MM` form
 - `.getHourOfDay(): int`{: .language-kube-21 #{{ page.anchor }}-get-hour-of-day }: Get the current hour of the day, {% in_range 0,23 %}
-- `.getMinuteOfHour(): int`{: .language-kube-21 #{{ page.anchor }}-get-minute-of-hour }: Get the current minute of the hour, {% in_range 0, 59 %}
+- `.getMinuteOfHour(): int`{: .language-kube-21 #{{ page.anchor }}-get-minute-of-hour }: Get the current minute of the hour, {% in_range 0,59 %}
 - `.getExactTimeAndDate(playerTick: int): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-exact-time-and-date }: Get a text component displaying the given timestamp in `HH:MM month DD, YYYY` form
 - `.getOffsetTimeAndDate(offsetTick: int): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-offset-time-and-date }: Get a text component displaying the time, in `HH:MM month DD, YYYY` form, at the given player tick offset from now
 - `.getTimeDelta(playerTick: int): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-time-delta }: Get a text component displaying a time delta of the given number of player ticks

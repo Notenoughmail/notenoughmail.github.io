@@ -8,24 +8,24 @@ cat:
 desc: Add an item damage resistance
 method: itemDamageResistance
 sig: |-
-    ingredient: Ingredient,
     resistance: {
+        ingredient: Ingredient,
         piercing?: number,
         slashing?: number,
         crushing?: number
     },
     id?: ResourceLocation
 example: |-
-    '#kubejs:weak_to_slashing',
     {
+        ingredient: '#kubejs:weak_to_slashing',
         slashing: -30,
         piercing: -2,
         crushing: 5
     }
 ---
 
-- 1st argument: An ingredient, the items the resistance applies to
-- 2nd argument: The resistance data, a map of types to values
+- 1st argument: The resistance data, a map of parameters to values
+    - `ingredient: Ingredient`{:.language-kube-21}: The items the resistance applies to
     - `piercing?: number`{:.language-kube-21}: The piercing resistance
         - Negative values make the item extra vulnerable to piercing damage
         - [[ def_0 ]]
@@ -35,4 +35,4 @@ example: |-
     - `crushing?: number`{:.language-kube-21}: The crushing resistance
         - Negative values make the item extra vulnerable to crushing damage
         - [[ def_0 ]]
-- *Optional 3rd argument*: A `ResourceLocation`{:.language-kube-21}, the id of the resistance
+- *Optional 2nd argument*: A `ResourceLocation`{:.language-kube-21}, the id of the resistance

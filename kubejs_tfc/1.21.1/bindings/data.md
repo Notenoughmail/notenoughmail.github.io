@@ -137,7 +137,7 @@ declare class DataBindings {
     - `.getHealthModifier(): number`{:.language-kube-21}: Gets the modifier of the player's health based it their nutrition
     - `.eat(stack: ItemStack): void`{:.language-kube-21}: Makes the player eat the given item if it is a food item
     - `.eat(food: IFood): void`{:.language-kube-21}: Makes the player eat the given food capability
-    - `.eat(food: FoodData): void`{:.language-kube-21}: Makes the player directly eat the food data
+    - `.eat(food: FoodData): void`{:.language-kube-21}: Makes the player directly eat the [food data]({% link kubejs_tfc/1.21.1/data.md %}#food)
 - `.getChunkData(level: Level, pos: BlockPos)`{: .language-kube-21 #get-chunk-data-0 }: Get the [`ChunkData`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#chunk-data) at the given position
 - `.getChunkData(chunk: ChunkAccess)`{: .language-kube-21 #get-chunk-data-1 }: Get the given chunk's [`ChunkData`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#chunk-data)
 - `.getHeat(stack: ItemStack)`{: .language-kube-21 #get-heat }: Gets the [heat capability](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/common/component/heat/IHeat.java) of the stack if present

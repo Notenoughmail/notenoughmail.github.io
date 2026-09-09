@@ -11,7 +11,18 @@ sig: |-
         ingredient: FluidIngredient,
         consumeChance?: number,
         mayDrinkWhenFull?: boolean,
-        food?: FoodData,
+        food?: {
+            hunger?: int,
+            water?: number,
+            saturation?: number,
+            intoxication?: int,
+            grain?: number,
+            fruit?: number,
+            vegetables?: number,
+            protein?: number
+            dairy?: number,
+            decayModifier?: number
+        },
         effects?: List<{
             type: Holder<MobEffect>,
             duration: int,
@@ -25,7 +36,7 @@ example: |-
         ingredient: Fluid.of('lava', 500),
         mayDrinkWhenFull: true,
         food: {
-            nutrients: [ 0, 0, 0, 500, 0 ]
+            protein: 500
         },
         effects: [{
             type: 'minecraft:wither',

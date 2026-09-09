@@ -5,6 +5,9 @@ require 'natural_sort'
 module Jekyll
   module SiteFilters
 
+    $nil_compare_prioritized = false
+    $print_debug = false
+
     def render_liquid(input)
       out = Liquid::Template.parse(input)
       out.registers[:site] = @context.registers[:site]
@@ -19,6 +22,15 @@ module Jekyll
 
     def render_full(input)
       render_markdown(render_liquid(input))
+    end
+
+    def with_debug(input, method, *args)
+      $print_debug = true
+      puts '==DEBUG PRINT ENABLED=='
+      ret = @context.invoke(method, input, *args)
+      puts '==DEBUG PRINT DISABLED=='
+      $print_debug = false
+      ret
     end
 
     def render_missed_footnotes(input, print = false)
@@ -38,6 +50,12 @@ module Jekyll
 
     def _fragments(site, *target_values)
       multi_where(site['fragments'], 'cat', target_values)
+    end
+
+    def absent(input, property)
+      Liquid::StandardFilters::InputIterator.new(input).select do |item|
+        item[property].nil?
+      end
     end
 
     def multi_where(input, property, *target_values)
@@ -89,57 +107,44 @@ module Jekyll
       r
     end
 
-    def replace_inline(input, map, print = false, page = nil)
-      puts 'inline___' if print
+    def replace_inline(input, map, page = nil)
+      debug('__ inline __', input)
       map.each do |match, replacement|
-        rendered = render_replacement(replacement, print, page)
-        puts "#{match} ==> #{rendered}" if print
-        input = input.gsub(
-          /\[\[\s*?#{match}\s*?\]\]/,
-          rendered
-        )
+        rendered = render_replacement(replacement, page)
+        debug("#{match} ==> #{rendered}")
+        input = input.gsub(/\[\[\s*?#{match}\s*?\]\]/, rendered)
       end
+      debug('__ V __', input)
       input
     end
 
     def replace_in_fragments(input, map, print = false)
       out = []
-      if print
+      if $print_debug
         m = {}
         map.each do |k, v|
-          m[k] = render_replacement(v, true) # render w/out page context
+          m[k] = render_replacement(v) # render w/out page context
         end
-        puts '=====w/out page====='
-        puts map
-        puts '=====V====='
-        puts m
-        puts '---   ---'
+        debug('=====w/out page=====', map, '=====V=====', m, '---   ---')
       end
       Liquid::StandardFilters::InputIterator.new(input).each do |f|
         f = dup(f)
         content = get_content(f, print)
-        if print
-          puts '=====w/ page====='
-          puts content
-        end
-        content = replace_inline(content, map, print, f)
-        if print
-          puts '=====V====='
-          puts content
-          puts '---   ---'
-        end
+        debug('=====w/ page=====')
+        content = replace_inline(content, map, f)
+        debug('=====V=====', content, '---   ---')
         f['clean'] = content
         out.push(f)
       end
       out
     end
 
-    def clean_fragments(input, print = false)
+    def clean_fragments(input)
       out = []
       Liquid::StandardFilters::InputIterator.new(input).each do |f|
         f = dup(f)
         content = get_content(f)
-        puts content if print
+        debug(content)
         anchor = f['anchor']
 
         content = content.gsub(%r{<h[2-6].+?</h[2-6]>}) do |str|
@@ -162,28 +167,16 @@ module Jekyll
 
     def get_or_default(input, get, default)
       g = input[get]
-      if !g.nil?
-        g
-      else
-        input[default]
-      end
+      g.nil? ? input[default] : g
     end
 
     def get_or_else(input, get, fallback)
       g = input[get]
-      if !g.nil?
-        g
-      else
-        fallback
-      end
+      g.nil? ? fallback : g
     end
 
     def script_type(input)
-      if input.eql?('common')
-        'client_scripts` & `server_scripts'
-      else
-        "#{input}_scripts"
-      end
+      input.eql?('common') ? 'client_scripts` & `server_scripts' : "#{input}_scripts"
     end
 
     def to_console(input)
@@ -204,9 +197,9 @@ module Jekyll
       input.length
     end
 
-    def map_console(input, property, delin = false)
+    def map_console(input, property, delim = false)
       puts(Liquid::StandardFilters::InputIterator.new(input).map { |e| e[property] })
-      puts '=====' if delin
+      puts '=====' if delim
       input
     end
 
@@ -254,12 +247,19 @@ module Jekyll
       if a && b
         0
       elsif a
-        1
+        $nil_compare_prioritized ? -1 : 1
       elsif b
-        -1
+        $nil_compare_prioritized ? 1 : -1
       else
         NaturalSort::Engine.comparator(first.to_s, second.to_s)
       end
+    end
+
+    def prioritize_nil(input, method, *args)
+      $nil_compare_prioritized = true
+      ret = @context.invoke(method, input, *args)
+      $nil_compare_prioritized = false
+      ret
     end
 
     def dup(doc_drop)
@@ -279,31 +279,28 @@ module Jekyll
 
     def get_content(doc_drop, print = false)
       if doc_drop['clean']
-        puts '===clean===' if print
+        puts "#{doc_drop['title']}: clean" if print || $print_debug
         doc_drop['clean']
       elsif doc_drop['output']
-        puts '===output===' if print
+        puts "#{doc_drop['title']}: output" if print || $print_debug
         doc_drop['output']
       else
-        puts '===content===' if print
+        puts "#{doc_drop['title']}: content (#{doc_drop['content']})" if print || $print_debug
         doc_drop['content']
       end
     end
 
-    def render_replacement(r, print = false, page = nil)
-      replaced = r.to_s.strip
-                  .gsub('\#', '#')
-                  .gsub(/\[\[\s*?(.+?)\s*?\]\]/) do |m|
-                    m = m.strip[2...-2].strip
-                    puts "==> #{m}" if print
-                    page.nil? ? 'nil' : page[m]
-                  end
-      puts "   (replaced) ==> #{replaced}" if print
-      liquid = render_liquid(replaced)
-      puts "     (liquid) ==> #{liquid}" if print
-      md = render_markdown(liquid)
-      puts "   (markdown) ==> #{md}" if print
-      md
+    def render_replacement(replace, page = nil)
+      debug("     (raw) ==> #{replace}")
+      replaced = replace.to_s.strip.gsub('\#', '#').gsub(/\[\[\s*?(.+?)\s*?\]\]/) do |m|
+        m = m.strip[2...-2].strip
+        debug("==> #{m}")
+        page.nil? ? 'nil' : page[m]
+      end
+      debug("(replaced) ==> #{replaced}")
+      rendered = render_full(replaced)
+      debug("(rendered) ==> #{rendered}")
+      rendered
     end
 
     def flatten_array(arr)
@@ -317,11 +314,17 @@ module Jekyll
     end
 
     def p(val, desc, print)
-      puts "#{desc}: (#{val.class}) #{val}" if print
+      puts "#{desc}: (#{val.class}) #{val}" if print || $print_debug
       val
     end
 
-    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp, :flatten_array, :p)
+    def debug(*any)
+      return unless $print_debug
+
+      flatten_array(any).each { |o| puts o }
+    end
+
+    private(:compare, :dup, :get_content, :render_replacement, :multi_sort_comp, :flatten_array, :p, :debug)
   end
 end
 
