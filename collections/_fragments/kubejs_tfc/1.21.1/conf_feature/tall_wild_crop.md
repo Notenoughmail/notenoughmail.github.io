@@ -9,7 +9,7 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .block('tfc:wild_crop/tomato')
 ---
 
 [[ base ]]

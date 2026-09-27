@@ -9,7 +9,14 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .structures('tfc:white_cedar/base', 'tfc:white_cedar/overlay')
+    .overlayIntegrity(0.4)
+    .treePlacement({
+        width: 5,
+        height: 1,
+        groundType: 'shallow_water'
+    })
+    .withPlacement(p => {})
 ---
 
 [[ base ]]

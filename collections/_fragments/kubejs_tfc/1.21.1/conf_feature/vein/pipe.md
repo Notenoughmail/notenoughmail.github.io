@@ -9,7 +9,26 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .replacementStates({
+        'tfc:rock/raw/conglomerate': [
+            {
+                weight: 10,
+                value: 'minecraft:oak_planks'
+            },
+            'minecraft:coal_block'
+        ]
+    })
+    .rarity(12)
+    .density(0.2)
+    .minY(-30)
+    .maxY(40)
+    .seed(7862549652)
+    .sign(0.5)
+    .height(20)
+    .radius(5)
+    .skew(1, 3)
+    .slant(1, 3)
+    .withPlacement(p => p.tag('tfc:in_biome/veins'))
 ---
 
 [[ cluster ]]

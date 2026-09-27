@@ -9,7 +9,37 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .layers([
+        {
+            templates: [
+                'tfc:oak/1',
+                'tfc:oak/2',
+                'tfc:oak/3'
+            ],
+            minCount: 1,
+            maxCount: 2
+        },
+        {
+            templates: [
+                'tfc:ash/1',
+                'tfc:ash/2',
+                'tfc:ash/3'
+            ],
+            minCount: 2,
+            maxCount: 4
+        }
+    ])
+    .treePlacement({
+        width: 2,
+        height: 2,
+        groundType: 'normal'
+    })
+    .trunk({
+        state: 'tfc:wood/log/oak[axis=y]',
+        minHeight: 1,
+        maxHeight: 5,
+        wide: false
+    })
 ---
 
 [[ base ]]

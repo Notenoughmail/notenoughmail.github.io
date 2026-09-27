@@ -9,7 +9,26 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .states({
+        'tfc:rock/raw/conglomerate': [
+            'minecraft:gold_block',
+            'minecraft:gravel'
+        ],
+        'tfc:rock/raw/dacite': [
+            'minecraft:iron_block'
+        ]
+    })
+    .withPlacement(p => {
+        p.tag('tfc:feature/boulders')
+        p.modifiers(m => {
+            let { minecraft, tfc} = m
+            minecraft
+                .rarityFilter(12)
+                .inSquare()
+                .heightmap('world_surface_wg')
+            tfc.flatEnough(0.4, 4, 2)
+        })
+    })
 ---
 
 [[ base ]]

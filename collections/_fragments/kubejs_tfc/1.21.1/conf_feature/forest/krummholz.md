@@ -9,7 +9,10 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .krummholz('tfc:plant/spruce_krummholz')
+    .height([ 1, 4 ])
+    .spawnsOnStone()
+    .withPlacement(p => {})
 ---
 
 [[ base ]]

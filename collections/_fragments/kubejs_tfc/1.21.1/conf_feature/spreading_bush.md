@@ -9,7 +9,7 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .block('tfc:plant/raspberry_bush')
 ---
 
 [[ base ]]

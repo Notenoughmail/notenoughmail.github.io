@@ -2,6 +2,7 @@
 title: Hot Spring
 anchor: hot-spring
 type: hot_spring
+name: 'kubejs:wizard/hot_spring'
 wiki_link: https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/features/#hot-spring
 sort_pos: h
 cat:
@@ -9,7 +10,24 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .wallState('minecraft:amethyst_block')
+    .fluidState('tfc:spring_water')
+    .decoration({
+        rarity: 5,
+        radius: 12,
+        count: 5,
+        states: {
+            'tfc:rock/raw/rhyolite': [
+                'minecraft:tuff'
+            ]
+        }
+    })
+    .replaceOnFluidContact({
+        'tfc:rock/raw/rhyolite': [
+            'minecraft:budding_amethyst'
+        ]
+    })
+    .withPlacement(p => {})
 ---
 
 [[ base ]]

@@ -9,7 +9,18 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .states({
+        'tfc:rock/raw/conglomerate': [
+            {
+                weight: 50,
+                value: 'caves:vine/scary'
+            },
+            {
+                weight: 3,
+                value: 'caves:vine/spooky'
+            }
+        ]
+    })
 ---
 
 [[ base ]]

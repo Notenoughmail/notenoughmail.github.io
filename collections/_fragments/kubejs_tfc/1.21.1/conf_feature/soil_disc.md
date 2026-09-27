@@ -9,7 +9,12 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .replacementStates({
+        'tfc:dirt/oxisol': 'minecraft:netherrack'
+    })
+    .radius(2, 5)
+    .height(3)
+    .integrity(0.4)
 ---
 
 [[ base ]]

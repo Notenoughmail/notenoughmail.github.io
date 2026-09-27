@@ -9,7 +9,7 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .features('kubejs:wizard/hot_spring', 'kubejs:wizard/basement')
 ---
 
 [[ base ]]

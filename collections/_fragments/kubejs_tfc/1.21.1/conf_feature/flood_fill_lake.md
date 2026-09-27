@@ -9,7 +9,11 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .fill('minecraft:lava')
+    .replaceFluids([
+        'minecraft:water',
+        'tfc:spring_water'
+    ])
 ---
 
 [[ base ]]

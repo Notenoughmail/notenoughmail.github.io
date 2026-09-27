@@ -9,7 +9,11 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .state('tfc:calcite')
+    .radius(4)
+    .tries(9)
+    .height(5, 8)
+    .allowedUnderwater(true)
 ---
 
 [[ base ]]

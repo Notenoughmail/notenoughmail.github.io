@@ -9,12 +9,27 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .wallState('minecraft:dirt')
+    .fluid('minecraft:lava')
+    .count(9)
+    .pieces(2, 15)
+    .maxPieceLength(23)
+    .withPlacement(p => {
+        p.modifiers(m => {
+            m.tfc.stratovolcano({
+                center: true,
+                variant: 'fuji',
+                hashMin: 0.2
+            })
+            m.minecraft.heightmap('world_surface_wg')
+        })
+    })
 ---
 
 [[ base ]]
 
 - `.wallState(state: BlockState)`{: .language-kube-21 #{{ page.anchor }}-wall-state }: The wall state of the fissure
+    - Defaults to `'minecraft:air'`{:.s}
 - `.fluid(state: BlockState)`{: .language-kube-21 #{{ page.anchor }}-fluid }: The fluid within the fissure
     - Defaults to `'minecraft:air'`{:.s}
 - `.count(c: int)`{: .language-kube-21 #{{ page.anchor }}-count }: How many fissures to place

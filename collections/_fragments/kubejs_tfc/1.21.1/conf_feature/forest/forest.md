@@ -2,6 +2,7 @@
 title: Forest
 anchor: forest
 type: forest
+name: 'tfc:forest'
 wiki_link: https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/features/trees/#forest-feature
 sort_pos: f_a
 cat:
@@ -9,7 +10,8 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .entries('#kubejs:forest_entries')
+    .withPlacement(p => {})
 ---
 
 [[ base ]]

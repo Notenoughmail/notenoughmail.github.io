@@ -75,7 +75,7 @@ Providers have several methods by which they can be used and modified
         - `dairy?: number`{:.language-kube-21}: The amount of dairy nutrient to add to the player
             - {{ def_0 }}
         - `decayModifier?: number`{:.language-kube-21}: The decay modifier to apply, a higher value means a quicker decay
-            - {{ def_0 }}
+            - {{ def_1 }}
     - `portions...: MealPortion[]`{:.language-kube-21}: The meal portions. These are checked in order for each input food and the first to match will be used. Portions can be made as a map of parameters to values
         - `ingredient?: Ingredient`{:.language-kube-21}: The food item(s) to match
             - Optional, if not specified will match all items

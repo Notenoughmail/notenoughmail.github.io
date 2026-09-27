@@ -31,4 +31,4 @@ example: |-
     - `hit: BlockHitResult`{:.language-kube-21}: The hit result of the player
     - `return: @Nullable BlockState`{:.language-kube-21}: The chiseled state to place in-world
         - May be `null`{:.p} to indicate an invalid value and cancel the recipe
-    Defaults to returning the `chiseled`{:.v} state
+    - Defaults to returning the `chiseled`{:.v} state

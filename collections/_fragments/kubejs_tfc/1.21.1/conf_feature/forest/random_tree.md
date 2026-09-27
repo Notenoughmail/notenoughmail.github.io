@@ -2,6 +2,7 @@
 title: Random Tree
 anchor: random-tree
 type: random_tree
+name: 'kubejs:tree/willow_replica'
 wiki_link: https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/features/trees/#random-tree
 sort_pos: f_t
 cat:
@@ -9,7 +10,27 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .trees([
+        'tfc:willow/1',
+        'tfc:willow/2',
+        'tfc:willow/3'
+    ])
+    .treePlacement({
+        width: 3,
+        height: 1,
+        groundType: 'shallow_water'
+    })
+    .roots({
+        blocks: {
+            'tfc:grass/oxisol': [
+                'tfc:rooted_dirt/oxisol'
+            ]
+        },
+        width: 5,
+        height: 2,
+        tries: 15
+    })
+    .withPlacement(p => {})
 ---
 
 [[ base ]]

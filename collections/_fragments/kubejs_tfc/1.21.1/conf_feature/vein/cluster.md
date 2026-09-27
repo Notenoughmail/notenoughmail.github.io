@@ -9,7 +9,32 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .replacementStates({
+        'tfc:rock/raw/granite': [
+            'minecraft:stone',
+            {
+                weight: 3,
+                value: 'minecraft:cobblestone'
+            }
+        ]
+    })
+    .rarity(60)
+    .density(0.05)
+    .nearLava(true)
+    .seed(4716354513131)
+    .size(40)
+    .indicator({
+        depth: 20,
+        rarity: 6,
+        states: [
+            {
+                value: 'minecraft:torch',
+                weight: 5
+            },
+            'minecraft:coal_block'
+        ]
+    })
+    .withPlacement(p => p.tag('tfc:in_biome/veins'))
 ---
 
 [[ base ]]
@@ -24,7 +49,7 @@ example: |-
     - [[ def_1 ]]
 - `.minY(y: int)`{: .language-kube-21 #{{ page.anchor }}-min-y }: The lowest y-value the vein can spawn at
     - Defaults to `-64`{:.language-kube-21}
-- `.maxY`{: .language-kube-21 #{{ page.anchor }}-max-y }: The highest y-value the vein can spawn at
+- `.maxY(y: int)`{: .language-kube-21 #{{ page.anchor }}-max-y }: The highest y-value the vein can spawn at
     - Defaults to `320`{:.n}
 - `.projectToSurface(p: boolean)`{: .language-kube-21 #{{ page.anchor }}-project-to-surface }: If the vein should project to the surface during placement
     - [[ def_f ]]

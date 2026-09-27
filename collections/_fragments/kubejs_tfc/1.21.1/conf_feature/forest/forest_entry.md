@@ -9,7 +9,28 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .tag('kubejs:forest_entry')
+    .trees('kubejs:tree/willow_replica', 'tfc:tree/pine_large')
+    .bush('tfc:wood/log/oak', 'tfc:wood/leaves/oak')
+    .soilDisc('kubejs:soil_disc')
+    .groundcover([
+        'minecraft:crimson_fungus'
+    ])
+    .climate({
+        minTemp: -12,
+        maxTemp: 5,
+        ignoreRivers: true,
+        minForestDensity: 2,
+        forestTypes: [
+            'secondary_monoculture_tall',
+            'secondary_diverse',
+            'secondary_dense',
+            'secondary_alternative',
+            'edge_diverse',
+            'edge_monoculture'
+        ]
+    })
+    .krummholz('kubejs:krummholz')
 ---
 
 - `.climate(placement: ClimatePlacement)`{: .language-kube-21 #{{ page.anchor }}-climate }: The climatic conditions this forest entry can spawn in. Can be made as an object with the fields

@@ -9,7 +9,36 @@ cat:
     - 1.21.1
     - conf_feature
 example: |-
-    // TODO
+    .replacementStates({
+        'tfc:rock/raw/andesite': [
+            {
+                weight: 50,
+                value: 'kubejs:fossil/andesite'
+            },
+            'minecraft:bone_block'
+        ],
+        'tfc:rock/raw/granite': [
+            {
+                weight: 90,
+                value: 'kubejs:fossil/granite'
+            },
+            {
+                weight: 3,
+                value: 'minecraft:bone_block'
+            }
+        ],
+        'tfc:rock/raw/conglomerate': [
+            'kubejs:fossil/conglomerate',
+            'kubejs:fossil/conglomerate/alternate'
+        ]
+    })
+    .size(20)
+    .height(6)
+    .density(0.1)
+    .seed(48963214896522)
+    .projectToSurface(true)
+    .projectOffset(true)
+    .withPlacement(p => p.tag('tfc:in_biome/veins'))
 ---
 
 [[ cluster ]]

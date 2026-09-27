@@ -35,7 +35,7 @@ Calendars have several methods from which time information can be gotten
 - `.getAbsoluteCalendarMonthOfYear(): Month`{: .language-kube-21 #{{ page.anchor }}-get-absolute-calendar-month-of-year }: Get the current [`Month`{:.e}](#month-enum){:.preserve-color} of the year in calendar time. Should be used when displaying a calendar month by name or when using absolute time, rather than time-of-year
 - `.getCalendarTicksInMonth(): int`{: .language-kube-21 #{{ page.anchor }}-get-calendar-ticks-in-month }: Get the total number of ticks in a month
 - `.getCalendarTicksInYear(): int`{: .language-kube-21 #{{ page.anchor }}-get-calendar-ticks-in-year }: Get the total number of ticks in a year
-- `.getTimeAndDate(): MutabelComponent`{: .language-kube-21 #{{ page.anchor }}-get-time-and-date }: Get a text component displaying the current time and date in `HH:MM month DD, YYYY` form
+- `.getTimeAndDate(): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-time-and-date }: Get a text component displaying the current time and date in `HH:MM month DD, YYYY` form
 - `.getDayTime(): MutableComponent`{: .language-kube-21 #{{ page.anchor }}-get-day-time }: Get a text component displaying the current time in `HH:MM` form
 - `.getHourOfDay(): int`{: .language-kube-21 #{{ page.anchor }}-get-hour-of-day }: Get the current hour of the day, {% in_range 0,23 %}
 - `.getMinuteOfHour(): int`{: .language-kube-21 #{{ page.anchor }}-get-minute-of-hour }: Get the current minute of the hour, {% in_range 0,59 %}

@@ -67,7 +67,7 @@ Inherits the methods of the [{{ feature.inherit-display }}]({{ feature.inherit |
 ### Example
 
 ```js-21
-ServerEVents.registry('minecraft:configured_feature', event => {
+ServerEvents.registry('minecraft:configured_feature', event => {
     event.create('{{ feature | get_or_default: 'name', 'type' }}', 'tfc:{{ feature.type }}')
         {{ feature.example | with_indent }}
 })
@@ -107,7 +107,7 @@ KubeJS TFC adds the following [placement modifiers]({% link worldjs/1.21.1/featu
 - `.nearFluid(radius: int, fluids?: List<Fluid>)`{: .language-kube-21 #placed-feature-modifier-near-fluid }: Add a `tfc:near_fluid` modifier
     - `radius: int`{:.language-kube-21}: The radius to check for fluid
     - `fluids?: List<Fluid>`{:.language-kube-21}: The fluids to consider
-        - Optional. Considers all fluids if not set
+        - Optional. Considers all fluids valid if not set
 - `.intertidal(minElevation: int, maxElevation: int)`{: .language-kube-21 #placed-feature-modifier-intertidal }: Add a `tfc:intertidal` modifier
     - `minElevation: int`{:.language-kube-21}: The minimum valid tide elevation
     - `maxElevation: int`{:.language-kube-21}: The maximum valid tide elevation
@@ -117,24 +117,42 @@ KubeJS TFC adds the following [placement modifiers]({% link worldjs/1.21.1/featu
     - `maxElevation: int`{:.language-kube-21}: The maximum valid tide elevation
 - `.flatEnough(flatness: float, radius: int, maxDepth: int)`{: .language-kube-21 #placed-feature-modifier-flat-enough }: Add a `tfc:flat_enough` modifier
     - `flatness: float`{:.language-kube-21}: The minimum flatness of the checked area
+        - {{ replacements.unit }}
     - `radius: int`{:.language-kube-21}: The horizontal distance to check
+        - {{ replacements.pos }}
     - `maxDepth: int`{:.language-kube-21}: The depth below the initial position to check
-- `.climate(climate: ClimatePlacementBuilder)`{: .language-kube-21 #placed-feature-modifier-climate }: Add a `tfc:climate` modifier
-    - `climate: ClimatePlacementBuilder`{:.language-kube-21}: The climate restrictions, which can be made as an object with the fields
-        - `minTemp?: number`{:.language-kube-21}: The minimum temperature. Optional, defaults to `-Infinity`{:.n}
-        - `maxTemp?: number`{:.language-kube-21}: The maximum temperature. Optional, defaults to `Infinity`{:.n}
-        - `minGroundWater?: number`{:.language-kube-21}: The minimum groundwater. Optional, defaults to `-Infinity`{:.n}
-        - `maxGroundwater?: number`{:.language-kube-21}: The maximum groundwater. Optional, defaults to `Infinity`{:.n}
-        - `minRainVariance?: number`{:.language-kube-21}: The minimum rain variance value. Optional, defaults to `-1`{:.n}
-        - `maxRainVariance?: number`{:.language-kube-21}: The maximum rain variance value. Optional, defaults to `1`{:.n}
-        - `absoluteRainVariance?: boolean`{:.language-kube-21}: If the sign of the rain variance should be ignored. Optional, defaults to `false`{:.p}
-        - `fuzzy?: boolean`{:.language-kube-21}: If values should be evaluated fuzzily. Optional, defaults to `false`{:.p}
-        - `ignoreRivers?: boolean`{:.language-kube-21}: If values should be evaluated before river influences. Optional, defaults to `false`{:.p}
-        - `minForestDensity?: int`{:.language-kube-21}: The minimum forest density, {% in_range 0,,) %}. Optional, defaults to `0`{:.n}
-        - `maxForestDensity?: int`{:.language-kube-21}: The maximum forest density, {% in_range 0,,) %}. Optional, defaults to `4`{:.n}
-        - `minElevation?: int`{:.language-kube-21}: The minimum y-level. Optional, defaults to `-64`{:.n}
-        - `maxElevation?: int`{:.language-kube-21}: The maximum y-level. Optional, defaults to `320`{:.n}
-        - `forestTypes?: List<ForestType>`{:.language-kube-21}: The permitted [forest types]({% link kubejs_tfc/1.21.1/type-explanations.md %}#forest-type-enum) to spawn in. Optional, if not set or empty permits all forest types
+        - {{ replacements.pos }}
+- `.climate(climate: ClimatePlacementBuilder)`{: .language-kube-21 #placed-feature-modifier-climate }: Add a `tfc:climate` modifier. Accepts a `ClimatePlacementBuilder`, which can be made as a map of parameters to values
+    - `minTemp?: number`{:.language-kube-21}: The minimum temperature
+        - {{ replacements.n_inf }}
+    - `maxTemp?: number`{:.language-kube-21}: The maximum temperature
+        - {{ replacements.p_inf }}
+    - `minGroundWater?: number`{:.language-kube-21}: The minimum groundwater
+        - {{ replacements.n_inf }}
+    - `maxGroundwater?: number`{:.language-kube-21}: The maximum groundwater
+        - {{ replacements.p_inf }}
+    - `minRainVariance?: number`{:.language-kube-21}: The minimum rain variance value
+        - Defaults to `-1`{:.n}
+    - `maxRainVariance?: number`{:.language-kube-21}: The maximum rain variance value
+        - {{ replacements.def_1 }}
+    - `absoluteRainVariance?: boolean`{:.language-kube-21}: If the sign of the rain variance should be ignored
+        - {{ replacements.def_f }}
+    - `fuzzy?: boolean`{:.language-kube-21}: If values should be evaluated fuzzily
+        - {{ replacements.def_f }}
+    - `ignoreRivers?: boolean`{:.language-kube-21}: If values should be evaluated before river influences
+        - {{ replacements.def_f }}
+    - `minForestDensity?: int`{:.language-kube-21}: The minimum forest density
+        - {{ replacements.non_neg }}
+        - {{ replacements.def_0 }}
+    - `maxForestDensity?: int`{:.language-kube-21}: The maximum forest density
+        - {{ replacements.non_neg }}
+        - Defaults to `4`{:.n}
+    - `minElevation?: int`{:.language-kube-21}: The minimum y-level
+        - Defaults to `-64`{:.n}
+    - `maxElevation?: int`{:.language-kube-21}: The maximum y-level
+        - Defaults to `320`{:.n}
+    - `forestTypes?: List<ForestType>`{:.language-kube-21}: The permitted [forest types]({% link kubejs_tfc/1.21.1/type-explanations.md %}#forest-type-enum) to spawn in
+        - Optional, if not set or empty permits all forest types
 - `.carvingMask(minY: VerticalAnchor, maxY: VerticalAnchor, step: GenerationStep$Carving)`{: .language-kube-21 #placed-feature-modifier-carving-mask }: Add a `tfc:carving_mask` modifier
     - `minY: VerticalAnchor`{:.language-kube-21}: The minimum valid {{ vertical_anchor }}
     - `maxY: VerticalAnchor`{:.language-kube-21}: The maximum valid {{ vertical_anchor }}
@@ -150,15 +168,25 @@ KubeJS TFC adds the following [placement modifiers]({% link worldjs/1.21.1/featu
         {% include enum_list.html summary='Reveal/hide list of carving steps' values='air,liquid' %}
 - `.onTop(predicate: BlockPredicate)`{: .language-kube-21 #placed-feature-modifier-on-top }: Add a `tfc:on_top` modifier
     - `predicate: BlockPredicate`{:.language-kube-21}: The block required below for a position to be valid
-- `.stratovolcano(stratovolcano: StratovolcanoBuilder)`{: .language-kube-21 #placed-feature-modifier-stratovolcano }: Adds a `tfc:stratovolcano` modifier
-    - `stratovolcano: StratovolcanoBuilder`{:.language-kube-21}: The stratovolcano properties, which can be made as an object with the fields
-        - `center?: boolean`{:.language-kube-21}: If the feature should place exclusively near the center of the volcanic features. Optional, defaults to `false`{:.p}
-        - `useOffsetCenter?: boolean`{:.language-kube-21}: If the feature should place exclusively near the offset center of volcanic features, if the variant has an offset center
-        - `variant?: String`{:.language-kube-21}: The variant to place in. Optional, defaults to `'all'`{:.language-kube-21}
-        - `minEasing?: number`{:.language-kube-21}: The minimum easing value, {% in_unit %}. Optional, defaults to `0`{:.n}
-        - `maxEasing?: number`{:.language-kube-21}: The maximum easing value, {% in_unit %}. Optional, defaults to `1`{:.n}
-        - `hashMin?: number`{:.language-kube-21}: The minimum hash value, {% in_unit %}. Optional, defaults to `0`{:.n}
-        - `hashMax?: number`{:.language-kube-21}: The maximum hash value, {% in_unit %}. Optional, defaults to `1`{:.n}
+- `.stratovolcano(stratovolcano: StratovolcanoBuilder)`{: .language-kube-21 #placed-feature-modifier-stratovolcano }: Adds a `tfc:stratovolcano` modifier. Accepts a `StratovolcanoBuilder`, which can be made as a map of parameters to values
+    - `center?: boolean`{:.language-kube-21}: If the feature should place exclusively near the center of the volcanic features
+        - {{ replacements.def_f }}
+    - `useOffsetCenter?: boolean`{:.language-kube-21}: If the feature should place exclusively near the offset center of volcanic features, if the variant has an offset center
+        - {{ replacements.def_f }}
+    - `variant?: String`{:.language-kube-21}: The variant to place in
+        - Defaults to `'all'`{:.language-kube-21}
+    - `minEasing?: number`{:.language-kube-21}: The minimum easing value
+        - {{ replacements.unit }}
+        - {{ replacements.def_0 }}
+    - `maxEasing?: number`{:.language-kube-21}: The maximum easing value
+        - {{ replacements.unit }}
+        - {{ replacements.def_1 }}
+    - `hashMin?: number`{:.language-kube-21}: The minimum hash value
+        - {{ replacements.unit }}
+        - {{ replacements.def_0 }}
+    - `hashMax?: number`{:.language-kube-21}: The maximum hash value
+        - {{ replacements.unit }}
+        - {{ replacements.def_1 }}
 
 {% comment %}
 
