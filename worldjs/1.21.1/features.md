@@ -125,7 +125,8 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
 - `.biome()`{: .language-kube-21 #modifier-biome }: Add a [minecraft:biome](https://minecraft.wiki/w/Placed_feature#biome) modifier. Restricts the feature to only place in biomes that include this feature
 - `.inSquare()`{: .language-kube-21 #modifier-in-square }: Add a [minecraft:in_square](https://minecraft.wiki/w/Placed_feature#in_square) modifier. Adds a random x and z offset to the placement position between 0 and 15
 - `.count(count: IntProvider)`{: .language-kube-21 #modifier-count }: Add a [minecraft:count](https://minecraft.wiki/w/Placed_feature#count) modifier
-    - `count: IntProvider`{:.language-kube-21}: The number of times to place at the position, {% in_range 0,256 %}
+    - `count: IntProvider`{:.language-kube-21}: The number of times to place at the position
+        - Must be {% in_range 0,256 %}
 - `.fixed(positions: BlockPos[])`{: .language-kube-21 #modifier-fixed }: Add a [minecraft:fixed_placement](https://minecraft.wiki/w/Placed_feature#fixed_placement) modifier
     - `positions: BlockPos[]`{:.language-kube-21}: The positions to place at, if in the same chunk as the placement is occurring in
 - `.rarityFilter(chance: int)`{: .language-kube-21 #modifier-rarity-filter }: Add a [minecraft:rarity_filter](https://minecraft.wiki/w/Placed_feature#rarity_filter) modifier
@@ -139,26 +140,34 @@ By default WorldJS adds the following [vanilla placement modifiers](https://mine
 - `.noiseBasedCount(noiseToCountRatio: int, noiseFactor: float, noiseOffset?: float)`{: .language-kube-21 #modifier-noise-based-count }: Add a [minecraft:noise_based_count](https://minecraft.wiki/w/Placed_feature#noise_based_count) modifier
     - `noiseToCountRatio: int`{:.language-kube-21}: The ratio of noise value to count
     - `noiseFactor: float`{:.language-kube-21}: The horizontal scale factor of the noise. Higher values make wider, more spaced out peaks
-    - `noiseOffset?: float`{:.language-kube-21}: The vertical offset of the noise. Optional, defaults to 0
+    - `noiseOffset?: float`{:.language-kube-21}: The vertical offset of the noise
+        - {{ replacements.def_0 }}
 - `.noiseThresholdCount(noiseLevel: float, belowNoise: int, aboveNoise: int)`{: .language-kube-21 #modifier-noise-threshold-count }: Add a [minecraft:noise_threshold_count](https://minecraft.wiki/w/Placed_feature#noise_threshold_count) modifier
     - `noiseLevel: float`{:.language-kube-21}: The threshold for determining if `aboveNoise`{:.v} or `belowNoise`{:.v} should be used
     - `belowNoise: int`{:.language-kube-21}: The count to use when below the threshold
     - `aboveNoise: int`{:.language-kube-21}: The count to use when above the threshold
 - `.randomOffset(xzSpread: IntProvider, ySpread: IntProvider)`{: .language-kube-21 #modifier-random-offset }: Add a [minecraft:random_offset](https://minecraft.wiki/w/Placed_feature#random_offset) modifier
-    - `xzSpread: IntProvider`{:.language-kube-21}: The horizontal spread, {% in_range -16,16 %}
-    - `ySpread: IntProvider`{:.language-kube-21}: The vertical spread, {% in_range -16,16 %}
+    - `xzSpread: IntProvider`{:.language-kube-21}: The horizontal spread
+        - Must be {% in_range -16,16 %}
+    - `ySpread: IntProvider`{:.language-kube-21}: The vertical spread
+        - Must be {% in_range -16,16 %}
 - `.verticalRandomOffset(ySpread: IntProvider)`{: .language-kube-21 #modifier-vertical-random-offset }: Add a purely vertical [minecraft:random_offset](https://minecraft.wiki/w/Placed_feature#random_offset) modifier
-    - `ySpread: IntProvider`{:.language-kube-21}: The vertical spread, {% in_range -16,16 %}
+    - `ySpread: IntProvider`{:.language-kube-21}: The vertical spread
+        - Must be {% in_range -16,16 %}
 - `.horizontalRandomOffset(xzSpread: IntProvider)`{: .language-kube-21 #modifier-horizontal-random-offset }: Add a purely horizontal [minecraft:random_offset](https://minecraft.wiki/w/Placed_feature#random_offset) modifier
-    - `xzSpread: IntProvider`{:.language-kube-21}: The horizontal spread, {% in_range -16, 16 %}
+    - `xzSpread: IntProvider`{:.language-kube-21}: The horizontal spread
+        - Must be {% in_range -16, 16 %}
 - `.countOnEveryLayer(count: IntProvider)`{: .language-kube-21 #modifier-count-on-every-layer }: Add a [minecraft:count_on_every_layer](https://minecraft.wiki/w/Placed_feature#count_on_every_layer) modifier
-    - `count: IntProvider`{:.language-kube-21}: The count on each layer, {% in_range 0,256 %}
+    - `count: IntProvider`{:.language-kube-21}: The count on each layer
+        - Must be {% in_range 0,256 %}
 - `.environmentScan(directionOfSearch: Direction, targetCondition: BlockPredicate, allowedSearchCondition?: BlockPredicate, maxSteps: int)`{: .language-kube-21 #modifier-environment-scan }: Add a [minecraft:environment_scan](https://minecraft.wiki/w/Placed_feature#environment_scan) modifier
     - `directionOfSearch: Direction`{:.language-kube-21}: The direction to search in
         {{ directions }}
     - `targetCondition: BlockPredicate`{:.language-kube-21}: The block predicate to search for
-    - `allowedSearchCondition?: BlockPredicate`{:.language-kube-21}: The block predicate to validate each step to the `targetCondition`{:.v}. Optional, approves everything if not specified
-    - `maxSteps: int`{:.language-kube-21}: the maximum number of blocks, {% in_range 1,32 %}, out from the original position to search for
+    - `allowedSearchCondition?: BlockPredicate`{:.language-kube-21}: The block predicate to validate each step to the `targetCondition`{:.v}
+        - Optional, approves everything if not specified
+    - `maxSteps: int`{:.language-kube-21}: the maximum number of blocks out from the original position to search for
+        - Must be {% in_range 1,32 %}
 - `.surfaceRelativeThreshold(heightmap: Heightmap$Types, minInclusive: int, maxInclusive: int)`{: .language-kube-21 #modifier-surface-relative-threshold }: Add a [minecraft:surface_relative_threshold_filter](https://minecraft.wiki/w/Placed_feature#surface_relative_threshold_filter) modifier
     - `heightmap: Heightmap$Types`{:.language-kube-21}: The heightmap to be within range of
         {{ heightmap_types }}

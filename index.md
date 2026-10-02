@@ -15,10 +15,6 @@ This site is where I host most of my non-Discord online presence, it is mainly d
 
 All of my Minecraft related stuff
 
-## [Project Updates](updates/)
-
-An archive for project updates
-
 ## [Writing](writing/)
 
 Occasionally, I might write something, this is an archive for all of that

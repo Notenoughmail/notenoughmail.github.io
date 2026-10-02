@@ -154,8 +154,10 @@ In [density functions](#{{ page.anchor }}), splines can be defined in scripts as
             - `'location'`{:.s}: A `number`{:.p}, the location of the point on the spline
             - `'value'`{:.s}: A `number`{:.p}, the value of the point
             - `'derivative'`{:.s}: A `number`{:.p}, the slope at the point
+                - Optional, defaults to `0`{:.n}
         - For a variable point
             - `'location'`{:.s}: A `number`{:.p}, the location of the point on the spline
             - `'value'`{:.s}: A [spline](#{{ page.anchor }}-spline), the value of the point
+        - **Note**: Points must be ordered in increasing `'location'`{:.s} values
 
 Other values will emit an error

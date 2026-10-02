@@ -48,10 +48,10 @@ example: |-
     - `state: BlockState`{:.language-kube-21}: The trunk block to place
         - Defaults to `'minecraft:air'`{:.s}
     - `minHeight?: int`{:.language-kube-21}: The minimum height of the trunk
-        - Must be <= `maxHeight`{:.v}
+        - Must be ≤ `maxHeight`{:.v}
         - [[ def_0 ]]
     - `maxHeight?: int`{:.language-kube-21}: The maximum height of the trunk
-        - Must be >= `minHeight`{:.v}
+        - Must be ≥ `minHeight`{:.v}
         - Defaults to `2`{:.n}
     - `wide?: boolean`{:.language-kube-21}: If the trunk should be 2x2
         - [[ def_f ]]

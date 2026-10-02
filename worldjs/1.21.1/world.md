@@ -196,7 +196,7 @@ ServerEvents.registry('worldgen/world_preset', event => {
 
 - `.fixedTime(time: int)`{: .language-kube-21 #{{ d }}fixed-time }: Fixes the dimension at the given day time, in ticks
     - Defaults to un-fixed time
-- `.withNosSkyLight()`{: .language-kube-21 #{{ d }}with-no-sky-light }: Marks the dimension as not having sky light
+- `.withNoSkyLight()`{: .language-kube-21 #{{ d }}with-no-sky-light }: Marks the dimension as not having sky light
 - `.withCeiling()`{: .language-kube-21 #{{ d }}with-ceiling }: Marks the dimension as having a *logical* ceiling
     - **Note**: This does not influence the actual generation of a ceiling in the dimension, that is controlled by the [chunk generator](#chunk-generators)
 - `.ultraWarm()`{: .language-kube-21 #{{ d }}ultra-warm }: Marks the dimension as being ultra warm. Enables water evaporation and faster lava spread, among other effects

@@ -165,9 +165,12 @@ module Jekyll
       out
     end
 
-    def get_or_default(input, get, default)
-      g = input[get]
-      g.nil? ? input[default] : g
+    def get_or_default(input, *get)
+      val = flatten_array(get).find { |g| !input[g].nil? }
+      if val.nil?
+        raise "Cannot find any of #{get} in #{input}"
+      end
+      input[val]
     end
 
     def get_or_else(input, get, fallback)
