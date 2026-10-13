@@ -99,13 +99,13 @@ example: |-
     })
 ---
 
-When used with a specific chunk generator type, this event allows for custom generation of TFC's [`ChunkData`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#chunk-data), permitting [fauna definitions](#fauna-spawns); [climate placement modifiers]({% link kubejs_tfc/1.21.1/worldgen.md %}#climate); TFC's climate based structure modifier; and many other features which are reliant on the chunk generator being TFC-like to function properly with chunk generator's other than TFC's
+When used with a specific chunk generator type, this event allows for custom generation of TFC's [`ChunkData`]({% link kubejs_tfc/1.21.1/type-explanations.md %}#chunk-data), permitting [fauna definitions](#fauna-spawns); [climate placement modifiers]({% link kubejs_tfc/1.21.1/worldgen.md %}#climate); TFC's climate based structure modifier; and many other features which are reliant on the chunk generator being TFC-like to function properly with chunk generators other than TFC's
 
 {: #{{ page.anchor }}-chunk-generator }
 
 ## Chunk Generator
 
-Due to how TFC's chunk data works, this functionality is inherently tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped`, which will wrap any arbitrary chunk generator an imitate its function while providing TFC's additional values
+Due to how TFC's chunk data works and is used, this functionality is inherently tied to a `ChunkGenerator`. KubeJS TFC adds a new generator type, `kubejs_tfc:wrapped`, which will wrap any arbitrary chunk generator and imitate its functionality while providing TFC's additional information
 
 In its json definition, the generator has the following fields
 
@@ -180,7 +180,7 @@ In addition, a custom surface rule source that uses the blocks of the `RockSetti
 In its json, the rule source has the following fields
 
 - `type` must be `kubejs_tfc:rock`
-- `fallback_state`: A [lenient block state](https://terrafirmacraft.github.io/Documentation/1.20.x/worldgen/common-types/#lenient-blockstate). Used when the `RockSettings` at a position could not be found or the chunk generator is not compatible with this rule source
+- `fallback_state`: A [lenient block state](https://terrafirmacraft.github.io/Documentation/1.21.x/worldgen/common-types/#lenient-blockstate). Used when the `RockSettings` at a position could not be found or the chunk generator is not compatible with this rule source
 - `rock_block`: A string, one of `raw`, `hardened`, `gravel`, `cobble`, `sand`, or `sandstone`. Specifies which block from the `RockSettings` to use. Optional, defaults to `raw`
 
 {: #{{ page.anchor }}-surface-rule-source-example }
@@ -206,10 +206,15 @@ In its json, the rule source has the following fields
 - `.stableRandomSource(): RandomSource`{: .language-kube-21 #{{ page.anchor }}-stable-random-source }: Get a thread-unsafe `RandomSource` seeded by the world seed
 - `.unstableRandomSource(): RandomSource`{: .language-kube-21 #{{ page.anchor }}-unstable-random-source }: Get a thread-unsafe `RandomSource` with an arbitrary seed
 - `.getSettings(): Settings`{: .language-kube-21 #{{ page.anchor }}-get-settings }: Get the TFC [`Settings`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/settings/Settings.java) of the chunk generator
-- `.partial(gen: Consumer<ChunkData>): void`{: .language-kube-21 #{{ page.anchor }}-partial }: Set the calculation for the information required to promote a chunk's `ChunkData` to `partial`{:.e}. [`ChunkData.generatePartial(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-partial){:.preserve-color} should be called here. [`ChunkData.generateFull(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-full){:.preserve-color} *may* be called here, however chunk information is not available. If a chunk is not promoted to `partial`{:.e}, the provider will automatically do so with `0`{:.n} values
-- `.full(gen: BiConsumer<ChunkData, ChunkAccess>): void`{: .language-kube-21 #{{ page.anchor }}-full }: Set the calculation for the information required to promote a chunk's `ChunkData` from `partial`{:.e} to `full`{:.e}. [`ChunkData.generateFull(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-full){:.preserve-color} should be called here. If a chunk is not promoted to `full`{:.e}, the provider will automatically do so with values derived from the `ocean_floor_wg`{:.e} heightmap. Accepts a callback with two parameters
+- `.partial(gen: Consumer<ChunkData>): void`{: .language-kube-21 #{{ page.anchor }}-partial }: Set the calculation for the information required to promote a chunk's `ChunkData` to `partial`{:.e}
+    - [`ChunkData.generatePartial(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-partial){:.preserve-color} should be called here
+        - If a chunk is not promoted to `partial`{:.e}, the provider will automatically do so with `0`{:.n} values
+    - [`ChunkData.generateFull(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-full){:.preserve-color} *may* be called here, however chunk information is not available
+- `.full(gen: BiConsumer<ChunkData, ChunkAccess>): void`{: .language-kube-21 #{{ page.anchor }}-full }: Set the calculation for the information required to promote a chunk's `ChunkData` from `partial`{:.e} to `full`{:.e}. Accepts a callback with two parameters
     - `data: ChunkData`{:.language-kube-21}: The `ChunkData` being promoted to `full`{:.e}
     - `chunk: ChunkAcess`{:.language-kube-21}: The chunk the data is being generated for. The `ocean_floor_wg` and `world_surface_wg` heightmaps are available
+    - [`ChunkData.generateFull(...)`{:.language-kube-21}]({{ exp }}#chunk-data-generate-full){:.preserve-color} should be called here
+        - If a chunk is not promoted to `full`{:.e}, the provider will automatically do so with values derived from the `ocean_floor_wg`{:.e} heightmap
 - `.erosionalAquifer(maker: Function<ChunkAccess, Aquifer>): void`{: .language-kube-21 #{{ page.anchor }}-erosional-aquifer }: Set the calculation for the `Aquifer` of a given chunk. The aquifer is used by TFC's erosion feature to place subterranean fluids. If not set, defaults to an aquifer that places air at at y -2^31. Accepts a callback with the params
     - `chunk: ChunkAccess`{:.language-kube-21}: The chunk the aquifer is being generated for
     - `return: Aquifer`{:.language-kube-21}: An `Aquifer`. See [`TFCAquifer`](https://github.com/TerraFirmaCraft/TerraFirmaCraft/blob/1.21.x/src/main/java/net/dries007/tfc/world/TFCAquifer.java) for TFC's implementation

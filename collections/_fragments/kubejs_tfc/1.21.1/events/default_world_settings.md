@@ -76,7 +76,7 @@ Allows for editing the default values of the TFC chunk generator at world creati
     - `name: String`{:.language-kube-21}: The name the rock can be referenced by
     - `rock: Holder$Reference<RockSettings>`{:.language-kube-21}: The id of a [registered `RockSettings`]({% link kubejs_tfc/1.21.1/registry.md %}#rock-setting) to reference
     - `bottom: boolean`{:.language-kube-21}: If the `rock`{:.v} should be added to the `bottom` pseudo-layer
-- `.getRock(name: String): @Nullable RockSettings`{: .language-kube-21 #{{ page.anchor }}-get-rock }: Get the named `RockSettings`
+- `.getRock(name: String): @Nullable Holder<RockSettings>`{: .language-kube-21 #{{ page.anchor }}-get-rock }: Get the named `RockSettings`
 - `.getRockNames(): Set<String>`{: .language-kube-21 #{{ page.anchor }}-get-rock-names }: Get a collection of the names of all rocks in the generator's pool of available rocks
 - `.removeRock(String name): void`{: .language-kube-21 #{{ page.anchor }}-remove-rock }: Remove the given rock from the generator
 - `.addToBottom(name: String): void`{: .language-kube-21 #{{ page.anchor }}-add-to-bottom }: Add the given rock to the `bottom` pseudo-layer
