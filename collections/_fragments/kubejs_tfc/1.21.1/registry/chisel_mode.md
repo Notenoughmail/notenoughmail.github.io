@@ -23,7 +23,9 @@ example: |-
 - `.priority(priority: int)`{: .language-kube-21 #{{ page.anchor }}-priority }: Sets the 'priority' of the chisel mode when sorting chisel modes for cycling
     - Defaults to `300`{:.n}
 - `.hotbarIcon(textureLocation: ResourceLocation, x: int, y: int)`{: .language-kube-21 #{{ page.anchor }}-hotbar-icon }: Sets the texture to use when displayed in the hotbar. Draws the 20 x 20 pixel area at the x and y coordinate
+    - **Note**: The `textureLocation`{:.v} image is expected to be 256 by 256 pixels
 - `.recipeIcon(textureLocation: ResourceLocation, x: int, y: int, width: int, height: int)`{: .language-kube-21 #{{ page.anchor }}-recipe-icon }: Sets the texture to use when displayed in recipe viewers
+    - **Note**: The `textureLocation`{:.v} image is expected to be 256 by 256 pixels
 - `.chiselBehavior(behavior: ChiselBehavior)`{: .language-kube-21 #{{ page.anchor }}-chisel-behavior }: Sets the behavior when chiseling is performed. Accepts a callback with the params
     - `original: BlockState`{:.language-kube-21}: The original state being chiseled
     - `chiseled: BlockState`{:.language-kube-21}: The chiseled state specified by the recipe
