@@ -5,7 +5,7 @@ permalink: /worldjs/1.21.1/biome-squisher/
 parent: 1.21.1
 grand_parent: WorldJS
 has_toc: false
-has_childern: false
+has_children: false
 desc: Creating Biome Squisher's injectors through scripts
 ---
 

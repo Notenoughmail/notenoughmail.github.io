@@ -14,3 +14,21 @@
 {% if page.extra_header %}
     {% include {{ page.extra_header }}.html %}
 {% endif %}
+
+{% if layout.discord_preview %}<script id="discord:component-embed" type="application/json">{
+    "component": {
+        "type": 9,
+        "components": [
+            {
+                "type": 10,
+                "content": "{{ page.content }}"
+            }
+        ],
+        "accessory": {
+            "type": 11,
+            "media": {
+                "url": "{{ site.url }}/assets/icon/{{ layout.icon }}.png"
+            }
+        }
+    }
+}</script>{% endif %}
