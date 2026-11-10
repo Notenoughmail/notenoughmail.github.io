@@ -46,6 +46,7 @@ Lists and describes the methods available on
 - `.map(mappingFunction: Function<double, double>): Noise2D`{: .language-kube-20 #noise2d-map }: Maps the output of this noise by the given function
 - `.transpose(): Noise2D`{: .language-kube-20 #noise2d-transpose }: Swaps the input axes
 - `.rotate(angle: double): Noise2D`{: .language-kube-20 #noise2d-rotate }: Rotates the input axes by the given angle (in degrees)
+- `.promoteTo3D(): Noise3D`{: .language-kube-20 #noise3d-promote-to-3d }: 'Promotes' the noise to a [3D version](#noise3d) that ignores the y coordinate
 
 ### OpenSimplex2D
 
@@ -156,6 +157,10 @@ Lists and describes the methods available on
         - `return: int`{: .language-kube-20 }: The return value
     - `otherLayeredArea: LayeredArea`{: .language-kube-20 }: The `LayeredArea` to merge with this one
     - `seed: long`{: .language-kube-20 }: The seed used by the [`AreaContext`](#layered-area-area-context)'s random
+- `.asSimpleRocksGetter(skew?: FastNoiseLite, depthAdjustment: Noise3D, depthPerLayer: int): RocksGetter`{: .language-kube-20 #layered-area-as-simple-rocks-getter }: Creates a simple [`RocksGetter`{:.f}]({% link kubejs_tfc/1.20.1/events.md %}#chunk-data-provider-rocks){:.preserve-color} from the `LayeredArea`
+    - `skew?: FastNoiseLite`{:.language-kube-20}: The horizontal skew, as a [FastNoiseLite]({% link kubejs_tfc/1.20.1/bindings/misc.md %}#fastnoiselite), to apply to the checked position through domain warp. Optional
+    - `depthAdjustment: Noise3D`{:.language-kube-20}: A [`Noise3D`{:.f}](#noise3d){:.preserve-color} for adjusting the depth below the surface a position is
+    - `depthPerLayer: int`{:.language-kube-20}: The number of blocks each layer is, checked after `depthAdjustment`{:.v} is applied
 
 {: #layered-area-source-layer }
 

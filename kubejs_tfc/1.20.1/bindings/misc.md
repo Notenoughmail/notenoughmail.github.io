@@ -466,6 +466,17 @@ TFC.misc.customNoise2D(noise: Noise2D): Noise2D
 TFC.misc.customNoise3D(noise: Noise3D): Noise3D
 ```
 
+### Constant Noises
+
+These methods create a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object with a constant value
+
+Method Signatures:
+
+```js-20
+TFC.misc.constantNoise2D(value: number): Noise2D
+TFC.misc.constantNoise3D(value: number): Noise3D
+```
+
 ### Noise Inspection Registration
 
 These methods 'register' a [noise]({% link kubejs_tfc/1.20.1/type-explanations.md %}#noise2d) object for use with the [2D]({% link kubejs_tfc/1.20.1/commands.md %}#inspect-2d-noise) and [3D]({% link kubejs_tfc/1.20.1/commands.md %}#inspect-3d-noise) noise inspection commands
